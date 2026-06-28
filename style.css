@@ -445,3 +445,32 @@ html.snap{scroll-snap-type:y proximity}
   .mg-quad{grid-template-columns:1fr;gap:16px;max-width:420px}
   .mg-row{grid-template-columns:1fr}
 }
+
+/* ====================================================== */
+/* microgroup.info — SVG logo, snap scroll, combined band */
+/* ====================================================== */
+
+/* clean SVG wordmark sizing (shrunk hero) */
+.mg-hero-logo{width:clamp(260px,32vw,400px);height:auto;margin:0 auto 26px;display:block}
+.footer-panel .footer-logo{width:min(380px,68vw);height:auto;display:block;margin:0 auto 30px}
+
+/* desktop snap scrolling on the home page */
+@media(min-width:861px){
+  html.snap-html{scroll-snap-type:y mandatory}
+  body.snap{scroll-snap-type:y mandatory;overflow-y:auto;height:100vh}
+  body.snap .snap-band{scroll-snap-align:start;scroll-snap-stop:always;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+  body.snap .site-header{scroll-snap-align:none}
+}
+
+/* combined expertise + guides band: stack the two groups with breathing room */
+.mg-combined .mg-shead-2{margin-top:64px}
+.mg-quad-light .mg-quad-card{background:var(--navy);border-top:3px solid var(--gold)}
+.mg-quad-light .mg-quad-card h4{color:var(--gold)}
+.mg-quad-light .mg-quad-card p{color:#e7ecfb}
+
+/* on the warm combined band, the quad needs dark cards to keep contrast.
+   keep them navy so the gold + white text reads. */
+.mg-combined .mg-quad{margin-top:8px}
+
+/* contact band stays normal scroll (no snap on contact page) */
+.mg-contact-band{min-height:auto}

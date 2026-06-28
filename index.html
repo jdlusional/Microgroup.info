@@ -11,21 +11,18 @@
 <link rel="icon" type="image/png" href="micromark-nav.png">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="snap">
 
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a class="nav-brand" href="index.html" aria-label="MICRO Group home">
-      <img src="micromark-nav.png" alt="MICRO Group">
       <span class="nav-slogan">A measured approach to <em>your goals.</em></span>
     </a>
     <button class="nav-toggle" aria-label="Menu">&#9776;</button>
     <div class="nav-right">
       <ul class="nav-links">
-        <li><a href="#expertise">Expertise</a></li>
-        <li><a href="#guides">What Guides Us</a></li>
-        <li><a href="#engage">Engage</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </div>
   </nav>
@@ -33,19 +30,16 @@
 
 <main>
 
-  <!-- BAND 1: hero (navy) -->
-  <section class="band band-navy chess mg-hero">
+  <!-- SNAP BAND 1: hero (navy) -->
+  <section class="band band-navy chess mg-hero snap-band">
     <div class="wrap">
-      <img class="mg-hero-logo" src="micrologo.png" alt="MICRO Group, LLC — A measured approach to your goals">
+      <img class="mg-hero-logo" src="MICRO_wordmark_dark.svg" alt="MICRO Group, LLC — A measured approach to your goals">
       <p class="mg-lede">A multi-service consultancy dedicated to serving nonprofit, education, and government institutions through expertise in Management, Integration, Culture, Research, and Operations.</p>
-      <div class="mg-hero-cta">
-        <a class="btn btn-solid" href="#engage">Engage MICRO Group</a>
-      </div>
     </div>
   </section>
 
-  <!-- BAND 2: expertise (warm paper) — circular medallions -->
-  <section id="expertise" class="band band-warm">
+  <!-- SNAP BAND 2: expertise + what guides us combined -->
+  <section class="band band-warm snap-band mg-combined">
     <div class="wrap">
       <header class="mg-shead">
         <span class="eyebrow eyebrow-dark">Core Subjects &amp; Expertise</span>
@@ -58,17 +52,12 @@
         <div class="mg-med"><div class="mg-med-circle">R</div><h3>Research</h3><p>Employee pay analysis, market analyses, and policy impact studies for evidence-based decisions.</p></div>
         <div class="mg-med"><div class="mg-med-circle">O</div><h3>Operations</h3><p>Operational management that increases productivity, optimizes resources, and enhances effectiveness.</p></div>
       </div>
-    </div>
-  </section>
 
-  <!-- BAND 3: what guides us (navy) — two by two quad -->
-  <section id="guides" class="band band-navy chess">
-    <div class="wrap">
-      <header class="mg-shead">
-        <span class="eyebrow">What Guides Us</span>
-        <h2>The principles behind every engagement</h2>
+      <header class="mg-shead mg-shead-2">
+        <span class="eyebrow eyebrow-dark">What Guides Us</span>
+        <h2 class="mg-h2-dark">The principles behind every engagement</h2>
       </header>
-      <div class="mg-quad">
+      <div class="mg-quad mg-quad-light">
         <div class="mg-quad-card"><h4>Mission</h4><p>To provide strategic, research-driven consultative solutions.</p></div>
         <div class="mg-quad-card"><h4>Vision</h4><p>To become a trusted partner in guiding institutions toward excellence and sustainability.</p></div>
         <div class="mg-quad-card"><h4>Values</h4><p>A client-centric institution committed to integrity, innovation, and collaboration.</p></div>
@@ -77,22 +66,9 @@
     </div>
   </section>
 
-  <!-- BAND 4: engage (warm paper) -->
-  <section id="engage" class="band band-warm">
-    <div class="wrap">
-      <div class="mg-engage">
-        <span class="eyebrow eyebrow-dark">Engage MICRO Group</span>
-        <h2 class="mg-h2-dark">Begin with a conversation</h2>
-        <p>Every engagement begins with a free thirty minute consultation, where we learn what your organization is facing and where MICRO can help.</p>
-        <p class="fine">Rates vary dramatically with timeframe, context, deliverables, and organizational size, and cannot be quoted without a consultation.</p>
-        <div class="mg-hero-cta"><a class="btn btn-solid" href="contact.html">Contact Us</a></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BAND 5: footer (deep navy) -->
-  <section class="footer-panel">
-    <img class="footer-logo wordmark" src="microwordmark.png" alt="MICRO Group, LLC — A measured approach to your goals">
+  <!-- SNAP BAND 3: footer (deep navy) -->
+  <section class="footer-panel snap-band">
+    <img class="footer-logo" src="MICRO_wordmark_dark.svg" alt="MICRO Group, LLC — A measured approach to your goals">
     <a class="footer-contact btn btn-gold" href="contact.html">Contact Us</a>
     <div class="footer-address">
       <h4>Mailing Address</h4>
