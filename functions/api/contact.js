@@ -1,65 +1,121 @@
-// Contact form handler for microgroup.info
-// Validates on the client, then posts JSON to /api/contact.
-(function () {
-  var form = document.getElementById("contactForm");
-  if (!form) return;
-  var status = document.getElementById("formStatus");
+// POST /api/contact
+// Receives a contact submission from the form on index.html,
+// stores it in the D1 database bound as env.DB, and emails a copy
+// to the MICRO Group inbox through Resend.
+//
+// Expects JSON:
+//   { first_name, last_name, email, phone, location, purpose,
+//     urgency, referral, company_website }
+//
+// company_website is the honeypot. Real people never see it, so if it
+// has any value the submission is treated as a bot and silently
+// accepted without being stored or emailed.
+//
+// Environment:
+//   env.DB           D1 binding (database: microgroup)
+//   env.RESEND_KEY   Resend API key (encrypted secret)
+//   env.CONTACT_TO   destination inbox (e.g. jonathanlindavis@gmail.com)
+//   env.CONTACT_FROM verified Resend sender (e.g. contact@microgroup.info)
 
-  function setStatus(msg, kind) {
-    status.textContent = msg;
-    status.className = "mg-status" + (kind ? " " + kind : "");
+export async function onRequestPost(context) {
+  const { request, env } = context;
+
+  let data;
+  try {
+    data = await request.json();
+  } catch (e) {
+    return json({ error: "Invalid request." }, 400);
   }
 
-  var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Honeypot: pretend success, store nothing, send nothing.
+  if (data.company_website && String(data.company_website).trim() !== "") {
+    return json({ ok: true }, 200);
+  }
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+  const first_name = clean(data.first_name);
+  const last_name = clean(data.last_name);
+  const email = clean(data.email).toLowerCase();
+  const phone = clean(data.phone);
+  const location = clean(data.location);
+  const purpose = clean(data.purpose);
+  const urgency = clean(data.urgency);
+  const referral = clean(data.referral);
 
-    var first = form.first_name.value.trim();
-    var last = form.last_name.value.trim();
-    var email = form.email.value.trim();
-    var location = form.location.value;
-    var purpose = form.purpose.value.trim();
+  // Server side validation, mirroring the client.
+  if (!first_name || !last_name) {
+    return json({ error: "Please enter your first and last name." }, 400);
+  }
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRe.test(email)) {
+    return json({ error: "Please enter a valid email." }, 400);
+  }
+  if (!location) {
+    return json({ error: "Please choose your location." }, 400);
+  }
+  if (!purpose) {
+    return json({ error: "Please tell us the purpose of your message." }, 400);
+  }
 
-    if (!first || !last) { setStatus("Please enter your first and last name.", "err"); return; }
-    if (!emailRe.test(email)) { setStatus("Please enter a valid email.", "err"); return; }
-    if (!location) { setStatus("Please choose your location.", "err"); return; }
-    if (!purpose) { setStatus("Please tell us the purpose of your message.", "err"); return; }
+  const created_at = new Date().toISOString();
 
-    var btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    setStatus("Sending...", "");
+  // Save to D1 first. The submission is preserved even if email fails.
+  try {
+    await env.DB.prepare(
+      `INSERT INTO contacts
+        (first_name, last_name, email, phone, location, purpose, urgency, referral, created_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    )
+      .bind(first_name, last_name, email, phone, location, purpose, urgency, referral, created_at)
+      .run();
+  } catch (e) {
+    return json({ error: "Something went wrong saving your message. Please try again." }, 500);
+  }
 
-    var payload = {
-      first_name: first,
-      last_name: last,
-      email: email,
-      phone: form.phone.value.trim(),
-      location: location,
-      urgency: form.urgency.value,
-      purpose: purpose,
-      referral: form.referral.value.trim(),
-      company_website: form.company_website.value
-    };
-
-    fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    })
-      .then(function (r) { return r.json().then(function (b) { return { ok: r.ok, body: b }; }); })
-      .then(function (res) {
-        if (res.ok && res.body && res.body.ok) {
-          form.reset();
-          setStatus("Thank you. Your message has been received and we will be in touch.", "ok");
-        } else {
-          setStatus((res.body && res.body.error) || "Something went wrong. Please try again.", "err");
-          btn.disabled = false;
-        }
-      })
-      .catch(function () {
-        setStatus("Something went wrong. Please try again.", "err");
-        btn.disabled = false;
+  // Email a copy through Resend. Failure here does not lose the record.
+  try {
+    if (env.RESEND_KEY && env.CONTACT_TO && env.CONTACT_FROM) {
+      const subject = `New MICRO Group inquiry from ${first_name} ${last_name}`;
+      const lines = [
+        `Name: ${first_name} ${last_name}`,
+        `Email: ${email}`,
+        `Phone: ${phone || "(not provided)"}`,
+        `Location: ${location}`,
+        `Urgency: ${urgency || "(not provided)"}`,
+        `Referral: ${referral || "(not provided)"}`,
+        `Submitted: ${created_at}`,
+        ``,
+        `Purpose:`,
+        purpose,
+      ];
+      await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${env.RESEND_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: env.CONTACT_FROM,
+          to: [env.CONTACT_TO],
+          reply_to: email,
+          subject: subject,
+          text: lines.join("\n"),
+        }),
       });
+    }
+  } catch (e) {
+    // Intentionally ignored. The row is already saved.
+  }
+
+  return json({ ok: true }, 200);
+}
+
+function clean(v) {
+  return (v == null ? "" : String(v)).trim().slice(0, 2000);
+}
+
+function json(obj, status) {
+  return new Response(JSON.stringify(obj), {
+    status: status || 200,
+    headers: { "Content-Type": "application/json" },
   });
-})();
+}
