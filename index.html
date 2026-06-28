@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Barlow+Semi+Condensed:wght@500;600&family=Marcellus&family=Cinzel:wght@500;600&family=Michroma&family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="micrologo.png">
+<link rel="icon" type="image/png" href="micromark-nav.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +16,8 @@
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a class="nav-brand" href="index.html" aria-label="MICRO Group home">
-      <img src="micrologo.png" alt="MICRO Group, LLC">
+      <img src="micromark-nav.png" alt="MICRO Group">
+      <span class="nav-slogan">A measured approach to <em>your goals.</em></span>
     </a>
     <button class="nav-toggle" aria-label="Menu">&#9776;</button>
     <div class="nav-right">
@@ -24,7 +25,7 @@
         <li><a href="#expertise">Expertise</a></li>
         <li><a href="#guides">What Guides Us</a></li>
         <li><a href="#engage">Engage</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -32,163 +33,67 @@
 
 <main>
 
-  <!-- SECTION 1: hero -->
-  <section class="panel navy chess mg-hero">
-    <div class="wrap inner">
-      <div class="consult-hero">
-        <img class="logo" src="micrologo.png" alt="MICRO Group, LLC — A measured approach to your goals">
-        <p class="lede">A multi-service consultancy dedicated to serving nonprofit, education, and government institutions through expertise in Management, Integration, Culture, Research, and Operations.</p>
-      </div>
+  <!-- BAND 1: hero (navy) -->
+  <section class="band band-navy chess mg-hero">
+    <div class="wrap">
+      <img class="mg-hero-logo" src="micrologo.png" alt="MICRO Group, LLC — A measured approach to your goals">
+      <p class="mg-lede">A multi-service consultancy dedicated to serving nonprofit, education, and government institutions through expertise in Management, Integration, Culture, Research, and Operations.</p>
       <div class="mg-hero-cta">
         <a class="btn btn-solid" href="#engage">Engage MICRO Group</a>
-        <a class="btn btn-gold" href="#contact">Contact Us</a>
       </div>
     </div>
-    <button class="chevron" aria-label="Scroll to expertise">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-    </button>
   </section>
 
-  <!-- SECTION 2: expertise grid (was a dropdown, now an open grid) -->
-  <section id="expertise" class="panel navy chess mg-section">
-    <div class="wrap inner">
+  <!-- BAND 2: expertise (warm paper) — circular medallions -->
+  <section id="expertise" class="band band-warm">
+    <div class="wrap">
       <header class="mg-shead">
-        <span class="eyebrow">Core Subjects &amp; Expertise</span>
-        <h2>Five disciplines, one measured approach</h2>
+        <span class="eyebrow eyebrow-dark">Core Subjects &amp; Expertise</span>
+        <h2 class="mg-h2-dark">Five disciplines, one measured approach</h2>
       </header>
-      <div class="mg-grid">
-        <article class="mg-card"><span class="ltr">M</span><h3>Management</h3><p>Strategic management and planning, executive leadership development, organizational strategy, and interim director services.</p></article>
-        <article class="mg-card"><span class="ltr">I</span><h3>Integration</h3><p>Programmatic and organizational integration, software implementation, and organization-wide training.</p></article>
-        <article class="mg-card"><span class="ltr">C</span><h3>Culture</h3><p>Culture development, team building, and employee engagement that strengthen collaboration and cohesion.</p></article>
-        <article class="mg-card"><span class="ltr">R</span><h3>Research</h3><p>Employee pay analysis, market analyses, and policy impact studies for evidence-based decisions.</p></article>
-        <article class="mg-card"><span class="ltr">O</span><h3>Operations</h3><p>Operational management that increases productivity, optimizes resources, and enhances effectiveness.</p></article>
+      <div class="mg-medallions">
+        <div class="mg-med"><div class="mg-med-circle">M</div><h3>Management</h3><p>Strategic management and planning, executive leadership development, and interim director services.</p></div>
+        <div class="mg-med"><div class="mg-med-circle">I</div><h3>Integration</h3><p>Programmatic and organizational integration, software implementation, and organization-wide training.</p></div>
+        <div class="mg-med"><div class="mg-med-circle">C</div><h3>Culture</h3><p>Culture development, team building, and employee engagement that strengthen collaboration.</p></div>
+        <div class="mg-med"><div class="mg-med-circle">R</div><h3>Research</h3><p>Employee pay analysis, market analyses, and policy impact studies for evidence-based decisions.</p></div>
+        <div class="mg-med"><div class="mg-med-circle">O</div><h3>Operations</h3><p>Operational management that increases productivity, optimizes resources, and enhances effectiveness.</p></div>
       </div>
     </div>
-    <button class="chevron" aria-label="Scroll to what guides us">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-    </button>
   </section>
 
-  <!-- SECTION 3: what guides us (was a dropdown, now a row of pillars) -->
-  <section id="guides" class="panel navy chess mg-section">
-    <div class="wrap inner">
+  <!-- BAND 3: what guides us (navy) — two by two quad -->
+  <section id="guides" class="band band-navy chess">
+    <div class="wrap">
       <header class="mg-shead">
         <span class="eyebrow">What Guides Us</span>
         <h2>The principles behind every engagement</h2>
       </header>
-      <div class="mg-guides">
-        <div class="mg-guide"><h4>Mission</h4><p>To provide strategic, research-driven consultative solutions.</p></div>
-        <div class="mg-guide"><h4>Vision</h4><p>To become a trusted partner in guiding institutions toward excellence and sustainability.</p></div>
-        <div class="mg-guide"><h4>Values</h4><p>A client-centric institution committed to integrity, innovation, and collaboration.</p></div>
-        <div class="mg-guide"><h4>Approach</h4><p>We tailor our work to the unique needs and goals of your organization.</p></div>
+      <div class="mg-quad">
+        <div class="mg-quad-card"><h4>Mission</h4><p>To provide strategic, research-driven consultative solutions.</p></div>
+        <div class="mg-quad-card"><h4>Vision</h4><p>To become a trusted partner in guiding institutions toward excellence and sustainability.</p></div>
+        <div class="mg-quad-card"><h4>Values</h4><p>A client-centric institution committed to integrity, innovation, and collaboration.</p></div>
+        <div class="mg-quad-card"><h4>Approach</h4><p>We tailor our work to the unique needs and goals of your organization.</p></div>
       </div>
     </div>
-    <button class="chevron" aria-label="Scroll to engage">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-    </button>
   </section>
 
-  <!-- SECTION 4: engage + contact form -->
-  <section id="engage" class="panel navy chess mg-section">
-    <div class="wrap inner">
-      <div class="engage">
-        <h2>Engage MICRO Group</h2>
+  <!-- BAND 4: engage (warm paper) -->
+  <section id="engage" class="band band-warm">
+    <div class="wrap">
+      <div class="mg-engage">
+        <span class="eyebrow eyebrow-dark">Engage MICRO Group</span>
+        <h2 class="mg-h2-dark">Begin with a conversation</h2>
         <p>Every engagement begins with a free thirty minute consultation, where we learn what your organization is facing and where MICRO can help.</p>
         <p class="fine">Rates vary dramatically with timeframe, context, deliverables, and organizational size, and cannot be quoted without a consultation.</p>
-      </div>
-
-      <div id="contact" class="mg-form-wrap">
-        <header class="mg-shead">
-          <span class="eyebrow">Contact Us</span>
-          <h2>Start the conversation</h2>
-        </header>
-
-        <form id="contactForm" class="mg-form" novalidate>
-          <div class="mg-row">
-            <div class="mg-field">
-              <label for="first_name">First name <span class="req">*</span></label>
-              <input type="text" id="first_name" name="first_name" autocomplete="given-name" required>
-            </div>
-            <div class="mg-field">
-              <label for="last_name">Last name <span class="req">*</span></label>
-              <input type="text" id="last_name" name="last_name" autocomplete="family-name" required>
-            </div>
-          </div>
-
-          <div class="mg-row">
-            <div class="mg-field">
-              <label for="email">Email <span class="req">*</span></label>
-              <input type="email" id="email" name="email" autocomplete="email" required>
-            </div>
-            <div class="mg-field">
-              <label for="phone">Phone <span class="opt">(optional)</span></label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel">
-            </div>
-          </div>
-
-          <div class="mg-row">
-            <div class="mg-field">
-              <label for="location">Location <span class="req">*</span></label>
-              <select id="location" name="location" required>
-                <option value="" selected disabled>Select one</option>
-                <option value="Texas">Texas</option>
-                <option value="United States (outside Texas)">United States (outside Texas)</option>
-                <option value="International">International</option>
-              </select>
-            </div>
-            <div class="mg-field">
-              <label for="urgency">Urgency <span class="opt">(optional)</span></label>
-              <select id="urgency" name="urgency">
-                <option value="" selected>No preference</option>
-                <option value="Exploratory">Exploratory</option>
-                <option value="Within a few months">Within a few months</option>
-                <option value="Within weeks">Within weeks</option>
-                <option value="Urgent">Urgent</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="mg-field">
-            <label for="purpose">Purpose of your message <span class="req">*</span></label>
-            <textarea id="purpose" name="purpose" rows="5" required></textarea>
-          </div>
-
-          <div class="mg-field">
-            <label for="referral">How did you hear about us? <span class="opt">(optional)</span></label>
-            <input type="text" id="referral" name="referral">
-          </div>
-
-          <!-- honeypot: hidden from people, catches bots -->
-          <div class="mg-hp" aria-hidden="true">
-            <label for="company_website">Company website</label>
-            <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
-          </div>
-
-          <div class="mg-actions">
-            <button type="submit" class="btn btn-solid">Send Message</button>
-          </div>
-          <p id="formStatus" class="mg-status" role="status" aria-live="polite"></p>
-        </form>
-
-        <div class="coi-notice" role="note">
-          <span class="coi-label">Notice</span>
-          <p>Pursuant to State standards of conduct and statutory provisions regarding conflicts of interest for legislative employees (Tex. Gov&#8217;t Code &#167; 572.051 and Tex. Penal Code &#167; 36.07), the practitioner&#8217;s capacity to engage in government, legislative, or related political consultancies is restricted. All such services are hereby suspended indefinitely to ensure compliance with the law and to prevent any appearance of professional impairment.<sup>1</sup></p>
-        </div>
-
-        <div class="page-footnote">
-          <p><sup>1</sup> Government and legislative advisory consultancies are indefinitely suspended in strict compliance with state conflict of interest laws (Tex. Gov&#8217;t Code &#167; 572.051) applicable to legislative agency personnel.</p>
-        </div>
+        <div class="mg-hero-cta"><a class="btn btn-solid" href="contact.html">Contact Us</a></div>
       </div>
     </div>
-    <button class="chevron" aria-label="Scroll to footer">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-    </button>
   </section>
 
-  <!-- SECTION 5: footer -->
+  <!-- BAND 5: footer (deep navy) -->
   <section class="footer-panel">
     <img class="footer-logo wordmark" src="microwordmark.png" alt="MICRO Group, LLC — A measured approach to your goals">
-    <a class="footer-email" href="mailto:jonathan@microgroup.info">jonathan@microgroup.info</a>
+    <a class="footer-contact btn btn-gold" href="contact.html">Contact Us</a>
     <div class="footer-address">
       <h4>Mailing Address</h4>
       <p>1801 E 51st St., STE 365<br>PMB 354, Austin, Texas</p>
@@ -199,6 +104,5 @@
 </main>
 
 <script src="site.js"></script>
-<script src="contact.js"></script>
 </body>
 </html>
