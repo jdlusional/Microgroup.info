@@ -11,3 +11,4 @@ CREATE TABLE IF NOT EXISTS contacts (
   referral   TEXT,
   created_at TEXT NOT NULL
 );
+ 
