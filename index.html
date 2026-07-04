@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="stack-page">
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J4XGXZ4CN"></script>
@@ -20,7 +20,7 @@
 <link rel="canonical" href="https://microgroup.info/">
 <link rel="stylesheet" href="style.css">
 </head>
-<body class="snap">
+<body>
 
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
@@ -40,19 +40,21 @@
 <main>
 
   <!-- SNAP BAND 1: hero (navy) -->
-  <section class="band band-navy chess mg-hero snap-band">
+  <section class="band band-navy chess mg-hero snap-band stack-item" style="z-index:1">
     <div class="wrap">
-      <img class="mg-hero-logo" src="MICRO_wordmark_dark.svg" alt="MICRO Group, LLC — A measured approach to your goals">
+      <img class="mg-hero-mark" src="MICRO_mark_icon_transparent.svg" alt="">
+      <div class="mg-hero-wordmark"><span class="mg-word-micro">MICRO</span> <span class="mg-word-group">Group</span></div>
+      <p class="mg-hero-tagline">A measured approach to <em>your goals</em>.</p>
       <p class="mg-lede">A multi-service consultancy dedicated to serving nonprofit, education, and government institutions through expertise in Management, Integration, Culture, Research, and Operations.</p>
       <div style="text-align:center;margin-top:30px">
-        <div><a class="btn btn-gold" href="https://jonathanlindavis.com/about.html" target="_blank" rel="noopener">About Jonathan Lin Davis</a></div>
+        <div><a class="btn btn-gold" href="https://jonathanlindavis.com/#about" target="_blank" rel="noopener">About Jonathan Lin Davis</a></div>
         <p style="color:#8893b5;font-size:.78rem;margin:10px 0 0">You are leaving microgroup.info</p>
       </div>
     </div>
   </section>
 
   <!-- SNAP BAND 2: expertise + what guides us combined -->
-  <section class="band band-warm snap-band mg-combined">
+  <section class="band band-warm snap-band mg-combined stack-item" style="z-index:2">
     <div class="wrap">
       <header class="mg-shead">
         <span class="eyebrow eyebrow-dark">Core Subjects &amp; Expertise</span>
@@ -80,7 +82,7 @@
   </section>
 
   <!-- SNAP BAND 3: footer (deep navy) -->
-  <section class="footer-panel snap-band">
+  <section class="footer-panel snap-band stack-item" style="z-index:3">
     <img class="footer-logo" src="MICRO_wordmark_dark.svg" alt="MICRO Group, LLC — A measured approach to your goals">
     <a class="footer-contact btn btn-gold" href="contact.html">Contact Us</a>
     <div class="footer-address">
@@ -93,5 +95,6 @@
 </main>
 
 <script src="site.js"></script>
+<script src="stack-scroll.js"></script>
 </body>
 </html>
