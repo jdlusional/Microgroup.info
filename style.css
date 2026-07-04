@@ -454,18 +454,14 @@ html.snap{scroll-snap-type:y proximity}
 .mg-hero-logo{width:clamp(260px,32vw,400px);height:auto;margin:0 auto 26px;display:block}
 .footer-panel .footer-logo{width:min(380px,68vw);height:auto;display:block;margin:0 auto 30px}
 
-/* Hero lockup: chess-piece mark, the actual graphic "MICRO" wordmark
-   (custom letterforms, not a font substitute) with "Group" set beside it
-   in a matching weight, a thin gold rule underneath (echoing the brand's
-   own combined-lockup artwork), and the tagline with "your goals"
-   underlined the same way. */
-.mg-hero-mark{width:clamp(190px,22vw,260px);height:auto;margin:0 auto 2px;display:block}
-.mg-hero-wordmark{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:6px}
-.mg-wordmark-img{height:clamp(2rem,4vw,2.9rem);width:auto;display:block}
-.mg-word-group{font-family:var(--f-micro);font-size:clamp(1.7rem,3.4vw,2.5rem);letter-spacing:.04em;color:#ffffff}
-.mg-hero-rule{width:min(300px,55%);height:1px;margin:0 auto 12px;background:linear-gradient(90deg,transparent,var(--gold) 20%,var(--gold) 80%,transparent);opacity:.8}
-.mg-hero-tagline{text-align:center;font-family:var(--f-micro-slogan);color:#eaeefb;font-size:clamp(1rem,1.6vw,1.22rem);font-weight:500;margin:0 auto 24px}
-.mg-hero-tagline em{font-style:italic;font-weight:600;color:var(--gold-soft);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+/* Hero lockup: chess-piece mark, then the graphic wordmark image. That
+   single image ALREADY contains "MICRO Group," the gold rule, and the
+   full tagline with "your goals" underlined -- confirmed by rendering it
+   directly, since the raw path data is unreadable by eye. Earlier drafts
+   re-added "Group," a separate rule, and a separate tagline paragraph
+   alongside it, duplicating content already in the image; removed. */
+.mg-hero-mark{width:clamp(190px,22vw,260px);height:auto;margin:0 auto 6px;display:block}
+.mg-wordmark-img{width:clamp(320px,42vw,520px);height:auto;margin:0 auto 24px;display:block}
 
 /* Hard-snap single-page stack (ported from jonathanlindavis.com's
    unified homepage): each .stack-item pins to the viewport and stacks on
