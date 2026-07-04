@@ -460,7 +460,7 @@ html.snap{scroll-snap-type:y proximity}
    directly, since the raw path data is unreadable by eye. Earlier drafts
    re-added "Group," a separate rule, and a separate tagline paragraph
    alongside it, duplicating content already in the image; removed. */
-.mg-hero-mark{width:clamp(190px,22vw,260px);height:auto;margin:0 auto 6px;display:block}
+.mg-hero-mark{width:clamp(190px,22vw,260px);height:auto;margin:0 auto -8px;display:block}
 .mg-wordmark-img{width:clamp(320px,42vw,520px);height:auto;margin:0 auto 24px;display:block}
 
 /* Hard-snap single-page stack (ported from jonathanlindavis.com's
