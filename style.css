@@ -484,15 +484,13 @@ html.stack-page body::-webkit-scrollbar{display:none}
   .stack-item .wrap{max-height:none;overflow-y:visible}
 }
 
-/* combined expertise + guides band: stack the two groups with breathing room */
-.mg-combined .mg-shead-2{margin-top:64px}
+/* "What Guides Us" quad sits on the warm band now (its own stack-item,
+   split out from the old combined expertise+guides band so both fit
+   their frame without an internal scrollbar) -- needs dark cards for
+   contrast against the warm paper background. */
 .mg-quad-light .mg-quad-card{background:var(--navy);border-top:3px solid var(--gold)}
 .mg-quad-light .mg-quad-card h4{color:var(--gold)}
 .mg-quad-light .mg-quad-card p{color:#e7ecfb}
-
-/* on the warm combined band, the quad needs dark cards to keep contrast.
-   keep them navy so the gold + white text reads. */
-.mg-combined .mg-quad{margin-top:8px}
 
 /* contact band stays normal scroll (no snap on contact page) */
 .mg-contact-band{min-height:auto}
