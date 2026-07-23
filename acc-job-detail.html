@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manager, Programs & Community Growth — Before / After — ACC</title>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="referrer" content="no-referrer">
+<style>
+  :root{--navy:#081d44;--gold:#f1c400;--gold-soft:#f7d94d;--paper:#ffffff;--muted:#5c6b67}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,Helvetica,sans-serif;background:var(--navy)}
+  .ba-bar{position:sticky;top:0;z-index:20;background:var(--navy);border-bottom:3px solid var(--gold);padding:14px 20px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+  .ba-label{color:var(--paper);font-family:Arial,sans-serif;font-size:.92rem;font-weight:600;letter-spacing:.02em;margin-right:6px}
+  .ba-btn{font-family:Arial,sans-serif;font-size:.98rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:11px 26px;border-radius:999px;border:1.5px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;transition:all .16s ease}
+  .ba-btn.active{background:var(--gold);color:var(--navy)}
+  .ba-btn:hover{background:var(--gold-soft);color:var(--navy);border-color:var(--gold-soft)}
+  .ba-frame{width:100%;height:calc(100vh - 62px);border:0;display:block;background:var(--paper)}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+
+<div class="ba-bar">
+  <span class="ba-label">Nonprofit Austin Job Board:</span>
+  <button class="ba-btn active" id="btn-before" onclick="showView('before')">Before</button>
+  <button class="ba-btn" id="btn-after" onclick="showView('after')">After</button>
+</div>
+
+<iframe class="ba-frame" id="ba-frame" src="acc-job-detail-before.html" title="Manager, Programs & Community Growth"></iframe>
+
+<script>
+function showView(view){
+  var frame = document.getElementById('ba-frame');
+  var beforeBtn = document.getElementById('btn-before');
+  var afterBtn = document.getElementById('btn-after');
+  if(view === 'before'){
+    frame.src = 'acc-job-detail-before.html';
+    beforeBtn.classList.add('active');
+    afterBtn.classList.remove('active');
+  } else {
+    frame.src = 'acc-job-detail-after.html';
+    afterBtn.classList.add('active');
+    beforeBtn.classList.remove('active');
+  }
+}
+</script>
+
+</body>
+</html>

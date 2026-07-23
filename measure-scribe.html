@@ -396,7 +396,7 @@ body{overflow-x:hidden}
 <footer>
   <span id="footer-credit">Prepared for Measure by Jonathan Lin Davis</span>
   <span id="footer-links"></span>
-  <span class="footer-improvements-wrap"><a class="footer-improvements" href="https://jonathanlindavis.com/improvementlog.html">Improvement log</a></span>
+  <span class="footer-improvements-wrap"><a class="footer-improvements" href="improvementlog.html">Improvement log</a></span>
 </footer>
 
 <script>
@@ -781,7 +781,7 @@ function requestDraft(idx){
 /* ---- Request-form submission ----
    Client-side validation (grant selected; allowed file types; total size),
    then POST as multipart/form-data to /api/draft-request. Mirrors the
-   fetch + button-disable pattern used on measure-survey.html. */
+   fetch + button-disable pattern used across this vertical's forms. */
 const REQUEST_ALLOWED_EXT=['.pdf','.doc','.docx'];
 const REQUEST_MAX_BYTES=25*1024*1024;
 function requestFileExtOk(name){

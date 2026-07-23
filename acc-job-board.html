@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nonprofit Austin Job Board</title>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="referrer" content="no-referrer">
+<style>
+  /* ---- NPA token system ----
+     Palette derived from the live NPA site: primary teal #009688,
+     deep green #0b8043, near-black ink, warm paper. One accent: a
+     coral used ONLY for the "new this week" pulse, the signature element. */
+  :root{
+    --teal:#009688; --teal-deep:#00796b; --green:#0b8043;
+    --ink:#16201e; --slate:#5c6b67; --line:#dfe5e3;
+    --paper:#f7f9f8; --card:#ffffff; --coral:#ff6b54;
+    --r:14px; --maxw:1180px;
+    --shadow:0 1px 2px rgba(22,32,30,.06),0 8px 24px rgba(22,32,30,.06);
+    --display:"Plus Jakarta Sans",system-ui,sans-serif;
+    --body:"Inter",system-ui,sans-serif;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+
+  /* ---- Header / hero: the thesis is the regional map-line + live count ---- */
+  header{background:linear-gradient(135deg,var(--teal-deep),var(--teal));color:#fff;padding:0}
+  .bar{max-width:var(--maxw);margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
+  .brand .mark{width:34px;height:34px;border-radius:9px;background:#fff;color:var(--teal-deep);display:grid;place-items:center;font-weight:800}
+  .bar nav{display:flex;gap:22px;font-weight:600;font-size:.92rem}
+  .bar nav a{color:#e7f3f1;text-decoration:none;opacity:.9}
+  .bar nav a:hover{opacity:1}
+  .post-btn{background:#fff;color:var(--teal-deep);padding:9px 16px;border-radius:999px;font-weight:700;text-decoration:none;font-size:.9rem}
+
+  .hero{max-width:var(--maxw);margin:0 auto;padding:46px 24px 60px}
+  .hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.04;letter-spacing:-.03em;max-width:16ch}
+  .hero p{margin-top:16px;font-size:1.08rem;color:#dff1ee;max-width:54ch}
+  .stat{margin-top:30px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .stat .n{font-family:var(--display);font-weight:800;font-size:2.6rem;line-height:1}
+  .stat .lbl{font-weight:500;color:#cfe9e5}
+  .counties{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+  .counties span{font-size:.78rem;font-weight:600;background:rgba(255,255,255,.14);padding:5px 11px;border-radius:999px;backdrop-filter:blur(2px)}
+
+  /* ---- Controls ---- */
+  .wrap{max-width:var(--maxw);margin:-34px auto 0;padding:0 24px 80px}
+  .controls{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:16px;display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:12px}
+  .controls .search{position:relative;grid-column:1/2}
+  .controls input,.controls select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font:inherit;font-size:.95rem;color:var(--ink);background:#fff}
+  .controls input:focus,.controls select:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+  .search input{padding-left:38px}
+  .search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--slate)}
+
+  .meta-row{display:flex;align-items:center;justify-content:space-between;margin:26px 2px 14px}
+  .meta-row .resultcount{font-weight:600;color:var(--slate);font-size:.95rem}
+  .sort{display:flex;align-items:center;gap:8px;font-size:.88rem;color:var(--slate)}
+  .sort select{border:1px solid var(--line);border-radius:8px;padding:6px 9px;font:inherit}
+
+  /* ---- Job cards ---- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;transition:transform .14s ease,box-shadow .14s ease;position:relative}
+  .card:hover{transform:translateY(-3px);box-shadow:0 4px 10px rgba(22,32,30,.08),0 18px 40px rgba(22,32,30,.10)}
+  .card.featured{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal),var(--shadow)}
+  .card .toprow{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .card h3{font-family:var(--display);font-weight:700;font-size:1.12rem;letter-spacing:-.01em;line-height:1.25}
+  .card .org{color:var(--teal-deep);font-weight:600;font-size:.95rem}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:2px}
+  .tag{font-size:.74rem;font-weight:600;padding:4px 9px;border-radius:7px;background:#eef4f3;color:var(--teal-deep)}
+  .tag.geo{background:#e9f1ec;color:var(--green)}
+  .tag.remote{background:#fff0 ;background:#fdeee9;color:var(--coral)}
+  .salary{font-weight:600;font-size:.92rem;color:var(--ink)}
+  .card .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:6px;border-top:1px solid var(--line)}
+  .src{font-size:.74rem;color:var(--slate);font-weight:500}
+  .src.verified::before{content:"✓ ";color:var(--green);font-weight:800}
+  .apply{font-weight:700;font-size:.86rem;color:var(--teal-deep);text-decoration:none}
+  .apply:hover{text-decoration:underline}
+  /* signature element: a quiet coral pulse on jobs added in the latest run */
+  .pulse{position:absolute;top:16px;right:16px;display:flex;align-items:center;gap:6px;font-size:.7rem;font-weight:700;color:var(--coral)}
+  .pulse i{width:7px;height:7px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 0 rgba(255,107,84,.6);animation:p 2s infinite}
+  @keyframes p{0%{box-shadow:0 0 0 0 rgba(255,107,84,.5)}70%{box-shadow:0 0 0 7px rgba(255,107,84,0)}100%{box-shadow:0 0 0 0 rgba(255,107,84,0)}}
+
+  .empty{text-align:center;padding:64px 20px;color:var(--slate)}
+  .empty h3{font-family:var(--display);color:var(--ink);margin-bottom:6px}
+
+  footer{border-top:1px solid var(--line);background:#fff}
+  .foot-in{max-width:var(--maxw);margin:0 auto;padding:26px 24px;color:var(--slate);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media (max-width:720px){
+    .controls{grid-template-columns:1fr 1fr}
+    .controls .search{grid-column:1/3}
+    .bar nav{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){.pulse i{animation:none}.card{transition:none}}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<header>
+  <div class="bar">
+    <div class="brand"><span class="mark">N</span> Nonprofit Austin</div>
+    <nav>
+      <a href="#">Job Board</a><a href="#">Learning</a><a href="#">Resources</a>
+      <a href="#">CommunitySpace</a>
+    </nav>
+    <a class="post-btn" href="#">Post a Job</a>
+  </div>
+  <div class="hero">
+    <h1>Nonprofit careers across Central Texas.</h1>
+    <p>Mission-driven roles from verified nonprofit employers, refreshed every Monday and Thursday.</p>
+    <div class="stat">
+      <span class="n" id="liveCount">–</span>
+      <span class="lbl">open roles, <span id="regionLabel">the ACC service area</span></span>
+    </div>
+    <div class="counties" id="counties"></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="controls">
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="text" placeholder="Search role, organization, keyword" aria-label="Search jobs">
+    </div>
+    <select id="county" aria-label="Filter by county"><option value="">All counties</option></select>
+    <select id="type" aria-label="Filter by employment type"><option value="">All types</option></select>
+    <select id="arrangement" aria-label="Filter by work arrangement"><option value="">Anywhere</option></select>
+    <select id="sector" aria-label="Filter by sector"><option value="">All sectors</option></select>
+  </div>
+
+  <div class="meta-row">
+    <div class="resultcount" id="resultCount"></div>
+    <div class="sort">Sort
+      <select id="sort"><option value="newest">Newest</option><option value="salary">Salary</option></select>
+    </div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+</div>
+
+<footer>
+  <div class="foot-in">
+    <span>Nonprofit Austin at Austin Community College</span>
+    <span>Listings verified against nonprofit status. Refreshed Mondays &amp; Thursdays.</span>
+  </div>
+</footer>
+
+<script>
+/* ---------------------------------------------------------------------------
+   API wiring. Point API_BASE at the live service to go live; leave null to
+   run on the built-in mock data so this file works standalone for review.
+--------------------------------------------------------------------------- */
+const API_BASE = null; // e.g. "https://jobs.microgroup.info/api"
+
+const TYPE_LABELS = {full_time:"Full-time",part_time:"Part-time",contract:"Contract",temporary:"Temporary",board:"Board",volunteer:"Volunteer",internship:"Internship"};
+const SECTOR_LABELS = {arts_culture:"Arts & Culture",education:"Education",environment:"Environment",health:"Health",human_services:"Human Services",civic_advocacy:"Civic & Advocacy",religion:"Faith",philanthropy:"Philanthropy",other:"Other"};
+const ARR_LABELS = {onsite:"Office",hybrid:"Hybrid",remote:"Remote"};
+
+/* Mock data mirrors the exact shape of GET /api/jobs in api.py */
+const MOCK = {
+  region_label:"the ACC service area of Central Texas",
+  counties:["Bastrop","Blanco","Caldwell","Hays","Travis","Williamson"],
+  types:["full_time","part_time","contract","temporary","board","volunteer","internship"],
+  arrangements:["onsite","hybrid","remote"],
+  sectors:["arts_culture","education","environment","health","human_services","civic_advocacy","religion","philanthropy","other"],
+  jobs:[
+    {job_id:"g1",title:"Director of Development",organization:"Central Texas Food Bank",county:"Travis",city:"Austin",work_arrangement:"onsite",employment_type:"full_time",sector:"human_services",salary_min:70000,salary_max:90000,salary_period:"year",source:"greenhouse",featured:true,is_new:true,nonprofit_verified:true},
+    {job_id:"g2",title:"Volunteer Coordinator",organization:"PAWS Shelter of Central Texas",county:"Hays",city:"Kyle",work_arrangement:"onsite",employment_type:"part_time",sector:"human_services",salary_min:22,salary_max:26,salary_period:"hour",source:"npa_manual",featured:false,is_new:true,nonprofit_verified:true},
+    {job_id:"g4",title:"Conservation Program Manager",organization:"Hill Country Conservancy",county:"Travis",city:"Austin",work_arrangement:"hybrid",employment_type:"full_time",sector:"environment",salary_min:62000,salary_max:75000,salary_period:"year",source:"lever",featured:false,is_new:true,nonprofit_verified:true},
+    {job_id:"g5",title:"Grants Manager",organization:"Austin Community Foundation",county:"Travis",city:"Austin",work_arrangement:"remote",employment_type:"full_time",sector:"philanthropy",salary_min:68000,salary_max:82000,salary_period:"year",source:"greenhouse",featured:false,is_new:false,nonprofit_verified:true},
+    {job_id:"g6",title:"Youth Mentor Coordinator",organization:"Williamson County Youth Alliance",county:"Williamson",city:"Round Rock",work_arrangement:"onsite",employment_type:"part_time",sector:"education",salary_min:20,salary_max:24,salary_period:"hour",source:"npa_manual",featured:false,is_new:false,nonprofit_verified:true},
+    {job_id:"g7",title:"Bilingual Caseworker",organization:"Caldwell County Family Services",county:"Caldwell",city:"Lockhart",work_arrangement:"onsite",employment_type:"full_time",sector:"human_services",salary_min:48000,salary_max:55000,salary_period:"year",source:"greenhouse",featured:false,is_new:false,nonprofit_verified:true},
+    {job_id:"g8",title:"Arts Education Fellow",organization:"Blanco Arts Council",county:"Blanco",city:"Blanco",work_arrangement:"onsite",employment_type:"internship",sector:"arts_culture",salary_min:18,salary_max:18,salary_period:"hour",source:"lever",featured:false,is_new:false,nonprofit_verified:true},
+    {job_id:"g9",title:"Policy Advocacy Associate",organization:"Central Texas Civic Coalition",county:"Travis",city:"Austin",work_arrangement:"remote",employment_type:"contract",sector:"civic_advocacy",salary_min:30,salary_max:40,salary_period:"hour",source:"greenhouse",featured:false,is_new:true,nonprofit_verified:true}
+  ]
+};
+
+let STATE = {jobs:[], filters:{}, meta:{}};
+
+async function api(path){
+  if(!API_BASE) throw new Error("mock");
+  const r = await fetch(API_BASE+path,{headers:{"Accept":"application/json"}});
+  return r.json();
+}
+
+async function boot(){
+  try{
+    const [meta,filters,jobs] = await Promise.all([api("/meta"),api("/filters"),api("/jobs")]);
+    STATE.meta=meta; STATE.filters=filters; STATE.jobs=jobs.jobs;
+  }catch(e){
+    STATE.meta={region_label:MOCK.region_label,counts:{active:MOCK.jobs.length}};
+    STATE.filters={counties:MOCK.counties,employment_types:MOCK.types,work_arrangements:MOCK.arrangements,sectors:MOCK.sectors};
+    STATE.jobs=MOCK.jobs;
+  }
+  hydrateChrome();
+  render();
+}
+
+function hydrateChrome(){
+  document.getElementById("regionLabel").textContent = STATE.meta.region_label || "the ACC service area";
+  document.getElementById("liveCount").textContent = STATE.jobs.length;
+  const c = document.getElementById("counties");
+  (STATE.filters.counties||[]).forEach(x=>{const s=document.createElement("span");s.textContent=x+" County";c.appendChild(s);});
+  fill("county", STATE.filters.counties, x=>x);
+  fill("type", STATE.filters.employment_types, x=>TYPE_LABELS[x]||x);
+  fill("arrangement", STATE.filters.work_arrangements, x=>ARR_LABELS[x]||x);
+  fill("sector", STATE.filters.sectors, x=>SECTOR_LABELS[x]||x);
+  ["q","county","type","arrangement","sector","sort"].forEach(id=>document.getElementById(id).addEventListener("input",render));
+}
+function fill(id,arr,label){const el=document.getElementById(id);(arr||[]).forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=label(v);el.appendChild(o);});}
+
+function money(j){
+  if(j.salary_min==null) return "";
+  const f=n=>j.salary_period==="hour"?`$${n}`:`$${(n/1000).toFixed(0)}k`;
+  const per=j.salary_period==="hour"?"/hr":"/yr";
+  return j.salary_max && j.salary_max!==j.salary_min ? `${f(j.salary_min)}–${f(j.salary_max)}${per}` : `${f(j.salary_min)}${per}`;
+}
+
+function render(){
+  const q=document.getElementById("q").value.trim().toLowerCase();
+  const county=document.getElementById("county").value;
+  const type=document.getElementById("type").value;
+  const arrangement=document.getElementById("arrangement").value;
+  const sector=document.getElementById("sector").value;
+  const sort=document.getElementById("sort").value;
+
+  let list=STATE.jobs.filter(j=>{
+    if(q && !(`${j.title} ${j.organization}`.toLowerCase().includes(q))) return false;
+    if(county && j.county!==county) return false;
+    if(type && j.employment_type!==type) return false;
+    if(arrangement && j.work_arrangement!==arrangement) return false;
+    if(sector && j.sector!==sector) return false;
+    return true;
+  });
+  if(sort==="salary") list.sort((a,b)=>(b.salary_max||b.salary_min||0)-(a.salary_max||a.salary_min||0));
+  else list.sort((a,b)=>(b.featured?1:0)-(a.featured?1:0));
+
+  document.getElementById("resultCount").textContent = `${list.length} role${list.length!==1?"s":""}`;
+  const grid=document.getElementById("grid");
+  grid.innerHTML="";
+  if(!list.length){grid.innerHTML=`<div class="empty" style="grid-column:1/-1"><h3>No roles match those filters</h3><p>Try widening your search or clearing a filter.</p></div>`;return;}
+
+  list.forEach(j=>{
+    const card=document.createElement("article");
+    card.className="card"+(j.featured?" featured":"");
+    const loc = j.work_arrangement==="remote" ? "Remote (TX)" : `${j.city?j.city+", ":""}${j.county} County`;
+    const arrTag = j.work_arrangement && j.work_arrangement!=="onsite" ? `<span class="tag remote">${ARR_LABELS[j.work_arrangement]}</span>` : "";
+    card.innerHTML=`
+      ${j.is_new?`<div class="pulse"><i></i>New</div>`:""}
+      <div class="toprow"><div>
+        <h3>${j.title}</h3>
+        <div class="org">${j.organization}</div>
+      </div></div>
+      <div class="tags">
+        <span class="tag geo">${loc}</span>
+        <span class="tag">${TYPE_LABELS[j.employment_type]||j.employment_type}</span>
+        <span class="tag">${SECTOR_LABELS[j.sector]||j.sector}</span>
+        ${arrTag}
+      </div>
+      ${money(j)?`<div class="salary">${money(j)}</div>`:""}
+      <div class="foot">
+        <span class="src ${j.nonprofit_verified?"verified":""}">${j.source==="npa_manual"?"Posted by organization":"Verified nonprofit"}</span>
+        <a class="apply" href="#">View role →</a>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+boot();
+</script>
+</body>
+</html>

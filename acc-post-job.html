@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post a Job — Nonprofit Austin</title>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="referrer" content="no-referrer">
+<style>
+  :root{
+    --teal:#009688; --teal-deep:#00796b; --green:#0b8043;
+    --ink:#16201e; --slate:#5c6b67; --line:#e2e8e6; --line-soft:#eef2f1;
+    --paper:#f7f9f8; --card:#ffffff; --coral:#ff6b54; --amber:#b8860b;
+    --r:14px; --maxw:840px;
+    --shadow:0 1px 2px rgba(22,32,30,.05),0 10px 30px rgba(22,32,30,.07);
+    --display:"Plus Jakarta Sans",system-ui,sans-serif;
+    --body:"Inter",system-ui,sans-serif;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+
+  .topbar{background:linear-gradient(135deg,var(--teal-deep),var(--teal));color:#fff}
+  .topbar .in{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:800;letter-spacing:-.02em}
+  .brand .mark{width:30px;height:30px;border-radius:8px;background:#fff;color:var(--teal-deep);display:grid;place-items:center;font-weight:800}
+  .back{color:#e7f3f1;text-decoration:none;font-size:.9rem;font-weight:600}
+
+  .wrap{max-width:var(--maxw);margin:24px auto 80px;padding:0 24px}
+  h1.page{font-family:var(--display);font-weight:800;font-size:1.9rem;letter-spacing:-.02em}
+  .lede{color:var(--slate);margin-top:6px;margin-bottom:18px}
+
+  /* signed-in account banner */
+  .acct{display:flex;align-items:center;gap:13px;background:#e9f1ec;border:1px solid #cfe5d7;border-radius:12px;padding:14px 18px;margin-bottom:22px}
+  .acct .av{width:42px;height:42px;border-radius:10px;background:var(--green);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.1rem}
+  .acct .who b{font-family:var(--display);font-size:.98rem}
+  .acct .who span{display:block;font-size:.82rem;color:var(--slate)}
+  .acct .verified{margin-left:auto;display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #cfe5d7;color:var(--green);font-weight:700;font-size:.8rem;padding:6px 11px;border-radius:999px}
+  .acct .verified svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2.5}
+
+  /* stepper */
+  .steps{display:flex;gap:0;margin-bottom:24px}
+  .step{flex:1;text-align:center;position:relative;font-size:.82rem;font-weight:600;color:var(--slate)}
+  .step .dot{width:30px;height:30px;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;margin:0 auto 6px;font-weight:700;color:var(--slate)}
+  .step.active .dot{background:var(--teal-deep);border-color:var(--teal-deep);color:#fff}
+  .step.done .dot{background:var(--green);border-color:var(--green);color:#fff}
+  .step.active{color:var(--ink)}
+  .step::after{content:"";position:absolute;top:15px;left:50%;width:100%;height:2px;background:var(--line);z-index:-1}
+  .step:last-child::after{display:none}
+  .step.done::after{background:var(--green)}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:26px}
+  .card h2{font-family:var(--display);font-weight:700;font-size:1.25rem;margin-bottom:4px}
+  .card .hint{color:var(--slate);font-size:.9rem;margin-bottom:18px}
+
+  .field{margin-bottom:16px}
+  .field label{display:block;font-weight:600;font-size:.9rem;margin-bottom:5px}
+  .field label .req{color:var(--coral)}
+  .field .help{font-size:.79rem;color:var(--slate);margin-top:4px}
+  .field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 13px;font:inherit;font-size:.95rem;color:var(--ink);background:#fff}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+  .field input.locked{background:var(--line-soft);color:var(--slate);cursor:not-allowed}
+  .field textarea{min-height:120px;resize:vertical;line-height:1.5}
+  .field.err input,.field.err select,.field.err textarea{border-color:var(--coral)}
+  .field .errmsg{display:none;color:var(--coral);font-size:.79rem;margin-top:4px;font-weight:600}
+  .field.err .errmsg{display:block}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .lockicon{font-size:.74rem;color:var(--slate);font-weight:600;margin-left:6px}
+
+  .navbtns{display:flex;justify-content:space-between;margin-top:22px;gap:12px}
+  .btn{border:none;border-radius:999px;padding:12px 26px;font:inherit;font-weight:700;font-size:.92rem;cursor:pointer}
+  .btn.primary{background:var(--teal-deep);color:#fff}
+  .btn.primary:hover{background:var(--teal)}
+  .btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+  .btn.ghost:hover{background:var(--paper)}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+
+  /* review / preview */
+  .review-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;margin-bottom:18px}
+  .review-grid .k{color:var(--slate);font-size:.82rem;font-weight:600}
+  .review-grid .v{font-weight:600;font-size:.92rem;margin-bottom:8px}
+  .preview{border:1px dashed var(--line);border-radius:12px;padding:18px;background:var(--paper);margin-top:6px}
+  .preview .plabel{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);font-weight:700;margin-bottom:10px}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
+  .pcard h3{font-family:var(--display);font-weight:700;font-size:1.1rem}
+  .pcard .porg{color:var(--teal-deep);font-weight:600;font-size:.92rem;margin-top:1px}
+  .pcard .ptags{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+  .ptag{font-size:.74rem;font-weight:600;padding:4px 9px;border-radius:7px;background:#eef4f3;color:var(--teal-deep)}
+  .ptag.geo{background:#e9f1ec;color:var(--green)}
+  .psal{font-weight:600;margin-top:10px;font-size:.9rem}
+
+  .holdnote{display:flex;gap:11px;background:#fbf5e6;border:1px solid #ecdcae;border-radius:11px;padding:14px 16px;margin-top:18px;font-size:.88rem}
+  .holdnote svg{width:20px;height:20px;stroke:var(--amber);fill:none;stroke-width:2;flex-shrink:0;margin-top:1px}
+  .holdnote b{color:#7a5b08}
+
+  /* confirmation */
+  .done{text-align:center;padding:30px 10px}
+  .done .check{width:64px;height:64px;border-radius:50%;background:#e9f1ec;display:grid;place-items:center;margin:0 auto 16px}
+  .done .check svg{width:32px;height:32px;stroke:var(--green);fill:none;stroke-width:2.5}
+  .done h2{font-family:var(--display);font-weight:800;font-size:1.5rem}
+  .done p{color:var(--slate);max-width:46ch;margin:10px auto}
+  .done .ref{display:inline-block;margin-top:8px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 14px;font-weight:700;font-size:.9rem}
+
+  @media(max-width:620px){.two,.review-grid{grid-template-columns:1fr}.step span{display:none}}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="topbar"><div class="in">
+  <div class="brand"><span class="mark">N</span> Nonprofit Austin</div>
+  <a class="back" href="#">← Back to job board</a>
+</div></div>
+
+<div class="wrap">
+  <h1 class="page">Post a job</h1>
+  <p class="lede">List a nonprofit opening on the Nonprofit Austin Job Board, at no cost.</p>
+
+  <!-- signed-in account banner -->
+  <div class="acct">
+    <div class="av" id="avInit">P</div>
+    <div class="who">
+      <b id="acctOrg">PAWS Shelter of Central Texas</b>
+      <span id="acctUser">Signed in as m.ruiz@pawshelter.org</span>
+    </div>
+    <span class="verified"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>Nonprofit verified</span>
+  </div>
+
+  <!-- stepper -->
+  <div class="steps" id="stepper">
+    <div class="step active" data-s="0"><div class="dot">1</div><span>Organization</span></div>
+    <div class="step" data-s="1"><div class="dot">2</div><span>Role</span></div>
+    <div class="step" data-s="2"><div class="dot">3</div><span>Details</span></div>
+    <div class="step" data-s="3"><div class="dot">4</div><span>Review</span></div>
+  </div>
+
+  <div class="card" id="card"></div>
+</div>
+
+<script>
+/* vocabularies mirror config.py exactly */
+const COUNTIES=["Bastrop","Blanco","Caldwell","Hays","Travis","Williamson"];
+const TYPES=[["full_time","Full time"],["part_time","Part time"],["contract","Contract"],["temporary","Temporary"],["board","Board"],["volunteer","Volunteer"],["internship","Internship"]];
+const ARRS=[["onsite","Office"],["hybrid","Hybrid"],["remote","Remote (Texas-based)"]];
+const SECTORS=[["arts_culture","Arts & Culture"],["education","Education"],["environment","Environment"],["health","Health"],["human_services","Human Services"],["civic_advocacy","Civic & Advocacy"],["religion","Faith"],["philanthropy","Philanthropy"],["other","Other"]];
+
+/* the signed-in, already-verified account (would come from MembershipWorks session) */
+const ACCOUNT={org:"PAWS Shelter of Central Texas", email:"m.ruiz@pawshelter.org", verified:true, source:"irs_exempt_organizations"};
+
+/* form state */
+const data={
+  organization:ACCOUNT.org, contact_email:ACCOUNT.email, website:"",
+  title:"", employment_type:"", sector:"",
+  county:"", city:"", work_arrangement:"",
+  salary_min:"", salary_max:"", salary_period:"year",
+  description:"", application_url:""
+};
+let step=0;
+
+const card=document.getElementById("card");
+const opt=(arr,val)=>arr.map(([v,l])=>`<option value="${v}" ${val===v?"selected":""}>${l}</option>`).join("");
+const optC=(arr,val)=>arr.map(v=>`<option value="${v}" ${val===v?"selected":""}>${v} County</option>`).join("");
+
+function render(){
+  document.querySelectorAll(".step").forEach(s=>{
+    const i=+s.dataset.s; s.classList.toggle("active",i===step); s.classList.toggle("done",i<step);
+  });
+  if(step===0) card.innerHTML=stepOrg();
+  if(step===1) card.innerHTML=stepRole();
+  if(step===2) card.innerHTML=stepDetails();
+  if(step===3) card.innerHTML=stepReview();
+  if(step===4) card.innerHTML=stepDone();
+  bind();
+}
+
+function stepOrg(){return `
+  <h2>Organization</h2>
+  <div class="hint">Your organization is verified on your account, so these are filled in for you.</div>
+  <div class="field">
+    <label>Organization name<span class="lockicon">🔒 from your verified account</span></label>
+    <input class="locked" value="${data.organization}" readonly>
+    <div class="help">To change this, update your account profile.</div>
+  </div>
+  <div class="field">
+    <label>Contact email<span class="lockicon">🔒 from your account</span></label>
+    <input class="locked" value="${data.contact_email}" readonly>
+  </div>
+  <div class="field" id="f-website">
+    <label for="i-website">Organization website</label>
+    <input id="i-website" type="url" placeholder="https://example.org" value="${data.website}">
+    <div class="help">Optional. Shown on your listing so applicants can learn about you.</div>
+  </div>
+  <div class="navbtns"><span></span><button class="btn primary" data-next>Continue →</button></div>`;
+}
+
+function stepRole(){return `
+  <h2>The role</h2>
+  <div class="hint">The basics that appear at the top of your listing.</div>
+  <div class="field" id="f-title">
+    <label for="i-title">Job title <span class="req">*</span></label>
+    <input id="i-title" type="text" placeholder="e.g. Volunteer Coordinator" value="${data.title}">
+    <div class="errmsg">Please enter a job title.</div>
+  </div>
+  <div class="two">
+    <div class="field" id="f-type">
+      <label for="i-type">Employment type <span class="req">*</span></label>
+      <select id="i-type"><option value="">Choose…</option>${opt(TYPES,data.employment_type)}</select>
+      <div class="errmsg">Please choose an employment type.</div>
+    </div>
+    <div class="field" id="f-sector">
+      <label for="i-sector">Sector <span class="req">*</span></label>
+      <select id="i-sector"><option value="">Choose…</option>${opt(SECTORS,data.sector)}</select>
+      <div class="errmsg">Please choose a sector.</div>
+    </div>
+  </div>
+  <div class="navbtns"><button class="btn ghost" data-back>← Back</button><button class="btn primary" data-next>Continue →</button></div>`;
+}
+
+function stepDetails(){return `
+  <h2>Location &amp; details</h2>
+  <div class="hint">Listings must be within the ACC service area: Bastrop, Blanco, Caldwell, Hays, Travis, or Williamson county, or Texas-based remote.</div>
+  <div class="two">
+    <div class="field" id="f-county">
+      <label for="i-county">County <span class="req">*</span></label>
+      <select id="i-county"><option value="">Choose…</option>${optC(COUNTIES,data.county)}</select>
+      <div class="help">Only the six ACC service-area counties are listed.</div>
+      <div class="errmsg">Please choose a county (or select Remote below).</div>
+    </div>
+    <div class="field" id="f-city">
+      <label for="i-city">City / town</label>
+      <input id="i-city" type="text" placeholder="e.g. Kyle" value="${data.city}">
+    </div>
+  </div>
+  <div class="field" id="f-arr">
+    <label for="i-arr">Work arrangement <span class="req">*</span></label>
+    <select id="i-arr"><option value="">Choose…</option>${opt(ARRS,data.work_arrangement)}</select>
+    <div class="help">Choose Remote only for Texas-based remote roles.</div>
+    <div class="errmsg">Please choose a work arrangement.</div>
+  </div>
+  <div class="two">
+    <div class="field"><label for="i-smin">Salary minimum</label><input id="i-smin" type="number" placeholder="e.g. 48000" value="${data.salary_min}"></div>
+    <div class="field"><label for="i-smax">Salary maximum</label><input id="i-smax" type="number" placeholder="e.g. 55000" value="${data.salary_max}"></div>
+  </div>
+  <div class="field"><label for="i-sper">Salary period</label>
+    <select id="i-sper">${opt([["year","Per year"],["hour","Per hour"]],data.salary_period)}</select>
+    <div class="help">Optional, but listings with salary get more applicants.</div>
+  </div>
+  <div class="field" id="f-desc">
+    <label for="i-desc">Job description <span class="req">*</span></label>
+    <textarea id="i-desc" placeholder="Describe the role, responsibilities, and what you're looking for.">${data.description}</textarea>
+    <div class="help"><span id="descCount">0</span> characters. Aim for at least 100.</div>
+    <div class="errmsg">Please add a description of at least 100 characters.</div>
+  </div>
+  <div class="field" id="f-url">
+    <label for="i-url">Application link or email <span class="req">*</span></label>
+    <input id="i-url" type="text" placeholder="https://… or jobs@yourorg.org" value="${data.application_url}">
+    <div class="errmsg">Please add where applicants should apply.</div>
+  </div>
+  <div class="navbtns"><button class="btn ghost" data-back>← Back</button><button class="btn primary" data-next>Review →</button></div>`;
+}
+
+function money(){
+  if(!data.salary_min) return "Not specified";
+  const f=n=>data.salary_period==="hour"?`$${n}`:`$${(+n/1000).toFixed(0)}k`;
+  const per=data.salary_period==="hour"?"/hr":"/yr";
+  return data.salary_max && data.salary_max!==data.salary_min ? `${f(data.salary_min)}–${f(data.salary_max)}${per}` : `${f(data.salary_min)}${per}`;
+}
+const label=(arr,v)=>{const m=arr.find(([x])=>x===v);return m?m[1]:"—";};
+
+function stepReview(){
+  const loc = data.work_arrangement==="remote" ? "Remote (TX)" : `${data.city?data.city+", ":""}${data.county} County`;
+  return `
+  <h2>Review &amp; submit</h2>
+  <div class="hint">Check everything looks right. This is exactly what staff will review.</div>
+  <div class="review-grid">
+    <div><div class="k">Organization</div><div class="v">${data.organization}</div></div>
+    <div><div class="k">Job title</div><div class="v">${data.title||"—"}</div></div>
+    <div><div class="k">Employment type</div><div class="v">${label(TYPES,data.employment_type)}</div></div>
+    <div><div class="k">Sector</div><div class="v">${label(SECTORS,data.sector)}</div></div>
+    <div><div class="k">Location</div><div class="v">${loc}</div></div>
+    <div><div class="k">Arrangement</div><div class="v">${label(ARRS,data.work_arrangement)}</div></div>
+    <div><div class="k">Salary</div><div class="v">${money()}</div></div>
+    <div><div class="k">Apply via</div><div class="v">${data.application_url||"—"}</div></div>
+  </div>
+  <div class="preview">
+    <div class="plabel">How your listing will appear</div>
+    <div class="pcard">
+      <h3>${data.title||"Job title"}</h3>
+      <div class="porg">${data.organization}</div>
+      <div class="ptags">
+        <span class="ptag geo">${loc}</span>
+        <span class="ptag">${label(TYPES,data.employment_type)}</span>
+        <span class="ptag">${label(SECTORS,data.sector)}</span>
+        ${data.work_arrangement&&data.work_arrangement!=="onsite"?`<span class="ptag">${label(ARRS,data.work_arrangement)}</span>`:""}
+      </div>
+      ${data.salary_min?`<div class="psal">${money()}</div>`:""}
+    </div>
+  </div>
+  <div class="holdnote">
+    <svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+    <div><b>Held for review.</b> Because every listing on the board is checked by Nonprofit Austin staff before it goes live, your post won't appear immediately. You'll get an email when it's approved, usually within a couple of business days.</div>
+  </div>
+  <div class="navbtns"><button class="btn ghost" data-back>← Back</button><button class="btn primary" data-submit>Submit for review</button></div>`;
+}
+
+function stepDone(){
+  const ref="NPA-"+Math.random().toString(36).slice(2,7).toUpperCase();
+  return `
+  <div class="done">
+    <div class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+    <h2>Submitted for review</h2>
+    <p>Thanks. Your listing for <b>${data.title}</b> has been sent to Nonprofit Austin staff. You'll receive an email at ${data.contact_email} once it's approved and live on the board.</p>
+    <div class="ref">Reference: ${ref}</div>
+    <div class="navbtns" style="justify-content:center;margin-top:24px"><a class="btn ghost" href="#">Back to job board</a><a class="btn primary" href="#" onclick="step=0;render();return false;">Post another</a></div>
+  </div>`;
+}
+
+/* validation per step */
+function validate(){
+  let ok=true;
+  const fail=id=>{const f=document.getElementById(id);if(f){f.classList.add("err");ok=false;}};
+  document.querySelectorAll(".field").forEach(f=>f.classList.remove("err"));
+  if(step===1){
+    if(!data.title.trim()) fail("f-title");
+    if(!data.employment_type) fail("f-type");
+    if(!data.sector) fail("f-sector");
+  }
+  if(step===2){
+    if(!data.county && data.work_arrangement!=="remote") fail("f-county");
+    if(!data.work_arrangement) fail("f-arr");
+    if(data.description.trim().length<100) fail("f-desc");
+    if(!data.application_url.trim()) fail("f-url");
+  }
+  return ok;
+}
+
+function bind(){
+  const set=(id,key,fn)=>{const el=document.getElementById(id);if(el)el.addEventListener("input",e=>{data[key]=fn?fn(e.target.value):e.target.value; if(id==="i-desc"){const c=document.getElementById("descCount");if(c)c.textContent=data.description.trim().length;}});};
+  set("i-website","website"); set("i-title","title"); set("i-type","employment_type"); set("i-sector","sector");
+  set("i-county","county"); set("i-city","city"); set("i-arr","work_arrangement");
+  set("i-smin","salary_min"); set("i-smax","salary_max"); set("i-sper","salary_period");
+  set("i-desc","description"); set("i-url","application_url");
+  const dc=document.getElementById("descCount"); if(dc) dc.textContent=data.description.trim().length;
+
+  const next=card.querySelector("[data-next]"); if(next) next.addEventListener("click",()=>{ if(validate()){step++;render();window.scrollTo({top:0,behavior:'smooth'});} });
+  const back=card.querySelector("[data-back]"); if(back) back.addEventListener("click",()=>{step--;render();window.scrollTo({top:0,behavior:'smooth'});});
+  const sub=card.querySelector("[data-submit]"); if(sub) sub.addEventListener("click",()=>{
+    /* In production: POST normalized payload to the submission endpoint, which
+       runs it through the same filter (hold-for-review) and stores it pending.
+       Account is already nonprofit-verified, so the listing inherits that. */
+    step=4; render(); window.scrollTo({top:0,behavior:'smooth'});
+  });
+}
+
+document.getElementById("avInit").textContent=ACCOUNT.org[0];
+render();
+</script>
+</body>
+</html>

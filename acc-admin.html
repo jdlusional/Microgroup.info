@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPA Job Board — Moderation</title>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="referrer" content="no-referrer">
+<style>
+  :root{
+    --teal:#009688; --teal-deep:#00796b; --green:#0b8043;
+    --ink:#16201e; --slate:#5c6b67; --line:#dfe5e3;
+    --paper:#f3f6f5; --card:#ffffff; --coral:#ff6b54; --amber:#b8860b;
+    --r:12px; --maxw:1180px;
+    --shadow:0 1px 2px rgba(22,32,30,.05),0 6px 18px rgba(22,32,30,.05);
+    --display:"Plus Jakarta Sans",system-ui,sans-serif;
+    --body:"Inter",system-ui,sans-serif;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--body);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+  header{background:linear-gradient(135deg,var(--teal-deep),var(--teal));color:#fff}
+  .bar{max-width:var(--maxw);margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:800;letter-spacing:-.02em}
+  .brand .mark{width:30px;height:30px;border-radius:8px;background:#fff;color:var(--teal-deep);display:grid;place-items:center;font-weight:800}
+  .brand small{display:block;font-weight:500;font-size:.72rem;opacity:.85;letter-spacing:0}
+  .stats{display:flex;gap:18px;font-size:.85rem}
+  .stats b{font-family:var(--display);font-size:1.15rem;display:block}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:24px}
+  .tabs{display:flex;gap:6px;margin-bottom:18px}
+  .tab{padding:8px 16px;border-radius:999px;font-weight:600;font-size:.9rem;border:1px solid var(--line);background:#fff;cursor:pointer;color:var(--slate)}
+  .tab.active{background:var(--teal-deep);color:#fff;border-color:var(--teal-deep)}
+  .tab .badge{display:inline-block;margin-left:6px;background:rgba(0,0,0,.12);border-radius:999px;padding:0 7px;font-size:.78rem}
+  .tab.active .badge{background:rgba(255,255,255,.25)}
+
+  .row{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:12px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start}
+  .row.flagged{border-left:4px solid var(--amber)}
+  .row .title{font-family:var(--display);font-weight:700;font-size:1.08rem}
+  .row .org{color:var(--teal-deep);font-weight:600;font-size:.93rem;margin-top:1px}
+  .row .meta{margin-top:10px;display:flex;gap:7px;flex-wrap:wrap}
+  .chip{font-size:.74rem;font-weight:600;padding:3px 9px;border-radius:6px;background:#eef4f3;color:var(--teal-deep)}
+  .chip.src{background:#eef1f7;color:#3a4a7a}
+  .chip.flag{background:#fbf2dc;color:var(--amber)}
+  .chip.ver{background:#e9f1ec;color:var(--green)}
+  .chip.unver{background:#fdeee9;color:var(--coral)}
+  .row .desc{margin-top:10px;font-size:.9rem;color:var(--slate);max-width:62ch;line-height:1.45}
+  .row a.link{color:var(--teal-deep);font-size:.82rem;font-weight:600;text-decoration:none}
+
+  .actions{display:flex;flex-direction:column;gap:7px;min-width:150px}
+  button.act{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 12px;font:inherit;font-weight:600;font-size:.85rem;cursor:pointer;text-align:left;display:flex;align-items:center;gap:7px;transition:background .12s,border-color .12s}
+  button.act:hover{background:var(--paper)}
+  button.approve{border-color:var(--green);color:var(--green)}
+  button.approve:hover{background:var(--green);color:#fff}
+  button.approve:disabled{opacity:.45;cursor:not-allowed;border-color:var(--line);color:var(--slate);background:#fff}
+  button.verify{border-color:var(--teal);color:var(--teal-deep)}
+  button.verify:hover{background:var(--teal);color:#fff}
+  button.reject:hover{background:var(--coral);color:#fff;border-color:var(--coral)}
+  button.hide:hover{background:#444;color:#fff;border-color:#444}
+
+  .gate{font-size:.76rem;color:var(--amber);margin-top:4px;display:flex;gap:5px;align-items:center}
+  .empty{text-align:center;padding:60px;color:var(--slate)}
+  .empty h3{font-family:var(--display);color:var(--ink);margin-bottom:6px}
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:11px 20px;border-radius:10px;font-size:.9rem;font-weight:600;opacity:0;transition:opacity .25s;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+  .toast.show{opacity:1}
+
+  .log{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;box-shadow:var(--shadow)}
+  .log h3{font-family:var(--display);font-size:1rem;margin-bottom:10px}
+  .log .entry{font-size:.83rem;color:var(--slate);padding:6px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px}
+  .log .entry:last-child{border-bottom:none}
+  .log .entry b{color:var(--ink);font-weight:600}
+  @media(max-width:680px){.row{grid-template-columns:1fr}.actions{flex-direction:row;flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<header>
+  <div class="bar">
+    <div class="brand"><span class="mark">N</span><div>Nonprofit Austin<small>Job Board · Moderation</small></div></div>
+    <div class="stats">
+      <span>Pending<b id="sPending">–</b></span>
+      <span>Active<b id="sActive">–</b></span>
+      <span>This run<b id="sNew">–</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tabs">
+    <div class="tab active" data-view="queue">Review queue <span class="badge" id="bQueue">0</span></div>
+    <div class="tab" data-view="health">Scrape health &amp; log</div>
+  </div>
+
+  <div id="queueView"></div>
+  <div id="healthView" style="display:none"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API_BASE = null;           // set to live admin API to go live
+const ADMIN_TOKEN = "dev-token"; // replaced by MembershipWorks session in prod
+
+/* Mock mirrors GET /api/admin/queue and /api/admin/health from api.py */
+const MOCK_QUEUE = [
+  {job_id:"gh1",title:"Director of Development",organization:"Central Texas Food Bank",county:"Travis",city:"Austin",work_arrangement:"onsite",employment_type:"full_time",sector:"human_services",source:"greenhouse",nonprofit_verified:1,moderation_flag:null,description:"Lead fundraising and donor strategy for regional hunger-relief programs.",source_url:"https://boards.greenhouse.io/ctfb/jobs/101"},
+  {job_id:"lv1",title:"Conservation Program Manager",organization:"Hill Country Conservancy",county:"Travis",city:"Austin",work_arrangement:"hybrid",employment_type:"full_time",sector:"environment",source:"lever",nonprofit_verified:1,moderation_flag:null,description:"Protect Hill Country land and water through partnerships and stewardship.",source_url:"https://jobs.lever.co/hcc/abc"},
+  {job_id:"mn1",title:"Volunteer Coordinator",organization:"PAWS Shelter of Central Texas",county:"Hays",city:"Dripping Springs",work_arrangement:"onsite",employment_type:"part_time",sector:"human_services",source:"npa_manual",nonprofit_verified:1,moderation_flag:null,description:"Coordinate volunteers for animal care and adoption events.",source_url:""},
+  {job_id:"gh9",title:"Office Manager",organization:"Mystery Group LLC",county:"Williamson",city:"Round Rock",work_arrangement:"onsite",employment_type:"full_time",sector:"other",source:"greenhouse",nonprofit_verified:0,moderation_flag:"nonprofit_unconfirmed",description:"General office administration and scheduling support.",source_url:"https://boards.greenhouse.io/x/jobs/9"},
+];
+let MOCK_LOG = [
+  {ts:new Date(Date.now()-3600e3).toISOString(),actor:"system",action:"insert",job_id:"gh1",detail:"greenhouse/pending"},
+  {ts:new Date(Date.now()-3600e3).toISOString(),actor:"system",action:"insert",job_id:"lv1",detail:"lever/pending"},
+  {ts:new Date(Date.now()-3590e3).toISOString(),actor:"system",action:"remove_gone_from_source",job_id:"gh7",detail:"greenhouse"},
+];
+const MOCK_COUNTS = {pending:4, active:6, removed:2};
+
+const TYPE={full_time:"Full-time",part_time:"Part-time",contract:"Contract",temporary:"Temporary",board:"Board",volunteer:"Volunteer",internship:"Internship"};
+const SECTOR={arts_culture:"Arts & Culture",education:"Education",environment:"Environment",health:"Health",human_services:"Human Services",civic_advocacy:"Civic & Advocacy",religion:"Faith",philanthropy:"Philanthropy",other:"Other"};
+const ARR={onsite:"Office",hybrid:"Hybrid",remote:"Remote"};
+
+let QUEUE=[], COUNTS={}, LOG=[];
+
+async function adminApi(path, opts={}){
+  const headers={"Authorization":"Bearer "+ADMIN_TOKEN,"Content-Type":"application/json",...(opts.headers||{})};
+  const r=await fetch(API_BASE+path,{...opts,headers});
+  if(r.status===401) throw new Error("unauthorized");
+  return r.json();
+}
+
+async function load(){
+  if(API_BASE){
+    try{
+      const q=await adminApi("/admin/queue");
+      const h=await adminApi("/admin/health");
+      QUEUE=q.queue; COUNTS=h.counts; LOG=h.recent_activity;
+    }catch(e){ toast("Sign-in required"); return; }
+  }else{
+    QUEUE=[...MOCK_QUEUE]; COUNTS={...MOCK_COUNTS}; LOG=[...MOCK_LOG];
+  }
+  paint();
+}
+
+function paint(){
+  document.getElementById("sPending").textContent=COUNTS.pending??QUEUE.length;
+  document.getElementById("sActive").textContent=COUNTS.active??0;
+  document.getElementById("sNew").textContent=QUEUE.length;
+  document.getElementById("bQueue").textContent=QUEUE.length;
+  paintQueue(); paintHealth();
+}
+
+function paintQueue(){
+  const host=document.getElementById("queueView");
+  if(!QUEUE.length){host.innerHTML=`<div class="empty"><h3>Queue clear</h3><p>No postings waiting for review. Next refresh runs Monday.</p></div>`;return;}
+  host.innerHTML="";
+  QUEUE.forEach(j=>{
+    const verified=j.nonprofit_verified===1||j.nonprofit_verified===true;
+    const flagged=!!j.moderation_flag;
+    const loc=`${j.city?j.city+", ":""}${j.county} County`;
+    const el=document.createElement("div");
+    el.className="row"+(flagged?" flagged":"");
+    el.innerHTML=`
+      <div>
+        <div class="title">${j.title}</div>
+        <div class="org">${j.organization}</div>
+        <div class="meta">
+          <span class="chip">${loc}</span>
+          <span class="chip">${TYPE[j.employment_type]||j.employment_type}</span>
+          <span class="chip">${ARR[j.work_arrangement]||j.work_arrangement}</span>
+          <span class="chip">${SECTOR[j.sector]||j.sector}</span>
+          <span class="chip src">${j.source==="npa_manual"?"Submitted":j.source}</span>
+          ${verified?`<span class="chip ver">✓ Nonprofit verified</span>`:`<span class="chip unver">Nonprofit unconfirmed</span>`}
+          ${flagged?`<span class="chip flag">⚑ ${String(j.moderation_flag).replace(/_/g," ").replace(/^./,c=>c.toUpperCase())}</span>`:""}
+        </div>
+        <div class="desc">${j.description||""}</div>
+        ${j.source_url?`<div style="margin-top:8px"><a class="link" href="${j.source_url}" target="_blank" rel="noopener">View source ↗</a></div>`:""}
+      </div>
+      <div class="actions">
+        <button class="act approve" ${verified?"":"disabled"} onclick="act('${j.job_id}','approve')">✓ Approve &amp; publish</button>
+        ${verified?"":`<button class="act verify" onclick="act('${j.job_id}','verify')">Verify nonprofit</button>`}
+        <button class="act hide" onclick="act('${j.job_id}','hide')">Hide</button>
+        <button class="act reject" onclick="act('${j.job_id}','reject')">Reject</button>
+        ${verified?"":`<div class="gate">⚑ Verify before publishing (hard rule)</div>`}
+      </div>`;
+    host.appendChild(el);
+  });
+}
+
+function paintHealth(){
+  const host=document.getElementById("healthView");
+  const rows=LOG.map(e=>`<div class="entry"><span><b>${e.actor}</b> · ${e.action}${e.job_id?` · ${e.job_id}`:""}</span><span>${new Date(e.ts).toLocaleString()}</span></div>`).join("");
+  host.innerHTML=`<div class="log"><h3>Recent activity</h3>${rows||"<p>No activity yet.</p>"}</div>`;
+}
+
+async function act(jobId, action){
+  const job=QUEUE.find(j=>j.job_id===jobId);
+  if(action==="reject" && !confirm(`Reject "${job.title}"? This logs a rejection and removes it from the queue.`)) return;
+
+  if(API_BASE){
+    try{ await adminApi(`/admin/jobs/${jobId}/action`,{method:"POST",body:JSON.stringify({action,actor:"staff"})}); }
+    catch(e){ toast("Action failed"); return; }
+    await load();
+  }else{
+    // mock behavior mirrors the server
+    if(action==="verify"){ job.nonprofit_verified=1; job.moderation_flag=null; toast("Nonprofit verified"); }
+    else{
+      QUEUE=QUEUE.filter(j=>j.job_id!==jobId);
+      if(action==="approve"){COUNTS.active++; COUNTS.pending--; toast("Approved & published");}
+      if(action==="reject"){COUNTS.pending--; toast("Rejected");}
+      if(action==="hide"){COUNTS.pending--; toast("Hidden");}
+    }
+    LOG.unshift({ts:new Date().toISOString(),actor:"staff",action:action==="approve"?"set_status:active":action==="verify"?"verify_nonprofit":`set_status:${action==="reject"?"rejected":"hidden"}`,job_id:jobId,detail:""});
+    paint();
+  }
+}
+
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800);}
+
+document.querySelectorAll(".tab").forEach(tab=>tab.addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  tab.classList.add("active");
+  const v=tab.dataset.view;
+  document.getElementById("queueView").style.display=v==="queue"?"block":"none";
+  document.getElementById("healthView").style.display=v==="health"?"block":"none";
+}));
+load();
+</script>
+</body>
+</html>

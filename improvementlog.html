@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Improvement Log &middot; Enterprise</title>
+<meta name="description" content="A client-centered record of how each enterprise product has improved over time: what changed, when, and what it means for the people using it. Updated weekly." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=2149a5bca4">
+<style>
+a{color:var(--ink)}
+.hero{max-width:900px;margin:0 auto;padding:2.2rem 1.25rem 1.2rem}
+.hero p{color:var(--wash);max-width:75ch}
+.hero .cadence{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--wash);border:1px solid var(--rule);display:inline-block;padding:.25rem .6rem;margin-top:.6rem}
+.section{max-width:900px;margin:0 auto;padding:0 1.25rem 2.4rem}
+details.prod{border:1.5px solid var(--ink);background:var(--well);margin:0 0 .8rem}
+details.prod>summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:.7rem;padding:.85rem 1.1rem;font-family:var(--serif);font-weight:700;font-size:22px}
+details.prod>summary::-webkit-details-marker{display:none}
+details.prod>summary::before{content:"+";font-family:var(--mono);font-weight:700;color:var(--wash)}
+details.prod[open]>summary::before{content:"\2013"}
+details.prod>summary .count{margin-left:auto;font-family:var(--mono);font-size:12.5px;font-weight:400;color:var(--wash);text-transform:uppercase;letter-spacing:.05em}
+.prod-body{padding:.2rem 1.2rem 1rem;border-top:1px solid var(--rule-soft)}
+.log-date{font-family:var(--mono);font-size:13px;letter-spacing:.05em;color:var(--wash);margin:1rem 0 .3rem}
+.prod-body ul{margin:.2rem 0 .4rem 1.1rem;padding:0}
+.prod-body li{margin:.35rem 0;font-size:15px;line-height:1.55;overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand"><b>Improvement Log</b></span>
+    <span class="grow"></span>
+    <nav>
+      <a href="demo.html">Demos</a>
+      <a href="enterprise.html">Enterprise</a>
+      <a href="https://jonathanlindavis.com/improvementlog.html" target="_blank" rel="noopener">Open data log &#8599;</a>
+    </nav>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>Improvement Log &middot; Enterprise</h1>
+  <p>Each enterprise product (Almanac, Scribe, Concordance, Herald) improves continuously, and this page is the record from the user's side: what changed, when, and what it means for the organizations using it. Entries are curated. Internal engineering work that a user would never notice is left out, so what remains is the product getting better. The Public Data family (GIFT, Interlock, F4F) keeps its own log on <a href="https://jonathanlindavis.com/improvementlog.html" target="_blank" rel="noopener">jonathanlindavis.com</a>.</p>
+  <span class="cadence">Updated weekly</span>
+</div>
+
+<div class="section" id="products"></div>
+
+<footer><div class="wrap">
+  <p>Improvement log by Jonathan Lin Davis. Entries are added weekly from the actual change history of each product; nothing here is projected or promised.</p>
+</div></footer>
+
+<script>
+/* ===IMPROVEMENTLOG-DATA-START=== */
+const LOG = [
+{p:"Almanac",d:"2026-07-19",t:"The demo now presents five candidate funders and five open opportunities, a curated short list rather than a raw dump, and funder names and tables read cleanly on phones."},
+{p:"Almanac",d:"2026-07-18",t:"Every candidate funder carries its own IRS-profile section, and federal opportunities from Grants.gov appear as a second lane beside foundation grants."},
+{p:"Almanac",d:"2026-07-18",t:"Match-quality source data expanded from a partial filing cache to the full Texas corpus of e-filed 990s."},
+{p:"Almanac",d:"2026-07-17",t:"Grant-status tracking went live, so an organization can follow each opportunity from researching to submitted on its own page."},
+{p:"Almanac",d:"2026-07-17",t:"Candidate matching now applies cause-area and geography screens before ranking, and donor-advised funds are routed to their own bucket instead of appearing as approachable foundations."},
+{p:"Almanac",d:"2026-07-16",t:"A Request a funder match action was added, and every match rationale now shows the source domain it rests on."},
+{p:"Almanac",d:"2026-07-13",t:"The demo was rebuilt around a fictional sample organization under a standing rule: every claim about a real funder is verified against that funder's own page before it ships."},
+{p:"Almanac",d:"2026-07-12",t:"Almanac extended to additional client organizations, each with a funder list honestly tiered by confidence."},
+{p:"Almanac",d:"2026-07-07",t:"The first version of the funder and grant match shipped."},
+{p:"Scribe",d:"2026-07-19",t:"Drafts read cleanly on phones: draft names no longer collapse on narrow screens and sideways scrolling is gone."},
+{p:"Scribe",d:"2026-07-17",t:"Draft financials are now pulled from the organization's own IRS filings, three years with footnotes, instead of typed by hand."},
+{p:"Scribe",d:"2026-07-17",t:"The suggested and confirm marker convention became an enforced quality gate, with a validator run against every shipped draft."},
+{p:"Scribe",d:"2026-07-13",t:"The demo shipped with five ranked drafts and a gap checklist, and Scribe's refusal line is stated on the page: it does not invent a fact about the organization."},
+{p:"Scribe",d:"2026-07-12",t:"Per-client instances shipped for two more organizations, each with its own drafts and gap checklists."},
+{p:"Scribe",d:"2026-07-10",t:"The drafter was built through three same-day versions: payoff-ranked drafts, strength analysis, labeled gaps, Word export, and the three-marker sourcing standard of suggested, confirm, and missing."},
+{p:"Concordance",d:"2026-07-18",t:"Application-status chips refreshed from the full Texas corpus, replacing chips built from a smaller early cache."},
+{p:"Concordance",d:"2026-07-17",t:"Every funder card now shows whether that foundation accepts applications, quoted verbatim from its own filing, and a funder with no board connection yields an action pack instead of a dead end."},
+{p:"Concordance",d:"2026-07-16",t:"The first per-client build shipped, and board coverage was corrected so a client's full board is represented, with a confidence tier on every name."},
+{p:"Concordance",d:"2026-07-13",t:"The product launched: board-to-funder affinity mapped from 141 cached foundation filings, with a recorded refusal that it does not estimate anyone's wealth."},
+{p:"Herald",d:"2026-07-19",t:"Watch-list monitoring is now Herald's own pattern across the product family, so closed-cycle grants are tracked in one place."},
+{p:"Herald",d:"2026-07-17",t:"The monitoring engine gained its change ledger, snapshot archive, and noise suppression during the log-only soak period."},
+{p:"Herald",d:"2026-07-16",t:"Herald shipped as a grant-cycle monitor watching the grant pages Almanac already surfaced, honestly reporting which pages it could not check."}
+];
+/* ===IMPROVEMENTLOG-DATA-END=== */
+
+const ORDER = ["Almanac","Scribe","Concordance","Herald"];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const host = document.getElementById("products");
+ORDER.forEach(name => {
+  const entries = LOG.filter(e => e.p === name);
+  if (!entries.length) return;
+  const byDate = {};
+  entries.forEach(e => { (byDate[e.d] = byDate[e.d] || []).push(e.t); });
+  const dates = Object.keys(byDate).sort().reverse();
+  const det = document.createElement("details");
+  det.className = "prod";
+  det.innerHTML = `<summary>${esc(name)}<span class="count">${entries.length} improvements</span></summary>` +
+    `<div class="prod-body">` +
+    dates.map(d => `<div class="log-date">${esc(d)}</div><ul>` +
+      byDate[d].map(t => `<li>${esc(t)}</li>`).join("") + `</ul>`).join("") +
+    `</div>`;
+  host.appendChild(det);
+});
+</script>
+</body>
+</html>
