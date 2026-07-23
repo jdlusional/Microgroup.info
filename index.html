@@ -94,6 +94,7 @@ html.stack-page .shead .intro{margin:0 auto}
 
 html.stack-page .site-header{background:var(--paper)}
 html.stack-page .nav-name{font-family:var(--f-script-caps);color:var(--ink);font-weight:400;font-size:1.5rem;letter-spacing:.01em;text-transform:uppercase}
+html.stack-page .nav-name .nav-name-sub{text-transform:lowercase}
 html.stack-page .nav-links a{color:var(--ink)}
 html.stack-page .nav-links a:hover,
 html.stack-page .nav-links a[aria-current="page"]{border-bottom-color:var(--accent)}
@@ -194,7 +195,7 @@ html.stack-page .contact-disclosure p{color:var(--wash)}
    type/color, not its imagery). */
 .footer-brand{margin-bottom:10px}
 .footer-brand .footer-name{display:block;font-family:var(--f-script-caps);font-weight:400;font-size:clamp(1.7rem,4vw,2.3rem);letter-spacing:.01em;text-transform:uppercase;color:var(--ink);line-height:1}
-.footer-brand .footer-slogan{display:block;font-family:var(--f-script);font-style:italic;font-size:1.05rem;color:var(--accent);margin-top:6px}
+.footer-brand .footer-slogan{display:block;width:min(240px,60vw);height:auto;margin:8px auto 0}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* Card centering + ragged-last-row centering (2026-07-23, owner request):
@@ -230,7 +231,7 @@ html.stack-page .chess::before{
 
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
-    <a class="nav-name" href="#home">MICRO Group</a>
+    <a class="nav-name" href="#home">MICRO <span class="nav-name-sub">Group</span></a>
     <button class="nav-toggle" aria-label="Menu">&#9776;</button>
     <div class="nav-right">
       <ul class="nav-links">
@@ -306,7 +307,7 @@ html.stack-page .chess::before{
       <div class="projects-section">
         <h3 class="projects-subhead">Software Products</h3>
         <div class="proj-list">
-          <article class="pcard"><h4 class="pcard-title">Almanac</h4><span class="pcard-price">$1,500 / year</span><p class="pcard-desc">Finds and ranks funders and open grants that fit your organization, with a public source shown for every match.</p><a class="pcard-open" href="https://jonathanlindavis.com/demo-almanac.html">Open <span class="arr">&rarr;</span></a></article>
+          <article class="pcard"><h4 class="pcard-title">Almanac</h4><span class="pcard-price">$1,500&ndash;$3,000 / year</span><p class="pcard-desc">Finds and ranks funders and open grants that fit your organization, with a public source shown for every match. Standard: $1,500/yr, refreshed quarterly. Pro: $3,000/yr, refreshed monthly.</p><a class="pcard-open" href="https://jonathanlindavis.com/demo-almanac.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard"><h4 class="pcard-title">Scribe</h4><span class="pcard-price">$1,500&ndash;$3,000 / year</span><p class="pcard-desc">Drafts a near-submission grant application from an Almanac match, fact-checked against your organization's own public information. Standard: $1,500/yr, one draft per quarter. Pro: $3,000/yr, one draft per month.</p><a class="pcard-open" href="https://jonathanlindavis.com/demo-scribe.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard pcard-dev"><h4 class="pcard-title">Concordance</h4><p class="pcard-desc">Identifies the people who govern a funding foundation's board and maps introduction paths.</p><span class="pcard-status">In development</span><a class="pcard-open" href="https://jonathanlindavis.com/demo-concordance.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard pcard-dev"><h4 class="pcard-title">Herald</h4><p class="pcard-desc">Monitors funder pages on a client's watch list for cycle openings, deadline changes, and guideline updates.</p><span class="pcard-status">In development</span><a class="pcard-open" href="https://jonathanlindavis.com/demo-herald.html">Open <span class="arr">&rarr;</span></a></article>
@@ -426,7 +427,7 @@ html.stack-page .chess::before{
   <section id="footer" class="stack-item footer-panel">
     <div class="footer-brand">
       <span class="footer-name">MICRO Group</span>
-      <span class="footer-slogan">A measured approach to your goals</span>
+      <img class="footer-slogan" src="MICRO_wordmark_footer.svg" alt="MICRO Group: your goals" width="280" height="70" loading="lazy">
     </div>
     <div class="footer-credit">This website was created and is managed by MICRO Group, LLC.<br>1801 E 51st St., STE 365, PMB 354, Austin, Texas</div>
     <div class="footer-license">CC BY 4.0 data, MIT code.</div>
