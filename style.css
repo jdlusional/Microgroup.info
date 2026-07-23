@@ -1,19 +1,19 @@
 /* Jonathan Lin Davis — hybrid site (v7) */
 
 :root{
-  --navy:#0f2d1a;
-  --navy-deep:#091f11;
-  --navy-soft:#132e1a;
-  --navy-card:#0e2818;
+  --navy:#081d44;
+  --navy-deep:#061632;
+  --navy-soft:#0d2752;
+  --navy-card:#0c2350;
   --gold:#f1c400;
   --gold-soft:#f7d94d;
-  --ink:#1a2b1f;
+  --ink:#1a1f2b;
   --paper:#ffffff;
   --paper-warm:#fbfaf6;
   --line:#e4e2d8;
   --line-navy:rgba(241,196,0,.24);
   --muted:#5c6373;
-  --muted-light:#c5d9cb;
+  --muted-light:#cfd6ec;
   --maxw:1180px;
   --bar-h:72px;
 
@@ -36,6 +36,7 @@
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+picture{display:contents}
 body{
   font-family:var(--f-body);
   color:var(--ink);background:var(--paper);line-height:1.6;font-size:var(--t-body);
@@ -58,7 +59,7 @@ a{color:inherit}
 .nav-links{display:flex;gap:24px;list-style:none;align-items:center}
 .nav-links a{font-family:var(--f-eyebrow);font-size:1.04rem;letter-spacing:.02em;color:var(--navy);text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent;transition:border-color .18s ease;white-space:nowrap}
 .nav-links a:hover,.nav-links a[aria-current="page"]{border-bottom-color:var(--navy)}
-.nav-social{display:flex;gap:12px;align-items:center;padding-left:18px;border-left:1px solid rgba(15,45,26,.25)}
+.nav-social{display:flex;gap:12px;align-items:center;padding-left:18px;border-left:1px solid rgba(8,29,68,.25)}
 .nav-social a{display:flex;align-items:center;justify-content:center;transition:transform .15s ease}
 .nav-social a:hover{transform:translateY(-2px)}
 .nav-social img{width:22px;height:22px;display:block;border-radius:4px;object-fit:contain}
@@ -67,6 +68,16 @@ a{color:inherit}
 
 /* ---------- snap ---------- */
 html.snap{scroll-snap-type:y proximity}
+/* Pages that opt into forceful auto-advance snap carry an extra html.mandatory-snap
+   class in their source (alongside the site-wide .snap class site.js always adds).
+   Scoped like this so the stronger snap type never leaks onto pages that didn't ask
+   for it (open-data-gift.html, f4f.html, acc.html, etc. keep the gentler default above). */
+html.mandatory-snap.snap{scroll-snap-type:y mandatory}
+/* start (not center) alignment on mandatory pages: if a panel's content is ever
+   slightly taller than a given viewport, the snap-rest position still shows the
+   top of the panel (heading, most important content) rather than a symmetric
+   center-crop, and normal scroll can still continue past it to reach the rest. */
+html.mandatory-snap .panel,html.mandatory-snap .footer-panel{scroll-snap-align:start}
 .panel{
   scroll-snap-align:center;
   min-height:calc(100vh - var(--bar-h));
@@ -90,18 +101,29 @@ html.snap{scroll-snap-type:y proximity}
 }
 .panel.warm.chess::before,.panel.paper.chess::before{
   background-image:
-    linear-gradient(45deg,rgba(15,45,26,.022) 25%,transparent 25%,transparent 75%,rgba(15,45,26,.022) 75%),
-    linear-gradient(45deg,rgba(15,45,26,.022) 25%,transparent 25%,transparent 75%,rgba(15,45,26,.022) 75%);
+    linear-gradient(45deg,rgba(8,29,68,.022) 25%,transparent 25%,transparent 75%,rgba(8,29,68,.022) 75%),
+    linear-gradient(45deg,rgba(8,29,68,.022) 25%,transparent 25%,transparent 75%,rgba(8,29,68,.022) 75%);
   background-size:120px 120px;background-position:0 0,60px 60px;
 }
 .panel .inner{z-index:1}
 
 /* chevron */
-.chevron{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:0;cursor:pointer;color:var(--gold);font-family:var(--f-eyebrow);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;animation:bob 2s ease-in-out infinite;z-index:5}
+.chevron{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:0;cursor:pointer;color:var(--gold);font-family:var(--f-eyebrow);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;z-index:5}
 .chevron.dark{color:var(--navy)}
 .chevron svg{width:24px;height:24px}
-@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,5px)}}
-@media(prefers-reduced-motion:reduce){.chevron{animation:none}}
+
+/* .goto -- found during the post-launch UX/UI review (2026-07-18) to have NO
+   working style anywhere: its only rule was scoped to ".xcard .xbody .goto",
+   a structure that only ever existed in the pre-Stage-2 "3 Arenas" card grid.
+   Stage 2 replaced that grid with the plain .home-arenas link row, so these
+   three hero CTAs ("Projects", "Writing", "Consulting") have been rendering
+   as bare unstyled text links, with only a stray width:190px applying, since
+   Stage 2 shipped. This is a real, unscoped .goto/.arr pair so it works
+   wherever it's used, not just inside .home-arenas. */
+.goto{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--f-eyebrow);font-size:1rem;letter-spacing:.04em;text-decoration:none;padding:14px 36px;border-radius:999px;background:transparent;color:var(--gold);border:1.5px solid var(--gold);transition:all .18s ease}
+.goto:hover{background:var(--gold);color:var(--navy)}
+.goto .arr{transition:transform .2s ease}
+.goto:hover .arr{transform:translateX(6px)}
 
 /* ---------- buttons ---------- */
 .btn{display:inline-block;font-family:var(--f-eyebrow);font-size:1rem;letter-spacing:.04em;text-decoration:none;padding:14px 36px;border-radius:999px;transition:all .18s ease}
@@ -124,7 +146,7 @@ html.snap{scroll-snap-type:y proximity}
 .home-hero h1{color:var(--paper);font-size:clamp(3rem,7vw,5.2rem);line-height:1.02;max-width:18ch;margin:0 auto;font-weight:600}
 .home-hero h1 .em{color:var(--gold);font-style:italic;text-decoration:underline;text-decoration-thickness:.06em;text-underline-offset:.08em}
 .home-hero .lede{max-width:62ch;margin:26px auto 0;color:var(--muted-light);font-size:var(--t-lead);text-align:center}
-.roles{margin:34px auto 0;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:62ch}
+.roles{margin:34px auto 0;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 .roles span{font-family:var(--f-eyebrow);font-size:.95rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:var(--gold);border-radius:999px;padding:9px 22px;box-shadow:0 4px 14px rgba(241,196,0,.18)}
 
 /* ---------- HOME directory (rebuilt) ---------- */
@@ -140,7 +162,7 @@ html.snap{scroll-snap-type:y proximity}
 
 /* expanding cards (rebuilt) */
 .xcard{border:1px solid var(--line-navy);border-top:3px solid var(--gold);background:var(--navy-card);transition:background .16s ease,box-shadow .16s ease,transform .16s ease;display:flex;flex-direction:column}
-.xcard[open]{background:#163c1e;box-shadow:0 18px 40px rgba(0,0,0,.32);transform:translateY(-2px)}
+.xcard[open]{background:#102a5c;box-shadow:0 18px 40px rgba(0,0,0,.32);transform:translateY(-2px)}
 .xcard summary{list-style:none;cursor:pointer;padding:30px 26px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;position:relative}
 .xcard summary::-webkit-details-marker{display:none}
 .xcard summary h3{font-family:var(--f-cards);font-size:2.1rem;color:var(--paper);font-weight:400;line-height:1}
@@ -160,19 +182,19 @@ html.snap{scroll-snap-type:y proximity}
 .founder h1{color:var(--paper);text-align:center;font-family:var(--f-script);font-weight:400;font-size:clamp(3rem,6vw,4.6rem);margin:6px 0 40px;letter-spacing:.01em}
 .founder .cols{display:flex;flex-direction:column;align-items:center;gap:36px}
 .portrait{width:280px;height:280px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);display:block}
-.bio{max-width:74ch;text-align:center}
+.bio{max-width:74ch;margin:0 auto;text-align:center}
 .bio p{margin-bottom:16px;color:var(--muted-light);font-size:var(--t-body);text-align:center;hyphens:none}
 .bio p strong{color:var(--gold-soft);font-weight:600}
 .bio p strong a{color:var(--gold-soft);text-decoration:underline;text-decoration-color:rgba(247,217,77,.5);text-underline-offset:2px}
-.bio p:first-child{font-size:var(--t-lead);color:#eef1ee}
+.bio p:first-child{font-size:var(--t-lead);color:#eef1fb}
 
 .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;margin-top:30px;border-top:1px solid var(--line-navy);padding-top:26px;text-align:center;max-width:900px;margin-left:auto;margin-right:auto}
 .dblock h4{font-family:var(--f-label);text-transform:uppercase;letter-spacing:.1em;font-size:1.1rem;color:var(--gold);margin-bottom:16px;font-weight:600}
 .dblock ul{list-style:none}
 .edu-item,.fel-item{margin-bottom:16px}
-.edu-item .deg,.fel-item .role{color:#eef1ee;font-size:1.12rem;font-weight:600;font-family:var(--f-head);line-height:1.2}
+.edu-item .deg,.fel-item .role{color:#eef1fb;font-size:1.12rem;font-weight:600;font-family:var(--f-head);line-height:1.2}
 .edu-item .focus{color:var(--muted-light);font-size:1rem;font-style:italic}
-.edu-item .inst,.fel-item .inst{color:#8aa396;font-size:.92rem}
+.edu-item .inst,.fel-item .inst{color:#8893b5;font-size:.92rem}
 
 /* ---------- CONSULTING / MICRO ---------- */
 .consult-hero{text-align:center;margin-bottom:40px}
@@ -181,7 +203,7 @@ html.snap{scroll-snap-type:y proximity}
 .coi-notice .coi-label{display:block;font-family:var(--f-eyebrow);text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;font-weight:600;color:var(--gold);margin-bottom:10px}
 .coi-notice p{color:var(--muted-light);font-size:.95rem;line-height:1.6;margin:0}
 .page-footnote{max-width:760px;margin:46px auto 0;padding-top:16px;border-top:1px solid var(--line-navy)}
-.page-footnote p{color:#8aa396;font-size:.8rem;line-height:1.5;margin:0}
+.page-footnote p{color:#8893b5;font-size:.8rem;line-height:1.5;margin:0}
 .page-footnote sup{color:var(--gold);font-weight:600}
 .consult-hero .eyebrow{margin-bottom:14px;font-size:.9rem;letter-spacing:.24em}
 .consult-hero h1{color:var(--paper);font-family:var(--f-head);font-size:clamp(2.6rem,5.4vw,4rem);line-height:1.02;max-width:15ch;margin:0 auto;font-weight:600}
@@ -191,12 +213,12 @@ html.snap{scroll-snap-type:y proximity}
 .engage{max-width:720px;margin:0 auto 40px;text-align:center;border-top:1px solid var(--line-navy);border-bottom:1px solid var(--line-navy);padding:26px 24px}
 .engage h2{font-family:var(--f-head);color:var(--paper);font-size:clamp(1.6rem,3vw,2.1rem);font-weight:600;margin-bottom:10px;line-height:1.05}
 .engage p{color:var(--muted-light);font-size:1.02rem;max-width:60ch;margin:0 auto 8px;line-height:1.55}
-.engage .fine{color:#8aa396;font-size:.92rem;font-style:italic;margin-bottom:0}
+.engage .fine{color:#8893b5;font-size:.92rem;font-style:italic;margin-bottom:0}
 .engage .cta{margin-top:20px}
 
 .split{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;max-width:1040px;margin:0 auto}
 .dropblock{border:1px solid var(--line-navy);border-top:3px solid var(--gold);background:var(--navy-card);transition:background .16s ease,box-shadow .16s ease;overflow:hidden}
-.dropblock[open]{background:#122e18;box-shadow:0 16px 38px rgba(0,0,0,.3)}
+.dropblock[open]{background:#0e2755;box-shadow:0 16px 38px rgba(0,0,0,.3)}
 .dropblock summary{list-style:none;cursor:pointer;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:14px;font-family:var(--f-head);font-size:1.5rem;font-weight:600;color:var(--paper)}
 .dropblock summary::-webkit-details-marker{display:none}
 .dropblock summary .sign{color:var(--gold);font-size:1.7rem;line-height:1;transition:transform .25s ease}
@@ -222,12 +244,11 @@ html.snap{scroll-snap-type:y proximity}
 .theme-row{display:flex;flex-direction:column;gap:0;margin-bottom:28px;border-top:1px solid var(--line-navy)}
 .theme-item{padding:18px 0;border-bottom:1px solid var(--line-navy)}
 .theme-item .th{font-family:var(--f-label);text-transform:uppercase;letter-spacing:.16em;font-size:.82rem;color:var(--gold);font-weight:600;display:block;margin-bottom:5px}
-.theme-item .tt{color:#eef1ee;font-family:var(--f-head);font-size:1.4rem;font-weight:600;display:block;margin-bottom:3px;line-height:1.1}
+.theme-item .tt{color:#eef1fb;font-family:var(--f-head);font-size:1.4rem;font-weight:600;display:block;margin-bottom:3px;line-height:1.1}
 .theme-item .td{color:var(--muted-light);font-size:.92rem;line-height:1.55}
 .writing-cta-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .substack-link{display:inline-flex;align-items:center;gap:12px;background:#FF6719;color:#fff;font-family:var(--f-eyebrow);font-weight:600;font-size:1.02rem;letter-spacing:.03em;padding:13px 28px;border-radius:999px;text-decoration:none!important;transition:transform .16s ease,box-shadow .16s ease,background .16s ease;box-shadow:0 8px 22px rgba(255,103,25,.3)}
 .substack-link:hover{background:#ff7a33;transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,103,25,.42)}
-.substack-link img{width:22px;height:22px;border-radius:4px}
 @keyframes riseIn{from{opacity:0;transform:translateY(28px) scale(.96)}to{opacity:1;transform:none}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
@@ -237,8 +258,8 @@ html.snap{scroll-snap-type:y proximity}
 /* ---------- RESEARCH (Projects index) ---------- */
 .projects-grid{max-width:760px;margin:0 auto;display:grid;gap:22px}
 .project-card{border:1px solid var(--line-navy);border-top:3px solid var(--gold);background:var(--navy-card);padding:28px 30px;text-align:left;text-decoration:none;display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:center;transition:background .16s ease,transform .16s ease,box-shadow .16s ease}
-.project-card:hover{background:#163c1e;transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.3)}
-.project-card .pc-cover{width:150px;height:150px;object-fit:cover;border-radius:8px;display:block;box-shadow:0 8px 22px rgba(0,0,0,.4)}
+.project-card:hover{background:#102a5c;transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.3)}
+.project-card .pc-cover{width:150px;height:150px;object-fit:cover;border-radius:0;display:block;box-shadow:0 8px 22px rgba(0,0,0,.4)}
 .project-card .pc-kicker{font-family:var(--f-eyebrow);text-transform:uppercase;letter-spacing:.22em;font-size:.74rem;font-weight:600;color:var(--gold);display:block;margin-bottom:8px}
 .project-card h3{font-family:var(--f-head);color:var(--paper);font-size:clamp(1.8rem,3.4vw,2.3rem);font-weight:600;line-height:1.02;margin-bottom:8px}
 .project-card p{color:var(--muted-light);font-size:1.02rem;line-height:1.5;margin:0 0 14px}
@@ -280,7 +301,7 @@ html.snap{scroll-snap-type:y proximity}
 .diss-drop .diss-inner strong{color:var(--gold-soft);font-weight:600}
 
 .rcard{border:1px solid var(--line-navy);border-top:3px solid var(--gold);background:var(--navy-card);padding:32px 30px;text-align:center;display:flex;flex-direction:column;transition:background .16s ease,transform .16s ease,box-shadow .16s ease}
-.rcard:hover{background:#163c1e;transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.28)}
+.rcard:hover{background:#102a5c;transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.28)}
 .rcard .sublabel{margin-bottom:14px}
 .rcard .ryear{font-family:var(--f-cards);font-size:2.4rem;color:var(--gold-soft);line-height:1;margin-bottom:14px;display:block}
 .rcard p{color:var(--muted-light);font-size:var(--t-body);margin-bottom:12px;line-height:1.62}
@@ -292,8 +313,8 @@ html.snap{scroll-snap-type:y proximity}
 .paper-item{padding:18px 0;border-bottom:1px solid var(--line-navy);text-align:center}
 .paper-item .yr{font-family:var(--f-eyebrow);font-weight:600;color:var(--gold);font-size:.86rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:6px}
 .paper-item .cite{color:var(--muted-light);font-size:.94rem;line-height:1.55}
-.paper-item .cite .ttl{color:#eef1ee;font-style:italic}
-.paper-item .cite .src{color:#8aa396;font-size:.84rem;display:block;margin-top:3px}
+.paper-item .cite .ttl{color:#eef1fb;font-style:italic}
+.paper-item .cite .src{color:#8893b5;font-size:.84rem;display:block;margin-top:3px}
 
 /* House Rules archive subpage */
 .hr-archive-list{max-width:820px;margin:0 auto}
@@ -306,10 +327,10 @@ html.snap{scroll-snap-type:y proximity}
 .hr-issue .hr-links{display:flex;gap:18px;flex-wrap:wrap}
 .hr-issue .hr-links a{font-family:var(--f-eyebrow);font-size:.92rem;letter-spacing:.02em;color:var(--gold);text-decoration:underline;text-underline-offset:3px}
 .hr-issue .hr-links a:hover{color:var(--gold-soft)}
-.hr-empty{color:#8aa396;font-style:italic;text-align:center;padding:30px 0}
+.hr-empty{color:#8893b5;font-style:italic;text-align:center;padding:30px 0}
 
 /* ---------- footer panel ---------- */
-.footer-panel{background:var(--navy-deep);color:#9eb5a7;scroll-snap-align:center;min-height:calc(100vh - var(--bar-h));display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:64px 0;border-top:3px solid var(--gold);position:relative}
+.footer-panel{background:var(--navy-deep);color:#aab3cc;scroll-snap-align:center;min-height:calc(100vh - var(--bar-h));display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:64px 0;position:relative}
 .footer-logo{width:min(540px,82vw);height:auto;display:block;margin:0 auto 30px}
 .footer-logo.wordmark{width:min(460px,72vw)}
 .footer-logo-svg{width:min(460px,72vw);height:auto;display:block;margin:0 auto 30px}
@@ -324,13 +345,14 @@ html.snap{scroll-snap-type:y proximity}
 .footer-email:hover{color:var(--gold)}
 .footer-address{margin-bottom:40px;text-align:center}
 .footer-address h4{font-family:var(--f-eyebrow);color:#e7ecfb;font-size:var(--t-label);text-transform:uppercase;letter-spacing:.18em;margin-bottom:10px;font-weight:600}
-.footer-address p{color:#c3d4c8;font-size:1rem;line-height:1.7}
+.footer-address p{color:#c9d1e8;font-size:1rem;line-height:1.7}
 .footer-credit{font-size:.92rem;color:#aab3cc;margin-bottom:10px;max-width:60ch}
-.footer-legal{font-size:.84rem;color:#6b8a74}
+.footer-legal{font-size:.84rem;color:#7e87a3}
 
 /* ---------- responsive ---------- */
 @media(max-width:900px){
   html.snap{scroll-snap-type:none}
+  html.mandatory-snap.snap{scroll-snap-type:none}
   body{font-size:1rem}
   .nav{flex-wrap:wrap;padding:12px 22px;min-height:0}
   .nav-toggle{display:block}
@@ -349,208 +371,196 @@ html.snap{scroll-snap-type:y proximity}
   .writing-cover img{margin:0 auto}
   .research-grid{grid-template-columns:1fr;gap:18px}
   .chevron{display:none}
+  .proj>summary{flex-wrap:wrap;padding:14px 0 10px}
+  .proj-open{position:static;display:inline-block;margin:6px 0 10px 1.6em}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* ---------- unified single-page stack (index.html only) ---------- */
+/* Stage 5 retired the sticky-stack/scroll-snap mechanic in favor of normal
+   long-scroll document flow (owner request, shown a reference site). This
+   line is the one survivor: site.js unconditionally adds .snap to <html>,
+   and html.snap{scroll-snap-type:y proximity} (shared, site-wide) would
+   otherwise reactivate proximity scroll-snapping against .panel's still-
+   present scroll-snap-align. Scoped to html.stack-page so it can never
+   affect any other page's .panel use. */
+html.stack-page.snap{scroll-snap-type:none}
+/* .stack-item stays as a class purely as a non-visual scope hook (ledger.js's
+   selector, this scroll-margin-top rule) - it no longer pins/positions
+   anything. scroll-margin-top is the fixed-header clearance an anchor
+   target needs regardless of flow model, not a sticky-specific declaration. */
+.stack-item{scroll-margin-top:var(--bar-h)}
+/* Home-2 "3 Arenas" cards stay permanently expanded: <details open> with the
+   toggle interaction disabled, rather than a second markup pattern. */
+.xcard-locked{cursor:default}
+.xcard-locked summary{cursor:default;pointer-events:none}
+.xcard-locked summary .hint{display:none}
+
+/* ---------- Stage 3: ledger signature element. Reuses Stage 1 tokens
+   (--f-eyebrow mono, --wash muted text, --rule hairline, --accent
+   active) -- no new custom properties introduced. ---------- */
+.ledger{display:none;position:fixed;right:28px;top:50%;transform:translateY(-50%);flex-direction:column;align-items:flex-end;gap:14px;z-index:50;font-family:var(--f-eyebrow);pointer-events:none}
+@media(min-width:900px){.ledger{display:flex}}
+.ledger-rail{display:flex;flex-direction:column;gap:8px;list-style:none;padding:0;margin:0}
+.ledger-tick{width:6px;height:6px;border-radius:50%;background:var(--rule);transition:background .25s ease,transform .25s ease}
+.ledger-tick.is-active{background:var(--accent);transform:scale(1.4)}
+.ledger-label{font-size:.72rem;letter-spacing:.08em;color:var(--wash);opacity:.85}
+
+/* ---------- reduced motion, page-scoped, additive to the
+   shared rule below (kct.html/Microgroup.info also use it, left
+   byte-identical). ---------- */
+@media(prefers-reduced-motion:reduce){
+  .ledger-tick{transition:none}
+}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+html{scroll-behavior:smooth}
 
-/* ====================================================== */
-/* microgroup.info — alternating bands rebuild            */
-/* ====================================================== */
+/* ============================================================
+   PROJECTS: Active / Pending sections + CTA
+   ============================================================ */
+.projects-section{max-width:760px;margin:0 auto 40px}
+.projects-subhead{font-family:var(--f-head);color:var(--paper);font-size:clamp(1.5rem,2.6vw,1.9rem);font-weight:600;text-align:center;margin:0 0 18px;padding-bottom:10px}
+.projects-empty{color:var(--muted-light);text-align:center;font-size:1.02rem;margin:0;opacity:.78}
 
-/* nav: brand mark + slogan on gold bar */
-.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
-.nav-brand img{height:42px;width:auto;display:block;flex-shrink:0}
-.nav-slogan{font-family:var(--f-micro-slogan);color:var(--navy);font-size:1.04rem;font-weight:500;line-height:1.1;white-space:nowrap}
-.nav-slogan em{font-style:italic;font-weight:600}
+.proj-list{margin-bottom:8px}
+.proj{position:relative;border-bottom:1px solid var(--line-navy)}
+.proj>summary{list-style:none;cursor:pointer;padding:14px 96px 14px 0;font-family:var(--f-head);font-weight:600;font-size:1.14rem;color:var(--paper);display:flex;align-items:center;gap:10px}
+.proj>summary::-webkit-details-marker{display:none}
+.proj>summary::before{content:"+";color:var(--gold);font-weight:700;width:.9em;display:inline-block;text-align:center;flex-shrink:0}
+.proj[open]>summary::before{content:"\2013"}
+.proj>summary:hover{color:var(--gold)}
+.proj-open{position:absolute;top:14px;right:0;font-family:var(--f-eyebrow);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--line-navy);color:var(--gold);white-space:nowrap}
+.proj-open:hover{background:var(--gold);color:var(--navy);text-decoration:none}
+.proj-desc{padding:0 0 18px 1.6em;color:var(--muted-light);font-size:.96rem;line-height:1.65}
 
-/* bands: full-width sections, alternating navy / warm paper */
-.band{padding:84px 0;position:relative}
-.band .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px;width:100%}
-.band-navy{background:var(--navy);color:#eaeefb}
-.band-warm{background:var(--paper-warm);color:var(--ink)}
-.band-navy.chess::before{
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
-  background-image:linear-gradient(rgba(241,196,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(241,196,0,.04) 1px,transparent 1px);
-  background-size:54px 54px;
-  -webkit-mask-image:radial-gradient(ellipse 75% 65% at 50% 45%,#000,transparent 78%);
-  mask-image:radial-gradient(ellipse 75% 65% at 50% 45%,#000,transparent 78%);
-}
-.band .wrap{position:relative;z-index:1}
+.switcher{display:flex;justify-content:center;gap:8px;margin:0 0 24px}
+.switcher .tab{font-family:var(--f-eyebrow);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:7px 18px;border:1px solid var(--line-navy);color:var(--muted-light)}
+.switcher .tab:hover{border-color:var(--gold);color:var(--gold);text-decoration:none}
+.switcher .tab.active{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:600}
 
-/* section headings, light (on navy) and dark (on warm) */
-.mg-shead{text-align:center;max-width:720px;margin:0 auto 48px}
-.mg-shead .eyebrow{margin-bottom:14px}
-.mg-shead h2{color:var(--paper);font-family:var(--f-head);font-size:var(--t-h2);font-weight:600;line-height:1.05}
-.mg-shead-sub{color:var(--muted-light);font-size:var(--t-lead);margin-top:14px}
-.eyebrow-dark{color:#a8841f}
-.mg-h2-dark{color:var(--navy)!important}
-
-/* hero */
-.mg-hero{text-align:center;padding-top:72px}
-.mg-hero-logo{width:clamp(300px,40vw,480px);height:auto;margin:0 auto 26px;display:block}
-.mg-lede{max-width:62ch;margin:0 auto 30px;color:var(--muted-light);font-size:var(--t-lead);text-align:center}
-.mg-hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-
-/* expertise — circular medallions */
-.mg-medallions{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;max-width:1080px;margin:0 auto}
-.mg-med{flex:1;min-width:150px;max-width:190px;text-align:center}
-.mg-med-circle{width:96px;height:96px;border-radius:50%;border:2px solid var(--gold);background:var(--paper);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:var(--f-micro);color:var(--navy);font-size:2.1rem;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
-.mg-med:hover .mg-med-circle{transform:translateY(-4px);box-shadow:0 14px 30px rgba(8,29,68,.18);background:var(--gold)}
-.mg-med h3{font-family:var(--f-micro);font-size:1.06rem;color:var(--navy);margin-bottom:8px;letter-spacing:.01em}
-.mg-med p{color:var(--muted);font-size:.94rem;line-height:1.55}
-
-/* what guides us — two by two centered quad */
-.mg-quad{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:760px;margin:0 auto}
-.mg-quad-card{text-align:center;background:var(--navy-card);border-top:3px solid var(--gold);padding:28px 26px;transition:background .16s ease,transform .16s ease,box-shadow .16s ease}
-.mg-quad-card:hover{background:#163c1e;transform:translateY(-3px);box-shadow:0 16px 36px rgba(0,0,0,.3)}
-.mg-quad-card h4{font-family:var(--f-micro);font-size:1.12rem;color:var(--gold-soft);margin-bottom:10px;letter-spacing:.01em}
-.mg-quad-card p{color:var(--muted-light);font-size:.96rem;line-height:1.6}
-
-/* engage block on warm */
-.mg-engage{max-width:660px;margin:0 auto;text-align:center}
-.mg-engage .eyebrow{margin-bottom:14px}
-.mg-engage p{color:var(--muted);font-size:1.04rem;max-width:60ch;margin:0 auto 10px;line-height:1.6}
-.mg-engage .fine{color:#8a8576;font-size:.92rem;font-style:italic;margin-bottom:22px}
-.mg-engage h2{margin-bottom:14px}
-
-/* contact band + form */
-.mg-contact-band{padding-top:64px}
-.mg-form-wrap{max-width:720px;margin:0 auto}
-.mg-form{margin-top:8px}
-.mg-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.mg-field{margin-bottom:18px;text-align:left}
-.mg-field label{display:block;font-family:var(--f-eyebrow);text-transform:uppercase;letter-spacing:.14em;font-size:.74rem;font-weight:600;color:var(--gold-soft);margin-bottom:8px}
-.mg-field .req{color:var(--gold)}
-.mg-field .opt{color:#8aa396;text-transform:none;letter-spacing:0;font-weight:400}
-.mg-field input,.mg-field select,.mg-field textarea{width:100%;font-family:var(--f-body);font-size:1rem;color:#eef1ee;background:var(--navy-card);border:1px solid var(--line-navy);border-radius:6px;padding:12px 14px;transition:border-color .16s ease,box-shadow .16s ease}
-.mg-field input:focus,.mg-field select:focus,.mg-field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(241,196,0,.18)}
-.mg-field textarea{resize:vertical;min-height:120px}
-.mg-field select{appearance:none;-webkit-appearance:none;cursor:pointer}
-.mg-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.mg-actions{margin-top:8px;text-align:center}
-.mg-actions .btn:disabled{opacity:.6;cursor:not-allowed}
-.mg-status{margin-top:16px;text-align:center;font-size:.96rem;min-height:1.2em}
-.mg-status.ok{color:var(--gold-soft)}
-.mg-status.err{color:#ff9b8a}
-
-/* footer contact button spacing */
-.footer-contact{margin-bottom:40px}
-
-@media(max-width:760px){
-  .band{padding:60px 0}
-  .nav-slogan{font-size:.9rem;white-space:normal}
-  .nav-brand img{height:34px}
-  .mg-medallions{gap:18px}
-  .mg-med{min-width:130px}
-  .mg-quad{grid-template-columns:1fr;gap:16px;max-width:420px}
-  .mg-row{grid-template-columns:1fr}
+/* ============================================================
+   NEWSLETTER SIGNUP FORM
+   ============================================================ */
+.signup-form{max-width:620px;margin:0 auto;display:grid;gap:20px;text-align:left}
+.signup-form .form-row{display:grid;gap:8px}
+.signup-form label{font-family:var(--f-eyebrow);text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:600;color:var(--gold)}
+.signup-form label .opt-tag{text-transform:none;letter-spacing:.02em;font-weight:500;color:var(--muted-light);opacity:.7;font-size:.72rem;margin-left:6px}
+.signup-form input,.signup-form select{font-family:var(--f-body);font-size:1rem;color:var(--paper);background:var(--navy-card);border:1px solid var(--line-navy);border-radius:8px;padding:13px 14px;width:100%;transition:border-color .16s ease,box-shadow .16s ease}
+.signup-form input::placeholder{color:var(--muted-light);opacity:.5}
+.signup-form input:focus,.signup-form select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(241,196,0,.18)}
+.signup-form select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f1c400' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:18px;padding-right:42px;cursor:pointer}
+.signup-form select option{color:#1a1f2b;background:#fff}
+.signup-form .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.signup-form input.invalid,.signup-form select.invalid{border-color:#e2554f;box-shadow:0 0 0 3px rgba(226,85,79,.18)}
+.signup-form .form-actions{margin-top:4px;text-align:center}
+.signup-form .form-actions .btn{cursor:pointer;font-family:var(--f-eyebrow)}
+.signup-form .form-actions .btn[disabled]{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+.signup-form .form-privacy{font-size:.82rem;line-height:1.5;color:var(--muted-light);opacity:.72;text-align:center;max-width:52ch;margin:14px auto 0}
+.contact-disclosure-drop{margin-top:32px;text-align:center}
+.signup-form .form-status{text-align:center;font-size:.95rem;margin:6px auto 0;min-height:1.2em}
+.signup-form .form-status.ok{color:var(--gold-soft)}
+.signup-form .form-status.err{color:#f0908b}
+.signup-form .hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+@media(max-width:640px){
+  .signup-form .form-grid{grid-template-columns:1fr}
 }
 
-/* ====================================================== */
-/* microgroup.info — SVG logo, snap scroll, combined band */
-/* ====================================================== */
+/* ============================================================
+   FOOTER LICENSE LINE
+   ============================================================ */
+.footer-license{font-size:.84rem;color:#7e87a3;margin-bottom:6px}
 
-/* clean SVG wordmark sizing (shrunk hero) */
-.mg-hero-logo{width:clamp(260px,32vw,400px);height:auto;margin:0 auto 26px;display:block}
-.footer-panel .footer-logo{width:min(380px,68vw);height:auto;display:block;margin:0 auto 30px}
+/* ============================================================
+   NEWSLETTER CHECKBOXES
+   ============================================================ */
+.signup-form .field-label{font-family:var(--f-eyebrow);text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:600;color:var(--gold);display:block}
+.checkbox-group{display:grid;gap:12px;margin-top:4px}
+.checkbox-group.invalid{outline:2px solid #e2554f;outline-offset:6px;border-radius:8px}
+.checkbox-opt{display:flex;align-items:flex-start;gap:12px;font-family:var(--f-body);color:var(--paper);font-size:1rem;cursor:pointer;padding:12px 14px;border:1px solid var(--line-navy);border-radius:8px;background:var(--navy-card);transition:border-color .16s ease,background .16s ease}
+.checkbox-opt:hover{border-color:var(--gold)}
+.checkbox-opt input{margin-top:3px;width:18px;height:18px;accent-color:var(--gold);flex-shrink:0;cursor:pointer}
+.checkbox-opt em{font-style:italic;color:var(--muted-light);opacity:.75;font-size:.9rem}
+.checkbox-opt.locked{opacity:.45;cursor:not-allowed}
+.checkbox-opt.locked input{cursor:not-allowed}
+.checkbox-all{border-top:2px solid var(--gold)}
 
-/* Hero lockup: chess-piece mark, then the graphic wordmark image. That
-   single image ALREADY contains "MICRO Group," the gold rule, and the
-   full tagline with "your goals" underlined -- confirmed by rendering it
-   directly, since the raw path data is unreadable by eye. Earlier drafts
-   re-added "Group," a separate rule, and a separate tagline paragraph
-   alongside it, duplicating content already in the image; removed. */
-.mg-hero-mark{width:clamp(190px,22vw,260px);height:auto;margin:0 auto -28px;display:block}
-.mg-wordmark-img{width:clamp(320px,42vw,520px);height:auto;margin:0 auto 24px;display:block}
-
-/* Hard-snap single-page stack (ported from jonathanlindavis.com's
-   unified homepage): each .stack-item pins to the viewport and stacks on
-   top of the next via z-index as you scroll, instead of relying on
-   native CSS scroll-snap (which still allows partial/free scrolling
-   between sections if a gesture stops short of a snap point). The actual
-   snap behavior is JS-driven -- see stack-scroll.js -- this CSS only
-   establishes the sticky/stacked geometry it depends on. */
-html.stack-page{scrollbar-width:none;-ms-overflow-style:none}
-html.stack-page::-webkit-scrollbar{display:none}
-html.stack-page body::-webkit-scrollbar{display:none}
-.stack-item{position:sticky;top:var(--bar-h);height:calc(100vh - var(--bar-h));overflow:hidden;scroll-margin-top:var(--bar-h);display:flex;flex-direction:column;justify-content:center}
-/* Safety net: if a section's content runs long on a given viewport, this
-   scrolls internally instead of silently clipping against overflow:hidden
-   above (mirrors .stack-item .inner on jonathanlindavis.com; this site's
-   equivalent wrapper class is .wrap). */
-.stack-item .wrap{max-height:100%;overflow-y:auto}
-@media(max-width:900px){
-  .stack-item{position:static;height:auto;overflow:visible}
-  .stack-item .wrap{max-height:none;overflow-y:visible}
+/* ============================================================
+   FLASHING SUCCESS CONFIRMATION
+   ============================================================ */
+.form-status.flash{
+  display:inline-block;
+  font-family:var(--f-eyebrow);
+  font-weight:600;
+  font-size:1.05rem;
+  color:#27d07a;
+  animation:status-pulse 1.6s ease-in-out infinite;
+}
+@keyframes status-pulse{
+  0%,100%{opacity:1;text-shadow:0 0 0 rgba(39,208,122,0)}
+  50%{opacity:.45;text-shadow:0 0 14px rgba(39,208,122,.7)}
+}
+@media(prefers-reduced-motion:reduce){
+  .form-status.flash{animation:none;opacity:1}
 }
 
-/* "What Guides Us" quad sits on the warm band now (its own stack-item,
-   split out from the old combined expertise+guides band so both fit
-   their frame without an internal scrollbar) -- needs dark cards for
-   contrast against the warm paper background. */
-.mg-quad-light .mg-quad-card{background:var(--navy);border-top:3px solid var(--gold)}
-.mg-quad-light .mg-quad-card h4{color:var(--gold)}
-.mg-quad-light .mg-quad-card p{color:#e7ecfb}
-
-/* contact band stays normal scroll (no snap on contact page) */
-.mg-contact-band{min-height:auto}
-
-/* ====================================================== */
-/* microgroup.info — content bands, 2026-07-22 (products,   */
-/* who-we-serve, expanded discipline sub-lists)             */
-/* ====================================================== */
-
-/* shared bullet list, used inside medallions, product cards,
-   and who-we-serve cards; color follows the surrounding card
-   context (muted on warm/paper, muted-light inside a dark card) */
-.mg-list{list-style:none;margin-top:10px;text-align:left;min-width:0}
-.mg-list li{position:relative;padding-left:16px;margin-bottom:6px;font-size:.88rem;line-height:1.5;color:var(--muted)}
-.mg-list li::before{content:"\2022";position:absolute;left:0;color:var(--gold)}
-.mg-quad-card .mg-list li{color:var(--muted-light)}
-
-/* products band: Almanac / Scribe pricing cards */
-.mg-price{font-family:var(--f-micro);color:var(--gold-soft);font-size:1.1rem;display:block;margin:6px 0 4px}
-.mg-products{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:820px;margin:0 auto}
-.mg-products .mg-quad-card{min-width:0}
-.mg-addon-note{max-width:640px;margin:30px auto 0;text-align:center;color:#8aa396;font-size:.9rem;font-style:italic}
-
-/* who-we-serve band: three sector cards + footprint line */
-.mg-serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:900px;margin:0 auto}
-.mg-serve-grid .mg-quad-card{min-width:0}
-.mg-footprint{max-width:680px;margin:30px auto 0;text-align:center;color:var(--muted);font-size:.94rem;line-height:1.6}
-
-@media(max-width:760px){
-  .mg-products{grid-template-columns:1fr;max-width:420px}
-  .mg-serve-grid{grid-template-columns:1fr;max-width:420px}
-  .mg-addon-note,.mg-footprint{padding:0 6px}
+/* ============================================================
+   FOOTER CONTACT BUTTON
+   ============================================================ */
+.footer-contact-btn{
+  display:inline-block;
+  font-family:var(--f-eyebrow);
+  font-size:1rem;
+  letter-spacing:.04em;
+  text-decoration:none;
+  padding:12px 32px;
+  border-radius:999px;
+  background:var(--gold);
+  color:var(--navy);
+  border:1.5px solid var(--gold);
+  font-weight:600;
+  margin-bottom:14px;
+  transition:all .18s ease;
+}
+.footer-contact-btn:hover{
+  background:var(--gold-soft);
+  border-color:var(--gold-soft);
+  transform:translateY(-2px);
+  box-shadow:0 10px 26px rgba(241,196,0,.3);
 }
 
-/* ====================================================== */
-/* .site-flip — cross-site switcher (jonathanlindavis.com   */
-/* <-> microgroup.info), Flip-Page Cross-Site Plan 2.1.      */
-/* Static, copy-pasted CSS, deliberately NOT a shared/linked */
-/* stylesheet with the jonathanlindavis.com repo. This block */
-/* is a named two-repo sync point: any future change to      */
-/* .site-flip's markup or behavior gets hand-applied on both */
-/* sides in the same pass, logged so it never silently forks.*/
-/* ====================================================== */
-.site-flip{display:flex;justify-content:flex-end;align-items:flex-start;gap:.5rem;flex-wrap:wrap;margin-bottom:18px}
-.pidx-flip-slot .site-flip{margin-bottom:0}
-.site-flip-item{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
-.site-flip-tab{font-family:var(--f-eyebrow);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;display:inline-block;padding:7px 16px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--muted);transition:all .15s ease}
-.site-flip-tab:hover{border-color:#a8841f;color:#a8841f}
-.site-flip-tab.is-active{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:600}
-.site-flip-note{font-family:var(--f-body);color:var(--muted);font-size:.78rem;white-space:nowrap}
-
-/* dark-band context (hero, contact band): light-on-dark palette,
-   same convention as .mg-quad-light's swap for a warm/navy band */
-.band-navy .site-flip-tab{border-color:var(--line-navy);background:transparent;color:var(--muted-light)}
-.band-navy .site-flip-tab:hover{border-color:var(--gold);color:var(--gold-soft)}
-.band-navy .site-flip-tab.is-active{background:var(--gold);border-color:var(--gold);color:var(--navy)}
-.band-navy .site-flip-note{color:#8893b5}
-
-@media(max-width:600px){
-  .site-flip{justify-content:center}
-  .site-flip-item{align-items:center}
-  .site-flip-note{white-space:normal;text-align:center}
+/* ============================================================
+   CONTACT FORM DISCLOSURE CALLOUT
+   ============================================================ */
+.contact-disclosure{
+  max-width:620px;
+  margin:0 auto 28px;
+  padding:18px 22px;
+  border:1px solid var(--line-navy);
+  border-top:3px solid var(--gold);
+  border-radius:8px;
+  background:var(--navy-card);
+  text-align:center;
+}
+.contact-disclosure p{text-align:center}
+.contact-disclosure .coi-label{
+  display:inline-block;
+  font-family:var(--f-eyebrow);
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:.72rem;
+  font-weight:600;
+  color:var(--gold);
+  margin-bottom:8px;
+}
+.contact-disclosure .frame-line{
+  color:var(--paper);
+  font-size:.95rem;
+  margin:0 0 8px;
+  font-weight:600;
+}
+.contact-disclosure p{
+  color:var(--muted-light);
+  font-size:.9rem;
+  line-height:1.55;
+  margin:0;
 }

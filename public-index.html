@@ -9,128 +9,113 @@
   gtag('js', new Date());
   gtag('config', 'G-4J4XGXZ4CN');
 </script>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Public Index — MICRO Group, LLC</title>
-<meta name="description" content="A public index of MICRO Group, LLC: services, products, who the firm serves, and how to get in touch.">
-<meta name="robots" content="noindex, nofollow">
-<meta name="referrer" content="no-referrer">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Barlow+Semi+Condensed:wght@500;600&family=Marcellus&family=Cinzel:wght@500;600&family=Michroma&family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="A public index of MICRO Group, LLC: consulting disciplines, software products, who the firm serves, and how to get in touch." />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="referrer" content="no-referrer" />
 <link rel="icon" type="image/svg+xml" href="king-mark.svg">
 <link rel="canonical" href="https://microgroup.info/public-index.html">
-<link rel="stylesheet" href="style.css">
 <style>
-/* public-index.html — page-scoped only; nothing here touches style.css.
-   Mirrors jonathanlindavis.com's public-index.html accordion pattern
-   (details.proj: summary, Open link, description), palette-swapped to
-   this site's navy/gold tokens from style.css's :root block. */
-.pidx-wrap{max-width:820px;margin:0 auto;padding:64px 40px 96px}
+:root{
+  --paper:#eef0f2; --ink:#20242b; --line:#ccd0d6; --muted:#626b78;
+  --accent:#8a6b1f; --accent-soft:#e7ddc2;
+  --mono:ui-monospace,"Cascadia Mono","Segoe UI Mono","SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--mono);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--ink);text-decoration:none}
+a:hover{color:var(--accent);text-decoration:underline}
 
-.pidx-flip-slot{display:flex;justify-content:flex-end;min-height:1px;margin-bottom:18px}
+.wrap{max-width:820px;margin:0 auto;padding:3rem 1.5rem 4rem}
+.switcher{display:flex;justify-content:flex-end;gap:.4rem;margin-bottom:1.4rem}
+.switcher .tab{font-size:.84rem;letter-spacing:.08em;text-transform:uppercase;padding:.34rem .8rem;border:1px solid var(--line);background:#fff;color:var(--muted)}
+.switcher .tab:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+.switcher .tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
 
-.pidx-kicker{margin-bottom:12px}
-.pidx-h1{font-size:clamp(2rem,4vw,2.7rem);margin:0 0 16px}
-.pidx-intro{color:var(--muted);font-size:var(--t-body);max-width:64ch;margin:0 0 40px;line-height:1.65}
+.path{font-size:.88rem;color:var(--muted);letter-spacing:.01em;margin-bottom:1.6rem}
+.path .seg{color:var(--muted)}
+.path .cur{color:var(--accent);font-weight:600}
 
-.pidx-section-label{font-family:var(--f-eyebrow);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:#a8841f;border-bottom:1px solid var(--line);padding-bottom:8px;margin:40px 0 6px}
-.pidx-section-label:first-of-type{margin-top:8px}
+.kicker{font-size:.84rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+h1{font-size:1.9rem;font-weight:600;margin:0 0 .9rem;letter-spacing:-.01em}
+.intro{color:var(--muted);font-size:.92rem;max-width:none;margin:0 0 2.4rem}
 
-.pidx-list{margin-bottom:8px}
-.pidx-item{position:relative;border-bottom:1px solid var(--line)}
-.pidx-item>summary{list-style:none;cursor:pointer;padding:16px 100px 16px 0;font-family:var(--f-head);font-weight:600;font-size:1.15rem;color:var(--navy);display:flex;align-items:center;gap:10px}
-.pidx-item>summary::-webkit-details-marker{display:none}
-.pidx-item>summary::before{content:"+";color:#a8841f;font-weight:700;width:.9em;display:inline-block;text-align:center}
-.pidx-item[open]>summary::before{content:"\2013"}
-.pidx-item>summary:hover{color:#a8841f}
-.pidx-open{position:absolute;top:15px;right:0;font-family:var(--f-eyebrow);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;padding:7px 16px;border:1px solid var(--line);background:var(--paper);color:var(--muted);text-decoration:none;border-radius:999px;transition:all .15s ease}
-.pidx-open:hover{border-color:#a8841f;background:#a8841f;color:#fff;text-decoration:none}
-.pidx-desc{padding:0 0 22px 1.9rem;color:var(--muted);font-size:.98rem;line-height:1.65;max-width:64ch}
+.section-label{font-size:.84rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:.5rem;margin:2rem 0 .4rem}
+
+.proj-list{margin-bottom:1rem}
+.proj{position:relative;border-bottom:1px solid var(--line)}
+.proj>summary{list-style:none;cursor:pointer;padding:.75rem 5.5rem .75rem 0;font-weight:600;font-size:1rem;display:flex;align-items:center;gap:.55rem}
+.proj>summary::-webkit-details-marker{display:none}
+.proj>summary::before{content:"+";color:var(--accent);font-weight:700;width:.9em;display:inline-block;text-align:center}
+.proj[open]>summary::before{content:"\2013"}
+.proj>summary:hover{color:var(--accent)}
+.proj-open{position:absolute;top:.62rem;right:0;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;padding:.32rem .7rem;border:1px solid var(--line);background:#fff;color:var(--muted)}
+.proj-open:hover{border-color:var(--accent);background:var(--accent);color:#fff;text-decoration:none}
+.proj-desc{padding:0 0 .95rem 1.45em;color:var(--muted);font-size:.92rem;line-height:1.65;max-width:none}
+
+footer{max-width:820px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--line);color:var(--muted);font-size:.84rem}
 
 @media(max-width:600px){
-  .pidx-wrap{padding:44px 22px 72px}
-  .pidx-item>summary{padding-right:0;flex-wrap:wrap}
-  .pidx-open{position:static;display:inline-block;margin-top:10px}
-  .pidx-desc{padding-left:0}
+  .proj>summary{flex-wrap:wrap;padding:.75rem 0 .5rem}
+  .proj-open{position:static;display:inline-block;margin:.3rem 0 .5rem 1.45em}
 }
 </style>
 </head>
 <body>
+<!-- writing-convention: general -->
 
-<header class="site-header">
-  <nav class="nav" aria-label="Primary">
-    <a class="nav-brand" href="index.html" aria-label="MICRO Group home">
-      <span class="nav-slogan">A measured approach to <em>your goals.</em></span>
-    </a>
-    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="public-index.html" aria-current="page">Public Index</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </div>
-  </nav>
-</header>
+<div class="wrap">
 
-<main>
-  <div class="wrap pidx-wrap">
-
-    <div class="pidx-flip-slot">
-      <div class="site-flip" role="navigation" aria-label="Switch site">
-        <div class="site-flip-item">
-          <a class="site-flip-tab" href="https://jonathanlindavis.com">Open Data</a>
-          <span class="site-flip-note">You are leaving microgroup.info</span>
-        </div>
-        <a class="site-flip-tab is-active" href="index.html" aria-current="true">Enterprise</a>
-      </div>
-    </div>
-
-    <span class="eyebrow eyebrow-dark pidx-kicker">Public &middot; site index</span>
-    <h1 class="pidx-h1">Public Index</h1>
-    <p class="pidx-intro">A directory of MICRO Group's site: the five service disciplines, the Almanac and Scribe products with current pricing, who the firm serves, and how to get in touch. Open a row below to read a short description, or use the Open link to go straight to the page.</p>
-
-    <div class="pidx-section-label">Home</div>
-    <div class="pidx-list">
-      <details class="pidx-item"><summary>Home</summary><a class="pidx-open" href="index.html">Open &#8599;</a><div class="pidx-desc">The firm's homepage: the five service disciplines, the principles behind every engagement, and a link to the firm's founder.</div></details>
-    </div>
-
-    <div class="pidx-section-label">Services</div>
-    <div class="pidx-list">
-      <details class="pidx-item"><summary>Services</summary><a class="pidx-open" href="index.html">Open &#8599;</a><div class="pidx-desc">MICRO Group works across five named disciplines. Management means strategic planning and organizational strategy, including interim director service when a seat needs filling. Integration brings new software and workflows into an organization and trains the staff who have to use them. Culture work is team building and employee engagement aimed at collaboration that outlasts a single workshop. Research includes pay analysis, market studies, and policy impact work. Operations is about getting more out of the resources an organization already has. Any engagement beyond the two named products below is priced individually.</div></details>
-    </div>
-
-    <div class="pidx-section-label">Products</div>
-    <div class="pidx-list">
-      <details class="pidx-item"><summary>Almanac</summary><a class="pidx-open" href="index.html">Open &#8599;</a><div class="pidx-desc">A funder and grant match for a nonprofit, built from public IRS filings: it finds the funders and open grants that fit an organization and ranks them. $1,500 per year.</div></details>
-      <details class="pidx-item"><summary>Scribe</summary><a class="pidx-open" href="index.html">Open &#8599;</a><div class="pidx-desc">A grant application drafter built from an Almanac match. Standard includes one draft per quarter for $1,500 per year. Pro includes one draft per month for $3,000 per year.</div></details>
-      <details class="pidx-item"><summary>Infrastructure &amp; Updates</summary><a class="pidx-open" href="index.html">Open &#8599;</a><div class="pidx-desc">An add-on to an Almanac or Scribe subscription covering ongoing technical support and system updates. $1,500 per year.</div></details>
-    </div>
-
-    <div class="pidx-section-label">Who We Serve</div>
-    <div class="pidx-list">
-      <details class="pidx-item"><summary>Who We Serve</summary><a class="pidx-open" href="index.html">Open &#8599;</a><div class="pidx-desc">MICRO Group serves nonprofit, government, and political and legislative organizations. Nonprofit clients range from national organizations to local ones, across a range of missions. Government clients include municipal, state, and federal agencies and public departments. Political and legislative clients include campaigns, candidates, committees, and advocacy organizations, drawing on the founder's legislative-analyst background; this service line becomes active upon his departure from nonpartisan public-sector analyst work, effective July 31, 2026. Current operating counties are Austin-Travis County, San Antonio-Bexar County, Dallas-Fort Worth Metro, and Houston-Harris County. Requests and solicitations from beyond that footprint are welcome worldwide.</div></details>
-    </div>
-
-    <div class="pidx-section-label">Contact</div>
-    <div class="pidx-list">
-      <details class="pidx-item"><summary>Contact</summary><a class="pidx-open" href="contact.html">Open &#8599;</a><div class="pidx-desc">Start the conversation through the site's contact form. Every engagement begins with a free thirty-minute consultation.</div></details>
-    </div>
-
+  <div class="switcher">
+    <span class="tab active">Public</span>
+    <a href="https://jonathanlindavis.com/private-index.html" target="_blank" rel="noopener" class="tab">Owner &#8599;</a>
   </div>
 
-  <section class="footer-panel">
-    <img class="footer-logo" src="MICRO_wordmark_dark.svg" alt="MICRO Group, LLC — A measured approach to your goals">
-    <a class="footer-contact btn btn-gold" href="contact.html">Contact Us</a>
-    <div class="footer-address">
-      <h4>Mailing Address</h4>
-      <p>1801 E 51st St., STE 365<br>PMB 354, Austin, Texas</p>
-    </div>
-    <div class="footer-legal">© <span id="yr"></span> MICRO Group, LLC. All rights reserved. Austin, Texas.<br><a href="https://jonathanlindavis.com/private-index.html" target="_blank" rel="noopener" style="color:inherit;opacity:.6">Owner: Private Index</a></div>
-  </section>
-</main>
+  <div class="path"><span class="seg">microgroup.info</span><span class="seg">/</span><span class="cur">public-index</span></div>
 
-<script src="site.js"></script>
+  <div class="kicker">Public &middot; site index</div>
+  <h1>Public Index</h1>
+  <p class="intro">A directory of MICRO Group's site: the five consulting disciplines, the Almanac and Scribe products with current pricing, who the firm serves, and how to get in touch. Click a row to expand a short description, or open it directly.</p>
+
+
+  <div class="section-label">Home</div>
+  <div class="proj-list">
+    <details class="proj"><summary>Home</summary><a class="proj-open" href="index.html">Open &#8599;</a><div class="proj-desc">MICRO Group's homepage: the five consulting disciplines, the founder's background, and what the firm builds.</div></details>
+  </div>
+
+
+  <div class="section-label">Consulting Disciplines</div>
+  <div class="proj-list">
+    <details class="proj"><summary>Consulting Disciplines</summary><a class="proj-open" href="index.html#offer">Open &#8599;</a><div class="proj-desc">MICRO Group works across five named disciplines. Management is strategic direction and leadership capacity, including interim or fractional campaign management. Integration brings new software and workflows into an organization and trains the staff who use them. Culture is team building and employee engagement aimed at collaboration that outlasts a single workshop. Research is applied research grounded in the founder's legislative background. Operations is about getting more out of the resources an organization already has.</div></details>
+  </div>
+
+
+  <div class="section-label">Software Products</div>
+  <div class="proj-list">
+    <details class="proj"><summary>Almanac</summary><a class="proj-open" href="index.html#offer">Open &#8599;</a><div class="proj-desc">A funder and grant match for a nonprofit, built from public IRS filings: it finds the funders and open grants that fit an organization and ranks them. $1,500 per year.</div></details>
+    <details class="proj"><summary>Scribe</summary><a class="proj-open" href="index.html#offer">Open &#8599;</a><div class="proj-desc">A grant application drafter built from an Almanac match. Standard includes one draft per quarter for $1,500 per year. Pro includes one draft per month for $3,000 per year.</div></details>
+    <details class="proj"><summary>Concordance, Herald, Atlas &amp; Dossier</summary><a class="proj-open" href="index.html#offer">Open &#8599;</a><div class="proj-desc">Four additional products at varying stages of development: Concordance (board-introduction mapping, deployed for one client), Herald (funder-page monitoring), Atlas (foundation-giving benchmarking), and Dossier (990-PF reconciliation).</div></details>
+    <details class="proj"><summary>Infrastructure &amp; Updates</summary><a class="proj-open" href="index.html#offer">Open &#8599;</a><div class="proj-desc">An add-on to an Almanac or Scribe subscription covering ongoing technical support and system updates. $1,500 per year.</div></details>
+  </div>
+
+
+  <div class="section-label">Who We Serve</div>
+  <div class="proj-list">
+    <details class="proj"><summary>Who We Serve</summary><a class="proj-open" href="index.html#offer">Open &#8599;</a><div class="proj-desc">MICRO Group serves nonprofit, government, and political and legislative organizations. Nonprofit clients range from national organizations to local ones, across a range of missions. Government clients include municipal, state, and federal agencies and public departments. Political and legislative clients include campaigns, candidates, committees, and advocacy organizations, drawing on the founder's legislative background; this service line becomes active upon his departure from nonpartisan public-sector analyst work, effective July 31, 2026. Current operating counties are Austin-Travis County, San Antonio-Bexar County, Dallas-Fort Worth Metro, and Houston-Harris County. Requests and solicitations from beyond that footprint are welcome worldwide.</div></details>
+  </div>
+
+
+  <div class="section-label">Contact</div>
+  <div class="proj-list">
+    <details class="proj"><summary>Contact</summary><a class="proj-open" href="contact.html">Open &#8599;</a><div class="proj-desc">Start the conversation through the site's contact form. Every engagement begins with a free thirty-minute consultation.</div></details>
+  </div>
+
+</div>
+
+<footer>
+  A public index of MICRO Group, LLC &middot; microgroup.info
+</footer>
 </body>
 </html>

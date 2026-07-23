@@ -1,11 +1,13 @@
 // POST /api/contact
-// Receives a contact submission from the form on index.html,
+// Receives a contact submission from the form on index.html or contact.html,
 // stores it in the D1 database bound as env.DB, and emails a copy
 // to the MICRO Group inbox through Resend.
 //
-// Expects JSON:
-//   { first_name, last_name, email, phone, location, purpose,
-//     urgency, referral, company_website }
+// Field contract matches jonathanlindavis.com's own /api/contact (shared
+// site.js handler, ported 2026-07-22 for structural parity between the two
+// sites' contact forms):
+//   { first_name, last_name, email, phone, organization, purpose,
+//     referral, message, company_website }
 //
 // company_website is the honeypot. Real people never see it, so if it
 // has any value the submission is treated as a bot and silently
@@ -36,12 +38,12 @@ export async function onRequestPost(context) {
   const last_name = clean(data.last_name);
   const email = clean(data.email).toLowerCase();
   const phone = clean(data.phone);
-  const location = clean(data.location);
+  const organization = clean(data.organization);
   const purpose = clean(data.purpose);
-  const urgency = clean(data.urgency);
   const referral = clean(data.referral);
+  const message = clean(data.message);
 
-  // Server side validation, mirroring the client.
+  // Server side validation, mirroring the client (site.js).
   if (!first_name || !last_name) {
     return json({ error: "Please enter your first and last name." }, 400);
   }
@@ -49,11 +51,11 @@ export async function onRequestPost(context) {
   if (!emailRe.test(email)) {
     return json({ error: "Please enter a valid email." }, 400);
   }
-  if (!location) {
-    return json({ error: "Please choose your location." }, 400);
+  if (!phone) {
+    return json({ error: "Please enter a phone number." }, 400);
   }
-  if (!purpose) {
-    return json({ error: "Please tell us the purpose of your message." }, 400);
+  if (!message) {
+    return json({ error: "Please enter a message." }, 400);
   }
 
   const created_at = new Date().toISOString();
@@ -62,10 +64,10 @@ export async function onRequestPost(context) {
   try {
     await env.DB.prepare(
       `INSERT INTO contacts
-        (first_name, last_name, email, phone, location, purpose, urgency, referral, created_at)
+        (first_name, last_name, email, phone, organization, purpose, referral, message, created_at)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
     )
-      .bind(first_name, last_name, email, phone, location, purpose, urgency, referral, created_at)
+      .bind(first_name, last_name, email, phone, organization, purpose, referral, message, created_at)
       .run();
   } catch (e) {
     return json({ error: "Something went wrong saving your message. Please try again." }, 500);
@@ -78,14 +80,14 @@ export async function onRequestPost(context) {
       const lines = [
         `Name: ${first_name} ${last_name}`,
         `Email: ${email}`,
-        `Phone: ${phone || "(not provided)"}`,
-        `Location: ${location}`,
-        `Urgency: ${urgency || "(not provided)"}`,
+        `Phone: ${phone}`,
+        `Organization: ${organization || "(not provided)"}`,
+        `Purpose: ${purpose || "(not provided)"}`,
         `Referral: ${referral || "(not provided)"}`,
         `Submitted: ${created_at}`,
         ``,
-        `Purpose:`,
-        purpose,
+        `Message:`,
+        message,
       ];
       await fetch("https://api.resend.com/emails", {
         method: "POST",
