@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Almanac for Black Mamas Village</title>
+<meta name="description" content="Almanac: Funder and Grant Match, prepared for Black Mamas Village. Black Mamas Village's confirmed funding history plus a researched database of funding prospects and currently-open opportunities." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/png" href="Assets/almanac-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=8f55469b15">
+<style>
+a{color:var(--ink)}
+
+.hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1.4rem;text-align:center}
+
+.section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
+.section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0}
+
+/* ---- Profile section ---- */
+.profile-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.5rem}
+@media(max-width:780px){.profile-grid{grid-template-columns:1fr}}
+.card{background:var(--well);border:1.5px solid var(--ink);padding:1.3rem 1.4rem;min-width:0;overflow-wrap:anywhere}
+.card h3{font-family:var(--mono);font-size:.84rem;text-transform:uppercase;letter-spacing:.08em;color:var(--wash);margin:0 0 .6rem}
+.card p{margin:0 0 .8rem;font-size:15px}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{font-family:var(--mono);font-size:14px;padding:.22rem .58rem;background:var(--paper);border:1px solid var(--rule);color:var(--ink)}
+.stat-tile{text-align:center;padding:1rem}
+.stat-tile .num{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--accent);line-height:1}
+.stat-tile .lbl{font-family:var(--mono);font-size:12.5px;color:var(--wash);text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem}
+.funder-mini-table{width:100%;min-width:480px;table-layout:fixed;border-collapse:collapse;font-size:15px;margin-top:.5rem}
+.funder-mini-table th{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--wash);text-align:left;padding:.35rem .5rem;border-bottom:1px solid var(--rule)}
+.funder-mini-table td{padding:.45rem .5rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere}
+.funder-mini-table th:first-child,.funder-mini-table td:first-child{width:26%}
+.funder-mini-table th:last-child,.funder-mini-table td:last-child{width:18%}
+.funder-mini-table .amt{font-family:var(--mono);text-align:right;color:var(--wash);font-size:14px}
+.id-note{font-family:var(--mono);font-size:.86rem;color:var(--wash);background:var(--paper);border:1px dashed var(--rule);padding:.5rem .7rem;margin:0}
+
+/* ---- Search/filter bar (shared pattern) ---- */
+.toolbar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-bottom:1.1rem}
+.search{flex:1;min-width:220px;padding:.6rem .75rem;border:1.5px solid var(--ink);border-radius:0;font-family:var(--serif);font-size:15px;background:var(--well);color:var(--ink);outline:none}
+.search:focus{outline:2px solid var(--ink);outline-offset:0}
+.chip-filter{display:flex;gap:.4rem;flex-wrap:wrap}
+.chip-btn{font-family:var(--mono);font-size:.84rem;padding:.32rem .65rem;border:1px solid var(--rule);background:var(--well);color:var(--wash);cursor:pointer}
+.chip-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* ---- Funder match cards ---- */
+/* border/padding/title typography superseded by tool-shared.css's card-convergence block. */
+.match-card{padding:0}
+.mc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
+.mc-head .fname{flex:1;min-width:220px;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;overflow-wrap:anywhere}
+.mc-head .match-rank{font-family:var(--mono);font-size:.88rem;color:var(--wash)}
+.mc-body{padding:.9rem 1.2rem;min-width:0}
+@media(max-width:640px){.mc-head{gap:.4rem}.mc-head .fname{min-width:0;flex-basis:100%}}
+.match-body{min-width:0}
+.badge{font-family:var(--serif);font-size:12.5px;padding:.16rem .5rem;letter-spacing:.03em;text-transform:uppercase;font-weight:700}
+.badge-confirmed{background:var(--ok);color:#fff}
+.badge-new{background:var(--accent);color:#fff}
+.score-num.likely-label{color:var(--warn)}
+.score-bar-fill.likely-fill{background:var(--warn)}
+.match-geo{font-family:var(--serif);font-size:17.5px;color:var(--wash);margin-top:.15rem;font-weight:700}
+.match-rationale{font-size:17.5px;color:var(--ink);margin-top:.4rem;line-height:1.55}
+.match-score{text-align:right;margin-left:auto}
+.score-num{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--accent)}
+.score-num.confirmed-label{font-size:.86rem;letter-spacing:.02em}
+.score-bar{width:70px;height:5px;background:var(--rule);margin-top:.35rem}
+.score-bar-fill{height:100%;background:var(--accent)}
+
+/* ---- Grant entries (F4F Q&A pattern, adapted) ---- */
+.entry{border-bottom:1px solid var(--rule-soft);padding:1.1rem 0}
+.entry .head{display:flex;flex-direction:column;gap:.12rem}
+.entry .org{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--wash)}
+.entry .name a{color:var(--ink)}
+.entry .name a:hover{color:var(--wash);text-decoration:underline}
+.qa-grid{display:flex;flex-direction:column;gap:.5rem;margin-top:.55rem}
+.qa-row{display:grid;grid-template-columns:150px 1fr;gap:.6rem 1rem;align-items:baseline}
+@media(max-width:580px){.qa-row{grid-template-columns:1fr;gap:.1rem}}
+.qa-label{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);white-space:nowrap}
+.qa-value{font-size:.94rem;line-height:1.5}
+.deadline-val.urgent{color:var(--urgent);font-weight:600}
+.deadline-val.soon{color:var(--warn);font-weight:500}
+.deadline-val.closed{color:var(--wash);font-style:italic}
+
+.watch-list{margin-top:1.6rem}
+.watch-item{padding:.75rem 0;border-bottom:1px solid var(--rule-soft);display:grid;grid-template-columns:1fr 2fr;gap:1rem;min-width:0}
+@media(max-width:640px){.watch-item{grid-template-columns:1fr}}
+.watch-item .why{font-size:15px;color:var(--wash);line-height:1.5}
+
+.limitation-note{font-family:var(--mono);font-size:.86rem;color:var(--wash);background:var(--well);border:1px dashed var(--rule);padding:.7rem .9rem;margin-top:1.2rem;line-height:1.5}
+
+/* ---- Status tracking ---- */
+.admin-toggle{font-family:var(--mono);font-size:.84rem;padding:.3rem .7rem;border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer}
+.admin-toggle.on{background:var(--ink);color:var(--paper)}
+.status-row{display:flex;align-items:center;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
+.status-select{font-family:var(--mono);font-size:.84rem;padding:.28rem .4rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink)}
+.status-select:disabled{color:var(--wash);cursor:not-allowed}
+.status-pill{font-family:var(--mono);font-size:.8rem;padding:.2rem .55rem;text-transform:uppercase;letter-spacing:.03em;border:1px solid var(--rule);color:var(--wash);background:var(--paper)}
+.status-pill.st-researching{color:var(--accent);border-color:var(--accent)}
+.status-pill.st-in_progress,.status-pill.st-submitted{color:var(--warn);border-color:var(--warn)}
+.status-pill.st-awarded{color:var(--ok);border-color:var(--ok)}
+.status-pill.st-declined{color:var(--urgent);border-color:var(--urgent)}
+.status-notes{width:100%;margin-top:.4rem;font-family:var(--serif);font-size:15px;padding:.45rem .55rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink);resize:vertical;min-height:2.4em}
+.status-notes:disabled{background:var(--well);color:var(--wash)}
+.status-saved{font-family:var(--mono);font-size:.8rem;color:var(--ok);opacity:0;transition:opacity .3s}
+.status-saved.show{opacity:1}
+
+
+body{overflow-x:hidden}
+/* .sbadge.moderate: its own 8%-alpha tint darkens the backdrop to rgb(224,214,197) over --well,
+   dropping #8a5218 to 4.42:1. #794713 clears AA on both the well and paper backdrops. */
+.sbadge.moderate{color:#794713}
+
+/* Wrap width: .section-head p was capped at 70/72ch -- it rendered 526px inside a 1140px
+   container (46%) while the cards/grid directly beneath it spanned the full width. The intro
+   paragraph should wrap to the width of the block below it, matching .limitation-note, which
+   is already full-width. The centered .hero lede and the 16em/15em/14em long-string wrap
+   guards on table amounts and deadlines are deliberate and stay capped. */
+.section-head p{max-width:none}
+
+.hero{text-align:left;padding:3.2rem 1.25rem 2.2rem;border-bottom:1px solid var(--rule)}
+.section{padding:2.6rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
+@media(max-width:640px){.hero{padding:2.2rem 1.25rem 1.6rem}.hero h1{font-size:30px}}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+<!-- CONVENTION-BADGES:START (generated by pattern-book/inject_badges.py; do not hand-edit) -->
+<div class="conv-badges" style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.35rem 0 0"><span class="conv-badge conv-badge-style" style="font-family:var(--mono,monospace);font-size:12.5px;letter-spacing:.04em;border:1px solid currentColor;padding:.15rem .5rem;max-width:100%">Style guide: General</span><span class="conv-badge conv-badge-tier" style="font-family:var(--mono,monospace);font-size:12.5px;letter-spacing:.04em;border:1px solid currentColor;padding:.15rem .5rem;max-width:100%">Paid · institution-specific</span></div>
+<!-- CONVENTION-BADGES:END -->
+
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand"><b>Almanac</b> for Black Mamas Village</span>
+    <span class="stat"><strong id="m-funders">…</strong> funders (confirmed + candidate)</span>
+    <span class="stat"><strong id="m-grants">…</strong> open opportunities</span>
+    <span class="grow"></span>
+    <button class="admin-toggle" id="admin-toggle" type="button" title="Enter your key to mark status on funders and grants">Admin</button>
+    <nav>
+      <a href="#profile">Profile</a>
+      <a href="#matches">Funder Matches</a>
+      <a href="#grants">Open Grants</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">Prepared research tool · draft for review, not a public product</div>
+  <h1>Almanac</h1>
+  <p>Almanac is a funding-prospect tool built for Black Mamas Village (blackmamasvillage-atx.org), combining Black Mamas Village's confirmed funding history with a researched database of funding prospects and currently-open opportunities.</p>
+  <div class="note">Every funder and grant listed here traces to a public source (Black Mamas Village's own site, IRS Form 990 filings via ProPublica, or a funder's own current site). Nothing here is estimated or invented. Where an amount, deadline, or fact isn't publicly confirmed, it's marked "not publicly disclosed" or flagged directly rather than guessed at.</div>
+</header>
+
+<section class="section" id="profile">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">The organization</span>
+      <h2>Funding Profile</h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>Black Mamas Village's mission, programs, and confirmed funding history: the foundation the funder match and grants search are built on.</p>
+    </div>
+      <div class="profile-grid">
+        <div class="card">
+          <h3>Mission</h3>
+          <p id="p-mission"></p>
+          <h3>Programs &amp; Pillars</h3>
+          <div class="tag-row" id="p-focus"></div>
+          <p class="id-note" id="p-identity-note" style="margin-top:.9rem"></p>
+        </div>
+        <div class="card">
+          <h3>At a glance</h3>
+          <div class="stat-tile">
+            <div class="num" id="p-total">0</div>
+            <div class="lbl">confirmed funding relationships</div>
+          </div>
+          <h3 style="margin-top:1rem">Geography</h3>
+          <p id="p-geo" style="margin:0"></p>
+          <h3 style="margin-top:1rem">Financials (FY2023 to FY2025, most recent Form 990 on file)</h3>
+          <div id="p-financials"></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1.2rem">
+        <h3>Confirmed Prior Funders</h3>
+        <div class="table-scroll"><table class="funder-mini-table">
+          <thead><tr><th>Funder</th><th>Purpose / Nature</th><th style="text-align:right">Amount</th></tr></thead>
+          <tbody id="p-funders-table"></tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="matches">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Who could fund this</span>
+      <h2>Ranked Funder Matches <span class="fold-count" data-count-from="match-count" data-count-label="funders"></span></h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p id="matches-method"></p>
+    </div>
+      <div class="toolbar">
+        <input class="search" id="match-search" type="search" placeholder="Search funder name or rationale…" aria-label="Search funders" />
+        <div class="chip-filter" id="tier-filter"></div>
+        <div class="chip-filter" id="match-status-filter"></div>
+      </div>
+      <div class="res-count"><b id="match-count">0</b> funders shown</div>
+      <div id="match-results"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="grants">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Open right now</span>
+      <h2>Open Grant Opportunities <span class="fold-count" data-count-from="grant-count" data-count-label="open now"></span></h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>Currently-open or clearly-upcoming grant opportunities from Black Mamas Village's confirmed and top-candidate funders, researched directly on each funder's current site.</p>
+    </div>
+      <div class="toolbar">
+        <input class="search" id="grant-search" type="search" placeholder="Search organization, focus area…" aria-label="Search grants" />
+        <div class="chip-filter" id="grant-status-filter"></div>
+      </div>
+      <div class="res-count"><b id="grant-count">0</b> opportunities ready now</div>
+      <div id="grant-results"></div>
+
+      <div class="watch-list">
+        <div class="section-head" style="border-top:1px solid var(--rule);padding-top:.9rem;margin-bottom:1rem">
+          <h2 style="font-size:1.15rem">Watch List: not yet open</h2>
+          <p>Real, relevant funders whose current cycle is closed, invitation-only, or not yet announced. Worth monitoring and re-engaging, not applying to right now.</p>
+        </div>
+        <div id="watch-results"></div>
+      </div>
+
+      <div class="limitation-note" id="grants-limitation"></div>
+    </div>
+  </div>
+</section>
+
+<section class="method-wrap" id="method">
+  <div class="method-box">
+    <div class="method-kicker">Method</div>
+    <h2>How this was built, and what it cannot tell you</h2>
+    <p><b>Where this comes from.</b> Every funder and every grant on this page is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages. Each match carries a link back to the source it came from, so nothing here has to be taken on trust. Where a funder does not publish a figure &mdash; an award range, a deadline, an eligibility rule &mdash; that gap is marked as unconfirmed rather than filled in.</p>
+    <p><b>What Almanac will not do.</b> It does not invent a fact about a funder. An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on. It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit. A candidate is never dressed up as a confirmed prior funder.</p>
+    <p><b>What it cannot tell you.</b> Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved. A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records. The ranking is a judgment about fit, not a prediction of success. Treat every row as a lead to verify against the funder's own page before you spend real time on it.</p>
+  </div>
+</section>
+
+<footer>
+  <span id="footer-credit">Prepared for Black Mamas Village by Jonathan Lin Davis · Draft for review, not yet deployed</span>
+  <span id="footer-links"><a href="https://www.blackmamasvillage-atx.org/" target="_blank" rel="noopener">blackmamasvillage-atx.org</a></span>
+  <span class="footer-improvements-wrap"><a class="footer-improvements" href="https://jonathanlindavis.com/improvementlog.html">Improvement log</a></span>
+</footer>
+
+<script>
+/* ---- Self-contained page, hard-set to Black Mamas Village. No ?org= parameter,
+   no per-org runtime data swapping. The data below IS the page. ---- */
+
+const STATUS_LABELS={not_started:"Not started",researching:"Researching",in_progress:"In progress",submitted:"Submitted",awarded:"Awarded",declined:"Declined"};
+const STATUS_ORDER=["not_started","researching","in_progress","submitted","awarded","declined"];
+
+/* ==================== INLINE DATA ==================== */
+
+const PROFILE={
+  organization:"Black Mamas Village",
+  legal_name:"Black Mamas Village",
+  ein:"88-1025060",
+  website:"https://www.blackmamasvillage-atx.org/",
+  founded:"Started June 2019 as a Facebook group; IRS 501(c)(3) recognition September 2023",
+  mission:"\"Where Every Black Mother Belongs.\" Black Mamas Village exists to foster a culture of connection that strengthens support systems and cultivates thriving communities for all Black mothers in greater Austin. It is a peer-support and mutual-aid \"village\" organized around three pillars: Connection & Belonging, Economic Empowerment, and Health & Wellness. It is not primarily a doula or clinical birth-work organization.",
+  tagline:"Where Every Black Mother Belongs",
+  programs:[
+    "Connection & Belonging: sisterhood and social activities, family camping trips, identity- and life-stage-based sub-groups, community events",
+    "Economic Empowerment: financial education, entrepreneurship and small-business support, resource navigation, an emergency fund for housing/food bridge assistance",
+    "Health & Wellness: mental health support and expanded free therapy access, culturally informed health education, partnerships on pregnancy and chronic-condition disparities",
+    "The Village Place: a 6,500-square-foot community hub at 8401 North IH-35, Austin, with childcare space, co-working space, a library, and a nap room for moms",
+    "Emergency housing assistance and rental navigation",
+    "Drop-in childcare (RISE partnership)",
+    "Seasonal support (Adopt a Family holiday sponsorships) and community meal trains",
+  ],
+  focus_areas:[
+    "Peer support and mutual aid for Black mothers (not primarily clinical or doula services)",
+    "Community connection and belonging",
+    "Economic empowerment and financial resilience",
+    "Mental health and wellness",
+    "Black-led, horizontal co-leadership model",
+  ],
+  geography:{
+    primary:"Greater Austin / Central Texas",
+    secondary:["LinkedIn lists headquarters as Pflugerville, TX, with service area also covering Austin, Cedar Park, Leander, and Round Rock (medium confidence, self-reported field)."],
+  },
+  identity_note:"Note for accuracy: Black Mamas Village (EIN 88-1025060) is a distinct 501(c)(3) from two similarly-named Austin organizations, Black Mamas Community Collective (dba Black Mamas ATX, EIN 83-1457295, a doula-services and Sister Circle program) and Healing Hands Community Doula Project. The three share overlapping cause area and, per Form 990 filings, some overlapping board members, but are separate legal entities with separate missions. This page covers Black Mamas Village only.",
+  financials:{
+    trend:[
+      {year:"FY2023",form:"990-EZ",revenue:84481,expenses:41468},
+      {year:"FY2024",form:"990",revenue:301071,expenses:233622},
+      {year:"FY2025",form:"990",revenue:560326,expenses:346762},
+    ],
+    net_assets_note:"The organization reports $0 net assets in every filed year, consistent with a cash-flow-through operation rather than one building a reserve.",
+    growth_note:"Revenue has grown roughly 6.6x in two years, from $84,481 (FY2023, the organization's first filed year, a 990-EZ) to $560,326 (FY2025). This is a fast-growing young organization, not a micro or static one. Several funders screen on budget size using the 990, so this trajectory should be represented accurately rather than undersold. Revenue is reported as nearly 100% contributions each year (no material earned revenue).",
+    note:"Source: IRS Form 990/990-EZ via ProPublica Nonprofit Explorer, EIN 88-1025060.",
+  },
+  confirmed_prior_funders:[
+    {funder:"Impact Austin",purpose:"2025 Primary Community Grant, unrestricted and trust-based. Funded emergency housing assistance, expanded free mental health therapy access, expanded childcare access through a \"RISE\" partnership, and community cultural programming.",amount:"$80,000 (2025)"},
+    {funder:"The Black Fund at Austin Community Foundation",purpose:"Inaugural 2023 cycle, runner-up tier, Wealth Building impact area (matches the Economic Empowerment pillar).",amount:"$5,000 (2023)"},
+  ],
+  confirmed_prior_funders_count:2,
+  profile_built:"2026-07-12",
+  profile_sources:[
+    "ProPublica Nonprofit Explorer, EIN 88-1025060 (legal name, IRS recognition date, three-year financial trend)",
+    "GuideStar profile (guidestar.org/profile/88-1025060)",
+    "blackmamasvillage-atx.org: Homepage, Overview, About Us (mission, tagline, three pillars, leadership philosophy)",
+    "LinkedIn company page (linkedin.com/company/blackmamasvillageatx) (headquarters, service area, staff-count band, self-reported reach figure)",
+    "KXAN Austin coverage of The Village Place community hub grand opening",
+    "Thinkery (Austin children's museum) partnership writeup, Back to School Bash joint event",
+    "Impact Austin, 2025 Primary Community Grant outcomes page",
+    "Austin Community Foundation, \"The Black Fund Awards $355,000 to 21 Nonprofits\" (2023 award article)",
+  ],
+};
+
+const FUNDERS_METHOD="Confirmed funders are two institutional grants independently verified against Black Mamas Village's exact legal name and EIN on the funder's own page, not just a name-pattern match; this matters because at least two other Austin nonprofits use very similar \"Black Mamas\" names. The Likely, verify tier is reserved for a funding relationship a research pass surfaces as specific but not independently confirmed, for example a grants database record under the org's exact legal name that the org itself hasn't confirmed. None of the funders researched here fit that description, so this tier is currently empty rather than padded with a guess; it stays in the model for a future research pass. The twelve funders below are Candidate prospects: real, live funders with a documented interest in at least one of Black Mamas Village's three pillars, researched directly on each funder's own current site, with no funding relationship yet. Funders found to be a poor match, invitation-only, geographically excluded, or budget-gated well above Black Mamas Village's size, were dropped rather than included to pad the list.";
+
+const RANKED_FUNDERS=[
+  {funder_name:"Impact Austin",is_confirmed_prior_funder:true,geography:"Austin, TX (Central Texas)",rationale:"Confirmed funder. Awarded the $80,000 2025 Primary Community Grant, unrestricted and trust-based, funding emergency housing assistance, expanded free mental health therapy access, expanded childcare access through a \"RISE\" partnership, and community cultural programming, directly matching the Health & Wellness and Connection & Belonging pillars. Impact Austin runs this as an annual member-funded cycle with a 28-member review committee; treat this as a cultivate-and-renew relationship, not a one-time gift. A past-grantee reapplication cooldown likely applies (see Scribe's deadline calendar); confirm timing directly with Impact Austin before assuming near-term reapplication."},
+  {funder_name:"The Black Fund at Austin Community Foundation",is_confirmed_prior_funder:true,geography:"Austin / Central Texas (6-county Austin Community Foundation service area)",rationale:"Confirmed funder. Awarded $5,000 in the Black Fund's inaugural 2023 cycle, runner-up tier, under the Wealth Building impact area, matching the Economic Empowerment pillar. The Black Fund is explicitly Black-led-organization-focused rather than health-focused specifically, and publishes no minimum-years-of-operation or minimum-budget floor, making it the strongest fit of any funder researched here for an organization at this stage. See Scribe for a full sample draft targeting the Black Fund's next cycle."},
+  {funder_name:"St. David's Foundation",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"Central Texas (Bastrop, Caldwell, Hays, Travis, Williamson counties)",rationale:"New candidate. Explicit 2024 to 2025 funding priorities include Maternal and Child Health, Community Mobilization (grassroots/community-led initiatives), Mental Health, and Economic Security, covering all three pillars. Moved from invitation-only to a broader open-call model \"to ensure a more equitable application process.\" Has funded Mama Sana Vibrant Woman, a comparably-sized Austin maternal-health nonprofit, a useful accessibility comp. Typical open-call grants run mid five figures to low six figures; contact a program officer before applying to confirm current fit and cycle status."},
+  {funder_name:"Austin Community Foundation, Women's Fund / Forever Austin Fund",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"Travis, Williamson, Hays, Bastrop, Burnet, and Caldwell counties",rationale:"New candidate, distinct from the confirmed Black Fund relationship above. ACF's other funds run parallel annual open-call cycles for unrestricted general operating support; the Forever Austin Fund alone expects to award 75 to 100 grants of $5,000 to $50,000 in its 2026 cycle. Accepts unsolicited funding requests year-round through its online application. The Forever Austin Fund specifically requires 2 full years of active nonprofit operation and a total budget of $50,000 or more; Black Mamas Village clears the budget floor easily and will clear the 2-year-operating floor by late 2025. The most recent cycle's LOI window closed January 27, 2026; next cycle timing not yet published."},
+  {funder_name:"Central Health, Community Healthcare Initiative Fund (CHIF)",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"Travis County only",rationale:"New candidate. CHIF is a newly launched program from Travis County's healthcare district specifically to fund community groups and nonprofits addressing health inequities and social-determinant service gaps (housing, food, jobs) among low-income residents, a strong match for the Health & Wellness and Economic Empowerment pillars and Black Mamas Village's Travis-County-based constituency. Framed as inviting community groups broadly; the program is new enough to have no long incumbency of large established grantees yet. Grant size and application deadline are not yet published; apply via Central Health's vendor/purchasing portal (RFI-based process) and verify current status directly."},
+  {funder_name:"Hogg Foundation for Mental Health",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"Statewide Texas (UT Austin-based)",rationale:"New candidate. The Health & Wellness pillar explicitly includes expanded mental health therapy access, a direct match to Hogg's core mission. Hogg is unusually explicit about welcoming very small organizations, naming operating budgets as low as under $15,000 as eligible for some programs. Typical grants run $25,000 to $250,000, sometimes distributed over five years. RFP-based only; does not accept unsolicited proposals, so watch for an open call rather than applying cold."},
+  {funder_name:"Episcopal Health Foundation",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"81-county Episcopal Diocese of Texas region, including Travis County",rationale:"New candidate. Names Maternal Health as one of three explicit \"Priorities for Change.\" Has funded Mama Sana Vibrant Woman and PUSH Birth Partners, showing it funds grassroots maternal-health-adjacent organizations, not just large health systems. Average grant size runs around $250,000 (range $10,000 to $1,000,000-plus), large relative to Black Mamas Village's current budget, so a smaller, targeted ask is more realistic than a general operating request. Cycle 2 2026's LOI window closed July 10, 2026; watch for the next LOI window."},
+  {funder_name:"W.K. Kellogg Foundation",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"National, with generational-commitment emphasis on Michigan, Mississippi, New Mexico, and greater New Orleans (Texas not a priority place)",rationale:"New candidate. Explicitly prioritizes racial equity, early childhood, and maternal and infant health for communities of color, with a strong stated preference for community-led, culturally relevant organizations, a close philosophical match to the mutual-aid model. Accepts applications on a rolling basis with no fixed deadline. Texas is not one of WKKF's four priority places, so Texas-based applicants compete without a geographic advantage; a good no-deadline-pressure option to keep in the pipeline rather than a near-term priority."},
+  {funder_name:"Meadows Foundation",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"Statewide Texas, though up to 50% of giving concentrates in Dallas-Fort Worth",rationale:"New candidate. Statewide human-services funder with stated interest in community-led, well-planned programs. Meadows looks for organizations \"with the capacity to execute\" that have already secured support from other sources, favoring applicants with some funding track record, which Black Mamas Village is now starting to build (Impact Austin, the Black Fund) but is not yet deep. The Dallas-Fort Worth concentration of giving is a real headwind for an Austin-based applicant. Informational meetings with grants staff are available before applying."},
+  {funder_name:"Perigee Fund",is_confirmed_prior_funder:false,tier:"tier_3_weak",geography:"National (originated in Washington state)",rationale:"New candidate. Focused specifically on infant and maternal mental health and family well-being for Black, Indigenous, and other communities of color, a close thematic match to the Health & Wellness pillar and the emergency-fund/cash-support model. As of this research pass there were no open RFPs, so near-term accessibility is low regardless of fit; monitor perigeefund.org for future calls."},
+  {funder_name:"Michael & Susan Dell Foundation",is_confirmed_prior_funder:false,tier:"tier_3_weak",geography:"Greater Austin, plus broader Texas and national programs",rationale:"New candidate. Austin-headquartered with an explicit family-economic-stability program area overlapping the Economic Empowerment pillar. Describes its Austin-area work as \"long-term collaborations\" with over 400 \"trusted\" community organizations, many for decades, suggesting a preference for established, long-tenured partners over brand-new grassroots organizations. Does accept unsolicited applications for some education/health/economic-development subprograms, so it is not fully closed, but the \"trusted partner\" framing is a real accessibility barrier for a roughly 3-year-old organization."},
+  {funder_name:"Marguerite Casey Foundation",is_confirmed_prior_funder:false,tier:"tier_3_weak",geography:"National",rationale:"New candidate. Strong philosophical match: shifts power toward low-income families and communities excluded from economic opportunity, with general-operating-support grants to grassroots and community-organizing leaders, closely aligned with the mutual-aid, horizontal-leadership model. Fit is strong, but the foundation is invitation-only and does not accept unsolicited proposals, so there is no current application path for an organization not already on its radar."},
+  {funder_name:"Groundswell Fund, Birth Justice Fund",is_confirmed_prior_funder:false,tier:"tier_3_weak",geography:"National, with strategic outreach emphasis on the South, Midwest, and Southwest (Texas included)",rationale:"New candidate, included with a real caveat: Groundswell's Birth Justice Fund is the most prominent national \"birth justice\" funder, supporting midwives, doulas, and birth workers of color. Black Mamas Village is, per its own site, not primarily a doula or birth-work service provider (that is the separate Black Mamas ATX), so the fit is real but not as tight as it would be for a doula-focused applicant; framing would need to lean on the Health & Wellness pillar's birth and postpartum-adjacent work. Moot in the near term regardless: starting in 2026, all Groundswell grants moved to a single invitation-only fund with no open application."},
+  {funder_name:"Robert Wood Johnson Foundation",is_confirmed_prior_funder:false,tier:"tier_3_weak",geography:"National",rationale:"New candidate, included to round out the national health-equity funder category. RWJF's current calls for proposals in this space favor applicants with research capacity or partnerships with research institutions, for example \"From Insight to Action: Health Equity Research,\" a real mismatch with Black Mamas Village's direct-service, mutual-aid model unless it partners with a research-capable co-applicant. A smaller, data-focused track (up to 30 grants of $50,000 each) is possible but competitive and not tailored to grassroots direct-service groups."},
+];
+
+const GRANTS={
+  run_date:"2026-07-12",
+  known_limitation:"Open-grant opportunities are a point-in-time snapshot from public research on Black Mamas Village's confirmed and top-candidate funders' own current sites and public filings, run July 2026. Confirm each program's current cycle, deadline, and eligibility directly with the funder before applying. This page covers Black Mamas Village's two already-confirmed funding relationships plus its strongest researched prospects; it is not an exhaustive Schedule I-style pipeline of every funder that has ever supported comparable Austin nonprofits.",
+  ready_now:[
+    {
+      organization:"AFP Greater Austin (Association of Fundraising Professionals)",
+      grant_name:"BIPOC Opportunity Fund",
+      url:"https://www.afpaustin.org/bipoc-opportunity-fund",
+      deadline:"July 31, 2026, 11:59pm",
+      amount:"$10,000 cash plus 2 AFP memberships and 2 One Day Conference tickets (about $11,900 total value)",
+      eligibility:"Registered 501(c)(3); BIPOC-led (must meet 2 of 3: majority-BIPOC board, BIPOC executive director/senior leadership, or mission/programs primarily serving BIPOC communities); project completable within 9 months",
+      focus_area:"General nonprofit capacity/project support for BIPOC-led organizations",
+      notes:"New candidate, not yet a confirmed funder. Genuinely time-urgent: only about three weeks out from this research date. Risk flag: priority goes to organizations with budgets under $500,000, and Black Mamas Village's FY2025 revenue ($560,326) is now just above that line, which may affect priority scoring though the org may still be eligible to apply. Low lift to apply relative to the award.",
+      id:"afp-bipoc-july-2026",
+    },
+    {
+      organization:"W.K. Kellogg Foundation",
+      grant_name:"Maternal and Child Health / Racial Equity priority areas (rolling LOI)",
+      url:"https://www.wkkf.org/grantseekers/",
+      deadline:"Rolling, no fixed deadline (LOI accepted year-round via the foundation's Fluxx portal)",
+      amount:"Varies widely by program; not standardized in research found",
+      eligibility:"Community-rooted 501(c)(3) organizations; Texas is not one of WKKF's four priority places (Michigan, Mississippi, New Mexico, greater New Orleans), so Texas applicants compete without a geographic advantage",
+      focus_area:"Racial equity, early childhood, and maternal and infant health for communities of color",
+      notes:"New candidate. Always-open, no-deadline-pressure option; typical LOI response time is about 30 days, and a full proposal review (if invited) runs about 60 days. Good parallel-track option alongside the Central-Texas-specific funders in this list.",
+      id:"wkkf-rolling",
+    },
+  ],
+  watch_list_not_yet_open:[
+    {
+      organization:"The Black Fund of Central Texas",
+      grant_name:"Annual community grant cycle",
+      url:"https://theblackfundcentraltx.org/apply-for-grant/",
+      why_watch:"Confirmed funder ($5,000, 2023 inaugural cycle). The 2025 to 2026 cycle already awarded $275,000 to 24 organizations and is closed; next cycle timing is not published. This is the strongest-fit prospect of any funder researched (Black-led-organization focus, no minimum-years-of-operation or minimum-budget floor) and is the subject of Scribe's full sample draft. Worth calling the fund directly now to learn when the next cycle opens rather than waiting for a public announcement.",
+    },
+    {
+      organization:"Impact Austin",
+      grant_name:"Primary Community Grant (reapply)",
+      url:"https://www.impactaustin.org/grantmaking",
+      why_watch:"Confirmed funder ($80,000, 2025). Reported policy language (via aggregated search, not independently confirmed at a single primary source, so treat as representative) suggests past grantees may not reapply for about two years, implying the earliest realistic reapplication is roughly the 2028 cycle. Verify this directly with Impact Austin rather than assuming the timeline. Strongest existing relationship to cultivate regardless of reapplication timing.",
+    },
+    {
+      organization:"Austin Community Foundation, Forever Austin Fund",
+      grant_name:"Annual grant cycle",
+      url:"https://www.austincf.org/grant/forever-austin-fund/",
+      why_watch:"New candidate. This cycle's LOI window closed January 27, 2026 and awards were notified around July 1, 2026, so this specific cycle has concluded. Next cycle timing not published; based on the annual pattern, expect roughly January 2027. Requires 2 full years of active nonprofit operation and a $50,000-plus budget, both of which Black Mamas Village will clear well before the next cycle.",
+    },
+    {
+      organization:"Episcopal Health Foundation",
+      grant_name:"Grant Opportunities (next LOI window)",
+      url:"https://www.episcopalhealth.org/grantmaking/",
+      why_watch:"New candidate. Cycle 2 2026's LOI window closed July 10, 2026, just before this research date. No explicit budget or years-of-operation floor was found. Watch for the next LOI window (Cycle 1 of 2027 or a later 2026 cycle); date not yet published.",
+    },
+    {
+      organization:"St. David's Foundation",
+      grant_name:"Healthy Births, Healthy Communities",
+      url:"https://stdavidsfoundation.org/how-we-work/grantmaking/funding-opportunities/",
+      why_watch:"New candidate and the single most maternal-health-specific funder found in this research (explicitly names \"strengthening the maternal health ecosystem in Central Texas\" and cites the Black-white maternal mortality disparity), but not currently accepting new applications; listed under the foundation's past funding opportunities. Sign up for the foundation's newsletter to catch the next round. Two other St. David's opportunities are open (Catalyzing Community-Led Change, We All Benefit 2.0), but neither is maternal-health-specific; verify current openings directly.",
+    },
+    {
+      organization:"Groundswell Fund",
+      grant_name:"Birth Justice Fund",
+      url:"https://groundswellfund.org/funds/birth-justice-fund/",
+      why_watch:"New candidate with a real caveat (Black Mamas Village is not primarily a doula/birth-work provider). As of 2026, Groundswell's Birth Justice Fund and its other named funds moved to a single invitation-only fund with no open application; not actionable as a direct-application target, but worth relationship-building outreach to be on Groundswell's radar for a future invitation.",
+    },
+  ],
+};
+
+/* ==================== helpers ==================== */
+const state={matchQ:"",activeTier:null,grantQ:"",statuses:{},adminKey:localStorage.getItem('grantStatusKey')||"",matchStatusFilter:null,grantStatusFilter:null};
+
+function esc(s){return(s||"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function money(n){return '$'+Number(n).toLocaleString();}
+function highlight(text,q){
+  if(!q||!text)return esc(text);
+  const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+  return esc(text).replace(re,'<mark>$1</mark>');
+}
+
+function statusOf(itemType,itemId){
+  return state.statuses[itemType+':'+itemId]||{status:'not_started',notes:''};
+}
+
+async function fetchStatuses(){
+  try{
+    const res=await fetch('/api/grant-status/list?org=blackmamas',{cache:'no-store'});
+    if(!res.ok)throw new Error('status fetch failed');
+    const data=await res.json();
+    state.statuses=data.statuses||{};
+  }catch(e){
+    // Status tracking is additive -- this draft has no backend deployed yet,
+    // so the rest of the page still works fully; every item just shows
+    // "Not started" until the grant-status API is provisioned and wired up.
+    state.statuses={};
+  }
+}
+
+async function saveStatus(itemType,itemId,status,notes,savedEl){
+  if(!state.adminKey){
+    promptForKey();
+    if(!state.adminKey)return false;
+  }
+  try{
+    const res=await fetch('/api/grant-status/update',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-Admin-Key':state.adminKey},
+      body:JSON.stringify({org_slug:'blackmamas',item_type:itemType,item_id:itemId,status,notes}),
+    });
+    if(res.status===401){
+      alert('That key was not accepted. Try Admin again with the correct key.');
+      state.adminKey="";localStorage.removeItem('grantStatusKey');
+      setAdminUI();
+      return false;
+    }
+    if(!res.ok)throw new Error('save failed');
+    const saved=await res.json();
+    state.statuses[itemType+':'+itemId]={status:saved.status,notes:saved.notes,updated_at:saved.updated_at};
+    if(savedEl){savedEl.classList.add('show');setTimeout(()=>savedEl.classList.remove('show'),1500);}
+    return true;
+  }catch(e){
+    alert('Could not save status: the status-tracking backend is not deployed for this draft yet.');
+    return false;
+  }
+}
+
+function promptForKey(){
+  const key=prompt('Enter your grant-status admin key:');
+  if(key){
+    state.adminKey=key.trim();
+    localStorage.setItem('grantStatusKey',state.adminKey);
+  }
+  setAdminUI();
+}
+
+function setAdminUI(){
+  const btn=document.getElementById('admin-toggle');
+  const isOn=!!state.adminKey;
+  btn.classList.toggle('on',isOn);
+  btn.textContent=isOn?'Admin ✓':'Admin';
+  document.querySelectorAll('.status-select,.status-notes').forEach(el=>{el.disabled=!isOn;});
+}
+
+function statusRowHTML(itemType,itemId){
+  const s=statusOf(itemType,itemId);
+  const options=STATUS_ORDER.map(k=>`<option value="${k}"${k===s.status?' selected':''}>${STATUS_LABELS[k]}</option>`).join('');
+  const isOn=!!state.adminKey;
+  return `
+    <div class="status-row" data-item-type="${itemType}" data-item-id="${esc(itemId)}">
+      <span class="status-pill st-${s.status}">${STATUS_LABELS[s.status]}</span>
+      <select class="status-select" ${isOn?'':'disabled'}>${options}</select>
+      <span class="status-saved">Saved</span>
+    </div>
+    <textarea class="status-notes" placeholder="Notes (contact made, next step, why declined...)" ${isOn?'':'disabled'}>${esc(s.notes)}</textarea>`;
+}
+
+function wireStatusControls(container){
+  container.querySelectorAll('.status-row').forEach(row=>{
+    const itemType=row.getAttribute('data-item-type');
+    const itemId=row.getAttribute('data-item-id');
+    const select=row.querySelector('.status-select');
+    const savedEl=row.querySelector('.status-saved');
+    const notesEl=row.nextElementSibling;
+    select.addEventListener('change',async()=>{
+      const ok=await saveStatus(itemType,itemId,select.value,notesEl.value,savedEl);
+      if(!ok){const cur=statusOf(itemType,itemId);select.value=cur.status;}
+      else{
+        const pill=row.querySelector('.status-pill');
+        pill.className='status-pill st-'+select.value;
+        pill.textContent=STATUS_LABELS[select.value];
+      }
+    });
+    notesEl.addEventListener('blur',async()=>{
+      const cur=statusOf(itemType,itemId);
+      if(notesEl.value!==cur.notes)await saveStatus(itemType,itemId,select.value,notesEl.value,savedEl);
+    });
+  });
+}
+
+function buildStatusFilter(hostId,onChange,activeGetter){
+  const host=document.getElementById(hostId);
+  const options=[{key:null,label:'Any status'}].concat(STATUS_ORDER.map(k=>({key:k,label:STATUS_LABELS[k]})));
+  host.innerHTML=options.map(o=>`<button class="chip-btn${o.key===activeGetter()?' active':''}" data-status="${o.key||''}">${o.label}</button>`).join('');
+  host.querySelectorAll('.chip-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      onChange(btn.getAttribute('data-status')||null);
+      buildStatusFilter(hostId,onChange,activeGetter);
+    });
+  });
+}
+
+/* ---- Profile ---- */
+function renderProfile(){
+  const p=PROFILE;
+  document.getElementById('p-mission').textContent=p.mission;
+  document.getElementById('p-focus').innerHTML=p.programs.map(f=>`<span class="tag">${esc(f)}</span>`).join('');
+  document.getElementById('p-identity-note').textContent=p.identity_note;
+  document.getElementById('p-total').textContent=p.confirmed_prior_funders_count;
+  document.getElementById('p-geo').innerHTML=`<strong>${esc(p.geography.primary)}</strong><br>${p.geography.secondary.map(esc).join(', ')}`;
+
+  const fin=p.financials;
+  if(fin){
+    const trendRows=fin.trend.map(t=>`<span class="tag">${esc(t.year)}: ${money(t.revenue)} revenue / ${money(t.expenses)} expenses (${esc(t.form)})</span>`).join('');
+    document.getElementById('p-financials').innerHTML=`
+      <div class="tag-row" style="margin-bottom:.7rem">${trendRows}</div>
+      <p style="margin:0 0 .6rem;font-size:.9rem">${esc(fin.growth_note)}</p>
+      <p style="margin:0;font-size:.82rem;color:var(--wash)">${esc(fin.net_assets_note)} ${esc(fin.note)}</p>`;
+  }
+
+  document.getElementById('p-funders-table').innerHTML=p.confirmed_prior_funders.map(f=>`
+    <tr>
+      <td><strong>${esc(f.funder)}</strong></td>
+      <td>${esc(f.purpose)}</td>
+      <td class="amt">${esc(f.amount)}</td>
+    </tr>
+  `).join('');
+}
+
+/* ---- Funder Matches ---- */
+function buildTierFilter(){
+  const host=document.getElementById('tier-filter');
+  const tiers=[
+    {key:null,label:'All'},
+    {key:'confirmed',label:'Confirmed'},
+    {key:'likely',label:'Likely (verify)'},
+    {key:'tier_1_strong',label:'Strong candidate'},
+  ];
+  host.innerHTML=tiers.map(t=>`<button class="chip-btn${t.key===state.activeTier?' active':''}" data-tier="${t.key||''}">${t.label}</button>`).join('');
+  host.querySelectorAll('.chip-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      state.activeTier=btn.getAttribute('data-tier')||null;
+      buildTierFilter();applyMatches();
+    });
+  });
+}
+
+function applyMatches(){
+  const q=state.matchQ.toLowerCase().trim();
+  let list=RANKED_FUNDERS.filter(f=>{
+    if(state.activeTier==='confirmed'&&!(f.is_confirmed_prior_funder&&f.confidence!=='likely'))return false;
+    if(state.activeTier==='likely'&&f.confidence!=='likely')return false;
+    if(state.activeTier&&state.activeTier!=='confirmed'&&state.activeTier!=='likely'&&f.tier!==state.activeTier)return false;
+    if(state.matchStatusFilter&&statusOf('funder',f.funder_name).status!==state.matchStatusFilter)return false;
+    if(q){
+      const hay=`${f.funder_name} ${f.rationale} ${f.geography}`.toLowerCase();
+      if(!hay.includes(q))return false;
+    }
+    return true;
+  });
+  document.getElementById('match-count').textContent=list.length;
+  document.getElementById('matches-method').textContent=FUNDERS_METHOD;
+
+  const host=document.getElementById('match-results');
+  if(!list.length){
+    host.innerHTML='<div class="empty"><b>No matches</b>, try a different search.</div>';
+    return;
+  }
+  const tierLabel={tier_1_strong:'Strong candidate',tier_2_promising:'Promising candidate',tier_3_weak:'Weak candidate'};
+  host.innerHTML=list.map(f=>{
+    const isLikely=f.confidence==='likely';
+    const isConfirmed=!!f.is_confirmed_prior_funder&&!isLikely;
+    const statusBadge=isLikely
+      ?'<span class="badge badge-likely">Likely funder &middot; verify</span>'
+      :isConfirmed?'<span class="badge badge-confirmed">Confirmed funder</span>':'<span class="badge badge-new">New candidate</span>';
+    const scoreArea=isLikely
+      ?`<div class="score-num confirmed-label likely-label">Likely</div><div class="score-bar"><div class="score-bar-fill likely-fill" style="width:60%"></div></div>`
+      :isConfirmed
+      ?`<div class="score-num confirmed-label">Confirmed</div><div class="score-bar"><div class="score-bar-fill" style="width:100%"></div></div>`
+      :`<div class="score-num confirmed-label">${esc(tierLabel[f.tier]||'Candidate')}</div>`;
+    return `
+    <div class="match-card">
+      <div class="mc-head">
+        <div class="match-rank">${isConfirmed?'&#10003;':isLikely?'&#126;':'?'}</div>
+        <span class="fname">${highlight(f.funder_name,q)}</span>
+        ${statusBadge}
+        <div class="match-score">${scoreArea}</div>
+      </div>
+      <div class="mc-body">
+        <div class="match-geo">${esc(f.geography)}</div>
+        <div class="match-rationale">${highlight(f.rationale,q)}</div>
+        ${statusRowHTML('funder',f.funder_name)}
+      </div>
+    </div>
+  `;}).join('');
+  wireStatusControls(host);
+}
+
+/* ---- Open Grants ---- */
+function deadlineClass(s){
+  const m=(s||'').match(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/);
+  if(!m)return'';
+  const d=new Date(`${m[1]} ${m[2]}, ${m[3]}`);
+  if(isNaN(d))return'';
+  const days=(d-Date.now())/86400000;
+  if(days<0)return'closed';
+  if(days<=21)return'urgent';
+  if(days<=60)return'soon';
+  return'';
+}
+
+function applyGrants(){
+  const q=state.grantQ.toLowerCase().trim();
+  let list=GRANTS.ready_now.filter(g=>{
+    if(state.grantStatusFilter&&statusOf('grant',g.id).status!==state.grantStatusFilter)return false;
+    if(!q)return true;
+    const hay=`${g.organization} ${g.grant_name} ${g.focus_area} ${g.notes}`.toLowerCase();
+    return hay.includes(q);
+  });
+  document.getElementById('grant-count').textContent=list.length;
+
+  const host=document.getElementById('grant-results');
+  if(!list.length){
+    host.innerHTML='<div class="empty"><b>No matches</b>, try a different search.</div>';
+  } else {
+    host.innerHTML=list.map(g=>{
+      const dlClass=deadlineClass(g.deadline);
+      const qaRows=[
+        ['Focus Area',highlight(g.focus_area,q)],
+        ['Eligibility',highlight(g.eligibility,q)],
+        ['Amount',esc(g.amount)],
+        ['Deadline',`<span class="deadline-val ${dlClass}">${esc(g.deadline)}</span>`],
+        ['Notes',highlight(g.notes,q)],
+      ].map(([label,value])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
+      return `<article class="entry">
+        <div class="head">
+          <span class="org">${highlight(g.organization,q)}</span>
+          <span class="name"><a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a></span>
+        </div>
+        <div class="qa-grid">${qaRows}</div>
+        ${statusRowHTML('grant',g.id)}
+      </article>`;
+    }).join('');
+    wireStatusControls(host);
+  }
+
+  document.getElementById('grants-limitation').textContent=GRANTS.known_limitation;
+}
+
+function renderWatchList(){
+  document.getElementById('watch-results').innerHTML=GRANTS.watch_list_not_yet_open.map(w=>`
+    <div class="watch-item">
+      <div class="org"><a href="${esc(w.url)}" target="_blank" rel="noopener">${esc(w.organization)}</a><br><span style="font-family:var(--mono);font-size:.78rem;color:var(--wash);font-weight:400">${esc(w.grant_name)}</span></div>
+      <div class="why">${esc(w.why_watch)}</div>
+    </div>
+  `).join('');
+}
+
+async function load(){
+  await fetchStatuses();
+  document.getElementById('m-funders').textContent=RANKED_FUNDERS.length;
+  document.getElementById('m-grants').textContent=GRANTS.ready_now.length;
+
+  renderProfile();
+  buildTierFilter();
+  buildStatusFilter('match-status-filter',v=>{state.matchStatusFilter=v;applyMatches();},()=>state.matchStatusFilter);
+  buildStatusFilter('grant-status-filter',v=>{state.grantStatusFilter=v;applyGrants();},()=>state.grantStatusFilter);
+  setAdminUI();
+  applyMatches();
+  applyGrants();
+  renderWatchList();
+}
+
+document.getElementById('match-search').addEventListener('input',e=>{state.matchQ=e.target.value;applyMatches();});
+document.getElementById('grant-search').addEventListener('input',e=>{state.grantQ=e.target.value;applyGrants();});
+document.getElementById('admin-toggle').addEventListener('click',()=>{
+  if(state.adminKey){
+    if(confirm('Log out of admin mode on this device?')){
+      state.adminKey="";localStorage.removeItem('grantStatusKey');setAdminUI();applyMatches();applyGrants();
+    }
+  }else{
+    promptForKey();
+    applyMatches();applyGrants();
+  }
+});
+
+load();
+</script>
+
+<script>
+/* Two jobs:
+   (1) A hash-anchor link scrolls its target into view. Sections can no longer be hidden
+       (the fold/accordion mechanism was removed), but the explicit scroll is still needed -
+       nothing else moves the viewport to the anchor.
+   (2) Mirror each list section's own counter into its heading chip, so the count is never
+       out of sync with what the section actually shows. */
+(function(){
+  function openTo(){
+    var h = window.location.hash;
+    if (!h || h.length < 2) return;
+    var t;
+    try { t = document.querySelector(h); } catch (e) { return; }
+    if (!t) return;
+    window.setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+  }
+  function counts(){
+    var done = true;
+    var chips = document.querySelectorAll('.fold-count');
+    for (var i = 0; i < chips.length; i++) {
+      var el = chips[i], n = null;
+      var from = el.getAttribute('data-count-from');
+      var sel = el.getAttribute('data-count-sel');
+      if (from) {
+        var src = document.getElementById(from);
+        if (src) n = parseInt(src.textContent, 10);
+      } else if (sel) {
+        n = document.querySelectorAll(sel).length;
+      }
+      if (n === null || isNaN(n) || n === 0) { done = false; continue; }
+      var txt = n + ' ' + el.getAttribute('data-count-label');
+      if (el.textContent !== txt) el.textContent = txt;   /* guard: writing unconditionally would
+                                                             retrigger the observer forever */
+    }
+    return done;
+  }
+  window.addEventListener('hashchange', openTo);
+  window.addEventListener('load', function(){ openTo(); counts(); });
+  document.addEventListener('DOMContentLoaded', function(){
+    openTo();
+    if (counts()) return;
+    var mo = new MutationObserver(function(){ if (counts()) mo.disconnect(); });
+    mo.observe(document.body, {childList:true, subtree:true, characterData:true});
+  });
+})();
+</script>
+</body>
+</html>

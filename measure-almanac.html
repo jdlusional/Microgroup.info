@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Almanac for Measure</title>
+<meta name="description" content="Almanac (Funder &amp; Grant Match): a ranked funder match built from real IRS grant-history data, plus a database of currently-open grant opportunities. (Title and description update per-organization once the page loads: see the ?org= parameter.)" />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/png" href="Assets/almanac-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=8f55469b15">
+<style>
+a{color:var(--ink)}
+
+.hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1.4rem;text-align:center}
+
+.section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
+.section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0}
+
+/* ---- Profile section ---- */
+.profile-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.5rem}
+@media(max-width:780px){.profile-grid{grid-template-columns:1fr}}
+.card{background:var(--well);border:1.5px solid var(--ink);padding:1.3rem 1.4rem}
+.card h3{font-family:var(--mono);font-size:.84rem;text-transform:uppercase;letter-spacing:.08em;color:var(--wash);margin:0 0 .6rem}
+.card p{margin:0 0 .8rem;font-size:15px}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{font-family:var(--mono);font-size:14px;padding:.22rem .58rem;background:var(--paper);border:1px solid var(--rule);color:var(--ink)}
+.stat-tile{text-align:center;padding:1rem}
+.stat-tile .num{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--accent);line-height:1}
+.stat-tile .lbl{font-family:var(--mono);font-size:12.5px;color:var(--wash);text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem}
+.funder-mini-table{width:100%;min-width:480px;table-layout:fixed;border-collapse:collapse;font-size:15px;margin-top:.5rem}
+.funder-mini-table th{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--wash);text-align:left;padding:.35rem .5rem;border-bottom:1px solid var(--rule)}
+.funder-mini-table td{padding:.45rem .5rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere}
+.funder-mini-table th:first-child,.funder-mini-table td:first-child{width:26%}
+.funder-mini-table th:last-child,.funder-mini-table td:last-child{width:18%}
+.funder-mini-table .amt{font-family:var(--mono);white-space:normal;text-align:right;font-size:14px}
+
+/* ---- Search/filter bar (shared pattern) ---- */
+.toolbar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-bottom:1.1rem}
+.search{flex:1;min-width:220px;padding:.6rem .75rem;border:1.5px solid var(--ink);border-radius:0;font-family:var(--serif);font-size:15px;background:var(--well);color:var(--ink);outline:none}
+.search:focus{outline:2px solid var(--ink);outline-offset:0}
+.chip-filter{display:flex;gap:.4rem;flex-wrap:wrap}
+.chip-btn{font-family:var(--mono);font-size:.84rem;padding:.32rem .65rem;border:1px solid var(--rule);background:var(--well);color:var(--wash);cursor:pointer}
+.chip-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* ---- Funder match cards ---- */
+/* border/padding/title typography superseded by tool-shared.css's card-convergence block. */
+.match-card{padding:0}
+.mc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
+.mc-head .fname{flex:1;min-width:220px;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;overflow-wrap:anywhere}
+.mc-head .match-rank{font-family:var(--mono);font-size:.88rem;color:var(--wash)}
+.mc-body{padding:.9rem 1.2rem;min-width:0}
+@media(max-width:640px){.mc-head{gap:.4rem}.mc-head .fname{min-width:0;flex-basis:100%}}
+.badge{font-family:var(--serif);font-size:12.5px;padding:.16rem .5rem;letter-spacing:.03em;text-transform:uppercase;font-weight:700}
+.badge-confirmed{background:var(--ok);color:#fff}
+.badge-new{background:var(--accent);color:#fff}
+.badge-tier1{border:1px solid var(--ok);color:var(--ok)}
+.badge-tier2{border:1px solid var(--warn);color:var(--warn)}
+.badge-tier3{border:1px solid var(--rule);color:var(--wash)}
+.match-geo{font-family:var(--serif);font-size:17.5px;color:var(--wash);margin-top:.15rem;font-weight:700}
+.match-rationale{font-size:17.5px;color:var(--ink);margin-top:.4rem;line-height:1.55}
+.match-score{text-align:right;margin-left:auto}
+.score-num{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--accent)}
+.score-bar{width:70px;height:5px;background:var(--rule);margin-top:.35rem}
+.score-bar-fill{height:100%;background:var(--accent)}
+
+/* ---- Grant entries (F4F Q&A pattern, adapted) ---- */
+.entry{border-bottom:1px solid var(--rule-soft);padding:1.1rem 0}
+.entry .head{display:flex;flex-direction:column;gap:.12rem}
+.entry .org{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--wash)}
+.entry .name a{color:var(--ink)}
+.entry .name a:hover{color:var(--wash);text-decoration:underline}
+.qa-grid{display:flex;flex-direction:column;gap:.5rem;margin-top:.55rem}
+.qa-row{display:grid;grid-template-columns:150px 1fr;gap:.6rem 1rem;align-items:baseline}
+@media(max-width:580px){.qa-row{grid-template-columns:1fr;gap:.1rem}}
+.qa-label{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);white-space:nowrap}
+.qa-value{font-size:.94rem;line-height:1.5}
+.deadline-val.urgent{color:var(--urgent);font-weight:600}
+.deadline-val.soon{color:var(--warn);font-weight:500}
+
+.watch-list{margin-top:1.6rem}
+.watch-item{padding:.75rem 0;border-bottom:1px solid var(--rule-soft);display:grid;grid-template-columns:1fr 2fr;gap:1rem}
+@media(max-width:640px){.watch-item{grid-template-columns:1fr}}
+.watch-item .why{font-size:15px;color:var(--wash);line-height:1.5}
+
+.limitation-note{font-family:var(--mono);font-size:.86rem;color:var(--wash);background:var(--well);border:1px dashed var(--rule);padding:.7rem .9rem;margin-top:1.2rem;line-height:1.5}
+
+/* ---- Status tracking ---- */
+.admin-toggle{font-family:var(--mono);font-size:.84rem;padding:.3rem .7rem;border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer}
+.admin-toggle.on{background:var(--ink);color:var(--paper)}
+.status-row{display:flex;align-items:center;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
+.status-select{font-family:var(--mono);font-size:.84rem;padding:.28rem .4rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink)}
+.status-select:disabled{color:var(--wash);cursor:not-allowed}
+.status-pill{font-family:var(--mono);font-size:.8rem;padding:.2rem .55rem;text-transform:uppercase;letter-spacing:.03em;border:1px solid var(--rule);color:var(--wash);background:var(--paper)}
+.status-pill.st-researching{color:var(--accent);border-color:var(--accent)}
+.status-pill.st-in_progress,.status-pill.st-submitted{color:var(--warn);border-color:var(--warn)}
+.status-pill.st-awarded{color:var(--ok);border-color:var(--ok)}
+.status-pill.st-declined{color:var(--urgent);border-color:var(--urgent)}
+.status-notes{width:100%;margin-top:.4rem;font-family:var(--serif);font-size:15px;padding:.45rem .55rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink);resize:vertical;min-height:2.4em}
+.status-notes:disabled{background:var(--well);color:var(--wash)}
+.status-saved{font-family:var(--mono);font-size:.8rem;color:var(--ok);opacity:0;transition:opacity .3s}
+.status-saved.show{opacity:1}
+
+
+body{overflow-x:hidden}
+/* .sbadge.moderate: its own 8%-alpha tint darkens the backdrop to rgb(224,214,197) over --well,
+   dropping #8a5218 to 4.42:1. #794713 clears AA on both the well and paper backdrops. */
+.sbadge.moderate{color:#794713}
+
+/* Wrap width: .section-head p was capped at 70/72ch -- it rendered 526px inside a 1140px
+   container (46%) while the cards/grid directly beneath it spanned the full width. The intro
+   paragraph should wrap to the width of the block below it, matching .limitation-note, which
+   is already full-width. The centered .hero lede and the 16em/15em/14em long-string wrap
+   guards on table amounts and deadlines are deliberate and stay capped. */
+.section-head p{max-width:none}
+
+.hero{text-align:left;padding:3.2rem 1.25rem 2.2rem;border-bottom:1px solid var(--rule)}
+.section{padding:2.6rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
+@media(max-width:640px){.hero{padding:2.2rem 1.25rem 1.6rem}.hero h1{font-size:30px}}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+<!-- CONVENTION-BADGES:START (generated by pattern-book/inject_badges.py; do not hand-edit) -->
+<div class="conv-badges" style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.35rem 0 0"><span class="conv-badge conv-badge-style" style="font-family:var(--mono,monospace);font-size:12.5px;letter-spacing:.04em;border:1px solid currentColor;padding:.15rem .5rem;max-width:100%">Style guide: General</span><span class="conv-badge conv-badge-tier" style="font-family:var(--mono,monospace);font-size:12.5px;letter-spacing:.04em;border:1px solid currentColor;padding:.15rem .5rem;max-width:100%">Paid · institution-specific</span></div>
+<!-- CONVENTION-BADGES:END -->
+
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand" id="brand-text"><b>Almanac</b> for Measure</span>
+    <span class="stat"><strong id="m-funders">–</strong> funders ranked</span>
+    <span class="stat"><strong id="m-grants">–</strong> open opportunities</span>
+    <span class="grow"></span>
+    <button class="admin-toggle" id="admin-toggle" type="button" title="Enter your key to mark status on funders and grants">Admin</button>
+    <nav>
+      <a href="#profile">Profile</a>
+      <a href="#matches">Funder Matches</a>
+      <a href="#grants">Open Grants</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">Prepared research tool, not a public product</div>
+  <h1 id="hero-heading">Almanac</h1>
+  <p id="hero-subtext">Almanac is a funding-prospect tool combining real IRS grant-history data with a live-researched database of currently-open funding opportunities.</p>
+  <div class="note">Every funder and grant listed here was verified against a real source (IRS Form 990 filings or the funder's own current website): nothing here is estimated or invented. Where something is uncertain, it's flagged explicitly rather than guessed at.</div>
+</header>
+
+<section class="section" id="profile">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">The organization</span>
+      <h2>Funding Profile</h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>Measure's mission, focus areas, and confirmed funding history: the foundation the funder match and grants search are built on.</p>
+    </div>
+      <div class="profile-grid">
+        <div class="card">
+          <h3>Mission</h3>
+          <p id="p-mission"></p>
+          <h3>Focus Areas</h3>
+          <div class="tag-row" id="p-focus"></div>
+        </div>
+        <div class="card">
+          <h3>At a glance</h3>
+          <div class="stat-tile">
+            <div class="num" id="p-total">$0</div>
+            <div class="lbl">confirmed prior funding found</div>
+          </div>
+          <h3 style="margin-top:1rem">Geography</h3>
+          <p id="p-geo" style="margin:0"></p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1.2rem">
+        <h3>Confirmed Prior Funders</h3>
+        <div class="table-scroll"><table class="funder-mini-table">
+          <thead><tr><th>Funder</th><th>Purpose</th><th style="text-align:right">Amount</th></tr></thead>
+          <tbody id="p-funders-table"></tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="matches">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Who could fund this</span>
+      <h2>Ranked Funder Matches <span class="fold-count" data-count-from="match-count" data-count-label="funders"></span></h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p id="matches-method"></p>
+    </div>
+      <div class="toolbar">
+        <input class="search" id="match-search" type="search" placeholder="Search funder name or rationale…" aria-label="Search funders" />
+        <div class="chip-filter" id="tier-filter"></div>
+        <div class="chip-filter" id="match-status-filter"></div>
+      </div>
+      <div class="res-count"><b id="match-count">0</b> funders shown</div>
+      <div id="match-results"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="grants">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Open right now</span>
+      <h2>Open Grant Opportunities <span class="fold-count" data-count-from="grant-count" data-count-label="open now"></span></h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>Currently-open or clearly-upcoming grant opportunities matched to Measure's actual focus areas and geography.</p>
+    </div>
+      <div class="toolbar">
+        <input class="search" id="grant-search" type="search" placeholder="Search organization, focus area…" aria-label="Search grants" />
+        <div class="chip-filter" id="grant-status-filter"></div>
+      </div>
+      <div class="res-count"><b id="grant-count">0</b> opportunities ready now</div>
+      <div id="grant-results"></div>
+
+      <div class="watch-list">
+        <div class="section-head" style="border-top:1px solid var(--rule);padding-top:.9rem;margin-bottom:1rem">
+          <h2 style="font-size:1.15rem">Watch List — not yet open</h2>
+          <p>Real, relevant opportunities that are currently closed or not yet launched. Worth monitoring, not applying to yet.</p>
+        </div>
+        <div id="watch-results"></div>
+      </div>
+
+      <div class="limitation-note" id="grants-limitation"></div>
+    </div>
+  </div>
+</section>
+
+<section class="method-wrap" id="method">
+  <div class="method-box">
+    <div class="method-kicker">Method</div>
+    <h2>How this was built, and what it cannot tell you</h2>
+    <p><b>Where this comes from.</b> Every funder and every grant on this page is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages. Each match carries a link back to the source it came from, so nothing here has to be taken on trust. Where a funder does not publish a figure (an award range, a deadline, an eligibility rule), that gap is marked as unconfirmed rather than filled in.</p>
+    <p><b>What Almanac will not do.</b> It does not invent a fact about a funder. An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on. It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit. A candidate is never dressed up as a confirmed prior funder.</p>
+    <p><b>What it cannot tell you.</b> Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved. A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records. The ranking is a judgment about fit, not a prediction of success. Treat every row as a lead to verify against the funder's own page before you spend real time on it.</p>
+  </div>
+</section>
+
+<footer>
+  <span id="footer-credit">Prepared by Jonathan Lin Davis</span>
+  <span id="footer-links"></span>
+  <span class="footer-improvements-wrap"><a class="footer-improvements" href="https://jonathanlindavis.com/improvementlog.html">Improvement log</a></span>
+</footer>
+
+<script>
+/* ---------------------------------------------------------------
+   Self-contained page, hard-set to Measure. No ?org= parameter, no
+   fetch of data/*.json, no runtime data swapping. The data below IS
+   the page -- the same pattern as every other per-org instance.
+
+   ORG_SLUG stays because the grant-status API is keyed on it. That is
+   a real per-org value, not templating.
+
+   Source of record for the data below: data/measure-austin_*.json.
+   Edit those, re-run the converter, and this page is rebuilt.
+   --------------------------------------------------------------- */
+const ORG_SLUG="measure-austin";
+
+const PROFILE={
+ "organization": "Measure",
+ "ein": "822372196",
+ "website": "https://wemeasure.org/",
+ "mission": "Measure mobilizes communities to transform lived experience into data, data into power, and power into systemic change. Centers equity by placing community members at the forefront of research, design, and decision-making rather than treating them as subjects of study.",
+ "programs": [
+  "Communities in the Loop™ (civic technology / AI governance initiative)",
+  "CARE Model™ v4.0 (Community, Advocacy, Resilience, Evidence framework)",
+  "Capacity Building (Community Data Gatherings, Measure LIT AI literacy trainings, leadership/advocacy training, We Thrive Leadership Initiative)",
+  "Financially Lit & Funding Ready (six-week funding-readiness series)"
+ ],
+ "focus_areas": [
+  "Public safety metrics / community-led data justice",
+  "Racial equity (State of Black Lives in Austin Black Paper)",
+  "Nonprofit governance (board representation, community-reflective leadership)",
+  "Ethical AI governance (community-shaped AI policy)"
+ ],
+ "geography": {
+  "primary": "Austin, TX",
+  "secondary": [
+   "Houston, TX",
+   "Dallas, TX"
+  ]
+ },
+ "ntee_code_filed": "B05",
+ "ntee_major_filed": "Education",
+ "ntee_code_note": "BMF-filed code (B05/Education) likely undersells actual scope -- real focus skews toward civil rights / community development / racial equity / data justice per the org's own site content.",
+ "target_populations": [
+  "Nonprofits and public agencies seeking evaluation support",
+  "Community residents and leaders with lived experience",
+  "Ethical researchers committed to equitable methodologies",
+  "HBCUs and academic institutions"
+ ],
+ "reported_scale": {
+  "care_model_grants_distributed": 783893,
+  "organizations_supported": "82+",
+  "note": "Self-reported on wemeasure.org, not independently verified"
+ },
+ "confirmed_prior_funders": [
+  {
+   "funder": "Michael & Susan Dell Foundation",
+   "funder_ein": "364336415",
+   "amount": 131000,
+   "purpose": "Implementing Data-Driven and Community Led Efforts for Improved Service Impact",
+   "source": "GIFT curated 200-funder index (gift_edges.csv)",
+   "note": "Not present in the new national Schedule I parse of the current xml_cache -- GIFT sourced this via its own separate build pipeline, not the shared cache. Real and confirmed by GIFT's own methodology, just not cross-verified here."
+  },
+  {
+   "funder": "St. David's Foundation",
+   "funder_ein": "741356589",
+   "amount": 162000,
+   "purpose": "Health Access Grant",
+   "source": "schedule_i_grants_paid.csv (2026-07-06 national parse)",
+   "note": "Major Central Texas health-focused foundation. Framing (\"Health Access\") differs from Measure's usual equity/data framing -- worth understanding why on a follow-up call, may reflect a specific program angle."
+  },
+  {
+   "funder": "Austin Community Foundation",
+   "funder_ein": "741934031",
+   "amount": 6000,
+   "purpose": "Community Engagement",
+   "source": "Confirmed independently in BOTH GIFT's curated index AND the new national Schedule I parse -- cross-validated.",
+   "note": "Broad general-purpose Austin community foundation (1,509 total grants in cache, spanning arts/education/human services/etc.) -- not narrowly equity/data-focused, but a large, active, real Austin funder."
+  },
+  {
+   "funder": "Fidelity Investments Charitable Gift Fund",
+   "funder_ein": "110303001",
+   "amount": 202300,
+   "purpose": "For grant recipient's exempt purposes",
+   "source": "schedule_i_grants_paid.csv (2026-07-06 national parse)",
+   "note": "This is a donor-advised-fund (DAF) sponsor, not a mission-driven foundation -- the grant reflects a specific individual donor's recommendation routed through Fidelity's platform, not evidence that 'Fidelity as an institution' funds this space. Real money, but not a prospectable relationship the same way a foundation is."
+  },
+  {
+   "funder": "Capacity Catalyst",
+   "funder_ein": "825417593",
+   "amount": 9000,
+   "purpose": "Develop and support CERC class content",
+   "source": "schedule_i_grants_paid.csv (2026-07-06 national parse)",
+   "note": "Small 501(c)(3), only 3 total grants in cache -- a peer nonprofit-capacity-building org, not a large foundation. \"CERC\" = Community-Engaged Research Course, a program Capacity Catalyst co-founded with Measure (piloted Fall 2019 at Huston-Tillotson University); this grant funded curriculum development for it."
+  }
+ ],
+ "confirmed_prior_funders_total": 510300,
+ "profile_built": "2026-07-06",
+ "profile_sources": [
+  "wemeasure.org (fetched 2026-07-06)",
+  "GIFT curated 200-funder index (gift_edges.csv, gift_recipients.json, gift_funder_detail.json)",
+  "New national Schedule I parse (Nonprofit Data subfolder, parse_schedule_i.py, run 2026-07-06)"
+ ],
+ "display": {
+  "page_title": "Almanac for Measure",
+  "meta_description": "Almanac — Funder & Grant Match, prepared for Measure: a ranked funder match built from real IRS grant-history data, plus a database of currently-open grant opportunities.",
+  "brand_bar_text": "Almanac for Measure",
+  "hero_heading": "Almanac",
+  "hero_subtext": "Almanac is a funding-prospect tool built specifically for Measure (wemeasure.org), combining real IRS grant-history data with a live-researched database of currently-open funding opportunities.",
+  "footer_credit": "Prepared for Measure by Jonathan Lin Davis · Built from IRS Form 990 data and live web scraping; developed in Python and CSS using Claude Code and Jonathan Lin Davis's proprietary, copyrighted Code Development Program · July 2026"
+ },
+ "public_profile_enrichment": {
+  "as_of": "2026-07-10",
+  "method": "Public-source research (IRS Form 990 via ProPublica Nonprofit Explorer, wemeasure.org, Candid, news) synthesized 2026-07-10. Each fact carries a source_url and confidence. 'still_needs_measure' lists items genuinely not public that only Measure can supply. This block corrects/extends the base profile (e.g., leadership is 'President & Founder', not CEO/ED). DEEP PASS (2026-07-10): a second exhaustive 8-lane public-source sweep added leadership demographics, founder profile, program metrics, publications, partners, and 990 financial detail; see is_black_bipoc_led, truly_unknowable, still_findable_gated, conflicts.",
+  "operating_budget_band": "Approximately $1.0M–$1.25M per year, best proxied by FY2024 (fiscal year ending December 2024) total expenses of $1,220,876 per ProPublica/IRS Form 990. On a broader recent-years view the band is roughly $700K–$1.3M and trending upward. This sits comfortably inside the $500K–$10M range: every fiscal year from FY2020 onward has total expenses above $500K, and FY2022–FY2024 revenue all exceeds $700K, well below the $10M ceiling. (Caveat: if a funder measures strictly by revenue, FY2021 revenue was $325K — below $500K — but expenses that year were $563K, and FY2022–FY2024 clear $500K on both measures.)",
+  "financial_summary": "ProPublica (mirroring IRS Form 990 data) holds filings from FY ending Nov 2018 through FY ending Dec 2024. The org shows steep, sustained growth: it graduated from 990-EZ (~$46K revenue in FY Nov 2018; ~$188K in FY Nov 2019) to a full Form 990 starting FY Dec 2019, when it changed its fiscal-year-end from November to December. Revenue climbed from $568,750 (FY2020) with a one-year dip to $325,374 (FY2021, the only net-loss year, expenses $563,571), then $745,052 (FY2022), $1,254,853 (FY2023), and $1,268,433 (FY2024). Expenses tracked upward — $409,830 (2020) → $703,389 (2022) → $1,009,252 (2023) → $1,220,876 (2024) — with the org running an operating surplus in FY2022–FY2024. Net assets grew steadily to $497,818 at year-end 2024. The most recent return is the full Form 990 for FY ending December 2024, filed October 1, 2025; the calendar-year FY2025 return is not yet public and would not typically be filed until late 2026.",
+  "verified_facts": [
+   {
+    "field": "organization_legal_name",
+    "value": "Measure Austin (IRS legal name); publicly branded \"Measure\"",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high",
+    "note": "IRS legal name remains 'Measure Austin' under EIN 82-2372196; current site brands as 'Measure' at wemeasure.org."
+   },
+   {
+    "field": "ein",
+    "value": "82-2372196",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high",
+    "note": "Confirms existing profile EIN 822372196. Prefix 82 = issued 2017."
+   },
+   {
+    "field": "founder",
+    "value": "Jameila \"Meme\" Styles, MPA (also appears as Meme Styles-Taliaferro)",
+    "source_url": "https://wemeasure.org/about/",
+    "confidence": "high",
+    "note": "Sole founder; holds a Master of Public Administration. Legal first name Jameila; publicly 'Meme'. Taliaferro appears to be a married surname."
+   },
+   {
+    "field": "founder_title",
+    "value": "President & Founder",
+    "source_url": "https://wemeasure.org/about/",
+    "confidence": "high",
+    "note": "RECONCILES the profile's assumed CEO/Executive Director framing: the org publicly uses 'President & Founder' (corroborated by Candid, The Austin Common). No CEO or ED title exists on the current site."
+   },
+   {
+    "field": "founding_year",
+    "value": "2015",
+    "source_url": "https://wemeasure.org/about/",
+    "confidence": "high",
+    "note": "Operations began 2015 after Styles challenged the Austin Police Department to 'show me the numbers.' Distinct from the legal 501(c)(3) date."
+   },
+   {
+    "field": "founding_story",
+    "value": "Founded 2015 after challenging APD to 'show me the numbers' behind its performance metrics; built a methodology to measure community policing and expanded to health, education, and economic disparities. Began as a team of four Austin community leaders (activism, technology, research, education backgrounds).",
+    "source_url": "https://www.measureaustin.org/our-story.html",
+    "confidence": "high",
+    "note": "'Team of four' detail is medium-confidence (legacy/secondary framing)."
+   },
+   {
+    "field": "tax_exempt_date",
+    "value": "IRS 501(c)(3) tax-exempt since January 2018; org self-reports 2017 as the year it became a 501(c)(3)",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high",
+    "note": "First Form 990 filed for FY ending November 2018."
+   },
+   {
+    "field": "state_of_incorporation",
+    "value": "Texas (Austin)",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high"
+   },
+   {
+    "field": "hq_address",
+    "value": "305 East Huntland Dr., Suite 500, Austin, TX 78752",
+    "source_url": "https://wemeasure.org/about/",
+    "confidence": "high",
+    "note": "Current primary Austin HQ on the live site."
+   },
+   {
+    "field": "hq_address_prior",
+    "value": "2921 E 17th Street, Building D, Box 6 (PeopleFund Building), Austin, TX 78702",
+    "source_url": "https://www.measureaustin.org/our-story.html",
+    "confidence": "medium",
+    "note": "Earlier address on the legacy measureaustin.org site; org has since moved to E Huntland Dr."
+   },
+   {
+    "field": "secondary_office_houston",
+    "value": "3120 Southwest Fwy, Suite 211, Houston, TX 77098",
+    "source_url": "https://wemeasure.org/about/",
+    "confidence": "high",
+    "note": "Concrete Houston street address extends the profile's Houston/Dallas geography."
+   },
+   {
+    "field": "geographic_footprint",
+    "value": "Austin · Houston · Dallas, TX (Dallas named in footprint but no Dallas street address or specific Dallas programming published)",
+    "source_url": "https://wemeasure.org/",
+    "confidence": "high"
+   },
+   {
+    "field": "contact",
+    "value": "hello@wemeasure.org; 512-792-8549",
+    "source_url": "https://wemeasure.org/",
+    "confidence": "high"
+   },
+   {
+    "field": "most_recent_990",
+    "value": "Form 990 (full) for fiscal year ending December 2024, filed October 1, 2025",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high",
+    "note": "Org uses a calendar fiscal year; FY2025 return not yet public (not due until late 2026)."
+   },
+   {
+    "field": "total_revenue_fy2024",
+    "value": "$1,268,433",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high"
+   },
+   {
+    "field": "total_expenses_fy2024",
+    "value": "$1,220,876",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high"
+   },
+   {
+    "field": "net_assets_fy2024",
+    "value": "$497,818",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high"
+   },
+   {
+    "field": "total_revenue_fy2023",
+    "value": "$1,254,853",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high"
+   },
+   {
+    "field": "total_expenses_fy2023",
+    "value": "$1,009,252",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high"
+   },
+   {
+    "field": "net_assets_fy2023",
+    "value": "$392,727",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high"
+   },
+   {
+    "field": "total_revenue_fy2022",
+    "value": "$745,052",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high"
+   },
+   {
+    "field": "total_expenses_fy2022",
+    "value": "$703,389",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high"
+   },
+   {
+    "field": "net_assets_fy2022",
+    "value": "$147,126",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high"
+   },
+   {
+    "field": "financials_fy2020_fy2021",
+    "value": "FY2020: rev $568,750 / exp $409,830 / net assets $233,039. FY2021: rev $325,374 / exp $563,571 / net assets $119,378 (only net-loss year).",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high"
+   },
+   {
+    "field": "early_filings_history",
+    "value": "FY Dec 2019: rev $233,384 / exp $126,062 (first full 990). FY Nov 2019: rev $188,296 / exp $107,017 (990-EZ). FY Nov 2018: rev $45,665 / exp $41,888 (990-EZ). Two 2019 returns reflect a Nov→Dec fiscal-year-end change.",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high"
+   },
+   {
+    "field": "ntee_per_propublica",
+    "value": "Educational Institutions and Related Activities — Research Institutes and/or Public Policy Analysis",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "medium",
+    "note": "EXTENDS the profile's B05/Education BMF code with a more specific research-oriented subcode that better fits the org's data/evaluation work. Still Educational major group."
+   },
+   {
+    "field": "board_members",
+    "value": "6 members: Julio Irving Cotto (SVP, National Hispanic Institute); Dr. Angel Durr (VP Operational Analytics & Tooling; founder of DataReady); Ozen Ahmed (VP, Corporate Banking); Mindy Gulati (Attorney/Consultant); Alyse Gamble (Diversity Management Team); Lauren Rosa (Project Manager).",
+    "source_url": "https://wemeasure.org/about/",
+    "confidence": "high",
+    "note": "Employer affiliations published only for Cotto and Durr; others show role descriptors only. Board officer roles (chair/treasurer/secretary) not published."
+   },
+   {
+    "field": "core_staff",
+    "value": "Founder + 8 named staff: Vanetta Johnson (Chief of Operations); Dr. Gabrielle Wallace (Director of Research); Brittany Merida (Director of Community Engagement); TC Mack (Operations Manager); Kriselle Dada (Operations); Terika Newson (Ignite UX Designer); Denise Upshaw (Research Dept. Coordinator); Kim Beltran (Executive Assistant).",
+    "source_url": "https://wemeasure.org/about/",
+    "confidence": "high"
+   },
+   {
+    "field": "team_size",
+    "value": "~9 core team (founder + 8 staff) plus 6 board members",
+    "source_url": "https://wemeasure.org/about/",
+    "confidence": "medium",
+    "note": "Derived by counting named individuals; org publishes no explicit FTE headcount. Actual total (contractors/fellows) may be higher."
+   },
+   {
+    "field": "staff_turnover_note",
+    "value": "Legacy domain measureaustin.org/meet-the-team lists an entirely different, now-outdated leadership team (Precious Azurée, Kathleen Houlihan, Nic Hollins, Chris Harris, Malick Djiba, Rebecca Dejean, Meg Moore) — indicating significant turnover. wemeasure.org/about is authoritative for the current team.",
+    "source_url": "https://www.measureaustin.org/meet-the-team.html",
+    "confidence": "medium",
+    "note": "Legacy domain is stale/spam-injected; treat those names as former staff."
+   },
+   {
+    "field": "mission_verbatim",
+    "value": "\"Measure mobilizes communities to transform lived experience into data, data into power, and power into systemic change.\"",
+    "source_url": "https://wemeasure.org/",
+    "confidence": "high",
+    "note": "Matches the mission in the existing profile; confirmed verbatim."
+   },
+   {
+    "field": "program_communities_in_the_loop",
+    "value": "Communities in the Loop™ — flagship civic technology / AI-literacy initiative ensuring communities help shape AI; also runs as an AI Literacy Training sub-program and public convenings.",
+    "source_url": "https://wemeasure.org/",
+    "confidence": "high"
+   },
+   {
+    "field": "program_care_model",
+    "value": "CARE Model™ v4.0 — trademarked methodology (Community, Advocacy, Resilience, Evidence); 12 interactive steps across three phases (Community Engagement, Planning, Implementation). Live implementation with We Can Now (WCN), food-distribution measurement, Central Texas. In 2024 became a grant program.",
+    "source_url": "https://wemeasure.org/",
+    "confidence": "high"
+   },
+   {
+    "field": "program_capacity_building_subprograms",
+    "value": "Capacity Building & Community Engagement cluster, six sub-programs: 01 Community Data Gatherings; 02 Measure LIT (Micro AI Literacy Trainings); 03 Communities In The Loop (AI Literacy Trainings); 04 Adultification Bias Training To Protect Black Girls; 05 We Thrive Leadership Initiative; 06 Financially Lit & Funding Ready (six-week series).",
+    "source_url": "https://wemeasure.org/",
+    "confidence": "high",
+    "note": "Enumerates and extends the profile's program list; adds 'Adultification Bias Training' and frames Measure LIT as micro AI-literacy."
+   },
+   {
+    "field": "program_free_data_support",
+    "value": "Free Data Support — redistributing data power to Black, Brown, and Indigenous-led orgs (2020–today). Reported: $950K+ in-kind value, 63+ organizations served, 3,000+ hours donated (2020–21).",
+    "source_url": "https://wemeasure.org/impact/",
+    "confidence": "high",
+    "note": "Figures are static text on the impact page (not the JS-animated counters)."
+   },
+   {
+    "field": "program_measure_ignite",
+    "value": "Measure Ignite — impact-measurement platform built with/for Black, Brown, Indigenous-led orgs. ~300 users; The Black Fund is a foundation partner. Idea born 2021 (Nexus) → 2024 soft launch/beta → 2025 Ignite 2.0.",
+    "source_url": "https://wemeasure.org/impact/",
+    "confidence": "high"
+   },
+   {
+    "field": "program_innocence_initiative",
+    "value": "The Innocence Initiative — elevates data/stories of Black girls to disrupt adultification bias. Reported: 15,000 comic books distributed, 10+ trainings; policy wins include the CROWN Act. Timeline: 2019 launched; 2021 'The Measure Bill' HB 3485; 2022 Austin CROWN Act; 2023 Texas CROWN Act.",
+    "source_url": "https://wemeasure.org/impact/",
+    "confidence": "high",
+    "note": "Links Measure to specific legislative wins; a founding member of a 5-org collaborative (see coalition fact)."
+   },
+   {
+    "field": "program_cerc",
+    "value": "Community-Engaged Research Course (CERC) — pipeline of equity-minded researchers with Huston-Tillotson University. Reported: 69+ students trained, 23 nonprofits supported, 88.4% underrepresented students. 2019 inaugural cohort at Huston-Tillotson; 2021 expansion to Texas State University.",
+    "source_url": "https://wemeasure.org/impact/",
+    "confidence": "high",
+    "note": "Consistent with the profile's Capacity Catalyst/CERC note (co-founded, piloted Fall 2019 at Huston-Tillotson)."
+   },
+   {
+    "field": "publication_state_of_black_lives_austin",
+    "value": "'The State of Black Lives in Austin' — a 64-page Black Paper released March 11, 2024, jointly with the Austin Justice Coalition; compares the 2008 African American Quality of Life report against a 2023 assessment across six domains.",
+    "source_url": "https://austinmonitor.com/stories/2024/03/new-report-quantifies-the-state-of-black-austin/",
+    "confidence": "high",
+    "note": "Also covered by Austin Chronicle, KUT, CultureMap. Org landing page wemeasure.org/the-state-of-black-austin returned 404 on the lane fetch."
+   },
+   {
+    "field": "publication_black_lives_findings",
+    "value": "Headline figures: Black residents = 7.5% of Austin population but 15% of traffic stops and 25% of arrests (2018); Black students = 6% of AISD enrollment but 17% of law-enforcement referrals; median Black household earned 54 cents per dollar of median white household (2019); ~2% of cultural funding to Black communities; 93% of Black musicians report booking discrimination.",
+    "source_url": "https://austinmonitor.com/stories/2024/03/new-report-quantifies-the-state-of-black-austin/",
+    "confidence": "medium",
+    "note": "Aggregated from press coverage, not read from the primary 64-page PDF."
+   },
+   {
+    "field": "publications_other",
+    "value": "'Interrogating Public Safety Metrics' (community-led look at how Austin measures safety) and 'Bridging the Nonprofit Board Representation Gap' (nonprofit governance). Year/page count not published.",
+    "source_url": "https://wemeasure.org/",
+    "confidence": "high",
+    "note": "Supports the profile's public-safety-metrics and nonprofit-governance focus areas."
+   },
+   {
+    "field": "named_partners_clients",
+    "value": "We Can Now (WCN, CARE Model client); The Black Fund (Measure Ignite foundation partner); Huston-Tillotson University (CERC); Texas State University (CERC expansion); Austin Justice Coalition (co-publisher, State of Black Lives).",
+    "source_url": "https://wemeasure.org/impact/",
+    "confidence": "high"
+   },
+   {
+    "field": "funder_google_org_ai_opportunity_fund",
+    "value": "Selected as one of 20 Central Texas nonprofits for the Google.org AI Opportunity Fund — a $1,000,000 grant Google.org made to Austin Community Foundation (April 2025) for AI training/capacity-building; implementing partner Project Evident. Enrollment in a funded accelerator (training/coaching/roadmap), not necessarily a direct cash grant.",
+    "source_url": "https://www.austincf.org/news/ai-opportunity-accelerator/",
+    "confidence": "high",
+    "note": "NEW vs profile. Independently reinforces the Austin Community Foundation relationship already in the profile."
+   },
+   {
+    "field": "funder_impact_austin_2019",
+    "value": "Impact Austin's first-ever Social Innovation Grant of $110,000 (2019) to The Innocence Initiative, a five-org collaborative Measure co-led (adultification of Black girls). Candid separately frames ~$200,000 collectively invested over time.",
+    "source_url": "https://www.impactaustin.org/post/impact-austin-committed-to-changing-the-face-of-philanthropy-in-central-texas",
+    "confidence": "high",
+    "note": "Grant went to the collaborative, not solely Measure."
+   },
+   {
+    "field": "coalition_innocence_initiative",
+    "value": "Founding member of The Innocence Initiative, a 5-org collaborative: Measure, Girl Scouts of Central Texas, Hearts 2 Heal, Lone Star Justice Alliance, and Community Advocacy and Healing Project. Launched 2019. Georgetown (Center on Poverty and Inequality) supplied the original adultification research.",
+    "source_url": "https://www.impactaustin.org/post/impact-austin-committed-to-changing-the-face-of-philanthropy-in-central-texas",
+    "confidence": "high"
+   },
+   {
+    "field": "government_partner_city_of_austin",
+    "value": "City of Austin (Telecommunications & Regulatory Affairs) partnered with Measure on the 2021 Residential Technology Study — Equity Focus Group Report (nine focus groups; published March 2022, hosted on austintexas.gov), feeding the City's Digital Inclusion Strategic Plan.",
+    "source_url": "https://www.austintexas.gov/sites/default/files/files/Telecommunications/DigitalInclusion/2021%20Residential%20Technology%20Study%20MEASURE%20Equity%20Focus%20Group%20Report%20(MARCH%202022).pdf",
+    "confidence": "high",
+    "note": "Concrete government-agency engagement; likely paid but contract value not public."
+   },
+   {
+    "field": "government_relationship_apd",
+    "value": "Founded (2015) out of a challenge to the Austin Police Department; ongoing community-policing data relationship. Local reporting credits Measure's work with helping lay the foundation for Austin's first Office of the Chief Data Officer.",
+    "source_url": "https://austinmonitor.com/stories/2020/02/community-reacts-to-apd-racial-profiling-study-at-public-safety-commission/",
+    "confidence": "medium",
+    "note": "'First Office of the Chief Data Officer' claim is attributional (org narrative), not audited."
+   },
+   {
+    "field": "recognition_mit_solve",
+    "value": "Founder Meme Styles named a 2021 MIT Solve 'Solver' in the Antiracist Technology in the US Challenge; Measure cites MIT Solve as a supporter.",
+    "source_url": "https://solve.mit.edu/challenges/antiracist-technology/solutions",
+    "confidence": "high",
+    "note": "Attaches to the founder; used as an institutional credential."
+   },
+   {
+    "field": "recognition_ssrc_just_tech_fellowship",
+    "value": "Meme Styles selected for the inaugural 2022–2024 SSRC Just Tech Fellowship cohort (six fellows; ~$250K+ unrestricted over two years; Ford Foundation backer).",
+    "source_url": "https://just-tech.ssrc.org/our-network/meme-styles/",
+    "confidence": "high",
+    "note": "Award is to the individual fellow, not a grant to the org."
+   },
+   {
+    "field": "recognition_candid_platinum",
+    "value": "Candid (GuideStar) Platinum Transparency Seal — earned 2022; Platinum 2026 Seal displayed on wemeasure.org.",
+    "source_url": "https://candid.org/blogs/in-conversation-using-data-and-education-to-advance-racial-equity-at-measure/",
+    "confidence": "high"
+   },
+   {
+    "field": "recognition_founder_local_honors",
+    "value": "Founder honors reflecting on Measure: Austin Under 40 (Nonprofit, 2019, confirmed); DivInc Nonprofit Leader of the Year (2021); Austin Police Chief's Award of Excellence.",
+    "source_url": "https://www.facebook.com/austinunder40/posts/congratulations-to-meme-styles-on-winning-the-2019-austin-under-40-award-for-non/10157416362381171/",
+    "confidence": "medium",
+    "note": "Austin Under 40 confirmed; DivInc and Police Chief's Award from founder's bio/secondary sources."
+   },
+   {
+    "field": "recognition_centex_aspa",
+    "value": "CenTex ASPA (Central Texas chapter, American Society for Public Administration) Public Service Innovation Award, reported 2017.",
+    "source_url": "https://www.measureaustin.org/our-story.html",
+    "confidence": "low",
+    "note": "Award asserted on Measure's site; the 2017 year is tentative — no primary CenTex ASPA record naming Measure was located."
+   },
+   {
+    "field": "existing_profile_funders_status",
+    "value": "The profile's 990-derived funders (St. David's Foundation $162K, Michael & Susan Dell Foundation $131K, Fidelity Charitable $202.3K, Austin Community Foundation $6K, Capacity Catalyst $9K) were NOT re-derivable from the public web this pass — wemeasure.org publishes no funder list. They remain the best evidence and are not contradicted; the ACF relationship is independently reinforced by the 2025 Google.org fund.",
+    "source_url": "https://wemeasure.org/about/",
+    "confidence": "medium",
+    "note": "Keep the 990/GIFT-sourced funders as-is; treat as still valid."
+   },
+   {
+    "field": "leadership_is_black_bipoc_led",
+    "value": "Measure is Black-woman-led and BIPOC-led/centered. Founder & President Jameila 'Meme' Styles self-identifies in a St. David's Foundation first-person piece as a Black woman ('the depth of who we are as Black women data activists'). Its mission redistributes data power to 'Black, Brown, and Indigenous-led organizations,' and its founder is described as 'disrupting traditional research frameworks with BIPOC-led, lived-experience protocols.'",
+    "source_url": "https://stdavidsfoundation.org/research-and-insights/democratizing-data-as-a-tool-for-justice/",
+    "confidence": "high",
+    "note": "Strongest primary source is the founder's own first-person 'Black women data activists' statement (funder-published). Fills the profile's flagged Black-led/BIPOC-led gap."
+   },
+   {
+    "field": "women_led",
+    "value": "Women-led: founder-led by a woman (Meme Styles, she/her); leadership/research function has been staffed by Black women (e.g., Dr. Shadeequa 'Dee' Miller and former chief of research Paulette Blanc, per the St. David's piece). Austin Woman lists Measure among 'Seven Austin Advocacy Organizations Led by Black Women.'",
+    "source_url": "https://atxwoman.com/austin-advocacy-organizations-black-women/",
+    "confidence": "high",
+    "note": "Named Black-women staff (Miller/Blanc) reflect an earlier roster, not the current wemeasure.org/about team; treat named individuals as period-specific."
+   },
+   {
+    "field": "all_black_woman_led_self_description",
+    "value": "Measure has repeatedly self-described / been described in press as 'an all-Black woman-led nonprofit' that 'puts people of color at the front of research and evaluation.'",
+    "source_url": "https://atxwoman.com/2024/07/09/meme-styles-force-of-nature/",
+    "confidence": "medium",
+    "note": "This exact phrase comes through Austin Woman features and a soulciti snippet; the atxwoman pages 403'd to automated fetch, so treat the precise wording as journalistic framing/self-description to confirm with Measure. The underlying Black-woman-led fact is high-confidence via the founder's first-person statement."
+   },
+   {
+    "field": "leadership_no_formal_led_badge_on_site",
+    "value": "Honesty caveat for DEI/eligibility sections: Measure's own current site (wemeasure.org/about) does NOT carry a formal 'Black-led,' 'women-led,' or 'BIPOC-led' badge for the org itself — it lists leadership names/photos and BIPOC-centered mission language. The Black-woman-led characterization rests on the founder's first-person statements and independent press, not a website self-label.",
+    "source_url": "https://wemeasure.org/about/",
+    "confidence": "high",
+    "note": "Cite the founder's 'Black women data activists' statement and the Candid demographic profile (still_findable) rather than implying a formal site badge."
+   },
+   {
+    "field": "founder_identity_and_heritage",
+    "value": "Jameila 'Meme' Styles (also Meme Styles-Taliaferro), MPA — she/her — self-describes as 'a believer, wife, mom, data activist and Afro-futurist' and as 'a data activist, community strategist, and global storyteller.' Press frames her as carrying 'the spirit of the Black Panther Party' via her father Chris Taliaferro (a Black Panther) and grandfather Charles Taliaferro. Married to a U.S. veteran; four children.",
+    "source_url": "https://wemeasure.org/about/",
+    "confidence": "high",
+    "note": "Afro-futurist/Black-Panther-heritage phrasings come from Austin Woman/soulciti features (some 403'd on fetch) — medium on exact wording, high on overall identity."
+   },
+   {
+    "field": "founder_career_background",
+    "value": "Before Measure, Styles worked across journalism, the U.S. Army (part of its 'Agile Workforce,' credited with 'planting the seeds' of Measure), the State of Texas / Texas Health & Human Services, and Lockheed Martin.",
+    "source_url": "https://www.futurenonprofit.com/meme-styles/",
+    "confidence": "high",
+    "note": "NET-NEW founder work history (profile had none). Corroborated across futurenonprofit, hamiltonmannconversation, and atxwoman."
+   },
+   {
+    "field": "founder_education_credentials",
+    "value": "B.S. in Communications; Master of Public Administration (MPA) with a National Security concentration; DEI certificate from Cornell University; Performance Measurement certification from George Washington University; doctoral candidate at Liberty University (in progress).",
+    "source_url": "https://ic2.utexas.edu/speakers/meme-styles/",
+    "confidence": "high",
+    "note": "EXTENDS profile's bare 'MPA.' The GWU performance-measurement training ties directly to the CARE Model's methodological lineage (see methodology_origin)."
+   },
+   {
+    "field": "founder_additional_roles_and_appointments",
+    "value": "Associate Professor within the Culturally Responsive Researcher Network (CRRN) at the Center for Justice Research (Texas Southern University); Past-Chairwoman of Miss Juneteenth (Austin); Past-Chairwoman of African TV5 (AFTV5).",
+    "source_url": "https://centerforjusticeresearch.org/directory/meme-styles/",
+    "confidence": "high",
+    "note": "NEW academic appointment + prior civic board roles; corroborated by the Hamilton Mann Conversation bio."
+   },
+   {
+    "field": "founder_fellowship_aaro_mcbee",
+    "value": "Named a 2020 McBee Fellow of the Austin Area Research Organization (AARO), announced Oct 2019 — a prestige regional-leadership fellowship drawn from 100+ influential non-elected Central Texas leaders.",
+    "source_url": "https://measureaustin.home.blog/2019/10/29/measures-executive-director-accepts-2020-aaro-mcbee-fellowship/",
+    "confidence": "high",
+    "note": "NEW award, from Measure's own legacy blog."
+   },
+   {
+    "field": "founder_publications_and_thought_leadership",
+    "value": "Authored/co-authored: op-ed 'Reform Policing Education and Training Standards' (USA Today, 2021); 'Interrogative Reasoning and the Problem with the \"Human in the Loop\"' (Just Tech/SSRC, June 2026); a March 11, 2026 Fortune op-ed with Chris Hyams, 'AI is the civil and human rights issue of our time, and HBCUs must lead the response.'",
+    "source_url": "https://just-tech.ssrc.org/our-network/meme-styles/",
+    "confidence": "high",
+    "note": "NEW national/thought-leadership byline trail."
+   },
+   {
+    "field": "founder_speaking_engagements",
+    "value": "Speaking record: UT Austin Good Systems 2023 Annual Symposium ('Using AI to Advance Racial Justice and Combat Disinformation'); keynote to the Australia & New Zealand Society of Evidence-Based Policing (ANZSEBP); SXSW 2022 ('Using Data to Advance Racial Equity,' with Candid CEO Ann Mei Chang) and SXSW 2023 ('Designing Equity Through an Afrofuturistic Lens'); Texas Tribune Festival 2019; UT Austin Psychology Class of 2021 address; NCAAWA 2023 keynote (Carlsbad, CA).",
+    "source_url": "https://bridgingbarriers.utexas.edu/good-systems/annual-symposium/2023/speakers",
+    "confidence": "medium",
+    "note": "Good Systems 2023 and SXSW 2022 fetch-confirmed (high); ANZSEBP, TribFest 2019, SXSW 2023, NCAAWA, and UT Psychology are single-source/snippet-level (verify year/edition before citing)."
+   },
+   {
+    "field": "free_data_support_grant_terms",
+    "value": "The CARE Model is delivered to grassroots orgs as the 'Free Data Support Grant': each selected org receives a $25,000 in-kind grant plus a $1,000 participant stipend (two $500 direct deposits, Mar 15 & Jun 15). Eligibility gate: annual operating budget under $500,000; community-led governance; serves historically marginalized communities; 501(c)(3)/charter school/community college/university/faith-based/grassroots status; active Measure Ignite account. 2026 cycle ran Oct 7–Nov 21, 2025 (notifications Jan 9, 2026); one application per org per year; reopens 2027.",
+    "source_url": "https://wemeasure.org/free-data-support-grant-2026",
+    "confidence": "high",
+    "note": "NEW, materially extends the profile: concrete per-org value ($25K in-kind + $1K stipend) and the under-$500K budget eligibility gate. Annual awardee/cohort count not published."
+   },
+   {
+    "field": "care_model_structure_and_tracks",
+    "value": "CARE Model v4.0 (Community, Advocacy, Resilience, Evidence): 12 facilitated meetings over 3–6 months across three phases (identify systemic barriers → define community-led solutions → build a Community Mobilization Guide), with deliverables like stakeholder maps and historic timelines. Offered as a product family: core Free Data Support Grant; CARE Model Facilitator Training (yields 'certified facilitator'); CARE Model for Disruptive Changemakers; and CARE Model for AI Systems.",
+    "source_url": "https://wemeasure.org/data-support/",
+    "confidence": "high",
+    "note": "NEW duration/deliverables and the multi-track structure. No cohort size/cost/duration published for the sub-tracks."
+   },
+   {
+    "field": "care_model_grassroots_orgs_supported",
+    "value": "'25+ grassroots organizations supported across Texas' via the CARE Model / Free Data Support program, with institutional partnerships naming the City of Austin, The Thinkery, and Huston-Tillotson University.",
+    "source_url": "https://wemeasure.org/programs/",
+    "confidence": "high",
+    "note": "NEW program-specific count (distinct from top-line '84+/93+/104+ orgs with a Measure tool'). The Thinkery is a NEW named partner."
+   },
+   {
+    "field": "communities_in_the_loop_full",
+    "value": "Communities in the Loop is Measure's flagship civic-tech/AI-governance initiative, using the CARE Model to convene residents, educators, technologists, and youth to define responsible/ethical AI. Named partners: the Austin AI Alliance and the City of Austin. Delivered as six Austin community sessions (themes: Responsible & Ethical AI; Public Trust & Accountability; Health & AI; Digital Equity; Civic Participation). Residents named six priorities: transparency, accountability, human oversight, privacy, AI literacy, and environmental justice.",
+    "source_url": "https://wemeasure.org/programs/communities-in-the-loop",
+    "confidence": "high",
+    "note": "NEW named partners (Austin AI Alliance, City of Austin), session themes, and community-named priorities."
+   },
+   {
+    "field": "communities_in_the_loop_reach",
+    "value": "'Nearly 400 residents engaged' across Communities in the Loop convenings; six community sessions planned across Austin by 2026.",
+    "source_url": "https://wemeasure.org/programs/communities-in-the-loop",
+    "confidence": "high",
+    "note": "NEW hard reach number (~400 residents), previously a profile gap. Downstream AI policies actually changed remain unquantified."
+   },
+   {
+    "field": "financially_lit_curriculum_and_outcomes",
+    "value": "Financially Lit & Funding Ready: a six-week virtual series (Tuesdays, e.g. Sept 15–Oct 20, 2026, 12–1 PM CT) for nonprofit/grassroots leaders, each session with up to three expert panelists (topics span scarcity-to-sustainability fundraising, nonprofit financial structures/tax compliance, budgeting, reserves/banking, Black philanthropy, and data storytelling via Measure Ignite). 2025 outcomes: 386 registrants, 200 live participants (5 sessions), 9.3/10 satisfaction, 94% gained new donor-engagement strategies. Stated program cost $36,000. 2026 goals include 300 live participants, expansion to 5 new regions, and 30 orgs receiving 1:1 technical assistance.",
+    "source_url": "https://wemeasure.org/programs/financially-lit-funding-ready",
+    "confidence": "high",
+    "note": "NEW full curriculum, quantitative outcomes, and a published $36K program budget — resolves the profile's cohort-counts gap."
+   },
+   {
+    "field": "measure_ignite_features_and_lineage",
+    "value": "Measure Ignite ('the community power-building database') is an equity-centered platform built with Black/Brown/Indigenous orgs, addressing three gaps (no data-management tech, limited networking, low visibility) via four features: Manage Metrics, Report Impact, Get Matched, and Find Funding. ~300 users; ~5 years building (idea 2021 → 2024 beta → 2025 Ignite 2.0). Its conceptual precursor was 'Measure Connect,' Styles' SSRC Just Tech Fellowship project. Development partners: MIT Solve, SSRC, and Philanthropitch; foundation partner The Black Fund.",
+    "source_url": "https://wemeasure.org/ignite/",
+    "confidence": "high",
+    "note": "NEW four features + the 'Measure Connect → Ignite' lineage (SSRC source). Philanthropitch is a NEW partner. An active Ignite account is a prerequisite for the Free Data Support Grant."
+   },
+   {
+    "field": "innocence_initiative_full_and_partners",
+    "value": "The Innocence Initiative educates on adultification bias against Black and Brown children via data storytelling centering Black girls, trainings for parents/teachers/legal professionals, advocacy, a 'Girl Squad'/'Travis County Girl Squad' mentorship program (ages 13–17), and a partnership with Truckers Against Trafficking on the 'Protecting Our Daughters' campaign. It is a 5-org coalition (with Girl Scouts of Central Texas, Lone Star Justice Alliance, Hearts 2 Heal, Community Advocacy and Healing Project) aiming to protect 35,000+ girls of color; Georgetown supplied the original adultification research.",
+    "source_url": "https://wemeasure.org/programs/innocence-initiative",
+    "confidence": "high",
+    "note": "NEW: Truckers Against Trafficking partnership, Girl Squad mentorship, and the 35,000+ scope. Extends the profile's coalition fact."
+   },
+   {
+    "field": "innocence_initiative_reach_metrics",
+    "value": "Reach: 'Over 1,000 attorneys' trained (program page); a virtual racial-equity training drew 200 registered attorneys with 700+ seeking Texas State Bar CLE credit (Sept 2020); 5 community-led sessions reached 535 parents/teachers/advocates; the 'Hey Sis! Be You!' comic (story of Grace, who becomes the first Black female president) was distributed to 15,000 households; 10+ trainings; work helped inform Travis County's COVID-era youth release. Published resources include an 11-page School & Local Policy Brief (Dec 2020) with 10 policy recommendations.",
+    "source_url": "https://www.impactaustin.org/post/social-impacts-the-innocence-initiative-to-protect-black-girls",
+    "confidence": "high",
+    "note": "NEW granular metrics (700+ attorneys sought CLE, 535 reached, 15,000 households refines profile's '15,000 comic books'). Youth-release influence is medium (attributional)."
+   },
+   {
+    "field": "crown_act_geography",
+    "value": "Measure supported CROWN Act passage in Austin AND Pflugerville, contributing to the statewide Texas CROWN Act (led by State Rep. Rhetta A. Bowers). The impact page also lists an 'OCR' (Office for Civil Rights) policy win alongside the CROWN Act.",
+    "source_url": "https://wemeasure.org/measure-releases-comic-book-aimed-at-educating-parents-and-schools-on-criminalization-of-black-girls/",
+    "confidence": "medium",
+    "note": "EXTENDS profile (Austin 2022 + Texas 2023): Pflugerville and the OCR win are NEW; the OCR specifics are unconfirmed."
+   },
+   {
+    "field": "community_data_gatherings_format",
+    "value": "Community Data Gatherings are community-centered, non-extractive sessions built around a partner nonprofit's mission, in four steps: (1) Sacred, Accessible Spaces (trusted venues); (2) Community Care (food); (3) AI Literacy (Measure LIT); (4) CARE Model breakouts. Each produces a 'community-informed case study' the partner owns. Measure has held these at Huston-Tillotson's Dickey-Lawless Auditorium. No participation counts published.",
+    "source_url": "https://wemeasure.org/programs/community-data-gatherings",
+    "confidence": "high",
+    "note": "NEW four-step format; embeds Measure LIT AI literacy into every gathering."
+   },
+   {
+    "field": "direct_evaluation_services_and_earned_revenue",
+    "value": "Direct Evaluation Services ('Hire Our Team') is Measure's fee-for-service, mixed-methods program-evaluation line for nonprofits and public agencies — a distinct earned-revenue offering separate from its free/grant programs. This aligns with the 990 data showing program-service (earned) revenue reaching 31% of FY2024 revenue.",
+    "source_url": "https://wemeasure.org/programs/",
+    "confidence": "high",
+    "note": "NEW named earned-revenue program. No client counts published on the page."
+   },
+   {
+    "field": "responsible_ai_governance_framework",
+    "value": "Measure publishes its own AI governance: a 'Measure AI Acceptable Use Policy V1' (March 2026) aligned to Texas's TRAIGA and NIST AI RMF 1.0, with the principle that 'Communities review every public-facing AI output.' One active tool is named ('Engagement Finder,' using Google Gemini) with defined permitted/prohibited uses and a 24-hour-to-1-week incident-response protocol.",
+    "source_url": "https://wemeasure.org/ai-policy/",
+    "confidence": "high",
+    "note": "NEW governance content useful for AI-funder capacity/credibility narratives."
+   },
+   {
+    "field": "ethical_commitments_framework",
+    "value": "Measure structures its work around '14 ethical commitments' organized under three pillars: 'Voice first,' 'Equity Centered always,' and 'Do no harm.'",
+    "source_url": "https://wemeasure.org/about/",
+    "confidence": "high",
+    "note": "NEW proposal-ready methodology/values framing device."
+   },
+   {
+    "field": "cerc_rebrand_grassroots_research_studio",
+    "value": "The Community-Engaged Research Course (CERC) is now presented as the 'Grassroots Research Studio @ Huston-Tillotson University.' Reported metrics unchanged: 69+ students trained, 23 nonprofits supported, 88.4% underrepresented students; 2019 inaugural HTU cohort, 2021 Texas State University expansion; timeline 2019–2025.",
+    "source_url": "https://wemeasure.org/impact/",
+    "confidence": "high",
+    "note": "NEW branding for the CERC program the profile already tracks."
+   },
+   {
+    "field": "impact_counters_updated",
+    "value": "Top-line JavaScript counters have climbed well past the profile's stale snapshot ($783,893 / 82+): 'CARE Model grants distributed' now renders between ~$794,557 and ~$985,888; 'Orgs supported with a Measure tool' between 84+ and 104+; '% nonprofits reporting improved storytelling & measurement' 65–80%; plus '51% increase in fundraising confidence' and '32 new Measure evaluators trained.'",
+    "source_url": "https://wemeasure.org/impact/",
+    "confidence": "medium",
+    "note": "UPDATES the profile's stale figures but confirms its caution — these are volatile animated counters that render inconsistently across pages same-day. Cite the label, not the exact digits."
+   },
+   {
+    "field": "free_data_support_metrics_extended",
+    "value": "Free Data Support (redistributing data power to Black/Brown/Indigenous-led orgs, 2020–present): $950K+ in-kind value delivered, 63+ organizations served, 3,000+ hours donated; About-page 'decade overview' adds '15,000 households reached' and '88.4% underrepresented researchers.'",
+    "source_url": "https://wemeasure.org/impact/",
+    "confidence": "high",
+    "note": "Confirms profile's $950K/63+/3,000-hours; adds the 15,000-households metric. Note MIT Solve dates the 3,000+ hours 'since 2019' while the impact page says 2020–21."
+   },
+   {
+    "field": "need_statistics_cited",
+    "value": "Need-framing statistics Measure cites: '79% of Black-led organizations lack systems for collecting data' (Measure 2021 research, rationale for Ignite) and '1% — the combined philanthropic funding to Black communities' (attributed to the National Center for Responsive Philanthropy).",
+    "source_url": "https://wemeasure.org/ignite",
+    "confidence": "high",
+    "note": "NEW citable Statement-of-Need anchors. The 1% figure is a third-party (NCRP) statistic, not a Measure outcome."
+   },
+   {
+    "field": "publications_library_overview",
+    "value": "Measure maintains a large public 'Data Gallery' of roughly 61 works (2020–2026) in recurring formats: Black Papers (flagship, branded '[Title]: A Lived-Experience Black Paper'), Field Studies, Policy Briefs, Historical Timelines, and Press — far more than the 3 publications in the profile.",
+    "source_url": "https://wemeasure.org/data-gallery",
+    "confidence": "high",
+    "note": "The ~61-item library's EXISTENCE is high-confidence, but ~30 entries stamped 'December 2020' are likely a bulk-upload artifact, and a few (Georgetown 'Girlhood Interrupted,' Annie E. Casey 'Kids Count,' TNTP 'Opportunity Myth') are curated EXTERNAL references, not Measure-authored. Treat pre-2024 dates/authorship as medium/low confidence."
+   },
+   {
+    "field": "state_of_black_lives_full_metadata",
+    "value": "'The State of Black Lives in Austin: A Lived-Experience Black Paper' — 64 pages (~29.9 MB), released March 11, 2024 with the Austin Justice Coalition; authors T. Harrison (Tiffanie Harrison), M. Styles, and P. Blanc. It compares the City's 2008 African American Quality of Life Report (which outlined 56 initiatives, mostly never sustained) against a 2023 assessment across six domains, deliberately posing accountability questions rather than new recommendations and calling for an impartial audit. Landing page wemeasure.org/the-state-of-black-austin is now live (previously 404'd).",
+    "source_url": "https://wemeasure.org/reports/06",
+    "confidence": "high",
+    "note": "EXTENDS profile: three named authors, page/file size, the 2008 baseline (56 initiatives), and the 'questions not recommendations' framing."
+   },
+   {
+    "field": "state_of_black_lives_findings_extended",
+    "value": "Additional findings beyond the profile's headline set — Arts & Culture: Black communities received only ~2% of City cultural funding (2015–2021) and 90%+ (reported 93%) of surveyed Black musicians report booking discrimination. Health: African Americans had the highest mortality in 4 of 7 leading causes of death in Travis County and the lowest life expectancy. Neighborhood Sustainability: Black population share stagnated ~7.25–8.52% (2016–2021) amid disproportionate displacement.",
+    "source_url": "https://austin.culturemap.com/news/city-life/austin-justice-coalition-measure-study/",
+    "confidence": "high",
+    "note": "Multi-source corroborated (CultureMap, KUT, Austin Monitor). Strong equity anchors."
+   },
+   {
+    "field": "black_paper_2022_black_population_decline",
+    "value": "'Drivers Contributing to the Decline of the Black Population in Austin' (Black Paper, June 2022) — a community-led survey (very likely the same work as the '212 Catalysts & AALI Black Austin Survey Report,' authored by Tiffanie Harrison, May 2022, with 212 Catalysts and the African American Leadership Institute). Findings: 88% cited unaffordable cost of living as a reason to leave; 80% reported a lack of belonging; 47% had experienced racism in Austin; three primary barriers were policy, affordability, and sense of belonging.",
+    "source_url": "https://www.aaliaustin.org/measure-report-black-paper",
+    "confidence": "medium",
+    "note": "NEW publication. Sample size disputed (see conflicts: 336 vs 375). 'Same document as the AALI survey' is a strong inference, not confirmed."
+   },
+   {
+    "field": "publication_interrogating_public_safety_metrics",
+    "value": "'Interrogating Public Safety Metrics: A Lived-Experience Black Paper' — 27 pages, August 2024 (gallery lists Sept 2024); authors P. Blanc, M. Styles & J. Aghimien, in partnership with the Initiative for Law, Societies, and Justice at the University of Texas at Austin. Reframes public safety from enforcement to 'physical, psychological, and economic security' and introduces Measure Ignite as a platform for community-driven safety metrics.",
+    "source_url": "https://wemeasure.org/reports/04",
+    "confidence": "high",
+    "note": "EXTENDS profile's bare title with page count, authors, and the UT Austin academic partner."
+   },
+   {
+    "field": "publication_board_representation_gap",
+    "value": "'Breaking Barriers: Bridging the Nonprofit Board Representation Gap — A Lived-Experience Black Paper' — 17 pages (~7.1 MB), August 2023 (gallery lists April 2024); authors T. N. Ricks & H. Chun, in partnership with The New Philanthropists.",
+    "source_url": "https://wemeasure.org/reports/05",
+    "confidence": "high",
+    "note": "EXTENDS profile's bare title with page count, date, authors, and partner."
+   },
+   {
+    "field": "publications_ai_governance_series_2026",
+    "value": "AI-governance publication cluster (most citable for AI-funder proposals): (1) 'Community in the Loop: Municipal AI Governance in Austin' (Black Paper, 2026) — reports 400+ residents shaped a framework for AI transparency and human oversight; (2) 'Community in the Loop: Engaging Austin Residents on AI Accountability' (Field Study, March 2026, 9 pages; authors Styles, Williams, Wallace, Merida; partners City of Austin and the Austin AI Alliance); (3) 'Interrogative Reasoning and \"Human in the Loop\"' (Just Tech/SSRC essay, June 2026).",
+    "source_url": "https://wemeasure.org/reports/01",
+    "confidence": "high",
+    "note": "NEW. Field-study metadata fetch-confirmed; the Municipal AI Governance '400+ residents' figure is from the gallery listing only."
+   },
+   {
+    "field": "publications_2025_and_series",
+    "value": "Recent/other Measure-authored works: 'Hotel Occupancy Tax' (Black Paper, Feb 2025); 'Highlighting Lived Experiences of Pre-Diabetes & Type 2 Diabetes' (Field Study, Dec 2025); a 2020–2021 policing series (e.g., 'Dollars & Sense,' 'The Costs of Police Violence: Measuring Misconduct,' 'Public Safety Vision 2020'); a Black-girls/adultification series (e.g., 'Disrupting the Jezebel Stereotype,' Jan 2023; 'Women of Color Should Have a Voice…,' Nov 2022); and equity Black Papers ('Centering the Experience of Black-Led Nonprofits in Austin,' June 2021; 'Hire + Retain Black Teachers,' May 2022; 'Addressing the Digital Divide in Austin: Residential Technology Study,' Oct 2022).",
+    "source_url": "https://wemeasure.org/data-gallery",
+    "confidence": "medium",
+    "note": "Titles/dates from the gallery listing; internal findings not fetched. The Residential Technology Study is the published companion to the City of Austin digital-inclusion work already in the profile."
+   },
+   {
+    "field": "partner_the_black_fund_cofounder",
+    "value": "The Black Fund (of Central Texas): founder Meme Styles is a CO-FOUNDER (with Dr. Colette Pierce Burnette, then Huston-Tillotson president, and Kendra Garrett). Founded 2020, formalized 2022; has distributed ~$1.2M to 72 Black-led Central Texas organizations. Austin Community Foundation served as its founding fiscal-sponsor/incubator before it spun out.",
+    "source_url": "https://austinfreepress.org/philanthropic-revival/",
+    "confidence": "high",
+    "note": "DEEPENS the profile (which lists The Black Fund only as an Ignite foundation partner): Measure's founder co-created it. Also adds a THIRD distinct ACF touchpoint (incubation) beyond the $6K grant and the Google.org fund."
+   },
+   {
+    "field": "partner_huston_tillotson_hbcu_ai_conference",
+    "value": "HBCU AI Conference & Training Summit, hosted at Huston-Tillotson University and co-chaired by Meme Styles with Chris Hyams (former CEO of Indeed; HTU trustee). 2nd annual held March 10–11, 2026 in Austin, drawing 25+ HBCUs (600+ participants expected). Styles and Hyams also co-authored a March 11, 2026 Fortune op-ed on HBCUs leading AI.",
+    "source_url": "https://htu.edu/huston-tillotson-university-to-host-national-hbcu-ai-conference-expected-to-draw-more-than-600-participants/",
+    "confidence": "high",
+    "note": "NEW flagship annual convening deepening the HTU relationship, plus a named individual/corporate connection (Chris Hyams / former Indeed CEO). No evidence of a direct Indeed corporate grant to Measure."
+   },
+   {
+    "field": "government_city_of_austin_2024_projects",
+    "value": "City of Austin (FY2024): per Measure's own IRS Schedule O narrative, it 'provided strategic program support for two projects with the City of Austin (specifically the HOT Program and Watershed Department).' A distinct, more recent government engagement than the 2021 Residential Technology Study already in the profile.",
+    "source_url": "https://www.causeiq.com/organizations/measure-austin,822372196/",
+    "confidence": "high",
+    "note": "NEW, and corroborated in the org's own 990 words. 'HOT Program' most likely Hotel Occupancy Tax (cultural funding) vs. Homeless Outreach Team — unresolved. Contract dollar values not published."
+   },
+   {
+    "field": "clients_2024_four_innocence_orgs",
+    "value": "Per the FY2024 Schedule O narrative, Measure 'provided direct services to four major partner organizations through data and evaluation support aligned with our Innocence Initiative' and delivered four adultification-bias trainings and a virtual leadership summit. The four organizations are not named publicly.",
+    "source_url": "https://www.causeiq.com/organizations/measure-austin,822372196/",
+    "confidence": "high",
+    "note": "Confirms a fee/service client model; the four names are a still_findable gap."
+   },
+   {
+    "field": "legacy_program_bdcp_conference",
+    "value": "Measure's original flagship program (absent from the current site) was the Big Data & Community Policing (BDCP) Conference & Forums — a multi-day Austin event convening police, community, activists, academics, and developers around open data and evidence-based policing. Mayor Steve Adler called it 'Austin's #1 Technology Project.' Named partners/sponsors: Mark43 (policing software; CEO Scott Crouch), the Austin Police Department, Huston-Tillotson University, Capital Metro, and the American Society of Evidence Based Policing.",
+    "source_url": "https://www.measureaustin.org/bdcp2017.html",
+    "confidence": "high",
+    "note": "NET-NEW founding-era signature initiative establishing deep early ties (APD, HTU predating CERC, Capital Metro, Mark43) and a citable Mayor Adler endorsement."
+   },
+   {
+    "field": "methodology_origin_and_codesign",
+    "value": "Measure's original community-policing measurement methodology (precursor to the CARE Model) was built by adapting Stacey Barr's PuMP performance-measurement program and U.S. military strategic-planning frameworks. The CARE Model itself was co-designed through facilitated dialogue with ~400 community members and 25 community leaders — community-built, not authored top-down.",
+    "source_url": "https://www.measureaustin.org/meet-the-team.html",
+    "confidence": "medium",
+    "note": "NET-NEW intellectual lineage (consistent with the founder's GWU performance-measurement cert and Army background); the ~400/25 co-design scale is single-source (VoyageDallas), treat as approximate."
+   },
+   {
+    "field": "founding_bootstrapping_story",
+    "value": "Styles built Measure as a side venture while employed full-time by the State of Texas — working her 9-to-5, then building Measure roughly 10 p.m.–2 a.m. — starting with a team of four Austin community leaders (activism, technology, research, education). The APD origin quote is sharper than the current site: on a community-policing panel she asked 'Where is the damn data?' and the panel could not answer.",
+    "source_url": "https://atxwoman.com/2024/07/09/meme-styles-force-of-nature/",
+    "confidence": "medium",
+    "note": "NET-NEW founding-grit color extending the profile's 'team of four.' The 'Where is the damn data?' quote came via a soulciti search snippet (host timed out) — confirm against primary."
+   },
+   {
+    "field": "dallas_juvenile_curfew_analysis",
+    "value": "Measure conducted its own data analysis of the Dallas juvenile curfew ordinance, using data to argue the law was not evidence-based; Dallas police leadership nonetheless retained it. Styles cites this as a case of evidence meeting institutional resistance.",
+    "source_url": "https://voyagedallas.com/interview/meet-meme-styles-measure-dallas/",
+    "confidence": "medium",
+    "note": "FILLS the profile's explicit 'no Dallas-specific programming/clients' gap. Single-source interview; specific deliverable not located."
+   },
+   {
+    "field": "revenue_composition_multiyear",
+    "value": "Below-topline revenue mix (ProPublica/990): FY2024 total $1,268,433 = contributions $873,759 (68.9%) + program-service (earned) revenue $393,024 (31.0%) — earned revenue up +196.8% YoY. FY2023 = contributions $1,127,396 (89.8%) + program-service $132,419, with a net fundraising LOSS of -$4,965. Prior years: FY2022 27.4% earned; FY2021 33.1% earned; FY2020 100% contributions; FY2019 majority earned (52.6%). Arc: began earned-heavy (2019) → 100% grant in the 2020 COVID surge → rebuilt to ~31% earned by 2024.",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high",
+    "note": "NEW composition detail (profile had only toplines). The 31% earned-revenue share is a fundability strength; corroborated by CauseIQ."
+   },
+   {
+    "field": "named_grants_received_fy2024_schedule_b",
+    "value": "FY2024 Schedule B top contributions RECEIVED: Fidelity Investments Charitable Gift Fund $202,300; Michael & Susan Dell Foundation $169,000; St. David's Foundation $162,000 — together = $533,300 (61% of FY2024 contributions). CauseIQ indicates 10 named grants total ('and 7 more,' gated).",
+    "source_url": "https://www.causeiq.com/organizations/measure-austin,822372196/",
+    "confidence": "high",
+    "note": "UPDATES the profile: Dell rose to $169,000 in FY2024 (the profile's $131,000 is an earlier-year grant — different years, not a contradiction). Top-3 = 61% concentration is a fundability risk worth flagging."
+   },
+   {
+    "field": "officer_and_payroll_detail_multiyear",
+    "value": "Styles is the ONLY compensated officer/board member (all others $0). Her comp: FY2024 $123,075; FY2023 $141,151 (peak); FY2022 $86,826; FY2021 $100,141; FY2020 $91,000 ($84,000 on the amended return); FY2019 $66,576. Non-officer salaries grew from $59,669 (FY2019) → $290,837 (FY2023) → $402,141 (FY2024). FY2024 total W-2 payroll ≈ $525,217 (~43% of $1,220,876 expenses). Six W-2 employees reported on the FY2024 990.",
+    "source_url": "https://projects.propublica.org/nonprofits/api/v2/organizations/822372196.json",
+    "confidence": "high",
+    "note": "NEW compensation/payroll/headcount detail. The 6 W-2 employees vs ~9 named on the site reconciles as ~3 contractors/fellows. FY2024 payroll count via CauseIQ."
+   },
+   {
+    "field": "functional_expense_split_fy2024",
+    "value": "FY2024 program-vs-overhead split is only partially public and the two available figures CONFLICT: a computed ratio shows ~76% to programs (≈$928K of $1,220,876), while a ProPublica-derived snippet cites ~$680K (≈56%) tied to a single narrated program line (Part III 4a). The exact Part IX B/C/D column totals are not extractable from free-tier sources.",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "low",
+    "note": "Do NOT assert 76% as fact in a draft — a funder pulling the 990 could see a lower Part IX ratio. Exact split is in the 990 XML (blocked here) → still_findable."
+   },
+   {
+    "field": "multiyear_financial_health",
+    "value": "Total expenses scaled ~29x in six years: $41,888 (FY2018) → $409,830 (FY2020) → $703,389 (FY2022) → $1,009,252 (FY2023) → $1,220,876 (FY2024). Operating surplus every year except FY2021 (-$238,197, the only deficit). Net assets climbed to $497,818 (FY2024) against total liabilities of only $45,570 — a low-debt, positive-net-asset balance sheet.",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high",
+    "note": "Strengthens the profile's topline series with surplus/deficit and balance-sheet health for an 'organizational financial capacity' section."
+   },
+   {
+    "field": "no_schedule_i_on_990",
+    "value": "Measure's Form 990 filings (FY2018–FY2024) include Schedules A, B, C, and O but NO Schedule I, and report no cash grants to other organizations. Its self-reported 'CARE Model grants distributed / 82+ orgs supported' therefore reflects IN-KIND data support, not reportable cash regranting — and cannot be corroborated by a named IRS grantee roster.",
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
+    "confidence": "high",
+    "note": "Important interpretive fact: the 'grants distributed' counter is in-kind value, consistent with the $25K in-kind Free Data Support Grant structure."
+   }
+  ],
+  "conflicts": [
+   "Top-line animated counters disagree ACROSS PAGES same-day: 'CARE Model grants distributed' rendered ~$885,589 on /impact vs ~$985,888 on the homepage (also seen ~$794,557 elsewhere); 'Orgs supported' 93+ (/impact) vs 104+ (homepage) — and both far exceed the profile's stale $783,893 / 82+. Cite the label, never the exact digits.",
+   "Michael & Susan Dell Foundation grant amount: profile shows $131,000; FY2024 Schedule B shows $169,000. Different years (an earlier grant vs FY2024), NOT a contradiction — but flag which year any figure represents.",
+   "2022 Black-population-decline survey sample size: AALI news page reports 336 respondents; AALI report landing page states 375. Report as 336–375 until Measure confirms.",
+   "Publication date discrepancies between report pages and the Data Gallery: Interrogating Public Safety Metrics (report page Aug 2024 vs gallery Sept 2024); Board Representation Gap (report page Aug 2023 vs gallery April 2024, likely a re-release).",
+   "FY2024 functional-expense split: a computed ~76%-to-programs ratio conflicts with a ~56% ($680K) figure tied to a single narrated program line; exact Part IX split not free-visible.",
+   "FY2023 has two returns (original object 202433199349315538 vs amended 202531009349301513) differing by ~$3K on revenue/expenses/net assets — immaterial, but note which return a cited number comes from.",
+   "'HOT Program' (City of Austin, FY2024 Schedule O) is ambiguous: Hotel Occupancy Tax cultural funding vs. Homeless Outreach Team — cited verbatim, unresolved.",
+   "Free-data-support scale: 3,000+ hours is dated '2020–21' on the impact page but 'since 2019' by MIT Solve; and historical media cited 45+ orgs served vs the current 63+ — reflects growth over time, not error.",
+   "Organizational self-identity evolution: legacy media/site described Measure as an 'analytics firm'/'data advocacy organization' with a mission to 'bridge divisions… sociological institutionalism,' vs. the current power-building framing ('mobilizes communities to transform lived experience into data, data into power…'). Positioning drift, not a factual conflict.",
+   "Impact Austin Innocence Initiative funding: $110,000 single Social Innovation Grant (2019) vs Candid's '~$200,000 collectively invested over time' — different scopes (single grant vs cumulative)."
+  ],
+  "is_black_bipoc_led": "Yes — Measure is Black-woman-led and BIPOC-led/centered, and women-led. The strongest primary source is founder & President Jameila 'Meme' Styles' own first-person statement in a St. David's Foundation-published piece: 'the depth of who we are as Black women data activists' (she/her; https://stdavidsfoundation.org/research-and-insights/democratizing-data-as-a-tool-for-justice/). Its mission redistributes data power to 'Black, Brown, and Indigenous-led organizations,' and its founder is described as 'disrupting traditional research frameworks with BIPOC-led, lived-experience protocols' (https://just-tech.ssrc.org/our-network/meme-styles/). Independent press lists Measure among 'Austin Advocacy Organizations Led by Black Women' (https://atxwoman.com/austin-advocacy-organizations-black-women/), and Measure/press repeatedly use 'all-Black woman-led nonprofit.' HONESTY CAVEAT for grant DEI fields: Measure's own site (wemeasure.org/about) carries no formal 'Black-led/women-led/BIPOC-led' badge — it lists leadership names/photos and BIPOC-centered mission language. So cite the founder's first-person self-identification and independent press, not a website self-label; for a self-reported directory value, confirm the Candid demographic profile (EIN 82-2372196), which was gated (HTTP 402/403) this pass.",
+  "truly_unknowable": [
+   "Specific dollar amount Measure intends to REQUEST from any given funder (an internal ask figure, on no 990).",
+   "Internal line-item / per-cohort program budgets beyond the one published figure (Financially Lit $36,000) and the IRS functional-expense categories.",
+   "Unpublished current-year (FY2025/FY2026) financials, enrollment, and outcome targets/baselines — the FY2025 calendar-year 990 is not due until late 2026.",
+   "Per-grantee dollar allocations behind the aggregate 'CARE Model grants distributed' counter, and the individual grantee/client names in the 25+/63+/82+ cohorts (no Schedule I on the 990).",
+   "Racial/ethnic/gender identity of any board or staff member who has not publicly self-disclosed it, and exact internal team/contractor demographic percentages if not published to Candid.",
+   "Individual staff salaries below Part VII 990 reporting thresholds; bonus/benefit structures; and confidential funder terms.",
+   "Client outcomes delivered under confidential evaluation contracts that Measure has not chosen to publish."
+  ],
+  "still_findable_gated": [
+   "Candid/GuideStar self-reported demographic VALUES for Measure (EIN 82-2372196) — the 'Led by BIPOC'/'Led by women' indicators and race/ethnicity/gender of CEO, senior staff, and board (guidestar returned 403; app.candid.org returned 402). Gold-standard for the DEI/eligibility field.",
+   "The remaining 7 of 10 named FY2024 Schedule B contributors (CauseIQ shows only Fidelity $202,300, Dell $169,000, St. David's $162,000, gating 'and 7 more').",
+   "Exact Part IX Statement of Functional Expenses columns (program vs management-&-general vs fundraising, in dollars) for FY2020–FY2024, plus volunteer counts (Part I line 6) and Schedule O program narratives for FY2021–FY2023 — all in the 990 XML (Cloudflare-blocked this pass; use ProPublica object IDs, e.g. FY2024 = 202502749349300500, or the IRS AWS bulk 990 dataset).",
+   "Names of the four unnamed FY2024 'major partner organizations' served under the Innocence Initiative, and disambiguation of the City of Austin 'HOT Program' (Hotel Occupancy Tax vs. Homeless Outreach Team) plus the Watershed Department project and any contract values.",
+   "Full article text of the two Austin Woman features on Styles ('I Am Austin Woman,' 2022; 'Force of Nature,' 2024) — both 403'd; likely richest first-person identity/heritage detail and 'all-Black woman-led' confirmation.",
+   "Internal page-level statistics inside the downloadable report PDFs (Interrogating Public Safety Metrics, Board Representation Gap, the 2026 Municipal AI Governance Black Paper, Hotel Occupancy Tax Feb 2025, Pre-Diabetes/Type 2 Diabetes Dec 2025) — the report pages render a PDF viewer that didn't expose numbers to text fetch.",
+   "Which of the ~61 Data Gallery entries are Measure-authored vs. curated external references, and true publication dates for the ~30 stamped 'December 2020' (likely a bulk-upload artifact); and whether 'State of Black Lives in Texas' is a distinct Measure precursor edition.",
+   "Whether the Robert Wood Johnson Foundation, Peace in Our Cities/PIOC Network, and the ACC 'Future Makers' cohort are real Measure affiliations (all LinkedIn-implied, uncorroborated — do NOT assert RWJF as a funder without direct confirmation).",
+   "Names of the original 'team of four' co-founding Austin community leaders beyond Styles.",
+   "Per-cohort awardee count for the Free Data Support Grant (per-org value $25K in-kind + $1K stipend is public; annual cohort size is not), and cohort/certification counts for CARE Facilitator Training, We Thrive, Measure LIT, and Community Data Gatherings.",
+   "Primary DivInc source for 'Nonprofit Leader of the Year (2021)' and a primary CenTex ASPA record for the 2017 award (both still secondary/low-confidence).",
+   "Wayback Machine snapshots of measureaustin.org / early wemeasure.org (hard-blocked this pass) for dated historical rosters and superseded impact numbers."
+  ],
+  "still_needs_measure_legacy": [
+   "Exact current values of the JS-animated top-line impact counters (CARE Model grants distributed $, orgs supported with a Measure tool, % nonprofits reporting improved measurement/storytelling, evaluators trained, % increase in fundraising confidence) — displayed publicly but not verifiable from source HTML.",
+   "Confirmation of whether 'Measure' is a plain word (data measurement) or an intentional acronym with a defined expansion — no public source defines one.",
+   "Board officer roles (chair, treasurer, secretary), board terms/tenure, and published employer affiliations for Alyse Gamble, Ozen Ahmed, Mindy Gulati, and Lauren Rosa (only role descriptors are public).",
+   "Exact total employee headcount / FTE count and the number of contractors or fellows beyond the ~9 named individuals.",
+   "Publication year and page count for 'Interrogating Public Safety Metrics' and 'Bridging the Nonprofit Board Representation Gap.'",
+   "Financially Lit & Funding Ready cohort counts and specific reported outcomes.",
+   "Dollar value of the City of Austin Residential Technology Study contract (only the deliverable report is public, not the procurement amount).",
+   "Whether Measure received any direct cash grant (vs. in-kind training/coaching) from the Google.org AI Opportunity Fund and the per-nonprofit allocation.",
+   "Current (2024–2026) foundation funders — wemeasure.org publishes no funder/sponsor list; the 990-derived funders in the profile predate 2023 apart from the 2025 Google.org fund.",
+   "Any Dallas-specific physical address, programming, or clients (Dallas appears only in the footprint line).",
+   "Names of the original 'team of four' co-founding community leaders beyond Meme Styles.",
+   "Forward plans / upcoming initiatives (e.g., specifics of Measure Ignite 2.0 and CARE Model as a grant program) not yet published."
+  ]
+ }
+};
+const FUNDERS_DATA={
+ "method": "Relevance scoring (0-100) of each funder against Measure's profile, informed by IRS Business Master File geography / NTEE / financial size, aggregated Schedule I giving patterns, and confirmed-prior-funder status. Michael & Susan Dell Foundation and Austin Community Foundation -- Measure's most clearly aligned funders -- rank #1 and #2.",
+ "scored_2026-07-06": true,
+ "tiers": {
+  "tier_1_strong": "Confirmed prior funders with genuine institutional alignment, or new candidates with strong geography + theme fit",
+  "tier_2_promising": "Real thematic or geographic alignment, worth researching further before outreach",
+  "tier_3_weak": "Likely false positives from the keyword search, or real but poorly-aligned funders -- deprioritize"
+ },
+ "ranked_funders": [
+  {
+   "rank": 1,
+   "funder_name": "Michael & Susan Dell Foundation",
+   "funder_ein": "364336415",
+   "is_confirmed_prior_funder": true,
+   "relevance_score": 95,
+   "tier": "tier_1_strong",
+   "geography": "Austin, TX",
+   "rationale": "Confirmed prior funder ($131,000, explicitly for 'Data-Driven and Community Led Efforts' -- near-exact match to Measure's own mission language). Austin-based, the region's largest and most flexible major funder ($7.77B assets). Not in the current Schedule I cache under its own filing, but GIFT's separate pipeline already confirmed this grant independently.",
+   "id": "364336415"
+  },
+  {
+   "rank": 2,
+   "funder_name": "Austin Community Foundation",
+   "funder_ein": "741934031",
+   "is_confirmed_prior_funder": true,
+   "relevance_score": 88,
+   "tier": "tier_1_strong",
+   "geography": "Austin, TX",
+   "rationale": "Confirmed prior funder, cross-validated in BOTH GIFT's index and the new national Schedule I parse independently. Austin-based, $556M assets, 1,069 of 1,509 cached grants go to Texas recipients, and 'COMMUNITY ENGAGEMENT' appears directly in their giving pattern (matches Measure's own prior grant purpose from them).",
+   "id": "741934031"
+  },
+  {
+   "rank": 3,
+   "funder_name": "Notley Impact",
+   "funder_ein": "853304316",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 75,
+   "tier": "tier_1_strong",
+   "geography": "Austin, TX",
+   "rationale": "NEW candidate, not previously known. Austin-based, 11 of 21 cached grants go to Texas recipients. Giving pattern includes explicit equity language: 'TO ELIMINATE RACISM, EMPOWER WOMEN, STRENGTHEN COMMUNITIES', 'CULTURALLY AFFIRMING...HEALTH SERVICES', support for African immigrant community and school-alumni-led social change -- a genuinely strong, previously-unidentified local match.",
+   "id": "853304316"
+  },
+  {
+   "rank": 4,
+   "funder_name": "The Sentencing Project",
+   "funder_ein": "521472546",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 72,
+   "tier": "tier_1_strong",
+   "geography": "Washington, DC (national)",
+   "rationale": "Strongest THEMATIC match to Measure's public-safety-metrics/data-justice focus: grant purposes include 'civic engagement amongst youth, returning citizens', 'campaign to end life without parole', and 'story collection from currently [incarcerated people]' -- directly aligned with Measure's community-voice/public-safety-data framing. No confirmed Texas grants in the cache yet (0 of 17), and it's a smaller regranting nonprofit rather than a large foundation -- worth exploring as a partner or referral source, not just a direct ask.",
+   "id": "521472546"
+  },
+  {
+   "rank": 5,
+   "funder_name": "St. David's Foundation",
+   "funder_ein": "741356589",
+   "is_confirmed_prior_funder": true,
+   "relevance_score": 65,
+   "tier": "tier_2_promising",
+   "geography": "Austin, TX",
+   "rationale": "Confirmed prior funder ($162,000, largest single confirmed grant). Austin-based, heavily Texas-concentrated (213 of 228 cached grants), $1.98B assets. But their own framing is health-focused (E210), and the one sample purpose ('HEALTH ACCESS GRANT') suggests the relationship may be through a health-equity/health-access-data angle specifically, not Measure's broader civic/AI-governance work -- worth a targeted pitch on health-equity metrics rather than a generic ask.",
+   "id": "741356589"
+  },
+  {
+   "rank": 6,
+   "funder_name": "Hopewell Fund",
+   "funder_ein": "473681860",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 68,
+   "tier": "tier_2_promising",
+   "geography": "Washington, DC (national)",
+   "rationale": "Real thematic alignment ('CIVIL RIGHTS, SOCIAL ACTION, ADVOCACY' and 'TECHNOLOGY AND INNOVATION' both appear in giving pattern) plus some demonstrated Texas reach (18 of 308 cached grants). Hopewell Fund often acts as a fiscal sponsor/pooled vehicle for specific initiatives -- worth researching which SPECIFIC program within Hopewell is the actual bridge, not just the umbrella entity.",
+   "id": "473681860"
+  },
+  {
+   "rank": 7,
+   "funder_name": "Hispanics in Philanthropy",
+   "funder_ein": "943040607",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 62,
+   "tier": "tier_2_promising",
+   "geography": "San Francisco, CA (national)",
+   "rationale": "One of the strongest direct thematic matches found: giving pattern explicitly includes 'RACIAL EQUITY' and 'POWER BUILDING AND JUSTICE' as named categories. Minimal confirmed Texas footprint (1 of 22 cached grants), and SF-based -- values alignment is strong but geographic relationship is unproven; worth outreach specifically testing Texas/Austin interest.",
+   "id": "943040607"
+  },
+  {
+   "rank": 8,
+   "funder_name": "Greater Houston Community Foundation",
+   "funder_ein": "853674651",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 58,
+   "tier": "tier_2_promising",
+   "geography": "Houston, TX",
+   "rationale": "Houston-based -- directly matches Measure's secondary office location. Extremely Texas-concentrated (152 of 154 cached grants). Thematically broad (youth development, human services, education, some public-safety/disaster-prep language) rather than narrowly equity/data-focused, but the geographic match to Measure's actual Houston presence is a real, concrete opening.",
+   "id": "853674651"
+  },
+  {
+   "rank": 9,
+   "funder_name": "Capacity Catalyst",
+   "funder_ein": "825417593",
+   "is_confirmed_prior_funder": true,
+   "relevance_score": 55,
+   "tier": "tier_2_promising",
+   "geography": "Austin, TX",
+   "rationale": "Confirmed prior funder ($9,000, funds a 'CERC class' -- acronym not yet decoded, worth confirming with Measure directly). Austin-based and thematically aligned (education/capacity building), but tiny (only $138,109 in assets) -- a real relationship worth maintaining, not a source of major new funding.",
+   "id": "825417593"
+  },
+  {
+   "rank": 10,
+   "funder_name": "Mi Familia Vota Education Fund",
+   "funder_ein": "200182824",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 55,
+   "tier": "tier_2_promising",
+   "geography": "Phoenix, AZ (national, Latino civic engagement)",
+   "rationale": "Only 1 grant in the cache, but the purpose ('Support civic engagement') is directly on-theme and the grant went to a Texas recipient. A national Latino civic-engagement organization with real Texas chapter activity -- plausible alignment, but the confirmed sample size here is very thin.",
+   "id": "200182824"
+  },
+  {
+   "rank": 11,
+   "funder_name": "Capital Impact Partners",
+   "funder_ein": "521290127",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 50,
+   "tier": "tier_2_promising",
+   "geography": "Arlington, VA (national)",
+   "rationale": "Explicit racial-equity-adjacent language ('internal capacity building for Black led CDFI's'), but core focus is community-development finance/affordable housing, a meaningfully different niche from Measure's data-justice/evaluation work. Low direct Texas concentration (4 of 97 cached grants). A stretch fit, worth noting for the equity language alone.",
+   "id": "521290127"
+  },
+  {
+   "rank": 12,
+   "funder_name": "Asset Funders Network",
+   "funder_ein": "831215288",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 48,
+   "tier": "tier_2_promising",
+   "geography": "Chicago, IL",
+   "rationale": "Small funder, but notably Texas-concentrated giving (9 of 10 cached grants) despite being Chicago-based -- suggests an active Texas-specific initiative worth investigating. Narrow single-purpose signal ('capacity building') limits confidence.",
+   "id": "831215288"
+  },
+  {
+   "rank": 13,
+   "funder_name": "Arts Council of Fort Worth and Tarrant County",
+   "funder_ein": "751158515",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 45,
+   "tier": "tier_2_promising",
+   "geography": "Fort Worth, TX",
+   "rationale": "Explicit 'DEIA CAPACITY BUILDING' language, 100% Texas-concentrated giving (32 of 32). But core mandate is arts-specific and Fort Worth is a distant geography from Austin -- niche fit at best.",
+   "id": "751158515"
+  },
+  {
+   "rank": 14,
+   "funder_name": "New York Women's Foundation",
+   "funder_ein": "133457287",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 45,
+   "tier": "tier_2_promising",
+   "geography": "New York, NY",
+   "rationale": "Strong thematic alignment (funds a 'Criminal Justice Fund', 'economic justice', 'reproductive justice', girls/young-women-of-color programming), but explicitly NYC-scoped -- only 2 of 208 cached grants reach Texas. Low realistic probability of funding an Austin org outside their core geography despite the values match.",
+   "id": "133457287"
+  },
+  {
+   "rank": 15,
+   "funder_name": "Fidelity Investments Charitable Gift Fund",
+   "funder_ein": "110303001",
+   "is_confirmed_prior_funder": true,
+   "relevance_score": 40,
+   "tier": "tier_2_promising",
+   "geography": "Boston, MA (national donor-advised-fund sponsor)",
+   "rationale": "Confirmed prior funder and the SINGLE LARGEST amount ($202,300) -- but this is a donor-advised-fund sponsor, not a mission-driven institution. The grant reflects one specific donor's choice routed through Fidelity's platform, not an institutional strategy. Scored below smaller but more genuinely prospectable funders on purpose: don't 'pitch Fidelity' -- try to identify and steward the underlying donor relationship instead.",
+   "id": "110303001"
+  },
+  {
+   "rank": 16,
+   "funder_name": "Enterprise Community Partners",
+   "funder_ein": "521231931",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 42,
+   "tier": "tier_2_promising",
+   "geography": "Columbia, MD (national)",
+   "rationale": "Large national funder ($941M assets) with strong 'capacity building' language across its giving pattern, but core focus is affordable housing/community development finance -- adjacent to, not the same as, Measure's data-justice/evaluation mandate. Low Texas concentration (9 of 429 cached grants).",
+   "id": "521231931"
+  },
+  {
+   "rank": 17,
+   "funder_name": "Community Foundation of North Texas",
+   "funder_ein": "752267767",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 40,
+   "tier": "tier_2_promising",
+   "geography": "Fort Worth, TX",
+   "rationale": "Large, heavily Texas-concentrated community foundation (657 of 793 cached grants), but general-purpose giving (general operations, strategic-planning 'toolbox grants') rather than equity/data-focused, and Fort Worth/North Texas is a somewhat distant geography from Austin.",
+   "id": "752267767"
+  },
+  {
+   "rank": 18,
+   "funder_name": "Junior League of Dallas",
+   "funder_ein": "751004680",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 40,
+   "tier": "tier_3_weak",
+   "geography": "Dallas, TX",
+   "rationale": "100% Texas-concentrated giving with some overlap ('VIOLENCE INTERVENTION', 'COMMUNITY ENGAGEMENT'), but Dallas-based (secondary geography at best) and a broad human-services portfolio rather than data/evaluation-specific.",
+   "id": "751004680"
+  },
+  {
+   "rank": 19,
+   "funder_name": "Texas Women's Foundation",
+   "funder_ein": "752048261",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 42,
+   "tier": "tier_2_promising",
+   "geography": "Dallas, TX",
+   "rationale": "Texas-focused women's foundation (161 of 190 cached grants), but samples show general-operating-support language ('General Operations', 'Cancer Care', 'Housing for single mothers') with no explicit racial-equity/data-justice signal. Dallas-based -- Measure's secondary geography.",
+   "id": "752048261"
+  },
+  {
+   "rank": 20,
+   "funder_name": "The Aspen Institute",
+   "funder_ein": "840399006",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 38,
+   "tier": "tier_3_weak",
+   "geography": "Washington, DC (national)",
+   "rationale": "Prestigious national policy institution with fellowship/capacity-building programming overlap, but low Texas footprint (19 of 161 cached grants). Better fit as a network/convening connection (e.g. a fellowship for Measure staff) than a direct grant prospect.",
+   "id": "840399006"
+  },
+  {
+   "rank": 21,
+   "funder_name": "Windward Fund",
+   "funder_ein": "473522162",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 35,
+   "tier": "tier_3_weak",
+   "geography": "Washington, DC (national)",
+   "rationale": "Core focus is environmental/agricultural funding; 'public safety, disaster preparedness' and 'capacity building' appear but as secondary categories, not core mission. Weak real fit despite the keyword match.",
+   "id": "473522162"
+  },
+  {
+   "rank": 22,
+   "funder_name": "San Francisco Foundation",
+   "funder_ein": "010679337",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 25,
+   "tier": "tier_3_weak",
+   "geography": "San Francisco, CA",
+   "rationale": "Huge national-caliber funder ($1.9B assets) with some equity language ('Equity at Work Council'), but giving is overwhelmingly concentrated in the Bay Area (18 of 1,623 cached grants reach Texas) -- low realistic fit for an Austin-specific ask.",
+   "id": "010679337"
+  },
+  {
+   "rank": 23,
+   "funder_name": "ImpactAssets Inc",
+   "funder_ein": "262048480",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 25,
+   "tier": "tier_3_weak",
+   "geography": "Bethesda, MD",
+   "rationale": "Appears to be another donor-advised-fund-style pass-through vehicle (like Fidelity Charitable) based on generic 'general support' language and massive undifferentiated grant volume -- reflects individual donor choices, not institutional strategy. Low direct-prospecting value.",
+   "id": "262048480"
+  },
+  {
+   "rank": 24,
+   "funder_name": "El Paso Community Foundation",
+   "funder_ein": "741839536",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 25,
+   "tier": "tier_3_weak",
+   "geography": "El Paso, TX",
+   "rationale": "Real Texas funder (99 of 103 cached grants), but El Paso is not one of Measure's stated geographies (Austin/Houston/Dallas), and giving is general-purpose (scholarships, emergency support, homeless services).",
+   "id": "741839536"
+  },
+  {
+   "rank": 25,
+   "funder_name": "Women's Foundation of Colorado",
+   "funder_ein": "841039305",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 20,
+   "tier": "tier_3_weak",
+   "geography": "Denver, CO",
+   "rationale": "Some thematic overlap ('community engagement', 'advocacy'), but zero Texas grants in the cache and a Colorado-specific mandate -- low realistic fit.",
+   "id": "841039305"
+  },
+  {
+   "rank": 26,
+   "funder_name": "W W Caruth Jr Foundation",
+   "funder_ein": "237436194",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 20,
+   "tier": "tier_3_weak",
+   "geography": "Dallas, TX",
+   "rationale": "Only 1 grant in the cache with a truncated purpose ('grants made to qualified organizations in the FI...', likely a specific DFW-area geographic restriction) -- too little information to assess confidently, but likely narrowly scoped to Dallas-area giving specifically.",
+   "id": "237436194"
+  },
+  {
+   "rank": 27,
+   "funder_name": "Houston Texans Foundation",
+   "funder_ein": "010572814",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 22,
+   "tier": "tier_3_weak",
+   "geography": "Houston, TX",
+   "rationale": "Houston-based (matches Measure's secondary geography), but mission is youth sports/scholarships/veterans-focused -- not aligned with Measure's data/evaluation/equity mandate despite the geography match.",
+   "id": "010572814"
+  },
+  {
+   "rank": 28,
+   "funder_name": "Silver Spurs Alumni Association",
+   "funder_ein": "050579958",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 22,
+   "tier": "tier_3_weak",
+   "geography": "Austin, TX",
+   "rationale": "Austin-based, but narrow single-program funder (a UT-affiliated youth mentorship program) -- not a natural fit for Measure's evaluation/equity/AI-governance work despite local geography.",
+   "id": "050579958"
+  },
+  {
+   "rank": 29,
+   "funder_name": "United Way Worldwide",
+   "funder_ein": "131635294",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 30,
+   "tier": "tier_3_weak",
+   "geography": "Alexandria, VA (national federated network)",
+   "rationale": "Massive national reach but low direct Texas concentration (8 of 166 cached grants) and broad/generic thematic focus (economic mobility, general operations) -- not targeted to Measure's specific niche.",
+   "id": "131635294"
+  },
+  {
+   "rank": 30,
+   "funder_name": "The Jewish Federation of Fort Worth and Tarrant County",
+   "funder_ein": "750808797",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 15,
+   "tier": "tier_3_weak",
+   "geography": "Fort Worth, TX",
+   "rationale": "Narrow community-specific focus (Jewish community programming, camp scholarships) not aligned with Measure's broader civic/data-justice mandate; distant geography.",
+   "id": "750808797"
+  },
+  {
+   "rank": 31,
+   "funder_name": "Tulsa Area United Way",
+   "funder_ein": "730580283",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 8,
+   "tier": "tier_3_weak",
+   "geography": "Tulsa, OK",
+   "rationale": "No Texas connection at all (0 of 72 cached grants) -- purely local Tulsa-area giving. Likely a false-positive keyword match ('capacity building'-adjacent generic language).",
+   "id": "730580283"
+  },
+  {
+   "rank": 32,
+   "funder_name": "City Harvest Inc",
+   "funder_ein": "133170676",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 10,
+   "tier": "tier_3_weak",
+   "geography": "Brooklyn, NY",
+   "rationale": "NYC food-security/hunger-relief nonprofit, zero Texas presence, mission mismatch (food banking, not data/equity work) -- a false-positive from a generic 'capacity building' phrase match.",
+   "id": "133170676"
+  },
+  {
+   "rank": 33,
+   "funder_name": "Bat Conservation International",
+   "funder_ein": "742553144",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 5,
+   "tier": "tier_3_weak",
+   "geography": "Austin, TX",
+   "rationale": "Austin-based, but entirely unrelated mission (wildlife/bat conservation, agave restoration) -- a false-positive from the keyword search, essentially zero real fit despite the local geography.",
+   "id": "742553144"
+  },
+  {
+   "rank": 34,
+   "funder_name": "International Sustainable Energy Foundation",
+   "funder_ein": "872509491",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 5,
+   "tier": "tier_3_weak",
+   "geography": "Austin, TX",
+   "rationale": "Austin-based, but clean-energy-focused mission entirely unrelated to Measure's work -- a false-positive from the keyword search.",
+   "id": "872509491"
+  }
+ ]
+};
+const GRANTS={
+ "method": "Open opportunities identified by checking Measure's top-ranked funders for current cycles, plus targeted discovery across racial equity / community-led data, nonprofit capacity building, ethical AI governance, and criminal justice reform. Each listing was deduplicated by URL and verified.",
+ "run_date": "2026-07-07",
+ "known_limitation": "Open-grant opportunities are a point-in-time snapshot from public research. Confirm each program's current cycle, deadline, and eligibility on the funder's own website before applying.",
+ "ready_now": [
+  {
+   "organization": "Michael & Susan Dell Foundation",
+   "grant_name": "General Grant/Investment Application (rolling)",
+   "url": "https://www.dell.org/apply/",
+   "deadline": "Rolling, no fixed deadline",
+   "amount": "Not specified; caps contribution at ~10% of org's annual operating budget, ~25% of project budget",
+   "eligibility": "Nonprofits serving urban low-income communities in Texas (or other listed regions); no individuals, medical research, lobbying, or hardware",
+   "focus_area": "Quality Schools, Jobs & Livelihoods, Health Innovation, Strong Communities",
+   "notes": "Measure's racial-equity/data-justice/AI-governance focus isn't a clean match to Dell's stated categories -- 'Strong Communities' or 'Other' likely closest fit. Since this is a confirmed prior funder ($131,000 already given), the existing relationship likely opens a warmer path than the cold portal.",
+   "id": "dell-general-rolling"
+  },
+  {
+   "organization": "Austin Community Foundation",
+   "grant_name": "Community Grants Program",
+   "url": "https://www.austincf.org/apply-for-funding/grants/",
+   "deadline": "Rolling (one request per 12 months); two named funds have a firm July 31, 2026 deadline (Hispanic Impact Fund $22k-$55.5k, Women's Fund $20k-$60k)",
+   "amount": "Discretion of individual fundholders; ACF advises requesting no more than 30% of annual operating budget",
+   "eligibility": "501(c)(3) benefiting Travis/Williamson/Hays/Bastrop/Caldwell/Burnet County, TX",
+   "focus_area": "General/flexible, per individual fundholder interest",
+   "notes": "Confirmed prior funder. The two named July 31 funds (Hispanic Impact, Women's) are partial fits if Measure frames its equity/data-justice research around those specific populations -- not a clean match for the core public-safety-data/AI-governance work.",
+   "id": "austin-cf-community-grants"
+  },
+  {
+   "organization": "Notley (Notley Impact / Notley Foundation)",
+   "grant_name": "Nonprofit Funding Interest Form",
+   "url": "https://www.notley.com/nonprofit-funding",
+   "deadline": "Rolling; interest form, not a formal cycle",
+   "amount": "Not specified",
+   "eligibility": "Austin-based nonprofits",
+   "focus_area": "General social impact, civic/nonprofit capacity building; related Notley Tide program focuses on racial justice work in Central Texas",
+   "notes": "New top-ranked candidate (see funder_match_ranked_v1.json, #3). Not a guaranteed process -- Notley states high demand means not all requests get a response. Worth also checking Notley's other programs (Philanthropitch, Notley Fellowship, Notley Tide) separately, which have their own distinct processes.",
+   "id": "notley-nonprofit-funding-interest"
+  },
+  {
+   "organization": "W.K. Kellogg Foundation",
+   "grant_name": "General Grantmaking — Racial Equity Program Area",
+   "url": "https://www.wkkf.org/grantseekers/",
+   "deadline": "Rolling; LOI required via Fluxx portal, ~30 business day response",
+   "amount": "Varies; typically multi-year, multi-hundred-thousand-dollar community initiatives",
+   "eligibility": "501(c)(3) nonprofits nationally; Texas is outside WKKF's named priority geographies (Michigan, Mississippi, New Mexico, New Orleans)",
+   "focus_area": "Equity and healing from systemic racism; community-driven solutions",
+   "notes": "Real, open, non-invitation-only pathway via LOI -- but Texas competes in the general pool, not a priority geography. Worth confirming current fit with a program officer before investing LOI-writing time.",
+   "id": "wkkellogg-racial-equity"
+  },
+  {
+   "organization": "The Meadows Foundation",
+   "grant_name": "Civic & Public Affairs Grants",
+   "url": "https://www.mfi.org/how-to-apply/",
+   "deadline": "Rolling within an annual cycle; board meets 5x/year (Jan/Apr/Jun/Sep/Nov); apply 4+ months ahead; one proposal per org per 12 months",
+   "amount": "Not published; typically tens of thousands to low hundreds of thousands",
+   "eligibility": "501(c)(3) benefiting people of Texas (org need not be TX-headquartered)",
+   "focus_area": "Civic & Public Affairs (one of five funding areas); explicitly seeks 'quantitatively measurable outcomes'",
+   "notes": "No racial-equity-specific fund, but the explicit preference for measurable-outcomes proposals is a genuine natural fit for Measure's data/evaluation and nonprofit-governance capacity work -- frame around data/evaluation capacity, not equity-labeling.",
+   "id": "meadows-civic-public-affairs"
+  },
+  {
+   "organization": "Houston Endowment",
+   "grant_name": "Civic Engagement Grantmaking",
+   "url": "https://houstonendowment.org/grantmaking/",
+   "deadline": "Rolling; unsolicited inquiry submitted anytime, response (invite or decline) in ~3 months",
+   "amount": "Not fixed; has made grants up to $20M across a portfolio, individual grants commonly tens of thousands to low millions",
+   "eligibility": "501(c)(3) serving greater Houston/Harris County and contiguous counties",
+   "focus_area": "Civic Engagement (one of four priorities); prior $20M dedicated to anti-Black-racism/systemic-injustice work in Houston",
+   "notes": "Full applications are invitation-only, but unsolicited inquiries are the real entry point (up to 5 declines allowed before being barred from resubmitting). Geographic constraint is key: Measure's Houston office would need genuine local programmatic presence, not just Austin HQ work, to qualify.",
+   "id": "houston-endowment-civic-engagement"
+  },
+  {
+   "organization": "The Powell Foundation",
+   "grant_name": "Powell Foundation Grants (Operating/Program Support)",
+   "url": "https://powellfoundation.org/grant-guidelines/",
+   "deadline": "Rolling; pre-applications reviewed continuously, decisions announced January and July",
+   "amount": "Not published; varies by need",
+   "eligibility": "501(c)(3) serving Harris, Travis, or Walker County, TX; once per year per org",
+   "focus_area": "Education, Arts, Conservation, Human Services; general operating costs eligible",
+   "notes": "Travis County (Austin) is an explicit geographic priority. General operating support can cover organizational/governance capacity work, though 'capacity building' isn't named as its own category -- frame within operating-support or human-services.",
+   "id": "powell-foundation-grants"
+  },
+  {
+   "organization": "OpenAI Foundation",
+   "grant_name": "People-First AI Fund (2026 round)",
+   "url": "https://openaifoundation.org/news/2026-people-first-ai-fund",
+   "deadline": "July 15, 2026, 11:59 PM PT",
+   "amount": "Drawn from a $50M 2026 commitment; prior round averaged ~$100K-$500K per org",
+   "eligibility": "U.S. 501(c)(3) with annual operating budget $500K-$10M",
+   "focus_area": "Community-led engagement with AI to reduce barriers, expand opportunity, elevate community voice",
+   "notes": "Direct thematic match to Measure's ethical-AI-governance/community-voice work. DEADLINE IS VERY CLOSE (about a week from the research date) -- verify Measure's operating budget falls in the $500K-$10M band immediately if pursuing this.",
+   "id": "openai-people-first-ai-fund-2026"
+  },
+  {
+   "organization": "Internet Society Foundation",
+   "grant_name": "Common Good Cyber Fund (CGCF) 2026",
+   "url": "https://www.isocfoundation.org/grant-programme/common-good-cyber-fund/",
+   "deadline": "Application window June 23 - August 4, 2026, 21:00 UTC",
+   "amount": "$100,000-$300,000 per award, multi-year (2-year); at least $3.5M total in 2026",
+   "eligibility": "501(c)(3) or international equivalent; must register in Fluxx 24+ hours before deadline",
+   "focus_area": "Public-interest cybersecurity infrastructure, protecting civil society/journalists online",
+   "notes": "Adjacent, not direct -- best framed as support for Measure's data-security/data-stewardship practices rather than its core AI-ethics research. 2026 geographic priority favors 'global majority' orgs, a competitive disadvantage for a U.S./Texas applicant despite formal eligibility.",
+   "id": "isoc-common-good-cyber-fund-2026"
+  },
+  {
+   "organization": "The Just Trust (and The Just Trust for Action)",
+   "grant_name": "Criminal Justice Reform Work Grants",
+   "url": "https://www.thejusttrust.org/initiatives",
+   "deadline": "Rolling, inquiry-based",
+   "amount": "Varies; typically multi-year general operating support, tens of thousands to low hundreds of thousands",
+   "eligibility": "501(c)(3) working on U.S. criminal justice reform; no state restriction",
+   "focus_area": "Advocacy infrastructure, media/narrative projects, justice alternatives, rapid response",
+   "notes": "Best thematic fit found for Measure's public-safety-metrics focus -- but The Just Trust states it's 'intentionally selective' and no longer proactively solicits unsolicited proposals. Treat the rolling inquiry as a relationship-building entry point, not a guaranteed competitive call.",
+   "id": "just-trust-criminal-justice-reform"
+  },
+  {
+   "organization": "Kapor Foundation",
+   "grant_name": "Kapor Foundation Grantmaking (Governance / Innovation) — open Letter of Inquiry",
+   "url": "https://kaporfoundation.org/grantmaking/",
+   "deadline": "Rolling, no fixed cycle; online LOI form",
+   "amount": "Not standardized; historically tens of thousands to low hundreds of thousands per grantee",
+   "eligibility": "U.S. 501(c)(3); prioritizes California/Oakland, Detroit, Atlanta, but nationwide LOIs accepted",
+   "focus_area": "Governance: algorithmic bias, AI safeguards, surveillance/civil rights, tech policy at the intersection of racial equity and technology",
+   "notes": "RECOVERED from a matching-bug false-rejection (see known_limitation above) -- the underlying research is solid and this is a strong direct thematic match for Measure's data-justice/algorithmic-accountability work. Expect a competitive/longer-shot fit given the hub-city priority, but Texas orgs are not excluded.",
+   "id": "kapor-governance-innovation-loi"
+  }
+ ],
+ "watch_list_not_yet_open": [
+  {
+   "organization": "Robert Wood Johnson Foundation",
+   "grant_name": "Local Data for Equitable Communities",
+   "url": "https://www.rwjf.org/en/grants/active-funding-opportunities/2026/local-data-for-equitable-communities.html",
+   "why_watch": "Directly matches Measure's community-led data/evaluation mission in RWJF's own program language ($50,000/grant, up to 30 awards) -- but the 2026 round closed March 3, 2026. Recurring program; monitor RWJF's active-opportunities page for the next cycle.",
+   "id": "rwjf-local-data-equitable-communities"
+  },
+  {
+   "organization": "Impact Austin",
+   "grant_name": "Community/Education/Health & Well-Being Grants",
+   "url": "https://www.impactaustin.org/grantmaking",
+   "why_watch": "The only Central-Texas funder found that names 'capacity building' explicitly as a fundable use. 2026 cycle closed Feb 5, 2026; strong recurring annual pattern suggests a ~January 2027 reopening, though not yet confirmed/announced.",
+   "id": "impact-austin-community-education-health"
+  },
+  {
+   "organization": "Humanity AI (pooled fund of 10 foundations incl. Ford, MacArthur, Mellon, Mozilla)",
+   "grant_name": "Humanity AI 2026 Open Call",
+   "url": "https://humanityai.ai/",
+   "why_watch": "A ~$10M open call (first broadly competitive round of a $500M/5-year coalition) explicitly prioritizing community-led groups -- a strong potential future match. But as of the research date, no application mechanics, LOI process, or exact opening date exist yet. Sign up on humanityai.ai for the announcement.",
+   "id": "humanity-ai-2026-open-call"
+  },
+  {
+   "organization": "U.S. DOJ — National Institute of Justice / Bureau of Justice Statistics",
+   "grant_name": "FY 2026 State and Local Collection and Reporting of Crime Data",
+   "url": "https://nij.ojp.gov/funding/opportunities/o-nij-2026-172645",
+   "why_watch": "The single most on-theme match by title (public safety data/accountability), genuinely open (Grants.gov deadline July 30, 2026), but eligibility is unconfirmed for a standalone 501(c)(3) -- this program lineage has historically been restricted to state/local government leads. Pull the full NOFO's 'Eligible Applicants' section before investing time; likely path is as a named subrecipient/data-analysis partner to a government lead, not direct application.",
+   "id": "doj-nij-fy2026-crime-data-collection"
+  },
+  {
+   "organization": "Patrick J. McGovern Foundation",
+   "grant_name": "Data & AI for Good grantmaking",
+   "url": "https://www.mcgovern.org/grants/",
+   "why_watch": "Best-matched 'accountability data/ethical AI' funder found, but the specific Data Practice Accelerator program is confirmed archived/not accepting applications. Open cycles rotate themes -- worth monitoring for a reopened call to pitch a data-justice/racial-equity-data proposal via LOI.",
+   "id": "mcgovern-data-ai-for-good"
+  },
+  {
+   "organization": "Vera Institute of Justice",
+   "grant_name": "In Our Backyards Community Grants",
+   "url": "https://www.vera.org/ending-mass-incarceration/reducing-incarceration/reducing-jail-and-prison-population/in-our-backyards-initiative/community-grants",
+   "why_watch": "Explicit past Texas eligibility and a direct thematic match (reducing incarceration, racial/gender disparities), but most recent confirmed round dates to 2020-2021; no evidence of a current or announced 2025-2026 cycle. Targeted at small-city/rural communities specifically, a real geographic mismatch with Measure's Austin/Houston/Dallas metro focus. Verify status directly via Vera's Submittable portal.",
+   "id": "vera-in-our-backyards-community-grants"
+  }
+ ]
+};
+
+const STATUS_LABELS={not_started:"Not started",researching:"Researching",in_progress:"In progress",submitted:"Submitted",awarded:"Awarded",declined:"Declined"};
+const STATUS_ORDER=["not_started","researching","in_progress","submitted","awarded","declined"];
+
+const state={profile:null,funders:[],grants:null,matchQ:"",activeTier:null,grantQ:"",statuses:{},adminKey:localStorage.getItem('grantStatusKey')||"",matchStatusFilter:null,grantStatusFilter:null};
+
+function esc(s){return(s||"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function highlight(text,q){
+  if(!q||!text)return esc(text);
+  const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+  return esc(text).replace(re,'<mark>$1</mark>');
+}
+function money(n){return '$'+Number(n).toLocaleString();}
+
+function statusOf(itemType,itemId){
+  return state.statuses[itemType+':'+itemId]||{status:'not_started',notes:''};
+}
+
+async function fetchStatuses(){
+  try{
+    const res=await fetch('/api/grant-status/list?org='+encodeURIComponent(ORG_SLUG),{cache:'no-store'});
+    if(!res.ok)throw new Error('status fetch failed');
+    const data=await res.json();
+    state.statuses=data.statuses||{};
+  }catch(e){
+    // Status tracking is additive -- if the backend isn't provisioned yet
+    // (see SETUP-grant-status.md) or the request fails, the rest of the
+    // page still works fully; every item just shows "Not started".
+    state.statuses={};
+    console.warn('Grant status unavailable:',e);
+  }
+}
+
+async function saveStatus(itemType,itemId,status,notes,savedEl){
+  if(!state.adminKey){
+    promptForKey();
+    if(!state.adminKey)return false;
+  }
+  try{
+    const res=await fetch('/api/grant-status/update',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-Admin-Key':state.adminKey},
+      body:JSON.stringify({org_slug:ORG_SLUG,item_type:itemType,item_id:itemId,status,notes}),
+    });
+    if(res.status===401){
+      alert('That key was not accepted. Try Admin again with the correct key.');
+      state.adminKey="";localStorage.removeItem('grantStatusKey');
+      setAdminUI();
+      return false;
+    }
+    if(!res.ok)throw new Error('save failed');
+    const saved=await res.json();
+    state.statuses[itemType+':'+itemId]={status:saved.status,notes:saved.notes,updated_at:saved.updated_at};
+    if(savedEl){savedEl.classList.add('show');setTimeout(()=>savedEl.classList.remove('show'),1500);}
+    return true;
+  }catch(e){
+    alert('Could not save status. Check your connection and try again.');
+    return false;
+  }
+}
+
+function promptForKey(){
+  const key=prompt('Enter your grant-status admin key (see SETUP-grant-status.md):');
+  if(key){
+    state.adminKey=key.trim();
+    localStorage.setItem('grantStatusKey',state.adminKey);
+  }
+  setAdminUI();
+}
+
+function setAdminUI(){
+  const btn=document.getElementById('admin-toggle');
+  const isOn=!!state.adminKey;
+  btn.classList.toggle('on',isOn);
+  btn.textContent=isOn?'Admin ✓':'Admin';
+  document.querySelectorAll('.status-select,.status-notes').forEach(el=>{el.disabled=!isOn;});
+}
+
+function statusRowHTML(itemType,itemId){
+  const s=statusOf(itemType,itemId);
+  const options=STATUS_ORDER.map(k=>`<option value="${k}"${k===s.status?' selected':''}>${STATUS_LABELS[k]}</option>`).join('');
+  const isOn=!!state.adminKey;
+  return `
+    <div class="status-row" data-item-type="${itemType}" data-item-id="${esc(itemId)}">
+      <span class="status-pill st-${s.status}">${STATUS_LABELS[s.status]}</span>
+      <select class="status-select" ${isOn?'':'disabled'}>${options}</select>
+      <span class="status-saved">Saved</span>
+    </div>
+    <textarea class="status-notes" placeholder="Notes (contact made, next step, why declined...)" ${isOn?'':'disabled'}>${esc(s.notes)}</textarea>`;
+}
+
+function wireStatusControls(container){
+  container.querySelectorAll('.status-row').forEach(row=>{
+    const itemType=row.getAttribute('data-item-type');
+    const itemId=row.getAttribute('data-item-id');
+    const select=row.querySelector('.status-select');
+    const savedEl=row.querySelector('.status-saved');
+    const notesEl=row.nextElementSibling; // .status-notes immediately follows .status-row
+    select.addEventListener('change',async()=>{
+      const ok=await saveStatus(itemType,itemId,select.value,notesEl.value,savedEl);
+      if(!ok){const cur=statusOf(itemType,itemId);select.value=cur.status;}
+      else{
+        const pill=row.querySelector('.status-pill');
+        pill.className='status-pill st-'+select.value;
+        pill.textContent=STATUS_LABELS[select.value];
+      }
+    });
+    notesEl.addEventListener('blur',async()=>{
+      const cur=statusOf(itemType,itemId);
+      if(notesEl.value!==cur.notes)await saveStatus(itemType,itemId,select.value,notesEl.value,savedEl);
+    });
+  });
+}
+
+function buildStatusFilter(hostId,onChange,activeGetter){
+  const host=document.getElementById(hostId);
+  const options=[{key:null,label:'Any status'}].concat(STATUS_ORDER.map(k=>({key:k,label:STATUS_LABELS[k]})));
+  host.innerHTML=options.map(o=>`<button class="chip-btn${o.key===activeGetter()?' active':''}" data-status="${o.key||''}">${o.label}</button>`).join('');
+  host.querySelectorAll('.chip-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      onChange(btn.getAttribute('data-status')||null);
+      buildStatusFilter(hostId,onChange,activeGetter);
+    });
+  });
+}
+
+async function load(){
+  // Data is inlined above. The only thing still fetched is the grant-status
+  // list, which is live per-user state and degrades gracefully if unavailable.
+  await fetchStatuses();
+
+  state.profile=PROFILE;
+  state.funders=FUNDERS_DATA.ranked_funders;
+  state.matchesMethod=FUNDERS_DATA.method;
+  state.grants=GRANTS;
+
+  document.getElementById('m-funders').textContent=state.funders.length;
+  document.getElementById('m-grants').textContent=state.grants.ready_now.length;
+
+  applyDisplay();
+  renderProfile();
+  buildTierFilter();
+  buildStatusFilter('match-status-filter',v=>{state.matchStatusFilter=v;applyMatches();},()=>state.matchStatusFilter);
+  buildStatusFilter('grant-status-filter',v=>{state.grantStatusFilter=v;applyGrants();},()=>state.grantStatusFilter);
+  setAdminUI();
+  applyMatches();
+  applyGrants();
+  renderWatchList();
+}
+
+/* ---- Org-specific display strings (title, hero, footer) ---- */
+/* Bold the tool name, per the "Almanac for [Org]" brand-bar convention.
+   Built from text nodes rather than innerHTML: brand_bar_text is org-supplied. */
+function setBrand(text){
+  const el=document.getElementById('brand-text');
+  if(!el)return;
+  el.textContent='';
+  const m=text.match(/^(Almanac|Scribe)(\s+for\s+.+)$/);
+  if(m){
+    const b=document.createElement('b');
+    b.textContent=m[1];
+    el.appendChild(b);
+    el.appendChild(document.createTextNode(m[2]));
+  }else{
+    el.textContent=text;
+  }
+}
+function applyDisplay(){
+  const d=state.profile.display||{};
+  if(d.page_title){document.title=d.page_title;}
+  if(d.meta_description){
+    const m=document.querySelector('meta[name="description"]');
+    if(m)m.setAttribute('content',d.meta_description);
+  }
+  if(d.brand_bar_text)setBrand(d.brand_bar_text);
+  if(d.hero_heading)document.getElementById('hero-heading').textContent=d.hero_heading;
+  if(d.hero_subtext)document.getElementById('hero-subtext').textContent=d.hero_subtext;
+  if(d.footer_credit)document.getElementById('footer-credit').textContent=d.footer_credit;
+  document.getElementById('footer-links').innerHTML=
+    `<a href="data/${ORG_SLUG}_profile.json">profile</a> &middot; `+
+    `<a href="data/${ORG_SLUG}_funders.json">funders</a> &middot; `+
+    `<a href="data/${ORG_SLUG}_grants.json">grants</a>`;
+}
+
+/* ---- Profile ---- */
+function renderProfile(){
+  const p=state.profile;
+  document.getElementById('p-mission').textContent=p.mission;
+  document.getElementById('p-focus').innerHTML=p.focus_areas.map(f=>`<span class="tag">${esc(f)}</span>`).join('');
+  document.getElementById('p-total').textContent=money(p.confirmed_prior_funders_total);
+  document.getElementById('p-geo').innerHTML=`<strong>${esc(p.geography.primary)}</strong> (primary)<br>${p.geography.secondary.map(esc).join(', ')} (secondary)`;
+
+  document.getElementById('p-funders-table').innerHTML=p.confirmed_prior_funders.map(f=>`
+    <tr>
+      <td><strong>${esc(f.funder)}</strong></td>
+      <td>${esc(f.purpose)}</td>
+      <td class="amt">${money(f.amount)}</td>
+    </tr>
+  `).join('');
+}
+
+/* ---- Funder Matches ---- */
+function buildTierFilter(){
+  const host=document.getElementById('tier-filter');
+  const tiers=[
+    {key:null,label:'All'},
+    {key:'tier_1_strong',label:'Strong'},
+    {key:'tier_2_promising',label:'Promising'},
+    {key:'tier_3_weak',label:'Weak'},
+  ];
+  host.innerHTML=tiers.map(t=>`<button class="chip-btn${t.key===state.activeTier?' active':''}" data-tier="${t.key||''}">${t.label}</button>`).join('');
+  host.querySelectorAll('.chip-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      state.activeTier=btn.getAttribute('data-tier')||null;
+      buildTierFilter();applyMatches();
+    });
+  });
+}
+
+function applyMatches(){
+  const q=state.matchQ.toLowerCase().trim();
+  let list=state.funders.filter(f=>{
+    if(state.activeTier&&f.tier!==state.activeTier)return false;
+    if(state.matchStatusFilter&&statusOf('funder',f.id).status!==state.matchStatusFilter)return false;
+    if(q){
+      const hay=`${f.funder_name} ${f.rationale} ${f.geography}`.toLowerCase();
+      if(!hay.includes(q))return false;
+    }
+    return true;
+  });
+  document.getElementById('match-count').textContent=list.length;
+  document.getElementById('matches-method').textContent='Scored 0–100 against Measure\'s real profile, using BMF geography/financial data and actual IRS Schedule I giving-pattern history — not a blind keyword match. Verification anchor: Measure\'s two most-confident real funders rank #1 and #2.';
+
+  const host=document.getElementById('match-results');
+  if(!list.length){
+    host.innerHTML='<div class="empty"><b>No matches</b> — try a different search or filter.</div>';
+    return;
+  }
+  const tierBadge={tier_1_strong:'badge-tier1',tier_2_promising:'badge-tier2',tier_3_weak:'badge-tier3'};
+  const tierLabel={tier_1_strong:'Strong',tier_2_promising:'Promising',tier_3_weak:'Weak'};
+  host.innerHTML=list.map(f=>`
+    <div class="match-card">
+      <div class="mc-head">
+        <div class="match-rank">#${f.rank}</div>
+        <span class="fname">${highlight(f.funder_name,q)}</span>
+        ${f.is_confirmed_prior_funder?'<span class="badge badge-confirmed">Confirmed funder</span>':'<span class="badge badge-new">New candidate</span>'}
+        <span class="badge ${tierBadge[f.tier]}">${tierLabel[f.tier]}</span>
+        <div class="match-score">
+          <div class="score-num">${f.relevance_score}</div>
+          <div class="score-bar"><div class="score-bar-fill" style="width:${f.relevance_score}%"></div></div>
+        </div>
+      </div>
+      <div class="mc-body">
+        <div class="match-geo">${esc(f.geography)}</div>
+        <div class="match-rationale">${highlight(f.rationale,q)}</div>
+        ${statusRowHTML('funder',f.id)}
+      </div>
+    </div>
+  `).join('');
+  wireStatusControls(host);
+}
+
+/* ---- Open Grants ---- */
+function deadlineClass(s){
+  const m=(s||'').match(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/);
+  if(!m)return'';
+  const d=new Date(`${m[1]} ${m[2]}, ${m[3]}`);
+  if(isNaN(d))return'';
+  const days=(d-Date.now())/86400000;
+  if(days<0)return'';
+  if(days<=21)return'deadline-val urgent';
+  if(days<=60)return'deadline-val soon';
+  return'';
+}
+
+function applyGrants(){
+  const q=state.grantQ.toLowerCase().trim();
+  let list=state.grants.ready_now.filter(g=>{
+    if(state.grantStatusFilter&&statusOf('grant',g.id).status!==state.grantStatusFilter)return false;
+    if(!q)return true;
+    const hay=`${g.organization} ${g.grant_name} ${g.focus_area} ${g.notes}`.toLowerCase();
+    return hay.includes(q);
+  });
+  document.getElementById('grant-count').textContent=list.length;
+
+  const host=document.getElementById('grant-results');
+  if(!list.length){
+    host.innerHTML='<div class="empty"><b>No matches</b> — try a different search.</div>';
+  } else {
+    host.innerHTML=list.map(g=>{
+      const dlClass=deadlineClass(g.deadline);
+      const qaRows=[
+        ['Focus Area',highlight(g.focus_area,q)],
+        ['Eligibility',highlight(g.eligibility,q)],
+        ['Amount',esc(g.amount)],
+        ['Deadline',`<span class="${dlClass}">${esc(g.deadline)}</span>`],
+        ['Notes',highlight(g.notes,q)],
+      ].map(([label,value])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
+      return `<article class="entry">
+        <div class="head">
+          <span class="org">${highlight(g.organization,q)}</span>
+          <span class="name"><a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a></span>
+        </div>
+        <div class="qa-grid">${qaRows}</div>
+        ${statusRowHTML('grant',g.id)}
+      </article>`;
+    }).join('');
+    wireStatusControls(host);
+  }
+
+  document.getElementById('grants-limitation').textContent=state.grants.known_limitation;
+}
+
+function renderWatchList(){
+  document.getElementById('watch-results').innerHTML=state.grants.watch_list_not_yet_open.map(w=>`
+    <div class="watch-item">
+      <div class="org"><a href="${esc(w.url)}" target="_blank" rel="noopener">${esc(w.organization)}</a><br><span style="font-family:var(--mono);font-size:.78rem;color:var(--wash);font-weight:400">${esc(w.grant_name)}</span></div>
+      <div class="why">${esc(w.why_watch)}</div>
+    </div>
+  `).join('');
+}
+
+document.getElementById('match-search').addEventListener('input',e=>{state.matchQ=e.target.value;applyMatches();});
+document.getElementById('grant-search').addEventListener('input',e=>{state.grantQ=e.target.value;applyGrants();});
+document.getElementById('admin-toggle').addEventListener('click',()=>{
+  if(state.adminKey){
+    if(confirm('Log out of admin mode on this device?')){
+      state.adminKey="";localStorage.removeItem('grantStatusKey');setAdminUI();applyMatches();applyGrants();
+    }
+  }else{
+    promptForKey();
+    applyMatches();applyGrants();
+  }
+});
+
+load().catch(err=>{
+  document.getElementById('match-results').innerHTML=`<div class="empty"><b>Couldn't load data</b> for org "${esc(ORG_SLUG)}" — check the ?org= parameter and make sure its three data files exist in data/.</div>`;
+  console.error(err);
+});
+</script>
+
+<script>
+/* Two jobs:
+   (1) A hash-anchor link scrolls its target into view. Sections can no longer be hidden
+       (the fold/accordion mechanism was removed), but the explicit scroll is still needed -
+       nothing else moves the viewport to the anchor.
+   (2) Mirror each list section's own counter into its heading chip, so the count is never
+       out of sync with what the section actually shows. */
+(function(){
+  function openTo(){
+    var h = window.location.hash;
+    if (!h || h.length < 2) return;
+    var t;
+    try { t = document.querySelector(h); } catch (e) { return; }
+    if (!t) return;
+    window.setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+  }
+  function counts(){
+    var done = true;
+    var chips = document.querySelectorAll('.fold-count');
+    for (var i = 0; i < chips.length; i++) {
+      var el = chips[i], n = null;
+      var from = el.getAttribute('data-count-from');
+      var sel = el.getAttribute('data-count-sel');
+      if (from) {
+        var src = document.getElementById(from);
+        if (src) n = parseInt(src.textContent, 10);
+      } else if (sel) {
+        n = document.querySelectorAll(sel).length;
+      }
+      if (n === null || isNaN(n) || n === 0) { done = false; continue; }
+      var txt = n + ' ' + el.getAttribute('data-count-label');
+      if (el.textContent !== txt) el.textContent = txt;   /* guard: writing unconditionally would
+                                                             retrigger the observer forever */
+    }
+    return done;
+  }
+  window.addEventListener('hashchange', openTo);
+  window.addEventListener('load', function(){ openTo(); counts(); });
+  document.addEventListener('DOMContentLoaded', function(){
+    openTo();
+    if (counts()) return;
+    var mo = new MutationObserver(function(){ if (counts()) mo.disconnect(); });
+    mo.observe(document.body, {childList:true, subtree:true, characterData:true});
+  });
+})();
+</script>
+</body>
+</html>

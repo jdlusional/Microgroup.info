@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Scribe for Measure</title>
+<meta name="description" content="Scribe (Grant Drafter), prepared for Measure: payoff-ranked open grants with near-submission-ready application drafts, grounded in successful proposals and best practices, fact-checked, with every unverified claim flagged for Measure to confirm." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/png" href="Assets/scribe-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=8f55469b15">
+<style>
+a{color:var(--ink)}
+
+.hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1rem;text-align:center}
+
+.disclaimer{max-width:1180px;margin:1.2rem auto 0;padding:0 1.25rem}
+.disclaimer-in{background:var(--well);border:1.5px solid var(--warn);border-left-width:5px;padding:.85rem 1.1rem;display:flex;gap:.75rem;align-items:flex-start}
+.disclaimer-in .dl-tag{font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--warn);background:var(--paper);border:1px solid var(--warn);padding:.2rem .5rem;white-space:nowrap;margin-top:.1rem}
+.disclaimer-in p{margin:0;font-size:15px;line-height:1.5;color:var(--ink)}
+
+.section{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem}
+.section-head p{color:var(--wash);font-size:.94rem;max-width:72ch;margin:0}
+
+/* ---- Priority pick (hero card for drafts[0]) ---- */
+.priority-card{background:var(--well);border:1.5px solid var(--ink);border-top:5px solid var(--accent);padding:1.6rem 1.6rem}
+.priority-top{display:flex;gap:1.4rem;align-items:flex-start;flex-wrap:wrap}
+.priority-main{flex:1;min-width:260px}
+.priority-flag{font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--accent);padding:.24rem .6rem;display:inline-block;margin-bottom:.7rem}
+.priority-card .pg-name{font-family:var(--serif);font-weight:700;font-size:1.55rem;line-height:1.2;margin:0}
+.priority-card .pg-funder{font-family:var(--mono);font-size:14px;color:var(--wash);margin-top:.25rem}
+.priority-rationale{font-size:15px;line-height:1.55;margin:.9rem 0 0}
+.priority-score{text-align:center;min-width:120px}
+.priority-score .ps-num{font-family:var(--serif);font-weight:700;font-size:48px;color:var(--accent);line-height:1}
+.priority-score .ps-lbl{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);margin-top:.15rem}
+.payoff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;margin:1.2rem 0 .2rem}
+@media(max-width:560px){.payoff-grid{grid-template-columns:1fr 1fr}}
+.payoff-cell .pc-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.28rem}
+.payoff-cell .pc-lbl{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--wash)}
+.payoff-cell .pc-val{font-family:var(--mono);font-size:14px;color:var(--ink);font-weight:500}
+.payoff-bar{height:6px;background:var(--rule)}
+.payoff-bar-fill{height:100%;background:var(--accent)}
+.priority-meta{display:grid;grid-template-columns:150px 1fr;gap:.4rem 1rem;margin-top:1.2rem;border-top:1px solid var(--rule-soft);padding-top:1rem}
+@media(max-width:560px){.priority-meta{grid-template-columns:1fr;gap:.1rem}}
+.priority-meta .pm-lbl{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash)}
+.priority-meta .pm-val{font-size:15px;line-height:1.45}
+.priority-cta{margin-top:1.3rem}
+
+.btn{font-family:var(--mono);font-size:.86rem;letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);background:var(--paper);padding:.55rem 1.2rem;cursor:pointer;transition:all .15s ease}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent)}
+
+
+/* ---- Ranked shortlist cards ---- */
+/* border/padding/title typography superseded by tool-shared.css's card-convergence block. */
+.draft-card{padding:0;cursor:pointer;transition:background .12s ease}
+.dc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
+.dc-head .dc-name{flex:1;min-width:220px;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;overflow-wrap:anywhere}
+.dc-main{display:grid;grid-template-columns:64px 1fr;gap:1rem;align-items:start;padding:.9rem 1.2rem}
+.draft-card:hover{background:var(--well)}
+.draft-card.selected{background:var(--well);box-shadow:inset 4px 0 0 var(--accent)}
+@media(max-width:640px){.dc-main{grid-template-columns:52px 1fr;gap:.5rem}.dc-head{gap:.4rem}.dc-head .dc-name{min-width:0;flex-basis:100%}}
+.dc-score{text-align:center;padding-top:.2rem}
+.dc-score .dcs-num{font-family:var(--serif);font-weight:400;font-size:22.5px;color:var(--accent);line-height:1}
+.dc-score .dcs-lbl{font-family:var(--serif);font-size:15px;text-transform:none;letter-spacing:.01em;color:var(--wash);font-style:italic;font-weight:400}
+.dc-body .dc-funder{font-family:var(--serif);font-size:17.5px;color:var(--wash);margin-top:.1rem;font-weight:700}
+.dc-body .dc-rationale{font-size:17.5px;color:var(--ink);margin-top:.4rem;line-height:1.5}
+.dc-deadline{text-align:right;font-family:var(--serif);font-size:17.5px;color:var(--wash);padding-top:.3rem;max-width:14em;overflow-wrap:anywhere;font-weight:400}
+@media(max-width:640px){.dc-deadline{text-align:left;max-width:none}}
+.dc-deadline.urgent{color:var(--urgent);font-weight:600}
+.dc-deadline.soon{color:var(--warn);font-weight:500}
+.dc-deadline.closed{color:var(--wash);font-style:italic}
+.badge{font-family:var(--serif);font-size:12.5px;padding:.14rem .45rem;letter-spacing:.03em;text-transform:uppercase;border:1px solid var(--rule);color:var(--wash);vertical-align:middle;font-weight:700}
+.badge.sample{background:var(--ok);color:#fff;border-color:var(--ok)}
+/* ---- Card variants: sample (clickable, opens viewer) vs info-only (no viewer) ---- */
+.draft-card.sample-card{cursor:pointer}
+.draft-card.info-card{cursor:default}
+.draft-card.info-card:hover{background:transparent}
+.dc-note{font-family:var(--mono);font-size:.84rem;color:var(--wash);margin-top:.4rem;font-style:italic}
+.dc-actions{margin-top:.6rem}
+.dc-actions .btn{font-size:.84rem;padding:.4rem .8rem}
+/* ---- Strength rating badges (small, for cards/priority) ---- */
+.sbadge{font-family:var(--serif);font-size:12.5px;font-weight:700;padding:.14rem .45rem;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--rule);vertical-align:middle;white-space:nowrap}
+.sbadge.strong{color:var(--ok);border-color:var(--ok);background:rgba(40,102,68,0.08)}
+.sbadge.moderate{color:var(--warn);border-color:var(--warn);background:rgba(138,82,24,0.08)}
+.sbadge.longshot{color:var(--urgent);border-color:var(--urgent);background:rgba(138,40,40,0.08)}
+
+/* ---- Draft viewer ---- */
+.vw-head{border-bottom:2px solid var(--ink);padding-bottom:1rem;margin-bottom:1.2rem}
+.vw-head .vh-name{font-family:var(--serif);font-weight:700;font-size:25px;line-height:1.18;margin:0}
+.vw-head .vh-funder{font-family:var(--mono);font-size:.88rem;color:var(--wash);margin-top:.3rem}
+.vh-meta{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;margin-top:.9rem}
+.vh-meta .vhm{font-family:var(--mono);font-size:.84rem;color:var(--wash)}
+.vh-meta .vhm strong{color:var(--ink);font-weight:500}
+.vh-meta .vhm.urgent strong{color:var(--urgent)}
+.vh-meta .vhm.soon strong{color:var(--warn)}
+.vh-note{font-family:var(--mono);font-size:.84rem;color:var(--wash);background:var(--well);border:1px dashed var(--rule);padding:.55rem .8rem;margin-top:.9rem;line-height:1.5}
+
+.vw-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.copied-flag{font-family:var(--mono);font-size:.84rem;color:var(--ok);align-self:center;opacity:0;transition:opacity .25s}
+.copied-flag.show{opacity:1}
+
+/* ---- Application Strength block (draft viewer) ---- */
+.strength{border:1.5px solid var(--ink);background:var(--well);padding:1.1rem 1.3rem;margin:0 0 1.4rem;border-left-width:5px}
+.strength.strong{border-left-color:var(--ok)}
+.strength.moderate{border-left-color:var(--warn)}
+.strength.longshot{border-left-color:var(--urgent)}
+.strength-head{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-bottom:.85rem}
+.strength-label{font-family:var(--mono);font-size:.84rem;text-transform:uppercase;letter-spacing:.08em;color:var(--wash)}
+.strength-badge{font-family:var(--mono);font-size:.84rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff;padding:.26rem .7rem}
+.strength-badge.strong{background:var(--ok)}
+.strength-badge.moderate{background:var(--warn)}
+.strength-badge.longshot{background:var(--urgent)}
+.strength-badge.unknown{background:var(--wash)}
+.strength-factors{list-style:none;margin:0 0 .8rem;padding:0}
+.strength-factors li{display:grid;grid-template-columns:190px 1fr;gap:.3rem .9rem;padding:.4rem 0;border-bottom:1px solid var(--rule-soft);font-size:.9rem;line-height:1.45}
+.strength-factors li:last-child{border-bottom:none}
+@media(max-width:560px){.strength-factors li{grid-template-columns:1fr;gap:.05rem}}
+.strength-factors .sf-factor{font-family:var(--mono);font-size:.84rem;text-transform:uppercase;letter-spacing:.03em;color:var(--ink);font-weight:500}
+.strength-factors .sf-assess{color:var(--ink)}
+.strength-summary{margin:0;font-size:15px;line-height:1.55;color:var(--ink)}
+.gap-label{font-family:var(--mono);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--accent)}
+
+.sec{border:1px solid var(--rule);background:var(--well);margin-bottom:.6rem}
+.sec>div:not(.sec-body){list-style:none;padding:.85rem 1.1rem;display:flex;align-items:center;gap:.7rem;font-family:var(--serif);font-weight:600;font-size:1.08rem}
+.sec>div:not(.sec-body) .sec-idx{font-family:var(--mono);font-size:.84rem;color:var(--accent);font-weight:700;min-width:1.4em}
+.sec-body{padding:.2rem 1.2rem 1.1rem;border-top:1px solid var(--rule-soft)}
+.sec-body p{margin:.7rem 0;font-size:15px;line-height:1.6;overflow-wrap:break-word}
+.budget-list{margin:.6rem 0 .2rem;padding-left:1.25rem}
+.budget-list li{margin:.5rem 0;font-size:.95rem;line-height:1.6;overflow-wrap:break-word}
+.ph{background:#f5e2b8;color:#6b4a12;padding:0 3px;border-bottom:1px dotted #b08a30;font-family:var(--mono);font-size:.86em}
+/* ---- Suggested (AI-drafted value) marker — distinct gold highlight + tag ---- */
+.sug{background:#fff3b0;color:#5c4a00;padding:0 3px;border-bottom:1px solid #d9a800;font-family:var(--mono);font-size:.86em;border-radius:2px}
+.sug-tag{font-family:var(--mono);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#8a6508;padding:.04rem .32rem;margin-right:.35rem;border-radius:2px;vertical-align:middle}
+.gap-sug{margin-top:.4rem;background:#fff3b0;color:#5c4a00;padding:.35rem .55rem;font-size:15px;line-height:1.45;border-left:3px solid #8a6508;border-radius:0 2px 2px 0}
+/* ---- Confirm (Measure holds / must supply) marker — blue ---- */
+.conf{background:#dcebfb;color:#123a63;padding:0 3px;border-bottom:1px solid #2f7fd1;font-family:var(--mono);font-size:.86em;border-radius:2px;overflow-wrap:anywhere}
+.conf-tag{font-family:var(--mono);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#1f66ad;padding:.04rem .32rem;margin-right:.35rem;border-radius:2px;vertical-align:middle}
+/* ---- Missing (not currently possessed) marker — red ---- */
+.miss{background:#f7dcdc;color:#6b1f1f;padding:0 3px;border-bottom:1px solid #b34141;font-family:var(--mono);font-size:.86em;border-radius:2px;overflow-wrap:anywhere}
+.miss-tag{font-family:var(--mono);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#b34141;padding:.04rem .32rem;margin-right:.35rem;border-radius:2px;vertical-align:middle}
+/* ---- Reader notice box (conspicuous "how to read this" callout, near draft viewer) ---- */
+.reader-notice{background:var(--well);border:1.5px solid var(--accent);border-left-width:5px;padding:1rem 1.2rem;margin-bottom:1.4rem}
+.reader-notice h3{font-family:var(--mono);font-size:.84rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0 0 .6rem}
+.reader-notice ul{list-style:none;margin:0;padding:0}
+.reader-notice li{position:relative;padding:.28rem 0 .28rem 1.1rem;font-size:.9rem;line-height:1.5;color:var(--ink);border-bottom:1px solid var(--rule-soft)}
+.reader-notice li:last-child{border-bottom:none}
+.reader-notice li::before{content:"›";position:absolute;left:0;color:var(--accent);font-weight:700}
+.reader-notice .rn-sug{background:#fff3b0;color:#5c4a00;padding:0 4px;border-radius:2px;font-family:var(--mono);font-size:.82em;font-weight:600}
+.reader-notice .rn-conf{background:#dcebfb;color:#123a63;padding:0 4px;border-radius:2px;font-family:var(--mono);font-size:.82em;font-weight:700}
+.reader-notice .rn-miss{background:#f7dcdc;color:#6b1f1f;padding:0 4px;border-radius:2px;font-family:var(--mono);font-size:.82em;font-weight:700}
+.reader-notice .rn-fn{color:var(--accent);font-weight:700}
+.reader-notice em{color:var(--wash);font-style:italic}
+
+.fill-box{border:1.5px solid var(--warn);background:var(--well);padding:1.1rem 1.3rem;margin:1.4rem 0}
+.fill-box h3{font-family:var(--serif);font-weight:700;font-size:1.15rem;margin:0 0 .2rem}
+.fill-box .fb-sub{font-family:var(--mono);font-size:.84rem;color:var(--wash);margin-bottom:.8rem}
+.fill-list{list-style:none;margin:0;padding:0}
+.fill-list li{padding:.6rem 0;border-bottom:1px solid var(--rule-soft);font-size:15px;line-height:1.5}
+.fill-list li:last-child{border-bottom:none}
+.need-head{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.3rem}
+.need-cat{font-family:var(--mono);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--ink)}
+.need-detail{color:var(--ink);overflow-wrap:break-word}
+.need-check{accent-color:var(--ink);width:1rem;height:1rem;flex:none}
+.kind-tag{font-family:var(--mono);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;padding:.08rem .42rem;border-radius:2px;white-space:nowrap}
+.kind-tag.k-suggested{background:#8a6508}
+.kind-tag.k-confirm{background:#1f66ad}
+.kind-tag.k-missing{background:#b34141}
+
+.qa-note{border:1px solid var(--rule);padding:.9rem 1.1rem;margin:1.4rem 0;background:var(--paper)}
+.qa-note .qa-top{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.5rem}
+.qa-verdict{font-family:var(--mono);font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.2rem .55rem;border:1px solid var(--ok);color:var(--ok)}
+.qa-verdict.revised{border-color:var(--warn);color:var(--warn)}
+.qa-note .qa-count{font-family:var(--mono);font-size:.84rem;color:var(--wash)}
+.qa-note .qa-label{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash)}
+.qa-note .qa-align{font-size:15px;line-height:1.55;color:var(--ink);margin:.3rem 0 0}
+.sources{margin:1.4rem 0 0}
+.sources h3{font-family:var(--mono);font-size:.84rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);margin:0 0 .5rem}
+.sources ul{margin:0;padding-left:1.1rem}
+.sources li{font-family:var(--mono);font-size:14px;color:var(--wash);line-height:1.5;margin-bottom:.35rem}
+/* ---- Inline footnote citation refs + per-draft Sources list (web only) ---- */
+.fn-ref{font-size:.8em;line-height:0;white-space:nowrap}
+.fn-ref a{color:var(--accent);text-decoration:none;font-family:var(--mono);font-weight:700;padding:0 1px}
+.fn-ref a:hover{text-decoration:underline}
+.footnotes{margin:1.4rem 0 0}
+.footnotes h3{font-family:var(--mono);font-size:.84rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);margin:0 0 .5rem}
+.fn-list{list-style:none;margin:0;padding:0}
+.fn-list li{font-family:var(--mono);font-size:.84rem;color:var(--wash);line-height:1.5;margin-bottom:.4rem;display:flex;gap:.45rem}
+.fn-list li a{color:var(--accent)}
+.fn-list li:target{background:var(--well)}
+.fn-num{color:var(--ink);font-weight:700;flex:none}
+.fn-note{color:var(--wash);font-style:italic}
+
+
+/* ---- Request / submit form ---- */
+.requesting-label{font-family:var(--mono);font-size:14px;color:var(--ink);background:var(--well);border-left:3px solid var(--accent);padding:.55rem .85rem;margin:.5rem 0 0;display:inline-block}
+.needs-back{display:inline-block;margin-bottom:1.4rem;text-decoration:none}
+.form-field{margin-bottom:1.3rem}
+.form-field label{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
+.form-field textarea{width:100%;font-family:var(--serif);font-size:.95rem;padding:.7rem .8rem;border:1.5px solid var(--ink);background:var(--well);color:var(--ink);resize:vertical;outline:none}
+.form-field textarea:focus{outline:2px solid var(--ink);outline-offset:0}
+.form-field input[type="file"]{font-family:var(--mono);font-size:.88rem;color:var(--ink)}
+.field-hint{font-family:var(--mono);font-size:.84rem;color:var(--wash);margin-top:.35rem}
+/* Honeypot: visually hidden, still in the tab/DOM flow for bots that fill every field */
+.hp-field{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
+.form-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
+.form-status{font-family:var(--mono);font-size:.88rem;color:var(--ok)}
+.form-status.error{color:var(--urgent)}
+
+
+body{overflow-x:hidden}
+/* .sbadge.moderate: its own 8%-alpha tint darkens the backdrop to rgb(224,214,197) over --well,
+   dropping #8a5218 to 4.42:1. #794713 clears AA on both the well and paper backdrops. */
+.sbadge.moderate{color:#794713}
+/* em-based sizes compound against already-small parents (footnote refs bottomed out at 8.9px).
+   max() keeps the relative look but floors it at a legible size. */
+.fn-ref{font-size:max(.8em,12.5px)}
+.reader-notice .rn-sug,.reader-notice .rn-conf,.reader-notice .rn-miss{font-size:max(.82em,12.5px)}
+.ph,.sug,.conf,.miss{font-size:max(.86em,12.5px)}
+
+/* Wrap width: .section-head p was capped at 70/72ch -- it rendered 526px inside a 1140px
+   container (46%) while the cards/grid directly beneath it spanned the full width. The intro
+   paragraph should wrap to the width of the block below it, matching .limitation-note, which
+   is already full-width. The centered .hero lede and the 16em/15em/14em long-string wrap
+   guards on table amounts and deadlines are deliberate and stay capped. */
+.section-head p{max-width:none}
+
+.hero{text-align:left;padding:3.2rem 1.25rem 2.2rem;border-bottom:1px solid var(--rule)}
+.section{padding:2.6rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
+@media(max-width:640px){.hero{padding:2.2rem 1.25rem 1.6rem}.hero h1{font-size:30px}}
+</style>
+</head>
+<body>
+<!-- writing-convention: general, grant -->
+<!-- CONVENTION-BADGES:START (generated by pattern-book/inject_badges.py; do not hand-edit) -->
+<div class="conv-badges" style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.35rem 0 0"><span class="conv-badge conv-badge-style" style="font-family:var(--mono,monospace);font-size:12.5px;letter-spacing:.04em;border:1px solid currentColor;padding:.15rem .5rem;max-width:100%">Style guide: General</span><span class="conv-badge conv-badge-tier" style="font-family:var(--mono,monospace);font-size:12.5px;letter-spacing:.04em;border:1px solid currentColor;padding:.15rem .5rem;max-width:100%">Paid · institution-specific</span></div>
+<!-- CONVENTION-BADGES:END -->
+
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand" id="brand-text"><b>Scribe</b> for Measure</span>
+    <span class="stat"><strong id="m-drafts">–</strong> ranked drafts</span>
+    <span class="stat">generated <strong id="m-date">–</strong></span>
+    <span class="grow"></span>
+    <nav>
+      <a href="#priority">Priority Pick</a>
+      <a href="#shortlist">Shortlist</a>
+      <a href="#viewer">Draft Viewer</a>
+      <a href="#submit">Request a Draft</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">Optional companion to your Almanac results</div>
+  <h1 id="hero-heading">Scribe</h1>
+  <p id="hero-subtext">These are your five most-aligned open grants, pulled from your Almanac results. Below, the <strong>People-First AI Fund</strong> draft is shown in full: a complete, near-submission-ready <strong>sample</strong> of what Scribe produces, grounded in successful proposals and grant-writing best practices, fact-checked, and honest about what still needs to be filled in.</p>
+  <p class="note">If you also get Scribe, you get one full draft written to this same standard: for the grant of your choice from this list, or any other open grant you locate. <a href="#shortlist">Request yours below.</a></p>
+</header>
+
+<div class="disclaimer" role="note" aria-label="Disclaimer">
+  <div class="disclaimer-in">
+    <span class="dl-tag">Read first</span>
+    <p id="disclaimer-text">Loading…</p>
+  </div>
+</div>
+
+<section class="section" id="priority">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Draft this now</span>
+      <h2>Priority Pick</h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>The single highest-payoff open grant right now, scored on relevance, award size, urgency, and fit. Start here.</p>
+    </div>
+      <div id="priority-host"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="shortlist">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Payoff-ranked</span>
+      <h2>Ranked Shortlist <span class="fold-count" data-count-from="draft-count" data-count-label="drafts"></span></h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>Your five most-aligned open grants, sorted by payoff score. The sample opens in the draft viewer below; request a full draft for any grant here.</p>
+    </div>
+      <div class="res-count"><b id="draft-count">0</b> drafts shown</div>
+      <div id="shortlist-host"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="viewer">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Full draft: included sample</span>
+      <h2>Draft Viewer</h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>The People-First AI Fund sample's complete draft: seven application sections, the checklist of what Measure still needs to supply, the fact-check note, and sources. Copy or download the whole thing.</p>
+    </div>
+      <div id="viewer-host"><div class="viewer-empty">Loading the sample draft…</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="needs">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Before you submit</span>
+      <h2>What we still need from you</h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>Every draft carries a checklist of facts only Measure can confirm or supply. Here's the sample draft's list: the grant you request will carry its own version of this checklist.</p>
+    </div>
+      <div id="needs-host"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="submit">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Add-on</span>
+      <h2>Request your draft</h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p id="requesting-label" class="requesting-label">(select a grant above)</p>
+    </div>
+
+      <a class="btn needs-back" href="#needs">&#8593; See what we still need for this grant</a>
+
+      <form id="request-form" novalidate>
+        <input type="hidden" id="req-grant-id" name="grant_id" value="">
+        <input type="hidden" id="req-grant-name" name="grant_name" value="">
+        <input type="hidden" id="req-funder" name="funder" value="">
+        <input type="hidden" id="req-grant-url" name="grant_url" value="">
+
+        <div class="form-field">
+          <label for="message">Tell us what Scribe still needs from you for this grant</label>
+          <textarea id="message" name="message" rows="6" placeholder="Budget figures, staffing details, program metrics, board info: anything from the checklist above, or context specific to this grant."></textarea>
+        </div>
+
+        <div class="form-field">
+          <label for="files">Attach supporting documents (optional)</label>
+          <input type="file" id="files" name="files" accept=".pdf,.doc,.docx" multiple>
+          <div class="field-hint">PDF or Word documents (.pdf, .doc, .docx), up to 25MB total.</div>
+        </div>
+
+        <!-- honeypot: hidden from people, bots fill it -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-actions">
+          <button class="btn solid" type="submit" id="submit-btn">Send request</button>
+          <span class="form-status" id="submit-status"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="method-wrap" id="method">
+  <div class="method-box">
+    <div class="method-kicker">Method</div>
+    <h2>How this was built, and what it cannot tell you</h2>
+    <p><b>Where this comes from.</b> Each draft is built from two sources and no others: the Almanac match that identified the funder, with that funder's own published requirements, and the organization's own public record: its website, its filings, and the materials it has already put into the world. Every substantive claim in a draft traces back to one of those two places.</p>
+    <p><b>What Scribe will not do.</b> It does not invent facts about the organization. When an application asks for something only the applicant holds (a budget line, an outcome figure, a board resolution, a letter of support), Scribe does not guess at it. It leaves the space empty and puts the item on the list of what is still needed. This is the whole discipline of the tool: an invented number is worse than a blank one, because a blank gets filled in before it is filed and an invention gets submitted.</p>
+    <p><b>What it cannot tell you.</b> A draft is a draft, not a submission. Funder requirements change, portals impose their own formats and character limits, and the published guidance a draft was built from can already be out of date. Everything here has to be checked against the funder's live application before it is filed, and the organization's own people are the only ones who can confirm that what it says about them is true today. Scribe is built to remove the blank page. It is not built to remove the review.</p>
+  </div>
+</section>
+
+<footer>
+  <span id="footer-credit">Prepared for Measure by Jonathan Lin Davis</span>
+  <span id="footer-links"></span>
+  <span class="footer-improvements-wrap"><a class="footer-improvements" href="https://jonathanlindavis.com/improvementlog.html">Improvement log</a></span>
+</footer>
+
+<script>
+const DRAFTS_URL='data/measure-austin_drafts.json';
+const PROFILE_URL='data/measure-austin_profile.json';
+
+const state={drafts:[],disclaimer:'',method:'',generatedDate:'',profile:null,selected:0};
+
+/* ---- Shared helpers (verbatim from almanac.html) ---- */
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function money(n){return '$'+Number(n).toLocaleString();}
+function deadlineClass(s){
+  const m=(s||'').match(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/);
+  if(!m)return'';
+  const d=new Date(`${m[1]} ${m[2]}, ${m[3]}`);
+  if(isNaN(d))return'';
+  const days=(d-Date.now())/86400000;
+  if(days<0)return'';
+  if(days<=21)return'urgent';
+  if(days<=60)return'soon';
+  return'';
+}
+
+/* Wrap the three inline marker types in already-escaped section prose (web).
+   Order matters and the passes must not collide:
+   1. [^N] footnote refs -> superscript link (done first; leaves no '[' behind)
+   2. [SUGGESTED: …]      -> gold "Suggested" highlight span
+   3. [CONFIRM: …]/[Measure …] and any other [ … ] -> existing .ph placeholder.
+   Input is the ESCAPED paragraph, so esc() must run before this. */
+function wrapMarkers(escaped){
+  let out=escaped.replace(/\[\^(\d+)\]/g,(m,n)=>
+    `<sup class="fn-ref"><a href="#fn-${state.selected}-${n}" id="fnref-${state.selected}-${n}">${n}</a></sup>`);
+  out=out.replace(/\[[^\]]+\]/g,m=>{
+    let mm;
+    if(mm=/^\[SUGGESTED:\s*([\s\S]*?)\]$/i.exec(m))
+      return `<span class="sug"><span class="sug-tag">Suggested</span>${mm[1].trim()}</span>`;
+    if(mm=/^\[(?:CONFIRM|Measure)[:\s]\s*([\s\S]*?)\]$/i.exec(m))
+      return `<span class="conf"><span class="conf-tag">Confirm</span>${mm[1].trim()}</span>`;
+    if(mm=/^\[MISSING:\s*([\s\S]*?)\]$/i.exec(m))
+      return `<span class="miss"><span class="miss-tag">Missing</span>${mm[1].trim()}</span>`;
+    return `<span class="ph">${m}</span>`;
+  });
+  return out;
+}
+
+/* Render multi-paragraph section prose: escape, wrap inline markers, split on
+   blank lines. Order matters — esc() first so the tags we add aren't escaped. */
+function renderProse(text){
+  return (text||'').split(/\n\n+/).map(para=>{
+    return `<p>${wrapMarkers(esc(para))}</p>`;
+  }).join('');
+}
+
+/* Per-draft "Sources" footnotes list (web only). Numbered to match footnote
+   ids; type:"online" -> hyperlink, type:"internal" -> noted reference. */
+function renderFootnotes(d){
+  const fns=(d.footnotes||[]).filter(Boolean);
+  if(!fns.length)return'';
+  const items=fns.map(f=>{
+    const id=f.id!=null?String(f.id):'';
+    const src=esc(f.source||'');
+    const anchor=`fn-${state.selected}-${id}`;
+    if(f.type==='online'&&f.url){
+      return `<li id="${anchor}"><span class="fn-num">${esc(id)}.</span> <a href="${esc(f.url)}" target="_blank" rel="noopener">${src||esc(f.url)}</a></li>`;
+    }
+    return `<li id="${anchor}"><span class="fn-num">${esc(id)}.</span> <span>${src} <span class="fn-note">(internal reference)</span></span></li>`;
+  }).join('');
+  return `<div class="footnotes"><h3>Sources (citations)</h3><ul class="fn-list">${items}</ul></div>`;
+}
+
+/* ---- Strength analysis helpers ---- */
+/* Map an `overall` rating string to a palette class (defensive: matches on
+   keywords so "Longer shot", "Long shot", etc. all resolve). */
+function strengthClass(overall){
+  const o=(overall||'').toLowerCase();
+  if(o.indexOf('strong')>-1)return'strong';
+  if(o.indexOf('moderate')>-1)return'moderate';
+  if(o.indexOf('longer')>-1||o.indexOf('shot')>-1||o.indexOf('long shot')>-1)return'longshot';
+  return'unknown';
+}
+/* Normalize a gap entry to {label, detail, suggested} — accepts new
+   {label,detail,suggested} objects and legacy plain strings without breaking. */
+function gapParts(g){
+  if(g&&typeof g==='object')return{label:g.label||'',detail:g.detail||'',suggested:g.suggested||''};
+  return{label:'',detail:g==null?'':String(g),suggested:''};
+}
+/* Classify a gap: explicit kind wins; else a suggested value => suggested;
+   else default to confirm. Kinds: suggested (yellow), confirm (blue), missing (red). */
+function gapKind(g){
+  const k=(g&&g.kind||'').toLowerCase();
+  if(k==='missing')return'missing';
+  if(k==='confirm')return'confirm';
+  if(g&&g.suggested)return'suggested';
+  return'confirm';
+}
+const KIND_LABEL={suggested:'Suggested',confirm:'Confirm',missing:'Missing'};
+/* One gap-checklist row — rendered once, in the #needs section.
+   withCheckbox adds a check-off box. Layout is block, not a flex
+   row, so the category label and description align and the text wraps full-width. */
+function gapItemHtml(g,i,withCheckbox){
+  const {label,detail,suggested}=gapParts(g);
+  const kind=gapKind(g);
+  const cb=withCheckbox?`<input class="need-check" type="checkbox" id="gap-${state.selected}-${i}" aria-label="Mark done">`:'';
+  const cat=label?`<span class="need-cat">${esc(label)}</span>`:'';
+  const sug=(kind==='suggested'&&suggested)?`<div class="gap-sug"><span class="sug-tag">Proposed</span>${esc(suggested)}</div>`:'';
+  return `<li><div class="need-head">${cb}<span class="kind-tag k-${kind}">${KIND_LABEL[kind]}</span>${cat}</div><div class="need-detail">${esc(detail)}</div>${sug}</li>`;
+}
+/* Section body renderer — the Budget Narrative renders its category paragraphs
+   as bullet points; everything else stays prose. */
+function renderSectionBody(s){
+  if((s&&s.label||'').toLowerCase().indexOf('budget narrative')>-1)return renderBudgetProse(s.text);
+  return renderProse(s.text);
+}
+function renderBudgetProse(text){
+  const paras=(text||'').split(/\n\n+/);
+  if(paras.length<=1)return renderProse(text);
+  const intro=`<p>${wrapMarkers(esc(paras[0]))}</p>`;
+  const items=paras.slice(1).map(p=>`<li>${wrapMarkers(esc(p))}</li>`).join('');
+  return intro+`<ul class="budget-list">${items}</ul>`;
+}
+
+/* ---- Priority pick (drafts[0]) ---- */
+const COMPONENT_ORDER=[['relevance','Relevance'],['award','Award'],['urgency','Urgency'],['fit','Fit']];
+function pct(v){return Math.round(Number(v)*100);}
+
+function renderPriority(){
+  const d=state.drafts[0];
+  if(!d){document.getElementById('priority-host').innerHTML='';return;}
+  const comps=d.payoff_components||{};
+  const bars=COMPONENT_ORDER.map(([k,lbl])=>{
+    const p=pct(comps[k]);
+    return `<div class="payoff-cell">
+      <div class="pc-top"><span class="pc-lbl">${lbl}</span><span class="pc-val">${p}</span></div>
+      <div class="payoff-bar"><div class="payoff-bar-fill" style="width:${p}%"></div></div>
+    </div>`;
+  }).join('');
+  const dlc=deadlineClass(d.grant_deadline);
+  const sa=d.strength_analysis||{};
+  const scls=strengthClass(sa.overall);
+  const sbadge=sa.overall?`<span class="sbadge ${scls}" title="Application strength">${esc(sa.overall)}</span>`:'';
+  document.getElementById('priority-host').innerHTML=`
+    <div class="priority-card">
+      <div class="priority-top">
+        <div class="priority-main">
+          <span class="priority-flag">Draft this now</span>
+          <h3 class="pg-name">${esc(d.grant_name)}</h3>
+          <div class="pg-funder">${esc(d.funder)}${sbadge?' &middot; '+sbadge:''}</div>
+        </div>
+        <div class="priority-score">
+          <div class="ps-num">${esc(String(d.payoff_score))}</div>
+          <div class="ps-lbl">payoff score</div>
+        </div>
+      </div>
+      <div class="payoff-grid">${bars}</div>
+      <p class="priority-rationale">${esc(d.priority_rationale)}</p>
+      <div class="priority-meta">
+        <div class="pm-lbl">Amount</div><div class="pm-val">${esc(d.grant_amount)}</div>
+        <div class="pm-lbl">Deadline</div><div class="pm-val ${dlc?'deadline '+dlc:''}" style="${dlc==='urgent'?'color:var(--urgent);font-weight:600':dlc==='soon'?'color:var(--warn);font-weight:500':''}">${esc(d.grant_deadline)}</div>
+        <div class="pm-lbl">Eligibility</div><div class="pm-val">${esc(d.grant_eligibility)}</div>
+      </div>
+      <div class="priority-cta">
+        <button class="btn solid" type="button" id="priority-open">View full draft &#8595;</button>
+        <button class="btn" type="button" id="priority-request">Request this draft</button>
+      </div>
+    </div>`;
+  const btn=document.getElementById('priority-open');
+  if(btn)btn.addEventListener('click',()=>selectDraft(0,true));
+  const reqBtn=document.getElementById('priority-request');
+  if(reqBtn)reqBtn.addEventListener('click',()=>requestDraft(0));
+}
+
+/* ---- Ranked shortlist ----
+   Renders all drafts unconditionally (no search/filter). The sample draft
+   (is_sample===true) is clickable and opens in the viewer below; the other
+   four are info-only cards — no viewer affordance, just a Request button. */
+function renderShortlist(){
+  const list=state.drafts;
+  document.getElementById('draft-count').textContent=list.length;
+  const host=document.getElementById('shortlist-host');
+  if(!list.length){
+    host.innerHTML='<div class="empty"><b>No drafts available.</b></div>';
+    return;
+  }
+  host.innerHTML=list.map((d,i)=>{
+    const dlc=deadlineClass(d.grant_deadline);
+    const sa=d.strength_analysis||{};
+    const sbadge=sa.overall?`<span class="sbadge ${strengthClass(sa.overall)}" title="Application strength">${esc(sa.overall)}</span>`:'';
+    const isSample=!!d.is_sample;
+    const clickableAttrs=isSample?' role="button" tabindex="0"':'';
+    const sampleTag=isSample?'<span class="badge sample">Included sample</span> ':'';
+    const availNote=isSample?'':'<div class="dc-note">Full draft available on request.</div>';
+    return `<div class="draft-card ${isSample?'sample-card':'info-card'}${isSample&&i===state.selected?' selected':''}" data-idx="${i}"${clickableAttrs}>
+      <div class="dc-head">
+        <div class="dc-name">${sampleTag}${esc(d.grant_name)}${sbadge?' '+sbadge:''}</div>
+        <div class="dc-deadline ${dlc}">${esc(d.grant_deadline)}</div>
+      </div>
+      <div class="dc-main">
+      <div class="dc-score">
+        <div class="dcs-num">${esc(String(d.payoff_score))}</div>
+        <div class="dcs-lbl">payoff</div>
+      </div>
+      <div class="dc-body">
+        <div class="dc-funder">${esc(d.funder)}</div>
+        <div class="dc-rationale">${esc(d.priority_rationale)}</div>
+        ${availNote}
+        <div class="dc-actions"><button class="btn request-btn" type="button" data-idx="${i}">Request this draft</button></div>
+      </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Only sample cards open the viewer; a click on the Request button inside
+  // one must not also trigger the card's open-viewer handler.
+  host.querySelectorAll('.draft-card.sample-card').forEach(card=>{
+    const idx=Number(card.getAttribute('data-idx'));
+    card.addEventListener('click',e=>{
+      if(e.target.closest('.request-btn'))return;
+      selectDraft(idx,true);
+    });
+    card.addEventListener('keydown',e=>{
+      if(e.target.closest('.request-btn'))return;
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();selectDraft(idx,true);}
+    });
+  });
+  host.querySelectorAll('.request-btn').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      const idx=Number(btn.getAttribute('data-idx'));
+      requestDraft(idx);
+    });
+  });
+}
+
+/* ---- Draft viewer ---- */
+/* Only the sample draft can ever be opened in the viewer — the other four
+   drafts have no sections/gaps/footnotes to render. */
+function selectDraft(idx,scroll){
+  const d=state.drafts[idx];
+  if(!d||!d.is_sample)return;
+  state.selected=idx;
+  renderShortlist();
+  renderViewer();
+  if(scroll){
+    const el=document.getElementById('viewer');
+    if(el&&el.scrollIntoView)el.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+
+function renderViewer(){
+  const d=state.drafts[state.selected];
+  const host=document.getElementById('viewer-host');
+  if(!d||!d.is_sample){host.innerHTML='<div class="viewer-empty">Select the included sample grant above to view its draft.</div>';return;}
+  const dlc=deadlineClass(d.grant_deadline);
+
+  const sections=(d.sections||[]).map((s,i)=>`
+    <div class="sec">
+      <div><span class="sec-idx">${i+1}</span>${esc(s.label)}</div>
+      <div class="sec-body">${renderSectionBody(s)}</div>
+    </div>`).join('');
+
+  const sa=d.strength_analysis||{};
+  const scls=strengthClass(sa.overall);
+  const strengthFactors=(sa.factors||[]).map(f=>`
+    <li><span class="sf-factor">${esc(f&&f.factor||'')}</span><span class="sf-assess">${esc(f&&f.assessment||'')}</span></li>`).join('');
+  const strengthBlock=sa.overall?`
+    <div class="strength ${scls}">
+      <div class="strength-head">
+        <span class="strength-label">Application Strength</span>
+        <span class="strength-badge ${scls}">${esc(sa.overall)}</span>
+      </div>
+      ${strengthFactors?`<ul class="strength-factors">${strengthFactors}</ul>`:''}
+      ${sa.summary?`<p class="strength-summary">${esc(sa.summary)}</p>`:''}
+    </div>`:'';
+
+  const qa=d.qa||{};
+  const removedCount=(qa.hallucinated_facts_removed||[]).length;
+  const verdict=qa.verdict||'—';
+
+  const sources=(d.sources_used||[]).map(s=>`<li>${esc(s)}</li>`).join('');
+  const footnotesList=renderFootnotes(d);
+
+  const readerNotice=`
+    <div class="reader-notice" role="note">
+      <h3>For the drafter — how to read this document</h3>
+      <ul>
+        <li><span class="rn-sug">Suggested</span> (yellow) is an AI-drafted plausible value — <strong>confirm or replace</strong> it before submission.</li>
+        <li><span class="rn-conf">Confirm</span> (blue) is information <strong>Measure holds and must supply or verify</strong>.</li>
+        <li><span class="rn-miss">Missing</span> (red) is information <strong>not currently possessed</strong> — it must be produced or sourced.</li>
+        <li><span class="rn-fn">Superscript footnotes&#185;</span> cite the source of each fact — a link if online, a noted reference if internal — so you can verify or locate it.</li>
+        <li>The downloadable <strong>Word version has the same content, cleaned for submission</strong> (no footnotes).</li>
+      </ul>
+    </div>`;
+
+  const urlLink=d.grant_url?`<a href="${esc(d.grant_url)}" target="_blank" rel="noopener">funder page &#8599;</a>`:'';
+
+  host.innerHTML=`
+    <div class="vw-head">
+      <h3 class="vh-name">${esc(d.grant_name)}</h3>
+      <div class="vh-funder">${esc(d.funder)}</div>
+      <div class="vh-meta">
+        <span class="vhm ${dlc}"><span>Deadline:</span> <strong>${esc(d.grant_deadline)}</strong></span>
+        <span class="vhm"><span>Amount:</span> <strong>${esc(d.grant_amount)}</strong></span>
+        ${urlLink?`<span class="vhm">${urlLink}</span>`:''}
+      </div>
+      <div class="vh-note">Generated ${esc(d.generated_date)} &middot; ${esc(d.model_note)}</div>
+    </div>
+
+    ${strengthBlock}
+
+    ${readerNotice}
+
+    <div class="vw-actions">
+      <button class="btn solid" type="button" id="copy-btn">Copy full draft</button>
+      <button class="btn" type="button" id="download-btn">Download Word</button>
+      <span class="copied-flag" id="copied-flag">Copied to clipboard</span>
+    </div>
+
+    ${sections}
+
+    <div class="qa-note">
+      <div class="qa-top">
+        <span class="qa-verdict ${verdict==='revised'?'revised':''}">Fact-check: ${esc(verdict)}</span>
+        <span class="qa-count">${removedCount} unsupported claim${removedCount===1?'':'s'} removed</span>
+      </div>
+      <div class="qa-label">Alignment notes</div>
+      <p class="qa-align">${esc(qa.alignment_notes||'')}</p>
+    </div>
+
+    <div class="sources">
+      <h3>Sources used</h3>
+      <ul>${sources}</ul>
+    </div>
+
+    ${footnotesList}`;
+
+  const copyBtn=document.getElementById('copy-btn');
+  const dlBtn=document.getElementById('download-btn');
+  if(copyBtn)copyBtn.addEventListener('click',()=>copyDraft(d));
+  if(dlBtn)dlBtn.addEventListener('click',()=>downloadDraft(d));
+}
+
+/* ---- "What we still need from you" (#needs) ----
+   Always populated from the sample draft's gaps_to_fill, independent of
+   viewer state — the submission form links back to this section. */
+function renderNeeds(){
+  const host=document.getElementById('needs-host');
+  if(!host)return;
+  const sample=state.drafts.find(d=>d&&d.is_sample)||state.drafts[0];
+  const gaps=(sample&&sample.gaps_to_fill)||[];
+  if(!gaps.length){
+    host.innerHTML='<div class="empty">Gap checklist unavailable.</div>';
+    return;
+  }
+  const items=gaps.map((g,i)=>gapItemHtml(g,i,true)).join('');
+  host.innerHTML=`
+    <div class="fill-box">
+      <h3>What Measure still needs to fill in</h3>
+      <div class="fb-sub">${gaps.length} items the People-First AI Fund sample flags &mdash; your requested draft will carry its own list for that grant</div>
+      <ul class="fill-list">${items}</ul>
+    </div>`;
+}
+
+/* ---- Request a draft: populate the #submit form's hidden fields and
+   "Requesting: …" label from any grant card's Request button, then scroll
+   the visitor to the form. ---- */
+function requestDraft(idx){
+  const d=state.drafts[idx];
+  if(!d)return;
+  const setVal=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v||'';};
+  setVal('req-grant-id',d.grant_id);
+  setVal('req-grant-name',d.grant_name);
+  setVal('req-funder',d.funder);
+  setVal('req-grant-url',d.grant_url);
+  const label=document.getElementById('requesting-label');
+  if(label)label.textContent='Requesting: '+(d.grant_name||'');
+  const el=document.getElementById('submit');
+  if(el&&el.scrollIntoView)el.scrollIntoView({behavior:'smooth',block:'start'});
+  const ta=document.getElementById('message');
+  if(ta&&ta.focus)ta.focus();
+}
+
+/* ---- Request-form submission ----
+   Client-side validation (grant selected; allowed file types; total size),
+   then POST as multipart/form-data to /api/draft-request. Mirrors the
+   fetch + button-disable pattern used on measure-survey.html. */
+const REQUEST_ALLOWED_EXT=['.pdf','.doc','.docx'];
+const REQUEST_MAX_BYTES=25*1024*1024;
+function requestFileExtOk(name){
+  const n=(name||'').toLowerCase();
+  return REQUEST_ALLOWED_EXT.some(ext=>n.endsWith(ext));
+}
+function initRequestForm(){
+  const form=document.getElementById('request-form');
+  if(!form)return;
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const statusEl=document.getElementById('submit-status');
+    const btn=document.getElementById('submit-btn');
+    const setStatus=(msg,isErr)=>{if(statusEl){statusEl.textContent=msg;statusEl.classList.toggle('error',!!isErr);}};
+
+    const grantName=(document.getElementById('req-grant-name')||{}).value||'';
+    if(!grantName.trim()){
+      setStatus('Please choose a grant above before sending your request.',true);
+      return;
+    }
+
+    const filesInput=document.getElementById('files');
+    const files=filesInput&&filesInput.files?Array.from(filesInput.files):[];
+    let totalSize=0;
+    for(const f of files){
+      if(!requestFileExtOk(f.name)){
+        setStatus('Only PDF or Word documents (.pdf, .doc, .docx) are accepted.',true);
+        return;
+      }
+      totalSize+=f.size||0;
+    }
+    if(totalSize>REQUEST_MAX_BYTES){
+      setStatus('Attached files are too large — please keep the total under 25MB.',true);
+      return;
+    }
+
+    const fd=new FormData();
+    fd.append('grant_id',(document.getElementById('req-grant-id')||{}).value||'');
+    fd.append('grant_name',grantName);
+    fd.append('funder',(document.getElementById('req-funder')||{}).value||'');
+    fd.append('grant_url',(document.getElementById('req-grant-url')||{}).value||'');
+    fd.append('message',(document.getElementById('message')||{}).value||'');
+    fd.append('website',(document.getElementById('website')||{}).value||'');
+    fd.append('page_url',window.location.href);
+    fd.append('org',(state.profile&&state.profile.organization)||'Measure');
+    files.forEach(f=>fd.append('files',f));
+
+    const origLabel=btn?btn.textContent:'Send request';
+    let success=false;
+    if(btn){btn.disabled=true;btn.textContent='Sending…';}
+    setStatus('',false);
+    try{
+      const res=await fetch('/api/draft-request',{method:'POST',body:fd});
+      if(res.ok){
+        success=true;
+        if(btn)btn.textContent='Request sent ✓';
+        setStatus("Request sent — we'll follow up at your Measure email.",false);
+      }else{
+        const t=await res.text().catch(()=>'');
+        setStatus('Could not send your request'+(t?': '+t.slice(0,160):'.')+' Please try again.',true);
+      }
+    }catch(err){
+      setStatus('Network error — please try again.',true);
+      console.error(err);
+    }finally{
+      if(!success&&btn){btn.disabled=false;btn.textContent=origLabel;}
+    }
+  });
+}
+
+/* ---- Copy / Download: shared pure serializer (all 7 sections + gaps) ---- */
+function buildDraftText(d){
+  const L=[];
+  L.push('Measure AUSTIN — SCRIBE (GRANT DRAFTER)');
+  L.push('AI-generated starting draft — review before submission.');
+  L.push('');
+  L.push(d.grant_name+' — '+d.funder);
+  L.push('Payoff score: '+d.payoff_score);
+  if(d.grant_amount)L.push('Amount: '+d.grant_amount);
+  if(d.grant_deadline)L.push('Deadline: '+d.grant_deadline);
+  if(d.grant_eligibility)L.push('Eligibility: '+d.grant_eligibility);
+  if(d.grant_url)L.push('Funder page: '+d.grant_url);
+  L.push('Generated: '+(d.generated_date||'')+(d.model_note?'  ·  '+d.model_note:''));
+  if(d.priority_rationale){L.push('');L.push('Priority rationale: '+d.priority_rationale);}
+  const sa0=d.strength_analysis||{};
+  if(sa0.overall){
+    L.push('');
+    L.push('Application strength: '+sa0.overall);
+    (sa0.factors||[]).forEach(f=>{if(f&&(f.factor||f.assessment))L.push('  - '+(f.factor||'')+': '+(f.assessment||''));});
+    if(sa0.summary)L.push('  '+sa0.summary);
+  }
+  if(state.disclaimer){L.push('');L.push('DISCLAIMER: '+state.disclaimer);}
+  L.push('');
+  (d.sections||[]).forEach((s,i)=>{
+    L.push('');
+    L.push('=== '+(i+1)+'. '+s.label+' ===');
+    L.push('');
+    L.push(s.text||'');
+  });
+  L.push('');
+  L.push('');
+  L.push('=== WHAT Measure STILL NEEDS TO FILL IN ===');
+  L.push('');
+  (d.gaps_to_fill||[]).forEach(g=>{
+    const {label,detail,suggested}=gapParts(g);
+    L.push('[ ] '+(label?label+' — ':'')+detail);
+    if(suggested)L.push('      Suggested: '+suggested);
+  });
+  if((d.sources_used||[]).length){
+    L.push('');
+    L.push('');
+    L.push('=== SOURCES USED ===');
+    L.push('');
+    (d.sources_used||[]).forEach(s=>L.push('- '+s));
+  }
+  return L.join('\n');
+}
+window.buildDraftText=buildDraftText;
+
+function copyDraft(d){
+  const text=buildDraftText(d);
+  const flag=document.getElementById('copied-flag');
+  const done=()=>{if(flag){flag.classList.add('show');setTimeout(()=>flag.classList.remove('show'),1600);}};
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done).catch(()=>fallbackCopy(text,done));
+  }else{
+    fallbackCopy(text,done);
+  }
+}
+function fallbackCopy(text,done){
+  try{
+    const ta=document.createElement('textarea');
+    ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    done();
+  }catch(e){console.warn('Copy failed:',e);}
+}
+
+/* ---- Word (.doc) export: build a Word-openable HTML document client-side ----
+   External libraries are CSP-blocked, so we emit an HTML string with the
+   MS-Office namespace header, wrap it in an application/msword Blob, and
+   download it as <grant_id>-draft.doc — Word opens it natively. */
+/* Word marker handling on already-escaped prose:
+   - strip [^N] footnote refs entirely (Word stays clean, no footnote apparatus)
+   - [SUGGESTED: X] -> real yellow highlight Word honors + leading [Suggested] tag
+   - [CONFIRM: X]/[Measure …] -> distinct bracketed bold
+   Function-form replacements so a '$' in the value isn't read as a backreference. */
+function wordWrapMarkers(escaped){
+  let out=escaped.replace(/\s?\[\^\d+\]/g,'');
+  out=out.replace(/\[SUGGESTED:\s*([^\]]*)\]/gi,(m,v)=>`<span style="background:#fff3b0;">[Suggested] ${v.trim()}</span>`);
+  out=out.replace(/\[MISSING:\s*([^\]]*)\]/gi,(m,v)=>`<span style="background:#f7dcdc;">[Missing] ${v.trim()}</span>`);
+  out=out.replace(/\[(?:CONFIRM|Measure)[:\s]\s*([^\]]*)\]/gi,(m,v)=>`<span style="background:#dcebfb;">[Confirm] ${v.trim()}</span>`);
+  return out;
+}
+function proseToHtmlParas(text){
+  return (text||'').split(/\n\n+/).map(para=>{
+    const inner=wordWrapMarkers(esc(para)).replace(/\n/g,'<br/>');
+    return `<p style="margin:0 0 10pt 0;">${inner}</p>`;
+  }).join('');
+}
+/* Budget Narrative as bullets in the Word export (parity with the web view). */
+function wordBudgetParas(text){
+  const paras=(text||'').split(/\n\n+/);
+  if(paras.length<=1)return proseToHtmlParas(text);
+  const intro=`<p style="margin:0 0 8pt 0;">${wordWrapMarkers(esc(paras[0])).replace(/\n/g,'<br/>')}</p>`;
+  const items=paras.slice(1).map(p=>`<li style="margin:0 0 5pt 0;">${wordWrapMarkers(esc(p)).replace(/\n/g,'<br/>')}</li>`).join('');
+  return intro+`<ul style="margin:0 0 8pt 0;padding-left:18pt;">${items}</ul>`;
+}
+function buildWordDoc(d){
+  const P=[];
+  P.push(`<h1 style="font-size:18pt;margin:0 0 4pt 0;">${esc(d.grant_name||'')}</h1>`);
+  const meta=[];
+  if(d.funder)meta.push('Funder: '+esc(d.funder));
+  if(d.grant_amount)meta.push('Amount: '+esc(d.grant_amount));
+  if(d.grant_deadline)meta.push('Deadline: '+esc(d.grant_deadline));
+  P.push(`<p style="margin:0 0 2pt 0;color:#444;">${meta.join(' &nbsp;&middot;&nbsp; ')}</p>`);
+  P.push(`<p style="margin:0 0 14pt 0;color:#666;font-size:9pt;">Prepared for Measure &middot; Generated ${esc(d.generated_date||'')}${d.model_note?' &middot; '+esc(d.model_note):''}</p>`);
+  if(state.disclaimer)P.push(`<p style="margin:0 0 14pt 0;padding:6pt 8pt;border:1px solid #8a5218;color:#6b4a12;font-size:9pt;"><b>Disclaimer:</b> ${esc(state.disclaimer)}</p>`);
+
+  P.push(`<div style="margin:0 0 16pt 0;padding:8pt 10pt;border:1px solid #2f7fd1;border-left:4pt solid #2f7fd1;background:#eef4fb;font-size:9.5pt;">
+    <p style="margin:0 0 5pt 0;font-weight:bold;color:#1b3a6b;">For the drafter — how to read this document</p>
+    <p style="margin:0 0 4pt 0;"><span style="background:#fff3b0;">[Suggested]</span> is an AI-drafted plausible value — confirm or replace it before submission.</p>
+    <p style="margin:0 0 4pt 0;"><span style="background:#dcebfb;">[Confirm]</span> is information Measure holds and must supply or verify.</p>
+    <p style="margin:0 0 4pt 0;"><span style="background:#f7dcdc;">[Missing]</span> is information not currently possessed — it must be produced or sourced.</p>
+    <p style="margin:0;">The web version of Scribe carries source footnotes for every fact for verification; this Word copy is the same content, cleaned for submission.</p>
+  </div>`);
+
+  const sa=d.strength_analysis||{};
+  if(sa.overall){
+    P.push('<h2 style="font-size:13pt;margin:16pt 0 6pt 0;">Application Strength</h2>');
+    P.push(`<p style="margin:0 0 8pt 0;"><b>Overall:</b> ${esc(sa.overall)}</p>`);
+    if((sa.factors||[]).length){
+      const rows=(sa.factors||[]).map(f=>`<tr><td style="padding:3pt 10pt 3pt 0;vertical-align:top;"><b>${esc(f&&f.factor||'')}</b></td><td style="padding:3pt 0;vertical-align:top;">${esc(f&&f.assessment||'')}</td></tr>`).join('');
+      P.push(`<table style="border-collapse:collapse;margin:0 0 8pt 0;width:100%;">${rows}</table>`);
+    }
+    if(sa.summary)P.push(`<p style="margin:0 0 8pt 0;">${esc(sa.summary)}</p>`);
+  }
+
+  (d.sections||[]).forEach((s,i)=>{
+    P.push(`<h2 style="font-size:13pt;margin:16pt 0 6pt 0;">${i+1}. ${esc(s.label||'')}</h2>`);
+    if((s.label||'').toLowerCase().indexOf('budget narrative')>-1){
+      P.push(wordBudgetParas(s.text));
+    }else{
+      P.push(proseToHtmlParas(s.text));
+    }
+  });
+
+  if((d.gaps_to_fill||[]).length){
+    P.push('<h2 style="font-size:13pt;margin:16pt 0 6pt 0;">What Measure still needs to fill in</h2>');
+    const kbg={suggested:'#fff3b0',confirm:'#dcebfb',missing:'#f7dcdc'};
+    const items=(d.gaps_to_fill||[]).map(g=>{
+      const {label,detail,suggested}=gapParts(g);
+      const kind=gapKind(g);
+      const tag=`<span style="background:${kbg[kind]};font-weight:bold;">[${KIND_LABEL[kind]}]</span> `;
+      const sug=(kind==='suggested'&&suggested)?`<br/><span style="background:#fff3b0;">Proposed: ${esc(suggested)}</span>`:'';
+      return `<li style="margin:0 0 5pt 0;">${tag}${label?'<b>'+esc(label)+'</b> — ':''}${esc(detail)}${sug}</li>`;
+    }).join('');
+    P.push(`<ul style="margin:0 0 8pt 0;padding-left:18pt;">${items}</ul>`);
+  }
+
+  if((d.sources_used||[]).length){
+    P.push('<h2 style="font-size:13pt;margin:16pt 0 6pt 0;">Sources used</h2>');
+    const items=(d.sources_used||[]).map(s=>`<li style="margin:0 0 4pt 0;">${esc(s)}</li>`).join('');
+    P.push(`<ul style="margin:0 0 8pt 0;padding-left:18pt;">${items}</ul>`);
+  }
+
+  return `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset='utf-8'><title>${esc(d.grant_name||'Measure draft')}</title></head><body style="font-family:Georgia,'Times New Roman',serif;font-size:11pt;color:#111;line-height:1.5;">${P.join('\n')}
+</body></html>`;
+}
+window.buildWordDoc=buildWordDoc;
+
+function downloadDraft(d){
+  const html=buildWordDoc(d);
+  const slug=(d.grant_id||'grant')+'-draft.doc';
+  try{
+    const blob=new Blob(['﻿'+html],{type:'application/msword'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;a.download=slug;
+    document.body.appendChild(a);a.click();
+    document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }catch(e){console.warn('Download failed:',e);}
+}
+
+/* ---- Load ---- */
+async function load(){
+  const [draftsRes,profileRes]=await Promise.all([
+    fetch(DRAFTS_URL,{cache:'no-store'}),
+    fetch(PROFILE_URL,{cache:'no-store'}),
+  ]);
+  if(!draftsRes.ok)throw new Error('Could not load drafts data.');
+  const data=await draftsRes.json();
+  state.drafts=data.drafts||[];
+  state.disclaimer=data.disclaimer||'';
+  state.method=data.method||'';
+  state.generatedDate=data.generated_date||'';
+
+  if(profileRes.ok){
+    try{state.profile=await profileRes.json();}catch(e){state.profile=null;}
+  }
+
+  document.getElementById('m-drafts').textContent=state.drafts.length;
+  document.getElementById('m-date').textContent=state.generatedDate;
+  document.getElementById('disclaimer-text').textContent=state.disclaimer;
+
+  const credit=state.profile&&state.profile.display&&state.profile.display.footer_credit;
+  if(credit)document.getElementById('footer-credit').textContent=credit;
+  document.getElementById('footer-links').innerHTML=
+    `<a href="${DRAFTS_URL}">drafts.json</a> &middot; <a href="${PROFILE_URL}">profile.json</a>`;
+
+  renderPriority();
+  renderShortlist();
+  renderViewer();
+  renderNeeds();
+}
+
+initRequestForm();
+
+load().catch(err=>{
+  document.getElementById('shortlist-host').innerHTML=`<div class="empty"><b>Couldn't load draft data</b> — make sure ${esc(DRAFTS_URL)} exists.</div>`;
+  console.error(err);
+});
+</script>
+<script>
+/* Two jobs:
+   (1) A hash-anchor link scrolls its target into view. Sections can no longer be hidden
+       (the fold/accordion mechanism was removed), but the explicit scroll is still needed -
+       nothing else moves the viewport to the anchor.
+   (2) Mirror each list section's own counter into its heading chip, so the count is never
+       out of sync with what the section actually shows. */
+(function(){
+  function openTo(){
+    var h = window.location.hash;
+    if (!h || h.length < 2) return;
+    var t;
+    try { t = document.querySelector(h); } catch (e) { return; }
+    if (!t) return;
+    window.setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+  }
+  function counts(){
+    var done = true;
+    var chips = document.querySelectorAll('.fold-count');
+    for (var i = 0; i < chips.length; i++) {
+      var el = chips[i], n = null;
+      var from = el.getAttribute('data-count-from');
+      var sel = el.getAttribute('data-count-sel');
+      if (from) {
+        var src = document.getElementById(from);
+        if (src) n = parseInt(src.textContent, 10);
+      } else if (sel) {
+        n = document.querySelectorAll(sel).length;
+      }
+      if (n === null || isNaN(n) || n === 0) { done = false; continue; }
+      var txt = n + ' ' + el.getAttribute('data-count-label');
+      if (el.textContent !== txt) el.textContent = txt;   /* guard: writing unconditionally would
+                                                             retrigger the observer forever */
+    }
+    return done;
+  }
+  window.addEventListener('hashchange', openTo);
+  window.addEventListener('load', function(){ openTo(); counts(); });
+  document.addEventListener('DOMContentLoaded', function(){
+    openTo();
+    if (counts()) return;
+    var mo = new MutationObserver(function(){ if (counts()) mo.disconnect(); });
+    mo.observe(document.body, {childList:true, subtree:true, characterData:true});
+  });
+})();
+</script>
+</body>
+</html>

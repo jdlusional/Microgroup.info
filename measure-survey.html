@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Measure — Funding Priorities Worksheet</title>
+<meta name="description" content="Measure funding-priorities worksheet: nine questions to sharpen funder matching. Unlisted; shared with Measure directly." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<style>
+  :root {
+    --ink-900: #182620;
+    --ink-700: #33423b;
+    --ink-500: #5c6b62;
+    --paper-100: #eef1ea;
+    --paper-000: #f7f8f4;
+    --line: #c9d0c4;
+    --gold-600: #a8722c;
+    --gold-700: #8a5b21;
+    --gold-100: #f1e2c4;
+    --teal-600: #3f6e64;
+    --teal-100: #e0ebe6;
+    --focus: #3f6e64;
+    --danger: #a3432f;
+
+    --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  :root[data-theme="dark"] {
+    --ink-900: #eae8de; --ink-700: #cbcabf; --ink-500: #9aa39a;
+    --paper-100: #182620; --paper-000: #131e19; --line: #33443b;
+    --gold-600: #d9a44b; --gold-700: #e6bb70; --gold-100: #3a2f1a;
+    --teal-600: #6fae9f; --teal-100: #1c2f2a; --focus: #6fae9f; --danger: #d8846f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink-900: #eae8de; --ink-700: #cbcabf; --ink-500: #9aa39a;
+      --paper-100: #182620; --paper-000: #131e19; --line: #33443b;
+      --gold-600: #d9a44b; --gold-700: #e6bb70; --gold-100: #3a2f1a;
+      --teal-600: #6fae9f; --teal-100: #1c2f2a; --focus: #6fae9f; --danger: #d8846f;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper-000); color: var(--ink-900); font-family: var(--font-body); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .sheet { animation: rise 0.5s ease-out both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  }
+
+  .sheet { max-width: 42rem; margin: 0 auto; padding: 3.5rem 1.5rem 6rem; }
+  .masthead { border-bottom: 1px solid var(--line); padding-bottom: 1.75rem; margin-bottom: 2.25rem; }
+  .eyebrow { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-700); margin: 0 0 0.75rem; }
+  h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.7rem, 4vw, 2.15rem); line-height: 1.18; margin: 0 0 0.85rem; color: var(--ink-900); text-wrap: balance; }
+  .intro { color: var(--ink-700); font-size: 1rem; max-width: 38rem; margin: 0 0 0.6rem; }
+  .intro-meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-500); margin: 1rem 0 0; }
+
+  .cluster { margin: 2.5rem 0; }
+  .cluster-head { display: flex; align-items: baseline; gap: 0.65rem; margin-bottom: 1.1rem; }
+  .cluster-tag { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--paper-000); background: var(--teal-600); padding: 0.2rem 0.5rem; border-radius: 3px; white-space: nowrap; }
+  .cluster-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--ink-900); margin: 0; }
+
+  .field { border-top: 1px solid var(--line); padding: 1.15rem 0; }
+  .field:last-child { padding-bottom: 0; }
+  .field-label { display: flex; gap: 0.6rem; align-items: baseline; margin-bottom: 0.5rem; }
+  .qtag { font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold-700); flex: none; padding-top: 0.15rem; }
+  .qtext { font-weight: 600; font-size: 0.98rem; color: var(--ink-900); }
+  .qhint { font-size: 0.84rem; color: var(--ink-500); margin: 0.15rem 0 0.65rem 1.55rem; max-width: 34rem; }
+
+  textarea, input[type="text"], input[type="email"] {
+    display: block; width: 100%; margin-left: 1.55rem; max-width: calc(100% - 1.55rem);
+    background: var(--paper-100); border: 1px solid var(--line); border-radius: 4px; color: var(--ink-900);
+    font-family: var(--font-body); font-size: 0.95rem; padding: 0.6rem 0.7rem; resize: vertical;
+  }
+  textarea { min-height: 3.6rem; }
+  textarea:focus, input[type="text"]:focus, input[type="email"]:focus, input[type="radio"]:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  ::placeholder { color: var(--ink-500); opacity: 0.65; }
+
+  .choice-row { margin-left: 1.55rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; }
+  .choice { display: flex; align-items: center; gap: 0.4rem; font-size: 0.92rem; color: var(--ink-700); cursor: pointer; }
+  .choice input { accent-color: var(--teal-600); cursor: pointer; }
+
+  .out-block { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--ink-900); }
+  .out-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; }
+  .out-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin: 0; }
+  .progress { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-500); font-variant-numeric: tabular-nums; }
+  .actions { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+
+  button.action { font-family: var(--font-mono); font-size: 0.82rem; letter-spacing: 0.02em; padding: 0.6rem 1.05rem; border-radius: 4px; border: 1px solid var(--ink-900); background: var(--ink-900); color: var(--paper-000); cursor: pointer; transition: opacity 0.15s ease; }
+  button.action.secondary { background: transparent; color: var(--ink-900); }
+  button.action:hover { opacity: 0.82; }
+  button.action:disabled { opacity: 0.5; cursor: default; }
+  button.submit { background: var(--teal-600); border-color: var(--teal-600); }
+
+  .status-msg { font-family: var(--font-mono); font-size: 0.78rem; color: var(--teal-600); margin-top: 0.7rem; min-height: 1.1em; }
+  .status-msg.error { color: var(--danger); }
+  .out-note { font-size: 0.84rem; color: var(--ink-500); margin-top: 1.1rem; max-width: 38rem; }
+
+  /* honeypot */
+  .hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+
+  @media (max-width: 30rem) {
+    .qhint, textarea, input[type="text"], input[type="email"], .choice-row { margin-left: 0; max-width: 100%; }
+    .field-label { flex-direction: column; gap: 0.15rem; }
+  }
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+
+<div class="sheet">
+
+  <header class="masthead">
+    <p class="eyebrow">Measure · Funding Priorities Worksheet</p>
+    <h1>Help us find funding that actually fits you.</h1>
+    <p class="intro">
+      Everything we've matched you to so far (funders, open grants, program
+      alignment) has been built from public filings alone. We've never actually
+      asked you what you need. This worksheet is that ask: ten questions, grouped
+      into five areas, about your budget, your preferences, and where you stand
+      right now. They're all required, but most take just a sentence or two,
+      and your answers are what make the matching real.
+    </p>
+    <p class="intro-meta">Est. 10–15 min · all questions required · your answers are emailed to our research inbox when you send them</p>
+  </header>
+
+  <section class="cluster">
+    <div class="cluster-head"><span class="cluster-tag">YOU</span><h2 class="cluster-title">Who's answering</h2></div>
+    <div class="field">
+      <div class="field-label"><span class="qtag">–</span><span class="qtext">Your name</span></div>
+      <input type="text" id="respName" autocomplete="name" placeholder="So we know who to follow up with" />
+    </div>
+    <div class="field">
+      <div class="field-label"><span class="qtag">–</span><span class="qtext">Your email</span></div>
+      <input type="email" id="respEmail" autocomplete="email" placeholder="So we can follow up on your answers" />
+    </div>
+  </section>
+
+  <section class="cluster">
+    <div class="cluster-head"><span class="cluster-tag">MONEY</span><h2 class="cluster-title">What you're working with</h2></div>
+
+    <div class="field">
+      <div class="field-label"><span class="qtag">Q1</span><span class="qtext">What's your current annual operating budget, and roughly how does it split across programs?</span></div>
+      <p class="qhint">Ballpark is fine. Per-program figures help even more, if you track them that way.</p>
+      <textarea data-q="1" placeholder="e.g. ~$650K total; CARE Model is the largest line, Capacity Building the smallest…"></textarea>
+    </div>
+
+    <div class="field">
+      <div class="field-label"><span class="qtag">Q2</span><span class="qtext">Do you need general operating support, program-restricted funding, or both, and are you open to multi-year commitments?</span></div>
+      <div class="choice-row">
+        <label class="choice"><input type="radio" name="q2" value="General operating"> General operating</label>
+        <label class="choice"><input type="radio" name="q2" value="Program-restricted"> Program-restricted</label>
+        <label class="choice"><input type="radio" name="q2" value="Both, depends on the funder"> Both, depends</label>
+      </div>
+      <textarea data-q="2" placeholder="Add detail: which program(s) if restricted, and your appetite for multi-year asks…" style="margin-top:0.65rem;"></textarea>
+    </div>
+
+    <div class="field">
+      <div class="field-label"><span class="qtag">Q3</span><span class="qtext">Are there funder types, industries, or specific funders you'd want us to avoid or deprioritize?</span></div>
+      <p class="qhint">Sources that conflict with your mission, or anywhere you'd rather not be listed as a grantee.</p>
+      <textarea data-q="3" placeholder="e.g. no law-enforcement-affiliated funders, nothing tied to…"></textarea>
+    </div>
+  </section>
+
+  <section class="cluster">
+    <div class="cluster-head"><span class="cluster-tag">TIMING</span><h2 class="cluster-title">Where things stand right now</h2></div>
+
+    <div class="field">
+      <div class="field-label"><span class="qtag">Q4</span><span class="qtext">Any near-term cash gaps, fiscal year-end deadlines, or opportunities you're already pursuing?</span></div>
+      <p class="qhint">The last part matters most: tell us what's already in motion so we don't duplicate it.</p>
+      <textarea data-q="4" placeholder="e.g. fiscal year ends September, already in conversation with…"></textarea>
+    </div>
+
+    <div class="field">
+      <div class="field-label"><span class="qtag">Q5</span><span class="qtext">Beyond what's in public filings, what's the real state of your funder relationships?</span></div>
+      <p class="qhint">Which past funders are warm and worth re-approaching, which are dormant, and any where there's friction we should know about before we suggest them again.</p>
+      <textarea data-q="5" placeholder="e.g. Dell Foundation relationship is active and warm; St. David's was one-time…"></textarea>
+    </div>
+  </section>
+
+  <section class="cluster">
+    <div class="cluster-head"><span class="cluster-tag">CAPACITY</span><h2 class="cluster-title">What you can actually take on</h2></div>
+
+    <div class="field">
+      <div class="field-label"><span class="qtag">Q6</span><span class="qtext">Of your four programs, which most needs funding right now?</span></div>
+      <div class="choice-row">
+        <label class="choice"><input type="radio" name="q6" value="Communities in the Loop"> Communities in the Loop™</label>
+        <label class="choice"><input type="radio" name="q6" value="CARE Model v4.0"> CARE Model™ v4.0</label>
+        <label class="choice"><input type="radio" name="q6" value="Capacity Building suite"> Capacity Building suite</label>
+        <label class="choice"><input type="radio" name="q6" value="Financially Lit & Funding Ready"> Financially Lit &amp; Funding Ready</label>
+        <label class="choice"><input type="radio" name="q6" value="Even across all four"> Even across all four</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label"><span class="qtag">Q7</span><span class="qtext">How much grant-writing bandwidth do you actually have right now?</span></div>
+      <p class="qhint">Be honest: this shapes how many opportunities are worth surfacing versus how few, well-matched ones.</p>
+      <textarea data-q="7" placeholder="e.g. one part-time person, mostly evenings/weekends…"></textarea>
+    </div>
+  </section>
+
+  <section class="cluster">
+    <div class="cluster-head"><span class="cluster-tag">POSITIONING</span><h2 class="cluster-title">How you see yourselves</h2></div>
+
+    <div class="field">
+      <div class="field-label"><span class="qtag">Q8</span><span class="qtext">Your IRS filing lists you under Education (NTEE B05). Is that still how you'd describe the core of the work?</span></div>
+      <p class="qhint">Our read is that "data justice / racial equity" fits better than "education", but you'd know.</p>
+      <textarea data-q="8" placeholder="e.g. Education undersells it: we're closer to civil rights/social justice work…"></textarea>
+    </div>
+
+    <div class="field">
+      <div class="field-label"><span class="qtag">Q9</span><span class="qtext">Do Houston and Dallas have real, active program presence, or are they mostly aspirational at this point?</span></div>
+      <p class="qhint">Matters because some funders require verifiable local presence, not just a stated service area.</p>
+      <textarea data-q="9" placeholder="e.g. Houston has an active cohort; Dallas is early/exploratory…"></textarea>
+    </div>
+  </section>
+
+  <section class="cluster">
+    <div class="cluster-head"><span class="cluster-tag">WISHLIST</span><h2 class="cluster-title">What you wish existed</h2></div>
+    <div class="field">
+      <div class="field-label"><span class="qtag">Q10</span><span class="qtext">If this funder-matching tool could do anything for you, what would make it genuinely indispensable?</span></div>
+      <p class="qhint">Think aspirationally: features, reports, alerts, integrations. Blue-sky is welcome; this shapes what we build next.</p>
+      <textarea data-q="10" placeholder="e.g. automatic deadline reminders, a one-click LOI draft from our profile, alerts when a matched funder opens a cycle…"></textarea>
+    </div>
+  </section>
+
+  <!-- honeypot: bots fill this; humans never see it -->
+  <input type="text" class="hp" id="hp_website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <div class="out-block">
+    <div class="out-head">
+      <h2 class="out-title">Send this back to us</h2>
+      <span class="progress" id="progress">0 of 10 answered</span>
+    </div>
+    <div class="actions">
+      <button class="action submit" id="submitBtn" type="button">Send answers</button>
+    </div>
+    <p class="status-msg" id="statusMsg"></p>
+    <p class="out-note">
+      Hitting <b>Send answers</b> emails them straight to our research inbox: nothing is stored in your browser.
+    </p>
+  </div>
+
+</div>
+
+<script>
+  const QUESTIONS = [
+    { tag: "Q1", cluster: "MONEY", text: "Current annual operating budget / program split" },
+    { tag: "Q2", cluster: "MONEY", text: "Funding type preference (general operating vs. restricted; multi-year appetite)" },
+    { tag: "Q3", cluster: "MONEY", text: "Funders/types to avoid or deprioritize" },
+    { tag: "Q4", cluster: "TIMING", text: "Near-term deadlines, cash gaps, opportunities already in motion" },
+    { tag: "Q5", cluster: "TIMING", text: "Real state of funder relationships (warm / dormant / friction)" },
+    { tag: "Q6", cluster: "CAPACITY", text: "Which program most needs funding right now" },
+    { tag: "Q7", cluster: "CAPACITY", text: "Grant-writing bandwidth" },
+    { tag: "Q8", cluster: "POSITIONING", text: "Self-classification vs. filed NTEE Education code" },
+    { tag: "Q9", cluster: "POSITIONING", text: "Real local presence in Houston / Dallas" },
+    { tag: "Q10", cluster: "WISHLIST", text: "Aspirational features that would make the funder-matching tool indispensable" },
+  ];
+
+  function getAnswer(qnum) {
+    const radio = document.querySelector('input[type="radio"][name="q' + qnum + '"]:checked');
+    const textarea = document.querySelector('textarea[data-q="' + qnum + '"]');
+    const parts = [];
+    if (radio) parts.push(radio.value);
+    if (textarea && textarea.value.trim()) parts.push(textarea.value.trim());
+    return parts.join(" — ");
+  }
+  function countAnswered() { let n = 0; for (let i = 1; i <= 10; i++) if (getAnswer(i)) n++; return n; }
+  function updateProgress() { document.getElementById("progress").textContent = countAnswered() + " of 10 answered"; }
+
+  function collect() {
+    const answers = [];
+    for (let i = 1; i <= 10; i++) {
+      answers.push({ tag: QUESTIONS[i-1].tag, cluster: QUESTIONS[i-1].cluster, question: QUESTIONS[i-1].text, answer: getAnswer(i) });
+    }
+    return {
+      respondent_name: document.getElementById("respName").value.trim(),
+      respondent_email: document.getElementById("respEmail").value.trim(),
+      website: document.getElementById("hp_website").value,   // honeypot
+      answered: countAnswered(),
+      answers: answers,
+      text: buildOutput()
+    };
+  }
+
+  function buildOutput() {
+    const lines = [];
+    lines.push("Measure AUSTIN — FUNDING PRIORITIES WORKSHEET RESPONSES");
+    lines.push("=".repeat(56));
+    const name = document.getElementById("respName").value.trim();
+    const email = document.getElementById("respEmail").value.trim();
+    if (name || email) lines.push("From: " + [name, email].filter(Boolean).join(" · "));
+    lines.push("");
+    let lastCluster = "";
+    for (let i = 1; i <= 10; i++) {
+      const q = QUESTIONS[i - 1];
+      if (q.cluster !== lastCluster) { lines.push("[" + q.cluster + "]"); lastCluster = q.cluster; }
+      lines.push(q.tag + ". " + q.text);
+      lines.push("   " + (getAnswer(i) || "(no answer)"));
+      lines.push("");
+    }
+    return lines.join("\n");
+  }
+
+  document.querySelectorAll("textarea, input").forEach(function (el) {
+    el.addEventListener("input", updateProgress);
+    el.addEventListener("change", updateProgress);
+  });
+
+  const statusEl = document.getElementById("statusMsg");
+  function setStatus(msg, isError) { statusEl.textContent = msg; statusEl.classList.toggle("error", !!isError); }
+
+  document.getElementById("submitBtn").addEventListener("click", async function () {
+    const btn = this;
+    const payload = collect();
+    const problems = [];
+    if (!payload.respondent_name) problems.push("your name");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.respondent_email)) problems.push("a valid email");
+    const missing = [];
+    for (let i = 1; i <= 10; i++) if (!getAnswer(i)) missing.push(QUESTIONS[i-1].tag);
+    if (missing.length) problems.push("all questions (still need " + missing.join(", ") + ")");
+    if (problems.length) { setStatus("Please add " + problems.join("; ") + " before sending.", true); return; }
+    btn.disabled = true; setStatus("Sending…", false);
+    try {
+      const res = await fetch("/api/measure-survey", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        setStatus("Sent — thank you. Your answers are on their way to the research inbox.", false);
+        btn.textContent = "Sent ✓";
+      } else {
+        const t = await res.text().catch(function(){ return ""; });
+        setStatus("Couldn't send (" + res.status + "). Try Copy or Download and email it instead." + (t ? " [" + t.slice(0,120) + "]" : ""), true);
+        btn.disabled = false;
+      }
+    } catch (e) {
+      setStatus("Network error — try Copy or Download and email it instead.", true);
+      btn.disabled = false;
+    }
+  });
+
+  updateProgress();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Custodian: Investment-Manager Signal Prototype</title>
+<meta name="description" content="A prototype for Calvin: which Central Texas foundations name an identifiable investment-management contractor on their own Form 990, what the history shows, who is due for a change, and where no manager is visible at all." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/svg+xml" href="Assets/micro-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=8f55469b15">
+<style>
+a{color:var(--ink)}
+
+.hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1.4rem;text-align:left;border-bottom:1px solid var(--rule)}
+.section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
+.section-head p{color:var(--wash);font-size:.94rem;max-width:none;margin:0}
+
+.lead-table{width:100%;min-width:860px;table-layout:fixed;border-collapse:collapse;font-size:15px;margin-top:.5rem}
+.lead-table th{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--wash);text-align:left;padding:.4rem .55rem;border-bottom:1px solid var(--rule)}
+.lead-table td{padding:.55rem .55rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere}
+.lead-table th:nth-child(1),.lead-table td:nth-child(1){width:22%}
+.lead-table th:nth-child(2),.lead-table td:nth-child(2){width:16%}
+.lead-table th:nth-child(3),.lead-table td:nth-child(3){width:11%;text-align:right}
+.lead-table th:nth-child(4),.lead-table td:nth-child(4){width:8%;text-align:center}
+.lead-table th:nth-child(5),.lead-table td:nth-child(5){width:21%}
+.lead-table th:nth-child(6),.lead-table td:nth-child(6){width:22%}
+.lead-table .org-name{font-weight:700}
+.lead-table .ein{font-family:var(--mono);font-size:12px;color:var(--wash);display:block;margin-top:.15rem}
+.lead-table .comp{font-family:var(--mono);color:var(--ink)}
+.cadence-pill{font-family:var(--mono);font-size:.78rem;padding:.2rem .5rem;text-transform:uppercase;letter-spacing:.03em;border:1px solid var(--rule);color:var(--wash);display:inline-block}
+.cadence-pill.recent{color:var(--accent);border-color:var(--accent)}
+.cadence-pill.entrenched{color:var(--ok);border-color:var(--ok)}
+.cadence-detail{display:block;margin-top:.3rem;font-size:.82rem;color:var(--wash)}
+.score-num{font-family:var(--mono);font-weight:700;font-size:1.05rem}
+.score-num.hot{color:var(--accent)}
+.score-detail{display:block;margin-top:.25rem;font-size:.78rem;color:var(--wash);font-family:var(--mono)}
+.people-line{display:block;margin-top:.3rem;font-size:.82rem;color:var(--wash)}
+.people-line b{color:var(--ink);font-weight:600}
+
+.ws-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.1rem;margin-top:1rem}
+.ws-card{background:var(--well);border:1px solid var(--rule);padding:1rem 1.15rem;min-width:0}
+.ws-card h3{font-family:var(--serif);font-weight:700;font-size:1.05rem;margin:0 0 .2rem}
+.ws-card .ws-amt{font-family:var(--mono);font-size:1.05rem;font-weight:700;color:var(--accent);display:block;margin:.15rem 0 .4rem}
+.ws-card p{margin:.3rem 0 0;font-size:.86rem;line-height:1.5;color:var(--wash)}
+.ws-tag{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;border:1px solid var(--rule);color:var(--wash);padding:.15rem .45rem;display:inline-block;margin-right:.35rem}
+
+.sig-status{display:flex;flex-wrap:wrap;gap:.8rem;margin:1rem 0}
+.sig-stat{background:var(--well);border:1px solid var(--rule);padding:.7rem 1rem;min-width:0}
+.sig-stat b{font-family:var(--mono);font-size:1.15rem;display:block}
+.sig-stat span{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--wash)}
+.specimen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1rem}
+.specimen{border:1px dashed var(--rule);padding:.85rem 1rem;min-width:0}
+.specimen .spec-class{font-family:var(--mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--accent)}
+.specimen p{margin:.35rem 0 0;font-size:.85rem;line-height:1.5;color:var(--wash)}
+.specimen-note{font-family:var(--mono);font-size:.8rem;color:var(--wash);margin-top:.9rem}
+
+.preview-note{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--well);border:1px solid var(--ink);padding:.9rem 1.1rem;margin:1.2rem 0 0;line-height:1.5}
+.preview-note b{color:var(--accent)}
+.limitation-note{font-family:var(--mono);font-size:.86rem;color:var(--wash);background:var(--well);border:1px dashed var(--rule);padding:.7rem .9rem;margin-top:1.2rem;line-height:1.5}
+
+.cta-box{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem;border-bottom:1px solid var(--rule-soft);text-align:center}
+.cta-box h2{font-family:var(--serif);font-weight:700;font-size:1.5rem;margin:0 0 .6rem}
+.cta-box p{color:var(--wash);max-width:62ch;margin:0 auto 1.1rem}
+.cta-button{display:inline-block;font-family:var(--mono);font-size:.85rem;letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);padding:.65rem 1.4rem;text-decoration:none}
+.cta-button:hover{background:var(--ink);color:#fff}
+
+.roadmap-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;margin-top:1rem}
+@media(max-width:720px){.roadmap-grid{grid-template-columns:1fr}}
+.roadmap-card{background:var(--well);border:1px solid var(--rule);padding:1.1rem 1.3rem;min-width:0}
+.roadmap-card h3{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--wash);margin:0 0 .5rem}
+.roadmap-card p{margin:0;font-size:.92rem;line-height:1.55}
+
+body{overflow-x:hidden}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+<!-- CONVENTION-BADGES:START (generated by pattern-book/inject_badges.py; do not hand-edit) -->
+<div class="conv-badges" style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.35rem 0 0"><span class="conv-badge conv-badge-style" style="font-family:var(--mono,monospace);font-size:12.5px;letter-spacing:.04em;border:1px solid currentColor;padding:.15rem .5rem;max-width:100%">Style guide: General</span><span class="conv-badge conv-badge-tier" style="font-family:var(--mono,monospace);font-size:12.5px;letter-spacing:.04em;border:1px solid currentColor;padding:.15rem .5rem;max-width:100%">Paid · institution-specific</span></div>
+<!-- CONVENTION-BADGES:END -->
+
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand"><b>Custodian</b>, JP Morgan pilot</span>
+    <span class="stat"><strong id="m-profiled">…</strong> foundations profiled</span>
+    <span class="grow"></span>
+    <nav>
+      <a href="#leads">Leads</a>
+      <a href="#whitespace">Whitespace</a>
+      <a href="#signals">Signals</a>
+      <a href="#method">Method &amp; limits</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">Prototype, no charge: built for one named contact, not a live product</div>
+  <h1>Custodian</h1>
+  <p>Custodian now works in three layers. <b>History</b>: who each foundation's named investment manager is, from their own Form 990 filings, and when that relationship last changed. <b>Conditions</b>: a readiness score built from evidence-backed variables (performance, tenure, structural lock-in) that separates foundations likely to shop from foundations that merely could. <b>Events</b>: a live monitor watching trade press, RFP postings, and foundation pages for the moment a search actually surfaces. This page remains a no-charge prototype for Calvin, per what was already discussed.</p>
+  <div class="note">Scope, as given: Central Texas foundations reporting $5M+ in investments and/or interest-bearing cash. 223 organizations cleared that bar in the full cached filing corpus: 11 name an identifiable investment manager, 191 show no named manager at all, and every figure traces to a public IRS filing. Nothing here is estimated or invented.</div>
+</header>
+
+<section class="section" id="leads">
+  <div class="section-head">
+    <span class="kicker">Layer 1 + 2: named managers, scored</span>
+    <h2>Central Texas Foundations, Named Investment Manager</h2>
+  </div>
+  <div class="section-lede">
+    <p>The readiness score (0-100) is additive across evidence-backed switch predictors, then dampened by structural lock-in markers (a founder's family office, a trustee-affiliated manager, a bank-trust arrangement). It was backtested against this corpus's own historical manager switches before shipping; variables that showed no predictive lift are carried at zero weight and say so. Decision-makers come from the same filings (Part VII officer lists), labeled with their filing year.</p>
+  </div>
+  <div class="table-scroll"><table class="lead-table">
+    <thead><tr><th>Foundation</th><th>Current manager</th><th>Compensation</th><th>Readiness</th><th>Cadence read</th><th>Decision-makers</th></tr></thead>
+    <tbody id="leads-table"></tbody>
+  </table></div>
+  <div class="preview-note">Showing <b id="m-shown">…</b> of the <b>11</b> foundations with a named manager, chosen to show the method's range. The other <b id="m-hidden">…</b>, spanning roughly <span id="m-hidden-range">…</span> in named-manager compensation, are held back for a direct conversation. Ask below.</div>
+  <div class="limitation-note" id="cadence-note"></div>
+</section>
+
+<section class="section" id="whitespace">
+  <div class="section-head">
+    <span class="kicker">Layer 2: the greenfield segment</span>
+    <h2>Large Foundations, No Manager Visible</h2>
+  </div>
+  <div class="section-lede">
+    <p>191 Central Texas foundations clear the $5M bar with no investment-management contractor named in any cached filing year. Two sub-segments, honestly labeled: "no manager visible" means neither a named contractor nor an investment-management fee line appears (board-run, bank-trust, or self-managed: no incumbent to displace); "fees, manager not named" means fees are reported but the manager falls below the $100K contractor-disclosure threshold or outside the filing's five-highest-paid contractor list. Five shown of 191; the rest are a conversation away.</p>
+  </div>
+  <div class="ws-grid" id="ws-grid"></div>
+</section>
+
+<section class="section" id="signals">
+  <div class="section-head">
+    <span class="kicker">Layer 3: live detection</span>
+    <h2>The Signals Monitor</h2>
+  </div>
+  <div class="section-lede">
+    <p>A daily monitor is built, soaked, and now live in alerting mode: its shakedown window ran clean (five runs, zero noise candidates), so verified findings now surface the day they land. It watches compliant, verified sources only: trade-press feeds that publish institutional searches and hires by name, foundation and association pages where investment RFPs actually get posted, and provider-acquisition news, which industry data says is the single strongest non-performance trigger for a manager review. Only substantive signal classes alert; a source that cannot be checked is recorded honestly, never emailed daily. When a watched source names a search, the finding carries the URL, timestamp, and exact text, never an inference.</p>
+  </div>
+  <div class="sig-status" id="sig-status"></div>
+  <div class="specimen-grid" id="specimens"></div>
+  <p class="specimen-note">The cards above are labeled format specimens, not detections: the monitor is in its shakedown window and no verified finding has been promoted to this page yet. When one is, it will replace a specimen in this same format.</p>
+</section>
+
+<div class="cta-box">
+  <h2>Want the rest of either list, or a specific foundation checked?</h2>
+  <p>The other 6 named-manager foundations, the other 186 in the whitespace segment, a readiness read on a specific organization, or a different geography or threshold: all fold into the next revision at no charge, consistent with what was already discussed.</p>
+  <p>One tier sits beyond the free pilot: the national marquee book. The Bill &amp; Melinda Gates Foundation, the organization this product was first imagined against, is already in Custodian's holdings (complete filing history, manager relationships, decision-maker rosters), along with the rest of the national scope. Those unlock with a paid engagement.</p>
+  <a class="cta-button" href="mailto:jdavis92105@gmail.com?subject=Custodian%3A%20Central%20Texas%20foundation%20data&body=Hi%20Jonathan%2C%0A%0AI%27d%20like%20to%20see%3A%0A">Ask for the full list &rarr;</a>
+</div>
+
+<section class="section" id="next">
+  <div class="section-head">
+    <span class="kicker">Where this goes next</span>
+    <h2>What's running, what's next</h2>
+  </div>
+  <div class="roadmap-grid">
+    <div class="roadmap-card">
+      <h3>Now running: the signals monitor</h3>
+      <p>The "shopping now" capability first discussed is no longer just roadmap: the monitor above exists and runs daily. It finishes its silent precision-tuning window in early August; after that, verified findings land on this page and can be pushed as alerts on whatever cadence is useful.</p>
+    </div>
+    <div class="roadmap-card">
+      <h3>Next: fresh-filing detection</h3>
+      <p>New 990s become public on a rolling basis. The pipeline can re-pull the filing index periodically, diff each foundation's newest filing against its history, and surface manager changes the week the filing lands rather than whenever someone looks. Same data, standing freshness.</p>
+    </div>
+  </div>
+</section>
+
+<section class="method-wrap" id="method">
+  <div class="method-box">
+    <div class="method-kicker">Method: what this is, and what it isn't</div>
+    <h2>Three layers, each labeled with its evidence</h2>
+    <p><b>Where this comes from.</b> Every row traces to public IRS filings: Part VII Section B contractor disclosures (990) or Part VIII (990-PF) for named managers; Part VII Section A officer and trustee lists for decision-makers; Part IX investment-management fee lines, Part X / Part II balance sheets, and investment income lines for the scoring variables. The monitor adds verified public web sources: trade-press RSS feeds whose terms permit polling, foundation and association pages fetched once daily with ordinary politeness. Sources whose terms prohibit automated access (one major trade publication, LinkedIn, job boards) are deliberately not scraped, stated here plainly.</p>
+    <p><b>How the readiness score earns its numbers.</b> Each variable carries an evidence tier, and the tiers moved as the data deepened: after a 1,537-filing history backfill brought every foundation's full available filing record into the corpus, the local backtest's early 2.7x underperformance signal did not hold (the flag now fires on too few filing-pairs to validate or refute anything locally). So the honest statement is this: sustained underperformance versus size peers is weighted on the published research (Goyal-Wahal 2008 and successors, using a 990-derived return method with published precedent), with our own backtest inconclusive at current sample size, and this page will say so until the sample grows. Verified by industry data, not yet observable in our window: provider mergers and acquisitions (survey data says ownership change at the incumbent is the leading non-performance trigger; the monitor watches for these events). Tested and found wanting, so zero-weighted: a fee-ratio outlier variable and a leadership-turnover variable showed no predictive lift; they are computed and shown, but count for nothing until better evidence arrives. Inertia markers (bank-trust arrangements, extreme cash allocations) actually predicted FEWER switches, so they appear as opportunity context, never as switch propensity. Structural lock-in dampens everything multiplicatively: the clearest case, a foundation whose "manager" is the founder's own family office, is scored as very unlikely to shop no matter what else fires.</p>
+    <p><b>What "tenure" and "cadence read" mean.</b> Unchanged from the first pass: a "recent change" requires a verified change of firm, not paperwork variance. Two verified non-changes are excluded by name (a 2021 industry rebrand; a 2022 family-office restructuring), and a parsing artifact that once fabricated two false changes was found and fixed by reading raw filings. Fiduciary best practice treats 3-5 years as a normal re-bid cycle, which is what the tenure-overdue flag measures against.</p>
+    <p><b>The honest limits.</b> Form 990 filings lag 10-18 months, so filing-derived facts are conditions, not events; only the monitor layer is fresh. Contractor disclosure has two blind spots: the $100K compensation threshold, and the five-highest-paid cap, which can crowd an investment manager off the list of a large operating organization (at least one billion-dollar foundation in the whitespace segment reports investment-management fees with no manager named, almost certainly this effect). Decision-maker rosters carry their filing year; boards change between filings. A foundation absent from these lists may still have a manager this method cannot see. And a readiness score is a screen, not a verdict: it ranks where attention is likely to pay off, it does not predict any single foundation's behavior.</p>
+  </div>
+</section>
+
+<footer>
+  <span id="footer-credit">Prepared by Jonathan Lin Davis</span>
+</footer>
+
+<script>
+const LEADS=[
+  {"ein":"364336415","org_name":"Michael & Susan Dell Foundation","current_manager":"DFO Management LLC","current_manager_compensation":5000000,"current_tenure_years":5,"cadence_read":"entrenched","score":11,"score_detail":"Locked: manager is the founder's own family office (verified). Tenure flag fires, but the dampener rules.","special_note":"Named contractor renamed MSD Partners LP to DFO Management LLC in 2023: verified as Michael Dell's own family office restructuring, not a manager search. A second concurrent manager, Goldman Sachs Asset Management ($1.8M), is also named in the 2024 filing.","people":[{"n":"Michael S Dell","t":"President/Director"},{"n":"Janet Mountain","t":"Exec Director/Secretary"},{"n":"Marc Lisker","t":"Treasurer"}],"roster_year":2024},
+  {"ein":"741934031","org_name":"Austin Community Foundation","current_manager":"Forsyth Street Advisors","current_manager_compensation":115000,"current_tenure_years":0,"cadence_read":"recent_change","previous_manager":"Fiducient Advisors","change_year":2023,"score":0,"score_detail":"Just switched: no propensity flags fire, correctly. The lead here is learning who won and why, and the next cycle.","people":[{"n":"Susan Moore","t":"Chair"},{"n":"Darrell Bazzell","t":"Vice Chair"},{"n":"Jessica Weaver","t":"Secretary & Treasurer"}],"roster_year":2024},
+  {"ein":"746056794","org_name":"University Of Texas Law School Foundation","current_manager":"Prime Bucholz","current_manager_compensation":371680,"current_tenure_years":4,"cadence_read":"recent_change","previous_manager":"Wallace Capital Management","change_year":2019,"score":0,"score_detail":"Mid-relationship: 4 years into the current manager, approaching but not past the 3-5 year review norm.","people":[{"n":"Susan L Blount","t":"Chair"},{"n":"Hilda C Galvan","t":"Vice Chair"},{"n":"T Del Williams","t":"Vice Chair"}],"roster_year":2023},
+  {"ein":"746074796","org_name":"Texas Bar Foundation","current_manager":"Luther King Capital Mgmt","current_manager_compensation":179317,"current_tenure_years":10,"cadence_read":"entrenched","score":15,"score_detail":"Overdue by the 3-5 year fiduciary re-bid norm, with NO structural lock-in markers: the cleanest displacement profile on this page.","people":[{"n":"Baillie Milliken","t":"Exec Director"},{"n":"Carlos Eduardo Cardenas","t":"Chair"},{"n":"Sylvia Cardona","t":"Sec/Treasurer"}],"roster_year":2024},
+  {"ein":"741982979","org_name":"Texas State University Development Foundation","current_manager":"Cambridge Associates LLC","current_manager_compensation":303089,"current_tenure_years":8,"cadence_read":"entrenched","score":11,"score_detail":"8-year tenure, unstaffed trustee-run board (dampener). Note the roster: it names an Investment Committee Chair directly.","people":[{"n":"Christopher Mitchell","t":"Chair"},{"n":"Steven Harvey","t":"Investment Committee Chair"},{"n":"Venton Lee Doughtie III","t":"Treasurer"}],"roster_year":2024}
+];
+const WHITESPACE=[
+  {"org_name":"St Davids Foundation","amt":1373514230,"seg":"fees_not_named","detail":"One of the largest health foundations in Texas. Reports investment-management fees with no manager named in its top-five contractor list: the crowding-out blind spot in person, and a conversation-starter, not a data gap.","people":"Shannon Ratliff (Chair), Craig Hester (Secretary), 30-member board","yr":2023},
+  {"org_name":"Trellis Foundation","amt":499011788,"seg":"fees_not_named","detail":"Half a billion in investable assets, education-focused, fees reported but no manager named in filings. Same blind spot, same opening.","people":"Dora Ann Verde (Chair), Alma Garcia (Vice Chair), 11-member board","yr":2023},
+  {"org_name":"Lyndon Baines Johnson Foundation","amt":278496175,"seg":"no_manager_visible","detail":"$278M with contractor rows showing only accounting and administrative services across five cached filing years. A 35-member civic board and no visible professional manager.","people":"Mark K Updegrove (President and CEO), Larry E Temple (Chairman)","yr":2023},
+  {"org_name":"Charitable Assets","amt":196913867,"seg":"no_manager_visible","detail":"$197M, trustee of record is an institution (NCF Giving Inc), no human officers listed and no manager named. Bank-trust-style administration: an inertia profile, flagged as such rather than oversold.","people":"NCF Giving Inc (Trustee)","yr":2023},
+  {"org_name":"Musk Foundation","amt":136618089,"seg":"no_manager_visible","detail":"$137M private non-operating foundation, three-person insider board, contractor rows show only accounting and legal. No manager visible in filings; a family-office arrangement is plausible but unverified, stated as exactly that.","people":"Elon Musk (President), Jared Birchall (Secretary and Treasurer)","yr":2024}
+];
+const MONITOR={sources:12,feeds:3,pages:9,mode:"alerting (soak passed clean)",specimens:[
+  {cls:"rfp_opened","text":"A watched foundation or association page posts a request for proposals for investment-management or OCIO services. Carries the posting URL and the exact new text."},
+  {cls:"search_announced","text":"A trade-press feed reports a named institution launching or conducting an investment-manager search. Carries the article link and headline."},
+  {cls:"manager_hired","text":"A hire or selection is reported, closing a search. Feeds the cadence history: a hire today predicts the next review window."},
+  {cls:"incumbent_firm_event","text":"A manager firm named in this corpus is acquired, merges, or loses key people. Industry data ranks this the top non-performance trigger; every foundation naming that firm gets flagged the same day."},
+  {cls:"board_changed","text":"A watched foundation board or staff page changes its people content. Updates the decision-maker roster and fires the turnover signal."}
+]};
+const TOTAL_NAMED=11;
+const HIDDEN_COMP_RANGE="$122K to $506K";
+const TOTAL_PROFILED=223;
+
+function esc(s){return(s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function money(n){return n==null?'not disclosed':'$'+Number(n).toLocaleString();}
+function moneyShort(n){return n>=1e9?'$'+(n/1e9).toFixed(2)+'B':'$'+Math.round(n/1e6)+'M';}
+
+function cadenceDetail(l){
+  if(l.special_note){return esc(l.special_note);}
+  if(l.cadence_read==='recent_change'){return `Changed ${l.change_year}: ${esc(l.previous_manager)} to ${esc(l.current_manager)}.`;}
+  if(l.cadence_read==='entrenched'){return 'Same named manager across 3+ cached filing years, no change detected.';}
+  return 'Too few cached years to read a pattern either way.';
+}
+const CADENCE_META={recent_change:{label:'Recent change',cls:'recent'},entrenched:{label:'Entrenched',cls:'entrenched'},insufficient_data:{label:'Insufficient data',cls:''}};
+const SEG_LABEL={no_manager_visible:'No manager visible',fees_not_named:'Fees, manager not named'};
+
+function render(){
+  document.getElementById('m-profiled').textContent=TOTAL_PROFILED;
+  document.getElementById('m-shown').textContent=LEADS.length;
+  document.getElementById('m-hidden').textContent=TOTAL_NAMED-LEADS.length;
+  document.getElementById('m-hidden-range').textContent=HIDDEN_COMP_RANGE;
+
+  document.getElementById('leads-table').innerHTML=LEADS.map(l=>{
+    const tenure=l.current_tenure_years===0?'< 1 yr':l.current_tenure_years+' yr'+(l.current_tenure_years===1?'':'s');
+    const m=CADENCE_META[l.cadence_read];
+    const ppl=l.people.map(p=>`<b>${esc(p.n)}</b> (${esc(p.t)})`).join(', ');
+    return `<tr>
+      <td><span class="org-name">${esc(l.org_name)}</span><span class="ein">EIN ${esc(l.ein)}</span></td>
+      <td>${esc(l.current_manager)||'not named'}<span class="cadence-detail">${money(l.current_manager_compensation)} most recent</span></td>
+      <td class="comp">${tenure}</td>
+      <td><span class="score-num${l.score>=15?' hot':''}">${l.score}</span></td>
+      <td><span class="cadence-pill ${m.cls}">${m.label}</span><span class="cadence-detail">${cadenceDetail(l)}</span><span class="score-detail">${esc(l.score_detail)}</span></td>
+      <td><span class="people-line">${ppl}<br>as of FY${l.roster_year} filing</span></td>
+    </tr>`;
+  }).join('');
+  document.getElementById('cadence-note').textContent='2 of these 5 show a real, verified manager change in the cached filing history (Austin Community Foundation, UT Law School Foundation), confirmed by reading the raw filing text directly. A third case (Dell Foundation) initially looked like a change but traces to a verified 2022 family-office restructuring, so it reads as entrenched, and its readiness score is dampened for the same reason.';
+
+  document.getElementById('ws-grid').innerHTML=WHITESPACE.map(w=>`
+    <div class="ws-card">
+      <h3>${esc(w.org_name)}</h3>
+      <span class="ws-amt">${moneyShort(w.amt)} investable</span>
+      <span class="ws-tag">${SEG_LABEL[w.seg]}</span><span class="ws-tag">FY${w.yr}</span>
+      <p>${esc(w.detail)}</p>
+      <p><b>Contacts:</b> ${esc(w.people)}</p>
+    </div>`).join('');
+
+  document.getElementById('sig-status').innerHTML=
+    `<div class="sig-stat"><b>${MONITOR.sources}</b><span>sources watched</span></div>`+
+    `<div class="sig-stat"><b>${MONITOR.feeds}</b><span>trade-press feeds</span></div>`+
+    `<div class="sig-stat"><b>${MONITOR.pages}</b><span>pages diffed daily</span></div>`+
+    `<div class="sig-stat"><b>daily</b><span>run cadence</span></div>`+
+    `<div class="sig-stat"><b>${esc(MONITOR.mode)}</b><span>current mode</span></div>`;
+  document.getElementById('specimens').innerHTML=MONITOR.specimens.map(s=>`
+    <div class="specimen"><span class="spec-class">${esc(s.cls)} · specimen</span><p>${esc(s.text)}</p></div>`).join('');
+}
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,3839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Concordance for Measure</title>
+<meta name="description" content="Concordance, prepared for Measure: the people who govern foundations that already fund this work, and whether anyone on the board can reach them. Unlisted; shared with Measure directly." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/png" href="Assets/concordance-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=8f55469b15">
+<style>
+a{color:var(--accent)}
+
+.hero{padding:3.2rem 0 2.2rem;border-bottom:1px solid var(--rule)}
+.hero .sub{font-size:20px;color:var(--wash);margin:0 0 1.4rem;max-width:none}
+
+
+.section{padding:2.6rem 0;border-bottom:1px solid var(--rule-soft)}
+.section-head p{color:var(--wash);font-size:.98rem;margin:0;max-width:none}
+
+.note{background:var(--well);border-left:3px solid var(--wash);padding:1rem 1.2rem;font-size:.93rem;color:var(--ink);margin:1.2rem 0}
+.note.warn{border-left-color:var(--urgent)}
+.note b{font-weight:700}
+
+
+.fcard{border:1px solid var(--rule);background:var(--well);margin-bottom:1.1rem}
+.fcard-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:1rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
+.fcard-head h3{margin:0;font-size:25px;font-weight:700;flex:1;min-width:220px;overflow-wrap:anywhere}
+.tier{font-family:var(--serif);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;padding:.26rem .55rem;border:1px solid currentColor;white-space:nowrap;font-weight:700}
+.tier-strong{color:var(--ok)}
+.tier-moderate{color:var(--accent)}
+.tier-emerging{color:var(--warn)}
+.fcard-body{padding:1rem 1.2rem;min-width:0}
+.fmeta{font-family:var(--serif);font-size:17.5px;color:var(--wash);margin-bottom:.9rem;font-weight:700}
+
+.lbl{font-family:var(--serif);font-size:15px;letter-spacing:.01em;text-transform:none;color:var(--wash);margin:1rem 0 .5rem;font-style:italic;font-weight:400}
+.ev{border-left:2px solid var(--rule);padding:.45rem 0 .45rem .8rem;margin-bottom:.6rem;font-size:17.5px;overflow-wrap:anywhere}
+.ev .r{font-weight:600}
+.ev .amt{font-family:var(--mono);color:var(--ink)}
+.ev .p{color:var(--wash);font-size:.85rem}
+.ev .terms{font-family:var(--serif);font-size:15px;color:var(--accent);font-style:italic;font-weight:400;text-transform:none;letter-spacing:.01em}
+
+.people{display:flex;flex-wrap:wrap;gap:.45rem}
+.person{font-size:.85rem;border:1px solid var(--rule);padding:.3rem .6rem;background:var(--paper)}
+.person .t{font-family:var(--serif);font-size:15px;color:var(--wash);text-transform:none;letter-spacing:.01em;font-style:italic;font-weight:400}
+
+/* Part XV application-status chip: quieter than the tier chip on purpose -- it reports a
+   filed fact, not a ranking. One chip per card, always, provenance year in the text. */
+.pxv{font-family:var(--serif);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:.26rem .55rem;border:1px solid var(--rule);white-space:nowrap;font-weight:400;color:var(--wash);background:var(--paper)}
+.pxv-closed{color:var(--urgent);border-color:currentColor;opacity:.8}
+.pxv-open{color:var(--ok);border-color:currentColor;opacity:.8}
+.pxv-notstated{border-style:dashed}
+.pxv-nodata{border-style:dotted;font-style:italic;text-transform:none;letter-spacing:.01em}
+
+.pxv-more{margin:.2rem 0 1rem;border:1px solid var(--rule);background:var(--paper)}
+.apack{border:1px solid var(--rule);border-left:3px solid var(--accent);background:var(--paper);padding:.8rem 1rem;margin:.2rem 0 1rem}
+.apack-h{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--wash);margin-bottom:.4rem}
+.apack-item{font-size:.92rem;margin:.3rem 0;overflow-wrap:anywhere}
+.apack-item b{font-weight:600}
+.apack-note{color:var(--wash);font-size:.85rem}
+
+.pxv-more>summary{cursor:pointer;font-family:var(--serif);font-size:15px;font-style:italic;color:var(--wash);padding:.5rem .8rem}
+.pxv-more[open]>summary{border-bottom:1px solid var(--rule-soft)}
+.pxv-q{padding:.4rem .8rem .8rem;font-size:.9rem}
+.pxv-q .qlbl{font-family:var(--serif);font-size:14px;font-style:italic;color:var(--wash);margin:.5rem 0 .15rem}
+.pxv-q .qtxt{overflow-wrap:anywhere}
+
+.path{border-left:3px solid var(--ok);background:var(--paper);padding:.7rem .9rem;margin-bottom:.6rem;font-size:15px;overflow-wrap:anywhere}
+.path .conf{font-family:var(--serif);font-size:15px;letter-spacing:.01em;text-transform:none;color:var(--wash);font-style:italic;font-weight:400}
+.path .conf.low{color:var(--urgent)}
+.finding{border:1px solid var(--rule);background:var(--well);padding:1.1rem 1.2rem;font-size:15px}
+.finding b{font-weight:700}
+
+@media(max-width:640px){.hero h1{font-size:30px}.fcard-head h3{min-width:0;flex-basis:100%}.pxv{white-space:normal}.tier{white-space:normal}}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="manifest"><div class="manifest-in">
+  <span class="brand"><b>Concordance</b> for Measure</span>
+  <span class="grow"></span>
+  <nav><a href="measure">All Measure tools &#8594;</a></nav>
+</div></div>
+
+<div class="hero"><div class="wrap">
+  <div class="badges">
+    <span class="badge badge-real">Real organization &middot; real foundations &middot; real trustees</span>
+    <span class="badge badge-year">Filings: tax year 2023</span>
+  </div>
+  <h1>Concordance</h1>
+  <p class="sub">The people who govern the foundations that already fund work like Measure's, and whether anyone on the board can reach them.</p>
+  <p class="note">Prepared for <b>Measure</b> (wemeasure.org). Almanac finds the institutions. Concordance finds the humans inside them. It reads the officers, directors and trustees each private foundation lists on its own Form 990-PF, sets them against what that foundation actually granted, and shows the grants that justify every match. <b>It does not estimate anyone's wealth.</b></p>
+</div></div>
+
+<div class="wrap">
+
+<section class="section" id="about">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Start here</span>
+      <h2>What this page is</h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>Every foundation, trustee, grant and dollar amount below is real, and all of it comes from public IRS filings. This page was prepared for <b>Measure</b> and is shared with Measure directly; it is not listed or indexed anywhere.</p>
+    </div>
+
+    <div class="stat-row" id="stats"></div>
+
+    <div class="note warn">
+      <b>Board data is as last filed, not as it stands today.</b> Every person named here comes from a Form 990-PF for tax year 2023, and those filings reach the public 12 to 24 months after the fact. Boards turn over in that window. <b>Confirm anyone is still serving before you act on their name.</b> The same caveat applies to Measure's own board roster below, which comes from filings, not from the organization's current records.
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="paths">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">The access half</span>
+      <h2>Introduction paths</h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>A <b>direct</b> path is a person who sits on Measure's board and a foundation's board at once. A <b>shared</b> path is a Measure board member who sits on some third board alongside a foundation trustee. Names are matched conservatively (exact match after normalization, no fuzzy guessing), and every path carries a confidence label; a short, common name shared across several boards is labelled rather than asserted.</p>
+    </div>
+
+    <div class="lbl">The board this was checked against: Measure directors as filed</div>
+    <div class="people" id="board"></div>
+
+    <div id="paths-out" style="margin-top:1.2rem"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="foundations">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Ranked by evidence</span>
+      <h2>Foundations that already fund this work <span class="fold-count" data-count-sel="#matches > .fcard" data-count-label="foundations"></span></h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>Ranked by the evidence, not by an opaque score. Each foundation below has given to organizations doing work like Measure's, and the specific grants that establish it are shown underneath. Read the grants before you read the ranking.</p>
+    </div>
+    <div id="matches"></div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<section class="method-wrap" id="method">
+  <div class="method-box">
+    <div class="method-kicker">Method</div>
+    <h2>How this was built, and what it cannot tell you</h2>
+    <p><b>Where this comes from.</b> Trustees come from the repeatable officer, director and trustee block that every private foundation files on its Form 990-PF. The IRS instructs filers not to put home addresses in that block, so the dataset carries none. Grants come from the same filings, itemized by recipient, amount and stated purpose. A foundation appears here only if it has both, which is why the universe is the size it is and no larger.</p>
+    <p><b>How the introduction paths were checked.</b> Measure's own directors, as listed on filings, were matched against every trustee in the universe and against an Austin-scoped board-interlock graph built from the same public filings. Matching is deliberately conservative: exact match on a normalized name, no nickname or initial expansion. That means a person filed under two spellings can be missed: the check under-finds rather than invents. A result of zero paths is therefore a real finding about the filed record, not proof that no relationship exists in the world.</p>
+    <p><b>What Concordance will not do.</b> It does not estimate wealth, and it never will. There is no capacity score, no net-worth model, and no political-giving data anywhere in it. Commercial prospect-research tools are built on licensed wealth data that is not public, and a wealth guess dressed up as a number is worse than no number at all. This tool ranks affinity and access, which are matters of public record, and it stops there.</p>
+    <p><b>What it cannot tell you.</b> The filings are a year or more old, and a board can turn over in that time. A foundation that funds your cause is not therefore open to you, and many private foundations accept no unsolicited proposals at all. Treat every row as a lead to verify, not a conclusion.</p>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <p>Concordance for Measure &middot; built on public IRS Form 990-PF filings &middot; generated 2026-07-17.</p>
+  <p>Prepared for Measure by Jonathan Lin Davis. Unlisted; shared with Measure directly.</p>
+  <p class="footer-improvements-wrap"><a class="footer-improvements" href="https://jonathanlindavis.com/improvementlog.html">Improvement log</a></p>
+</div></footer>
+
+<script>
+/* Self-contained client page. The data below IS the page. */
+const C = {
+ "client": {
+  "slug": "measure",
+  "name": "Measure",
+  "ein": "822372196",
+  "state": "TX",
+  "city": "AUSTIN"
+ },
+ "universe": {
+  "foundations_with_trustees": 129,
+  "foundations_with_grant_detail": 171,
+  "concordance_universe": 77,
+  "individuals": 817
+ },
+ "tax_year": "2023",
+ "client_board": [
+  [
+   "Chastiny Brown",
+   ""
+  ],
+  [
+   "Clayton Robbins",
+   ""
+  ],
+  [
+   "Cynthia Simons",
+   ""
+  ],
+  [
+   "Jameila Styles",
+   ""
+  ],
+  [
+   "Jazmyn Ferguson",
+   ""
+  ],
+  [
+   "Julianne Hanckel",
+   ""
+  ],
+  [
+   "Julio Cotto",
+   "Director"
+  ],
+  [
+   "Katrina Montgomery",
+   "Director"
+  ],
+  [
+   "Robert Corian",
+   ""
+  ],
+  [
+   "Rona Walton",
+   ""
+  ]
+ ],
+ "matches": [
+  {
+   "ein": "756029882",
+   "foundation": "The Priddy Foundation",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 31,
+   "n_in_client_state": 25,
+   "total_itemized_grants": 136,
+   "evidence": [
+    {
+     "recipient": "Texas Rural Funders",
+     "city": "Austin",
+     "state": "TX",
+     "amount": 220000,
+     "purpose": "Rural Capacity Building 2024 & 2025",
+     "matched_terms": [
+      "capacity building"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "Wichita Falls Area Food Bank",
+     "city": "Wichita Falls",
+     "state": "TX",
+     "amount": 193248,
+     "purpose": "Technology Community Impact Program II 2022 - 2025",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "River Bend Nature Works",
+     "city": "Wichita Falls",
+     "state": "TX",
+     "amount": 182950,
+     "purpose": "Technology Community Impact Program II 2022 - 2025",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "Decatur Library Foundation",
+     "city": "Decatur",
+     "state": "TX",
+     "amount": 162903,
+     "purpose": "Rural Library Technology Replacement/Enhancement CIP 2022",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "Dr Shelley S Sweatt",
+     "title": "President/CEO"
+    },
+    {
+     "name": "David Wolverton",
+     "title": "Trustee Emeritus"
+    },
+    {
+     "name": "Berneice R Leath",
+     "title": "Trustee Emerita"
+    },
+    {
+     "name": "Debbie Barrow",
+     "title": "Trustee"
+    },
+    {
+     "name": "Dr David Flack",
+     "title": "Trustee"
+    },
+    {
+     "name": "Margaret Henry",
+     "title": "Trustee"
+    },
+    {
+     "name": "James Johnson",
+     "title": "Trustee"
+    },
+    {
+     "name": "Robert Britt Milstead",
+     "title": "Trustee"
+    },
+    {
+     "name": "Michael Stanford",
+     "title": "Trustee"
+    },
+    {
+     "name": "Bert Huff",
+     "title": "Trustee"
+    },
+    {
+     "name": "Max Vordenbaum",
+     "title": "Trustee"
+    },
+    {
+     "name": "Walter Priddy DOD 7779",
+     "title": "Foundation Manager"
+    },
+    {
+     "name": "Ashley Priddy DOD 3584",
+     "title": "Foundation Manager"
+    },
+    {
+     "name": "Swannanoa Priddy DOD 8780",
+     "title": "Foundation Manager"
+    },
+    {
+     "name": "Robert T Priddy DOD 1615",
+     "title": "Foundation Manager"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "Grant application should be made with the Foundation's grant application form that is available on the Foundation's web site www.priddyfdn.org. The following information should be submitted with the completed grant application: 1. Copy of the requesting organization's 501(c)(3) tax-exempt letter from the IRS. 2. A list of officers and directors. 3. A detailed project budget that includes administration costs, salaries, projected overhead expenses, etc. 4. A copy of the organization's most recent...",
+    "deadlines": "Two meetings per year are held.Deadlines are February 1st & August 1st.See the website for details.",
+    "restrictions": "Organizations receiving grants must be tax-exempt 501(c)(3) entities. The primary grant categories are human services, education and the arts and health. The Foundation's service area encompasses 18 counties in North Texas and 6 counties in southern Oklahoma.",
+    "phone": "9407238720"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "Texas Rural Funders",
+      "amount": 220000
+     }
+    ],
+    "local_more": 0,
+    "local_total": 1,
+    "grant_size": {
+     "n": 31,
+     "median": 85139,
+     "min": 12441,
+     "max": 457297
+    }
+   }
+  },
+  {
+   "ein": "741403105",
+   "foundation": "The Moody Foundation",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 13,
+   "n_in_client_state": 13,
+   "total_itemized_grants": 257,
+   "evidence": [
+    {
+     "recipient": "COMP-U-DOPT INC",
+     "city": "Houston",
+     "state": "TX",
+     "amount": 341984,
+     "purpose": "Assistance expanding access to technology within Galveston community.",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "FAMILY ELDERCARE INC",
+     "city": "Austin",
+     "state": "TX",
+     "amount": 225000,
+     "purpose": "Assistance funding nonprofit Advocacy & Services for LGBT Elders also known as SAGE",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "Holocaust Museum Houston",
+     "city": "Houston",
+     "state": "TX",
+     "amount": 150000,
+     "purpose": "The Kinsey Collection: African American Art and History",
+     "matched_terms": [
+      "african american"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "Children's Advocacy Center for North Texas Inc",
+     "city": "Lewisville",
+     "state": "TX",
+     "amount": 100000,
+     "purpose": "Assistance increasing capacity for delivering mandated services to child abuse victims",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "Ross R Moody",
+     "title": "Trustee/Vice Chair"
+    },
+    {
+     "name": "Frances A Moody-Dahlberg",
+     "title": "Trustee/Chair"
+    },
+    {
+     "name": "Elizabeth Moody",
+     "title": "Trustee/Secretary/Treasurer"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "Grant applications should be submitted at Moodyf.org. Moody Scholars program applicants should visit Moodyf.org for eligibility and application details.",
+    "deadlines": "Applications accepted on ongoing basis. Must be received 11/30 of student's high school senior year.",
+    "restrictions": "Grant awards must be expended in Texas. See website(s) above for details regarding eligibility and application instructions for grants and scholarships.",
+    "phone": "4097971500"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "University of Texas at AustinDept of Intercollegiate Athletics",
+      "amount": 40000000
+     },
+     {
+      "name": "University of Texas at AustinMoody College of Communication",
+      "amount": 350000
+     },
+     {
+      "name": "Austin Community Foundation For The Capital Area",
+      "amount": 260000
+     }
+    ],
+    "local_more": 52,
+    "local_total": 55,
+    "grant_size": {
+     "n": 13,
+     "median": 50000,
+     "min": 7500,
+     "max": 341984
+    }
+   }
+  },
+  {
+   "ein": "746036466",
+   "foundation": "The Brown Foundation Inc",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 12,
+   "n_in_client_state": 10,
+   "total_itemized_grants": 703,
+   "evidence": [
+    {
+     "recipient": "PROUNITAS INC",
+     "city": "Houston",
+     "state": "TX",
+     "amount": 225000,
+     "purpose": "ProUnitas 3-Year Sustainability & Capacity Building Capital Campaign and Operating Support",
+     "matched_terms": [
+      "capacity building"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "HOUSTON AREA COMMUNITY SERVICES INC",
+     "city": "Houston",
+     "state": "TX",
+     "amount": 100000,
+     "purpose": "Health Equity",
+     "matched_terms": [
+      "health equity"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "Foster Care Advocacy Center",
+     "city": "Houston",
+     "state": "TX",
+     "amount": 75000,
+     "purpose": "Operating Support",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "CENTER FOR AFRICAN AMERICAN MILITARY HISTORY",
+     "city": "Houston",
+     "state": "TX",
+     "amount": 50000,
+     "purpose": "Operating Support",
+     "matched_terms": [
+      "african american"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "William N Mathis",
+     "title": "Chair/Trustee"
+    },
+    {
+     "name": "Isabel S Lummis",
+     "title": "Pres/Trustee"
+    },
+    {
+     "name": "Lousia S Sarofim",
+     "title": "Sec/Trustee"
+    },
+    {
+     "name": "Ralph Abendshein",
+     "title": "Trustee"
+    },
+    {
+     "name": "Ryan O'Connor",
+     "title": "Trustee"
+    },
+    {
+     "name": "Holbrook F Dorn",
+     "title": "Trustee"
+    },
+    {
+     "name": "Maria Mathis-Kruser",
+     "title": "Trustee"
+    },
+    {
+     "name": "Caroline Negley",
+     "title": "Trustee"
+    },
+    {
+     "name": "Elisa Pye",
+     "title": "Trustee"
+    },
+    {
+     "name": "Christopher B Sarofim",
+     "title": "Trustee"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "Grant applicants should refer to the foundation's website for information regarding the application process. i. https://www.brownfoundation.org/ ii. https://www.brownfoundation.org/about/#history iii. https://www.brownfoundation.org/grantmakingareas/#areas iv. https://www.brownfoundation.org/apply/",
+    "deadlines": "https://www.brownfoundation.org/grant-seekers/",
+    "restrictions": "https://www.brownfoundation.org/grant-seekers/",
+    "email": "bfi@brownfoundation.org",
+    "phone": "7135236867"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "Texas Defender Service",
+      "amount": 200000
+     },
+     {
+      "name": "The Holdsworth Center",
+      "amount": 75000
+     },
+     {
+      "name": "Merlin Tuttle's Bat Conservation Inc",
+      "amount": 55000
+     }
+    ],
+    "local_more": 13,
+    "local_total": 16,
+    "grant_size": {
+     "n": 12,
+     "median": 16250,
+     "min": 5000,
+     "max": 225000
+    }
+   }
+  },
+  {
+   "ein": "364336415",
+   "foundation": "Michael & Susan Dell Foundation",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 20,
+   "n_in_client_state": 7,
+   "total_itemized_grants": 692,
+   "evidence": [
+    {
+     "recipient": "Austin Ed Fund",
+     "city": "Austin",
+     "state": "TX",
+     "amount": 465737,
+     "purpose": "Leveraging Data Analysis and Navigators for Enhanced Student Performance",
+     "matched_terms": [
+      "data"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "Austin Ed Fund",
+     "city": "Austin",
+     "state": "TX",
+     "amount": 397349,
+     "purpose": "Driving student performance and process efficiency through data",
+     "matched_terms": [
+      "data"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "University of Texas at Austin",
+     "city": "Austin",
+     "state": "TX",
+     "amount": 332398,
+     "purpose": "Building a Health Data Platform in Central Texas",
+     "matched_terms": [
+      "data"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "CASA of Travis County Inc",
+     "city": "Austin",
+     "state": "TX",
+     "amount": 206000,
+     "purpose": "Strengthening Child Advocacy, Family Engagement, and Safety",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "Michael S Dell",
+     "title": "President/Director"
+    },
+    {
+     "name": "Susan L Dell",
+     "title": "1st VP/Director"
+    },
+    {
+     "name": "Dr Alexander Dell",
+     "title": "2nd VP/Director"
+    },
+    {
+     "name": "Marc Lisker",
+     "title": "Treasurer/Assistant Secretary"
+    },
+    {
+     "name": "Janet Mountain",
+     "title": "Exec Director/Sec/Assistant Treasurer"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "Online application",
+    "deadlines": "Please refer to the applicable websites",
+    "restrictions": "Please refer to dell.org",
+    "phone": "5126005500"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "University of Texas at Austin",
+      "amount": 7465929
+     },
+     {
+      "name": "Mobile Loaves & Fishes Inc",
+      "amount": 5974934
+     },
+     {
+      "name": "University of Texas at Austin",
+      "amount": 4443302
+     }
+    ],
+    "local_more": 78,
+    "local_total": 81,
+    "grant_size": {
+     "n": 20,
+     "median": 180200,
+     "min": 5000,
+     "max": 1027490
+    }
+   }
+  },
+  {
+   "ein": "756007565",
+   "foundation": "HILLCREST FOUNDATION",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 7,
+   "n_in_client_state": 7,
+   "total_itemized_grants": 62,
+   "evidence": [
+    {
+     "recipient": "CISTERCIAN PREPARATORY SCHOOL",
+     "city": "IRVING",
+     "state": "TX",
+     "amount": 150000,
+     "purpose": "FORMATION BEYOND THE CLASSROOM: ENKINDLING CHARACTER AND LEADERSHIP THROUGH ATHLETICS, THE ARTS, TECHNOLOGY AND FAITH - CONSTRUCT NEW THEATER",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "DALLAS HISTORICAL SOCIETY HALL OF STATE FAIR PARK",
+     "city": "DALLAS",
+     "state": "TX",
+     "amount": 150000,
+     "purpose": "TECHNOLOGY INFRASTRUCTURE UPDATE",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "DALLAS CHILDREN'S ADVOCACY CENTER",
+     "city": "DALLAS",
+     "state": "TX",
+     "amount": 100000,
+     "purpose": "DCAC: ACCESSIBILITY IMPROVEMENT PROJECTS",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "Children's Advocacy Center for North Texas Inc",
+     "city": "LEWISVILLE",
+     "state": "TX",
+     "amount": 50000,
+     "purpose": "INSTALLATION OF A NEW HVAC SYSTEM IN HEADQUARTERS FACILITY",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "WW CARUTH III",
+     "title": "CO-TRUSTEE"
+    },
+    {
+     "name": "D HAROLD BYRD III",
+     "title": "CO-TRUSTEE"
+    },
+    {
+     "name": "SANDRA ESTESS",
+     "title": "CO-TRUSTEE"
+    },
+    {
+     "name": "ALAN J PERKINS",
+     "title": "CO-TRUSTEE"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "APPLY ONLINE AT WWW.BANKOFAMERICA.COM/PHILANTHROPIC/SEARCH-FOR-GRANTS. REQUIRED INFORMATION INCLUDES STATING HISTORY AND GENERAL PURPOSE OF ORGANIZATION WITH A COPY OF INTERNAL REVENUE SERVICE EXEMPTION.",
+    "deadlines": "FEBRUARY 28, JULY 31, AND NOVEMBER 30.",
+    "restrictions": "ORGANIZATIONS MUST BE LOCATED IN THE STATE OF TEXAS AND THE PURPOSE OF THE GRANT MUST BE FOR RELIEF OF POVERTY OR FURTHERANCE OF EDUCATION OR HEALTH.",
+    "email": "TX.PHILANTHROPIC@BOFA.COM",
+    "phone": "2142092396"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "UNIVERSITY OF TEXAS AT AUSTIN MCDONALD OBSERVATORY",
+      "amount": 100000
+     }
+    ],
+    "local_more": 0,
+    "local_total": 1,
+    "grant_size": {
+     "n": 7,
+     "median": 50000,
+     "min": 33000,
+     "max": 150000
+    }
+   }
+  },
+  {
+   "ein": "742170127",
+   "foundation": "The Cynthia & George Mitchell Foundation",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 14,
+   "n_in_client_state": 6,
+   "total_itemized_grants": 337,
+   "evidence": [
+    {
+     "recipient": "Bayou City Waterkeeper Inc",
+     "city": "Houston",
+     "state": "TX",
+     "amount": 100000,
+     "purpose": "To grow advocacy, legal action, organizing, and data-to-action frameworks for the protection of water resources and people in greater Houston",
+     "matched_terms": [
+      "advocacy",
+      "data"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "ECORISE YOUTH INNOVATIONS",
+     "city": "Austin",
+     "state": "TX",
+     "amount": 75000,
+     "purpose": "To Scale K-12 Sustainaility Program Through Data, Technology & Collaboration in Texas",
+     "matched_terms": [
+      "data",
+      "technology"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "Nia Cultural Center",
+     "city": "Galveston",
+     "state": "TX",
+     "amount": 50000,
+     "purpose": "Capacity building",
+     "matched_terms": [
+      "capacity building"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "Galveston ISD Educational Foundation Inc",
+     "city": "Galveston",
+     "state": "TX",
+     "amount": 22000,
+     "purpose": "GISD Special Initiative-Public Data Dashboard",
+     "matched_terms": [
+      "data"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "Katherine Lorenz",
+     "title": "President"
+    },
+    {
+     "name": "C Grant Mitchell",
+     "title": "Chair"
+    },
+    {
+     "name": "M Kent Mitchell",
+     "title": "Vice Chair"
+    },
+    {
+     "name": "Michelle Robinson",
+     "title": "Secretary"
+    },
+    {
+     "name": "Spiros Vassilakis",
+     "title": "Treasurer"
+    },
+    {
+     "name": "Graham Mitchell",
+     "title": "Board member"
+    },
+    {
+     "name": "Christine Mitchell",
+     "title": "Board member"
+    },
+    {
+     "name": "Sarah Mitchell",
+     "title": "Board member"
+    },
+    {
+     "name": "Cody Mitchell",
+     "title": "Board member"
+    },
+    {
+     "name": "Sheridan Lorenz",
+     "title": "Board member"
+    },
+    {
+     "name": "Mark D Mitchell",
+     "title": "Board member"
+    },
+    {
+     "name": "Katina Mitchell",
+     "title": "Board member"
+    },
+    {
+     "name": "J Kirk Mitchell",
+     "title": "Board member"
+    },
+    {
+     "name": "Adrienne Dreiss Ropp",
+     "title": "Board member"
+    },
+    {
+     "name": "Meredith Heimburger",
+     "title": "Board member"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "Grant inquiries and grant funding requests are made through the Foundation's website, www.cgmf.org.",
+    "deadlines": "N/A",
+    "restrictions": "The Foundation accepts grant requests that focus on the following initiatives: water, clean energy, sustainability science, shale sustainability, and land conservation.",
+    "email": "www.cgmf.org",
+    "phone": "7133775060"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "Save Our Springs Alliance Inc",
+      "amount": 393511
+     },
+     {
+      "name": "Austin Investigative Reporting Project",
+      "amount": 225000
+     },
+     {
+      "name": "National Wildlife Federation (Austin)",
+      "amount": 215000
+     }
+    ],
+    "local_more": 31,
+    "local_total": 34,
+    "grant_size": {
+     "n": 14,
+     "median": 26000,
+     "min": 10000,
+     "max": 100000
+    }
+   }
+  },
+  {
+   "ein": "746104592",
+   "foundation": "The Powell Foundation",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 8,
+   "n_in_client_state": 6,
+   "total_itemized_grants": 235,
+   "evidence": [
+    {
+     "recipient": "E3 Alliance",
+     "city": "Austin",
+     "state": "TX",
+     "amount": 300000,
+     "purpose": "Aligned Cradle to Career Education System: Data, research, and advocacy efforts",
+     "matched_terms": [
+      "advocacy",
+      "data"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "William Marsh Rice University - Texas Policy Lab",
+     "city": "Houston",
+     "state": "TX",
+     "amount": 300000,
+     "purpose": "Early Childhood Development and Education: Data, research, and policy initiatives",
+     "matched_terms": [
+      "data"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "Communities Foundation of Texas - Educate Texas",
+     "city": "Dallas",
+     "state": "TX",
+     "amount": 200000,
+     "purpose": "Aligned Cradle to Career Education System: Data, research, and advocacy efforts",
+     "matched_terms": [
+      "advocacy",
+      "data"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "Children at Risk",
+     "city": "Houston",
+     "state": "TX",
+     "amount": 150000,
+     "purpose": "Early Childhood Development and Education: Data, research, and policy initiatives",
+     "matched_terms": [
+      "data"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "Katherine Osborne Valdez",
+     "title": "Board President/Director"
+    },
+    {
+     "name": "Ben H Powell V",
+     "title": "VP/Assistant Treasurer/Director"
+    },
+    {
+     "name": "Charles F Caldwell",
+     "title": "Secretary/Director"
+    },
+    {
+     "name": "Harvin C Moore IV",
+     "title": "Treasurer/Director"
+    },
+    {
+     "name": "Terry Bruner",
+     "title": "Director"
+    },
+    {
+     "name": "Marian M Casey",
+     "title": "Director"
+    },
+    {
+     "name": "Thao Costis",
+     "title": "Director"
+    },
+    {
+     "name": "Katherine P Hill",
+     "title": "Director"
+    },
+    {
+     "name": "Elizabeth K Moore",
+     "title": "Director"
+    },
+    {
+     "name": "Thomas B Osborne",
+     "title": "Director"
+    },
+    {
+     "name": "Ben H Powell VI",
+     "title": "Director"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "Organizations interested in applying for a Powell Foundation grant must submit an online pre-application form. If the pre-application is advanced, the organization will be invited to submit a full application via the Powell Foundation's online Grant Portal. The Powell Foundation Board of Directors makes all final decisions about grant requests during the Spring (May) and Fall (November) Board Meetings. Organizations approved for funding must sign and return a grant agreement for disbursement. Re...",
+    "deadlines": "Refer to the website for the application process and deadlines.",
+    "restrictions": "The Powell Foundation is dedicated to catalyzing progress in public education, the arts, conservation, and human services. Funding is focused on the Foundation's geographic areas of interest in Harris, Travis, or Walker Counties, Texas. Requesting organizations must be tax-exempt under IRC 501(c)(3). This includes public charities, government organizations, and eligible supporting organizations. No grants are made to individuals, endowments, scholarship funds, private foundations, fundraising/ma...",
+    "email": "info@powellfoundation.org",
+    "phone": "7135237557"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "The University of Texas Foundation - Charles A Dana Center",
+      "amount": 597621
+     },
+     {
+      "name": "Breakthrough",
+      "amount": 493384
+     },
+     {
+      "name": "The University of Texas Foundation - The University of Texas at Austin Coll",
+      "amount": 475000
+     }
+    ],
+    "local_more": 50,
+    "local_total": 53,
+    "grant_size": {
+     "n": 8,
+     "median": 175000,
+     "min": 100000,
+     "max": 300000
+    }
+   }
+  },
+  {
+   "ein": "752137184",
+   "foundation": "THE MORRIS FOUNDATION",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 6,
+   "n_in_client_state": 5,
+   "total_itemized_grants": 102,
+   "evidence": [
+    {
+     "recipient": "PLANNED PARENTHOOD OF GREATER TEXAS",
+     "city": "DALLAS",
+     "state": "TX",
+     "amount": 160000,
+     "purpose": "TARRANT COUNTY HEALTH EQUITY FUND",
+     "matched_terms": [
+      "health equity"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "CASA OF TARRANT COUNTY INC",
+     "city": "FORT WORTH",
+     "state": "TX",
+     "amount": 110000,
+     "purpose": "CASA ADVOCACY FOR TARRANT COUNTY CHILDREN IN FOSTER CARE",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "LIGHTHOUSE FOR THE BLIND",
+     "city": "FORT WORTH",
+     "state": "TX",
+     "amount": 29900,
+     "purpose": "LIGHTHOUSE ASSISTIVE TECHNOLOGY EVALUATION CENTER (ATEC)",
+     "matched_terms": [
+      "evaluation",
+      "technology"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "CNM",
+     "city": "DALLAS",
+     "state": "TX",
+     "amount": 20000,
+     "purpose": "PROGRAM EVALUATION CONSULTING SERVICES FOR GREATER COMMUNITY IMPACT",
+     "matched_terms": [
+      "evaluation"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "ELIZABETH BRANDS",
+     "title": "PRESIDENT AND CEO"
+    },
+    {
+     "name": "LAURA LILES",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "MICHELLE PIOTROWSKI",
+     "title": "TRUSTEE"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2023"
+   },
+   "action_pack": {
+    "local_grantees": [],
+    "local_more": 0,
+    "local_total": 0,
+    "grant_size": {
+     "n": 6,
+     "median": 32450,
+     "min": 15000,
+     "max": 160000
+    }
+   }
+  },
+  {
+   "ein": "756035984",
+   "foundation": "LELAND FIKES FOUNDATION INC",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 5,
+   "n_in_client_state": 5,
+   "total_itemized_grants": 77,
+   "evidence": [
+    {
+     "recipient": "MARCH TO THE POLLS",
+     "city": "DALLAS",
+     "state": "TX",
+     "amount": 50000,
+     "purpose": "EXPANDING STUDENT CIVIC ENGAGEMENT AND EXPANDING STUDENT VOTER EMPOWERMENT PROGRAM",
+     "matched_terms": [
+      "civic engagement"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "TEXAS CIVIL RIGHTS PROJECT",
+     "city": "AUSTIN",
+     "state": "TX",
+     "amount": 50000,
+     "purpose": "GENERAL OPERATING SUPPORT",
+     "matched_terms": [
+      "civil rights"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "DALLAS EVICTION ADVOCACY CENTER",
+     "city": "DALLAS",
+     "state": "TX",
+     "amount": 45000,
+     "purpose": "GENERAL OPERATING SUPPORT",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "THE CONCILIO",
+     "city": "DALLAS",
+     "state": "TX",
+     "amount": 25000,
+     "purpose": "THE CONCILIO'S LATINO CAPACITY BUILDING PROGRAMMING",
+     "matched_terms": [
+      "capacity building"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "AMY L FIKES",
+     "title": "PRESIDENT"
+    },
+    {
+     "name": "LEE FIKES",
+     "title": "TREASURER"
+    },
+    {
+     "name": "CATHERINE F LAVIE",
+     "title": "VICE PRESIDENT"
+    },
+    {
+     "name": "BRENDAN J FIKES",
+     "title": "VICE PRESIDENT"
+    },
+    {
+     "name": "LAUREN BLITZER",
+     "title": "SECRETARY"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "TEXAS FREEDOM NETWORK EDUCATION FUND",
+      "amount": 250000
+     },
+     {
+      "name": "CENTER FOR PUBLIC POLICY PRIORITIES",
+      "amount": 125000
+     },
+     {
+      "name": "AVOW FOUNDATION FOR ABORTION ACCESS",
+      "amount": 50000
+     }
+    ],
+    "local_more": 5,
+    "local_total": 8,
+    "grant_size": {
+     "n": 5,
+     "median": 45000,
+     "min": 25000,
+     "max": 50000
+    }
+   }
+  },
+  {
+   "ein": "800870036",
+   "foundation": "RAINWATER CHARITABLE FOUNDATION",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 4,
+   "n_in_client_state": 4,
+   "total_itemized_grants": 273,
+   "evidence": [
+    {
+     "recipient": "CASA OF TARRANT COUNTY INC",
+     "city": "FORT WORTH",
+     "state": "TX",
+     "amount": 100000,
+     "purpose": "PROGRAM SUPPORT - CHILD ADVOCACY",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "CHILDREN'S ADVOCACY CENTER OF SMITH COUNTY",
+     "city": "TYLER",
+     "state": "TX",
+     "amount": 100000,
+     "purpose": "PROGRAM SUPPORT - TRAUMA INFORMED SCHOOLS",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "BOARD DEVELOPMENT SYSTEMS",
+     "city": "FORT WORTH",
+     "state": "TX",
+     "amount": 20000,
+     "purpose": "PROGRAM SUPPORT - TECHNOLOGY INTEGRATION",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "DFW ASYLUM SEEKER HOUSING NETWORK",
+     "city": "FORT WORTH",
+     "state": "TX",
+     "amount": 20000,
+     "purpose": "PROGRAM SUPPORT - CAPACITY BUILDING",
+     "matched_terms": [
+      "capacity building"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "AARON BIGBEE",
+     "title": "CIO AND INVESTMENT MANAGER"
+    },
+    {
+     "name": "JEREMY SMITH",
+     "title": "PRESIDENT AND EXECUTIVE DIRECTOR"
+    },
+    {
+     "name": "MELISSA PARRISH",
+     "title": "EXECUTIVE VP AND CFO"
+    },
+    {
+     "name": "RANDOLPH KIM",
+     "title": "CIO AND INVESTMENT MANAGER (TO 2/24/23"
+    },
+    {
+     "name": "SUSAN MONTGOMERY",
+     "title": "VP/ CONTROLLER/ TAX DIRECTOR"
+    },
+    {
+     "name": "WALTER J RAINWATER JR",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "RICHARD T RAINWATER",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "COURTNEY E RAINWATER",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "MATTHEW J RAINWATER",
+     "title": "TRUSTEE"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "UNIVERSITY OF TEXAS AT AUSTIN",
+      "amount": 163334
+     },
+     {
+      "name": "UBONGO INTERNATIONAL",
+      "amount": 125000
+     },
+     {
+      "name": "LONE STAR JUSTICE ALLIANCE",
+      "amount": 100000
+     }
+    ],
+    "local_more": 6,
+    "local_total": 9,
+    "grant_size": {
+     "n": 4,
+     "median": 60000,
+     "min": 20000,
+     "max": 100000
+    }
+   }
+  },
+  {
+   "ein": "351950691",
+   "foundation": "CENTERPOINT ENERGY FOUNDATION INC",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 4,
+   "n_in_client_state": 3,
+   "total_itemized_grants": 424,
+   "evidence": [
+    {
+     "recipient": "CENTER FOR AFRICAN AMERICAN MILITARY HISTORY",
+     "city": "HOUSTON",
+     "state": "TX",
+     "amount": 50000,
+     "purpose": "GENERAL DONATION",
+     "matched_terms": [
+      "african american"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "HOUSTON POLICE FOUNDATION",
+     "city": "HOUSTON",
+     "state": "TX",
+     "amount": 25000,
+     "purpose": "GENERAL DONATION",
+     "matched_terms": [
+      "police"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "FOUNDATION FOR INSPIRATION AND RECOGNITION OF SCIENCE AND TECHNOLOGY IN TEX",
+     "city": "SAN ANTONIO",
+     "state": "TX",
+     "amount": 7000,
+     "purpose": "GENERAL DONATION",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "DUNWOODY COLLEGE OF TECHNOLOGY",
+     "city": "MINNEAPOLIS",
+     "state": "MN",
+     "amount": 10000,
+     "purpose": "GENERAL DONATION",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "AMANDA SCHMITT",
+     "title": "PRESIDENT"
+    },
+    {
+     "name": "BRETT A JERASA",
+     "title": "ASSISTANT TREASURER"
+    },
+    {
+     "name": "MARK DEBOER",
+     "title": "TREASURER"
+    },
+    {
+     "name": "MADELEINE NEET",
+     "title": "SECRETARY"
+    },
+    {
+     "name": "JASON RYAN",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "MONICA KARUTURI",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "LYNNE HARKEL-RUMFORD",
+     "title": "DIRECTOR"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "UNIVERSITY OF TEXAS FOUNDATION",
+      "amount": 75000
+     },
+     {
+      "name": "AUSTIN HABITAT FOR HUMANITY",
+      "amount": 25000
+     },
+     {
+      "name": "ESTEAM FOUNDATION DBA VENTURELAB",
+      "amount": 15000
+     }
+    ],
+    "local_more": 0,
+    "local_total": 3,
+    "grant_size": {
+     "n": 4,
+     "median": 17500,
+     "min": 7000,
+     "max": 50000
+    }
+   }
+  },
+  {
+   "ein": "272504803",
+   "foundation": "FMH FOUNDATION",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 3,
+   "n_in_client_state": 3,
+   "total_itemized_grants": 82,
+   "evidence": [
+    {
+     "recipient": "MANOR PARK INC",
+     "city": "MIDLAND",
+     "state": "TX",
+     "amount": 300000,
+     "purpose": "TECHNOLOGY IMPROVEMENT PROJECT",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "HARMONY HOME CHILDRENS ADVOCACY CENTER",
+     "city": "ODESSA",
+     "state": "TX",
+     "amount": 40000,
+     "purpose": "GENERAL OPERATIONS",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "MIDLAND POLICE DEPARTMENT",
+     "city": "MIDLAND",
+     "state": "TX",
+     "amount": 12000,
+     "purpose": "ANGEL ARMOR FOR OFFICERS",
+     "matched_terms": [
+      "police"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "GLENN A ROGERS",
+     "title": "PRESIDENT"
+    },
+    {
+     "name": "JONI HIRES",
+     "title": "EXECUTIVE DIRECTOR"
+    },
+    {
+     "name": "LAURA MCCABE",
+     "title": "SECRETARY"
+    },
+    {
+     "name": "LAURA BUCKNER",
+     "title": "TREASURER"
+    },
+    {
+     "name": "TEVIS HERD",
+     "title": "DIRECTOR"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [],
+    "local_more": 0,
+    "local_total": 0,
+    "grant_size": {
+     "n": 3,
+     "median": 40000,
+     "min": 12000,
+     "max": 300000
+    }
+   }
+  },
+  {
+   "ein": "746047149",
+   "foundation": "THE HENDERSON-WESSENDORFF FOUNDATION",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 3,
+   "n_in_client_state": 3,
+   "total_itemized_grants": 104,
+   "evidence": [
+    {
+     "recipient": "CHILD ADVOCATES OF FORT BEND",
+     "city": "ROSENBERG",
+     "state": "TX",
+     "amount": 225000,
+     "purpose": "OPERATING SUPPORT TO EXPAND CASA & CHILDREN'S ADVOCACY CENTER SERVICES",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "AVDA (AID TO VICTIMS OF DOMESTIC ABUSE)",
+     "city": "HOUSTON",
+     "state": "TX",
+     "amount": 45000,
+     "purpose": "TO SUPPORT LEGAL ADVOCACY AND FAMILY VIOLENCE PROGRAMS IN FORT BEND COUNTY",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "University of Houston",
+     "city": "HOUSTON",
+     "state": "TX",
+     "amount": 37500,
+     "purpose": "SCHOLARSHIPS AT UH SUGAR LAND DIVISION OF TECHNOLOGY, COLLEGE OF ENGINEERING, FOR LAMAR CHS STUDENTS",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "JOE D ROBINSON",
+     "title": "CHAIRMAN OF BOARD"
+    },
+    {
+     "name": "CHARLES PAT MCDONALD",
+     "title": "PRESIDENT"
+    },
+    {
+     "name": "JACK H MOORE",
+     "title": "SECRETARY / LEGAL"
+    },
+    {
+     "name": "BEN JONES",
+     "title": "CFO"
+    },
+    {
+     "name": "LANE WARD",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "BARBARA BLEIL",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "SETH DELEERY",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "WILL ROBERTSON",
+     "title": "DIRECTOR"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "ELECTRONIC SUBMISSION OF REQUESTS THROUGH ONLINE SYSTEM WHICH CAN BE ACCESSED ON THE FOUNDATION'S WEBSITE AT WWW.HW-FOUNDATION.COM. IRS TAX STATUS, ORGANIZATIONAL HISTORY & GOVERNANCE, FINANCIAL, AND OTHER REQUESTED SPECIFIC INFORMATION REQUIRED.",
+    "deadlines": "NONE",
+    "restrictions": "PURPOSE OR USE RESTRICTIONS ARE IMPOSED.",
+    "phone": "2816333202"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "EPISCOPAL THEOLOGICAL SEMINARY OF THE SOUTHWEST",
+      "amount": 336076
+     },
+     {
+      "name": "TEXAS AIRGUARD MAXIMUM EFFORT",
+      "amount": 7500
+     }
+    ],
+    "local_more": 0,
+    "local_total": 2,
+    "grant_size": {
+     "n": 3,
+     "median": 45000,
+     "min": 37500,
+     "max": 225000
+    }
+   }
+  },
+  {
+   "ein": "263241764",
+   "foundation": "LAURA AND JOHN ARNOLD FOUNDATION",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 85,
+   "n_in_client_state": 1,
+   "total_itemized_grants": 638,
+   "evidence": [
+    {
+     "recipient": "SOUTHERN METHODIST UNIVERSITY",
+     "city": "DALLAS",
+     "state": "TX",
+     "amount": 300000,
+     "purpose": "TO SUPPORT PRETRIAL REFORM WORK AT THE DEASON CRIMINAL JUSTICE REFORM CENTER.",
+     "matched_terms": [
+      "criminal justice"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "CENTER FOR EFFECTIVE PUBLIC POLICY",
+     "city": "KENSINGTON",
+     "state": "MD",
+     "amount": 4555791,
+     "purpose": "TO PROVIDE TRAINING AND TECHNICAL ASSISTANCE FOR THE PUBLIC SAFETY ASSESSMENT AND PRETRIAL REFORM.",
+     "matched_terms": [
+      "public safety"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "JUSTICE ACTION NETWORK FOUNDATION",
+     "city": "WASHINGTON",
+     "state": "DC",
+     "amount": 4000000,
+     "purpose": "TO SUPPORT GRANTEE'S CHARITABLE AND NON-PARTISAN CRIMINAL JUSTICE REFORM ACTIVITIES.",
+     "matched_terms": [
+      "criminal justice"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "MASSACHUSETTS INSTITUTE OF TECHNOLOGY",
+     "city": "CAMBRIDGE",
+     "state": "MA",
+     "amount": 3500000,
+     "purpose": "TO SUPPORT THE ABDUL LATIF JAMEEL POVERTY ACTION LAB NORTH AMERICA IN ITS WORK TO GENERATE RANDOMIZED CONTROLLED TRIALS THAT MEASURE THE IMPACT OF SOCIAL PROGRAMS AND POLICIES.",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "JOHN D ARNOLD",
+     "title": "DIRECTOR/CO-CHAIR"
+    },
+    {
+     "name": "LAURA E ARNOLD",
+     "title": "DIRECTOR/CO-CHAIR"
+    },
+    {
+     "name": "ROXANNE ALMARAZ",
+     "title": "SECRETARY"
+    },
+    {
+     "name": "ELIZABETH BANKS",
+     "title": "TREASURER"
+    },
+    {
+     "name": "KELLI RHEE",
+     "title": "DIRECTOR/PRESIDENT & CEO"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "THE UNIVERSITY OF TEXAS AT AUSTIN",
+      "amount": 535000
+     },
+     {
+      "name": "THE UNIVERSITY OF TEXAS AT AUSTIN",
+      "amount": 385086
+     },
+     {
+      "name": "THE FOUNDATION FOR RESEARCH ON EQUAL OPPORTUNITY",
+      "amount": 335610
+     }
+    ],
+    "local_more": 6,
+    "local_total": 9,
+    "grant_size": {
+     "n": 85,
+     "median": 150000,
+     "min": 7998,
+     "max": 4555791
+    }
+   }
+  },
+  {
+   "ein": "201519185",
+   "foundation": "SANTANDER CONSUMER USA INC FOUNDATION",
+   "tax_year": "2023",
+   "tier": "moderate",
+   "n_matching_grants": 4,
+   "n_in_client_state": 2,
+   "total_itemized_grants": 71,
+   "evidence": [
+    {
+     "recipient": "UNIVERSITY OF TEXAS FOUNDATION",
+     "city": "AUSTIN",
+     "state": "TX",
+     "amount": 212500,
+     "purpose": "FUNDING WILL SUPPORT SCHOLARSHIPS TO SUPPORT HIGHER EDUCATION FOR STUDENTS IN STEM (SCIENCE, TECHNOLOGY, ENGINEERING, AND MATHEMATICS).",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "UNIVERSITY OF TEXAS FOUNDATION",
+     "city": "AUSTIN",
+     "state": "TX",
+     "amount": 212500,
+     "purpose": "FUNDING WILL SUPPORT SCHOLARSHIPS TO SUPPORT HIGHER EDUCATION FOR STUDENTS IN STEM (SCIENCE, TECHNOLOGY, ENGINEERING, AND MATHEMATICS).",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "SOJOURNER CENTER",
+     "city": "PHOENIX",
+     "state": "AZ",
+     "amount": 125000,
+     "purpose": "FUNDING WILL SUPPORT PROGRAM SUPPORTIVE SERVICES FOR THE SHELTER INCLUDING ADVOCACY, HELPLINES, LEGAL SERVICES AND HOUSING.",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "THE WALLS PROJECT",
+     "city": "BATON ROUGE",
+     "state": "LA",
+     "amount": 100000,
+     "purpose": "FUTURE PROOF DFW FOCUSES ON CREATIVE SERVICES AND INFORMATION TECHNOLOGY WORKFORCE DEVELOPMENT PROGRAMMING THAT WILL MEET THE NEEDS OF LOCAL EMPLOYERS, INCLUDING CODING FOR THE WEB, GRAPHIC, DESIGN COPYWRITING, DIGITAL PHOTOGRAPHY, AND EVEN",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "CHRISTOPHER PFIRRMAN",
+     "title": "DIRECTOR, CHAIR AND SECRETARY"
+    },
+    {
+     "name": "SETH GOODALL",
+     "title": "VICE PRESIDENT (THRU 10/04/23)"
+    },
+    {
+     "name": "SUZANNE MASSEY",
+     "title": "VICE PRESIDENT AND ASSISTANT SECRETARY"
+    },
+    {
+     "name": "WENDY GONZALEZ",
+     "title": "VICE PRESIDENT AND ASSISTANT SECRETARY"
+    },
+    {
+     "name": "ERIK LANEY",
+     "title": "DIRECTOR & TREASURER"
+    },
+    {
+     "name": "BETTY JOTANOVIC",
+     "title": "DIRECTOR ( EFF 10/04/23)"
+    },
+    {
+     "name": "DON SMITH",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "RL PRASAD",
+     "title": "DIRETOR ( EFF 10/04/23)"
+    },
+    {
+     "name": "SANDRA ROSA",
+     "title": "DIRECTOR ( THRU 06/27/23)"
+    },
+    {
+     "name": "VIRNITIA DIXON",
+     "title": "DIRECTOR"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "THE UNIVERSITY OF TEXAS FOUNDATION",
+      "amount": 212500
+     },
+     {
+      "name": "THE UNIVERSITY OF TEXAS FOUNDATION",
+      "amount": 212500
+     }
+    ],
+    "local_more": 0,
+    "local_total": 2,
+    "grant_size": {
+     "n": 5,
+     "median": 212500,
+     "min": 100000,
+     "max": 250000
+    }
+   }
+  },
+  {
+   "ein": "756038519",
+   "foundation": "TEXAS INSTRUMENTS FOUNDATION",
+   "tax_year": "2023",
+   "tier": "moderate",
+   "n_matching_grants": 4,
+   "n_in_client_state": 1,
+   "total_itemized_grants": 568,
+   "evidence": [
+    {
+     "recipient": "CHILDREN'S ADVOCACY CENTER OF CC",
+     "city": "PLANO",
+     "state": "TX",
+     "amount": 38880,
+     "purpose": "DONATIONS TO COLLEGES, UNIVERSITIES AND OTHER ORGANIZATIONS UNDER \"MATCHING GIFTS PROGRAM.\"",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "MASSACHUSETTS INST OF TECHNOLOGY",
+     "city": "CAMBRIDGE",
+     "state": "MA",
+     "amount": 35861,
+     "purpose": "DONATIONS TO COLLEGES, UNIVERSITIES AND OTHER ORGANIZATIONS UNDER \"MATCHING GIFTS PROGRAM.\"",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "STEVENS INSTITUTE OF TECHNOLOGY",
+     "city": "HOBOKEN",
+     "state": "NJ",
+     "amount": 10000,
+     "purpose": "DONATIONS TO COLLEGES, UNIVERSITIES AND OTHER ORGANIZATIONS UNDER \"MATCHING GIFTS PROGRAM.\"",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "Illinois Institute of Technology",
+     "city": "CHICAGO",
+     "state": "IL",
+     "amount": 5555,
+     "purpose": "DONATIONS TO COLLEGES, UNIVERSITIES AND OTHER ORGANIZATIONS UNDER \"MATCHING GIFTS PROGRAM.\"",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "TERESA L WEST",
+     "title": "CHAIRMAN"
+    },
+    {
+     "name": "RAFAEL R LIZARDI",
+     "title": "TREASURER & DIRECTOR"
+    },
+    {
+     "name": "EDGAR MORALES",
+     "title": "SECRETARY"
+    },
+    {
+     "name": "HAGOP H KOZANIAN",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "CYNTHIA H TROCHU",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "TIMOTHY C KINNARD",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "MOHAMMED YUNUS",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "MARK T ROBERT",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "CHRISTINE WITZCHE",
+     "title": "VICE-CHAIR & DIRECTOR"
+    },
+    {
+     "name": "SHANNON J LEONARD",
+     "title": "DIRECTOR"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2023",
+    "form_info": "ALL REQUESTS FOR FUNDING FROM THE TI FOUNDATION, INCLUDING ALL GRANTS, ARE NOW ACCEPTED ON-LINE. TO APPLY FOR FUNDING, PLEASE GO TO WWW.TI.COM/GIVING FOR INFORMATION AND GUIDELINES. NO PHONE OR PAPER APPLICATIONS WILL BE ACCEPTED.",
+    "deadlines": "THERE ARE NO SUBMISSION DEADLINES.",
+    "restrictions": "EXCLUSIVELY CHARITABLE AND EDUCATIONAL PURPOSES, INCLUDING CONTRIBUTIONS TO ORGANIZATIONS ORGANIZED AND OPERATED FOR SUCH PURPOSES, WITHIN THE MEANING OF SECTION 501(C)(3) OF THE U.S. INTERNAL REVENUE CODE.",
+    "phone": "2145674685"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "UT FNDN - UNIV OF TEXAS AT AUSTIN",
+      "amount": 52369
+     },
+     {
+      "name": "UT FNDN - MD ANDERSON CANCER CENTER",
+      "amount": 25000
+     },
+     {
+      "name": "CAPITAL AREA FOOD BANK OF TEXAS INC",
+      "amount": 16188
+     }
+    ],
+    "local_more": 5,
+    "local_total": 8,
+    "grant_size": {
+     "n": 4,
+     "median": 22930.5,
+     "min": 5555,
+     "max": 38880
+    }
+   }
+  },
+  {
+   "ein": "742857866",
+   "foundation": "ELEANOR CROOK FOUNDATION",
+   "tax_year": "2023",
+   "tier": "moderate",
+   "n_matching_grants": 11,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 32,
+   "evidence": [
+    {
+     "recipient": "UNITED NATIONS FOUNDATION",
+     "city": "WASHINGTON",
+     "state": "DC",
+     "amount": 1179410,
+     "purpose": "CONGRESSIONAL MALNUTRITION ADVOCACY SUPPORT",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "UNITED STATES FUND FOR UNICEF",
+     "city": "NEW YORK",
+     "state": "NY",
+     "amount": 217699,
+     "purpose": "WASTING ADVOCACY SUPPORT",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "THE ASPEN INSTITUTE INC",
+     "city": "WASHINGTON",
+     "state": "DC",
+     "amount": 150000,
+     "purpose": "CONGRESSIONAL MALNUTRITION ADVOCACY SUPPORT",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "CENTER FOR US GLOBAL LEADERSHIP (CUSGLC)",
+     "city": "WASHINGTON",
+     "state": "DC",
+     "amount": 125000,
+     "purpose": "CONGRESSIONAL MALNUTRITION ADVOCACY SUPPORT",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "ELEANOR CROOK",
+     "title": "PRESIDENT & SECRETARY"
+    },
+    {
+     "name": "WILLIAM H CROOK JR",
+     "title": "VICE PRESIDENT & SECRETARY"
+    },
+    {
+     "name": "MARY ELIZABETH CROOK",
+     "title": "VICE PRESIDENT"
+    },
+    {
+     "name": "NOEL C MOORE",
+     "title": "VICE PRESIDENT"
+    },
+    {
+     "name": "WILLIAM H MOORE",
+     "title": "CHIEF EXECUTIVE OFFICER"
+    },
+    {
+     "name": "AMY CROOK KOWALSKI",
+     "title": "DIRECTOR"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [],
+    "local_more": 0,
+    "local_total": 0,
+    "grant_size": {
+     "n": 11,
+     "median": 90206,
+     "min": 25000,
+     "max": 1179410
+    }
+   }
+  },
+  {
+   "ein": "261635887",
+   "foundation": "BNSF RAILWAY FOUNDATION",
+   "tax_year": "2023",
+   "tier": "moderate",
+   "n_matching_grants": 8,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 506,
+   "evidence": [
+    {
+     "recipient": "GLENWOOD POLICE DEPARTMENT",
+     "city": "GLENWOOD",
+     "state": "IA",
+     "amount": 10000,
+     "purpose": "CIVIC",
+     "matched_terms": [
+      "police"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "LINCOLN POLICE DEPARTMENT",
+     "city": "LINCOLN",
+     "state": "NE",
+     "amount": 10000,
+     "purpose": "CIVIC",
+     "matched_terms": [
+      "police"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "LA VISTA POLICE DEPARTMENT",
+     "city": "LA VISTA",
+     "state": "NE",
+     "amount": 9968,
+     "purpose": "CIVIC",
+     "matched_terms": [
+      "police"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "PRAIRIE DU CHIEN POLICE DEPARTMENT FDN INC",
+     "city": "PRAIRIE DU CHIEN",
+     "state": "WI",
+     "amount": 8750,
+     "purpose": "CIVIC",
+     "matched_terms": [
+      "police"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "ZAK A ANDERSEN",
+     "title": "PRESIDENT & DIRECTOR"
+    },
+    {
+     "name": "MUNSOOR HUSSAIN",
+     "title": "ASSISTANT GENERAL TAX COUNSEL"
+    },
+    {
+     "name": "JILL MULLIGAN AS OF 112023",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "JUAN ACOSTA",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "BETH A MILLER",
+     "title": "TREASURER"
+    },
+    {
+     "name": "DUSTIN ALMAGUER",
+     "title": "SECRETARY"
+    },
+    {
+     "name": "MICHAEL SMYTHERS",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "AMY MCBETH",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "TEENA KILIAN",
+     "title": "ASSISTANT SECRETARY"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "SEE GENERAL EXPLANATION ATTACHMENT",
+    "deadlines": "SEE GENERAL EXPLANATION ATTACHMENT",
+    "restrictions": "SEE GENERAL EXPLANATION ATTACHMENT",
+    "email": "BNSFFOUNDATION@BNSF.COM"
+   },
+   "action_pack": {
+    "local_grantees": [],
+    "local_more": 0,
+    "local_total": 0,
+    "grant_size": {
+     "n": 8,
+     "median": 7375,
+     "min": 5000,
+     "max": 10000
+    }
+   }
+  },
+  {
+   "ein": "136066583",
+   "foundation": "SHELL USA COMPANY FOUNDATION",
+   "tax_year": "2023",
+   "tier": "moderate",
+   "n_matching_grants": 7,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 947,
+   "evidence": [
+    {
+     "recipient": "HARBIN INSTITUTE OF TECHNOLOGY ALUMNI HITA EDUCATI",
+     "city": "San Francisco",
+     "state": "CA",
+     "amount": 23520,
+     "purpose": "MEF",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "SOUTH DAKOTA SCHOOL OF MINES AND TECHNOLOGY FOUNDA",
+     "city": "Rapid City",
+     "state": "SD",
+     "amount": 20000,
+     "purpose": "MEF",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "MASSACHUSETTS INSTITUTE OF TECHNOLOGY",
+     "city": "Cambridge",
+     "state": "MA",
+     "amount": 16000,
+     "purpose": "MEF",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "INDIAN INSTITUTE OF TECHNOLOGY KANPUR FOUNDATION I",
+     "city": "Palo Alto",
+     "state": "CA",
+     "amount": 10600,
+     "purpose": "MEF",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "Lynn S Borgmeier",
+     "title": "Secretary"
+    },
+    {
+     "name": "Watkins Gretchen H",
+     "title": "Director"
+    },
+    {
+     "name": "Linda L Meagher",
+     "title": "Assistant Secretary"
+    },
+    {
+     "name": "Frazier Wilson",
+     "title": "Vice President"
+    },
+    {
+     "name": "John S Misso",
+     "title": "Director"
+    },
+    {
+     "name": "Kate H Yan",
+     "title": "Treasurer and Controller"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "UNIVERSITY OF TEXAS FOUNDATION",
+      "amount": 160941
+     },
+     {
+      "name": "UNIVERSITY OF TEXAS FOUNDATION",
+      "amount": 54200
+     },
+     {
+      "name": "UNIVERSITY OF TEXAS FOUNDATION",
+      "amount": 30549
+     }
+    ],
+    "local_more": 10,
+    "local_total": 13,
+    "grant_size": {
+     "n": 7,
+     "median": 10600,
+     "min": 6960,
+     "max": 23520
+    }
+   }
+  },
+  {
+   "ein": "208060391",
+   "foundation": "HARVEY E NAJIM CHARITABLE",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 2,
+   "n_in_client_state": 2,
+   "total_itemized_grants": 169,
+   "evidence": [
+    {
+     "recipient": "CHILDRENS ADVOCACY CENTER OF COMAL",
+     "city": "NEW BRAUNFELS",
+     "state": "TX",
+     "amount": 40000,
+     "purpose": "ASSIST CHILDREN",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "GUADALUPE COUNTY CHILDRENS ADVOCACY",
+     "city": "SEGUIN",
+     "state": "TX",
+     "amount": 40000,
+     "purpose": "ASSIST CHILDREN",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "HARVEY E NAJIM",
+     "title": "CHAIRMAN"
+    },
+    {
+     "name": "MELISSA BAUMAN",
+     "title": "PRESIDENT"
+    },
+    {
+     "name": "CARRIE N MATTHIESEN",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "CHRISTINE N RAY",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "ROY TERRACINA",
+     "title": "TREASURER"
+    },
+    {
+     "name": "DON HARRIS",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "JIM HOUSE",
+     "title": "VICE CHAIR"
+    },
+    {
+     "name": "DOUG CROSS",
+     "title": "SECRETARY"
+    },
+    {
+     "name": "REBECCA CERVANTEZ",
+     "title": "VICE PRESIDE"
+    },
+    {
+     "name": "REBECCA CEDILLO",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "PEGGY EIGHMY",
+     "title": "DIRECTOR"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "QUESTION 2B: AN ONLINE GRANT APPLICATION SHOULD BE FILLED OUT AND SUBMITTED THROUGH THE ONLINE PORTAL LOCATED ON THE NAJIM FOUNDATION WEBSITE AT WWW.NAJIMFOUNDATION.ORG PARTS OF THE APPLICATION INCLUDE THE FOLLOWING REQUIREMENTS: BRIEF STATEMENT OF ORGANIZATION'S PURPOSE AND HISTORY. PROJECT DESCRIPTION AND AMOUNT OF FUNDING REQUEST. BRIEF STATEMENT OF ANY PREVIOUS FUNDING RECEIVED FROM THE NAJIM FOUNDATION. STATEMENT OF HOW THE PROPOSED PROJECT RELATES TO THE FOUNDATION'S FUNDING PRIORITIES. LI...",
+    "deadlines": "QUESTION 2C: APPLICATIONS ARE ACCEPTED THREE TIMES DURING THE YEAR. MARCH FOR APRIL BOARD MEETING, J",
+    "restrictions": "QUESTION 2D: APPLICATIONS ARE ONLY ACCEPTED FROM SECTION 501(C)(3) ORGANIZATIONS. ONLY 501(C)(3) ORGANIZATIONS LOCATED AND SERVING CHILDREN IN THE FOLLOWING COUNTIES WILL BE CONSIDERED FOR FUNDING: BEXAR, ATASCOSA, BANDERA, COMAL, GUADALUPE, KENDALL, KERR, MEDINA, AND WILSON. THE REQUESTING ORGANIZATION MUST MEET THE NAJIM FOUNDATION'S FUNDING PRIORITIES. FUNDING PRIORITIES ARE TO ASSIST CHILDREN WITH FOOD, SHELTER, CLOTHING, CHILD ABUSE/NEGLECT, DEVELOPMENTAL DISABILITIES, EDUCATION (PREK - 12)...",
+    "email": "MELISSA.BAUMAN@NAJIMFOUNDATION.ORG",
+    "phone": "2102558435"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "PRESBYTERIAN CHILDREN'S HOMES AND S",
+      "amount": 30000
+     },
+     {
+      "name": "WONDERS & WORRIES INC",
+      "amount": 30000
+     },
+     {
+      "name": "GIRLSTART",
+      "amount": 5000
+     }
+    ],
+    "local_more": 0,
+    "local_total": 3,
+    "grant_size": {
+     "n": 2,
+     "median": 40000,
+     "min": 40000,
+     "max": 40000
+    }
+   }
+  },
+  {
+   "ein": "756020781",
+   "foundation": "ABELL-HANGER FOUNDATION",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 2,
+   "n_in_client_state": 2,
+   "total_itemized_grants": 209,
+   "evidence": [
+    {
+     "recipient": "MIDLAND ISD EDUCATION FOUNDATION",
+     "city": "MIDLAND",
+     "state": "TX",
+     "amount": 65000,
+     "purpose": "TO OUTFIT MISD POLICE OFFICERS FOR 2023",
+     "matched_terms": [
+      "police"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "HARMONY HOME CHILDREN'S ADVOCACY CENTER",
+     "city": "ODESSA",
+     "state": "TX",
+     "amount": 40000,
+     "purpose": "FOR UNRESTRICTED GENERAL OPERATING SUPPORT",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "JACK F HARPER",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "JAMES C TROTT",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "JOHN BERGMAN",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "RICHARD COATS",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "LAURA ROMAN",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "WES PERRY",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "ROY NELSON",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "KAREN SPARKS",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "MARK PALMER",
+     "title": "EXECUTIVE VP"
+    },
+    {
+     "name": "WADE KUEHLER",
+     "title": "CFO"
+    },
+    {
+     "name": "GEORGE T ABELL - DECEASED",
+     "title": "FOUNDATION MGR (DECEASED)"
+    },
+    {
+     "name": "GLADYS H ABELL - DECEASED",
+     "title": "FOUNDATION MGR (DECEASED)"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "GENERAL INFORMATION AND GRANT FORMS ON ABELL-HANGER.ORG WEB SITE.",
+    "deadlines": "GENERAL INFORMATION AND GRANT FORMS ON ABELL-HANGER.ORG WEB SITE.",
+    "restrictions": "N/A",
+    "email": "MPALMER@ABELL-HANGER.ORG",
+    "phone": "4326846655"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "HARMONY PUBLIC SCHOOLS",
+      "amount": 850000
+     },
+     {
+      "name": "TEXAS INTERSCHOLASTIC LEAGUE FOUNDATION",
+      "amount": 84000
+     },
+     {
+      "name": "TEXAS STATE HISTORICAL ASSOCIATION",
+      "amount": 10000
+     }
+    ],
+    "local_more": 5,
+    "local_total": 8,
+    "grant_size": {
+     "n": 2,
+     "median": 52500,
+     "min": 40000,
+     "max": 65000
+    }
+   }
+  },
+  {
+   "ein": "201225862",
+   "foundation": "HIRSCH FAMILY FOUNDATION",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 1,
+   "n_in_client_state": 1,
+   "total_itemized_grants": 62,
+   "evidence": [
+    {
+     "recipient": "DALLAS CHILDRENS ADVOCACY CENTER",
+     "city": "DALLAS",
+     "state": "TX",
+     "amount": 15000,
+     "purpose": "ART FOR ADVOCACY EVENT",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "LAURENCE HIRSCH",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "SUSAN HIRSCH",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "DARIA LEE HIRSCH",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "BRADFORD HIRSCH",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "MARGARET HIRSCH",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "ROBERT SUSSMAN",
+     "title": "TREASURER"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "ISRAEL-TEXAS SCIENCE & EDUCATION FOUNDATION",
+      "amount": 100000
+     }
+    ],
+    "local_more": 0,
+    "local_total": 1,
+    "grant_size": {
+     "n": 1,
+     "median": 15000,
+     "min": 15000,
+     "max": 15000
+    }
+   }
+  },
+  {
+   "ein": "300005201",
+   "foundation": "TING TSUNG & WEI FONG CHAO FOUNDATION",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 1,
+   "n_in_client_state": 1,
+   "total_itemized_grants": 162,
+   "evidence": [
+    {
+     "recipient": "BAYLOR COLLEGE OF MEDICINE",
+     "city": "HOUSTON",
+     "state": "TX",
+     "amount": 300000,
+     "purpose": "PANDEMIC THREAT TECHNOLOGY CENTER",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "ALBERT CHAO",
+     "title": "VICE PRESIDENT & SECRETARY"
+    },
+    {
+     "name": "JAMES CHAO",
+     "title": "VICE PRESIDENT & TREASURER"
+    },
+    {
+     "name": "DOROTHY JENKINS",
+     "title": "PRESIDENT"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "SAHELI DBA ASIAN FAMILY SUPPORT SERVICES OF AUSTIN",
+      "amount": 200000
+     },
+     {
+      "name": "AUSTIN HABITAT FOR HUMANITY INC",
+      "amount": 30000
+     },
+     {
+      "name": "TEXAS TRIBUNE INC",
+      "amount": 20000
+     }
+    ],
+    "local_more": 3,
+    "local_total": 6,
+    "grant_size": {
+     "n": 1,
+     "median": 300000,
+     "min": 300000,
+     "max": 300000
+    }
+   }
+  },
+  {
+   "ein": "431353948",
+   "foundation": "AT&T FOUNDATION",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 1,
+   "n_in_client_state": 1,
+   "total_itemized_grants": 2,
+   "evidence": [
+    {
+     "recipient": "INFORMATION TECHNOLOGY DISASTER RESOURCE CENTER",
+     "city": "FORT WORTH",
+     "state": "TX",
+     "amount": 100000,
+     "purpose": "DISASTER RELIEF INITIATIVES",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "DAVID MCATEE",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "NICOLE ANDERSON",
+     "title": "PRESIDENT"
+    },
+    {
+     "name": "CHARLENE LAKE",
+     "title": "CHAIRMAN, DIRECTOR & VP"
+    },
+    {
+     "name": "GEORGE GOEKE",
+     "title": "VICE PRESIDENT & TREASURER"
+    },
+    {
+     "name": "JEFF SLADE",
+     "title": "VICE PRESIDENT & SECRETARY"
+    },
+    {
+     "name": "DAN O'GRADY",
+     "title": "ASSISTANT TREASURER"
+    },
+    {
+     "name": "LORI LEE",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "ED GILLESPIE",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "PASCAL DESROCHES",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "ANGELA SANTONE",
+     "title": "DIRECTOR (THRU 8/23)"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "ATCH A",
+    "deadlines": "NONE",
+    "restrictions": "ATCH A",
+    "phone": "2102158003"
+   },
+   "action_pack": {
+    "local_grantees": [],
+    "local_more": 0,
+    "local_total": 0,
+    "grant_size": {
+     "n": 1,
+     "median": 100000,
+     "min": 100000,
+     "max": 100000
+    }
+   }
+  },
+  {
+   "ein": "472607515",
+   "foundation": "THE ADDY FOUNDATION",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 1,
+   "n_in_client_state": 1,
+   "total_itemized_grants": 74,
+   "evidence": [
+    {
+     "recipient": "DALLAS EVICTION ADVOCACY CENTER",
+     "city": "DALLAS",
+     "state": "TX",
+     "amount": 80000,
+     "purpose": "CIVIC/COMMUNITY ENGAGEMENT",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "WILLIAM M ADDY",
+     "title": "DIRECTOR, VICE PRESIDENT, SECRETARY,"
+    },
+    {
+     "name": "LYDIA B ADDY",
+     "title": "DIRECTOR, VICE PRESIDENT"
+    },
+    {
+     "name": "BENJAMIN J LEAL",
+     "title": "DIRECTOR, PRESIDENT, TREASURER"
+    },
+    {
+     "name": "SARAH SCHOLL",
+     "title": "SECRETARY"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "THE INSTRUCTIONS FOR A GRANT PROPOSAL OF THE ADDY FOUNDATION INCLUDE THE FOLLOWING: (A) NAME, ADDRESS, AND TAXPAYER IDENTIFICATION NUMBER OF GRANTEE. (B) WHAT AMOUNTS AND DATES OF DISTRIBUTION ARE REQUESTED BY THE GRANTEE. (C) AN AGREEMENT BY THE GRANTEE TO USE THE GRANT FUNDS ONLY FOR THE PURPOSES FOR WHICH THE GRANT WAS MADE, TO PROVIDE PERIODIC WRITTEN REPORTS CONCERNING THE USE OF GRANT FUNDS, TO REQUIRE A FINAL WRITTEN REPORT AND AN ACCOUNTING OF HOW GRANT FUNDS WERE USED, AND TO ACKNOWLEDG...",
+    "deadlines": "QUARTERLY SUBMISSION DEADLINES ARE AS FOLLOWS: FEBRUARY 1, MAY 1, AUGUST 1 AND NOVEMBER 1",
+    "restrictions": "THE ADDY FOUNDATION AS PART OF THE GRANT OR DISTRIBUTION WILL REQUIRE PERIODIC WRITTEN REPORTS, NOT LESS FREQUENTLY THAN ANNUALLY, DESCRIBING HOW THE GRANT OR DISTRIBUTION HAS BEEN USED.",
+    "phone": "2143034900"
+   },
+   "action_pack": {
+    "local_grantees": [],
+    "local_more": 0,
+    "local_total": 0,
+    "grant_size": {
+     "n": 1,
+     "median": 80000,
+     "min": 80000,
+     "max": 80000
+    }
+   }
+  },
+  {
+   "ein": "742489868",
+   "foundation": "THE HUNT FAMILY FOUNDATION",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 1,
+   "n_in_client_state": 1,
+   "total_itemized_grants": 116,
+   "evidence": [
+    {
+     "recipient": "Texas 2036",
+     "city": "DALLAS",
+     "state": "TX",
+     "amount": 150000,
+     "purpose": "SUPPORT EFFORTS TO ENABLE TEXANS TO MAKE FACT-DRIVEN DECISIONS THROUGH ACCESSIBLE DATA, LONG-TERM STRATEGIC POLICY PLANNING, AND STATEWIDE ENGAGEMENT",
+     "matched_terms": [
+      "data"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "GAYLE G HUNT",
+     "title": "VICE PRESIDENT/DIRECTOR"
+    },
+    {
+     "name": "JOSHUA W HUNT",
+     "title": "PRESIDENT/DIRECTOR"
+    },
+    {
+     "name": "WOODY L HUNT",
+     "title": "CHAIRMAN/DIRECTOR"
+    },
+    {
+     "name": "CLAUDIA IVEY",
+     "title": "TREASURER"
+    },
+    {
+     "name": "SUSANNE SMITH",
+     "title": "SECRETARY"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "FORMAL GRANT PROPOSAL - AVAILABLE AT WWW.HUNTFAMILYFOUNDATION.COM INCLUDE PROGRAM DESCRIPTION, BUDGET, LIST OF BOARD OF DIRECTORS, & IRS STATUS.",
+    "deadlines": "APRIL 15",
+    "restrictions": "MEMBERS OF GUIDESTAR PREFERRED, PASO DEL NORTE REGION PREFERRED, NON-RELIGIOUS PREFERRED",
+    "phone": "9157474294"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "UNIVERSITY OF TEXAS AT AUSTIN",
+      "amount": 250000
+     },
+     {
+      "name": "UNIVERSITY OF TEXAS AT AUSTIN",
+      "amount": 100000
+     },
+     {
+      "name": "TEXAS TRIBUNE INC",
+      "amount": 75000
+     }
+    ],
+    "local_more": 6,
+    "local_total": 9,
+    "grant_size": {
+     "n": 1,
+     "median": 150000,
+     "min": 150000,
+     "max": 150000
+    }
+   }
+  },
+  {
+   "ein": "751534816",
+   "foundation": "CH FOUNDATION INC",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 1,
+   "n_in_client_state": 1,
+   "total_itemized_grants": 94,
+   "evidence": [
+    {
+     "recipient": "SCIENCE SPECTRUM",
+     "city": "LUBBOCK",
+     "state": "TX",
+     "amount": 75000,
+     "purpose": "SCIENCE AND TECHNOLOGY",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "KAY SANFORD",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "KEVIN G MCMAHON",
+     "title": "PRESIDENT/TR"
+    },
+    {
+     "name": "MARK GRIFFIN",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "SUZANNE BLAKE",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "SANDY OGLETREE",
+     "title": "EXECTIVE DIR"
+    },
+    {
+     "name": "CHERYL SANFORD",
+     "title": "CFO/TREASURE"
+    },
+    {
+     "name": "HEATHER HOCKER",
+     "title": "GRANT ADMIN/"
+    },
+    {
+     "name": "KIMBERLY WILKERSON",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "DAVID ALDERSON",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "LAURA VINSON",
+     "title": "TRUSTEE"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "6",
+    "deadlines": "MAY 1ST OF EACH YEAR",
+    "restrictions": "GRANTS ARE GENERALLY RESTRICTED TO ORGANIZATIONS WHOSE SERVICES BENEFIT THE SOUTH PLAINS AREA OF TEXAS.",
+    "phone": "8067920448"
+   },
+   "action_pack": {
+    "local_grantees": [],
+    "local_more": 0,
+    "local_total": 0,
+    "grant_size": {
+     "n": 1,
+     "median": 75000,
+     "min": 75000,
+     "max": 75000
+    }
+   }
+  },
+  {
+   "ein": "751876307",
+   "foundation": "HARRY BASS FOUNDATION",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 1,
+   "n_in_client_state": 1,
+   "total_itemized_grants": 53,
+   "evidence": [
+    {
+     "recipient": "DALLAS CHILDREN'S ADVOCACY CENTER",
+     "city": "DALLAS",
+     "state": "TX",
+     "amount": 30000,
+     "purpose": "PROGRAM",
+     "matched_terms": [
+      "advocacy"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "DORIS L BASS",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "MICHAEL L CALHOUN",
+     "title": "PRESIDENT, TRUSTEE"
+    },
+    {
+     "name": "F DAVID CALHOUN",
+     "title": "EXEC DIRECTOR"
+    },
+    {
+     "name": "LINDA B STALEY",
+     "title": "TRUSTEE"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "WEBSITE SUBMISSION AT HTTP://HBRF.ORG",
+    "deadlines": "NO NO",
+    "restrictions": "NO, BUT DALLAS COUNTY PREFERRED",
+    "phone": "2145990300"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "PEDAL THE PACIFIC",
+      "amount": 35000
+     }
+    ],
+    "local_more": 0,
+    "local_total": 1,
+    "grant_size": {
+     "n": 1,
+     "median": 30000,
+     "min": 30000,
+     "max": 30000
+    }
+   }
+  },
+  {
+   "ein": "752682536",
+   "foundation": "DIAN GRAVES OWEN FOUNDATION",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 1,
+   "n_in_client_state": 1,
+   "total_itemized_grants": 149,
+   "evidence": [
+    {
+     "recipient": "ABILENE POLICE FOUNDATION",
+     "city": "ABILENE",
+     "state": "TX",
+     "amount": 51000,
+     "purpose": "GENERAL SUPPORT",
+     "matched_terms": [
+      "police"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "DIAN GRAVES OWEN STAI",
+     "title": "CHAIRMAN, TREASURER, DIR"
+    },
+    {
+     "name": "TUCKER S BRIDWELL",
+     "title": "PRESIDENT, DIRECTOR"
+    },
+    {
+     "name": "JANE V BEARD",
+     "title": "SECRETARY"
+    },
+    {
+     "name": "DEBORAH O CARSON",
+     "title": "DIRECTOR"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "TEXAS DENTAL ASSOCIATION SMILES FOUNDATION",
+      "amount": 25000
+     },
+     {
+      "name": "TEXAS STATE HISTORY MUSEUM FOUNDATION",
+      "amount": 15000
+     }
+    ],
+    "local_more": 0,
+    "local_total": 2,
+    "grant_size": {
+     "n": 1,
+     "median": 51000,
+     "min": 51000,
+     "max": 51000
+    }
+   }
+  },
+  {
+   "ein": "760489862",
+   "foundation": "HOBBY FAMILY FOUNDATION",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 1,
+   "n_in_client_state": 1,
+   "total_itemized_grants": 58,
+   "evidence": [
+    {
+     "recipient": "SAN MARCOS CITIZENS POLICE ACADEMY ALUMNI ASSOCIATION INC",
+     "city": "SAN MARCOS",
+     "state": "TX",
+     "amount": 5000,
+     "purpose": "TO FURTHER THE EXEMPT PURPOSE OF THE ORGANIZATION",
+     "matched_terms": [
+      "police"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "PAUL W HOBBY",
+     "title": "TRUSTEE & PRESIDENT"
+    },
+    {
+     "name": "GRACE H GRUNDY",
+     "title": "TRUSTEE, SECRETARY AND TREASURER"
+    },
+    {
+     "name": "JANET M HOBBY",
+     "title": "TRUSTEE"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "UNIVERSITY OF TEXAS LAW SCHOOL FOUNDATION",
+      "amount": 50000
+     },
+     {
+      "name": "UATX",
+      "amount": 33333
+     },
+     {
+      "name": "UNIVERSITY OF TEXAS FOUNDATION INC",
+      "amount": 25000
+     }
+    ],
+    "local_more": 9,
+    "local_total": 12,
+    "grant_size": {
+     "n": 1,
+     "median": 5000,
+     "min": 5000,
+     "max": 5000
+    }
+   }
+  },
+  {
+   "ein": "760491186",
+   "foundation": "ALBERT AND MARGARET ALKEK FOUNDATION",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 1,
+   "n_in_client_state": 1,
+   "total_itemized_grants": 51,
+   "evidence": [
+    {
+     "recipient": "Texas State University",
+     "city": "SAN MARCOS",
+     "state": "TX",
+     "amount": 200000,
+     "purpose": "TECHNOLOGY AND PROGRAMS FOR THE ALKEK LIBRARY",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "SANDRA BACAK",
+     "title": "ASSISTANT SECRETARY/CONTROLLER"
+    },
+    {
+     "name": "PAUL KLOTMAN MD",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "SCOTT B SEAMAN",
+     "title": "DIRECTOR/TREASURER/EXECUTIVE DIR"
+    },
+    {
+     "name": "CHARLES A WILLIAMS",
+     "title": "DIRECTOR/PRESIDENT"
+    },
+    {
+     "name": "MARGARET ALKEK WILLIAMS",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "RANDA D WILLIAMS",
+     "title": "DIRECTOR"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "accepts",
+    "tax_year": "2024",
+    "form_info": "SEE GUIDELINES AT WWW.ALKEK.ORG",
+    "deadlines": "NONE",
+    "restrictions": "LIMITED TO NON-PROFIT ORGANIZATIONS IN THE STATE OF TEXAS",
+    "phone": "7136526601"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "AUSTIN CENTER FOR GRIEF & LOSS",
+      "amount": 25000
+     }
+    ],
+    "local_more": 0,
+    "local_total": 1,
+    "grant_size": {
+     "n": 1,
+     "median": 200000,
+     "min": 200000,
+     "max": 200000
+    }
+   }
+  },
+  {
+   "ein": "814706788",
+   "foundation": "Hector and Gloria Lopez Foundation",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 1,
+   "n_in_client_state": 1,
+   "total_itemized_grants": 7,
+   "evidence": [
+    {
+     "recipient": "TEXAS HIGHER EDUCATION FOUNDATION",
+     "city": "Austin",
+     "state": "TX",
+     "amount": 530000,
+     "purpose": "Improved outcomes for Texas students through enhanced data resources and training for administrators",
+     "matched_terms": [
+      "data"
+     ],
+     "in_client_state": true
+    }
+   ],
+   "trustees": [
+    {
+     "name": "Sergio Rodriguez",
+     "title": "Board President & CEO"
+    },
+    {
+     "name": "Veronica R Fernandez",
+     "title": "COO/CFO"
+    },
+    {
+     "name": "Nichole Graham Spector",
+     "title": "Director of Philanthropy"
+    },
+    {
+     "name": "Dr Jose Gutierrez",
+     "title": "Board Vice-President"
+    },
+    {
+     "name": "Marina Garza",
+     "title": "Board Secretary"
+    },
+    {
+     "name": "Jaime Aguirre",
+     "title": "Board Director"
+    },
+    {
+     "name": "Dr Eva Garza-Nyer",
+     "title": "Board Director"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [
+     {
+      "name": "University of Texas Foundation",
+      "amount": 2657606
+     },
+     {
+      "name": "St Edward's University",
+      "amount": 2134381
+     },
+     {
+      "name": "Austin Community Foundation",
+      "amount": 1059502
+     }
+    ],
+    "local_more": 2,
+    "local_total": 5,
+    "grant_size": {
+     "n": 1,
+     "median": 530000,
+     "min": 530000,
+     "max": 530000
+    }
+   }
+  },
+  {
+   "ein": "454696263",
+   "foundation": "LEDUCQ FOUNDATION",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 1,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 116,
+   "evidence": [
+    {
+     "recipient": "INTERNATIONAL CENTRE FOR GENETIC ENGINEERING AND BIOTECHNOLOGY (ICGEB)",
+     "city": "TRIESTE",
+     "state": "",
+     "amount": 71649,
+     "purpose": "GENERAL SUPPORT",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "DAVID TANCREDI",
+     "title": "PRESIDENT & DIRECTOR"
+    },
+    {
+     "name": "MARTIN LANDALUCE",
+     "title": "VICE PRESIDENT & DIRECTOR"
+    },
+    {
+     "name": "JAMES FLOYD",
+     "title": "SECRETARY-TREASURER/DIRECT"
+    },
+    {
+     "name": "ROSEMARY MC GREEVY",
+     "title": "ASSISTANT SECRETARY"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [],
+    "local_more": 0,
+    "local_total": 0,
+    "grant_size": {
+     "n": 1,
+     "median": 71649,
+     "min": 71649,
+     "max": 71649
+    }
+   }
+  },
+  {
+   "ein": "806215823",
+   "foundation": "The Coulter Family Foundation",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 1,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 14,
+   "evidence": [
+    {
+     "recipient": "COMMON SENSE MEDIA",
+     "city": "SAN FRANCISCO",
+     "state": "CA",
+     "amount": 100000,
+     "purpose": "Leading source of entertainment and technology recommendations for families and schools to ensure digital well-being for kids everywhere",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "JAMES G COULTER",
+     "title": "FOUNDING TRUSTEE"
+    },
+    {
+     "name": "PHYLLIS S COULTER",
+     "title": "FOUNDING TRUSTEE"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [],
+    "local_more": 0,
+    "local_total": 0,
+    "grant_size": {
+     "n": 1,
+     "median": 100000,
+     "min": 100000,
+     "max": 100000
+    }
+   }
+  },
+  {
+   "ein": "814732333",
+   "foundation": "AINSLIE FOUNDATION",
+   "tax_year": "2023",
+   "tier": "emerging",
+   "n_matching_grants": 1,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 81,
+   "evidence": [
+    {
+     "recipient": "COMMON SENSE MEDIA",
+     "city": "SAN FRANCISCO",
+     "state": "CA",
+     "amount": 10000,
+     "purpose": "PROVIDE UNBIASED INFORMATION, TRUSTED ADVICE, AND INNOVATIVE TOOLS TO HELP HARNESS THE POWER OF MEDIA AND TECHNOLOGY",
+     "matched_terms": [
+      "technology"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "LEE S AINSLIE III",
+     "title": "PRESIDENT & CO-CHAIR"
+    },
+    {
+     "name": "ELIZABETH M AINSLIE",
+     "title": "CO-CHAIR"
+    },
+    {
+     "name": "ALEX RAFAL",
+     "title": "SECRETARY"
+    },
+    {
+     "name": "W KEITH HENNINGTON",
+     "title": "TREASURER"
+    }
+   ],
+   "access_direct": [],
+   "access_shared": [],
+   "part_xv": {
+    "status": "does_not_accept",
+    "tax_year": "2024"
+   },
+   "action_pack": {
+    "local_grantees": [],
+    "local_more": 0,
+    "local_total": 0,
+    "grant_size": {
+     "n": 1,
+     "median": 10000,
+     "min": 10000,
+     "max": 10000
+    }
+   }
+  }
+ ]
+};
+const TIER_COPY = {"strong": "Funds this work, in this state", "moderate": "Funds this work", "emerging": "Some overlap; verify before approaching"};
+const CONF_COPY = {"high": "high-confidence name match", "medium": "name match — verify identity", "low": "common name — verify identity before acting"};
+const APACK_COPY = {"heading": "What you can still do", "accepts_quoted": "This foundation accepts applications. The first move is the procedure quoted above, followed exactly as filed for TY{yr}.", "accepts_bare": "This foundation accepts unsolicited applications, as filed for TY{yr}. The filing quotes no procedure details, so confirm the current process with the foundation before submitting anything.", "does_not_accept": "Unsolicited applications are not accepted, as filed for TY{yr}. A cold application is not a realistic route here. The realistic route is to become visible among the organizations this foundation already funds.", "not_stated": "The TY{yr} filing does not state an application policy. Ask the foundation directly before preparing a proposal.", "no_data": "No application-policy data is on file for this foundation. Ask the foundation directly before preparing a proposal.", "local_intro": "Grants to {city} recipients on the TY{yr} Form 990-PF: ", "local_more_one": ", and 1 more", "local_more": ", and {n} more", "local_none": "The TY{yr} Form 990-PF lists no grants to {city} recipients. This foundation's filed giving happens elsewhere.", "local_note": "These are filed facts about the funder, useful when you write to it. They are not contacts, and a grant to another {city} organization is not that organization's endorsement or willingness to help you.", "size_many": "Typical grant for the matched cause: median {median}, range {min} to {max}. Computed from {n} filed grants on the TY{yr} Form 990-PF that match this cause area.", "size_one": "One filed grant on the TY{yr} Form 990-PF matches this cause area: {amt}.", "size_none": "No filed grants on the TY{yr} Form 990-PF match this cause area under their as-filed names."};
+
+function esc(s){const d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML;}
+function money(n){return n?'$'+Number(n).toLocaleString('en-US'):'';}
+
+(function stats(){
+  const u = C.universe;
+  const nd = C.matches.reduce((a,m)=>a+m.access_direct.length,0);
+  const ns = C.matches.reduce((a,m)=>a+m.access_shared.length,0);
+  const cells = [
+    [u.concordance_universe, 'foundations with both a listed board and itemized grants'],
+    [C.matches.length, 'matching this cause area, shown here'],
+    [u.individuals, 'named trustees checked'],
+    [C.client_board.length, 'of this board\'s directors checked, as filed'],
+    [nd+ns, 'introduction paths found'],
+  ];
+  document.getElementById('stats').innerHTML = cells.map(
+    ([n,l]) => '<div class="stat"><span class="n">'+esc(n)+'</span><span class="l">'+esc(l)+'</span></div>'
+  ).join('');
+})();
+
+(function board(){
+  document.getElementById('board').innerHTML = C.client_board.map(function(b){
+    return '<span class="person">'+esc(b[0])+(b[1]?' <span class="t">'+esc(b[1])+'</span>':'')+'</span>';
+  }).join('');
+})();
+
+(function paths(){
+  const host = document.getElementById('paths-out');
+  const rows = [];
+  C.matches.forEach(function(m){
+    m.access_direct.forEach(function(p){
+      rows.push('<div class="path"><b>'+esc(p.person)+'</b> sits on both boards &mdash; '
+        + esc(m.foundation)+(p.foundation_title?' ('+esc(p.foundation_title)+')':'')
+        + (p.client_title?' and this board ('+esc(p.client_title)+')':'')
+        + ' <span class="conf '+esc(p.name_confidence)+'">'+esc(CONF_COPY[p.name_confidence]||p.name_confidence)+'</span></div>');
+    });
+    m.access_shared.forEach(function(p){
+      rows.push('<div class="path"><b>'+esc(p.via_person)+'</b> shares a board with <b>'
+        + esc(p.trustee)+'</b> of '+esc(m.foundation)+' &mdash; via '
+        + esc(p.via_orgs.join(', '))
+        + ' <span class="conf '+esc(p.name_confidence)+'">'+esc(CONF_COPY[p.name_confidence]||p.name_confidence)+'</span></div>');
+    });
+  });
+  if (rows.length){ host.innerHTML = rows.join(''); return; }
+  host.innerHTML = '<div class="finding"><b>Checked, and none found.</b> None of the '
+    + esc(C.client_board.length)
+    + ' directors above, as filed, sits on any of these foundations\' boards or shares a third board with any of their trustees. That is a finding about the filed record, checked name by name &mdash; not an error and not a gap in the data. Practically, it means a warm boardroom introduction to these funders does not exist on paper today: plan approaches to the foundations on this page as cold or staff-brokered outreach. If a real-world relationship exists, it lives in knowledge this public data cannot hold, and the board itself is the only place to ask.</div>';
+})();
+
+/* Part XV application-status chip. Three filed states plus an explicit no-data state;
+   every chip that reports a status carries the tax year of the filing it came from. */
+var PXV_CHIP = {
+  does_not_accept: ['pxv-closed', 'Does not accept unsolicited applications (as filed TY'],
+  accepts:         ['pxv-open', 'Accepts applications (as filed TY'],
+  not_stated:      ['pxv-notstated', 'Application policy not stated in filing (TY']
+};
+function pxvChip(px){
+  var t = px && PXV_CHIP[px.status];
+  if (t) return '<span class="pxv '+t[0]+'">'+t[1]+esc(px.tax_year)+')</span>';
+  return '<span class="pxv pxv-nodata">No Part XV data on file</span>';
+}
+function pxvMore(px){
+  if (!px || px.status !== 'accepts' || !(px.form_info || px.deadlines)) return '';
+  var q = [];
+  if (px.form_info)    q.push(['Form and materials', px.form_info]);
+  if (px.deadlines)    q.push(['Deadlines', px.deadlines]);
+  if (px.restrictions) q.push(['Restrictions or limitations', px.restrictions]);
+  var contact = [px.email, px.phone].filter(Boolean).map(esc).join(' &middot; ');
+  return '<div class="pxv-more"><div>How to apply, quoted verbatim from the TY'
+    + esc(px.tax_year) + ' filing</div><div class="pxv-q">'
+    + q.map(function(p){return '<div class="qlbl">'+esc(p[0])+'</div><div class="qtxt">&ldquo;'+esc(p[1])+'&rdquo;</div>';}).join('')
+    + (contact ? '<div class="qlbl">Contact, as filed (organization-level)</div><div class="qtxt">'+contact+'</div>' : '')
+    + '</div></div>';
+}
+
+/* Zero-paths action pack. Rendered only when the builder attached action_pack data,
+   which it does only for a zero-paths client. All copy comes from APACK_COPY; all
+   numbers come from the payload, which 04_verify recomputes from gift_edges.csv. */
+function fmt(t, map){
+  return t.replace(/\{(\w+)\}/g, function(_, k){ return map[k] !== undefined ? map[k] : '{'+k+'}'; });
+}
+function apackHtml(m){
+  var ap = m.action_pack;
+  if (!ap) return '';
+  var city = C.client.city ? C.client.city.charAt(0) + C.client.city.slice(1).toLowerCase() : '';
+  var map = {yr: esc(m.tax_year), city: esc(city)};
+  var items = [];
+
+  var st = m.part_xv && m.part_xv.status;
+  if (st === 'accepts') {
+    items.push(fmt((m.part_xv.form_info || m.part_xv.deadlines) ? APACK_COPY.accepts_quoted : APACK_COPY.accepts_bare, map));
+  } else if (st === 'does_not_accept') {
+    items.push(fmt(APACK_COPY.does_not_accept, map));
+  } else if (st === 'not_stated') {
+    items.push(fmt(APACK_COPY.not_stated, map));
+  } else {
+    items.push(fmt(APACK_COPY.no_data, map));
+  }
+
+  if (ap.local_grantees.length) {
+    var named = ap.local_grantees.map(function(g){
+      return '<b>'+esc(g.name)+'</b> ('+money(g.amount)+')';
+    }).join(', ');
+    var more = ap.local_more
+      ? fmt(ap.local_more === 1 ? APACK_COPY.local_more_one : APACK_COPY.local_more, {n: ap.local_more})
+      : '';
+    items.push(fmt(APACK_COPY.local_intro, map) + named + more + '.'
+      + ' <span class="apack-note">' + fmt(APACK_COPY.local_note, map) + '</span>');
+  } else {
+    items.push(fmt(APACK_COPY.local_none, map));
+  }
+
+  var gs = ap.grant_size;
+  if (!gs) {
+    items.push(fmt(APACK_COPY.size_none, map));
+  } else if (gs.n === 1) {
+    items.push(fmt(APACK_COPY.size_one, {yr: map.yr, amt: money(gs.median)}));
+  } else {
+    items.push(fmt(APACK_COPY.size_many, {yr: map.yr, n: gs.n,
+      median: money(gs.median), min: money(gs.min), max: money(gs.max)}));
+  }
+
+  return '<div class="apack"><div class="apack-h">'+esc(APACK_COPY.heading)+'</div>'
+    + items.map(function(t){ return '<div class="apack-item">'+t+'</div>'; }).join('')
+    + '</div>';
+}
+
+(function render(){
+  document.getElementById('matches').innerHTML = C.matches.map(m => {
+    const ev = m.evidence.map(e =>
+      '<div class="ev">'
+      + '<div><span class="r">'+esc(e.recipient)+'</span> '
+      + '<span class="amt">'+esc(money(e.amount))+'</span> '
+      + '<span class="p">&middot; '+esc(e.city)+', '+esc(e.state)+'</span></div>'
+      + (e.purpose ? '<div class="p">'+esc(e.purpose)+'</div>' : '')
+      + '<div class="terms">matched: '+esc(e.matched_terms.join(', '))+'</div>'
+      + '</div>').join('');
+
+    const people = m.trustees.map(t =>
+      '<span class="person">'+esc(t.name)
+      + (t.title ? ' <span class="t">'+esc(t.title)+'</span>' : '')
+      + '</span>').join('');
+
+    const paths = m.access_direct.length + m.access_shared.length;
+
+    return '<div class="fcard">'
+      + '<div class="fcard-head">'
+      +   '<h3>'+esc(m.foundation)+'</h3>'
+      +   pxvChip(m.part_xv)
+      +   '<span class="tier tier-'+esc(m.tier)+'">'+esc(TIER_COPY[m.tier])+'</span>'
+      + '</div>'
+      + '<div class="fcard-body">'
+      +   '<div class="fmeta">EIN '+esc(m.ein)+' &middot; '+m.n_matching_grants+' of '
+      +     m.total_itemized_grants+' itemized grants match this cause area'
+      +     (m.n_in_client_state ? ' &middot; '+m.n_in_client_state+' of them in-state' : '')
+      +     ' &middot; filed for TY'+esc(m.tax_year)
+      +     ' &middot; '+(paths ? paths+' introduction path'+(paths>1?'s':'') : 'no introduction path on paper')+'</div>'
+      +   pxvMore(m.part_xv)
+      +   apackHtml(m)
+      +   '<div class="lbl">The grants that justify this match</div>'
+      +   ev
+      +   '<div class="lbl">Who governs it &mdash; as listed on the TY'+esc(m.tax_year)+' filing</div>'
+      +   '<div class="people">'+people+'</div>'
+      + '</div></div>';
+  }).join('');
+})();
+</script>
+
+<script>
+/* Hash-anchor scroll + count chips. Same mechanism as the demo page. */
+(function(){
+  function openTo(){
+    var h = window.location.hash;
+    if (!h || h.length < 2) return;
+    var t;
+    try { t = document.querySelector(h); } catch (e) { return; }
+    if (!t) return;
+    window.setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+  }
+  function counts(){
+    var done = true;
+    var chips = document.querySelectorAll('.fold-count');
+    for (var i = 0; i < chips.length; i++) {
+      var el = chips[i], n = null;
+      var from = el.getAttribute('data-count-from');
+      var sel = el.getAttribute('data-count-sel');
+      if (from) {
+        var src = document.getElementById(from);
+        if (src) n = parseInt(src.textContent, 10);
+      } else if (sel) {
+        n = document.querySelectorAll(sel).length;
+      }
+      if (n === null || isNaN(n) || n === 0) { done = false; continue; }
+      var txt = n + ' ' + el.getAttribute('data-count-label');
+      if (el.textContent !== txt) el.textContent = txt;
+    }
+    return done;
+  }
+  window.addEventListener('hashchange', openTo);
+  window.addEventListener('load', function(){ openTo(); counts(); });
+  document.addEventListener('DOMContentLoaded', function(){
+    openTo();
+    if (counts()) return;
+    var mo = new MutationObserver(function(){ if (counts()) mo.disconnect(); });
+    mo.observe(document.body, {childList:true, subtree:true, characterData:true});
+  });
+})();
+</script>
+</body>
+</html>

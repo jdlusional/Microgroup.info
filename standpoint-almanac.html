@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Almanac for Standpoint</title>
+<meta name="description" content="Almanac: Funder and Grant Match, prepared for Standpoint. Standpoint's confirmed funding history plus a researched database of currently-open grant opportunities." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/png" href="Assets/almanac-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=8f55469b15">
+<style>
+a{color:var(--ink)}
+
+.hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1.4rem;text-align:center}
+
+.section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
+.section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0}
+
+/* ---- Profile section ---- */
+.profile-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.5rem}
+@media(max-width:780px){.profile-grid{grid-template-columns:1fr}}
+.card{background:var(--well);border:1.5px solid var(--ink);padding:1.3rem 1.4rem;min-width:0;overflow-wrap:anywhere}
+.card h3{font-family:var(--mono);font-size:.84rem;text-transform:uppercase;letter-spacing:.08em;color:var(--wash);margin:0 0 .6rem}
+.card p{margin:0 0 .8rem;font-size:15px}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{font-family:var(--mono);font-size:14px;padding:.22rem .58rem;background:var(--paper);border:1px solid var(--rule);color:var(--ink)}
+.stat-tile{text-align:center;padding:1rem}
+.stat-tile .num{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--accent);line-height:1}
+.stat-tile .lbl{font-family:var(--mono);font-size:12.5px;color:var(--wash);text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem}
+.funder-mini-table{width:100%;min-width:480px;table-layout:fixed;border-collapse:collapse;font-size:15px;margin-top:.5rem}
+.funder-mini-table th{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--wash);text-align:left;padding:.35rem .5rem;border-bottom:1px solid var(--rule)}
+.funder-mini-table td{padding:.45rem .5rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere}
+.funder-mini-table th:first-child,.funder-mini-table td:first-child{width:26%}
+.funder-mini-table th:last-child,.funder-mini-table td:last-child{width:18%}
+.funder-mini-table .amt{font-family:var(--mono);text-align:right;color:var(--wash);font-size:14px}
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin-top:.3rem}
+.impact-grid .stat-tile{padding:.7rem .5rem;background:var(--paper);border:1px solid var(--rule);min-width:0}
+.impact-grid .stat-tile .num{font-size:24px}
+.impact-grid .stat-tile .lbl{white-space:normal;line-height:1.3}
+
+/* ---- Search/filter bar (shared pattern) ---- */
+.toolbar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-bottom:1.1rem}
+.search{flex:1;min-width:220px;padding:.6rem .75rem;border:1.5px solid var(--ink);border-radius:0;font-family:var(--serif);font-size:15px;background:var(--well);color:var(--ink);outline:none}
+.search:focus{outline:2px solid var(--ink);outline-offset:0}
+.chip-filter{display:flex;gap:.4rem;flex-wrap:wrap}
+.chip-btn{font-family:var(--mono);font-size:.84rem;padding:.32rem .65rem;border:1px solid var(--rule);background:var(--well);color:var(--wash);cursor:pointer}
+.chip-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* ---- Funder match cards ---- */
+/* border/padding/title typography superseded by tool-shared.css's card-convergence block. */
+.match-card{padding:0}
+.mc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
+.mc-head .fname{flex:1;min-width:220px;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;overflow-wrap:anywhere}
+.mc-head .match-rank{font-family:var(--mono);font-size:.88rem;color:var(--wash)}
+.mc-body{padding:.9rem 1.2rem;min-width:0}
+@media(max-width:640px){.mc-head{gap:.4rem}.mc-head .fname{min-width:0;flex-basis:100%}}
+.match-body{min-width:0}
+.badge{font-family:var(--serif);font-size:12.5px;padding:.16rem .5rem;letter-spacing:.03em;text-transform:uppercase;font-weight:700}
+.badge-confirmed{background:var(--ok);color:#fff}
+.badge-new{background:var(--accent);color:#fff}
+.score-num.likely-label{color:var(--warn)}
+.score-bar-fill.likely-fill{background:var(--warn)}
+.score-num.historical-label{color:var(--wash);font-size:.86rem;letter-spacing:.02em}
+.match-geo{font-family:var(--serif);font-size:17.5px;color:var(--wash);margin-top:.15rem;font-weight:700}
+.match-rationale{font-size:17.5px;color:var(--ink);margin-top:.4rem;line-height:1.55}
+.match-score{text-align:right;margin-left:auto}
+.score-num{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--accent)}
+.score-num.confirmed-label{font-size:.86rem;letter-spacing:.02em}
+.score-bar{width:70px;height:5px;background:var(--rule);margin-top:.35rem}
+.score-bar-fill{height:100%;background:var(--accent)}
+
+/* ---- Grant entries (F4F Q&A pattern, adapted) ---- */
+.entry{border-bottom:1px solid var(--rule-soft);padding:1.1rem 0}
+.entry .head{display:flex;flex-direction:column;gap:.12rem}
+.entry .org{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--wash)}
+.entry .name a{color:var(--ink)}
+.entry .name a:hover{color:var(--wash);text-decoration:underline}
+.qa-grid{display:flex;flex-direction:column;gap:.5rem;margin-top:.55rem}
+.qa-row{display:grid;grid-template-columns:150px 1fr;gap:.6rem 1rem;align-items:baseline}
+@media(max-width:580px){.qa-row{grid-template-columns:1fr;gap:.1rem}}
+.qa-label{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);white-space:nowrap}
+.qa-value{font-size:.94rem;line-height:1.5}
+.deadline-val.urgent{color:var(--urgent);font-weight:600}
+.deadline-val.soon{color:var(--warn);font-weight:500}
+.deadline-val.closed{color:var(--wash);font-style:italic}
+
+.watch-list{margin-top:1.6rem}
+.watch-item{padding:.75rem 0;border-bottom:1px solid var(--rule-soft);display:grid;grid-template-columns:1fr 2fr;gap:1rem;min-width:0}
+@media(max-width:640px){.watch-item{grid-template-columns:1fr}}
+.watch-item .why{font-size:15px;color:var(--wash);line-height:1.5}
+
+.limitation-note{font-family:var(--mono);font-size:.86rem;color:var(--wash);background:var(--well);border:1px dashed var(--rule);padding:.7rem .9rem;margin-top:1.2rem;line-height:1.5}
+
+/* ---- Status tracking ---- */
+.admin-toggle{font-family:var(--mono);font-size:.84rem;padding:.3rem .7rem;border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer}
+.admin-toggle.on{background:var(--ink);color:var(--paper)}
+.status-row{display:flex;align-items:center;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
+.status-select{font-family:var(--mono);font-size:.84rem;padding:.28rem .4rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink)}
+.status-select:disabled{color:var(--wash);cursor:not-allowed}
+.status-pill{font-family:var(--mono);font-size:.8rem;padding:.2rem .55rem;text-transform:uppercase;letter-spacing:.03em;border:1px solid var(--rule);color:var(--wash);background:var(--paper)}
+.status-pill.st-researching{color:var(--accent);border-color:var(--accent)}
+.status-pill.st-in_progress,.status-pill.st-submitted{color:var(--warn);border-color:var(--warn)}
+.status-pill.st-awarded{color:var(--ok);border-color:var(--ok)}
+.status-pill.st-declined{color:var(--urgent);border-color:var(--urgent)}
+.status-notes{width:100%;margin-top:.4rem;font-family:var(--serif);font-size:15px;padding:.45rem .55rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink);resize:vertical;min-height:2.4em}
+.status-notes:disabled{background:var(--well);color:var(--wash)}
+.status-saved{font-family:var(--mono);font-size:.8rem;color:var(--ok);opacity:0;transition:opacity .3s}
+.status-saved.show{opacity:1}
+
+
+body{overflow-x:hidden}
+/* .sbadge.moderate: its own 8%-alpha tint darkens the backdrop to rgb(224,214,197) over --well,
+   dropping #8a5218 to 4.42:1. #794713 clears AA on both the well and paper backdrops. */
+.sbadge.moderate{color:#794713}
+
+/* Wrap width: .section-head p was capped at 70/72ch -- it rendered 526px inside a 1140px
+   container (46%) while the cards/grid directly beneath it spanned the full width. The intro
+   paragraph should wrap to the width of the block below it, matching .limitation-note, which
+   is already full-width. The centered .hero lede and the 16em/15em/14em long-string wrap
+   guards on table amounts and deadlines are deliberate and stay capped. */
+.section-head p{max-width:none}
+
+.hero{text-align:left;padding:3.2rem 1.25rem 2.2rem;border-bottom:1px solid var(--rule)}
+.section{padding:2.6rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
+@media(max-width:640px){.hero{padding:2.2rem 1.25rem 1.6rem}.hero h1{font-size:30px}}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+<!-- CONVENTION-BADGES:START (generated by pattern-book/inject_badges.py; do not hand-edit) -->
+<div class="conv-badges" style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.35rem 0 0"><span class="conv-badge conv-badge-style" style="font-family:var(--mono,monospace);font-size:12.5px;letter-spacing:.04em;border:1px solid currentColor;padding:.15rem .5rem;max-width:100%">Style guide: General</span><span class="conv-badge conv-badge-tier" style="font-family:var(--mono,monospace);font-size:12.5px;letter-spacing:.04em;border:1px solid currentColor;padding:.15rem .5rem;max-width:100%">Paid · institution-specific</span></div>
+<!-- CONVENTION-BADGES:END -->
+
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand"><b>Almanac</b> for Standpoint</span>
+    <span class="stat"><strong id="m-funders">…</strong> funders (confirmed + candidate + historical)</span>
+    <span class="stat"><strong id="m-grants">…</strong> open opportunities</span>
+    <span class="grow"></span>
+    <button class="admin-toggle" id="admin-toggle" type="button" title="Enter your key to mark status on funders and grants">Admin</button>
+    <nav>
+      <a href="#profile">Profile</a>
+      <a href="#matches">Funder Matches</a>
+      <a href="#grants">Open Grants</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">Prepared research tool · draft for review, not a public product</div>
+  <h1>Almanac</h1>
+  <p>Almanac is a funding-prospect tool built for Standpoint (standpointmn.org), combining Standpoint's confirmed funding history with a researched database of currently-open funding opportunities.</p>
+  <div class="note">Every funder and grant listed here traces to a public source (Standpoint's own site, a funder's own current site, or grant history the owner confirmed directly). Nothing here is estimated or invented. Where an amount, deadline, or fact isn't publicly confirmed, it's marked "not publicly disclosed" or flagged directly rather than guessed at.</div>
+</header>
+
+<section class="section" id="profile">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">The organization</span>
+      <h2>Funding Profile</h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>Standpoint's mission, programs, and confirmed funding history: the foundation the funder match and grants search are built on.</p>
+    </div>
+      <div class="profile-grid">
+        <div class="card">
+          <h3>Mission</h3>
+          <p id="p-mission"></p>
+          <h3>Programs &amp; Services</h3>
+          <div class="tag-row" id="p-focus"></div>
+        </div>
+        <div class="card">
+          <h3>At a glance</h3>
+          <div class="stat-tile">
+            <div class="num" id="p-total">0</div>
+            <div class="lbl">documented funder relationships (confirmed + 1 historical)</div>
+          </div>
+          <h3 style="margin-top:1rem">Geography</h3>
+          <p id="p-geo" style="margin:0"></p>
+          <h3 style="margin-top:1rem">Founded &amp; Governance</h3>
+          <p id="p-founded" style="margin:0"></p>
+          <h3 style="margin-top:1rem">FY2025 Financials (year ended June 30, 2025)</h3>
+          <p id="p-financials" style="margin:0"></p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1.2rem">
+        <h3>FY2024 Impact &amp; Program Efficiency</h3>
+        <div class="impact-grid" id="p-impact"></div>
+        <p id="p-efficiency" style="margin:.9rem 0 0"></p>
+      </div>
+      <div class="card" style="margin-top:1.2rem">
+        <h3>Confirmed Prior Funders</h3>
+        <div class="table-scroll"><table class="funder-mini-table">
+          <thead><tr><th>Funder</th><th>Purpose / Nature</th><th style="text-align:right">Amount</th></tr></thead>
+          <tbody id="p-funders-table"></tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="matches">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Who could fund this</span>
+      <h2>Ranked Funder Matches <span class="fold-count" data-count-from="match-count" data-count-label="funders"></span></h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p id="matches-method"></p>
+    </div>
+      <div class="toolbar">
+        <input class="search" id="match-search" type="search" placeholder="Search funder name or rationale…" aria-label="Search funders" />
+        <div class="chip-filter" id="tier-filter"></div>
+        <div class="chip-filter" id="match-status-filter"></div>
+      </div>
+      <div class="res-count"><b id="match-count">0</b> funders shown</div>
+      <div id="match-results"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="grants">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Open right now</span>
+      <h2>Open Grant Opportunities <span class="fold-count" data-count-from="grant-count" data-count-label="open now"></span></h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>Currently-open or clearly-upcoming grant opportunities from Standpoint's own confirmed funders, researched directly on each funder's current site.</p>
+    </div>
+      <div class="toolbar">
+        <input class="search" id="grant-search" type="search" placeholder="Search organization, focus area…" aria-label="Search grants" />
+        <div class="chip-filter" id="grant-status-filter"></div>
+      </div>
+      <div class="res-count"><b id="grant-count">0</b> opportunities ready now</div>
+      <div id="grant-results"></div>
+
+      <div class="watch-list">
+        <div class="section-head" style="border-top:1px solid var(--rule);padding-top:.9rem;margin-bottom:1rem">
+          <h2 style="font-size:1.15rem">Watch List: not yet open</h2>
+          <p>Real, relevant funders whose current cycle is closed or not yet announced. Worth monitoring and re-engaging, not applying to right now.</p>
+        </div>
+        <div id="watch-results"></div>
+      </div>
+
+      <div class="limitation-note" id="grants-limitation"></div>
+    </div>
+  </div>
+</section>
+
+<section class="method-wrap" id="method">
+  <div class="method-box">
+    <div class="method-kicker">Method</div>
+    <h2>How this was built, and what it cannot tell you</h2>
+    <p><b>Where this comes from.</b> Every funder and every grant on this page is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages. Each match carries a link back to the source it came from, so nothing here has to be taken on trust. Where a funder does not publish a figure &mdash; an award range, a deadline, an eligibility rule &mdash; that gap is marked as unconfirmed rather than filled in.</p>
+    <p><b>What Almanac will not do.</b> It does not invent a fact about a funder. An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on. It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit. A candidate is never dressed up as a confirmed prior funder.</p>
+    <p><b>What it cannot tell you.</b> Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved. A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records. The ranking is a judgment about fit, not a prediction of success. Treat every row as a lead to verify against the funder's own page before you spend real time on it.</p>
+  </div>
+</section>
+
+<footer>
+  <span id="footer-credit">Prepared for Standpoint by Jonathan Lin Davis · Draft for review, not yet deployed</span>
+  <span id="footer-links">standpointmn.org</span>
+  <span class="footer-improvements-wrap"><a class="footer-improvements" href="https://jonathanlindavis.com/improvementlog.html">Improvement log</a></span>
+</footer>
+
+<script>
+/* ---- Self-contained page, hard-set to Standpoint. No ?org= parameter,
+   no per-org runtime data swapping. The data below IS the page. ---- */
+
+const STATUS_LABELS={not_started:"Not started",researching:"Researching",in_progress:"In progress",submitted:"Submitted",awarded:"Awarded",declined:"Declined"};
+const STATUS_ORDER=["not_started","researching","in_progress","submitted","awarded","declined"];
+
+/* ==================== INLINE DATA ==================== */
+
+const PROFILE={
+  organization:"Standpoint",
+  legal_name:"Battered Women's Legal Advocacy Project (dba Standpoint)",
+  ein:"41-1832349",
+  website:"https://www.standpointmn.org/",
+  founded:"1996 (501(c)(3) status since May 1996; year of formation confirmed directly on Standpoint's FY2024 Form 990, Part I)",
+  board_size:9,
+  mission:"Our mission is to promote justice for domestic and sexual violence victims. Standpoint is an independent organization that applies legal expertise to improve justice outcomes for domestic and sexual violence victims in Minnesota's court systems.",
+  tagline:"Attorneys and Advocates Against Domestic and Sexual Violence",
+  programs:[
+    "Action Line: free legal advice, consultation, and advocacy by phone or text, no intake required (toll-free 800-313-2666, text 612-743-7397)",
+    "Family Law assistance",
+    "Protective Orders support",
+    "Housing services",
+    "Legal Assistance for Victims (LAV)",
+    "Labor Trafficking Project (family law, protective-order, and immigration-law help for trafficking survivors)",
+    "Statewide training, including the annual New Laws training",
+    "Technical assistance for attorneys, judges, advocates, and other professionals",
+  ],
+  focus_areas:[
+    "Domestic and sexual violence legal advocacy",
+    "Statewide (Minnesota-only) access to justice",
+    "Reducing barriers for underrepresented and underserved victims",
+    "Feminist / anti-oppression framework",
+    "Multicultural, multiethnic representation",
+  ],
+  geography:{
+    primary:"Minnesota (statewide only, not national)",
+    secondary:["Headquartered in Saint Paul (2324 University Avenue W, Suite 103, St. Paul, MN 55114)"],
+  },
+  target_populations:[
+    "All Minnesota domestic and sexual violence survivors, regardless of immigration status, nationality, religion, citizenship, race, ability, gender identity, sexual orientation, age, or veteran status",
+    "Advocates, attorneys, and other professionals seeking guidance on domestic and sexual violence cases",
+  ],
+  financials_fy2025:{
+    fiscal_year_end:"June 30, 2025",
+    total_revenue:1460072,
+    total_expenses:1233093,
+    net_assets:350634,
+    note:"Source: IRS Form 990 via ProPublica Nonprofit Explorer. Program/admin expense split for FY2025 is not shown here (lower-confidence figure in the underlying research); see the FY2024 Impact & Program Efficiency card below for the most recent hand-verified split.",
+  },
+  impact_fy2024:{
+    fiscal_year_end:"June 30, 2024",
+    stats:[
+      {num:"3,577",lbl:"Survivors served"},
+      {num:"4,300+",lbl:"Action Line contacts"},
+      {num:"2,433",lbl:"Direct advocacy / legal-service recipients"},
+      {num:"1,752",lbl:"Rural-MN callers"},
+      {num:"2,800+",lbl:"Professionals trained (+50% YoY)"},
+    ],
+  },
+  expense_efficiency_fy2024:{
+    program_pct:"88.6",
+    mgmt_pct:"7.6",
+    fundraising_pct:"3.8",
+    fiscal_year_end:"June 30, 2024",
+    note:"The FY2025 revenue and expense totals above are Standpoint's latest filed topline figures; a hand-verified FY2025 program/management/fundraising split hasn't been published yet.",
+  },
+  confirmed_prior_funders:[
+    {funder:"Women's Foundation of Minnesota, Fund for Safety",purpose:"Gender-based violence systems and infrastructure support (general operating support per the Fund's published model)",amount:"Not disclosed by Standpoint; WFMN's typical Fund for Safety award runs $11,000 to $25,000"},
+    {funder:"Ramsey County Bar Foundation (RCBF)",purpose:"Legal services to persons of limited means / administration of justice",amount:"$2,000 (2021 to 2022 cycle); $2,500 (2026 cycle)"},
+    {funder:"Archie D. and Bertha H. Walker Foundation",purpose:"Systemic-barriers / equitable-access focus area (general operating grant)",amount:"Not disclosed by Standpoint; Walker's grants are a fixed $5,000 each"},
+    {funder:"Elmer L. and Eleanor J. Andersen Foundation",purpose:"General operations (Legacy Grants)",amount:"Not disclosed by Standpoint; most successful Legacy Grant requests run $1,000 to $3,000"},
+    {funder:"Thomson Reuters (grant)",purpose:"Not publicly disclosed; likely the Thomson Reuters Legal Corporate Giving Program (Eagan, MN campus). TR does not accept unsolicited grant requests, per its own policy",amount:"Not publicly disclosed"},
+    {funder:"Thomson Reuters (programming sponsorship)",purpose:"Not publicly disclosed; specific sponsored program not independently confirmed despite an exhaustive public search (annual report, event pages, news archive, TR's own materials)",amount:"Not publicly disclosed"},
+    {funder:"Minnesota State Bar Association, via the Minnesota State Bar Foundation (MSBF)",purpose:"Legal aid clinics / pro bono services / law-related education",amount:"$3,000 (spring 2025 cycle)"},
+    {funder:"Mardag Foundation",purpose:"Statewide domestic and sexual violence justice work",amount:"$20,000, awarded March 9, 2022 (confirmed via Mardag's own dated press release)"},
+    {funder:"Otto Bremer Trust",purpose:"Recurring relationship; two dated grants on record under Standpoint's legal name",amount:"Not publicly disclosed; grants dated September 21, 2022 and June 7, 2024"},
+    {funder:"Bush Foundation (past funder, not current)",purpose:"Legal resource library, strategic planning, and appeals-related attorney expenses",amount:"$178,073 total across 4 grants, 2000 to 2007; none since"},
+    {funder:"Legal Services Advisory Committee (LSAC)",purpose:"Minnesota state civil-legal-aid funding body (IOLTA revenue, legislative appropriation, lawyer registration fees)",amount:"$25,000 (FY20 Annual Report); confirm current renewal status with LSAC's successor, BOCLA"},
+  ],
+  confirmed_prior_funders_count:11,
+  profile_built:"2026-07-12",
+  profile_sources:[
+    "standpointmn.org (fetched 2026-07-12)",
+    "standpointmn.org/what-we-do",
+    "standpointmn.org/history",
+    "standpointmn.org/staff",
+    "standpointmn.org/board-of-directors",
+    "standpointmn.org/technical-assistance",
+    "standpointmn.org/s/Annual-Report-2024-Final.pdf (FY2024 Annual Report and attached Form 990, read in full)",
+    "ProPublica Nonprofit Explorer, EIN 41-1832349 (legal name, founding date, FY2025 topline financials)",
+    "GuideStar profile (guidestar.org/profile/41-1832349)",
+    "Charity Navigator, EIN 41-1832349 (Four-Star, 90% overall score); EIN 46-3584341 for BWJP, the separate national organization",
+    "mnbars.org, direct primary-page fetch (RCBF $2,000 2021 to 2022 and $2,500 2026 awards; MSBF $3,000 spring 2025 award; joint-application close date confirmed as February 9, 2026)",
+    "abwalkerfoundation.org (Walker Foundation award size and eligibility)",
+    "Minneapolis Foundation / mplsfoundation.smapply.org (Andersen Foundation Legacy Grants; the foundation's own former domain, eandeandersenfoundation.org, is no longer live)",
+    "mardag.org (Mardag Foundation's own dated press release: $20,000, March 9, 2022, confirmed)",
+    "ottobremer.org (Otto Bremer Trust grant-detail pages 21-56347 and 24-62626, dated September 2022 and June 2024; confirmed recurring, amounts unverified)",
+    "bushfoundation.org (Bush Foundation's own grants database: 4 grants, $178,073 total, 2000 to 2007, none since; reclassified as a past funder)",
+    "Legal Services Advisory Committee (LSAC) FY20 Annual Report, lrl.mn.gov (Standpoint $25,000 discretionary grant); bocla.us for LSAC's current successor program",
+    "thomsonreuters.com Community Support Policy PDF (confirms TR does not accept unsolicited grant requests outside established programs)",
+    "Six new candidate-prospect sources for the round-2 search: northlandfdn.org, hardenberghfoundation.org, tjx.com, wellsfargo.com, marbrookfoundation.org, and ProPublica for Lathrop GPM Foundation, plus swifoundation.org, thejensenproject.org, oakfnd.org, and aauw.org",
+    "F.R. Bigelow Foundation removed from this list after closer reading of the shared March 2022 press release showed the $20,000 grant credited to Mardag Foundation alone",
+    "Funder list and the MSBF/RCBF joint-application detail supplied directly by Standpoint's site owner and independently corroborated in this research pass",
+  ],
+};
+
+const FUNDERS_METHOD="Confirmed funders are relationships either named directly by Standpoint's owner or independently confirmed with a dated award record pulled straight from the funder's own site (a press release, a grant-detail page, or a state agency's own annual report). No funder currently sits at the 'Likely — verify' confidence level: the two funders that previously held that flag, Mardag Foundation and Otto Bremer Trust, were upgraded to confirmed once their award records were fetched directly (bypassing an earlier access block); a third, F.R. Bigelow Foundation, was removed entirely after a closer read showed the shared press release credits its $20,000 grant to Mardag alone, with no separate Bigelow grant. Bush Foundation is shown separately as a Past funder: four dated grants totaling $178,073, all 2000 to 2007, nothing since, so it is not treated as a current relationship even though it was once confirmed. Legal Services Advisory Committee (LSAC) was added as a newly-confirmed funder, sourced to its own FY20 Annual Report. Candidate funders below come from two rounds of a targeted, one-time keyword and grantee-pattern search (round one: law-firm foundations, gender-based-violence funders, Minnesota community foundations; round two: regional Initiative Foundations, corporate foundations, immigrant/trafficking-focused funders, and national women's-safety funders) rather than the full IRS Schedule I pipeline Almanac uses for other orgs; none of them have a confirmed relationship with Standpoint yet, and none are algorithmically scored — each is tiered by fit (Strong / Promising / Lower-confidence) with its own confidence caveat noted in its rationale.";
+
+const RANKED_FUNDERS=[
+  {funder_name:"Women's Foundation of Minnesota, Fund for Safety",is_confirmed_prior_funder:true,geography:"Statewide Minnesota (Minneapolis, MN funder)",rationale:"Confirmed funder (EIN 41-1635761). The Fund for Safety is Women's Foundation of Minnesota's dedicated program for ending gender-based violence (sex trafficking, domestic violence, sexual assault, and structural violence), a near-exact thematic match to Standpoint's mission. Invests in strengthening anti-violence systems and infrastructure, prevention, and organizations serving communities of color, American Indian communities, LGBTQ+ people, and Greater Minnesota. Typical awards run $11,000 to $25,000; no fixed annual cycle is published, cycles open periodically."},
+  {funder_name:"Ramsey County Bar Foundation (RCBF)",is_confirmed_prior_funder:true,geography:"Ramsey County, MN",rationale:"Confirmed funder (EIN 41-1527694); Standpoint received $2,000 in the 2021 to 2022 cycle and $2,500 in the 2026 cycle, a modest and recurring relationship. RCBF funds legal services to persons of limited means and improvements to the administration of justice, directly aligned with Standpoint's Action Line and legal-advocacy work. RCBF's framing leans Ramsey-County-local; Standpoint is a statewide program, so confirming whether county-specific impact data is expected is worth a direct call before applying. Notable: RCBF and the Minnesota State Bar Foundation (below) can be applied to in the SAME application, with the same open and close dates (confirmed directly on both foundations' current pages; the 2026 cycle closed February 9, 2026). One application covers both funders."},
+  {funder_name:"Minnesota State Bar Association, via the Minnesota State Bar Foundation (MSBF)",is_confirmed_prior_funder:true,geography:"Statewide Minnesota",rationale:"Confirmed funder (EIN 41-6023581); Standpoint received $3,000 in the spring 2025 cycle. MSBF funds legal assistance to the disadvantaged, improvements in the administration of justice, and law-related education statewide, directly on-mission for Standpoint. The spring 2025 cycle distributed $130,000 across 45 organizations (several, like Tubman and Domestic Abuse Project, are direct domestic-violence-sector peers of Standpoint). As above, MSBF and RCBF share one joint application with the same open and close dates."},
+  {funder_name:"Archie D. and Bertha H. Walker Foundation",is_confirmed_prior_funder:true,geography:"Twin Cities metro, MN (Anoka, Carver, Dakota, Hennepin, Ramsey, Scott, Washington counties)",rationale:"Confirmed funder (EIN 41-6022758). Walker's Combating Systemic Racism, Prejudice and Exclusivity category funds nonprofits dismantling systemic barriers and creating equitable access, consistent with Standpoint's work reducing barriers for underrepresented and underserved victims. Grants are a fixed $5,000, capped at 5 grants per organization in any 10-year period. This category runs in even years only (2026, 2028, and so on); whether open-call or relationship-based is not confirmed on the foundation's current site, worth a direct check before applying."},
+  {funder_name:"Elmer L. and Eleanor J. Andersen Foundation",is_confirmed_prior_funder:true,geography:"Twin Cities metro, MN",rationale:"Confirmed funder, now administered as a Signature Fund of the Minneapolis Foundation. The Legacy Grants track funds general operations for Minnesota nonprofits across human services and related categories, on a twice-yearly cycle (February 1 and September 1 deadlines): a straightforward general-operating-support fit for Standpoint. Most successful requests run $1,000 to $3,000. Note: the foundation's former standalone domain no longer resolves to the foundation; apply through the Minneapolis Foundation's portal instead."},
+  {funder_name:"Thomson Reuters (grant)",is_confirmed_prior_funder:true,geography:"National, with a major Eagan, MN campus (about 6,000 employees)",rationale:"Confirmed funder (direct grant), per Standpoint's own funder records — but not an open application target. Thomson Reuters' own Community Support Policy states verbatim it has 'limited capacity to provide grants to charitable causes and do[es] not accept unsolicited requests for funding outside of the established programs' in that policy. Treat this as an existing relationship to maintain, not a channel to reapply through cold. Thomson Reuters separately runs an active AI for Justice Legal Aid Program offering subsidized CoCounsel access to legal-aid nonprofits, run by the distinct Thomson Reuters Foundation: a separate, live, open opportunity worth exploring (see Open Grant Opportunities)."},
+  {funder_name:"Thomson Reuters (programming sponsorship)",is_confirmed_prior_funder:true,geography:"National, with a major Eagan, MN campus (about 6,000 employees)",rationale:"Confirmed funder (programming/training sponsorship, distinct from the direct grant above), per Standpoint's own funder records. Exhaustively re-checked and still unconfirmable: Standpoint's full FY2024 Annual Report (50 pages, read in full) names no individual funder anywhere, including known confirmed ones, so its silence isn't evidence either way; event-sponsor pages, the news archive, and Thomson Reuters' own press/ESG materials all came back with no mention of Standpoint. The specific sponsored program name genuinely could not be confirmed from public sources. TR's policy also confirms it does not accept unsolicited funding requests, so this is a relationship to maintain, not reapply for; recommend getting the program name directly from Standpoint's development contact rather than continuing to search publicly."},
+  {funder_name:"Mardag Foundation",is_confirmed_prior_funder:true,geography:"Saint Paul, MN",rationale:"Confirmed funder: Standpoint was awarded $20,000 by Mardag Foundation on March 9, 2022, per the foundation's own dated press release, to support its statewide work promoting justice for domestic and sexual violence victims (\"demand for Standpoint's representation, training, litigation support and legal advocacy services nearly doubled during the pandemic\"). Amount, date, funder, and purpose are all sourced directly to Mardag's own site."},
+  {funder_name:"Otto Bremer Trust",is_confirmed_prior_funder:true,geography:"Saint Paul, MN",rationale:"Confirmed, recurring funder: two dated grants on record under Standpoint's legal name (Battered Women's Legal Advocacy Project dba Standpoint) — grant 21-56347, dated September 21, 2022, and grant 24-62626, dated June 7, 2024. This is an active relationship spanning at least two award years, not a single legacy grant. Dollar amounts remain unconfirmed: both grant-detail pages render the award amount via client-side JavaScript that a static fetch can't execute; a live browser visit or the trust's 990-PF Part XV grant schedule would be needed to pin the amounts."},
+  {funder_name:"Bush Foundation",is_confirmed_prior_funder:true,confidence:"historical",geography:"Saint Paul, MN",rationale:"Past funder, not current: Bush Foundation's own grants database shows 4 grants to Battered Women's Legal Advocacy Project, Inc., totaling $178,073, all between 2000 and 2007 ($73,073 in 2000 for a legal resource library; $20,000 in 2004 for a strategic plan; $45,000 in 2005 to implement it; $40,000 in 2007 for attorney expenses on appeals). No grant is recorded after 2007 — roughly 19 years with no listed funding. This is a lapsed historical relationship, not an active one; a plausible re-approach candidate, but should not be pitched or treated as a current funder."},
+  {funder_name:"Legal Services Advisory Committee (LSAC)",is_confirmed_prior_funder:true,geography:"Statewide Minnesota (state civil-legal-aid funding body; succeeded by the State Board of Civil Legal Aid, BOCLA, as of July 1, 2025)",rationale:"Confirmed funder: Standpoint received $25,000 per LSAC's FY20 Annual Report discretionary-grant table, alongside peer domestic-violence/legal organizations (Tubman $108,000; The Advocates for Human Rights $150,000; Minnesota Justice Foundation $110,000). LSAC administers Minnesota's IOLTA revenue, a legislative civil-legal-aid appropriation, and lawyer registration fees, one of the state's primary civil-legal-aid funding mechanisms. The FY20 figure is several cycles old; confirm Standpoint's current award and renewal status directly with LSAC's successor, BOCLA (bocla.us), rather than treating this as a settled ongoing amount."},
+  {funder_name:"Dorsey & Whitney Foundation",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"Minnesota-weighted (majority of grants), other Dorsey office communities",rationale:"New candidate. Explicit stated interest in legal representation of underserved individuals and families, funding pro-bono/low-cost representation and advocacy: a direct match to Standpoint's legal-advocacy model. Grant size and deadline not published; verify directly via the foundation's External Application Process."},
+  {funder_name:"Fredrikson & Byron Foundation",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"Primarily Minnesota, plus Iowa, North Dakota, Wisconsin",rationale:"New candidate. Stated priority is financial assistance to legal-services and pro bono organizations serving people who cannot afford essential legal services: a squarely on-mission match. Real, dated cycle: applications due September 30 annually, funds typically disbursed early February (see Open Grant Opportunities)."},
+  {funder_name:"American Bar Endowment, ABA Fund for Justice and Education (ABE Opportunity Grants)",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"National",rationale:"New candidate. Explicitly funds increased access to justice for vulnerable and underserved populations, including legal services and training for domestic and sexual violence survivors: a close thematic match to the Action Line, training program, and amicus work. Grant size and deadline not confirmed in this pass; verify on the dedicated Opportunity Grant page."},
+  {funder_name:"Robins Kaplan Foundation",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"Minneapolis / Minnesota-focused",rationale:"New candidate. One of five stated priority areas is explicitly \"justice.\" Minneapolis law-firm foundation whose attorneys have filed amicus briefs on gender-violence issues, suggesting substantive engagement with the space. Process appears to be a written proposal to the foundation's contact; verify directly."},
+  {funder_name:"Faegre Drinker Foundation",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"Minneapolis and other Faegre Drinker office communities",rationale:"New candidate. Supports organizations that are leaders in social, legal, and cultural programs in communities the firm serves; Faegre Drinker attorneys have filed amicus briefs and won pro bono awards for gender-violence-adjacent work, including representing Tubman in litigation. Least-documented of the law-firm foundations researched; likely relationship or referral-based, verify before pitching."},
+  {funder_name:"Northland Foundation",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"Seven NE Minnesota counties (Aitkin, Carlton, Cook, Itasca, Koochiching, Lake, St. Louis) plus five tribal nations",rationale:"New candidate, strongest fit of the round-two search. One of Minnesota's six regional Initiative Foundations; its Quarterly Grants program names \"Domestic and Sexual Violence\" as one of five priority categories and explicitly names \"advocacy, legal\" support within that category, the clearest language match found. A 2024 example: the Patrick & Aimee Butler Family Foundation routed $200,000 through Northland for DV/trafficking-serving nonprofits in NE Minnesota. Typical grant $10,000 or more, awarded quarterly (deadlines January 5, April 1, July 1, October 1). Standpoint's statewide Action Line and Labor Trafficking Project reach this region; frame the ask around service to clients there. First contact grants@northlandfdn.org."},
+  {funder_name:"Hardenbergh Foundation",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"East Twin Cities metro: Ramsey County, Washington County, St. Croix Valley",rationale:"New candidate. St. Paul-based private foundation ($68.4M assets) whose geographic focus is Standpoint's own home county (Ramsey), with Human Services as a grantmaking area and unrestricted general operating support as its standard product, a clean fit with no program-restriction hurdle. General operating grants typically $10,000 to $25,000; board meets first week of December. Domestic violence is not named as its own category (it sits under the broader Human Services umbrella), so confirm mission fit on the required first-time-applicant intro call with Tammy Davis Cownie (tammy@hardenberghfdn.org, 651-653-4956) before applying."},
+  {funder_name:"TJX Foundation",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"National; must be within about 15 miles of a TJX store, distribution center, or office (St. Paul qualifies)",rationale:"New candidate. National corporate foundation (T.J. Maxx / Marshalls / HomeGoods / Sierra) naming \"Safety from Domestic Violence\" as one of four funding areas, with a Letter of Inquiry portal open February through October and awards typically clustering around $5,000. Caveat: the program's own language frames this area as \"prevention programs, services, or shelters,\" and TJX's hyperlocal, store-proximity model more typically favors direct-service/shelter organizations over a statewide legal-advocacy and training model like Standpoint's. \"Services\" should cover legal advocacy, but this is a real fit-type uncertainty; confirm directly with TJX that a non-shelter legal-services model qualifies before investing significant proposal effort."},
+  {funder_name:"Wells Fargo Foundation",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"National, with an active Minnesota giving presence",rationale:"New candidate. Confirmed precedent of funding legal-aid intermediaries for eviction-prevention and housing-stability advocacy, including Mid-Minnesota Legal Aid, a direct model match to Standpoint's housing-advocacy component (the Action Line and LAV project both handle housing cases for DV survivors). Community Giving cycles run February through October via Wells Fargo's grant-process portal. No fixed award range published for this specific lane, and whether Wells Fargo is currently open to a new statewide DV-legal grantee (vs. a renewal-only relationship) is unconfirmed."},
+  {funder_name:"Marbrook Foundation",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"Seven-county Twin Cities metro",rationale:"New candidate. Minneapolis family foundation (est. 1948) with an \"Immigrants & Refugees\" category, a genuine niche match to Standpoint's Labor Trafficking Project, which explicitly serves immigrants, asylum seekers, and torture survivors. Minimum $5,000 in this category; spring LOI-then-application cycle. DV/legal aid isn't named as its own category generally, so pitch narrowly around the Labor Trafficking Project rather than Standpoint's full mission."},
+  {funder_name:"Lathrop GPM Foundation",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"Minneapolis-based; likely follows Lathrop GPM's MN office footprint",rationale:"New candidate. A sixth Minnesota law-firm foundation (formerly Gray Plant Mooty Foundation, est. 1982), not covered in the original law-firm-foundation slate. The foundation itself is modest in scale (about $283,527 in total assets, $205,589 in annual contributions per 2024 filings), implying grants in the low-thousands-to-low-tens-of-thousands range in aggregate. No legal-aid or DV-specific grant history was found; no published application deadline or portal. Treat as an inferred fit by category (same pattern as its confirmed-fit law-firm-foundation peers), not a confirmed one; contact Lathrop GPM's Minneapolis office (612-632-3000) directly."},
+  {funder_name:"Southwest Initiative Foundation",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"Southwest Minnesota counties",rationale:"New candidate, representative of the broader MN Initiative Foundation network. Same statewide, place-based Initiative Foundation model as Northland (above); Standpoint's statewide reach means a regionally-scoped ask could work here and at West Central Initiative or Southern Minnesota Initiative Foundation using the same approach. Typical grant $1,000 to $20,000 with a 50% cost-match requirement; rolling grant-request form. Unlike Northland, no domestic/sexual-violence priority is explicitly named on Southwest's site; fit is inferred from general human-services/community-safety grantmaking (one Central-MN Initiative Foundation precedent: a $5,000 grant to a DV workplace-outreach program), not confirmed. Contact Nancy Fasching, VP Community Impact, (320) 484-9104."},
+  {funder_name:"The Jensen Project (GrantTank)",is_confirmed_prior_funder:false,tier:"tier_3_weak",geography:"National",rationale:"New candidate. National funder founded by a sexual-violence survivor with a laser focus on sexual violence, domestic violence, and human trafficking; GrantTank specifically funds organizations serving adult female survivors of human trafficking through housing and economic-empowerment grants, a close match to Standpoint's Labor Trafficking Project niche. Has distributed $11M+ since 2021, in multi-year grants. For 2026, GrantTank is invitation-only, prioritizing existing partnerships, so there is no open application; also unconfirmed whether it funds legal services specifically (its named uses are housing/technology/economic-empowerment). A longer-term relationship-building target, not a near-term ask."},
+  {funder_name:"Oak Foundation",is_confirmed_prior_funder:false,tier:"tier_3_weak",geography:"International, with confirmed US funding; not Minnesota-specific",rationale:"New candidate. Large international private foundation with an Issues Affecting Women Programme explicitly addressing domestic/intra-familial violence and trafficking/exploitation, confirmed to fund in the US among its listed countries. Minimum program grants run around $25,000. Widely reported (Inside Philanthropy and others) as largely relationship- or referral-driven for new grantees rather than open to unsolicited proposals, and its confirmed US grantees skew toward larger national/multi-state organizations; access for a single-state MN legal-advocacy nonprofit is uncertain. Verify directly before investing effort."},
+  {funder_name:"AAUW Community Action Grant",is_confirmed_prior_funder:false,tier:"tier_3_weak",geography:"National, open to Minnesota applicants",rationale:"New candidate. American Association of University Women national program funding community-based projects promoting education and equity for women and girls; AAUW's separate Legal Advocacy Fund underscores the organization's legal/gender-equity orientation generally, and AAUW of Minnesota is an active state chapter. One-year grants $2,000 to $7,000; two-year start-up grants $5,000 to $10,000. Grants are typically for discrete education/awareness projects rather than core legal-representation funding, a weaker fit for Standpoint's actual service model unless a specific educational project is developed to pitch; deadline not confirmed, verify at aauw.org."},
+];
+
+const GRANTS={
+  run_date:"2026-07-12",
+  known_limitation:"Open-grant opportunities are a point-in-time snapshot from public research on each of Standpoint's confirmed funders' own current sites, run July 2026. Confirm each program's current cycle, deadline, and eligibility directly with the funder before applying. This page covers Standpoint's ten already-confirmed funding relationships. Two rounds of targeted keyword/grantee-pattern prospecting have surfaced 15 additional candidate funders (not yet connected to Standpoint), but the full IRS Schedule I keyword-search pipeline Almanac runs for other orgs has still not been run for Standpoint.",
+  ready_now:[
+    {
+      organization:"Fredrikson & Byron Foundation",
+      grant_name:"Annual grant application",
+      url:"https://www.fredlaw.com/commitment-foundation",
+      deadline:"September 30, 2026 (annual; funds typically disbursed early February)",
+      amount:"Not published; the foundation supported 121-plus organizations in a recent year",
+      eligibility:"Legal-services or pro bono organization; primarily Minnesota, plus Iowa, North Dakota, Wisconsin",
+      focus_area:"Financial assistance to legal-services and pro bono organizations supporting people who cannot afford essential legal services",
+      notes:"New candidate, not yet a confirmed Standpoint funder. Stated priority is a close, direct match to Standpoint's free statewide legal-advocacy model. Real, dated deadline: worth a written application for this cycle.",
+      id:"fredrikson-byron-sept-2026",
+    },
+    {
+      organization:"Elmer L. and Eleanor J. Andersen Foundation",
+      grant_name:"Legacy Grants: general operations",
+      url:"https://mplsfoundation.smapply.org/prog/elmer_and_eleanor_andersen_foundation_legacy/",
+      deadline:"September 1, 2026 (for October 2026 board review)",
+      amount:"Most successful requests are $1,000 to $3,000, per the foundation's own guidance",
+      eligibility:"501(c)(3) nonprofit, Minnesota focus (primarily Twin Cities metro); one application per year",
+      focus_area:"General operations or specific projects (not capital campaigns or endowments)",
+      notes:"Confirmed prior funder. Straightforward general-operating-support fit. Apply through the Minneapolis Foundation's SmartSimple portal (the foundation's own former domain, eandeandersenfoundation.org, no longer resolves to it). Contact: Kevin Rockwell, Philanthropic Advisor, krockwell@mplsfoundation.org.",
+      id:"andersen-legacy-sept-2026",
+    },
+    {
+      organization:"Thomson Reuters",
+      grant_name:"AI for Justice Legal Aid Program (CoCounsel access + Legal Innovators Incubator)",
+      url:"https://www.thomsonreuters.com/en/press-releases/2024/october/closing-the-justice-gap-thomson-reuters-launches-programs-to-empower-legal-aid-and-support-the-judiciary",
+      deadline:"Rolling, no fixed deadline identified",
+      amount:"In-kind: subsidized CoCounsel access at $50 per seat per month for eligible legal-aid nonprofits; the Incubator cohort (free CoCounsel plus training) is selective",
+      eligibility:"501(c)(3) legal-services organization serving low-income individuals in the U.S.",
+      focus_area:"AI-assisted legal work / access-to-justice technology capacity",
+      notes:"This program is run by the Thomson Reuters Foundation (TrustLaw), a separate entity from the Legal Corporate Giving Program that most likely issued Standpoint's confirmed grant and sponsorship. Treat this as a new, additional opportunity worth exploring, not a certainty tied to the existing relationship. In-kind technology capacity, not a cash grant.",
+      id:"tr-ai-for-justice-rolling",
+    },
+  ],
+  watch_list_not_yet_open:[
+    {
+      organization:"Ramsey County Bar Foundation + Minnesota State Bar Foundation (joint application)",
+      grant_name:"Annual grant cycle",
+      url:"https://mnbars.org/?pg=grant-guidelines",
+      why_watch:"Confirmed funders on both sides, with real prior awards: RCBF $2,000 (2021 to 2022) and $2,500 (2026), and MSBF $3,000 (spring 2025). The 2026 cycle closed February 9, 2026, already past as of this July 2026 draft; the close date and RCBF's 2026 award are now confirmed directly from mnbars.org's own pages, not a search snippet. Both foundations run once a year and share a single joint application with the same open and close dates, so one submission covers both funders (the exact 'one application serves both funders' sentence itself still isn't found verbatim on either page, but the identical close dates, shared contact, and shared office make it reliable circumstantial evidence). The next open date is not published; based on the pattern it likely falls in December or January. Typical awards run $500 to $3,000 per foundation. Contact: Erikka Ryan, Director of Equity, Inclusion and Foundations, eryan@mnbars.org, 612-278-6321.",
+    },
+    {
+      organization:"Archie D. and Bertha H. Walker Foundation",
+      grant_name:"Combating Systemic Racism, Prejudice and Exclusivity grant window",
+      url:"https://abwalkerfoundation.org/annual-grant-application",
+      why_watch:"Confirmed funder, but this category runs in even years only. The 2026 window (January 2 to February 2, 2026) has closed; the next window is not expected until January 2028. Because Standpoint already has a funding relationship, a direct check-in with Walker ahead of that window is the sensible next step.",
+    },
+    {
+      organization:"Women's Foundation of Minnesota, Fund for Safety",
+      grant_name:"Fund for Safety RFP (next cycle not yet announced)",
+      url:"https://www.wfmn.org/funds/fund-for-safety/",
+      why_watch:"Confirmed funder and Standpoint's strongest thematic match. No current open cycle is published; the Fund for Safety runs periodic RFPs rather than a fixed annual window. Monitor wfmn.org/grant/ directly or contact LaCora Bradford Kesti, VP Community Impact, 612-236-1842, lacora@wfmn.org.",
+    },
+  ],
+};
+
+/* ==================== helpers ==================== */
+const state={matchQ:"",activeTier:null,grantQ:"",statuses:{},adminKey:localStorage.getItem('grantStatusKey')||"",matchStatusFilter:null,grantStatusFilter:null};
+
+function esc(s){return(s||"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function money(n){return '$'+Number(n).toLocaleString();}
+function highlight(text,q){
+  if(!q||!text)return esc(text);
+  const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+  return esc(text).replace(re,'<mark>$1</mark>');
+}
+
+function statusOf(itemType,itemId){
+  return state.statuses[itemType+':'+itemId]||{status:'not_started',notes:''};
+}
+
+async function fetchStatuses(){
+  try{
+    const res=await fetch('/api/grant-status/list?org=standpoint',{cache:'no-store'});
+    if(!res.ok)throw new Error('status fetch failed');
+    const data=await res.json();
+    state.statuses=data.statuses||{};
+  }catch(e){
+    // Status tracking is additive -- this draft has no backend deployed yet,
+    // so the rest of the page still works fully; every item just shows
+    // "Not started" until the grant-status API is provisioned and wired up.
+    state.statuses={};
+  }
+}
+
+async function saveStatus(itemType,itemId,status,notes,savedEl){
+  if(!state.adminKey){
+    promptForKey();
+    if(!state.adminKey)return false;
+  }
+  try{
+    const res=await fetch('/api/grant-status/update',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-Admin-Key':state.adminKey},
+      body:JSON.stringify({org_slug:'standpoint',item_type:itemType,item_id:itemId,status,notes}),
+    });
+    if(res.status===401){
+      alert('That key was not accepted. Try Admin again with the correct key.');
+      state.adminKey="";localStorage.removeItem('grantStatusKey');
+      setAdminUI();
+      return false;
+    }
+    if(!res.ok)throw new Error('save failed');
+    const saved=await res.json();
+    state.statuses[itemType+':'+itemId]={status:saved.status,notes:saved.notes,updated_at:saved.updated_at};
+    if(savedEl){savedEl.classList.add('show');setTimeout(()=>savedEl.classList.remove('show'),1500);}
+    return true;
+  }catch(e){
+    alert('Could not save status: the status-tracking backend is not deployed for this draft yet.');
+    return false;
+  }
+}
+
+function promptForKey(){
+  const key=prompt('Enter your grant-status admin key:');
+  if(key){
+    state.adminKey=key.trim();
+    localStorage.setItem('grantStatusKey',state.adminKey);
+  }
+  setAdminUI();
+}
+
+function setAdminUI(){
+  const btn=document.getElementById('admin-toggle');
+  const isOn=!!state.adminKey;
+  btn.classList.toggle('on',isOn);
+  btn.textContent=isOn?'Admin ✓':'Admin';
+  document.querySelectorAll('.status-select,.status-notes').forEach(el=>{el.disabled=!isOn;});
+}
+
+function statusRowHTML(itemType,itemId){
+  const s=statusOf(itemType,itemId);
+  const options=STATUS_ORDER.map(k=>`<option value="${k}"${k===s.status?' selected':''}>${STATUS_LABELS[k]}</option>`).join('');
+  const isOn=!!state.adminKey;
+  return `
+    <div class="status-row" data-item-type="${itemType}" data-item-id="${esc(itemId)}">
+      <span class="status-pill st-${s.status}">${STATUS_LABELS[s.status]}</span>
+      <select class="status-select" ${isOn?'':'disabled'}>${options}</select>
+      <span class="status-saved">Saved</span>
+    </div>
+    <textarea class="status-notes" placeholder="Notes (contact made, next step, why declined...)" ${isOn?'':'disabled'}>${esc(s.notes)}</textarea>`;
+}
+
+function wireStatusControls(container){
+  container.querySelectorAll('.status-row').forEach(row=>{
+    const itemType=row.getAttribute('data-item-type');
+    const itemId=row.getAttribute('data-item-id');
+    const select=row.querySelector('.status-select');
+    const savedEl=row.querySelector('.status-saved');
+    const notesEl=row.nextElementSibling;
+    select.addEventListener('change',async()=>{
+      const ok=await saveStatus(itemType,itemId,select.value,notesEl.value,savedEl);
+      if(!ok){const cur=statusOf(itemType,itemId);select.value=cur.status;}
+      else{
+        const pill=row.querySelector('.status-pill');
+        pill.className='status-pill st-'+select.value;
+        pill.textContent=STATUS_LABELS[select.value];
+      }
+    });
+    notesEl.addEventListener('blur',async()=>{
+      const cur=statusOf(itemType,itemId);
+      if(notesEl.value!==cur.notes)await saveStatus(itemType,itemId,select.value,notesEl.value,savedEl);
+    });
+  });
+}
+
+function buildStatusFilter(hostId,onChange,activeGetter){
+  const host=document.getElementById(hostId);
+  const options=[{key:null,label:'Any status'}].concat(STATUS_ORDER.map(k=>({key:k,label:STATUS_LABELS[k]})));
+  host.innerHTML=options.map(o=>`<button class="chip-btn${o.key===activeGetter()?' active':''}" data-status="${o.key||''}">${o.label}</button>`).join('');
+  host.querySelectorAll('.chip-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      onChange(btn.getAttribute('data-status')||null);
+      buildStatusFilter(hostId,onChange,activeGetter);
+    });
+  });
+}
+
+/* ---- Profile ---- */
+function renderProfile(){
+  const p=PROFILE;
+  document.getElementById('p-mission').textContent=p.mission;
+  document.getElementById('p-focus').innerHTML=p.programs.map(f=>`<span class="tag">${esc(f)}</span>`).join('');
+  document.getElementById('p-total').textContent=p.confirmed_prior_funders_count;
+  document.getElementById('p-geo').innerHTML=`<strong>${esc(p.geography.primary)}</strong><br>${p.geography.secondary.map(esc).join(', ')}`;
+  document.getElementById('p-founded').innerHTML=`${esc(p.founded)}${p.board_size?' &middot; '+esc(String(p.board_size))+'-member board':''}`;
+  const fin=p.financials_fy2025;
+  if(fin){
+    document.getElementById('p-financials').innerHTML=`Revenue ${money(fin.total_revenue)} &middot; Expenses ${money(fin.total_expenses)} &middot; Net assets ${money(fin.net_assets)}`;
+  }
+  const imp=p.impact_fy2024;
+  if(imp){
+    document.getElementById('p-impact').innerHTML=imp.stats.map(s=>`
+      <div class="stat-tile"><div class="num">${esc(s.num)}</div><div class="lbl">${esc(s.lbl)}</div></div>
+    `).join('');
+  }
+  const eff=p.expense_efficiency_fy2024;
+  if(eff){
+    document.getElementById('p-efficiency').innerHTML=`<strong>${esc(eff.program_pct)}% to programs</strong> for the fiscal year ended ${esc(eff.fiscal_year_end)} (${esc(eff.mgmt_pct)}% management &amp; general, ${esc(eff.fundraising_pct)}% fundraising) &mdash; from Standpoint's own filed Form 990, the most recent fiscal year with a hand-verified expense split. ${esc(eff.note)}`;
+  }
+
+  document.getElementById('p-funders-table').innerHTML=p.confirmed_prior_funders.map(f=>`
+    <tr>
+      <td><strong>${esc(f.funder)}</strong></td>
+      <td>${esc(f.purpose)}</td>
+      <td class="amt">${esc(f.amount)}</td>
+    </tr>
+  `).join('');
+}
+
+/* ---- Funder Matches ---- */
+function buildTierFilter(){
+  const host=document.getElementById('tier-filter');
+  const tiers=[
+    {key:null,label:'All'},
+    {key:'confirmed',label:'Confirmed'},
+    {key:'likely',label:'Likely (verify)'},
+    {key:'historical',label:'Past funder'},
+    {key:'tier_1_strong',label:'Strong candidate'},
+    {key:'tier_2_promising',label:'Promising candidate'},
+    {key:'tier_3_weak',label:'Lower-confidence candidate'},
+  ];
+  host.innerHTML=tiers.map(t=>`<button class="chip-btn${t.key===state.activeTier?' active':''}" data-tier="${t.key||''}">${t.label}</button>`).join('');
+  host.querySelectorAll('.chip-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      state.activeTier=btn.getAttribute('data-tier')||null;
+      buildTierFilter();applyMatches();
+    });
+  });
+}
+
+function applyMatches(){
+  const q=state.matchQ.toLowerCase().trim();
+  let list=RANKED_FUNDERS.filter(f=>{
+    if(state.activeTier==='confirmed'&&!(f.is_confirmed_prior_funder&&f.confidence!=='likely'&&f.confidence!=='historical'))return false;
+    if(state.activeTier==='likely'&&f.confidence!=='likely')return false;
+    if(state.activeTier==='historical'&&f.confidence!=='historical')return false;
+    if(state.activeTier&&!['confirmed','likely','historical'].includes(state.activeTier)&&f.tier!==state.activeTier)return false;
+    if(state.matchStatusFilter&&statusOf('funder',f.funder_name).status!==state.matchStatusFilter)return false;
+    if(q){
+      const hay=`${f.funder_name} ${f.rationale} ${f.geography}`.toLowerCase();
+      if(!hay.includes(q))return false;
+    }
+    return true;
+  });
+  document.getElementById('match-count').textContent=list.length;
+  document.getElementById('matches-method').textContent=FUNDERS_METHOD;
+
+  const host=document.getElementById('match-results');
+  if(!list.length){
+    host.innerHTML='<div class="empty"><b>No matches</b>, try a different search.</div>';
+    return;
+  }
+  const tierLabel={tier_1_strong:'Strong candidate',tier_2_promising:'Promising candidate',tier_3_weak:'Lower-confidence candidate'};
+  host.innerHTML=list.map(f=>{
+    const isHistorical=f.confidence==='historical';
+    const isLikely=f.confidence==='likely';
+    const isConfirmed=!!f.is_confirmed_prior_funder&&!isLikely&&!isHistorical;
+    const statusBadge=isHistorical
+      ?'<span class="badge badge-historical">Past funder &middot; not current</span>'
+      :isLikely
+      ?'<span class="badge badge-likely">Likely funder &middot; verify</span>'
+      :isConfirmed?'<span class="badge badge-confirmed">Confirmed funder</span>':'<span class="badge badge-new">New candidate</span>';
+    const scoreArea=isHistorical
+      ?`<div class="score-num historical-label">Past funder</div>`
+      :isLikely
+      ?`<div class="score-num confirmed-label likely-label">Likely</div><div class="score-bar"><div class="score-bar-fill likely-fill" style="width:60%"></div></div>`
+      :isConfirmed
+      ?`<div class="score-num confirmed-label">Confirmed</div><div class="score-bar"><div class="score-bar-fill" style="width:100%"></div></div>`
+      :`<div class="score-num confirmed-label">${esc(tierLabel[f.tier]||'Candidate')}</div>`;
+    return `
+    <div class="match-card">
+      <div class="mc-head">
+        <div class="match-rank">${isHistorical?'&#8211;':isConfirmed?'&#10003;':isLikely?'&#126;':'?'}</div>
+        <span class="fname">${highlight(f.funder_name,q)}</span>
+        ${statusBadge}
+        <div class="match-score">${scoreArea}</div>
+      </div>
+      <div class="mc-body">
+        <div class="match-geo">${esc(f.geography)}</div>
+        <div class="match-rationale">${highlight(f.rationale,q)}</div>
+        ${statusRowHTML('funder',f.funder_name)}
+      </div>
+    </div>
+  `;}).join('');
+  wireStatusControls(host);
+}
+
+/* ---- Open Grants ---- */
+function deadlineClass(s){
+  const m=(s||'').match(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/);
+  if(!m)return'';
+  const d=new Date(`${m[1]} ${m[2]}, ${m[3]}`);
+  if(isNaN(d))return'';
+  const days=(d-Date.now())/86400000;
+  if(days<0)return'closed';
+  if(days<=21)return'urgent';
+  if(days<=60)return'soon';
+  return'';
+}
+
+function applyGrants(){
+  const q=state.grantQ.toLowerCase().trim();
+  let list=GRANTS.ready_now.filter(g=>{
+    if(state.grantStatusFilter&&statusOf('grant',g.id).status!==state.grantStatusFilter)return false;
+    if(!q)return true;
+    const hay=`${g.organization} ${g.grant_name} ${g.focus_area} ${g.notes}`.toLowerCase();
+    return hay.includes(q);
+  });
+  document.getElementById('grant-count').textContent=list.length;
+
+  const host=document.getElementById('grant-results');
+  if(!list.length){
+    host.innerHTML='<div class="empty"><b>No matches</b>, try a different search.</div>';
+  } else {
+    host.innerHTML=list.map(g=>{
+      const dlClass=deadlineClass(g.deadline);
+      const qaRows=[
+        ['Focus Area',highlight(g.focus_area,q)],
+        ['Eligibility',highlight(g.eligibility,q)],
+        ['Amount',esc(g.amount)],
+        ['Deadline',`<span class="deadline-val ${dlClass}">${esc(g.deadline)}</span>`],
+        ['Notes',highlight(g.notes,q)],
+      ].map(([label,value])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
+      return `<article class="entry">
+        <div class="head">
+          <span class="org">${highlight(g.organization,q)}</span>
+          <span class="name"><a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a></span>
+        </div>
+        <div class="qa-grid">${qaRows}</div>
+        ${statusRowHTML('grant',g.id)}
+      </article>`;
+    }).join('');
+    wireStatusControls(host);
+  }
+
+  document.getElementById('grants-limitation').textContent=GRANTS.known_limitation;
+}
+
+function renderWatchList(){
+  document.getElementById('watch-results').innerHTML=GRANTS.watch_list_not_yet_open.map(w=>`
+    <div class="watch-item">
+      <div class="org"><a href="${esc(w.url)}" target="_blank" rel="noopener">${esc(w.organization)}</a><br><span style="font-family:var(--mono);font-size:.78rem;color:var(--wash);font-weight:400">${esc(w.grant_name)}</span></div>
+      <div class="why">${esc(w.why_watch)}</div>
+    </div>
+  `).join('');
+}
+
+async function load(){
+  await fetchStatuses();
+  document.getElementById('m-funders').textContent=RANKED_FUNDERS.length;
+  document.getElementById('m-grants').textContent=GRANTS.ready_now.length;
+
+  renderProfile();
+  buildTierFilter();
+  buildStatusFilter('match-status-filter',v=>{state.matchStatusFilter=v;applyMatches();},()=>state.matchStatusFilter);
+  buildStatusFilter('grant-status-filter',v=>{state.grantStatusFilter=v;applyGrants();},()=>state.grantStatusFilter);
+  setAdminUI();
+  applyMatches();
+  applyGrants();
+  renderWatchList();
+}
+
+document.getElementById('match-search').addEventListener('input',e=>{state.matchQ=e.target.value;applyMatches();});
+document.getElementById('grant-search').addEventListener('input',e=>{state.grantQ=e.target.value;applyGrants();});
+document.getElementById('admin-toggle').addEventListener('click',()=>{
+  if(state.adminKey){
+    if(confirm('Log out of admin mode on this device?')){
+      state.adminKey="";localStorage.removeItem('grantStatusKey');setAdminUI();applyMatches();applyGrants();
+    }
+  }else{
+    promptForKey();
+    applyMatches();applyGrants();
+  }
+});
+
+load();
+</script>
+
+<script>
+/* Two jobs:
+   (1) A hash-anchor link scrolls its target into view. Sections can no longer be hidden
+       (the fold/accordion mechanism was removed), but the explicit scroll is still needed -
+       nothing else moves the viewport to the anchor.
+   (2) Mirror each list section's own counter into its heading chip, so the count is never
+       out of sync with what the section actually shows. */
+(function(){
+  function openTo(){
+    var h = window.location.hash;
+    if (!h || h.length < 2) return;
+    var t;
+    try { t = document.querySelector(h); } catch (e) { return; }
+    if (!t) return;
+    window.setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+  }
+  function counts(){
+    var done = true;
+    var chips = document.querySelectorAll('.fold-count');
+    for (var i = 0; i < chips.length; i++) {
+      var el = chips[i], n = null;
+      var from = el.getAttribute('data-count-from');
+      var sel = el.getAttribute('data-count-sel');
+      if (from) {
+        var src = document.getElementById(from);
+        if (src) n = parseInt(src.textContent, 10);
+      } else if (sel) {
+        n = document.querySelectorAll(sel).length;
+      }
+      if (n === null || isNaN(n) || n === 0) { done = false; continue; }
+      var txt = n + ' ' + el.getAttribute('data-count-label');
+      if (el.textContent !== txt) el.textContent = txt;   /* guard: writing unconditionally would
+                                                             retrigger the observer forever */
+    }
+    return done;
+  }
+  window.addEventListener('hashchange', openTo);
+  window.addEventListener('load', function(){ openTo(); counts(); });
+  document.addEventListener('DOMContentLoaded', function(){
+    openTo();
+    if (counts()) return;
+    var mo = new MutationObserver(function(){ if (counts()) mo.disconnect(); });
+    mo.observe(document.body, {childList:true, subtree:true, characterData:true});
+  });
+})();
+</script>
+</body>
+</html>
