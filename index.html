@@ -15,7 +15,7 @@
 <meta name="description" content="MICRO Group, LLC: a strategic, research-driven consultancy serving nonprofit, government, and political and legislative organizations across Texas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Berkshire+Swash&family=Parisienne&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="king-mark.svg">
 <link rel="canonical" href="https://microgroup.info/">
 <link rel="stylesheet" href="style.css">
@@ -50,6 +50,11 @@ html.stack-page {
   --f-cards:   'JetBrains Mono', ui-monospace, monospace;
   --f-label:   'JetBrains Mono', ui-monospace, monospace;
   --f-script:  'Parisienne', cursive;
+  /* Berkshire Swash: a swash-caps script, legible in full uppercase unlike
+     Parisienne (which is why the brand wordmark below moved to it,
+     2026-07-23) -- Parisienne stays reserved for the italic slogan line,
+     which is never set in caps. */
+  --f-script-caps: 'Berkshire Swash', cursive;
 }
 
 #home{padding:40px 0 56px}
@@ -84,7 +89,7 @@ html.stack-page #home{border-top:0}
 html.stack-page .shead .intro{margin:0 auto}
 
 html.stack-page .site-header{background:var(--paper)}
-html.stack-page .nav-name{color:var(--ink);font-weight:600;letter-spacing:.01em}
+html.stack-page .nav-name{font-family:var(--f-script-caps);color:var(--ink);font-weight:400;letter-spacing:.03em;text-transform:uppercase}
 html.stack-page .nav-links a{color:var(--ink)}
 html.stack-page .nav-links a:hover,
 html.stack-page .nav-links a[aria-current="page"]{border-bottom-color:var(--accent)}
@@ -111,7 +116,14 @@ html.stack-page .home-hero h1{color:var(--ink)}
 html.stack-page .home-hero h1 .em{color:var(--accent)}
 html.stack-page .home-hero .lede{color:var(--wash)}
 html.stack-page .roles span{background:var(--well);color:var(--ink);box-shadow:0 4px 14px rgba(27,58,47,.12)}
-html.stack-page .hero-mark{width:132px;height:132px;object-fit:contain;background:var(--well);border-radius:50%;border:3px solid var(--accent);display:block;margin:0 auto 28px;padding:20px}
+/* Full logo lockup (chess mark + MICRO wordmark + "your goals" script tag),
+   2026-07-23, replacing the small icon-only mark: the image already carries
+   its own wordmark and internal padding, so it drops the circular-badge
+   treatment (well fill, border, tight crop) rather than shrinking a full
+   lockup into a 132px circle where the baked-in text would be illegible.
+   Colors are the site's own established navy/gold, already read cleanly
+   against --paper, so no recoloring was needed. */
+html.stack-page .hero-mark{width:min(320px,72vw);height:auto;object-fit:contain;display:block;margin:0 auto 28px}
 
 html.stack-page :focus-visible{outline-color:var(--accent)}
 
@@ -144,15 +156,37 @@ html.stack-page .contact-disclosure .coi-label{color:var(--wash)}
 html.stack-page .contact-disclosure .frame-line{color:var(--ink)}
 html.stack-page .contact-disclosure p{color:var(--wash)}
 
-.site-flip-row{background:var(--paper);border-bottom:1px solid var(--rule)}
-.site-flip-row .wrap{padding:14px 40px 10px}
-.site-flip{display:flex;justify-content:flex-end;gap:.4rem}
-.site-flip .tab{font-family:var(--f-eyebrow);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;padding:.32rem .75rem;border:1px solid var(--rule);color:var(--wash);background:transparent}
+/* .site-flip moved into the sticky .site-header (2026-07-23), mirroring the
+   same 2026-07-23 change on jonathanlindavis.com's index.html; the always-
+   visible note is retired in favor of the click-triggered .flip-gate
+   interstitial, which also forces a 3-second pause before an actual
+   cross-domain departure. */
+.site-flip{display:flex;gap:.4rem;padding-left:16px;margin-left:16px;border-left:1px solid var(--line-navy)}
+.site-flip .tab{font-family:var(--f-eyebrow);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;padding:.32rem .7rem;border:1px solid var(--rule);color:var(--wash);background:transparent;white-space:nowrap}
 .site-flip .tab:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
 .site-flip .tab.active{background:var(--accent);border-color:var(--accent);color:var(--paper)}
-.site-flip-note{margin:.5rem 0 0;text-align:right;font-size:.78rem;color:var(--wash);line-height:1.5;font-family:var(--f-eyebrow)}
-.site-flip-note .leave-note{display:block;margin-top:.15rem}
-@media(max-width:900px){.site-flip-row .wrap{padding:12px 22px 10px}.site-flip-note{text-align:left}.site-flip{justify-content:flex-start;flex-wrap:wrap}}
+@media(max-width:900px){.site-flip{padding-left:0;margin-left:0;border-left:0;flex-wrap:wrap}}
+
+.flip-gate{position:fixed;inset:0;background:rgba(27,58,47,.55);display:flex;align-items:center;justify-content:center;z-index:200;padding:1.2rem}
+.flip-gate[hidden]{display:none}
+.flip-gate-box{background:var(--paper);border:1.5px solid var(--ink);max-width:420px;width:100%;padding:1.8rem 2rem;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.flip-gate-msg{font-family:var(--f-eyebrow);font-size:.92rem;color:var(--ink);margin:0 0 1.4rem;line-height:1.5}
+.flip-gate-actions{display:flex;gap:.7rem;justify-content:center}
+.flip-gate-cancel,.flip-gate-go{font-family:var(--f-eyebrow);font-size:.8rem;letter-spacing:.03em;text-transform:uppercase;padding:.55rem 1.1rem;border:1.5px solid var(--ink);cursor:pointer;background:transparent;color:var(--ink);text-decoration:none;display:inline-block}
+.flip-gate-cancel:hover{background:var(--well)}
+.flip-gate-go{pointer-events:none;opacity:.5}
+.flip-gate-go.ready{pointer-events:auto;opacity:1;background:var(--accent);border-color:var(--accent);color:var(--paper)}
+
+/* Footer brand lockup (2026-07-23): text, not an image -- the retired
+   MICRO_wordmark_dark.svg was authored light-on-dark and had gone
+   low-contrast since the footer's Stage-1 polarity flip to a light --paper
+   background; this reuses the header's own font/color treatment instead so
+   the two never drift out of sync again. No chess-piece art and no .chess
+   texture here, per owner instruction (footer matches the header's
+   type/color, not its imagery). */
+.footer-brand{margin-bottom:10px}
+.footer-brand .footer-name{display:block;font-family:var(--f-script-caps);font-weight:400;font-size:clamp(2.1rem,5vw,2.9rem);letter-spacing:.03em;text-transform:uppercase;color:var(--ink);line-height:1}
+.footer-brand .footer-slogan{display:block;font-family:var(--f-script);font-style:italic;font-size:1.05rem;color:var(--accent);margin-top:4px}
 
 html.stack-page .footer-panel{min-height:0;padding:64px 0;scroll-snap-align:none}
 html.stack-page .footer-panel{background:var(--paper);color:var(--wash)}
@@ -185,17 +219,21 @@ html.stack-page .chess::before{
       <!-- .nav-social omitted: no equivalent personal social presence for a
            business site to link from its own nav (documented substitution,
            not a structural gap). -->
+      <div class="site-flip">
+        <a href="https://jonathanlindavis.com" class="tab" data-leave="You are leaving Microgroup.info and travelling to Jonathanlindavis.com.">Open Data</a>
+        <a href="index.html" class="tab active">Enterprise</a>
+      </div>
     </div>
   </nav>
 </header>
 
-<div class="site-flip-row">
-  <div class="wrap">
-    <div class="site-flip">
-      <a href="https://jonathanlindavis.com" class="tab">Open Data</a>
-      <a href="index.html" class="tab active">Enterprise</a>
+<div class="flip-gate" id="flip-gate" hidden>
+  <div class="flip-gate-box" role="alertdialog" aria-modal="true" aria-labelledby="flip-gate-msg">
+    <p id="flip-gate-msg" class="flip-gate-msg"></p>
+    <div class="flip-gate-actions">
+      <button type="button" class="flip-gate-cancel">Cancel</button>
+      <a href="#" class="flip-gate-go" aria-disabled="true">Continue (<span class="flip-gate-count">3</span>)</a>
     </div>
-    <p class="site-flip-note">Open Data is Jonathan Lin Davis's own site at jonathanlindavis.com, home to his open-data tools, writing, and research. <span class="leave-note">You are leaving microgroup.info.</span></p>
   </div>
 </div>
 
@@ -204,7 +242,7 @@ html.stack-page .chess::before{
   <!-- 1: HOME HERO -->
   <section id="home" class="stack-item panel navy chess">
     <div class="wrap inner home-hero">
-      <img class="hero-mark" src="MICRO_mark_icon_transparent.svg" alt="MICRO Group mark" width="132" height="132" loading="lazy">
+      <img class="hero-mark" src="MICRO_logo_transparent.png" alt="MICRO Group" loading="lazy">
       <h1>A <span class="em">measured</span> approach to your goals.</h1>
       <p class="lede">MICRO Group is a strategic, research-driven consultancy serving nonprofit, government, and political and legislative organizations, through expertise in Management, Integration, Culture, Research, and Operations.</p>
       <div class="roles">
@@ -249,8 +287,8 @@ html.stack-page .chess::before{
         <h3 class="projects-subhead">Software Products</h3>
         <div class="proj-list">
           <article class="pcard"><h4 class="pcard-title">Almanac</h4><span class="pcard-price">$1,500 / year</span><p class="pcard-desc">Finds and ranks funders and open grants that fit your organization, with a public source shown for every match.</p></article>
-          <article class="pcard"><h4 class="pcard-title">Scribe</h4><span class="pcard-price">$1,500&ndash;$3,000 / year</span><p class="pcard-desc">Drafts a near-submission grant application from an Almanac match, fact-checked against your organization's own public information.<ul><li>Standard: $1,500/yr, one draft per quarter</li><li>Pro: $3,000/yr, one draft per month</li></ul></p></article>
-          <article class="pcard pcard-dev"><h4 class="pcard-title">Concordance</h4><p class="pcard-desc">Identifies the people who govern a funding foundation's board and maps introduction paths.</p><span class="pcard-status">Built and deployed for one client &middot; not yet in the standard catalog</span></article>
+          <article class="pcard"><h4 class="pcard-title">Scribe</h4><span class="pcard-price">$1,500&ndash;$3,000 / year</span><p class="pcard-desc">Drafts a near-submission grant application from an Almanac match, fact-checked against your organization's own public information. Standard: $1,500/yr, one draft per quarter. Pro: $3,000/yr, one draft per month.</p></article>
+          <article class="pcard pcard-dev"><h4 class="pcard-title">Concordance</h4><p class="pcard-desc">Identifies the people who govern a funding foundation's board and maps introduction paths.</p><span class="pcard-status">In development</span></article>
           <article class="pcard pcard-dev"><h4 class="pcard-title">Herald</h4><p class="pcard-desc">Monitors funder pages on a client's watch list for cycle openings, deadline changes, and guideline updates.</p><span class="pcard-status">In development</span></article>
           <article class="pcard pcard-dev"><h4 class="pcard-title">Atlas</h4><p class="pcard-desc">Benchmarks a foundation's giving against aggregate state-level 990-PF data.</p><span class="pcard-status">In development</span></article>
           <article class="pcard pcard-dev"><h4 class="pcard-title">Dossier</h4><p class="pcard-desc">Reconciles a foundation's claimed giving against its own filed 990-PF.</p><span class="pcard-status">In development</span></article>
@@ -355,12 +393,6 @@ html.stack-page .chess::before{
 
         <p class="form-privacy">We collect only what you enter here. We don't share your information with anyone. We may use it to add you to our newsletter or otherwise keep you updated on our work, but we won't sell your information to third parties.</p>
       </form>
-      <details class="contact-disclosure-drop">
-        <summary class="contact-drop-summary">Notice regarding legislative work requests</summary>
-        <div class="contact-disclosure contact-disclosure-compact" role="note">
-          <p>If your inquiry concerns government, legislative, or political consulting services: pursuant to State standards of conduct and statutory provisions regarding conflicts of interest for legislative employees (Tex. Gov&#8217;t Code &#167; 572.051 and Tex. Penal Code &#167; 36.07), the founder's capacity to engage in government, legislative, or related political consultancies is restricted until his departure from nonpartisan public-sector analyst work, effective July 31, 2026. All such services are suspended until that date to ensure compliance with the law.</p>
-        </div>
-      </details>
 
         </div>
       </details>
@@ -372,12 +404,16 @@ html.stack-page .chess::before{
 
   <!-- 4: FOOTER -->
   <section id="footer" class="stack-item footer-panel">
-    <img class="footer-logo wordmark" src="MICRO_wordmark_dark.svg" alt="MICRO Group, LLC — A measured approach to your goals">
-    <div class="footer-credit">This website was created and is managed by Jonathan Lin Davis, on behalf of MICRO Group, LLC.<br>1801 E 51st St., STE 365, PMB 354, Austin, Texas</div>
+    <div class="footer-brand">
+      <span class="footer-name">MICRO Group</span>
+      <span class="footer-slogan">A measured approach to your goals</span>
+    </div>
+    <div class="footer-credit">This website was created and is managed by MICRO Group, LLC.<br>1801 E 51st St., STE 365, PMB 354, Austin, Texas</div>
     <div class="footer-license">CC BY 4.0 data, MIT code.</div>
     <div class="switcher footer-switcher">
-      <span class="footer-switcher-label">Owner</span>
-      <a class="tab" href="https://jonathanlindavis.com/private-index.html" target="_blank" rel="noopener">Private Index &#8599;</a>
+      <span class="footer-switcher-label">Index</span>
+      <a class="tab" href="public-index.html">Public</a>
+      <a class="tab" href="https://jonathanlindavis.com/private-index.html" target="_blank" rel="noopener">Private</a>
     </div>
     <div class="footer-legal">© <span id="yr"></span> MICRO Group, LLC. All rights reserved. Austin, Texas.</div>
   </section>
@@ -410,6 +446,59 @@ html.stack-page .chess::before{
   });
   var yr = document.getElementById('yr');
   if(yr) yr.textContent = new Date().getFullYear();
+})();
+
+/* .flip-gate: forced 3-second pause before a cross-domain .site-flip
+   departure. Only links carrying data-leave are intercepted; the
+   same-domain tab is left as a plain link. */
+(function(){
+  var gate = document.getElementById('flip-gate');
+  if(!gate) return;
+  var msg = gate.querySelector('.flip-gate-msg');
+  var go = gate.querySelector('.flip-gate-go');
+  var cancel = gate.querySelector('.flip-gate-cancel');
+  var countEl = gate.querySelector('.flip-gate-count');
+  var timer = null, dest = null;
+
+  function openGate(href, text){
+    dest = href;
+    msg.textContent = text;
+    go.classList.remove('ready');
+    go.setAttribute('aria-disabled','true');
+    var n = 3;
+    countEl.textContent = n;
+    gate.hidden = false;
+    if(timer) clearInterval(timer);
+    timer = setInterval(function(){
+      n -= 1;
+      countEl.textContent = n > 0 ? n : 0;
+      if(n <= 0){
+        clearInterval(timer);
+        go.classList.add('ready');
+        go.removeAttribute('aria-disabled');
+      }
+    }, 1000);
+  }
+  function closeGate(){
+    gate.hidden = true;
+    if(timer) clearInterval(timer);
+    dest = null;
+  }
+  document.querySelectorAll('.site-flip a[data-leave]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      openGate(a.getAttribute('href'), a.getAttribute('data-leave'));
+    });
+  });
+  cancel.addEventListener('click', closeGate);
+  gate.addEventListener('click', function(e){ if(e.target === gate) closeGate(); });
+  go.addEventListener('click', function(e){
+    e.preventDefault();
+    if(go.classList.contains('ready') && dest) window.location.href = dest;
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && !gate.hidden) closeGate();
+  });
 })();
 </script>
 </body>
