@@ -59,6 +59,13 @@ relevant to its own site rather than duplicating the other's detail.
     peer-support/mutual-aid nonprofit for Black mothers. Same inlined-data model as
     Standpoint. **Access-gated** (`microgroup.info/blackmamas*`) — Standpoint, by contrast,
     is genuinely ungated.
+  - **HRI** (`hri-almanac.html` + `hri-scribe.html`) — Almanac + Scribe Pro for Human Rights
+    Initiative of North Texas (hrionline.org), a 90-day in-kind donation, first-pass build:
+    candidate funders sourced from the Texas-only Schedule I extract (not yet the national
+    extract), no confirmed-prior-funder list, no sample draft yet. Marked "Draft for review,
+    not yet deployed" on both pages — not Access-gated, not linked from any hub or index,
+    same undeployed state as when these pages first landed here (2026-07-23, reconstructed
+    from a stale jonathanlindavis.com preview branch onto this repo's current structure).
   - **Custodian** (`jp-morgan.html`) — a different product than Almanac/Scribe/Concordance:
     surfaces which foundations name an identifiable investment-management contractor on
     their own Form 990/990-PF, current manager, and change-detection history, for a buyer
