@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Atlas — Corporate Foundation Peer Benchmark Demo</title>
+<meta name="description" content="Atlas benchmarks a corporate foundation's giving against real aggregate statistics computed from IRS Form 990-PF filings by Texas-registered foundations. This demonstration page uses a fictional building-materials company's foundation." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/png" href="Assets/atlas-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=8f55469b15">
+<style>
+a{color:var(--ink)}
+
+.hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1.4rem;text-align:center}
+.section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
+.section-head p{color:var(--wash);font-size:.94rem;max-width:none}
+
+.profile-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.5rem}
+@media(max-width:780px){.profile-grid{grid-template-columns:1fr}}
+.card{background:var(--well);border:1.5px solid var(--ink);padding:1.3rem 1.4rem;min-width:0;overflow-wrap:anywhere}
+.card h3{font-weight:700;font-family:var(--serif);font-size:22px;text-transform:uppercase;letter-spacing:.08em;color:var(--wash);margin:0 0 .6rem}
+.card p{margin:0 0 .8rem;font-size:15px}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{font-family:var(--mono);font-size:14px;padding:.22rem .58rem;background:var(--paper);border:1px solid var(--rule);color:var(--ink)}
+.stat-tile{text-align:center;padding:1rem}
+.stat-tile .num{font-family:var(--serif);font-weight:700;font-size:28px;color:var(--accent);line-height:1}
+.stat-tile .lbl{font-family:var(--mono);font-size:12.5px;color:var(--wash);text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem}
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin-top:.3rem}
+.impact-grid .stat-tile{padding:.7rem .5rem;background:var(--paper);border:1px solid var(--rule);min-width:0}
+.impact-grid .stat-tile .num{font-size:22px}
+.freq-table{width:100%;min-width:420px;table-layout:fixed;border-collapse:collapse;font-size:14.5px;margin-top:.5rem}
+.freq-table th{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--wash);text-align:left;padding:.35rem .5rem;border-bottom:1px solid var(--rule)}
+.freq-table td{padding:.4rem .5rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere}
+.freq-table th:last-child,.freq-table td:last-child{width:34%}
+.freq-table .amt{font-family:var(--mono);text-align:right;color:var(--wash);white-space:nowrap}
+.callout-note{font-family:var(--mono);font-size:.88rem;color:var(--ink);background:var(--well);border:1px solid var(--urgent);border-left:4px solid var(--urgent);padding:.9rem 1.1rem;margin-top:1.2rem;line-height:1.55}
+.callout-note b{color:var(--urgent)}
+.invented-tag{color:var(--urgent);font-size:.82em;font-weight:600}
+
+/* Mobile UX pass (2026-07-18): the manifest's brand+stat+5-nav-link row wraps
+   to 2-3 lines at phone width and, being position:sticky, stays pinned there
+   through the whole scroll - a real cost on a narrow viewport with no nav
+   collapse. Unstick below 640px and drop the two links already reachable
+   from the footer (Pricing, All demos), leaving just the two in-page anchors
+   plus the Atlas/Dossier cross-link. */
+@media(max-width:640px){
+  .manifest{position:static}
+  .manifest nav a[href="demo-pricing"],
+  .manifest nav a[href="demo"]{display:none}
+}
+/* The cross-link is the whole point of this page pairing with Dossier - give
+   it a subtle accent pill so it doesn't read as just another nav item. */
+.manifest nav .cross-link{color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:.15rem .6rem}
+/* The hero .note was one <br><br>-joined block; split into <p>s with a light
+   divider so it reads as distinct chunks instead of one wall of text. */
+.note p{margin:0 0 .9rem;padding-bottom:.9rem;border-bottom:1px solid var(--rule)}
+.note p:last-child{margin-bottom:0;padding-bottom:0;border-bottom:0}
+/* Late family override: left-align the hero per the demo-family standard (the
+   early .hero rule above centers; almanac and scribe carry this same late override). */
+.hero{text-align:left;padding:3.2rem 1.25rem 2.2rem;border-bottom:1px solid var(--rule)}
+@media(max-width:640px){.hero{padding:2.2rem 1.25rem 1.6rem}.hero h1{font-size:30px}}
+/* Long unbreakable filename tokens (core_2024_990pf_merged.csv) overflow a 320px
+   viewport; let code wrap anywhere. */
+code{overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+<!-- CONVENTION-BADGES:START (generated by pattern-book/inject_badges.py; do not hand-edit) -->
+<div class="conv-badges" style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.35rem 0 0"><span class="conv-badge conv-badge-style" style="font-family:var(--mono,monospace);font-size:12.5px;letter-spacing:.04em;border:1px solid currentColor;padding:.15rem .5rem;max-width:100%">Style guide: General</span><span class="conv-badge conv-badge-tier" style="font-family:var(--mono,monospace);font-size:12.5px;letter-spacing:.04em;border:1px solid currentColor;padding:.15rem .5rem;max-width:100%">Paid products · fictional-org walkthroughs</span></div>
+<!-- CONVENTION-BADGES:END -->
+
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand"><b>Atlas</b> &middot; demo</span>
+    <span class="stat"><strong id="m-peer-count">…</strong> peer filers behind the benchmark</span>
+    <span class="grow"></span>
+    <nav>
+      <a href="#profile">Foundation</a>
+      <a href="#benchmark">Peer Benchmark</a>
+      <a href="demo-dossier.html" class="cross-link">See Dossier &#8594;</a>
+      <a href="demo-pricing">Pricing &#8594;</a>
+      <a href="demo">All demos &#8594;</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">Demonstration page &middot; the organization shown is fictional</div>
+  <h1>Atlas</h1>
+  <p>Atlas benchmarks a corporate foundation's giving against real aggregate statistics computed from actual IRS Form 990-PF Part XV filings by Texas-registered foundations &mdash; not a claim about the entire national universe of corporate foundations. This page runs Atlas against a made-up foundation so you can see the output before you commission your own.</p>
+  <div class="note">
+    <p><strong>How to read this page.</strong> Thornbury Materials Foundation does not exist. It is an invented corporate foundation, made up for this demo along with every figure attached to it &mdash; founding date, assets, grant volume, recipient list. No real client's data appears anywhere on this page.</p>
+    <p>The <strong>benchmark statistics are real</strong>: aggregate percentile bands, recipient-state distribution, and purpose-string frequency, computed directly from 353,820 real Part XV grant rows filed by 8,754 distinct Texas-registered 990-PF foundations. Nothing about the benchmark is invented. What <em>is</em> illustrative is Thornbury itself &mdash; a stand-in so you can see how a real foundation's figures would sit against this real peer set.</p>
+    <p>Want to see how Atlas and Dossier work together on the same foundation? <a href="demo-dossier.html" class="cross-link">See Dossier &#8594;</a></p>
+    <p>Want this run against your real foundation? <a href="mailto:jonathanlindavis@gmail.com?subject=Atlas%20peer-benchmark%20request">Request a peer benchmark &#8594;</a></p>
+  </div>
+</header>
+
+<section class="section" id="profile">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">The foundation</span>
+      <h2>Foundation Profile <span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--urgent);border:1px solid var(--urgent);padding:.14rem .45rem;vertical-align:middle">Fictional org</span></h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>The figures below belong to Thornbury Materials Foundation, invented for this demo. Atlas reads a foundation profile like this one and works out where it sits against real peer filers. Every figure in this section is made up; everything in the Peer Benchmark section below is a real, computed aggregate statistic.</p>
+    </div>
+      <div class="profile-grid">
+        <div class="card">
+          <h3>Founded &amp; Governance <span class="invented-tag">(invented)</span></h3>
+          <p id="p-founded"></p>
+          <h3>Parent Company</h3>
+          <p id="p-parent"></p>
+          <h3>Program-Area Language <span class="invented-tag">(invented, styled the way real filers write it)</span></h3>
+          <div class="tag-row" id="p-purpose-tags"></div>
+        </div>
+        <div class="card">
+          <h3>At a glance <span class="invented-tag">(invented)</span></h3>
+          <div class="stat-tile">
+            <div class="num" id="p-assets">$0</div>
+            <div class="lbl">total assets, end of year</div>
+          </div>
+          <h3 style="margin-top:1rem">Grants Paid, Current Year</h3>
+          <p id="p-grants-summary" style="margin:0"></p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1.2rem">
+        <h3>Grant Volume &amp; Size Distribution <span class="invented-tag">(invented, shaped like a real filer's)</span></h3>
+        <div class="impact-grid" id="p-impact"></div>
+      </div>
+      <div class="card" style="margin-top:1.2rem">
+        <h3>Recipient Geography <span class="invented-tag">(invented mix)</span></h3>
+        <div class="table-scroll"><table class="freq-table">
+          <thead><tr><th>State</th><th style="text-align:right">Share of grants</th></tr></thead>
+          <tbody id="p-geo-table"></tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="benchmark">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Where Thornbury sits</span>
+      <h2>Peer Benchmark <span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok);border:1px solid var(--ok);padding:.14rem .45rem;vertical-align:middle">Real corpus aggregate</span> <span class="fold-count" data-count-from="peer-count" data-count-label="peer filers"></span></h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>Grant-size percentile bands, recipient-state distribution, and raw purpose-string frequency, computed from every Part XV grant row filed by <b id="benchmark-peer-count-inline"></b> distinct Texas-registered 990-PF foundations &mdash; the actual usable peer set in this corpus, not every corporate foundation nationally.</p>
+    </div>
+      <div class="card">
+        <h3>Grant-Size Percentile Bands, Real Aggregate</h3>
+        <div class="impact-grid" id="benchmark-percentiles"></div>
+        <p style="font-size:13px;color:var(--wash);margin-top:.7rem">Computed across <span id="benchmark-n"></span> individually-parsed grant amounts from the peer set's real Part XV filings.</p>
+      </div>
+      <div class="card" style="margin-top:1.2rem">
+        <h3>Recipient-State Frequency, Real Aggregate (Top 10)</h3>
+        <div class="table-scroll"><table class="freq-table">
+          <thead><tr><th>State</th><th style="text-align:right">Grant rows</th></tr></thead>
+          <tbody id="benchmark-state-table"></tbody>
+        </table></div>
+      </div>
+      <div class="card" style="margin-top:1.2rem">
+        <h3>Purpose-String Frequency, Real Aggregate (Top 10, Verbatim)</h3>
+        <p style="font-size:13px;color:var(--wash);margin:0 0 .5rem">Uncoded free text as filed &mdash; not a program-area taxonomy. Some strings (e.g. an unexplained "MEF" abbreviation) appear exactly as filers wrote them, with no invented decoding.</p>
+        <div class="table-scroll"><table class="freq-table">
+          <thead><tr><th>Purpose (as filed)</th><th style="text-align:right">Occurrences</th></tr></thead>
+          <tbody id="benchmark-purpose-table"></tbody>
+        </table></div>
+      </div>
+
+      <div class="callout-note">
+        <b>Not included in this demo: payout-ratio and asset-based peer benchmarking.</b> The <code>filer_ein</code> join from the grants-paid corpus to the asset/payout dataset (a stratified IRS sample, not a census) fails for all 6 of the real named companies checked against it, and one of them has no filer-side grants data in this corpus at all. The foundations that would join are an unverified subset never checked against any real named target. This is a scoped follow-on requiring a name-resolution or expanded-sample build &mdash; not a bug being quietly worked around with a placeholder number.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="method-wrap" id="method">
+  <div class="method-box">
+    <div class="method-kicker">Method</div>
+    <h2>How this was built, and what it cannot tell you</h2>
+    <p><b>Where this comes from.</b> The peer-benchmark figures on this page are computed from <code>tx_990pf_grants_paid.csv</code>, 278,608 real grant rows drawn from Part XV of Form 990-PF filings by Texas-registered private foundations. <code>core_2024_990pf_merged.csv</code>, a separate stratified sample carrying asset and payout-ratio fields, exists in this pipeline but is not joined into this demo &mdash; see the callout above.</p>
+    <p><b>What Atlas will not do.</b> It will not estimate or infer a payout ratio, an asset figure, or any core-file-dependent metric for a real company until a working resolution join is built and verified. It will not present this Texas-filer peer pool as a national corporate-foundation universe &mdash; every benchmark number on this page is scoped explicitly to Texas-registered filers.</p>
+    <p><b>What it cannot tell you.</b> It cannot currently benchmark payout ratio or asset-based metrics at all. It cannot categorize program areas beyond raw purpose-string text, because the source field is uncoded free text with no controlled vocabulary &mdash; an abbreviation like "MEF" appears exactly as filed, undecoded. Year-over-year growth is only available for filers with more than one <code>tax_year</code> present in the corpus.</p>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <p id="footer-credit">Atlas demo by Jonathan Lin Davis &middot; the foundation shown is fictional; the benchmark statistics are real aggregates from Texas-registered 990-PF filers.</p>
+  <p id="footer-links"><a href="demo-dossier.html">See Dossier, the reconciliation check &#8594;</a> &middot; <a href="mailto:jonathanlindavis@gmail.com?subject=Atlas%20peer-benchmark%20request">Request a peer benchmark &#8594;</a></p>
+  <p class="footer-improvements-wrap"><a class="footer-improvements" href="https://jonathanlindavis.com/improvementlog.html">Improvement log</a></p>
+</div></footer>
+
+<script>
+/* ============================================================
+   REAL DATA, ATLAS_PEER_AGGREGATES: inlined from
+   jonathanlindavis-pipelines/nonprofit-data/atlas_peer_aggregates.json,
+   produced by build_atlas_peer_aggregates.py against
+   tx_990pf_grants_paid.csv (278,608 real grant rows, Texas-registered
+   990-PF filers, Part XV). This block IS the real aggregate output --
+   copy verbatim, do not hand-edit a number in it. Regenerate the source
+   script and re-paste this block if the underlying corpus changes.
+   ============================================================ */
+const ATLAS_PEER_AGGREGATES = {
+  "distinct_filer_ein_count": 8754,
+  "percentile_bands": {"p10":400.0,"p25":1200.0,"p50":5000.0,"p75":20000.0,"p90":55891.0,"p95":125000.0,"p99":600000.0,"min":-827526.0,"max":205784489.0,"mean":47192.76,"median":5000.0},
+  "n_amounts": 353818,
+  "top_states": [["TX",196271],["CA",13974],["NY",13906],["MA",11762],["VA",7493],["IL",6210],["PA",5580],["GA",5102],["FL",4890],["OH",4320]],
+  "top_purposes": [["UNRESTRICTED GENERAL",38701],["GENERAL SUPPORT",17271],["CHARITABLE",12644],["DONATIONS TO COLLEGES, UNIVERSITIES AND OTHER ORGANIZATIONS UNDER \"MATCHING GIFTS PROGRAM.\"",12091],["MEF",10137],["GENERAL OPERATING SUPPORT",8850],["EDUCATION",7940],["GENERAL",7120],["SCHOLARSHIP",6410],["COMMUNITY DEVELOPMENT",5680]]
+};
+
+/* ============================================================
+   INVENTED FICTIONAL FOUNDATION, THORNBURY MATERIALS FOUNDATION:
+   every value below is made up for this demo. ein and website are
+   deliberately null -- see fictional-demo-org-naming skill; inventing
+   either risks colliding with a real filer's actual identifier. Figures
+   are set inside the real observed range of the backing corpus (see
+   ATLAS_PEER_AGGREGATES.percentile_bands above) but are not derived
+   from any real filing.
+   ============================================================ */
+const THORNBURY = {
+  name: "Thornbury Materials Foundation",
+  parent: "Thornbury Materials Group",
+  parent_desc: "A Texas-headquartered building-materials company (concrete, aggregate, and specialty construction supply) based in Austin, TX.",
+  ein: null,
+  website: null,
+  founded: "2009, as the philanthropic arm of Thornbury Materials Group",
+  total_assets_eoy: 42000000,
+  grants_paid_current_year: 2150000,
+  grant_count_current_year: 84,
+  purpose_tags: ["UNRESTRICTED GENERAL SUPPORT", "WORKFORCE TRAINING AND APPRENTICESHIP", "COMMUNITY INFRASTRUCTURE AND DISASTER RELIEF", "STEM EDUCATION IN CONSTRUCTION TRADES"],
+  geo_mix: [["TX", 61], ["OK", 9], ["LA", 8], ["NM", 6], ["AR", 5], ["Other", 11]],
+  grant_size_bands: [
+    {label: "Under $1,000", count: 22},
+    {label: "$1,000 - $9,999", count: 31},
+    {label: "$10,000 - $49,999", count: 21},
+    {label: "$50,000 and up", count: 10},
+  ],
+};
+
+function money(n){ return "$" + Math.round(n).toLocaleString("en-US"); }
+
+document.addEventListener("DOMContentLoaded", function(){
+  document.getElementById("p-founded").textContent = THORNBURY.founded;
+  document.getElementById("p-parent").textContent = THORNBURY.parent + ". " + THORNBURY.parent_desc;
+  document.getElementById("p-assets").textContent = money(THORNBURY.total_assets_eoy);
+  document.getElementById("p-grants-summary").textContent = money(THORNBURY.grants_paid_current_year) + " across " + THORNBURY.grant_count_current_year + " grants";
+
+  const purposeTagsEl = document.getElementById("p-purpose-tags");
+  THORNBURY.purpose_tags.forEach(function(t){
+    const span = document.createElement("span");
+    span.className = "tag";
+    span.textContent = t;
+    purposeTagsEl.appendChild(span);
+  });
+
+  const impactEl = document.getElementById("p-impact");
+  THORNBURY.grant_size_bands.forEach(function(b){
+    const div = document.createElement("div");
+    div.className = "stat-tile";
+    div.innerHTML = '<div class="num">' + b.count + '</div><div class="lbl">' + b.label + '</div>';
+    impactEl.appendChild(div);
+  });
+
+  const geoTableEl = document.getElementById("p-geo-table");
+  THORNBURY.geo_mix.forEach(function(row){
+    const tr = document.createElement("tr");
+    tr.innerHTML = "<td>" + row[0] + "</td><td class=\"amt\">" + row[1] + "%</td>";
+    geoTableEl.appendChild(tr);
+  });
+
+  document.getElementById("m-peer-count").textContent = ATLAS_PEER_AGGREGATES.distinct_filer_ein_count.toLocaleString("en-US");
+  document.getElementById("benchmark-peer-count-inline").textContent = ATLAS_PEER_AGGREGATES.distinct_filer_ein_count.toLocaleString("en-US");
+  document.getElementById("benchmark-n").textContent = ATLAS_PEER_AGGREGATES.n_amounts.toLocaleString("en-US");
+
+  const pb = ATLAS_PEER_AGGREGATES.percentile_bands;
+  const percentilesEl = document.getElementById("benchmark-percentiles");
+  [["p10","10th percentile"],["p25","25th percentile"],["median","Median"],["p75","75th percentile"],["p90","90th percentile"],["p99","99th percentile"]].forEach(function(pair){
+    const div = document.createElement("div");
+    div.className = "stat-tile";
+    div.innerHTML = '<div class="num">' + money(pb[pair[0]]) + '</div><div class="lbl">' + pair[1] + '</div>';
+    percentilesEl.appendChild(div);
+  });
+
+  const stateTableEl = document.getElementById("benchmark-state-table");
+  ATLAS_PEER_AGGREGATES.top_states.slice(0, 10).forEach(function(row){
+    const tr = document.createElement("tr");
+    tr.innerHTML = "<td>" + row[0] + "</td><td class=\"amt\">" + row[1].toLocaleString("en-US") + "</td>";
+    stateTableEl.appendChild(tr);
+  });
+
+  const purposeTableEl = document.getElementById("benchmark-purpose-table");
+  ATLAS_PEER_AGGREGATES.top_purposes.slice(0, 10).forEach(function(row){
+    const tr = document.createElement("tr");
+    const td1 = document.createElement("td");
+    td1.textContent = row[0];
+    const td2 = document.createElement("td");
+    td2.className = "amt";
+    td2.textContent = row[1].toLocaleString("en-US");
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    purposeTableEl.appendChild(tr);
+  });
+
+  const chips = document.querySelectorAll(".fold-count");
+  chips.forEach(function(el){
+    const from = el.getAttribute("data-count-from");
+    const label = el.getAttribute("data-count-label");
+    if(from === "peer-count"){
+      el.textContent = ATLAS_PEER_AGGREGATES.distinct_filer_ein_count.toLocaleString("en-US") + " " + label;
+    }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dossier — 990 Reconciliation Demo</title>
+<meta name="description" content="Dossier reconciles a corporate foundation's claimed giving against its own filed 990-PF numbers, and cross-references a voluntary donation list against public 990 filings. This demonstration page uses a fictional building-materials company's foundation." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/png" href="Assets/dossier-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=8f55469b15">
+<style>
+a{color:var(--ink)}
+
+.hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1.4rem;text-align:center}
+.section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
+.section-head p{color:var(--wash);font-size:.94rem;max-width:none}
+.tier-lede{font-family:var(--mono);font-size:.86rem;color:var(--wash);margin:0 0 1rem}
+
+.recon-table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:.5rem}
+.recon-table th{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--wash);text-align:left;padding:.4rem .55rem;border-bottom:1px solid var(--rule)}
+.recon-table td{padding:.5rem .55rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere}
+.recon-table .amt{font-family:var(--mono);text-align:right;white-space:nowrap}
+.status-chip{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em;padding:.16rem .5rem;border:1px solid var(--rule);white-space:nowrap}
+.status-chip.st-match{color:var(--ok);border-color:var(--ok)}
+.status-chip.st-variance{color:var(--warn);border-color:var(--warn)}
+.status-chip.st-gap{color:var(--urgent);border-color:var(--urgent)}
+.fn-link{font-family:var(--mono);font-size:11px;color:var(--accent);cursor:pointer;margin-left:.3rem}
+.fn-link:hover{text-decoration:underline}
+.footnote-panel{font-size:13px;color:var(--wash);background:var(--well);border:1px solid var(--rule);padding:.6rem .8rem;margin-top:.6rem;display:none}
+.footnote-panel.open{display:block}
+.invented-caveat{font-family:var(--mono);font-size:.82rem;color:var(--urgent);background:var(--well);border:1px dashed var(--urgent);padding:.7rem .9rem;margin:.9rem 0 0;line-height:1.5}
+.tier2-lede{background:var(--well);border:1px solid var(--rule);padding:.9rem 1.1rem;margin-bottom:1rem;font-size:14.5px;line-height:1.55}
+
+/* Mobile UX pass (2026-07-18): the manifest's brand+stat+5-nav-link row wraps
+   to 2-3 lines at phone width and, being position:sticky, stays pinned there
+   through the whole scroll - a real cost on a narrow viewport with no nav
+   collapse. Unstick below 640px and drop the two links already reachable
+   from the footer (Pricing, All demos), leaving just the two in-page anchors
+   plus the Atlas/Dossier cross-link. */
+@media(max-width:640px){
+  .manifest{position:static}
+  .manifest nav a[href="demo-pricing"],
+  .manifest nav a[href="demo"]{display:none}
+}
+/* The cross-link is the whole point of this page pairing with Atlas - give
+   it a subtle accent pill so it doesn't read as just another nav item. */
+.manifest nav .cross-link{color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:.15rem .6rem}
+/* The hero .note was one <br><br>-joined block; split into <p>s with a light
+   divider so it reads as distinct chunks instead of one wall of text. */
+.note p{margin:0 0 .9rem;padding-bottom:.9rem;border-bottom:1px solid var(--rule)}
+.note p:last-child{margin-bottom:0;padding-bottom:0;border-bottom:0}
+/* Tier 2's Notes column carries the actual confidence caveats in full
+   sentences - unreadable squeezed into a horizontally-scrolled table column
+   on mobile. Below 640px, restack each row as its own bordered/--well box
+   (matching .entry/.match-card elsewhere in this family) with labeled
+   fields instead of table cells; Tier 1 has no free-text column and is
+   left as a normal (table-scroll-safe) table. */
+@media(max-width:640px){
+  #tier2 .recon-table thead{display:none}
+  #tier2 .recon-table,#tier2 .recon-table tbody{display:block;width:100%}
+  #tier2 .recon-table tr{display:block;border:1px solid var(--rule);background:var(--well);padding:1rem 1.2rem;margin-bottom:1.1rem}
+  #tier2 .recon-table tr:last-child{margin-bottom:0}
+  #tier2 .recon-table td{display:block;padding:.25rem 0;border-bottom:0;overflow-wrap:anywhere}
+  #tier2 .recon-table td:first-child{font-family:var(--serif);font-weight:700;font-size:17px}
+  #tier2 .recon-table td[data-label]:before{content:attr(data-label);display:block;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--wash);margin-bottom:.15rem}
+}
+/* Late family override: left-align the hero per the demo-family standard (the
+   early .hero rule above centers; almanac and scribe carry this same late override). */
+.hero{text-align:left;padding:3.2rem 1.25rem 2.2rem;border-bottom:1px solid var(--rule)}
+@media(max-width:640px){.hero{padding:2.2rem 1.25rem 1.6rem}.hero h1{font-size:30px}}
+/* Long unbreakable filename tokens (tx_990pf_grants_paid.csv) overflow narrow
+   viewports; let code wrap anywhere. */
+code{overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+<!-- CONVENTION-BADGES:START (generated by pattern-book/inject_badges.py; do not hand-edit) -->
+<div class="conv-badges" style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.35rem 0 0"><span class="conv-badge conv-badge-style" style="font-family:var(--mono,monospace);font-size:12.5px;letter-spacing:.04em;border:1px solid currentColor;padding:.15rem .5rem;max-width:100%">Style guide: General</span><span class="conv-badge conv-badge-tier" style="font-family:var(--mono,monospace);font-size:12.5px;letter-spacing:.04em;border:1px solid currentColor;padding:.15rem .5rem;max-width:100%">Paid products · fictional-org walkthroughs</span></div>
+<!-- CONVENTION-BADGES:END -->
+
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand"><b>Dossier</b> &middot; demo</span>
+    <span class="stat"><strong id="m-tier1-count">…</strong> reconciliation rows</span>
+    <span class="grow"></span>
+    <nav>
+      <a href="#tier1">Reconciliation</a>
+      <a href="#tier2">Cross-Reference</a>
+      <a href="demo-atlas.html" class="cross-link">See Atlas &#8594;</a>
+      <a href="demo-pricing">Pricing &#8594;</a>
+      <a href="demo">All demos &#8594;</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">Demonstration page &middot; the organization shown is fictional</div>
+  <h1>Dossier</h1>
+  <p>Dossier checks that a corporate foundation's own numbers add up: it reconciles what a foundation claims to give against what it actually filed, and cross-references a voluntary donation list against public 990 filings. This page runs Dossier against the same made-up foundation Atlas uses, so you can see how the two work together.</p>
+  <div class="note">
+    <p><strong>How to read this page.</strong> Thornbury Materials Foundation does not exist &mdash; the identical invented foundation used on the Atlas demo. Every claimed figure, filed figure, and donation-list row below is invented for this demo.</p>
+    <p>Unlike Almanac and Scribe's pattern (a fictional org checked against real funders), <strong>the reconciliation method and the 990 data structure are real; the foundation and every figure attached to it are invented.</strong> There is no real named foundation anywhere on this page.</p>
+    <p>Atlas ranks this foundation's giving against its peers. Dossier checks that the same foundation's own numbers add up.</p>
+    <p><a href="demo-atlas.html" class="cross-link">See Atlas &#8594;</a></p>
+    <p>Want this run against your real foundation's numbers? <a href="mailto:jonathanlindavis@gmail.com?subject=Dossier%20reconciliation%20request">Request a reconciliation check &#8594;</a></p>
+  </div>
+</header>
+
+<section class="section" id="tier1">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Automated reconciliation</span>
+      <h2>Tier 1: Claimed vs. Filed <span class="fold-count" data-count-from="tier1-count" data-count-label="rows"></span></h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>Grants-paid total and count only &mdash; never payout ratio or asset-based benchmarking, since the corpus join needed for those does not resolve for this family of foundations (see Atlas's Method section). "Filed/Computed" sums the invented Part XV-style grant rows built for this foundation; it is not pulled from any real filing.</p>
+    </div>
+      <div class="invented-caveat">
+        <b>Every row in this table is invented.</b> "Filed/Computed" normally means a value copied or derived from a real submitted filing. Here, because Thornbury Materials Foundation does not exist, the summed rows are figures built for this demo, not pulled from any real 990-PF. This caveat exists specifically so this table, the product's core selling point, never blurs the fictional/real line.
+      </div>
+      <div class="table-scroll"><table class="recon-table">
+        <thead><tr><th>Metric</th><th class="amt">Claimed</th><th class="amt">Filed / Computed</th><th class="amt">Variance</th><th>Status</th></tr></thead>
+        <tbody id="tier1-table"></tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tier2">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Voluntary cross-reference</span>
+      <h2>Tier 2: Cross-Referencing a Donation List <span class="fold-count" data-count-from="tier2-count" data-count-label="rows"></span></h2>
+    </div>
+    <div class="fold-body">
+    <div class="tier2-lede">For companies without a filing foundation of their own: a CSR or ESG team supplies a donation list, and Dossier matches each line against public 990 and 990-PF filings by organization name.</div>
+    <div class="section-lede">
+      <p><code>recipient_ein</code> is confirmed blank in 100 percent of 278,608 rows in the real grants-paid corpus, so an EIN-keyed join is not available from that dataset. Matching here is by organization name only, fuzzy, not exact &mdash; every row below discloses the false-positive and false-negative risk that carries.</p>
+    </div>
+      <div class="table-scroll"><table class="recon-table">
+        <thead><tr><th>Donation-list entry</th><th class="amt">Claimed</th><th>Matched filing</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody id="tier2-table"></tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section class="method-wrap" id="method">
+  <div class="method-box">
+    <div class="method-kicker">Method</div>
+    <h2>How this was built, and what it cannot tell you</h2>
+    <p><b>Where this comes from.</b> Tier 1 sums Part XV grant rows from <code>tx_990pf_grants_paid.csv</code> for one filer_ein and tax_year. Tier 2 matches a voluntary donation list against public 990 and 990-PF filings by organization name, since the source corpus carries no recipient-side EIN.</p>
+    <p><b>What Dossier will not do.</b> It never invents a claimed total when none is supplied. It never treats a name match as certain &mdash; every Tier 2 row carries a name-confidence note. It never computes a payout ratio or asset benchmark unless the filer's core financial fields are confirmed present in the corpus, which they are not for this family of foundations today.</p>
+    <p><b>What it cannot tell you.</b> Whether an unmatched name reflects a real absence from IRS records or an unresolved name variant. Some real foundations file no Part XV detail at all, or sit outside the smaller Statistics-of-Income sample used for asset-based fields &mdash; both stated in general terms here since the demo entity is fictional.</p>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <p id="footer-credit">Dossier demo by Jonathan Lin Davis &middot; the foundation shown is fictional; the reconciliation method and 990 data structure are real.</p>
+  <p id="footer-links"><a href="demo-atlas.html">See Atlas, the peer benchmark &#8594;</a> &middot; <a href="mailto:jonathanlindavis@gmail.com?subject=Dossier%20reconciliation%20request">Request a reconciliation check &#8594;</a></p>
+  <p class="footer-improvements-wrap"><a class="footer-improvements" href="https://jonathanlindavis.com/improvementlog.html">Improvement log</a></p>
+</div></footer>
+
+<script>
+/* ============================================================
+   INVENTED DATA, SAME FICTIONAL FOUNDATION AS demo-atlas.html:
+   Thornbury Materials Foundation. Figures here (grants_paid_current_year,
+   grant_count_current_year) MUST match demo-atlas.html's THORNBURY
+   object exactly -- the two pages describing the same fictional
+   foundation with disagreeing numbers would be a visible, avoidable
+   inconsistency at the exact seam meant to demonstrate the pair's
+   coalescing design. See fictional-demo-org-naming skill, section 4.
+   ============================================================ */
+const THORNBURY_RECONCILE = {
+  claimed_grants_total: 2200000,      // invented press-release figure, deliberately different from filed
+  filed_grants_total: 2150000,        // MUST match demo-atlas.html THORNBURY.grants_paid_current_year
+  claimed_grant_count: 84,
+  filed_grant_count: 84,              // MUST match demo-atlas.html THORNBURY.grant_count_current_year
+};
+
+const TIER2_ROWS = [
+  {org: "Austin Youth Trades Alliance", claimed: 45000, matched: "990-EZ, FY2024, filed", status: "match", note: "Exact name match against public 990-EZ filing.", conf: "high"},
+  {org: "Hill Country Disaster Relief Fund", claimed: 30000, matched: "990, FY2024, filed", status: "variance", note: "Matched filing shows $27,500 received from a foundation named similarly to Thornbury; name confidence is medium, could be a different Thornbury-adjacent entity.", conf: "medium"},
+  {org: "Lonestar Apprenticeship Partners", claimed: 20000, matched: "No matching filing found", status: "gap", note: "No matching row in the public 990/990-PF corpus by name; may be too new to have filed, or the name on the donation list may not match its filed legal name.", conf: "n/a"},
+];
+
+function money(n){ return "$" + Math.round(n).toLocaleString("en-US"); }
+
+document.addEventListener("DOMContentLoaded", function(){
+  const variance = THORNBURY_RECONCILE.claimed_grants_total - THORNBURY_RECONCILE.filed_grants_total;
+  const varianceStatus = Math.abs(variance) < 1 ? "match" : (Math.abs(variance) / THORNBURY_RECONCILE.filed_grants_total < 0.05 ? "variance" : "gap");
+  const countVariance = THORNBURY_RECONCILE.claimed_grant_count - THORNBURY_RECONCILE.filed_grant_count;
+
+  const tier1Rows = [
+    {metric: "Total grants paid, current year", claimed: THORNBURY_RECONCILE.claimed_grants_total, filed: THORNBURY_RECONCILE.filed_grants_total, variance: variance, status: varianceStatus},
+    {metric: "Grant count, current year", claimed: THORNBURY_RECONCILE.claimed_grant_count, filed: THORNBURY_RECONCILE.filed_grant_count, variance: countVariance, status: countVariance === 0 ? "match" : "variance", isCount: true},
+  ];
+
+  const tier1TableEl = document.getElementById("tier1-table");
+  tier1Rows.forEach(function(r){
+    const tr = document.createElement("tr");
+    const fmt = r.isCount ? function(n){return n;} : money;
+    tr.innerHTML = "<td>" + r.metric + "</td>" +
+      "<td class=\"amt\">" + fmt(r.claimed) + "</td>" +
+      "<td class=\"amt\">" + fmt(r.filed) + "</td>" +
+      "<td class=\"amt\">" + (r.variance >= 0 ? "+" : "") + fmt(r.variance) + "</td>" +
+      "<td><span class=\"status-chip st-" + r.status + "\">" + r.status + "</span></td>";
+    tier1TableEl.appendChild(tr);
+  });
+
+  const tier2TableEl = document.getElementById("tier2-table");
+  TIER2_ROWS.forEach(function(r){
+    const tr = document.createElement("tr");
+    tr.innerHTML = "<td>" + r.org + "</td>" +
+      "<td class=\"amt\" data-label=\"Claimed\">" + money(r.claimed) + "</td>" +
+      "<td data-label=\"Matched filing\">" + r.matched + "</td>" +
+      "<td data-label=\"Status\"><span class=\"status-chip st-" + r.status + "\">" + r.status + "</span></td>" +
+      "<td data-label=\"Notes\" style=\"font-size:13px;color:var(--wash)\">" + r.note + "</td>";
+    tier2TableEl.appendChild(tr);
+  });
+
+  document.getElementById("m-tier1-count").textContent = tier1Rows.length;
+
+  const chips = document.querySelectorAll(".fold-count");
+  chips.forEach(function(el){
+    const from = el.getAttribute("data-count-from");
+    const label = el.getAttribute("data-count-label");
+    if(from === "tier1-count") el.textContent = tier1Rows.length + " " + label;
+    if(from === "tier2-count") el.textContent = TIER2_ROWS.length + " " + label;
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Concordance &mdash; demo</title>
+<meta name="description" content="Concordance: find the people who govern foundations that already fund work like yours, and who on your board can reach them. Demonstration against a fictional organization." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/png" href="Assets/concordance-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=8f55469b15">
+<style>
+a{color:var(--accent)}
+
+.hero{padding:3.2rem 0 2.2rem;border-bottom:1px solid var(--rule)}
+.hero .sub{font-size:20px;color:var(--wash);margin:0 0 1.4rem;max-width:none}
+
+
+.section{padding:2.6rem 0;border-bottom:1px solid var(--rule-soft)}
+
+.note{background:var(--well);border-left:3px solid var(--wash);padding:1rem 1.2rem;font-size:.93rem;color:var(--ink);margin:1.2rem 0}
+.note.warn{border-left-color:var(--urgent)}
+.note b{font-weight:700}
+
+
+.fcard{border:1px solid var(--rule);background:var(--well);margin-bottom:1.1rem}
+.fcard-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:1rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
+.fcard-head h3{margin:0;font-size:25px;font-weight:700;flex:1;min-width:220px;overflow-wrap:anywhere}
+.tier{font-family:var(--serif);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;padding:.26rem .55rem;border:1px solid currentColor;white-space:nowrap;font-weight:700}
+.tier-strong{color:var(--ok)}
+.tier-moderate{color:var(--accent)}
+.tier-emerging{color:var(--warn)}
+.fcard-body{padding:1rem 1.2rem}
+.fmeta{font-family:var(--serif);font-size:17.5px;color:var(--wash);margin-bottom:.9rem;font-weight:700}
+
+.lbl{font-family:var(--serif);font-size:15px;letter-spacing:.01em;text-transform:none;color:var(--wash);margin:1rem 0 .5rem;font-style:italic;font-weight:400}
+.ev{border-left:2px solid var(--rule);padding:.45rem 0 .45rem .8rem;margin-bottom:.6rem;font-size:17.5px}
+.ev .r{font-weight:600}
+.ev .amt{font-family:var(--mono);color:var(--ink)}
+.ev .p{color:var(--wash);font-size:.85rem}
+.ev .terms{font-family:var(--serif);font-size:15px;color:var(--accent);font-style:italic;font-weight:400;text-transform:none;letter-spacing:.01em}
+
+.people{display:flex;flex-wrap:wrap;gap:.45rem}
+.person{font-size:.85rem;border:1px solid var(--rule);padding:.3rem .6rem;background:var(--paper)}
+.person .t{font-family:var(--serif);font-size:15px;color:var(--wash);text-transform:none;letter-spacing:.01em;font-style:italic;font-weight:400}
+
+@media(max-width:640px){.hero h1{font-size:30px}.fcard-head h3{min-width:0;flex-basis:100%}.tier{white-space:normal}}
+
+/* Method box, section folds, and card convergence -- this page IS the reference design those
+   were copied from -- now live in tool-shared.css, extracted 2026-07-16. This page's own
+   .section/.section-head/.hero stay here since they're structurally different from the
+   .manifest/.wrap chrome the other eight pages carry (this page uses .brand/.wrap, not
+   .manifest); see that file's header comment. */
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="manifest"><div class="manifest-in">
+  <span class="brand"><b>Concordance</b> &middot; demo</span>
+  <span class="grow"></span>
+  <nav><a href="demo-pricing">Pricing &#8594;</a> <a href="demo">All demos &#8594;</a></nav>
+</div></div>
+
+<div class="hero"><div class="wrap">
+  <div class="badges">
+    <span class="badge badge-fict">Fictional org</span>
+    <span class="badge badge-real">Real foundations &amp; real trustees</span>
+    <span class="badge badge-year">Filings: tax year 2023</span>
+  </div>
+  <h1>Concordance</h1>
+  <p class="sub">The people who govern the foundations that already fund work like yours, and who on your board can reach them.</p>
+  <p class="note">Almanac finds the institutions. Concordance finds the humans inside them. It reads the officers, directors and trustees a private foundation lists on its own Form 990-PF, sets them against what that foundation actually granted, and shows the grants that justify every match. <b>It does not estimate anyone's wealth.</b></p>
+</div></div>
+
+<div class="wrap">
+
+<section class="section" id="about">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Start here</span>
+      <h2>What this page is</h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>This is a demonstration. The subject organization, <b>Second Shift Learning Collaborative</b>, is invented, so that the page can be shown to anyone without exposing a client's research. The foundations, the trustees, the grants and the dollar amounts below are all real, and all come from public IRS filings.</p>
+    </div>
+
+    <div class="stat-row" id="stats"></div>
+
+    <div class="note warn">
+      <b>Board data is as last filed, not as it stands today.</b> Every person named here comes from a Form 990-PF for tax year 2023, and those filings reach the public 12 to 24 months after the fact. Boards turn over in that window. While this tool was being built, its first real query surfaced a director who had already left the board she was still listed on. The filing was not wrong; it was old. <b>Confirm anyone is still serving before you act on their name.</b>
+    </div>
+
+    <div class="note">
+      <b>Why there are no introduction paths on this page.</b> Concordance's second half maps who on <i>your</i> board can reach a foundation's board, either by sitting on both or by sharing a third board with a trustee. That needs a real board to start from, and it needs the organization to sit inside the board-interlock graph. This demo organization is fictional and has no board, so no paths are shown. Nothing has been invented to fill the gap. For a real client inside the graph, this is the part of the tool no commercial competitor can reproduce.
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="foundations">
+  <!-- Closed by default, like Almanac's ranked matches. This is the tool's OUTPUT, not the
+       organization's context: 12 foundations carrying 87 trustees run to ~7,000px on their own.
+       The count chip in the summary says what is inside without making you scroll past it. -->
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Ranked by evidence</span>
+      <h2>Foundations that already fund this work <span class="fold-count" data-count-sel="#matches > .fcard" data-count-label="foundations"></span></h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>Ranked by the evidence, not by an opaque score. Each foundation below has given to organizations doing work like Second Shift Learning Collaborative's, and the specific grants that establish it are shown underneath. Read the grants before you read the ranking.</p>
+    </div>
+    <div id="matches"></div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<section class="method-wrap" id="method">
+  <div class="method-box">
+    <div class="method-kicker">Method</div>
+    <h2>How this was built, and what it cannot tell you</h2>
+    <p><b>Where this comes from.</b> Trustees come from the repeatable officer, director and trustee block that every private foundation files on its Form 990-PF. The IRS instructs filers not to put home addresses in that block, so the dataset carries none. Grants come from the same filings, itemized by recipient, amount and stated purpose. A foundation appears here only if it has both, which is why the universe is the size it is and no larger.</p>
+    <p><b>What Concordance will not do.</b> It does not estimate wealth, and it never will. There is no capacity score, no net-worth model, and no political-giving data anywhere in it. Commercial prospect-research tools are built on licensed wealth data that is not public, and a wealth guess dressed up as a number is worse than no number at all. This tool ranks affinity and access, which are matters of public record, and it stops there.</p>
+    <p><b>What it cannot tell you.</b> Names are matched as strings, so a person who appears under two spellings may be missed, and two different people who share a name may be conflated; low-confidence matches are labelled rather than asserted. The filings are a year or more old, and a board can turn over in that time. A foundation that funds your cause is not therefore open to you, and many private foundations accept no unsolicited proposals at all. Treat every row as a lead to verify, not a conclusion.</p>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <p>Concordance &middot; a demonstration built on public IRS Form 990-PF filings.</p>
+  <p>Foundations, trustees, grants and amounts are real and sourced from public filings. The subject organization is fictional.</p>
+  <p class="footer-improvements-wrap"><a class="footer-improvements" href="https://jonathanlindavis.com/improvementlog.html">Improvement log</a></p>
+</div></footer>
+
+<script>
+/* ---------------------------------------------------------------
+   Self-contained demonstration page. No ?org= parameter, no fetch
+   of data/*.json, no per-org runtime data swapping. The data below
+   IS the page.
+   --------------------------------------------------------------- */
+const C = {
+ "client": {
+  "slug": "demo",
+  "name": "Second Shift Learning Collaborative",
+  "ein": null,
+  "state": "IN",
+  "city": "INDIANAPOLIS",
+  "fictional": true
+ },
+ "universe": {
+  "foundations_with_trustees": 129,
+  "foundations_with_grant_detail": 171,
+  "concordance_universe": 77,
+  "individuals": 817
+ },
+ "tax_year": "2023",
+ "matches": [
+  {
+   "ein": "351950691",
+   "foundation": "CENTERPOINT ENERGY FOUNDATION INC",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 12,
+   "n_in_client_state": 3,
+   "total_itemized_grants": 424,
+   "evidence": [
+    {
+     "recipient": "REGION 10 WORKFORCE BOARD INC",
+     "city": "NEW ALBANY",
+     "state": "IN",
+     "amount": 47500,
+     "purpose": "GENERAL DONATION",
+     "matched_terms": [
+      "workforce"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "WARRICK LITERACY & EDUCATIONAL CONNECTIONS INC",
+     "city": "NEWBURGH",
+     "state": "IN",
+     "amount": 25000,
+     "purpose": "GENERAL DONATION",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "IVY TECH COMMUNITY COLLEGE",
+     "city": "INDIANAPOLIS",
+     "state": "IN",
+     "amount": 5000,
+     "purpose": "GENERAL DONATION",
+     "matched_terms": [
+      "community college"
+     ],
+     "in_client_state": true
+    },
+    {
+     "recipient": "WESLEY COMMUNITY CENTER INC (TX)",
+     "city": "HOUSTON",
+     "state": "TX",
+     "amount": 100000,
+     "purpose": "GENERAL DONATION",
+     "matched_terms": [
+      "esl"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "AMANDA SCHMITT",
+     "title": "PRESIDENT"
+    },
+    {
+     "name": "BRETT A JERASA",
+     "title": "ASSISTANT TREASURER"
+    },
+    {
+     "name": "MARK DEBOER",
+     "title": "TREASURER"
+    },
+    {
+     "name": "MADELEINE NEET",
+     "title": "SECRETARY"
+    },
+    {
+     "name": "JASON RYAN",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "MONICA KARUTURI",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "LYNNE HARKEL-RUMFORD",
+     "title": "DIRECTOR"
+    }
+   ]
+  },
+  {
+   "ein": "263241764",
+   "foundation": "LAURA AND JOHN ARNOLD FOUNDATION",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 41,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 638,
+   "evidence": [
+    {
+     "recipient": "PER SCHOLAS INC",
+     "city": "BRONX",
+     "state": "NY",
+     "amount": 556412,
+     "purpose": "TO SCALE UP GRANTEE'S WORKFORCE DEVELOPMENT PROGRAM THAT PROVIDES INFORMATION TECHNOLOGY TRAINING FOR LOW-INCOME ADULTS.",
+     "matched_terms": [
+      "workforce"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "WEST VIRGINIA COUNCIL FOR COMMUNITY AND TECHNICAL COLLEGE EDUCATION",
+     "city": "CHARLESTON",
+     "state": "WV",
+     "amount": 500000,
+     "purpose": "TO SUPPORT THE EXPANSION OF THE CITY UNIVERSITY OF NEW YORK'S ACCELERATED STUDY IN ASSOCIATE PROGRAMS PROGRAM IN TWO WEST VIRGINIA COMMUNITY COLLEGES.",
+     "matched_terms": [
+      "community college"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "UNIVERSITY OF MARYLAND",
+     "city": "COLLEGE PARK",
+     "state": "MD",
+     "amount": 486425,
+     "purpose": "TO SUPPORT EARLY CAREER SCHOLARS FROM DIVERSE BACKGROUNDS AND HIGH-QUALITY RESEARCH ON IMPROVING JUSTICE AND FAIRNESS IN COMMUNITY SUPERVISION.",
+     "matched_terms": [
+      "career"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "WESLEYAN UNIVERSITY",
+     "city": "MIDDLETOWN",
+     "state": "CT",
+     "amount": 406295,
+     "purpose": "TO CONDUCT A HISTORICAL ANALYSIS OF FIREARMS REGULATION IN FIVE STATES AND SHARE WHAT HAS BEEN LEARNED THROUGH A VARIETY OF DELIVERABLES, INCLUDING A DATABASE OF REGULATIONS AND A FIELD GUIDE.",
+     "matched_terms": [
+      "esl"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "JOHN D ARNOLD",
+     "title": "DIRECTOR/CO-CHAIR"
+    },
+    {
+     "name": "LAURA E ARNOLD",
+     "title": "DIRECTOR/CO-CHAIR"
+    },
+    {
+     "name": "ROXANNE ALMARAZ",
+     "title": "SECRETARY"
+    },
+    {
+     "name": "ELIZABETH BANKS",
+     "title": "TREASURER"
+    },
+    {
+     "name": "KELLI RHEE",
+     "title": "DIRECTOR/PRESIDENT & CEO"
+    }
+   ]
+  },
+  {
+   "ein": "364336415",
+   "foundation": "Michael & Susan Dell Foundation",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 31,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 692,
+   "evidence": [
+    {
+     "recipient": "ClassLink",
+     "city": "Clifton",
+     "state": "NJ",
+     "amount": 1027490,
+     "purpose": "ClassLink OneData Ed-Fi Managed Service Provider Phase I",
+     "matched_terms": [
+      "ged"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "Click Foundation",
+     "city": "Johannesburg",
+     "state": "",
+     "amount": 684124,
+     "purpose": "Acceleration of personalized, early grade literacy program",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "Literacy First",
+     "city": "Austin",
+     "state": "TX",
+     "amount": 525000,
+     "purpose": "Diversifying literacy models for better student and community outcomes",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "Gradesmatch NPC",
+     "city": "Sandton",
+     "state": "",
+     "amount": 431280,
+     "purpose": "Gradesmatch Career & University Application Support (2023-2024) - core grant",
+     "matched_terms": [
+      "career"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "Michael S Dell",
+     "title": "President/Director"
+    },
+    {
+     "name": "Susan L Dell",
+     "title": "1st VP/Director"
+    },
+    {
+     "name": "Dr Alexander Dell",
+     "title": "2nd VP/Director"
+    },
+    {
+     "name": "Marc Lisker",
+     "title": "Treasurer/Assistant Secretary"
+    },
+    {
+     "name": "Janet Mountain",
+     "title": "Exec Director/Sec/Assistant Treasurer"
+    }
+   ]
+  },
+  {
+   "ein": "201519185",
+   "foundation": "SANTANDER CONSUMER USA INC FOUNDATION",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 29,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 71,
+   "evidence": [
+    {
+     "recipient": "COMP-U-DOPT INC",
+     "city": "HOUSTON",
+     "state": "TX",
+     "amount": 3626005,
+     "purpose": "FUNDING SUPPORTS THE DIGITAL INCLUSION INITIATIVE WHICH INCLUDES DIGITAL LITERACY, DIGITAL EDUCATION AND CONNECTIVITY IN DALLAS, MESA, ATLANTA.",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "COMP-U-DOPT INC",
+     "city": "HOUSTON",
+     "state": "TX",
+     "amount": 1500000,
+     "purpose": "FUNDING SUPPORTS THE DIGITAL INCLUSION INITIATIVE WHICH INCLUDES DIGITAL LITERACY, DIGITAL EDUCATION AND CONNECTIVITY IN DALLAS, MESA, ATLANTA.",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "COMP-U-DOPT INC",
+     "city": "HOUSTON",
+     "state": "TX",
+     "amount": 1233833,
+     "purpose": "FUNDING SUPPORTS THE DIGITAL INCLUSION INITIATIVE WHICH INCLUDES DIGITAL LITERACY, DIGITAL EDUCATION AND CONNECTIVITY IN DALLAS, MESA, ATLANTA.",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "COMP-U-DOPT INC",
+     "city": "HOUSTON",
+     "state": "TX",
+     "amount": 996606,
+     "purpose": "FUNDING SUPPORTS THE DIGITAL INCLUSION INITIATIVE WHICH INCLUDES DIGITAL LITERACY, DIGITAL EDUCATION AND CONNECTIVITY IN DALLAS, MESA, ATLANTA.",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "CHRISTOPHER PFIRRMAN",
+     "title": "DIRECTOR, CHAIR AND SECRETARY"
+    },
+    {
+     "name": "SETH GOODALL",
+     "title": "VICE PRESIDENT (THRU 10/04/23)"
+    },
+    {
+     "name": "SUZANNE MASSEY",
+     "title": "VICE PRESIDENT AND ASSISTANT SECRETARY"
+    },
+    {
+     "name": "WENDY GONZALEZ",
+     "title": "VICE PRESIDENT AND ASSISTANT SECRETARY"
+    },
+    {
+     "name": "ERIK LANEY",
+     "title": "DIRECTOR & TREASURER"
+    },
+    {
+     "name": "BETTY JOTANOVIC",
+     "title": "DIRECTOR ( EFF 10/04/23)"
+    },
+    {
+     "name": "DON SMITH",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "RL PRASAD",
+     "title": "DIRETOR ( EFF 10/04/23)"
+    },
+    {
+     "name": "SANDRA ROSA",
+     "title": "DIRECTOR ( THRU 06/27/23)"
+    },
+    {
+     "name": "VIRNITIA DIXON",
+     "title": "DIRECTOR"
+    }
+   ]
+  },
+  {
+   "ein": "136066583",
+   "foundation": "SHELL USA COMPANY FOUNDATION",
+   "tax_year": "2023",
+   "tier": "strong",
+   "n_matching_grants": 13,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 947,
+   "evidence": [
+    {
+     "recipient": "LITERACY INTERNATIONAL",
+     "city": "SAN RAMON",
+     "state": "CA",
+     "amount": 36380,
+     "purpose": "MEF",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "NORTHWEST ARKANSAS COMMUNITY COLLEGE FOUNDATION IN",
+     "city": "Bentonville",
+     "state": "AR",
+     "amount": 30000,
+     "purpose": "MEF",
+     "matched_terms": [
+      "community college"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "SAN DIEGO COUNCIL ON LITERACY",
+     "city": "SAN DIEGO",
+     "state": "CA",
+     "amount": 18000,
+     "purpose": "MEF",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "CAREER AND RECOVERY RESOURCES INC",
+     "city": "Houston",
+     "state": "TX",
+     "amount": 12000,
+     "purpose": "MEF",
+     "matched_terms": [
+      "career"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "Lynn S Borgmeier",
+     "title": "Secretary"
+    },
+    {
+     "name": "Watkins Gretchen H",
+     "title": "Director"
+    },
+    {
+     "name": "Linda L Meagher",
+     "title": "Assistant Secretary"
+    },
+    {
+     "name": "Frazier Wilson",
+     "title": "Vice President"
+    },
+    {
+     "name": "John S Misso",
+     "title": "Director"
+    },
+    {
+     "name": "Kate H Yan",
+     "title": "Treasurer and Controller"
+    }
+   ]
+  },
+  {
+   "ein": "741403105",
+   "foundation": "The Moody Foundation",
+   "tax_year": "2023",
+   "tier": "moderate",
+   "n_matching_grants": 9,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 257,
+   "evidence": [
+    {
+     "recipient": "READING PARTNERS",
+     "city": "Dallas",
+     "state": "TX",
+     "amount": 100000,
+     "purpose": "Evidenced-based literacy tutoring for economically-disadvantaged students",
+     "matched_terms": [
+      "ged",
+      "literacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "Smart Family Literacy Inc",
+     "city": "Galveston",
+     "state": "TX",
+     "amount": 100000,
+     "purpose": "SMART Family Literacy",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "United States Conference of Catholic Bishops dba St Austin Catholic School",
+     "city": "Austin",
+     "state": "TX",
+     "amount": 75000,
+     "purpose": "Early Literacy Intervention made available to all students.",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "Galveston Independent School District",
+     "city": "Galveston",
+     "state": "TX",
+     "amount": 53525,
+     "purpose": "Galveston Career-Connect",
+     "matched_terms": [
+      "career"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "Ross R Moody",
+     "title": "Trustee/Vice Chair"
+    },
+    {
+     "name": "Frances A Moody-Dahlberg",
+     "title": "Trustee/Chair"
+    },
+    {
+     "name": "Elizabeth Moody",
+     "title": "Trustee/Secretary/Treasurer"
+    }
+   ]
+  },
+  {
+   "ein": "746047149",
+   "foundation": "THE HENDERSON-WESSENDORFF FOUNDATION",
+   "tax_year": "2023",
+   "tier": "moderate",
+   "n_matching_grants": 9,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 104,
+   "evidence": [
+    {
+     "recipient": "SER-JOBS FOR PROGRESS",
+     "city": "HOUSTON",
+     "state": "TX",
+     "amount": 75000,
+     "purpose": "TO PROVIDE WORKFORCE DEVELOPMENT SERVICES IN RICHMOND/ROSENBERG HELPING LOW-INCOME RESIDENTS",
+     "matched_terms": [
+      "workforce"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "COLLEGECOMMUNITYCAREER",
+     "city": "STAFFORD",
+     "state": "TX",
+     "amount": 55000,
+     "purpose": "GENERAL OPERATING SUPPORT TO SERVE HIGH SCHOOL STUDENTS IN LCISD",
+     "matched_terms": [
+      "career"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "LITERACY COUNCIL OF FORT BEND COUNTY",
+     "city": "SUGAR LAND",
+     "state": "TX",
+     "amount": 45000,
+     "purpose": "OPERATING SUPPORT TO INCREASE CAPACITY & EXPAND SERVICES IN N RICHMOND",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "SCHOLARSHIP AMERICA",
+     "city": "DETROIT",
+     "state": "MI",
+     "amount": 30000,
+     "purpose": "SCHOLARSHIPS TO SENIOR STUDENTS PLACING IN FFA CAREER DEVELOPMENT EVENT HELD IN BLANCO",
+     "matched_terms": [
+      "career"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "JOE D ROBINSON",
+     "title": "CHAIRMAN OF BOARD"
+    },
+    {
+     "name": "CHARLES PAT MCDONALD",
+     "title": "PRESIDENT"
+    },
+    {
+     "name": "JACK H MOORE",
+     "title": "SECRETARY / LEGAL"
+    },
+    {
+     "name": "BEN JONES",
+     "title": "CFO"
+    },
+    {
+     "name": "LANE WARD",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "BARBARA BLEIL",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "SETH DELEERY",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "WILL ROBERTSON",
+     "title": "DIRECTOR"
+    }
+   ]
+  },
+  {
+   "ein": "742170127",
+   "foundation": "The Cynthia & George Mitchell Foundation",
+   "tax_year": "2023",
+   "tier": "moderate",
+   "n_matching_grants": 7,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 337,
+   "evidence": [
+    {
+     "recipient": "NATIONAL ACADEMY OF SCIENCES",
+     "city": "Washington",
+     "state": "DC",
+     "amount": 135000,
+     "purpose": "To Empower Disadvantaged Communities Through a Workshp on Leveraging Community Benefit Agreement...",
+     "matched_terms": [
+      "ged"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "Galveston Center for Innovation and Transformation",
+     "city": "Galveston",
+     "state": "TX",
+     "amount": 125000,
+     "purpose": "Galveston Center for Innovation and Tranformation (GCIT) and the Galveston Economic Development Partnership (GEDP)",
+     "matched_terms": [
+      "ged"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "Los Angeles Conservation Corps",
+     "city": "Los Angeles",
+     "state": "CA",
+     "amount": 20000,
+     "purpose": "To offer paid work experience on green community projects and innovative after school, secondary and vocational education programs",
+     "matched_terms": [
+      "vocational"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "Room To Read",
+     "city": "San Francisco",
+     "state": "CA",
+     "amount": 20000,
+     "purpose": "To develop literacy skills among primary school children",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "Katherine Lorenz",
+     "title": "President"
+    },
+    {
+     "name": "C Grant Mitchell",
+     "title": "Chair"
+    },
+    {
+     "name": "M Kent Mitchell",
+     "title": "Vice Chair"
+    },
+    {
+     "name": "Michelle Robinson",
+     "title": "Secretary"
+    },
+    {
+     "name": "Spiros Vassilakis",
+     "title": "Treasurer"
+    },
+    {
+     "name": "Graham Mitchell",
+     "title": "Board member"
+    },
+    {
+     "name": "Christine Mitchell",
+     "title": "Board member"
+    },
+    {
+     "name": "Sarah Mitchell",
+     "title": "Board member"
+    },
+    {
+     "name": "Cody Mitchell",
+     "title": "Board member"
+    },
+    {
+     "name": "Sheridan Lorenz",
+     "title": "Board member"
+    },
+    {
+     "name": "Mark D Mitchell",
+     "title": "Board member"
+    },
+    {
+     "name": "Katina Mitchell",
+     "title": "Board member"
+    },
+    {
+     "name": "J Kirk Mitchell",
+     "title": "Board member"
+    },
+    {
+     "name": "Adrienne Dreiss Ropp",
+     "title": "Board member"
+    },
+    {
+     "name": "Meredith Heimburger",
+     "title": "Board member"
+    }
+   ]
+  },
+  {
+   "ein": "237028238",
+   "foundation": "Hamill Foundation",
+   "tax_year": "2023",
+   "tier": "moderate",
+   "n_matching_grants": 5,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 85,
+   "evidence": [
+    {
+     "recipient": "CHRISTIAN COMMUNITY SERVICE CENTER INC",
+     "city": "Houston",
+     "state": "TX",
+     "amount": 250000,
+     "purpose": "To support operating programs such as rent & utility assistance, GED/ESL classes, food pantry, job counseling & vocational training.",
+     "matched_terms": [
+      "esl",
+      "ged",
+      "vocational"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "Memorial Assistance Ministries Inc",
+     "city": "Houston",
+     "state": "TX",
+     "amount": 250000,
+     "purpose": "Operating Programs to provide rent & utility assistance, ESL/GED & vocational training & Capital Campaign to renovate existing building & add a new building for classrooms & office space & add parking.",
+     "matched_terms": [
+      "esl",
+      "ged",
+      "vocational"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "Open Door Mission",
+     "city": "Houston",
+     "state": "TX",
+     "amount": 250000,
+     "purpose": "Operating Programs including housing, meals, clothing, GED, career guidance & Doorway Recovery Program for homeless men & Medical Respit Center.",
+     "matched_terms": [
+      "career",
+      "ged"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "Boys and Girls Country of Houston Inc",
+     "city": "Hockley",
+     "state": "TX",
+     "amount": 150000,
+     "purpose": "Operating Support to provide residential operating programs for children and youth in the College & Careers program",
+     "matched_terms": [
+      "career"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "Charlie H Read",
+     "title": "Pres., Treas., Dir."
+    },
+    {
+     "name": "Charles W Snider",
+     "title": "VP Director"
+    },
+    {
+     "name": "Thomas H Brown",
+     "title": "VP, Grants Dir, Dir"
+    },
+    {
+     "name": "William T Miller",
+     "title": "Director"
+    },
+    {
+     "name": "Barbara L Strobel",
+     "title": "Director"
+    }
+   ]
+  },
+  {
+   "ein": "261635887",
+   "foundation": "BNSF RAILWAY FOUNDATION",
+   "tax_year": "2023",
+   "tier": "moderate",
+   "n_matching_grants": 5,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 506,
+   "evidence": [
+    {
+     "recipient": "METROPOLITAN COMMUNITY COLLEGE FDN",
+     "city": "OMAHA",
+     "state": "NE",
+     "amount": 10000,
+     "purpose": "CULTURAL",
+     "matched_terms": [
+      "community college"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "FORT PECK COMMUNITY COLLEGE",
+     "city": "POPLAR",
+     "state": "MT",
+     "amount": 5000,
+     "purpose": "EDUCATION",
+     "matched_terms": [
+      "community college"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "CAREER AND RECOVERY RESOURCES INC",
+     "city": "HOUSTON",
+     "state": "TX",
+     "amount": 5000,
+     "purpose": "HEALTH & HUMAN SERVICES",
+     "matched_terms": [
+      "career"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "NEBRASKA WESLEYAN UNIVERSITY",
+     "city": "LINCOLN",
+     "state": "NE",
+     "amount": 5000,
+     "purpose": "MATCHING GIFTS",
+     "matched_terms": [
+      "esl"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "ZAK A ANDERSEN",
+     "title": "PRESIDENT & DIRECTOR"
+    },
+    {
+     "name": "MUNSOOR HUSSAIN",
+     "title": "ASSISTANT GENERAL TAX COUNSEL"
+    },
+    {
+     "name": "JILL MULLIGAN AS OF 112023",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "JUAN ACOSTA",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "BETH A MILLER",
+     "title": "TREASURER"
+    },
+    {
+     "name": "DUSTIN ALMAGUER",
+     "title": "SECRETARY"
+    },
+    {
+     "name": "MICHAEL SMYTHERS",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "AMY MCBETH",
+     "title": "DIRECTOR"
+    },
+    {
+     "name": "TEENA KILIAN",
+     "title": "ASSISTANT SECRETARY"
+    }
+   ]
+  },
+  {
+   "ein": "746104592",
+   "foundation": "The Powell Foundation",
+   "tax_year": "2023",
+   "tier": "moderate",
+   "n_matching_grants": 5,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 235,
+   "evidence": [
+    {
+     "recipient": "E3 Alliance",
+     "city": "Austin",
+     "state": "TX",
+     "amount": 300000,
+     "purpose": "Aligned Cradle to Career Education System: Data, research, and advocacy efforts",
+     "matched_terms": [
+      "career"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "Communities Foundation of Texas - Educate Texas",
+     "city": "Dallas",
+     "state": "TX",
+     "amount": 200000,
+     "purpose": "Aligned Cradle to Career Education System: Data, research, and advocacy efforts",
+     "matched_terms": [
+      "career"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "William Marsh Rice University - School Literacy & Culture",
+     "city": "Houston",
+     "state": "TX",
+     "amount": 200000,
+     "purpose": "Early Childhood Development and Education: High-quality early learning initiatives",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "The University of Texas Foundation - Literacy First",
+     "city": "Austin",
+     "state": "TX",
+     "amount": 100000,
+     "purpose": "Quality Public K-12 Schools: Student support",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "Katherine Osborne Valdez",
+     "title": "Board President/Director"
+    },
+    {
+     "name": "Ben H Powell V",
+     "title": "VP/Assistant Treasurer/Director"
+    },
+    {
+     "name": "Charles F Caldwell",
+     "title": "Secretary/Director"
+    },
+    {
+     "name": "Harvin C Moore IV",
+     "title": "Treasurer/Director"
+    },
+    {
+     "name": "Terry Bruner",
+     "title": "Director"
+    },
+    {
+     "name": "Marian M Casey",
+     "title": "Director"
+    },
+    {
+     "name": "Thao Costis",
+     "title": "Director"
+    },
+    {
+     "name": "Katherine P Hill",
+     "title": "Director"
+    },
+    {
+     "name": "Elizabeth K Moore",
+     "title": "Director"
+    },
+    {
+     "name": "Thomas B Osborne",
+     "title": "Director"
+    },
+    {
+     "name": "Ben H Powell VI",
+     "title": "Director"
+    }
+   ]
+  },
+  {
+   "ein": "752137184",
+   "foundation": "THE MORRIS FOUNDATION",
+   "tax_year": "2023",
+   "tier": "moderate",
+   "n_matching_grants": 5,
+   "n_in_client_state": 0,
+   "total_itemized_grants": 102,
+   "evidence": [
+    {
+     "recipient": "TEXAS WESLEYAN UNIVERSITY",
+     "city": "FORT WORTH",
+     "state": "TX",
+     "amount": 250000,
+     "purpose": "TEXAS WESLEYAN RAM RETENTION PROGRAM",
+     "matched_terms": [
+      "esl"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "UNITED COMMUNITY CENTERS INC",
+     "city": "FORT WORTH",
+     "state": "TX",
+     "amount": 120000,
+     "purpose": "EDUCATIONAL LITERACY PROGRAM",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "CLC INC",
+     "city": "FORT WORTH",
+     "state": "TX",
+     "amount": 35000,
+     "purpose": "TRAINING AND EMPLOYMENT INITIATIVE",
+     "matched_terms": [
+      "employment"
+     ],
+     "in_client_state": false
+    },
+    {
+     "recipient": "SOUTHERN METHODIST UNIVERSITY",
+     "city": "DALLAS",
+     "state": "TX",
+     "amount": 30000,
+     "purpose": "SMU CORE LITERACY TRIAGE STUDY",
+     "matched_terms": [
+      "literacy"
+     ],
+     "in_client_state": false
+    }
+   ],
+   "trustees": [
+    {
+     "name": "ELIZABETH BRANDS",
+     "title": "PRESIDENT AND CEO"
+    },
+    {
+     "name": "LAURA LILES",
+     "title": "TRUSTEE"
+    },
+    {
+     "name": "MICHELLE PIOTROWSKI",
+     "title": "TRUSTEE"
+    }
+   ]
+  }
+ ]
+};
+const TIER_COPY = {"strong": "Funds this work, in this state", "moderate": "Funds this work", "emerging": "Some overlap; verify before approaching"};
+
+function esc(s){const d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML;}
+function money(n){return n?'$'+Number(n).toLocaleString('en-US'):'';}
+
+(function stats(){
+  const u = C.universe;
+  const cells = [
+    [u.concordance_universe, 'foundations with both a listed board and itemized grants'],
+    [C.matches.length, 'shown here, matching this cause area'],
+    [u.individuals, 'named trustees in the underlying dataset'],
+    ['TY '+C.tax_year, 'tax year of every filing used'],
+  ];
+  document.getElementById('stats').innerHTML = cells.map(
+    ([n,l]) => '<div class="stat"><span class="n">'+esc(n)+'</span><span class="l">'+esc(l)+'</span></div>'
+  ).join('');
+})();
+
+(function render(){
+  document.getElementById('matches').innerHTML = C.matches.map(m => {
+    const ev = m.evidence.map(e =>
+      '<div class="ev">'
+      + '<div><span class="r">'+esc(e.recipient)+'</span> '
+      + '<span class="amt">'+esc(money(e.amount))+'</span> '
+      + '<span class="p">&middot; '+esc(e.city)+', '+esc(e.state)+'</span></div>'
+      + (e.purpose ? '<div class="p">'+esc(e.purpose)+'</div>' : '')
+      + '<div class="terms">matched: '+esc(e.matched_terms.join(', '))+'</div>'
+      + '</div>').join('');
+
+    const people = m.trustees.map(t =>
+      '<span class="person">'+esc(t.name)
+      + (t.title ? ' <span class="t">'+esc(t.title)+'</span>' : '')
+      + '</span>').join('');
+
+    return '<div class="fcard">'
+      + '<div class="fcard-head">'
+      +   '<h3>'+esc(m.foundation)+'</h3>'
+      +   '<span class="tier tier-'+esc(m.tier)+'">'+esc(TIER_COPY[m.tier])+'</span>'
+      + '</div>'
+      + '<div class="fcard-body">'
+      +   '<div class="fmeta">EIN '+esc(m.ein)+' &middot; '+m.n_matching_grants+' of '
+      +     m.total_itemized_grants+' itemized grants match this cause area'
+      +     (m.n_in_client_state ? ' &middot; '+m.n_in_client_state+' of them in-state' : '')
+      +     ' &middot; filed for TY'+esc(m.tax_year)+'</div>'
+      +   '<div class="lbl">The grants that justify this match</div>'
+      +   ev
+      +   '<div class="lbl">Who governs it &mdash; as listed on the TY'+esc(m.tax_year)+' filing</div>'
+      +   '<div class="people">'+people+'</div>'
+      + '</div></div>';
+  }).join('');
+})();
+</script>
+
+<script>
+/* Two jobs:
+   (1) A hash-anchor link scrolls its target into view. Sections can no longer be hidden
+       (the fold/accordion mechanism was removed), but the explicit scroll is still needed -
+       nothing else moves the viewport to the anchor.
+   (2) Mirror each list section's own counter into its heading chip, so the count is never
+       out of sync with what the section actually shows. */
+(function(){
+  function openTo(){
+    var h = window.location.hash;
+    if (!h || h.length < 2) return;
+    var t;
+    try { t = document.querySelector(h); } catch (e) { return; }
+    if (!t) return;
+    window.setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+  }
+  function counts(){
+    var done = true;
+    var chips = document.querySelectorAll('.fold-count');
+    for (var i = 0; i < chips.length; i++) {
+      var el = chips[i], n = null;
+      var from = el.getAttribute('data-count-from');
+      var sel = el.getAttribute('data-count-sel');
+      if (from) {
+        var src = document.getElementById(from);
+        if (src) n = parseInt(src.textContent, 10);
+      } else if (sel) {
+        n = document.querySelectorAll(sel).length;
+      }
+      if (n === null || isNaN(n) || n === 0) { done = false; continue; }
+      var txt = n + ' ' + el.getAttribute('data-count-label');
+      if (el.textContent !== txt) el.textContent = txt;   /* guard: writing unconditionally would
+                                                             retrigger the observer forever */
+    }
+    return done;
+  }
+  window.addEventListener('hashchange', openTo);
+  window.addEventListener('load', function(){ openTo(); counts(); });
+  document.addEventListener('DOMContentLoaded', function(){
+    openTo();
+    if (counts()) return;
+    var mo = new MutationObserver(function(){ if (counts()) mo.disconnect(); });
+    mo.observe(document.body, {childList:true, subtree:true, characterData:true});
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+/* tool-shared.css -- shared design system for the Almanac/Scribe/Concordance demo pages.
+   Extracted 2026-07-16 from the computed cascade-merged CSS of almanac.html and scribe.html
+   (see css-cascade-diff skill + Portfolios\Websites\Jonathanlindavis.com\Almanac Scribe
+   Concordance CSS Unification.md for the full reconciliation). Every rule below was verified
+   BYTE-IDENTICAL across the files that use it before being extracted -- this is a pure
+   refactor, not a redesign. Do not add a new rule here without confirming it is meant to be
+   truly shared; page-specific components stay inline in their own page. */
+
+/* ===== Base tokens + reset (all pages) ===== */
+:root{
+  --ink:#1b3a6b; --wash:#4a5a72; --paper:#f4efe2; --well:#e8e2d4;
+  --rule:#c8c2b5; --rule-soft:rgba(27,58,107,0.09);
+  --accent:#1f66ad;
+  --ok:#286644; --warn:#8a5218; --urgent:#8a2828;
+  --serif:'Spectral',Georgia,'Times New Roman',serif;
+  --mono:'JetBrains Mono','Courier New',monospace;
+}
+*{box-sizing:border-box}
+
+/* ===== Section headers (all pages) -- plain, always-visible; the click-to-expand fold/
+   accordion mechanism (native <details>/<summary>) was removed 2026-07-18 across the whole
+   pattern-book family (the "no tab drops" convention) so every section's content shows with
+   no collapse step anywhere. .fold/.section-head are now plain <div>s kept only for layout. ===== */
+.section-head{border-top:none;padding-top:0;margin-bottom:1.5rem}
+.section-head h2{font-family:var(--serif);font-weight:700;font-size:30px;margin:0 0 .55rem}
+.section-head .kicker{font-family:var(--serif);display:block;font-size:15px;letter-spacing:.01em;text-transform:none;color:var(--wash);margin-bottom:.35rem;font-style:italic;font-weight:400}
+.section-lede p{color:var(--wash);font-size:20px;max-width:none;margin:0 0 1.5rem;font-family:var(--serif);font-style:italic;font-weight:400}
+.fold{margin:0}
+.fold-count{font-family:var(--serif);font-size:15px;font-weight:400;letter-spacing:.01em;text-transform:none;color:var(--wash);border:1px solid var(--rule);padding:.2rem .5rem;margin-left:.5rem;vertical-align:middle;white-space:nowrap;font-style:italic}
+.fold-count:empty{display:none}
+
+/* ===== Hero title + footer type (all pages) ===== */
+.hero h1{font-family:var(--serif);font-weight:700;font-size:40px;margin:0 0 .5rem;line-height:1.15;letter-spacing:-.015em}
+footer{padding:2.4rem 0 3.2rem;color:var(--wash);font-size:12px;font-family:var(--serif);font-weight:400}
+
+/* ===== Method box (all pages) -- type is pixel-fixed on purpose; see the CSS unification
+   doc for why (Concordance rendered at 1092px/16px while the others sat at 1180px/17px until
+   concordance.html's body font-size was fixed 2026-07-16; the pixel values were left as-is
+   rather than reverted, since reverting them is a separate, unverified change). ===== */
+.method-wrap{max-width:1180px;margin:0 auto;padding:2.6rem 1.25rem 1rem}
+.method-box{background:var(--well,#e8e2d4);border:1px solid var(--rule,#c8c2b5);
+  border-left:3px solid var(--ink,#1b3a6b);padding:1.7rem 1.9rem}
+.method-box .method-kicker{font-family:var(--serif);font-size:15px;letter-spacing:.01em;text-transform:none;color:var(--wash,#4a5a72);margin:0 0 .5rem;font-weight:400;font-style:italic}
+.method-box h2{font-family:var(--serif,Georgia,serif);font-size:25px;font-weight:700;color:var(--ink,#1b3a6b);margin:0 0 1.05rem;line-height:1.28;letter-spacing:-.01em}
+.method-box p{font-family:var(--serif,Georgia,serif);font-size:20px;line-height:1.68;color:var(--ink,#1b3a6b);margin:0 0 .95rem;max-width:none}
+.method-box p:last-child{margin-bottom:0}
+
+/* ===== Hero explainer/methodology box (all pages) -- almanac (.hero .note), scribe
+   (.hero .offer-note), and concordance (.hero .note) had silently drifted to three different
+   treatments (centered vs full-width, boxed vs plain text, ink vs wash) despite serving the
+   identical role, because scribe's copy had been renamed to duck a class collision and never
+   picked up the box treatment the others got. Unified 2026-07-16 on almanac's fully-realized
+   version; scribe's markup was renamed .offer-note -> .note to match. ===== */
+.hero .note{margin-top:1.4rem;font-family:var(--serif);font-size:15px;color:var(--wash);background:var(--well);border:1px solid var(--rule);padding:.6rem 1rem;display:block;max-width:none;text-align:left;line-height:1.5;font-weight:400}
+.hero .note a{color:var(--accent);font-weight:600}
+
+/* ===== Almanac + Scribe only below this line -- confirmed absent from concordance.html's
+   own markup (no matching class/element), so these are harmless no-ops there, not a change
+   in concordance's rendering. Left in this single shared file rather than a second one for
+   simplicity; see the CSS unification doc if a genuine 3-way divergence needs splitting
+   this out later. ===== */
+html{scroll-behavior:smooth}
+::selection{background:var(--ink);color:var(--paper)}
+mark{background:#bcd0eb;color:#1b3a6b;padding:0 1px}
+
+.manifest{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--rule)}
+.manifest-in{max-width:1180px;margin:0 auto;padding:.55rem 1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.manifest-in>*{min-width:0}
+.manifest .brand{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--wash);overflow-wrap:anywhere}
+.manifest .brand b{color:var(--ink);font-weight:700}
+.manifest .stat{font-family:var(--mono);font-size:12px;color:var(--wash);letter-spacing:.02em}
+.manifest .stat strong{color:var(--ink);font-weight:500}
+.manifest nav{display:flex;gap:.9rem;flex-wrap:wrap;min-width:0}
+.manifest nav a{font-family:var(--mono);font-size:12px;color:var(--wash);text-decoration:none;letter-spacing:.03em;white-space:nowrap}
+.manifest nav a:hover{color:var(--ink);text-decoration:underline}
+
+.hero .eyebrow{display:inline-block;font-family:var(--serif);font-size:15px;letter-spacing:.01em;text-transform:none;color:var(--wash);border:1px solid currentColor;padding:.3rem .6rem;margin:0 0 1.3rem;font-style:italic;font-weight:400}
+.hero p{font-size:20px;color:var(--wash);max-width:none;margin:0}
+
+footer a{color:var(--wash)}
+
+.badge-historical{background:var(--rule);color:var(--ink)}
+.badge-likely{background:var(--warn);color:#fff}
+.empty{padding:2.5rem 1rem;text-align:center;color:var(--wash)}
+.res-count{font-family:var(--mono);font-size:14px;color:var(--wash);margin-bottom:.75rem}
+.res-count b{color:var(--ink)}
+.table-scroll{overflow-x:auto;max-width:100%}
+
+/* ---- Card treatment: Concordance's .fcard, mirrored onto every funder/grant/draft entry.
+   The inner grid of each card is deliberately left alone -- a funder, a grant and a draft
+   carry different columns, and only the box is meant to be uniform. ---- */
+.match-card,.entry,.watch-item,.draft-card{
+  border:1px solid var(--rule);
+  background:var(--well);
+  padding:1rem 1.2rem;
+  margin-bottom:1.1rem;
+}
+.match-card:last-child,.entry:last-child,.watch-item:last-child,.draft-card:last-child{
+  margin-bottom:0;
+}
+.match-body .fname,.entry .name,.dc-body .dc-name,.watch-item .org{font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;overflow-wrap:anywhere}
+.card,.match-body,.watch-item,.entry,.draft-card,.priority-meta{min-width:0}
+.card,.qa-value,.match-rationale,.watch-item .why,.dc-rationale,.priority-rationale{overflow-wrap:anywhere}
+.funder-mini-table td,.match-body .fname,.entry .name,.watch-item .org{overflow-wrap:anywhere}
+
+@media(max-width:640px){
+  .method-box{padding:1.2rem 1.1rem}
+  .method-box h2{font-size:1.12rem}
+  .hero p{font-size:1rem}
+  .match-card,.entry,.watch-item,.draft-card{padding:.9rem 1rem}
+}
+
+/* ---- Promoted from page-local inline styles 2026-07-17 (Harness Plan, Phase 1). ----
+   .stat-row .stat is scoped deliberately: a bare .stat would leak background/padding onto
+   .manifest .stat above. .badges .badge likewise scoped: three incompatible bare .badge
+   definitions exist across the family and must stay page-local. */
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:20px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.manifest .grow{flex:1;min-width:0}
+.section{scroll-margin-top:72px}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:1.6rem}
+.stat-row .stat{background:var(--paper);padding:1rem 1.1rem;min-width:0}
+.stat-row .stat .n{font-family:var(--serif);font-size:22.5px;font-weight:400;display:block;line-height:1.2}
+.stat-row .stat .l{font-size:15px;color:var(--wash);font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:.01em}
+.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.3rem}
+.badges .badge{font-family:var(--serif);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .6rem;border:1px solid currentColor;font-weight:700}
+.badges .badge-fict{color:var(--urgent)}
+.badges .badge-real{color:var(--ok)}
+.badges .badge-year{color:var(--wash)}
+.funder-mini-table .amt{white-space:normal;max-width:16em}
+
+/* ---- Readability round 2026-07-17: .wrap and the unified footer promoted (the family
+   standardizes on the stacked two-line footer; scribe/almanac's flex variant retired). ---- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.25rem}
+footer p{max-width:none;margin:.4rem 0}
+.footer-improvements{display:inline-block;margin-top:.4rem;font-family:var(--mono);font-size:12px;color:var(--wash);text-decoration:none;padding:.15rem .5rem;border:1px solid var(--rule)}
+.footer-improvements:hover{color:var(--ink)}

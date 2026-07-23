@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Herald &mdash; demo</title>
+<meta name="description" content="Herald: a grant-cycle monitor. It watches the funder pages behind an Almanac watch-list and reports when a cycle opens, a deadline posts, or guidelines change. Demonstration against a fictional organization's watch-list of real funders." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/png" href="Assets/herald-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=8f55469b15">
+<style>
+a{color:var(--accent)}
+
+.hero{padding:3.2rem 0 2.2rem;border-bottom:1px solid var(--rule)}
+.hero .sub{font-size:20px;color:var(--wash);margin:0 0 1.4rem;max-width:none}
+
+
+.section{padding:2.6rem 0;border-bottom:1px solid var(--rule-soft)}
+
+.note{background:var(--well);border-left:3px solid var(--wash);padding:1rem 1.2rem;font-size:.93rem;color:var(--ink);margin:1.2rem 0}
+.note.warn{border-left-color:var(--urgent)}
+.note b{font-weight:700}
+
+
+.wcard{border:1px solid var(--rule);background:var(--well);margin-bottom:1.1rem}
+.wcard-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:1rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
+.wcard-head h3{margin:0;font-size:25px;font-weight:700;flex:1;min-width:220px;overflow-wrap:anywhere}
+.wcard-body{padding:.9rem 1.2rem;min-width:0}
+.chip{font-family:var(--serif);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;padding:.26rem .55rem;border:1px solid currentColor;white-space:nowrap;font-weight:700}
+.chip-open{color:var(--ok)}
+.chip-watch{color:var(--accent)}
+.chip-ok{color:var(--ok)}
+.chip-warn{color:var(--warn)}
+.chip-fail{color:var(--urgent)}
+.wmeta{font-family:var(--serif);font-size:17.5px;color:var(--wash);overflow-wrap:anywhere;font-weight:700}
+.wmeta a{color:var(--wash)}
+.wdetail{font-size:15px;color:var(--ink);margin-top:.5rem;overflow-wrap:anywhere}
+
+.spec{border:1px solid var(--rule);border-left:3px solid var(--accent);background:var(--paper);padding:.85rem 1rem;margin-bottom:.7rem;font-size:17.5px;overflow-wrap:anywhere}
+.spec .cls{font-family:var(--serif);font-size:15px;letter-spacing:.01em;text-transform:none;color:var(--accent);font-style:italic;font-weight:400}
+
+@media(max-width:640px){.hero h1{font-size:30px}.wcard-head h3{min-width:0;flex-basis:100%}}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="manifest"><div class="manifest-in">
+  <span class="brand"><b>Herald</b> &middot; demo</span>
+  <span class="grow"></span>
+  <nav><a href="demo-pricing">Pricing &#8594;</a> <a href="demo">All demos &#8594;</a></nav>
+</div></div>
+
+<div class="hero"><div class="wrap">
+  <div class="badges">
+    <span class="badge badge-fict">Fictional org</span>
+    <span class="badge badge-real">Real funder pages, really monitored</span>
+    <span class="badge badge-year">Last run: 2026-07-17</span>
+  </div>
+  <h1>Herald</h1>
+  <p class="sub">Almanac finds your funders. Herald tells you the day one of them opens a door: a cycle opens, a deadline posts, guidelines change, or a page quietly dies.</p>
+  <p class="note">Herald re-fetches every funder page behind an Almanac watch-list on a daily cadence, compares each one against its stored snapshot, and reports only what it can show. <b>Herald never interprets a change it cannot show you.</b> Every alert carries the page, the fetch time, and the actual before/after text. A page it could not reach is reported as &ldquo;couldn't check&rdquo;: silence is never treated as &ldquo;no change.&rdquo;</p>
+</div></div>
+
+<div class="wrap">
+
+<section class="section" id="about">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Start here</span>
+      <h2>What this page is</h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>This is a demonstration, live against the same watch-list the <a href="demo-almanac.html">Almanac demo</a> built for the fictional <b>Second Shift Learning Collaborative</b>. The organization is invented; the funders, their pages, and the monitoring below are real: the statuses and timestamps come from Herald's actual latest run, not from mock data.</p>
+    </div>
+    <div class="stat-row" id="stats"></div>
+    <div class="note warn">
+      <b>No change has been detected yet, and this page will not pretend otherwise.</b> Herald baselines each page on first sight and only ever reports differences between real fetches. The alert formats further down are labelled as specimens. When a real change lands, it appears here as a dated finding with its diff.
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="watchlist">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Live state</span>
+      <h2>The watch-list, as last checked <span class="fold-count" data-count-sel="#watch-out > .wcard" data-count-label="pages"></span></h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p>Every page Herald watches for this organization, with its real status from the latest run. A bot-protection challenge or an access block is reported as exactly that: it is not proof a grant is gone, and Herald will keep checking.</p>
+    </div>
+    <div id="watch-out"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="alerts">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Format specimens</span>
+      <h2>What an alert looks like</h2>
+    </div>
+    <div class="fold-body">
+    <div class="section-lede">
+      <p><b>These are format specimens, not detections.</b> No funder below has actually changed anything; the text illustrates the four alert classes Herald can raise, in the shape a real one would arrive.</p>
+    </div>
+    <div class="spec"><span class="cls">cycle opened</span><br><b>[Specimen]</b> A watch-list funder's page now shows application language (&ldquo;now accepting applications&rdquo;) where the stored snapshot said the cycle was closed. The alert carries the added lines and a link to the page.</div>
+    <div class="spec"><span class="cls">deadline</span><br><b>[Specimen]</b> A new date appears in the changed region that differs from the deadline Almanac recorded. The alert shows the old and new text side by side; Herald does not decide which date governs: you read the diff.</div>
+    <div class="spec"><span class="cls">guidelines changed</span><br><b>[Specimen]</b> Material text changed that is neither a date nor an open/close flip: eligibility wording, award size, focus areas. The alert attaches the diff excerpt for review before anyone redrafts an application.</div>
+    <div class="spec"><span class="cls">page dead</span><br><b>[Specimen]</b> A monitored page returns a true 404 after retry (challenges and blocks are excluded by design). The alert notes the last good fetch, so the trail back to the funder's current site starts from something real.</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<section class="method-wrap" id="method">
+  <div class="method-box">
+    <div class="method-kicker">Method</div>
+    <h2>How this works, and what it cannot tell you</h2>
+    <p><b>Where this comes from.</b> The watch-list is the Almanac build's own output: the funder and grant pages it cited as sources. Herald fetches each page daily with an ordinary browser identity, reduces it to its visible text, and compares that against the snapshot from the previous fetch. Cosmetic churn (copyright years, cookie banners, navigation) is filtered before anything is classified.</p>
+    <p><b>What Herald will not do.</b> It never reports a change it cannot show: every alert carries the diff itself. It never treats an unreachable page as an unchanged one, and never treats a bot-protection challenge as a dead grant. And it sends nothing when nothing happened: a monthly &ldquo;all quiet, every page checked&rdquo; note is the proof of life, not a stream of manufactured urgency.</p>
+    <p><b>What it cannot tell you.</b> Some funder pages render entirely in the browser and expose no text to a simple fetch; Herald marks those &ldquo;manual check only&rdquo; rather than pretending to watch them. A changed page still needs a human read: Herald finds the change, it does not interpret the funder's intent. And a page that never mentions its next cycle cannot be monitored into mentioning it.</p>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <p>Herald &middot; a demonstration on the fictional Second Shift Learning Collaborative's watch-list of real funders.</p>
+  <p>Statuses and timestamps are from Herald's actual latest run. No alert on this page is real; specimens are labelled.</p>
+  <p class="footer-improvements-wrap"><a class="footer-improvements" href="https://jonathanlindavis.com/improvementlog.html">Improvement log</a></p>
+</div></footer>
+
+<script>
+const C = {
+ "run": "2026-07-17T07:55:31",
+ "targets": 10,
+ "counts": {
+  "unchanged": 7,
+  "couldnt_check": 3
+ },
+ "items": [
+  {
+   "organization": "ProLiteracy",
+   "grant_name": "Literacy Opportunity Fund, Round 2",
+   "url": "https://www.proliteracy.org/grants-funding/literacy-opportunity-fund/",
+   "bucket": "ready_now",
+   "status": "unchanged",
+   "last_checked": "2026-07-17T07:55:30",
+   "detail": ""
+  },
+  {
+   "organization": "Joyce Foundation",
+   "grant_name": "Education & Economic Mobility (letter of inquiry)",
+   "url": "https://www.joycefdn.org/apply",
+   "bucket": "ready_now",
+   "status": "unchanged",
+   "last_checked": "2026-07-17T07:55:30",
+   "detail": ""
+  },
+  {
+   "organization": "Walmart Foundation",
+   "grant_name": "Spark Good Local Grants",
+   "url": "https://www.walmart.org/how-we-give/program-guidelines/spark-good-local-grants-guidelines",
+   "bucket": "ready_now",
+   "status": "unchanged",
+   "last_checked": "2026-07-17T07:55:30",
+   "detail": ""
+  },
+  {
+   "organization": "Richard M. Fairbanks Foundation",
+   "grant_name": "Education focus area (letter of inquiry)",
+   "url": "https://rmff.org/grants/process/",
+   "bucket": "ready_now",
+   "status": "couldnt_check",
+   "last_checked": "2026-07-17T07:55:30",
+   "detail": "bot-protection challenge page (http 200)"
+  },
+  {
+   "organization": "Lilly Endowment Inc.",
+   "grant_name": "Preliminary letter (Community Development, or Education and Youth)",
+   "url": "https://lillyendowment.org/for-grantseekers/guidelines/",
+   "bucket": "ready_now",
+   "status": "couldnt_check",
+   "last_checked": "2026-07-17T07:55:30",
+   "detail": "bot-protection challenge page (http 200)"
+  },
+  {
+   "organization": "ECMC Foundation",
+   "grant_name": "Letter of inquiry (postsecondary and career/technical education)",
+   "url": "https://www.ecmcfoundation.org/funding-approach/apply-for-funding/faqs/",
+   "bucket": "ready_now",
+   "status": "unchanged",
+   "last_checked": "2026-07-17T07:55:30",
+   "detail": ""
+  },
+  {
+   "organization": "Dollar General Literacy Foundation",
+   "grant_name": "Adult Literacy Grants",
+   "url": "https://www.dgliteracy.org/grant-programs/",
+   "bucket": "watch_list_not_yet_open",
+   "status": "unchanged",
+   "last_checked": "2026-07-17T07:55:30",
+   "detail": ""
+  },
+  {
+   "organization": "Barbara Bush Fund for Family Literacy (George & Barbara Bush Foundation)",
+   "grant_name": "No open application (the Fund has not published a process or timeline)",
+   "url": "https://bush41.org/literacy/frequently-asked-questions",
+   "bucket": "watch_list_not_yet_open",
+   "status": "unchanged",
+   "last_checked": "2026-07-17T07:55:30",
+   "detail": ""
+  },
+  {
+   "organization": "Nina Mason Pulliam Charitable Trust",
+   "grant_name": "Helping People in Need (by invitation)",
+   "url": "https://www.ninapulliamtrust.org/grant-information/application-process/",
+   "bucket": "watch_list_not_yet_open",
+   "status": "couldnt_check",
+   "last_checked": "2026-07-17T07:55:30",
+   "detail": "http 403 -- likely protection, not proof the page is gone"
+  },
+  {
+   "organization": "Lumina Foundation",
+   "grant_name": "No open program for this applicant (listed in order to be ruled out)",
+   "url": "https://www.luminafoundation.org/resources/grants/grantee-faq/",
+   "bucket": "watch_list_not_yet_open",
+   "status": "unchanged",
+   "last_checked": "2026-07-17T07:55:30",
+   "detail": ""
+  }
+ ]
+};
+
+function esc(s){const d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML;}
+
+(function stats(){
+  const c = C.counts;
+  const reachable = (c.baselined||0)+(c.unchanged||0)+(c.changed||0)+(c.immaterial_change||0);
+  const cells = [
+    [C.targets, 'funder pages on the watch-list'],
+    [reachable, 'reachable and snapshotted'],
+    [(c.couldnt_check||0), 'behind bot protection right now — reported, not guessed'],
+    [(c.changed||0), 'real changes detected so far'],
+  ];
+  document.getElementById('stats').innerHTML = cells.map(
+    ([n,l]) => '<div class="stat"><span class="n">'+esc(n)+'</span><span class="l">'+esc(l)+'</span></div>'
+  ).join('');
+})();
+
+(function watch(){
+  const ST = {
+    baselined:  ['chip-ok',   'baselined'],
+    unchanged:  ['chip-ok',   'no change'],
+    changed:    ['chip-warn', 'changed'],
+    immaterial_change: ['chip-ok', 'cosmetic change only'],
+    couldnt_check: ['chip-fail', "couldn't check"],
+    js_rendered:   ['chip-fail', 'manual check only'],
+    page_dead:     ['chip-fail', 'page dead'],
+    new:           ['chip-warn', 'not yet checked'],
+  };
+  document.getElementById('watch-out').innerHTML = C.items.map(it => {
+    const st = ST[it.status] || ['chip-warn', esc(it.status)];
+    const bucket = it.bucket === 'ready_now'
+      ? '<span class="chip chip-open">open now</span>'
+      : '<span class="chip chip-watch">watch-list</span>';
+    return '<div class="wcard">'
+      + '<div class="wcard-head">'
+      +   '<h3>'+esc(it.organization)+'</h3>'
+      +   bucket
+      +   '<span class="chip '+st[0]+'">'+esc(st[1])+'</span>'
+      + '</div>'
+      + '<div class="wcard-body">'
+      +   '<div>'+esc(it.grant_name)+'</div>'
+      +   '<div class="wmeta"><a href="'+esc(it.url)+'" target="_blank" rel="noopener">'+esc(it.url)+'</a>'
+      +   ' &middot; last checked '+esc((it.last_checked||'').replace('T',' '))+'</div>'
+      +   (it.detail ? '<div class="wdetail">'+esc(it.detail)+'</div>' : '')
+      + '</div></div>';
+  }).join('');
+})();
+</script>
+
+<script>
+/* Hash-anchor scroll + count chips. Same mechanism as the sibling demo pages. */
+(function(){
+  function openTo(){
+    var h = window.location.hash;
+    if (!h || h.length < 2) return;
+    var t;
+    try { t = document.querySelector(h); } catch (e) { return; }
+    if (!t) return;
+    window.setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+  }
+  function counts(){
+    var done = true;
+    var chips = document.querySelectorAll('.fold-count');
+    for (var i = 0; i < chips.length; i++) {
+      var el = chips[i], n = null;
+      var sel = el.getAttribute('data-count-sel');
+      if (sel) n = document.querySelectorAll(sel).length;
+      if (n === null || isNaN(n) || n === 0) { done = false; continue; }
+      var txt = n + ' ' + el.getAttribute('data-count-label');
+      if (el.textContent !== txt) el.textContent = txt;
+    }
+    return done;
+  }
+  window.addEventListener('hashchange', openTo);
+  window.addEventListener('load', function(){ openTo(); counts(); });
+  document.addEventListener('DOMContentLoaded', function(){
+    openTo();
+    if (counts()) return;
+    var mo = new MutationObserver(function(){ if (counts()) mo.disconnect(); });
+    mo.observe(document.body, {childList:true, subtree:true, characterData:true});
+  });
+})();
+</script>
+</body>
+</html>
