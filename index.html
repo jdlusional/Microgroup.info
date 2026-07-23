@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="stack-page">
+<html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J4XGXZ4CN"></script>
@@ -15,95 +15,238 @@
 <meta name="description" content="MICRO Group, LLC: a strategic, research-driven consultancy serving nonprofit, government, and political and legislative organizations across Texas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Barlow+Semi+Condensed:wght@500;600&family=Marcellus&family=Cinzel:wght@500;600&family=Michroma&family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="king-mark.svg">
 <link rel="canonical" href="https://microgroup.info/">
 <link rel="stylesheet" href="style.css">
+<style>
+/* ======================================================================
+   index.html page-scoped redesign, 2026-07-22 — mirrors the ACTUAL
+   pattern book jonathanlindavis.com governs for its Enterprise-vertical
+   product pages (tool-shared.css + Web Conventions — Enterprise
+   Vertical.md), recolored to a green tone in place of that book's blue.
+   Deliberately scoped to THIS page only, same precedent
+   jonathanlindavis.com's own homepage uses for its own redesign: style.css's
+   shared :root is never edited here, because contact.html and
+   public-index.html still read it directly. A later :root block in the
+   same document overrides those custom-property VALUES document-wide for
+   this page only; the .site-flip component's own CSS rules are untouched
+   (still the byte-identical two-repo sync point), it just inherits the
+   new token values like everything else on this page.
+   ====================================================================== */
+:root{
+  --ink:#0f2d1a; --wash:#5c6b5f; --paper:#f4efe2; --well:#e8e2d4;
+  --rule:#c8c2b5; --rule-soft:rgba(15,45,26,.09);
+  --accent:#2f8a52;
+  --ok:#286644; --warn:#8a5218; --urgent:#8a2828;
+  --serif:'Spectral',Georgia,'Times New Roman',serif;
+  --mono:'JetBrains Mono','Courier New',monospace;
+}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:20px;line-height:1.55;-webkit-font-smoothing:antialiased}
+::selection{background:var(--ink);color:var(--paper)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.25rem}
+
+/* ---- manifest header (mirrors tool-shared.css .manifest) ---- */
+.manifest{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--rule)}
+.manifest-in{max-width:1180px;margin:0 auto;padding:.55rem 1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.manifest-in>*{min-width:0}
+.manifest .brand{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--wash);text-decoration:none}
+.manifest .brand img{height:20px;width:auto;display:block}
+.manifest .brand b{color:var(--ink);font-weight:700}
+.manifest .stat{font-family:var(--mono);font-size:12px;color:var(--wash);letter-spacing:.02em}
+.manifest .stat strong{color:var(--ink);font-weight:500}
+.manifest .grow{flex:1;min-width:0}
+.manifest nav{display:flex;gap:.9rem;flex-wrap:wrap;min-width:0}
+.manifest nav a{font-family:var(--mono);font-size:12px;color:var(--wash);text-decoration:none;letter-spacing:.03em;white-space:nowrap}
+.manifest nav a:hover,.manifest nav a[aria-current="page"]{color:var(--ink);text-decoration:underline}
+
+/* ---- site-flip row: full-width bar under the manifest, same placement
+   jonathanlindavis.com's current homepage uses for its own copy of this
+   component ---- */
+.site-flip-row{border-bottom:1px solid var(--rule);background:var(--well)}
+.site-flip-row .wrap{padding-top:.6rem;padding-bottom:.6rem}
+.site-flip{display:flex;justify-content:flex-end;align-items:flex-start;gap:.5rem;flex-wrap:wrap;margin:0}
+.site-flip-item{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.site-flip-tab{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;display:inline-block;padding:.35rem .8rem;border:1px solid var(--rule);background:var(--paper);color:var(--wash);transition:all .15s ease}
+.site-flip-tab:hover{border-color:var(--accent);color:var(--accent)}
+.site-flip-tab.is-active{background:var(--accent);border-color:var(--accent);color:var(--paper);font-weight:600}
+.site-flip-note{font-family:var(--serif);font-style:italic;color:var(--wash);font-size:12.5px;white-space:nowrap}
+@media(max-width:600px){.site-flip{justify-content:center}.site-flip-item{align-items:center}.site-flip-note{white-space:normal;text-align:center}}
+
+/* ---- hero (mirrors tool-shared.css .hero) ---- */
+.hero{padding:2.8rem 0 2.4rem;text-align:center}
+.hero-mark{width:64px;height:auto;margin:0 auto 1.1rem;display:block}
+.hero .eyebrow{display:inline-block;font-family:var(--serif);font-size:15px;letter-spacing:.01em;color:var(--wash);border:1px solid currentColor;padding:.3rem .7rem;margin:0 0 1.1rem;font-style:italic;font-weight:400}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:40px;margin:0 auto .6rem;line-height:1.15;letter-spacing:-.015em;max-width:18ch}
+.hero p.lede{font-size:20px;color:var(--wash);max-width:56ch;margin:0 auto}
+.hero .badges{justify-content:center;margin:1.5rem 0 0}
+.hero .note{margin:1.6rem auto 0;max-width:640px;font-family:var(--serif);font-size:15px;color:var(--wash);background:var(--well);border:1px solid var(--rule);padding:.7rem 1.1rem;text-align:left;line-height:1.5;font-weight:400}
+.hero .note a{color:var(--accent);font-weight:600}
+.hero-cta{margin-top:1.8rem;display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
+
+/* ---- buttons ---- */
+.btn{display:inline-block;font-family:var(--mono);font-size:13px;letter-spacing:.04em;text-decoration:none;padding:.7rem 1.5rem;border:1.5px solid var(--accent);color:var(--accent);transition:all .15s ease}
+.btn:hover{background:var(--accent);color:var(--paper)}
+.btn-solid{background:var(--accent);color:var(--paper);font-weight:600}
+.btn-solid:hover{background:var(--ink);border-color:var(--ink)}
+
+/* ---- badges (mirrors tool-shared.css .badges .badge) ---- */
+.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.3rem}
+.badges .badge{font-family:var(--serif);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .6rem;border:1px solid currentColor;font-weight:700}
+.badge-ok{color:var(--ok)}
+.badge-warn{color:var(--warn)}
+.badge-wash{color:var(--wash)}
+
+/* ---- stat row (mirrors tool-shared.css .stat-row) ---- */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:0 0 1.6rem}
+.stat-row .stat{background:var(--paper);padding:1rem 1.1rem;min-width:0;text-align:center}
+.stat-row .stat .n{font-family:var(--serif);font-size:22.5px;font-weight:400;display:block;line-height:1.2;color:var(--ink)}
+.stat-row .stat .l{font-size:15px;color:var(--wash);font-family:var(--serif);font-style:italic;font-weight:400}
+
+/* ---- section head (mirrors tool-shared.css .section-head) ---- */
+.section{padding:2.6rem 0;scroll-margin-top:60px}
+.section:nth-of-type(even){background:var(--well)}
+.section-head{border-top:none;padding-top:0;margin-bottom:1.6rem;text-align:center}
+.section-head .kicker{font-family:var(--serif);display:block;font-size:15px;letter-spacing:.01em;color:var(--wash);margin-bottom:.35rem;font-style:italic;font-weight:400}
+.section-head h2{font-family:var(--serif);font-weight:700;font-size:30px;margin:0 auto .55rem;max-width:32ch}
+.section-lede{color:var(--wash);font-size:17.5px;max-width:60ch;margin:0 auto 1.5rem;font-family:var(--serif);font-style:italic;font-weight:400}
+
+/* ---- card standard (mirrors tool-shared.css .match-card/.entry) ---- */
+.card-grid{display:grid;gap:1.1rem}
+.cols-5{grid-template-columns:repeat(5,1fr)}
+.cols-3{grid-template-columns:repeat(3,1fr)}
+.cols-2{grid-template-columns:repeat(2,1fr)}
+.entry{border:1px solid var(--rule);background:var(--paper);padding:1.25rem 1.4rem;min-width:0}
+.section:nth-of-type(even) .entry{background:var(--well)}
+.entry .name{font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;margin:0 0 .5rem;color:var(--ink)}
+.entry .meta{font-family:var(--serif);font-size:17.5px;color:var(--wash);margin:0 0 .7rem;font-style:italic}
+.entry .price{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:700;display:block;margin:0 0 .5rem}
+.entry ul{list-style:none;margin:.6rem 0 0;padding:0}
+.entry li{position:relative;padding-left:1rem;margin-bottom:.4rem;font-family:var(--serif);font-size:17.5px;line-height:1.5;color:var(--wash)}
+.entry li::before{content:"\2013";position:absolute;left:0;color:var(--accent)}
+
+/* ---- method box (mirrors tool-shared.css .method-box) ---- */
+.method-wrap{max-width:820px;margin:0 auto}
+.method-box{background:var(--well);border:1px solid var(--rule);border-left:3px solid var(--ink);padding:1.7rem 1.9rem}
+.section:nth-of-type(even) .method-box{background:var(--paper)}
+.method-box .method-kicker{font-family:var(--serif);font-size:15px;color:var(--wash);margin:0 0 .5rem;font-weight:400;font-style:italic}
+.method-box h2{font-family:var(--serif);font-size:25px;font-weight:700;color:var(--ink);margin:0 0 1.05rem;line-height:1.28}
+.method-box p{font-family:var(--serif);font-size:17.5px;line-height:1.68;color:var(--ink);margin:0 0 .95rem}
+.method-box p:last-child{margin-bottom:0}
+
+.footprint{max-width:680px;margin:1.6rem auto 0;text-align:center;color:var(--wash);font-size:15px;font-style:italic}
+
+/* ---- footer (mirrors tool-shared.css footer) ---- */
+footer.site-footer{padding:2.4rem 0 3.2rem;color:var(--wash);font-size:15px;font-family:var(--serif);font-weight:400;background:var(--ink);text-align:center}
+footer.site-footer .wrap{color:#cdd8cf}
+footer.site-footer img.wordmark{width:min(340px,70vw);height:auto;margin:0 auto 1.4rem;display:block}
+footer.site-footer p{max-width:none;margin:.4rem 0}
+footer.site-footer a{color:#cdd8cf}
+footer.site-footer .footer-links{display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap;margin:1.2rem 0}
+footer.site-footer .footer-links a{font-family:var(--mono);font-size:12px;color:#cdd8cf;text-decoration:none;padding:.3rem .7rem;border:1px solid rgba(255,255,255,.22)}
+footer.site-footer .footer-links a:hover{color:#fff;border-color:#fff}
+footer.site-footer .legal{font-size:12px;color:#8fa693;margin-top:1rem}
+
+@media(max-width:900px){
+  .cols-5{grid-template-columns:repeat(2,1fr)}
+  .cols-3{grid-template-columns:1fr}
+  .cols-2{grid-template-columns:1fr}
+  .hero h1{font-size:30px}
+  .manifest-in{justify-content:center;text-align:center}
+}
+@media(max-width:640px){
+  .method-box{padding:1.2rem 1.1rem}
+  .method-box h2{font-size:1.12rem}
+}
+</style>
 </head>
 <body>
 
-<header class="site-header">
-  <nav class="nav" aria-label="Primary">
-    <a class="nav-brand" href="index.html" aria-label="MICRO Group home">
-      <span class="nav-slogan">A measured approach to <em>your goals.</em></span>
-    </a>
-    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </div>
-  </nav>
+<header class="manifest">
+  <div class="manifest-in">
+    <a class="brand" href="index.html" aria-label="MICRO Group home"><img src="MICRO_mark_icon_transparent.svg" alt=""><b>MICRO</b>&nbsp;GROUP</a>
+    <span class="stat">FIVE <strong>DISCIPLINES</strong> &middot; TWO <strong>LIVE PRODUCTS</strong></span>
+    <div class="grow"></div>
+    <nav aria-label="Primary">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="public-index.html">Index</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </header>
+
+<div class="site-flip-row">
+  <div class="wrap">
+    <div class="site-flip" role="navigation" aria-label="Switch site">
+      <div class="site-flip-item">
+        <a class="site-flip-tab" href="https://jonathanlindavis.com">Open Data</a>
+        <span class="site-flip-note">You are leaving microgroup.info</span>
+      </div>
+      <a class="site-flip-tab is-active" href="index.html" aria-current="true">Enterprise</a>
+    </div>
+  </div>
+</div>
 
 <main>
 
-  <!-- SNAP BAND 1: hero (navy) -->
-  <section class="band band-navy chess mg-hero snap-band stack-item" style="z-index:1">
-    <div class="wrap">
-      <div class="site-flip" role="navigation" aria-label="Switch site">
-        <div class="site-flip-item">
-          <a class="site-flip-tab" href="https://jonathanlindavis.com">Open Data</a>
-          <span class="site-flip-note">You are leaving microgroup.info</span>
-        </div>
-        <a class="site-flip-tab is-active" href="index.html" aria-current="true">Enterprise</a>
-      </div>
-      <img class="mg-hero-mark" src="MICRO_mark_icon_transparent.svg" alt="">
-      <img class="mg-wordmark-img" src="MICRO_wordmark_dark.svg" alt="MICRO Group — A measured approach to your goals">
-      <p class="mg-lede">A strategic, research-driven consultancy working across five areas: Management, Integration, Culture, Research, and Operations.</p>
-      <div style="text-align:center;margin-top:30px">
-        <div><a class="btn btn-gold" href="https://jonathanlindavis.com/#about" target="_blank" rel="noopener">About Jonathan Lin Davis</a></div>
-        <p style="color:#8893b5;font-size:.78rem;margin:10px 0 0">You are leaving microgroup.info</p>
-      </div>
+  <section class="hero wrap">
+    <img class="hero-mark" src="MICRO_mark_icon_transparent.svg" alt="">
+    <span class="eyebrow">A measured approach to your goals</span>
+    <h1>MICRO Group</h1>
+    <p class="lede">A strategic, research-driven consultancy working across five areas: Management, Integration, Culture, Research, and Operations.</p>
+    <div class="badges">
+      <span class="badge badge-ok">Nonprofit</span>
+      <span class="badge badge-ok">Government</span>
+      <span class="badge badge-warn">Political &amp; Legislative</span>
+    </div>
+    <p class="note">MICRO Group is Jonathan Lin Davis's consultancy, formalizing work he has performed for close to a decade. <a href="https://jonathanlindavis.com/#about" target="_blank" rel="noopener">Read about the founder on jonathanlindavis.com &rarr;</a></p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="contact.html">Contact Us</a>
+      <a class="btn" href="https://jonathanlindavis.com/#about" target="_blank" rel="noopener">About Jonathan Lin Davis</a>
     </div>
   </section>
 
-  <!-- SNAP BAND 2: core subjects & expertise -->
-  <section class="band band-warm snap-band stack-item" style="z-index:2">
+  <section class="section" id="services">
     <div class="wrap">
-      <header class="mg-shead">
-        <span class="eyebrow eyebrow-dark">Core Subjects &amp; Expertise</span>
-        <h2 class="mg-h2-dark">Five disciplines, one measured approach</h2>
-      </header>
-      <div class="mg-medallions">
-        <div class="mg-med">
-          <div class="mg-med-circle">M</div>
-          <h3>Management</h3>
-          <p>Strategic planning and leadership capacity for organizations in transition or growth.</p>
-          <ul class="mg-list">
+      <div class="section-head">
+        <span class="kicker">Core Subjects &amp; Expertise</span>
+        <h2>Five disciplines, one measured approach</h2>
+        <p class="section-lede">MICRO is an acronym: Management, Integration, Culture, Research, and Operations.</p>
+      </div>
+      <div class="card-grid cols-5">
+        <div class="entry">
+          <h3 class="name">Management</h3>
+          <p class="meta">Strategic direction and leadership capacity for organizations in transition or growth.</p>
+          <ul>
             <li>Strategic planning and organizational strategy formulation</li>
             <li>Executive leadership development</li>
             <li>Interim director services during leadership transitions</li>
             <li>Interim or fractional campaign management for candidates, campaign committees, and political organizations</li>
           </ul>
         </div>
-        <div class="mg-med">
-          <div class="mg-med-circle">I</div>
-          <h3>Integration</h3>
-          <p>Programs, teams, and software brought into one working system, with training for the people who use it.</p>
-          <ul class="mg-list">
+        <div class="entry">
+          <h3 class="name">Integration</h3>
+          <p class="meta">Programs, teams, and software brought into one working system, with training for the people who use it.</p>
+          <ul>
             <li>Software implementation</li>
             <li>Programmatic and organizational integration</li>
             <li>Organization-wide training on new systems and processes</li>
             <li>Voter file, donor, and constituent database management</li>
           </ul>
         </div>
-        <div class="mg-med">
-          <div class="mg-med-circle">C</div>
-          <h3>Culture</h3>
-          <p>Team building and employee engagement aimed at collaboration that outlasts the workshop.</p>
-          <ul class="mg-list">
+        <div class="entry">
+          <h3 class="name">Culture</h3>
+          <p class="meta">Team building and employee engagement aimed at collaboration that outlasts the workshop.</p>
+          <ul>
             <li>Organizational culture development</li>
             <li>Team building and collaboration initiatives</li>
             <li>Employee engagement strategies</li>
           </ul>
         </div>
-        <div class="mg-med">
-          <div class="mg-med-circle">R</div>
-          <h3>Research</h3>
-          <p>Applied research that grounds client decisions in evidence, drawn from the founder's background in legislative and policy analysis.</p>
-          <ul class="mg-list">
+        <div class="entry">
+          <h3 class="name">Research</h3>
+          <p class="meta">Applied research that grounds client decisions in evidence, drawn from the founder's background in legislative and policy analysis.</p>
+          <ul>
             <li>Employee pay analysis and market analyses</li>
             <li>Policy impact studies and legislative or bill analysis</li>
             <li>Opposition research</li>
@@ -111,11 +254,10 @@
             <li>Spatial and district-level analysis</li>
           </ul>
         </div>
-        <div class="mg-med">
-          <div class="mg-med-circle">O</div>
-          <h3>Operations</h3>
-          <p>Operational management focused on getting more out of the resources you already have.</p>
-          <ul class="mg-list">
+        <div class="entry">
+          <h3 class="name">Operations</h3>
+          <p class="meta">Operational management focused on getting more out of the resources you already have.</p>
+          <ul>
             <li>Operational management and process improvement</li>
             <li>Resource allocation optimization</li>
             <li>Productivity and institutional effectiveness initiatives</li>
@@ -125,117 +267,126 @@
     </div>
   </section>
 
-  <!-- SNAP BAND 3: software products -->
-  <section class="band band-navy chess snap-band stack-item" style="z-index:3">
+  <section class="section" id="products">
     <div class="wrap">
-      <header class="mg-shead">
-        <span class="eyebrow">Software Products</span>
+      <div class="section-head">
+        <span class="kicker">Software Products</span>
         <h2>Purpose-built software for nonprofit grant-seeking</h2>
-        <p class="mg-shead-sub">Almanac and Scribe are live and priced today; the rest of the line is built to varying degrees behind them.</p>
-      </header>
-      <div class="mg-products">
-        <div class="mg-quad-card">
-          <h4>Almanac</h4>
-          <span class="mg-price">$1,500 / year</span>
-          <p>Finds and ranks funders and open grants that fit your organization, with a public source shown for every match.</p>
+        <p class="section-lede">Almanac and Scribe are live and priced today; the rest of the line is built to varying degrees behind them.</p>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><span class="n">2</span><span class="l">Live &amp; priced</span></div>
+        <div class="stat"><span class="n">4</span><span class="l">In development</span></div>
+        <div class="stat"><span class="n">$1,500+</span><span class="l">Per year</span></div>
+      </div>
+      <div class="card-grid cols-3">
+        <div class="entry">
+          <span class="badge badge-ok" style="margin-bottom:.6rem;display:inline-block">Live</span>
+          <h3 class="name">Almanac</h3>
+          <span class="price">$1,500 / year</span>
+          <p class="meta" style="font-style:normal">Finds and ranks funders and open grants that fit your organization, with a public source shown for every match.</p>
         </div>
-        <div class="mg-quad-card">
-          <h4>Scribe</h4>
-          <span class="mg-price">$1,500-$3,000 / year</span>
-          <p>Drafts a near-submission grant application from an Almanac match, fact-checked against your organization's own public information.</p>
-          <ul class="mg-list">
+        <div class="entry">
+          <span class="badge badge-ok" style="margin-bottom:.6rem;display:inline-block">Live</span>
+          <h3 class="name">Scribe</h3>
+          <span class="price">$1,500&ndash;$3,000 / year</span>
+          <p class="meta" style="font-style:normal">Drafts a near-submission grant application from an Almanac match, fact-checked against your organization's own public information.</p>
+          <ul>
             <li>Standard: $1,500 / year, one draft per quarter</li>
             <li>Pro: $3,000 / year, one draft per month</li>
           </ul>
         </div>
-        <div class="mg-quad-card" style="opacity:.72">
-          <h4>Concordance</h4>
-          <p>Identifies the people who govern a funding foundation's board and maps introduction paths.</p>
-          <span class="mg-price" style="font-size:.85em">Built and deployed for one client &middot; not yet in the standard catalog</span>
+        <div class="entry">
+          <span class="badge badge-warn" style="margin-bottom:.6rem;display:inline-block">In development</span>
+          <h3 class="name">Concordance</h3>
+          <p class="meta" style="font-style:normal">Identifies the people who govern a funding foundation's board and maps introduction paths.</p>
+          <span class="price" style="color:var(--wash)">Built and deployed for one client &middot; not yet in the standard catalog</span>
         </div>
-        <div class="mg-quad-card" style="opacity:.72">
-          <h4>Herald</h4>
-          <p>Monitors funder pages on a client's watch list for cycle openings, deadline changes, and guideline updates.</p>
-          <span class="mg-price" style="font-size:.85em">In development</span>
+        <div class="entry">
+          <span class="badge badge-warn" style="margin-bottom:.6rem;display:inline-block">In development</span>
+          <h3 class="name">Herald</h3>
+          <p class="meta" style="font-style:normal">Monitors funder pages on a client's watch list for cycle openings, deadline changes, and guideline updates.</p>
         </div>
-        <div class="mg-quad-card" style="opacity:.72">
-          <h4>Atlas</h4>
-          <p>Benchmarks a foundation's giving against aggregate state-level 990-PF data.</p>
-          <span class="mg-price" style="font-size:.85em">In development</span>
+        <div class="entry">
+          <span class="badge badge-warn" style="margin-bottom:.6rem;display:inline-block">In development</span>
+          <h3 class="name">Atlas</h3>
+          <p class="meta" style="font-style:normal">Benchmarks a foundation's giving against aggregate state-level 990-PF data.</p>
         </div>
-        <div class="mg-quad-card" style="opacity:.72">
-          <h4>Dossier</h4>
-          <p>Reconciles a foundation's claimed giving against its own filed 990-PF.</p>
-          <span class="mg-price" style="font-size:.85em">In development</span>
+        <div class="entry">
+          <span class="badge badge-warn" style="margin-bottom:.6rem;display:inline-block">In development</span>
+          <h3 class="name">Dossier</h3>
+          <p class="meta" style="font-style:normal">Reconciles a foundation's claimed giving against its own filed 990-PF.</p>
         </div>
       </div>
-      <p class="mg-addon-note">Infrastructure &amp; Updates: a $1,500 per year add-on covering ongoing technical maintenance and product updates for an active Almanac or Scribe subscription. Every other engagement, including the consulting disciplines above, is scoped and priced individually.</p>
+      <p class="footprint">Infrastructure &amp; Updates: a $1,500 per year add-on covering ongoing technical support and system updates for an active Almanac or Scribe subscription. Every other engagement, including the consulting disciplines above, is scoped and priced individually.</p>
     </div>
   </section>
 
-  <!-- SNAP BAND 4: who we serve -->
-  <section class="band band-warm snap-band stack-item" style="z-index:4">
+  <section class="section" id="serve">
     <div class="wrap">
-      <header class="mg-shead">
-        <span class="eyebrow eyebrow-dark">Who We Serve</span>
-        <h2 class="mg-h2-dark">Institutions across three sectors</h2>
-      </header>
-      <div class="mg-serve-grid mg-quad-light">
-        <div class="mg-quad-card">
-          <h4>Nonprofit</h4>
-          <ul class="mg-list">
+      <div class="section-head">
+        <span class="kicker">Who We Serve</span>
+        <h2>Institutions across three sectors</h2>
+      </div>
+      <div class="card-grid cols-3">
+        <div class="entry">
+          <h3 class="name">Nonprofit</h3>
+          <ul>
             <li>National and local organizations, across a range of missions</li>
             <li>Including MICRO Group's own software products, built specifically for nonprofit grant-seeking and grant governance</li>
           </ul>
         </div>
-        <div class="mg-quad-card">
-          <h4>Government</h4>
-          <ul class="mg-list">
+        <div class="entry">
+          <h3 class="name">Government</h3>
+          <ul>
             <li>Municipal, state, and federal agencies and public departments</li>
           </ul>
         </div>
-        <div class="mg-quad-card">
-          <h4>Political &amp; Legislative</h4>
-          <ul class="mg-list">
+        <div class="entry">
+          <h3 class="name">Political &amp; Legislative</h3>
+          <ul>
             <li>Campaigns, candidates, committees, and advocacy organizations</li>
             <li>Draws on the founder's legislative-analyst background; this service line becomes active upon his departure from nonpartisan public-sector analyst work, effective July 31, 2026</li>
           </ul>
         </div>
       </div>
-      <p class="mg-footprint">MICRO Group operates today across four Texas metro areas: Austin-Travis County, San Antonio-Bexar County, the Dallas-Fort Worth Metro, and Houston-Harris County. Requests and solicitations from beyond that footprint are accepted worldwide.</p>
+      <p class="footprint">MICRO Group operates today across four Texas metro areas: Austin-Travis County, San Antonio-Bexar County, the Dallas-Fort Worth Metro, and Houston-Harris County. Requests and solicitations from beyond that footprint are accepted worldwide.</p>
     </div>
   </section>
 
-  <!-- SNAP BAND 5: what guides us -->
-  <section class="band band-warm snap-band stack-item" style="z-index:5">
+  <section class="section" id="guides">
     <div class="wrap">
-      <header class="mg-shead">
-        <span class="eyebrow eyebrow-dark">What Guides Us</span>
-        <h2 class="mg-h2-dark">The principles behind every engagement</h2>
-      </header>
-      <div class="mg-quad mg-quad-light">
-        <div class="mg-quad-card"><h4>Mission</h4><p>To give institutions strategic advice that rests on research.</p></div>
-        <div class="mg-quad-card"><h4>Vision</h4><p>To be a partner institutions trust for the long run, not just for the length of a contract.</p></div>
-        <div class="mg-quad-card"><h4>Values</h4><p>We hold to integrity and collaboration, and we will try a new method when the familiar one stops working.</p></div>
-        <div class="mg-quad-card"><h4>Approach</h4><p>Each engagement is shaped around your organization's goals rather than a template.</p></div>
+      <div class="section-head">
+        <span class="kicker">What Guides Us</span>
+        <h2>The principles behind every engagement</h2>
+      </div>
+      <div class="method-wrap">
+        <div class="method-box">
+          <p class="method-kicker">Mission</p>
+          <h2>To give institutions strategic advice that rests on research.</h2>
+          <p><strong style="color:var(--ink)">Vision.</strong> To be a partner institutions trust for the long run, not just for the length of a contract.</p>
+          <p><strong style="color:var(--ink)">Values.</strong> We hold to integrity and collaboration, and we will try a new method when the familiar one stops working.</p>
+          <p><strong style="color:var(--ink)">Approach.</strong> Each engagement is shaped around your organization's goals rather than a template.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SNAP BAND 6: footer (deep navy) -->
-  <section class="footer-panel snap-band stack-item" style="z-index:6">
-    <img class="footer-logo" src="MICRO_wordmark_dark.svg" alt="MICRO Group, LLC — A measured approach to your goals">
-    <a class="footer-contact btn btn-gold" href="contact.html">Contact Us</a>
-    <div class="footer-address">
-      <h4>Mailing Address</h4>
-      <p>1801 E 51st St., STE 365<br>PMB 354, Austin, Texas</p>
-    </div>
-    <div class="footer-legal">© <span id="yr"></span> MICRO Group, LLC. All rights reserved. Austin, Texas.<br><a href="https://jonathanlindavis.com/private-index.html" target="_blank" rel="noopener" style="color:inherit;opacity:.6">Owner: Private Index</a></div>
-  </section>
-
 </main>
 
+<footer class="site-footer">
+  <div class="wrap">
+    <img class="wordmark" src="MICRO_wordmark_dark.svg" alt="MICRO Group, LLC — A measured approach to your goals">
+    <p>1801 E 51st St., STE 365, PMB 354<br>Austin, Texas</p>
+    <div class="footer-links">
+      <a href="contact.html">Contact Us</a>
+      <a href="public-index.html">Site Index</a>
+      <a href="https://jonathanlindavis.com/private-index.html" target="_blank" rel="noopener">Owner: Private Index</a>
+    </div>
+    <p class="legal">&copy; <span id="yr"></span> MICRO Group, LLC. All rights reserved. Austin, Texas.</p>
+  </div>
+</footer>
+
 <script src="site.js"></script>
-<script src="stack-scroll.js"></script>
 </body>
 </html>
