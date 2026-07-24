@@ -39,18 +39,20 @@ a{color:inherit;text-decoration:none}
 .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,5vw,3rem);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
 .hero p{color:var(--wash);max-width:60ch;margin:0 auto;font-size:1.04rem}
 .fict{display:inline-block;margin-top:1.2rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--urgent);border:1px solid var(--urgent);padding:.32rem .65rem}
-.picker{max-width:1120px;margin:0 auto;padding:2.8rem 1.5rem 4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
-.pick-card{display:flex;flex-direction:column;align-items:center;text-align:center;background:#fff;border:1.5px solid var(--ink);padding:2.2rem 1.8rem;transition:box-shadow .18s ease,transform .18s ease}
-.pick-card:hover{box-shadow:0 14px 32px rgba(27,58,107,.14);transform:translateY(-3px)}
-.pick-card.disabled{opacity:.6;cursor:default;pointer-events:none}
-.pick-card p{color:var(--ink);font-size:.95rem;margin:0 0 1.1rem;flex:1}
-.pc-icon{width:56px;height:56px;border-radius:6px;margin-bottom:1rem;display:block}
-.pc-kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:.7rem}
-.pick-card h2{font-family:var(--serif);font-weight:700;font-size:1.55rem;color:var(--ink);margin:0 0 .7rem}
-
-.pc-status{font-family:var(--mono);font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;color:var(--wash);margin-bottom:.6rem}
-.pc-go{align-self:center;font-family:var(--mono);font-size:.78rem;letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);padding:.55rem 1.2rem;transition:all .15s ease}
-.pick-card:hover:not(.disabled) .pc-go{background:var(--ink);color:#fff}
+/* Card convention matched to demo-pricing.html's .price-card (2026-07-24 owner
+   order): eyebrow kicker, left-aligned serif title/body, well-tinted card on a
+   thin rule border, no icon art. auto-fit replaces the fixed 3-column grid so
+   the same rule works at any card count. */
+.picker{max-width:1120px;margin:0 auto;padding:2.8rem 1.5rem 4rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem}
+.pick-card{display:flex;flex-direction:column;text-align:left;background:var(--well);border:1px solid var(--rule);padding:1.3rem 1.4rem;min-width:0;overflow-wrap:anywhere;transition:transform .16s ease,box-shadow .16s ease}
+.pick-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(27,58,107,.12)}
+.pick-card.disabled{opacity:.72;cursor:default;pointer-events:none}
+.pick-card p{color:var(--ink);font-size:.95rem;margin:0;flex:1}
+.pc-kicker{font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--wash);margin-bottom:.7rem}
+.pick-card h2{font-family:var(--serif);font-weight:700;font-size:25px;color:var(--ink);margin:0 0 .3rem}
+.pc-status{font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;color:var(--wash);margin-top:.8rem}
+.pc-go{align-self:flex-start;font-family:var(--mono);font-size:.78rem;letter-spacing:.02em;font-weight:500;color:var(--accent);margin-top:.6rem}
+.pick-card:hover:not(.disabled) .pc-go{color:var(--ink);text-decoration:underline}
 .foot-note{max-width:1000px;margin:0 auto;padding:0 1.5rem 3rem;color:var(--wash);font-size:.93rem}
 footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:.72rem;letter-spacing:.02em}
 @media(max-width:900px){.picker{grid-template-columns:1fr 1fr}}
@@ -75,7 +77,6 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
 
 <div class="picker">
   <a class="pick-card" href="demo-almanac.html">
-    <img class="pc-icon" src="Assets/almanac-mark.png" alt="" width="512" height="512" loading="lazy">
     <div class="pc-kicker">Funder &amp; grant match</div>
     <h2>Almanac</h2>
     <p>Finds the funders and open grants that fit an organization, ranks them, and shows the public source behind every one.</p>
@@ -83,7 +84,6 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
     <span class="pc-go">Open demo &#8594;</span>
   </a>
   <a class="pick-card" href="demo-scribe.html">
-    <img class="pc-icon" src="Assets/scribe-mark.png" alt="" width="512" height="512" loading="lazy">
     <div class="pc-kicker">Grant drafter</div>
     <h2>Scribe</h2>
     <p>Works from an Almanac match to produce a near-submission draft, fact-checked against the organization's own public information, with an explicit list of what only the applicant can supply.</p>
@@ -91,7 +91,6 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
     <span class="pc-go">Open demo &#8594;</span>
   </a>
   <a class="pick-card" href="demo-concordance.html">
-    <img class="pc-icon" src="Assets/concordance-mark.png" alt="" width="512" height="512" loading="lazy">
     <div class="pc-kicker">Trustees &amp; introductions</div>
     <h2>Concordance</h2>
     <p>Names the people who govern the foundations that already fund this kind of work, shows the grants that prove it, and maps who on a board could make the introduction. It does not estimate anyone's wealth.</p>
@@ -99,7 +98,6 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
     <span class="pc-go">Open demo &#8594;</span>
   </a>
   <a class="pick-card" href="demo-herald.html">
-    <img class="pc-icon" src="Assets/herald-mark.png" alt="" width="512" height="512" loading="lazy">
     <div class="pc-kicker">Grant-cycle monitor</div>
     <h2>Herald</h2>
     <p>Watches the funder pages behind an Almanac watch-list and reports when a cycle opens, a deadline posts, or guidelines change &mdash; showing the actual diff, never an interpretation.</p>
@@ -107,7 +105,6 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
     <span class="pc-go">Open demo &#8594;</span>
   </a>
   <a class="pick-card" href="demo-atlas.html">
-    <img class="pc-icon" src="Assets/atlas-mark.png" alt="" width="512" height="512" loading="lazy">
     <div class="pc-kicker">Corporate foundation benchmark</div>
     <h2>Atlas</h2>
     <p>Benchmarks a corporate foundation's giving against real aggregate statistics computed from Texas-registered 990-PF filings, not any single named peer.</p>
@@ -115,7 +112,6 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
     <span class="pc-go">Open demo &#8594;</span>
   </a>
   <a class="pick-card" href="demo-dossier.html">
-    <img class="pc-icon" src="Assets/dossier-mark.png" alt="" width="512" height="512" loading="lazy">
     <div class="pc-kicker">990 reconciliation</div>
     <h2>Dossier</h2>
     <p>Checks that a foundation's claimed giving matches its own filed 990-PF numbers, and cross-references a voluntary donation list against public filings.</p>
