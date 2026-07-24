@@ -97,7 +97,7 @@ a{color:var(--ink)}
 @media(max-width:640px){.watch-item{grid-template-columns:1fr}}
 .watch-item .why{font-size:15px;color:var(--wash);line-height:1.5}
 
-.limitation-note{font-family:var(--mono);font-size:.86rem;color:var(--wash);background:var(--well);border:1px dashed var(--rule);padding:.7rem .9rem;margin-top:1.2rem;line-height:1.5}
+.limitation-note{font-family:var(--mono);font-size:1.125rem;color:var(--wash);background:var(--well);border:1px dashed var(--rule);padding:.7rem .9rem;margin-top:1.2rem;line-height:1.5}
 
 /* ---- Status tracking ---- */
 .admin-toggle{font-family:var(--mono);font-size:.84rem;padding:.3rem .7rem;border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer}
@@ -557,8 +557,8 @@ function renderProfile(){
     const trendRows=fin.trend.map(t=>`<span class="tag">${esc(t.year)}: ${money(t.revenue)} revenue / ${money(t.expenses)} expenses (${esc(t.form)})</span>`).join('');
     document.getElementById('p-financials').innerHTML=`
       <div class="tag-row" style="margin-bottom:.7rem">${trendRows}</div>
-      <p style="margin:0 0 .6rem;font-size:.9rem">${esc(fin.growth_note)}</p>
-      <p style="margin:0;font-size:.82rem;color:var(--wash)">${esc(fin.net_assets_note)} ${esc(fin.note)}</p>`;
+      <p style="margin:0 0 .6rem;font-size:1.125rem">${esc(fin.growth_note)}</p>
+      <p style="margin:0;font-size:1.125rem;color:var(--wash)">${esc(fin.net_assets_note)} ${esc(fin.note)}</p>`;
   }
 
   document.getElementById('p-funders-table').innerHTML=p.confirmed_prior_funders.map(f=>`
