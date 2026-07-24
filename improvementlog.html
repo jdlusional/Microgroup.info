@@ -54,7 +54,7 @@ details.prod>summary .count{margin-left:auto;font-family:var(--mono);font-size:1
 
 <div class="hero">
   <h1>Improvement Log &middot; Enterprise</h1>
-  <p>Each enterprise product (Almanac, Scribe, Concordance, Herald) improves continuously, and this page is the record from the user's side: what changed, when, and what it means for the organizations using it. Entries are curated. Internal engineering work that a user would never notice is left out, so what remains is the product getting better. The Public Data family (GIFT, Interlock, F4F) keeps its own log on <a href="https://jonathanlindavis.com/improvementlog.html" target="_blank" rel="noopener">jonathanlindavis.com</a>.</p>
+  <p>Each enterprise product (Almanac, Scribe, Concordance, Herald, Custodian) improves continuously, and this page is the record from the user's side: what changed, when, and what it means for the organizations using it. Entries are curated. Internal engineering work that a user would never notice is left out, so what remains is the product getting better. The Public Data family (GIFT, Interlock, F4F) keeps its own log on <a href="https://jonathanlindavis.com/improvementlog.html" target="_blank" rel="noopener">jonathanlindavis.com</a>.</p>
   <span class="cadence">Updated weekly</span>
 </div>
 
@@ -67,32 +67,43 @@ details.prod>summary .count{margin-left:auto;font-family:var(--mono);font-size:1
 <script>
 /* ===IMPROVEMENTLOG-DATA-START=== */
 const LOG = [
-{p:"Almanac",d:"2026-07-19",t:"The demo now presents five candidate funders and five open opportunities, a curated short list rather than a raw dump, and funder names and tables read cleanly on phones."},
+{p:"Almanac",d:"2026-07-24",t:"Various CSS visual improvements: readable paragraph breaks in funder-match methodology notes, bold section labels, and center-aligned layout."},
+{p:"Almanac",d:"2026-07-24",t:"Assessment text sizing increased for readability."},
+{p:"Almanac",d:"2026-07-19",t:"The demo narrowed to five candidate funders and five open opportunities, a curated short list rather than a raw dump."},
+{p:"Almanac",d:"2026-07-19",t:"Various mobile display fixes: funder names and tables no longer collapse or scroll sideways on phones."},
 {p:"Almanac",d:"2026-07-18",t:"Every candidate funder carries its own IRS-profile section, and federal opportunities from Grants.gov appear as a second lane beside foundation grants."},
 {p:"Almanac",d:"2026-07-18",t:"Match-quality source data expanded from a partial filing cache to the full Texas corpus of e-filed 990s."},
 {p:"Almanac",d:"2026-07-17",t:"Grant-status tracking went live, so an organization can follow each opportunity from researching to submitted on its own page."},
-{p:"Almanac",d:"2026-07-17",t:"Candidate matching now applies cause-area and geography screens before ranking, and donor-advised funds are routed to their own bucket instead of appearing as approachable foundations."},
+{p:"Almanac",d:"2026-07-17",t:"Candidate matching now applies cause-area and geography screens before ranking."},
+{p:"Almanac",d:"2026-07-17",t:"Donor-advised funds route to their own bucket instead of appearing as approachable foundations."},
 {p:"Almanac",d:"2026-07-16",t:"A Request a funder match action was added, and every match rationale now shows the source domain it rests on."},
-{p:"Almanac",d:"2026-07-13",t:"The demo was rebuilt around a fictional sample organization under a standing rule: every claim about a real funder is verified against that funder's own page before it ships."},
+{p:"Almanac",d:"2026-07-13",t:"Rebuilt around a fictional sample organization; every claim about a real funder is verified against that funder's own page before shipping."},
 {p:"Almanac",d:"2026-07-12",t:"Almanac extended to additional client organizations, each with a funder list honestly tiered by confidence."},
 {p:"Almanac",d:"2026-07-07",t:"The first version of the funder and grant match shipped."},
-{p:"Scribe",d:"2026-07-19",t:"Drafts read cleanly on phones: draft names no longer collapse on narrow screens and sideways scrolling is gone."},
+{p:"Scribe",d:"2026-07-24",t:"Assessment text sizing increased for readability."},
+{p:"Scribe",d:"2026-07-19",t:"Various mobile display improvements: draft names no longer collapse and sideways scrolling is gone."},
 {p:"Scribe",d:"2026-07-17",t:"Draft financials are now pulled from the organization's own IRS filings, three years with footnotes, instead of typed by hand."},
-{p:"Scribe",d:"2026-07-17",t:"The suggested and confirm marker convention became an enforced quality gate, with a validator run against every shipped draft."},
-{p:"Scribe",d:"2026-07-13",t:"The demo shipped with five ranked drafts and a gap checklist, and Scribe's refusal line is stated on the page: it does not invent a fact about the organization."},
+{p:"Scribe",d:"2026-07-17",t:"The suggested/confirm marker convention became an enforced quality gate, validated against every shipped draft."},
+{p:"Scribe",d:"2026-07-13",t:"Demo shipped with five ranked drafts and a gap checklist."},
+{p:"Scribe",d:"2026-07-13",t:"Scribe's refusal to invent facts about the organization is now stated on the page."},
 {p:"Scribe",d:"2026-07-12",t:"Per-client instances shipped for two more organizations, each with its own drafts and gap checklists."},
-{p:"Scribe",d:"2026-07-10",t:"The drafter was built through three same-day versions: payoff-ranked drafts, strength analysis, labeled gaps, Word export, and the three-marker sourcing standard of suggested, confirm, and missing."},
+{p:"Scribe",d:"2026-07-10",t:"Initial build: payoff-ranked drafts, strength analysis, labeled gaps, Word export, and the suggested/confirm/missing sourcing standard."},
+{p:"Concordance",d:"2026-07-24",t:"Assessment text sizing increased for readability."},
 {p:"Concordance",d:"2026-07-18",t:"Application-status chips refreshed from the full Texas corpus, replacing chips built from a smaller early cache."},
-{p:"Concordance",d:"2026-07-17",t:"Every funder card now shows whether that foundation accepts applications, quoted verbatim from its own filing, and a funder with no board connection yields an action pack instead of a dead end."},
+{p:"Concordance",d:"2026-07-17",t:"Every funder card now shows whether that foundation accepts applications, quoted verbatim from its own filing."},
+{p:"Concordance",d:"2026-07-17",t:"A funder with no board connection now yields an action pack instead of a dead end."},
 {p:"Concordance",d:"2026-07-16",t:"The first per-client build shipped, and board coverage was corrected so a client's full board is represented, with a confidence tier on every name."},
 {p:"Concordance",d:"2026-07-13",t:"The product launched: board-to-funder affinity mapped from 141 cached foundation filings, with a recorded refusal that it does not estimate anyone's wealth."},
 {p:"Herald",d:"2026-07-19",t:"Watch-list monitoring is now Herald's own pattern across the product family, so closed-cycle grants are tracked in one place."},
 {p:"Herald",d:"2026-07-17",t:"The monitoring engine gained its change ledger, snapshot archive, and noise suppression during the log-only soak period."},
 {p:"Herald",d:"2026-07-16",t:"Herald shipped as a grant-cycle monitor watching the grant pages Almanac already surfaced, honestly reporting which pages it could not check."},
+{p:"Custodian",d:"2026-07-24",t:"Assessment text sizing increased for readability."},
 {p:"Custodian",d:"2026-07-20",t:"The monitor now sends an alert automatically the moment it detects a real change, rather than only logging results silently."},
-{p:"Custodian",d:"2026-07-20",t:"A scheduled refresh now keeps the underlying filing data current automatically, and coverage expanded statewide to more than 2,000 Texas foundations."},
-{p:"Custodian",d:"2026-07-19",t:"Propensity scoring was added to rank which foundations are likeliest to switch investment managers soon, alongside a live daily monitor and a view of foundations with no manager currently on record."},
-{p:"Custodian",d:"2026-07-19",t:"A review pass caught and corrected a case where the system would have reported a manager change that never actually happened."},
+{p:"Custodian",d:"2026-07-20",t:"A scheduled refresh now keeps the underlying filing data current automatically."},
+{p:"Custodian",d:"2026-07-20",t:"Coverage expanded statewide to more than 2,000 Texas foundations."},
+{p:"Custodian",d:"2026-07-19",t:"Propensity scoring was added to rank which foundations are likeliest to switch investment managers soon."},
+{p:"Custodian",d:"2026-07-19",t:"Added a live daily monitor and a view of foundations with no manager currently on record."},
+{p:"Custodian",d:"2026-07-19",t:"A review pass caught and corrected a false-positive manager-change report."},
 {p:"Custodian",d:"2026-07-19",t:"The first version shipped: it tracks a foundation's investment-manager-of-record from its own IRS filings and flags foundations that are due for a new manager search."},
 {p:"Custodian",d:"2026-07-18",t:"Validated against real IRS filing data before any build began: of 55,156 foundation filings scanned, 713 name an identifiable investment-management contractor."}
 ];
