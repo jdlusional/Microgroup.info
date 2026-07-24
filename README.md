@@ -192,9 +192,11 @@ copies.
 
 ## Conventions
 
-- **Branch preview for visible changes:** push to a branch, share the Cloudflare Pages
-  preview URL (`https://<branch>.microgroup-info.pages.dev`), then merge once approved.
-  Small technical fixes can go straight to `main`.
+- **Branch preview for every change, no exceptions** (ratified 2026-07-19, supersedes the old
+  small-technical-fix carve-out): push to a fixed, reusable preview branch per site/product,
+  share the Cloudflare Pages preview URL (`https://<branch>.microgroup-info.pages.dev`),
+  register it in jonathanlindavis.com's `private-index.html` Dev Previews panel, then merge
+  only once approved. See the `web-change-approval-gate` and `branch-preview-workflow` skills.
 - **Working files stay out of the repo:** anything not meant to ship lives in a sibling
   `<Project> subfolder (files not website)` folder on the Drive, never committed here —
   same convention as jonathanlindavis.com.
