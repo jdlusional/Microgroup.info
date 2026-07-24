@@ -54,7 +54,7 @@ details.prod>summary .count{margin-left:auto;font-family:var(--mono);font-size:1
 
 <div class="hero">
   <h1>Improvement Log &middot; Enterprise</h1>
-  <p>Each enterprise product (Almanac, Scribe, Concordance, Herald, Custodian) improves continuously, and this page is the record from the user's side: what changed, when, and what it means for the organizations using it. Entries are curated. Internal engineering work that a user would never notice is left out, so what remains is the product getting better. The Public Data family (GIFT, Interlock, F4F) keeps its own log on <a href="https://jonathanlindavis.com/improvementlog.html" target="_blank" rel="noopener">jonathanlindavis.com</a>.</p>
+  <p>Each enterprise product (Almanac, Scribe, Concordance, Herald) improves continuously, and this page is the record from the user's side: what changed, when, and what it means for the organizations using it. Entries are curated. Internal engineering work that a user would never notice is left out, so what remains is the product getting better. The Public Data family (GIFT, Interlock, F4F) keeps its own log on <a href="https://jonathanlindavis.com/improvementlog.html" target="_blank" rel="noopener">jonathanlindavis.com</a>.</p>
   <span class="cadence">Updated weekly</span>
 </div>
 
@@ -96,20 +96,11 @@ const LOG = [
 {p:"Concordance",d:"2026-07-13",t:"The product launched: board-to-funder affinity mapped from 141 cached foundation filings, with a recorded refusal that it does not estimate anyone's wealth."},
 {p:"Herald",d:"2026-07-19",t:"Watch-list monitoring is now Herald's own pattern across the product family, so closed-cycle grants are tracked in one place."},
 {p:"Herald",d:"2026-07-17",t:"The monitoring engine gained its change ledger, snapshot archive, and noise suppression during the log-only soak period."},
-{p:"Herald",d:"2026-07-16",t:"Herald shipped as a grant-cycle monitor watching the grant pages Almanac already surfaced, honestly reporting which pages it could not check."},
-{p:"Custodian",d:"2026-07-24",t:"Assessment text sizing increased for readability."},
-{p:"Custodian",d:"2026-07-20",t:"The monitor now sends an alert automatically the moment it detects a real change, rather than only logging results silently."},
-{p:"Custodian",d:"2026-07-20",t:"A scheduled refresh now keeps the underlying filing data current automatically."},
-{p:"Custodian",d:"2026-07-20",t:"Coverage expanded statewide to more than 2,000 Texas foundations."},
-{p:"Custodian",d:"2026-07-19",t:"Propensity scoring was added to rank which foundations are likeliest to switch investment managers soon."},
-{p:"Custodian",d:"2026-07-19",t:"Added a live daily monitor and a view of foundations with no manager currently on record."},
-{p:"Custodian",d:"2026-07-19",t:"A review pass caught and corrected a false-positive manager-change report."},
-{p:"Custodian",d:"2026-07-19",t:"The first version shipped: it tracks a foundation's investment-manager-of-record from its own IRS filings and flags foundations that are due for a new manager search."},
-{p:"Custodian",d:"2026-07-18",t:"Validated against real IRS filing data before any build began: of 55,156 foundation filings scanned, 713 name an identifiable investment-management contractor."}
+{p:"Herald",d:"2026-07-16",t:"Herald shipped as a grant-cycle monitor watching the grant pages Almanac already surfaced, honestly reporting which pages it could not check."}
 ];
 /* ===IMPROVEMENTLOG-DATA-END=== */
 
-const ORDER = ["Almanac","Scribe","Concordance","Herald","Custodian"];
+const ORDER = ["Almanac","Scribe","Concordance","Herald"];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const host = document.getElementById("products");
 ORDER.forEach(name => {
