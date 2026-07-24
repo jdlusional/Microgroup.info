@@ -83,6 +83,11 @@ html.stack-page .pcard-status{font-family:var(--f-eyebrow);font-size:.72rem;lett
    actually lives. */
 html.stack-page .pcard-open{align-self:center;font-family:var(--f-eyebrow);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--rule);border-radius:999px;padding:6px 14px;text-decoration:none;transition:all .16s ease}
 html.stack-page .pcard-open:hover{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+/* Meta-link card (2026-07-24, ported from jonathanlindavis.com's index.html):
+   a lighter, dashed treatment for a navigational shortcut to a switcher page
+   (Product Demo Hub), distinct from an actual product in its own right. */
+html.stack-page .pcard.pcard-meta{background:var(--paper);border:1.5px dashed var(--rule);border-top:1.5px dashed var(--rule)}
+html.stack-page .pcard.pcard-meta .pcard-title{color:var(--wash)}
 #offer .projects-section{max-width:1040px;margin:0 auto 40px}
 .footprint-note{max-width:840px;margin:0 auto;text-align:center;font-size:.9rem;color:var(--wash)}
 #contact{padding:72px 0}
@@ -119,6 +124,10 @@ html.stack-page .btn-gold{background:transparent;color:var(--accent);border:1.5p
 html.stack-page .btn-gold:hover{background:var(--accent);color:var(--paper)}
 html.stack-page .btn-solid{background:var(--accent);color:var(--paper);border:1.5px solid var(--accent)}
 html.stack-page .btn-solid:hover{background:#6f5518;border-color:#6f5518;box-shadow:0 10px 26px rgba(138,107,31,.3)}
+/* Collapsed-section header-button (2026-07-24, ported from jonathanlindavis.com's
+   index.html): a projects-subhead that IS the only content of its section. */
+html.stack-page .projects-subhead-btn{background:var(--accent);color:var(--paper);border:1.5px solid var(--accent)}
+html.stack-page .projects-subhead-btn:hover{background:#6f5518;border-color:#6f5518;box-shadow:0 10px 26px rgba(138,107,31,.3)}
 
 html.stack-page .panel.navy{background:var(--paper);color:var(--ink)}
 html.stack-page .home-hero h1{color:var(--ink)}
@@ -313,15 +322,21 @@ html.stack-page .chess::before{
       <div class="projects-section">
         <h3 class="projects-subhead">Enterprise Products</h3>
         <div class="proj-list">
+          <article class="pcard pcard-meta"><h4 class="pcard-title">Product Demo Hub</h4><p class="pcard-desc">Every product demo in one place &mdash; browse the full switcher page rather than one product at a time.</p><a class="pcard-open" href="demo.html">Open <span class="arr">&rarr;</span></a></article>
+          <article class="pcard"><h4 class="pcard-title">Pricing</h4><p class="pcard-desc">The full rate card for every product, plus a request-pricing form.</p><a class="pcard-open" href="demo-pricing.html">Open <span class="arr">&rarr;</span></a></article>
+          <article class="pcard"><h4 class="pcard-title">Referral Program</h4><p class="pcard-desc">Refer an organization to Almanac or Scribe and earn 5% of their first-year subscription as a one-time bonus.</p><a class="pcard-open" href="demo-referrals.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard"><h4 class="pcard-title">Almanac</h4><span class="pcard-price">$1,500&ndash;$3,000 / year</span><p class="pcard-desc">Finds and ranks funders and open grants that fit your organization, with a public source shown for every match. Standard: refreshed quarterly. Pro: refreshed monthly.</p><a class="pcard-open" href="demo-almanac.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard"><h4 class="pcard-title">Scribe</h4><span class="pcard-price">$1,500&ndash;$3,000 / year</span><p class="pcard-desc">Drafts a near-submission grant application from an Almanac match, fact-checked against your organization's own public information. Standard: one draft per quarter. Pro: one draft per month.</p><a class="pcard-open" href="demo-scribe.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard pcard-dev"><h4 class="pcard-title">Concordance</h4><p class="pcard-desc">Identifies the people who govern a funding foundation's board and maps introduction paths.</p><span class="pcard-status">In development</span><a class="pcard-open" href="demo-concordance.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard pcard-dev"><h4 class="pcard-title">Herald</h4><p class="pcard-desc">Monitors funder pages on a client's watch list for cycle openings, deadline changes, and guideline updates.</p><span class="pcard-status">In development</span><a class="pcard-open" href="demo-herald.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard pcard-dev"><h4 class="pcard-title">Atlas</h4><p class="pcard-desc">Benchmarks a foundation's giving against aggregate state-level 990-PF data.</p><span class="pcard-status">In development</span><a class="pcard-open" href="demo-atlas.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard pcard-dev"><h4 class="pcard-title">Dossier</h4><p class="pcard-desc">Reconciles a foundation's claimed giving against its own filed 990-PF.</p><span class="pcard-status">In development</span><a class="pcard-open" href="demo-dossier.html">Open <span class="arr">&rarr;</span></a></article>
-          <article class="pcard"><h4 class="pcard-title">Product Demo Hub</h4><p class="pcard-desc">Every product demo in one place &mdash; browse the full switcher page rather than one product at a time.</p><a class="pcard-open" href="demo.html">Open <span class="arr">&rarr;</span></a></article>
         </div>
         <p class="footprint-note">Infrastructure &amp; Updates: a $1,500/year add-on covering ongoing technical support and system updates for an active Almanac or Scribe subscription. Every other engagement, including the consulting disciplines above, is scoped and priced individually.</p>
+      </div>
+
+      <div class="projects-section">
+        <a class="projects-subhead projects-subhead-btn" href="https://jonathanlindavis.com/open-data.html" target="_blank" rel="noopener">Open Data (jonathanlindavis.com) <span class="arr">&rarr;</span></a>
       </div>
 
       <div class="projects-section">
