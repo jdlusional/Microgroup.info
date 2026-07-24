@@ -38,11 +38,15 @@ html.stack-page {
   --accent: #8a6b1f;
   --wash:   #4a5c52;
 
-  --navy-deep:    #f4efe2;
-  --navy-card:    #e4e6de;
+  /* These four exist only so style.css's shared selectors (written against its own
+     dark-navy token names) render correctly on this page's light theme -- pointed at
+     the tokens above via var() rather than restated as literal hex, so a future
+     --paper/--wash recolor can't silently diverge from its alias (2026-07-24). */
+  --navy-deep:    var(--paper);
+  --navy-card:    var(--well);
   --line-navy:    rgba(200,194,181,.8);
-  --muted:        #4a5c52;
-  --muted-light:  #4a5c52;
+  --muted:        var(--wash);
+  --muted-light:  var(--wash);
 
   --f-body:    'IBM Plex Sans', Arial, sans-serif;
   --f-head:    'IBM Plex Sans', Arial, sans-serif;
@@ -312,8 +316,8 @@ html.stack-page .chess::before{
       <div class="projects-section">
         <h3 class="projects-subhead">Enterprise Products</h3>
         <div class="proj-list">
-          <article class="pcard"><h4 class="pcard-title">Almanac</h4><span class="pcard-price">$1,500&ndash;$3,000 / year</span><p class="pcard-desc">Finds and ranks funders and open grants that fit your organization, with a public source shown for every match. Standard: $1,500/yr, refreshed quarterly. Pro: $3,000/yr, refreshed monthly.</p><a class="pcard-open" href="demo-almanac.html">Open <span class="arr">&rarr;</span></a></article>
-          <article class="pcard"><h4 class="pcard-title">Scribe</h4><span class="pcard-price">$1,500&ndash;$3,000 / year</span><p class="pcard-desc">Drafts a near-submission grant application from an Almanac match, fact-checked against your organization's own public information. Standard: $1,500/yr, one draft per quarter. Pro: $3,000/yr, one draft per month.</p><a class="pcard-open" href="demo-scribe.html">Open <span class="arr">&rarr;</span></a></article>
+          <article class="pcard"><h4 class="pcard-title">Almanac</h4><span class="pcard-price">$1,500&ndash;$3,000 / year</span><p class="pcard-desc">Finds and ranks funders and open grants that fit your organization, with a public source shown for every match. Standard: refreshed quarterly. Pro: refreshed monthly.</p><a class="pcard-open" href="demo-almanac.html">Open <span class="arr">&rarr;</span></a></article>
+          <article class="pcard"><h4 class="pcard-title">Scribe</h4><span class="pcard-price">$1,500&ndash;$3,000 / year</span><p class="pcard-desc">Drafts a near-submission grant application from an Almanac match, fact-checked against your organization's own public information. Standard: one draft per quarter. Pro: one draft per month.</p><a class="pcard-open" href="demo-scribe.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard pcard-dev"><h4 class="pcard-title">Concordance</h4><p class="pcard-desc">Identifies the people who govern a funding foundation's board and maps introduction paths.</p><span class="pcard-status">In development</span><a class="pcard-open" href="demo-concordance.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard pcard-dev"><h4 class="pcard-title">Herald</h4><p class="pcard-desc">Monitors funder pages on a client's watch list for cycle openings, deadline changes, and guideline updates.</p><span class="pcard-status">In development</span><a class="pcard-open" href="demo-herald.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard pcard-dev"><h4 class="pcard-title">Atlas</h4><p class="pcard-desc">Benchmarks a foundation's giving against aggregate state-level 990-PF data.</p><span class="pcard-status">In development</span><a class="pcard-open" href="demo-atlas.html">Open <span class="arr">&rarr;</span></a></article>
