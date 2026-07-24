@@ -515,16 +515,12 @@
   .reel-side, .reel-center { position:relative; flex:1 1 0; height:calc(var(--vh, 1vh) * 100); overflow:hidden; }
   .reel-side img { width:100%; height:100%; object-fit:cover; display:block; }
   .reel-center video { width:100%; height:100%; object-fit:cover; display:block; }
-  /* custom minimal control: a single pause/play toggle, top-left of the
-     video, replacing the native browser control bar entirely. */
-  .reel-toggle { position:absolute; top:18px; left:18px; z-index:5; width:40px; height:40px; border-radius:50%; background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.35); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; padding:0; transition:background .15s ease; }
-  .reel-toggle:hover { background:rgba(0,0,0,.78); }
 
   /* Global next-section button: position:fixed (like the header), one element for the
      whole page, bottom-right so it never competes with the header (always centered or
-     72vw/28vw-ish, never at a true corner) or the reel-toggle (top-left). Sized and
-     padded to comfortably wrap two short lines of text ("Get Started" / "Next Page")
-     inside an actual circle, not just an icon. */
+     72vw/28vw-ish, never at a true corner). Sized and padded to comfortably wrap two
+     short lines of text ("Get Started" / "Next Page") inside an actual circle, not
+     just an icon. */
   .next-section-btn { position:fixed; right:24px; bottom:24px; z-index:40; width:92px; height:92px; border-radius:50%; border:1px solid rgba(255,255,255,.35); color:#fff; display:flex; align-items:center; justify-content:center; text-align:center; cursor:pointer; padding:8px; font-family:'Inter',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.03em; line-height:1.3; text-transform:uppercase; background:rgba(0,0,0,.55); transition:background .15s ease, opacity .3s ease, visibility .3s ease; }
   .next-section-btn:hover { background:rgba(0,0,0,.78); }
   /* hero variant: brand burgundy instead of the neutral dark circle used on every other
@@ -571,10 +567,6 @@
        (also visible in the screenshot), so dodging sideways instead
        wasn't a reliable fix - vertical separation is. */
     .sound-toggle { top:128px; right:14px; padding:8px 12px; font-size:11px; }
-    /* Mobile-only tap-target bump: base .reel-toggle is 40x40px, under the
-       44px minimum recommended touch target. Scoped to this media block so
-       desktop (which has more precision anyway) keeps the original 40px. */
-    .reel-toggle { width:44px; height:44px; }
   }
   /* Page 4 quote (reel-side, left column) - centered vertically and
      horizontally within its third of the frame, cream-on-maroon matching
@@ -744,9 +736,6 @@
   </div>
   <div class="reel-center">
     <video src="kct-reel.mp4" autoplay muted loop playsinline></video>
-    <button class="reel-toggle" type="button" aria-label="Pause video">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg>
-    </button>
   </div>
   <!-- Right column restored 2026-07-20 (owner correction): the two-column layout tried
        earlier the same day was wrong - this triptych is meant to be THREE equal columns

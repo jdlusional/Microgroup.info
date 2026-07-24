@@ -220,31 +220,6 @@
     if(dy > 0) goTo(current+1); else goTo(current-1);
   });
 
-  var reelVideo = document.querySelector('.reel-center video');
-
-  /* reel page: custom pause/play toggle for the video's own playback,
-     replacing the native video control bar entirely - just the one
-     button, top-left of the frame. The video is permanently muted now
-     (silent by design - see the page-wide audio block below), so this
-     button no longer has anything to do with sound, just play/pause of
-     the picture. */
-  var reelToggle = document.querySelector('.reel-toggle');
-  if(reelVideo && reelToggle){
-    var pauseIcon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg>';
-    var playIcon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="6,4 20,12 6,20"></polygon></svg>';
-    reelToggle.addEventListener('click', function(){
-      if(reelVideo.paused){
-        reelVideo.play();
-        reelToggle.innerHTML = pauseIcon;
-        reelToggle.setAttribute('aria-label','Pause video');
-      }else{
-        reelVideo.pause();
-        reelToggle.innerHTML = playIcon;
-        reelToggle.setAttribute('aria-label','Play video');
-      }
-    });
-  }
-
   /* REBUILT 2026-07-19: audio moved off the reel video entirely onto an
      independent, page-wide <audio> element (kct-reel-audio.m4a) that
      plays continuously across every section once unlocked, not just
