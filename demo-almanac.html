@@ -137,7 +137,7 @@ body{overflow-x:hidden}
 /* ---- Chrome specific to this page (nav wordmark, hero, section container, fold count) --
    shared chrome (method box, section folds, card convergence) now lives in tool-shared.css,
    extracted 2026-07-16; see that file's header comment. */
-.hero{text-align:left;padding:3.2rem 1.25rem 2.2rem;border-bottom:1px solid var(--rule)}
+.hero{padding:3.2rem 1.25rem 2.2rem;border-bottom:1px solid var(--rule)}
 .section{padding:2.6rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
 @media(max-width:640px){.hero{padding:2.2rem 1.25rem 1.6rem}.hero h1{font-size:30px}}
 
@@ -147,6 +147,18 @@ body{overflow-x:hidden}
   border:1px solid var(--rule);
   background:var(--well);
 }
+
+/* ---- Center-align pass (owner request, 2026-07-24): everything centers, including
+   multi-line prose, by inheritance from body -- labeled key-value pairs, tabular data,
+   and interactive form controls are the only exceptions, kept left-aligned for
+   readability/usability. .hero .note overridden here, not in tool-shared.css: that rule
+   is shared by all 37 governed pages and this center pass is scoped to this page only. ---- */
+body{text-align:center}
+.hero .note{text-align:center}
+.qa-row,.qa-label,.qa-value,
+.funder-mini-table,.funder-mini-table th,.funder-mini-table td,
+.toolbar,.search,.chip-filter,.chip-btn,
+.status-row,.status-select,.status-notes,.admin-toggle{text-align:left}
 </style>
 </head>
 <body>
