@@ -59,7 +59,6 @@ a{color:var(--ink)}
 .match-card{padding:0}
 .mc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
 .mc-head .fname{flex:1;min-width:220px;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;overflow-wrap:anywhere}
-.mc-head .match-rank{font-family:var(--mono);font-size:.88rem;color:var(--wash)}
 .mc-body{padding:.9rem 1.2rem;min-width:0}
 @media(max-width:640px){.mc-head{gap:.4rem}.mc-head .fname{min-width:0;flex-basis:100%}}
 .badge{font-family:var(--serif);font-size:12.5px;padding:.16rem .5rem;letter-spacing:.03em;text-transform:uppercase;font-weight:700}
@@ -70,17 +69,16 @@ a{color:var(--ink)}
 .badge-tier3{border:1px solid var(--rule);color:var(--wash)}
 .match-geo{font-family:var(--serif);font-size:17.5px;color:var(--wash);margin-top:.15rem;font-weight:700}
 .match-rationale{font-size:17.5px;color:var(--ink);margin-top:.4rem;line-height:1.55}
+.match-src{font-family:var(--serif);font-size:10px;color:var(--wash);margin-top:.45rem;overflow-wrap:anywhere;font-weight:700}
 .match-score{text-align:right;margin-left:auto}
 .score-num{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--accent)}
 .score-bar{width:70px;height:5px;background:var(--rule);margin-top:.35rem}
 .score-bar-fill{height:100%;background:var(--accent)}
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin-top:.3rem}
 
-/* ---- Grant entries (F4F Q&A pattern, adapted) ---- */
-.entry{border-bottom:1px solid var(--rule-soft);padding:1.1rem 0}
-.entry .head{display:flex;flex-direction:column;gap:.12rem}
-.entry .org{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--wash)}
-.entry .name a{color:var(--ink)}
-.entry .name a:hover{color:var(--wash);text-decoration:underline}
+/* ---- Grant Q&A block (F4F Q&A pattern, adapted; rendered inside .mc-body as part of the
+   compiled match card, 2026-07-23 -- the standalone .entry wrapper this used to sit in is
+   gone from this page, so its .entry .head/.org/.name rules went with it). ---- */
 .qa-grid{display:flex;flex-direction:column;gap:.5rem;margin-top:.55rem}
 .qa-row{display:grid;grid-template-columns:150px 1fr;gap:.6rem 1rem;align-items:baseline}
 @media(max-width:580px){.qa-row{grid-template-columns:1fr;gap:.1rem}}
@@ -128,6 +126,9 @@ body{overflow-x:hidden}
 .hero{text-align:left;padding:3.2rem 1.25rem 2.2rem;border-bottom:1px solid var(--rule)}
 .section{padding:2.6rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
 @media(max-width:640px){.hero{padding:2.2rem 1.25rem 1.6rem}.hero h1{font-size:30px}}
+
+.not-published{color:var(--wash);font-style:italic;font-weight:400}
+.cycle-note{font-family:var(--mono);font-size:.82rem;color:var(--wash);border-left:2px solid var(--rule);padding-left:.7rem;margin-top:.6rem}
 </style>
 </head>
 <body>
@@ -136,14 +137,13 @@ body{overflow-x:hidden}
 <div class="manifest">
   <div class="manifest-in">
     <span class="brand" id="brand-text"><b>Almanac</b> for Measure</span>
-    <span class="stat"><strong id="m-funders">–</strong> funders ranked</span>
-    <span class="stat"><strong id="m-grants">–</strong> open opportunities</span>
+    <span class="stat"><strong id="m-funders">–</strong> candidate funders researched</span>
+    <span class="stat"><strong id="m-grants">–</strong> compiled matches (match + profile + open grant)</span>
     <span class="grow"></span>
     <button class="admin-toggle" id="admin-toggle" type="button" title="Enter your key to mark status on funders and grants">Admin</button>
     <nav>
       <a href="#profile">Profile</a>
-      <a href="#matches">Funder Matches</a>
-      <a href="#grants">Open Grants</a>
+      <a href="#compiled">Funder Matches</a>
     </nav>
   </div>
 </div>
@@ -193,48 +193,30 @@ body{overflow-x:hidden}
   </div>
 </section>
 
-<section class="section" id="matches">
+<section class="section" id="compiled">
   <div class="fold">
     <div class="section-head">
-      <span class="kicker">Who could fund this</span>
-      <h2>Ranked Funder Matches <span class="fold-count" data-count-from="match-count" data-count-label="funders"></span></h2>
+      <span class="kicker">Who could fund this, right now</span>
+      <h2>Compiled Funder Matches <span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok);border:1px solid var(--ok);padding:.14rem .45rem;vertical-align:middle">Real funders</span> <span class="fold-count" data-count-from="compiled-count" data-count-label="organizations"></span></h2>
     </div>
     <div class="fold-body">
     <div class="section-lede">
-      <p id="matches-method"></p>
+      <p id="compiled-method"></p>
+      <p id="compiled-cycle-note" class="cycle-note"></p>
+      <p>Each entry below compiles all three pieces for one organization: the ranked-match rationale, the funder's own IRS filing data, and a currently open grant opportunity or inquiry channel. An organization is only included once all three are available <em>and</em> its opportunity is actionable today. A funder that clears the match and the IRS profile but has no current opening does not appear here; see the Watch List below instead.</p>
     </div>
       <div class="toolbar">
-        <input class="search" id="match-search" type="search" placeholder="Search funder name or rationale…" aria-label="Search funders" />
+        <input class="search" id="compiled-search" type="search" placeholder="Search funder name, rationale, or focus area…" aria-label="Search funders" />
         <div class="chip-filter" id="tier-filter"></div>
-        <div class="chip-filter" id="match-status-filter"></div>
+        <div class="chip-filter" id="compiled-status-filter"></div>
       </div>
-      <div class="res-count"><b id="match-count">0</b> funders shown</div>
-      <div id="match-results"></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="grants">
-  <div class="fold">
-    <div class="section-head">
-      <span class="kicker">Open right now</span>
-      <h2>Open Grant Opportunities <span class="fold-count" data-count-from="grant-count" data-count-label="open now"></span></h2>
-    </div>
-    <div class="fold-body">
-    <div class="section-lede">
-      <p>Currently-open or clearly-upcoming grant opportunities matched to Measure's actual focus areas and geography.</p>
-    </div>
-      <div class="toolbar">
-        <input class="search" id="grant-search" type="search" placeholder="Search organization, focus area…" aria-label="Search grants" />
-        <div class="chip-filter" id="grant-status-filter"></div>
-      </div>
-      <div class="res-count"><b id="grant-count">0</b> opportunities ready now</div>
-      <div id="grant-results"></div>
+      <div class="res-count"><b id="compiled-count">0</b> compiled matches shown</div>
+      <div id="compiled-results"></div>
 
       <div class="watch-list">
         <div class="section-head" style="border-top:1px solid var(--rule);padding-top:.9rem;margin-bottom:1rem">
           <h2 style="font-size:1.15rem">Watch List — not yet open</h2>
-          <p>Real, relevant opportunities that are currently closed or not yet launched. Worth monitoring, not applying to yet.</p>
+          <p>Real, relevant opportunities that are currently closed, paused, or not yet launched. Worth monitoring, not applying to yet.</p>
         </div>
         <div id="watch-results"></div>
       </div>
@@ -1135,9 +1117,34 @@ const PROFILE={
   ]
  }
 };
+
+/* Cycle metadata (Almanac Standard/Pro tiering, 2026-07-23): Measure Austin is on Almanac
+   Standard ($1,500/yr), which refreshes quarterly and fully replaces the prior cycle's list;
+   Pro ($3,000/yr) refreshes monthly on the same rule. Either tier: an organization shown in a
+   cycle cannot be shown again until at least 12 months after that cycle's date (see
+   measure-austin_cycle_ledger_v1.json in the pipelines repo, which this cycle's 10 EINs were
+   recorded into). Cycle 1 has no prior history, so nothing was excluded on recycle grounds. */
+const CYCLE={
+ cycle_number:1,
+ tier:"standard",
+ cadence:"quarterly",
+ cycle_date:"2026-07-23",
+ slots:10,
+ note:"Cycle 1 of 4 this year (Almanac Standard: quarterly refresh). This list fully replaces the prior cycle's and will be replaced again at the next quarterly refresh; an organization shown here will not be shown again for at least 12 months.",
+};
+
+/* COMPILED CYCLE 1 (2026-07-23): 10 organizations that clear the gate below, each with a
+   ranked match, a real IRS profile, and a currently-open grant/inquiry channel re-verified
+   2026-07-23. Two prior top candidates were RULED OUT rather than silently dropped: Michael
+   & Susan Dell Foundation (rank #1, confirmed prior funder) has its application platform down
+   for a full rebuild, expected back mid-August 2026 (see watch_list_not_yet_open below); the
+   OpenAI Foundation People-First AI Fund's July 15, 2026 deadline had already passed by the
+   2026-07-23 re-check. Greater Houston Community Foundation (rank #8) was also checked and
+   ruled out: it runs no standing application process, discretionary grants only. */
 const FUNDERS_DATA={
- "method": "Relevance scoring (0-100) of each funder against Measure's profile, informed by IRS Business Master File geography / NTEE / financial size, aggregated Schedule I giving patterns, and confirmed-prior-funder status. Michael & Susan Dell Foundation and Austin Community Foundation -- Measure's most clearly aligned funders -- rank #1 and #2.",
+ "method": "Relevance scoring (0-100) of each funder against Measure's profile, informed by IRS Business Master File geography / NTEE / financial size, aggregated Schedule I giving patterns, and confirmed-prior-funder status, THEN gated: an organization only appears below once its IRS profile is obtainable and it has a currently open, unexpired grant or inquiry channel, re-verified 2026-07-23. Austin Community Foundation and Notley Impact -- both Austin-based and already in the top tier on relevance alone -- are the strongest matches that also clear the live-opportunity gate.",
  "scored_2026-07-06": true,
+ "gated_2026-07-23": true,
  "tiers": {
   "tier_1_strong": "Confirmed prior funders with genuine institutional alignment, or new candidates with strong geography + theme fit",
   "tier_2_promising": "Real thematic or geographic alignment, worth researching further before outreach",
@@ -1146,47 +1153,47 @@ const FUNDERS_DATA={
  "ranked_funders": [
   {
    "rank": 1,
-   "funder_name": "Michael & Susan Dell Foundation",
-   "funder_ein": "364336415",
-   "is_confirmed_prior_funder": true,
-   "relevance_score": 95,
-   "tier": "tier_1_strong",
-   "geography": "Austin, TX",
-   "rationale": "Confirmed prior funder ($131,000, explicitly for 'Data-Driven and Community Led Efforts' -- near-exact match to Measure's own mission language). Austin-based, the region's largest and most flexible major funder ($7.77B assets). Not in the current Schedule I cache under its own filing, but GIFT's separate pipeline already confirmed this grant independently.",
-   "id": "364336415"
-  },
-  {
-   "rank": 2,
    "funder_name": "Austin Community Foundation",
    "funder_ein": "741934031",
    "is_confirmed_prior_funder": true,
    "relevance_score": 88,
    "tier": "tier_1_strong",
    "geography": "Austin, TX",
-   "rationale": "Confirmed prior funder, cross-validated in BOTH GIFT's index and the new national Schedule I parse independently. Austin-based, $556M assets, 1,069 of 1,509 cached grants go to Texas recipients, and 'COMMUNITY ENGAGEMENT' appears directly in their giving pattern (matches Measure's own prior grant purpose from them).",
+   "rationale": "Confirmed prior funder, cross-validated in both GIFT's index and the national Schedule I parse independently. Austin-based, and \"COMMUNITY ENGAGEMENT\" appears directly in its giving pattern, matching Measure's own prior grant purpose from them. Source: austincf.org/apply-for-funding/grants/, re-fetched 2026-07-23.",
    "id": "741934031"
   },
   {
-   "rank": 3,
+   "rank": 2,
    "funder_name": "Notley Impact",
    "funder_ein": "853304316",
    "is_confirmed_prior_funder": false,
    "relevance_score": 75,
    "tier": "tier_1_strong",
    "geography": "Austin, TX",
-   "rationale": "NEW candidate, not previously known. Austin-based, 11 of 21 cached grants go to Texas recipients. Giving pattern includes explicit equity language: 'TO ELIMINATE RACISM, EMPOWER WOMEN, STRENGTHEN COMMUNITIES', 'CULTURALLY AFFIRMING...HEALTH SERVICES', support for African immigrant community and school-alumni-led social change -- a genuinely strong, previously-unidentified local match.",
+   "rationale": "New candidate, not previously known as a funder. Austin-based, with explicit equity language in its giving pattern (\"TO ELIMINATE RACISM, EMPOWER WOMEN, STRENGTHEN COMMUNITIES\"). Source: notley.com/nonprofit-funding, re-fetched 2026-07-23.",
    "id": "853304316"
   },
   {
-   "rank": 4,
-   "funder_name": "The Sentencing Project",
-   "funder_ein": "521472546",
+   "rank": 3,
+   "funder_name": "The Just Trust for Education",
+   "funder_ein": "883436668",
    "is_confirmed_prior_funder": false,
-   "relevance_score": 72,
+   "relevance_score": 70,
    "tier": "tier_1_strong",
-   "geography": "Washington, DC (national)",
-   "rationale": "Strongest THEMATIC match to Measure's public-safety-metrics/data-justice focus: grant purposes include 'civic engagement amongst youth, returning citizens', 'campaign to end life without parole', and 'story collection from currently [incarcerated people]' -- directly aligned with Measure's community-voice/public-safety-data framing. No confirmed Texas grants in the cache yet (0 of 17), and it's a smaller regranting nonprofit rather than a large foundation -- worth exploring as a partner or referral source, not just a direct ask.",
-   "id": "521472546"
+   "geography": "Durham, NC (national)",
+   "rationale": "Best thematic fit found for Measure's public-safety-metrics/data-justice focus: funds advocacy infrastructure, media/narrative projects, justice-alternatives, and rapid response. CORRECTED 2026-07-23: earlier research named \"The Just Trust for Action,\" a 501(c)(4) that isn't a grantmaker a nonprofit applies to; the actual 501(c)(3) grantmaking entity is The Just Trust for Education, EIN 88-3436668. Source: thejusttrust.org, fetched 2026-07-23.",
+   "id": "883436668"
+  },
+  {
+   "rank": 4,
+   "funder_name": "Kapor Foundation",
+   "funder_ein": "943330604",
+   "is_confirmed_prior_funder": false,
+   "relevance_score": 68,
+   "tier": "tier_1_strong",
+   "geography": "Oakland, CA (national)",
+   "rationale": "Strong direct thematic match for Measure's data-justice/algorithmic-accountability work: governance focus on algorithmic bias, AI safeguards, and surveillance/civil rights. Source: kaporfoundation.org/grantmaking/, fetched 2026-07-23 (LOI submission confirmed live).",
+   "id": "943330604"
   },
   {
    "rank": 5,
@@ -1196,384 +1203,158 @@ const FUNDERS_DATA={
    "relevance_score": 65,
    "tier": "tier_2_promising",
    "geography": "Austin, TX",
-   "rationale": "Confirmed prior funder ($162,000, largest single confirmed grant). Austin-based, heavily Texas-concentrated (213 of 228 cached grants), $1.98B assets. But their own framing is health-focused (E210), and the one sample purpose ('HEALTH ACCESS GRANT') suggests the relationship may be through a health-equity/health-access-data angle specifically, not Measure's broader civic/AI-governance work -- worth a targeted pitch on health-equity metrics rather than a generic ask.",
+   "rationale": "Confirmed prior funder ($162,000, the largest single confirmed grant). Austin-based, $1.7B+ assets. Its own framing is health-focused, so the natural pitch is a health-equity-data angle rather than a generic ask. Source: stdavidsfoundation.org/how-we-work/grantmaking/funding-opportunities/, fetched 2026-07-23.",
    "id": "741356589"
   },
   {
    "rank": 6,
-   "funder_name": "Hopewell Fund",
-   "funder_ein": "473681860",
+   "funder_name": "The Meadows Foundation",
+   "funder_ein": "756015322",
    "is_confirmed_prior_funder": false,
-   "relevance_score": 68,
+   "relevance_score": 55,
    "tier": "tier_2_promising",
-   "geography": "Washington, DC (national)",
-   "rationale": "Real thematic alignment ('CIVIL RIGHTS, SOCIAL ACTION, ADVOCACY' and 'TECHNOLOGY AND INNOVATION' both appear in giving pattern) plus some demonstrated Texas reach (18 of 308 cached grants). Hopewell Fund often acts as a fiscal sponsor/pooled vehicle for specific initiatives -- worth researching which SPECIFIC program within Hopewell is the actual bridge, not just the umbrella entity.",
-   "id": "473681860"
+   "geography": "Dallas, TX",
+   "rationale": "No equity-specific fund, but an explicit preference for proposals with \"quantitatively measurable outcomes\" is a genuine natural fit for Measure's data/evaluation and governance-capacity work. Source: mfi.org/how-to-apply/, re-fetched 2026-07-23.",
+   "id": "756015322"
   },
   {
    "rank": 7,
-   "funder_name": "Hispanics in Philanthropy",
-   "funder_ein": "943040607",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 62,
-   "tier": "tier_2_promising",
-   "geography": "San Francisco, CA (national)",
-   "rationale": "One of the strongest direct thematic matches found: giving pattern explicitly includes 'RACIAL EQUITY' and 'POWER BUILDING AND JUSTICE' as named categories. Minimal confirmed Texas footprint (1 of 22 cached grants), and SF-based -- values alignment is strong but geographic relationship is unproven; worth outreach specifically testing Texas/Austin interest.",
-   "id": "943040607"
-  },
-  {
-   "rank": 8,
-   "funder_name": "Greater Houston Community Foundation",
-   "funder_ein": "853674651",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 58,
-   "tier": "tier_2_promising",
-   "geography": "Houston, TX",
-   "rationale": "Houston-based -- directly matches Measure's secondary office location. Extremely Texas-concentrated (152 of 154 cached grants). Thematically broad (youth development, human services, education, some public-safety/disaster-prep language) rather than narrowly equity/data-focused, but the geographic match to Measure's actual Houston presence is a real, concrete opening.",
-   "id": "853674651"
-  },
-  {
-   "rank": 9,
-   "funder_name": "Capacity Catalyst",
-   "funder_ein": "825417593",
-   "is_confirmed_prior_funder": true,
-   "relevance_score": 55,
-   "tier": "tier_2_promising",
-   "geography": "Austin, TX",
-   "rationale": "Confirmed prior funder ($9,000, funds a 'CERC class' -- acronym not yet decoded, worth confirming with Measure directly). Austin-based and thematically aligned (education/capacity building), but tiny (only $138,109 in assets) -- a real relationship worth maintaining, not a source of major new funding.",
-   "id": "825417593"
-  },
-  {
-   "rank": 10,
-   "funder_name": "Mi Familia Vota Education Fund",
-   "funder_ein": "200182824",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 55,
-   "tier": "tier_2_promising",
-   "geography": "Phoenix, AZ (national, Latino civic engagement)",
-   "rationale": "Only 1 grant in the cache, but the purpose ('Support civic engagement') is directly on-theme and the grant went to a Texas recipient. A national Latino civic-engagement organization with real Texas chapter activity -- plausible alignment, but the confirmed sample size here is very thin.",
-   "id": "200182824"
-  },
-  {
-   "rank": 11,
-   "funder_name": "Capital Impact Partners",
-   "funder_ein": "521290127",
+   "funder_name": "Houston Endowment",
+   "funder_ein": "746013920",
    "is_confirmed_prior_funder": false,
    "relevance_score": 50,
    "tier": "tier_2_promising",
-   "geography": "Arlington, VA (national)",
-   "rationale": "Explicit racial-equity-adjacent language ('internal capacity building for Black led CDFI's'), but core focus is community-development finance/affordable housing, a meaningfully different niche from Measure's data-justice/evaluation work. Low direct Texas concentration (4 of 97 cached grants). A stretch fit, worth noting for the equity language alone.",
-   "id": "521290127"
-  },
-  {
-   "rank": 12,
-   "funder_name": "Asset Funders Network",
-   "funder_ein": "831215288",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 48,
-   "tier": "tier_2_promising",
-   "geography": "Chicago, IL",
-   "rationale": "Small funder, but notably Texas-concentrated giving (9 of 10 cached grants) despite being Chicago-based -- suggests an active Texas-specific initiative worth investigating. Narrow single-purpose signal ('capacity building') limits confidence.",
-   "id": "831215288"
-  },
-  {
-   "rank": 13,
-   "funder_name": "Arts Council of Fort Worth and Tarrant County",
-   "funder_ein": "751158515",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 45,
-   "tier": "tier_2_promising",
-   "geography": "Fort Worth, TX",
-   "rationale": "Explicit 'DEIA CAPACITY BUILDING' language, 100% Texas-concentrated giving (32 of 32). But core mandate is arts-specific and Fort Worth is a distant geography from Austin -- niche fit at best.",
-   "id": "751158515"
-  },
-  {
-   "rank": 14,
-   "funder_name": "New York Women's Foundation",
-   "funder_ein": "133457287",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 45,
-   "tier": "tier_2_promising",
-   "geography": "New York, NY",
-   "rationale": "Strong thematic alignment (funds a 'Criminal Justice Fund', 'economic justice', 'reproductive justice', girls/young-women-of-color programming), but explicitly NYC-scoped -- only 2 of 208 cached grants reach Texas. Low realistic probability of funding an Austin org outside their core geography despite the values match.",
-   "id": "133457287"
-  },
-  {
-   "rank": 15,
-   "funder_name": "Fidelity Investments Charitable Gift Fund",
-   "funder_ein": "110303001",
-   "is_confirmed_prior_funder": true,
-   "relevance_score": 40,
-   "tier": "tier_2_promising",
-   "geography": "Boston, MA (national donor-advised-fund sponsor)",
-   "rationale": "Confirmed prior funder and the SINGLE LARGEST amount ($202,300) -- but this is a donor-advised-fund sponsor, not a mission-driven institution. The grant reflects one specific donor's choice routed through Fidelity's platform, not an institutional strategy. Scored below smaller but more genuinely prospectable funders on purpose: don't 'pitch Fidelity' -- try to identify and steward the underlying donor relationship instead.",
-   "id": "110303001"
-  },
-  {
-   "rank": 16,
-   "funder_name": "Enterprise Community Partners",
-   "funder_ein": "521231931",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 42,
-   "tier": "tier_2_promising",
-   "geography": "Columbia, MD (national)",
-   "rationale": "Large national funder ($941M assets) with strong 'capacity building' language across its giving pattern, but core focus is affordable housing/community development finance -- adjacent to, not the same as, Measure's data-justice/evaluation mandate. Low Texas concentration (9 of 429 cached grants).",
-   "id": "521231931"
-  },
-  {
-   "rank": 17,
-   "funder_name": "Community Foundation of North Texas",
-   "funder_ein": "752267767",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 40,
-   "tier": "tier_2_promising",
-   "geography": "Fort Worth, TX",
-   "rationale": "Large, heavily Texas-concentrated community foundation (657 of 793 cached grants), but general-purpose giving (general operations, strategic-planning 'toolbox grants') rather than equity/data-focused, and Fort Worth/North Texas is a somewhat distant geography from Austin.",
-   "id": "752267767"
-  },
-  {
-   "rank": 18,
-   "funder_name": "Junior League of Dallas",
-   "funder_ein": "751004680",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 40,
-   "tier": "tier_3_weak",
-   "geography": "Dallas, TX",
-   "rationale": "100% Texas-concentrated giving with some overlap ('VIOLENCE INTERVENTION', 'COMMUNITY ENGAGEMENT'), but Dallas-based (secondary geography at best) and a broad human-services portfolio rather than data/evaluation-specific.",
-   "id": "751004680"
-  },
-  {
-   "rank": 19,
-   "funder_name": "Texas Women's Foundation",
-   "funder_ein": "752048261",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 42,
-   "tier": "tier_2_promising",
-   "geography": "Dallas, TX",
-   "rationale": "Texas-focused women's foundation (161 of 190 cached grants), but samples show general-operating-support language ('General Operations', 'Cancer Care', 'Housing for single mothers') with no explicit racial-equity/data-justice signal. Dallas-based -- Measure's secondary geography.",
-   "id": "752048261"
-  },
-  {
-   "rank": 20,
-   "funder_name": "The Aspen Institute",
-   "funder_ein": "840399006",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 38,
-   "tier": "tier_3_weak",
-   "geography": "Washington, DC (national)",
-   "rationale": "Prestigious national policy institution with fellowship/capacity-building programming overlap, but low Texas footprint (19 of 161 cached grants). Better fit as a network/convening connection (e.g. a fellowship for Measure staff) than a direct grant prospect.",
-   "id": "840399006"
-  },
-  {
-   "rank": 21,
-   "funder_name": "Windward Fund",
-   "funder_ein": "473522162",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 35,
-   "tier": "tier_3_weak",
-   "geography": "Washington, DC (national)",
-   "rationale": "Core focus is environmental/agricultural funding; 'public safety, disaster preparedness' and 'capacity building' appear but as secondary categories, not core mission. Weak real fit despite the keyword match.",
-   "id": "473522162"
-  },
-  {
-   "rank": 22,
-   "funder_name": "San Francisco Foundation",
-   "funder_ein": "010679337",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 25,
-   "tier": "tier_3_weak",
-   "geography": "San Francisco, CA",
-   "rationale": "Huge national-caliber funder ($1.9B assets) with some equity language ('Equity at Work Council'), but giving is overwhelmingly concentrated in the Bay Area (18 of 1,623 cached grants reach Texas) -- low realistic fit for an Austin-specific ask.",
-   "id": "010679337"
-  },
-  {
-   "rank": 23,
-   "funder_name": "ImpactAssets Inc",
-   "funder_ein": "262048480",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 25,
-   "tier": "tier_3_weak",
-   "geography": "Bethesda, MD",
-   "rationale": "Appears to be another donor-advised-fund-style pass-through vehicle (like Fidelity Charitable) based on generic 'general support' language and massive undifferentiated grant volume -- reflects individual donor choices, not institutional strategy. Low direct-prospecting value.",
-   "id": "262048480"
-  },
-  {
-   "rank": 24,
-   "funder_name": "El Paso Community Foundation",
-   "funder_ein": "741839536",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 25,
-   "tier": "tier_3_weak",
-   "geography": "El Paso, TX",
-   "rationale": "Real Texas funder (99 of 103 cached grants), but El Paso is not one of Measure's stated geographies (Austin/Houston/Dallas), and giving is general-purpose (scholarships, emergency support, homeless services).",
-   "id": "741839536"
-  },
-  {
-   "rank": 25,
-   "funder_name": "Women's Foundation of Colorado",
-   "funder_ein": "841039305",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 20,
-   "tier": "tier_3_weak",
-   "geography": "Denver, CO",
-   "rationale": "Some thematic overlap ('community engagement', 'advocacy'), but zero Texas grants in the cache and a Colorado-specific mandate -- low realistic fit.",
-   "id": "841039305"
-  },
-  {
-   "rank": 26,
-   "funder_name": "W W Caruth Jr Foundation",
-   "funder_ein": "237436194",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 20,
-   "tier": "tier_3_weak",
-   "geography": "Dallas, TX",
-   "rationale": "Only 1 grant in the cache with a truncated purpose ('grants made to qualified organizations in the FI...', likely a specific DFW-area geographic restriction) -- too little information to assess confidently, but likely narrowly scoped to Dallas-area giving specifically.",
-   "id": "237436194"
-  },
-  {
-   "rank": 27,
-   "funder_name": "Houston Texans Foundation",
-   "funder_ein": "010572814",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 22,
-   "tier": "tier_3_weak",
    "geography": "Houston, TX",
-   "rationale": "Houston-based (matches Measure's secondary geography), but mission is youth sports/scholarships/veterans-focused -- not aligned with Measure's data/evaluation/equity mandate despite the geography match.",
-   "id": "010572814"
+   "rationale": "Measure's Houston office gives a genuine geographic hook; a prior $20M commitment to anti-Black-racism/systemic-injustice work in Houston is a real thematic signal. Geographic constraint is real: it requires genuine Houston programmatic presence, not just Austin HQ work. Source: houstonendowment.org/grantmaking/, fetched 2026-07-23.",
+   "id": "746013920"
   },
   {
-   "rank": 28,
-   "funder_name": "Silver Spurs Alumni Association",
-   "funder_ein": "050579958",
+   "rank": 8,
+   "funder_name": "The Powell Foundation",
+   "funder_ein": "746104592",
    "is_confirmed_prior_funder": false,
-   "relevance_score": 22,
-   "tier": "tier_3_weak",
-   "geography": "Austin, TX",
-   "rationale": "Austin-based, but narrow single-program funder (a UT-affiliated youth mentorship program) -- not a natural fit for Measure's evaluation/equity/AI-governance work despite local geography.",
-   "id": "050579958"
+   "relevance_score": 45,
+   "tier": "tier_2_promising",
+   "geography": "Houston, TX",
+   "rationale": "Travis County (Austin) is an explicit geographic priority. General operating support can cover governance/capacity work even though \"capacity building\" isn't its own named funding category. Source: powellfoundation.org/grant-guidelines/, fetched 2026-07-23.",
+   "id": "746104592"
   },
   {
-   "rank": 29,
-   "funder_name": "United Way Worldwide",
-   "funder_ein": "131635294",
+   "rank": 9,
+   "funder_name": "W.K. Kellogg Foundation",
+   "funder_ein": "381359264",
    "is_confirmed_prior_funder": false,
-   "relevance_score": 30,
-   "tier": "tier_3_weak",
-   "geography": "Alexandria, VA (national federated network)",
-   "rationale": "Massive national reach but low direct Texas concentration (8 of 166 cached grants) and broad/generic thematic focus (economic mobility, general operations) -- not targeted to Measure's specific niche.",
-   "id": "131635294"
+   "relevance_score": 40,
+   "tier": "tier_2_promising",
+   "geography": "Battle Creek, MI (national)",
+   "rationale": "Measure's racial-equity/community-data mission aligns with WKKF's public commitment to equity and healing from systemic racism, but Texas sits outside WKKF's four named priority geographies (Michigan, Mississippi, New Mexico, New Orleans), so a Texas applicant competes in the general national pool, not a priority lane. Source: wkkf.org/grantseekers/, fetched 2026-07-23.",
+   "id": "381359264"
   },
   {
-   "rank": 30,
-   "funder_name": "The Jewish Federation of Fort Worth and Tarrant County",
-   "funder_ein": "750808797",
+   "rank": 10,
+   "funder_name": "Internet Society Foundation",
+   "funder_ein": "823285688",
    "is_confirmed_prior_funder": false,
-   "relevance_score": 15,
+   "relevance_score": 25,
    "tier": "tier_3_weak",
-   "geography": "Fort Worth, TX",
-   "rationale": "Narrow community-specific focus (Jewish community programming, camp scholarships) not aligned with Measure's broader civic/data-justice mandate; distant geography.",
-   "id": "750808797"
-  },
-  {
-   "rank": 31,
-   "funder_name": "Tulsa Area United Way",
-   "funder_ein": "730580283",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 8,
-   "tier": "tier_3_weak",
-   "geography": "Tulsa, OK",
-   "rationale": "No Texas connection at all (0 of 72 cached grants) -- purely local Tulsa-area giving. Likely a false-positive keyword match ('capacity building'-adjacent generic language).",
-   "id": "730580283"
-  },
-  {
-   "rank": 32,
-   "funder_name": "City Harvest Inc",
-   "funder_ein": "133170676",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 10,
-   "tier": "tier_3_weak",
-   "geography": "Brooklyn, NY",
-   "rationale": "NYC food-security/hunger-relief nonprofit, zero Texas presence, mission mismatch (food banking, not data/equity work) -- a false-positive from a generic 'capacity building' phrase match.",
-   "id": "133170676"
-  },
-  {
-   "rank": 33,
-   "funder_name": "Bat Conservation International",
-   "funder_ein": "742553144",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 5,
-   "tier": "tier_3_weak",
-   "geography": "Austin, TX",
-   "rationale": "Austin-based, but entirely unrelated mission (wildlife/bat conservation, agave restoration) -- a false-positive from the keyword search, essentially zero real fit despite the local geography.",
-   "id": "742553144"
-  },
-  {
-   "rank": 34,
-   "funder_name": "International Sustainable Energy Foundation",
-   "funder_ein": "872509491",
-   "is_confirmed_prior_funder": false,
-   "relevance_score": 5,
-   "tier": "tier_3_weak",
-   "geography": "Austin, TX",
-   "rationale": "Austin-based, but clean-energy-focused mission entirely unrelated to Measure's work -- a false-positive from the keyword search.",
-   "id": "872509491"
+   "geography": "Fredericksburg, VA (national; some third-party sources say Reston, VA -- this page reports the ProPublica filing's own city, and flags the discrepancy rather than picking one)",
+   "rationale": "Adjacent, not direct: best framed as support for Measure's data-security/data-stewardship practices rather than its core AI-ethics research. The 2026 cycle's geographic priority favors \"global majority\" organizations, a real competitive disadvantage for a US/Texas applicant. Source: isocfoundation.org/grant-programme/common-good-cyber-fund/, re-fetched 2026-07-23.",
+   "id": "823285688"
   }
  ]
 };
+
+/* PER-FUNDER IRS PROFILE, one entry per EIN above. Pulled from ProPublica Nonprofit
+   Explorer's JSON API (projects.propublica.org/nonprofits/api/v2/organizations/<EIN>.json),
+   which parses the IRS's own e-file data. Fetched 2026-07-23. qualifying_distributions
+   (990-PF filers only) is null where ProPublica's summary endpoint returned no value; shown
+   as "not returned by the source," never estimated. Kapor Foundation's revenue is negative
+   as filed (investment losses for the tax year), reported exactly as filed, not reinterpreted. */
+const FUNDER_PROFILES={
+ "741934031":{name:"Austin Community Foundation",city:"Austin",state:"TX",subsection_code:3,foundation_code:15,ntee_code:"T310",tax_year:2023,revenue:114740139,assets:529456359,liabilities:66057258,qualifying_distributions:null},
+ "853304316":{name:"Notley Impact",city:"Austin",state:"TX",subsection_code:3,foundation_code:15,ntee_code:"B90",tax_year:2023,revenue:1743394,assets:221166,liabilities:55342,qualifying_distributions:null},
+ "883436668":{name:"The Just Trust for Education",city:"Durham",state:"NC",subsection_code:3,foundation_code:15,ntee_code:"I50",tax_year:2023,revenue:45424094,assets:34406062,liabilities:21673743,qualifying_distributions:null},
+ "943330604":{name:"Mitchell Kapor Foundation",city:"Oakland",state:"CA",subsection_code:3,foundation_code:3,ntee_code:"T20",tax_year:2023,revenue:-6244918,assets:117513185,liabilities:1468979,qualifying_distributions:37299842},
+ "741356589":{name:"St. David's Foundation",city:"Austin",state:"TX",subsection_code:3,foundation_code:12,ntee_code:"E210",tax_year:2023,revenue:187676086,assets:1746492770,liabilities:43500189,qualifying_distributions:null},
+ "756015322":{name:"The Meadows Foundation",city:"Dallas",state:"TX",subsection_code:3,foundation_code:4,ntee_code:"T20",tax_year:2023,revenue:3668203,assets:694306466,liabilities:31204436,qualifying_distributions:32788117},
+ "746013920":{name:"Houston Endowment",city:"Houston",state:"TX",subsection_code:3,foundation_code:4,ntee_code:"T20",tax_year:2023,revenue:122609629,assets:2370195483,liabilities:93471052,qualifying_distributions:116365531},
+ "746104592":{name:"The Powell Foundation",city:"Houston",state:"TX",subsection_code:3,foundation_code:4,ntee_code:"T20",tax_year:2023,revenue:22834407,assets:421222742,liabilities:1381948,qualifying_distributions:19249485},
+ "381359264":{name:"W.K. Kellogg Foundation",city:"Battle Creek",state:"MI",subsection_code:3,foundation_code:4,ntee_code:"T21",tax_year:2023,revenue:444036040,assets:454402214,liabilities:347708049,qualifying_distributions:19548288},
+ "823285688":{name:"Internet Society Foundation",city:"Fredericksburg",state:"VA",subsection_code:3,foundation_code:21,ntee_code:"Q11",tax_year:2023,revenue:39756178,assets:87654990,liabilities:3032990,qualifying_distributions:null}
+};
+const FUNDER_PROFILE_SOURCE_NOTE="Every figure above comes from ProPublica Nonprofit Explorer's JSON API, which parses the IRS's own e-file data for each organization's most recent processed return; it is not an estimate and not from the funder's own website. Assets and liabilities are end-of-year balance-sheet figures; revenue is total revenue for the tax year shown. Qualifying distributions (roughly grants and charitable distributions paid) is reported only for 990-PF (private foundation) filers and only where ProPublica's summary endpoint returned a value. Fetched 2026-07-23.";
+
 const GRANTS={
- "method": "Open opportunities identified by checking Measure's top-ranked funders for current cycles, plus targeted discovery across racial equity / community-led data, nonprofit capacity building, ethical AI governance, and criminal justice reform. Each listing was deduplicated by URL and verified.",
- "run_date": "2026-07-07",
+ "method": "Open opportunities identified by checking Measure's top-ranked funders for current cycles, plus targeted discovery across racial equity / community-led data, nonprofit capacity building, ethical AI governance, and criminal justice reform. Each listing was deduplicated by URL and re-verified live on 2026-07-23. Two entries (Houston Endowment, The Powell Foundation) could not be positively re-confirmed today -- their portals didn't yield full content to a live fetch -- and are included on the strength of \"no evidence of closure\" for what are standing rolling programs, not a fresh positive confirmation; treat those two with correspondingly lower confidence than the rest.",
+ "run_date": "2026-07-23",
  "known_limitation": "Open-grant opportunities are a point-in-time snapshot from public research. Confirm each program's current cycle, deadline, and eligibility on the funder's own website before applying.",
  "ready_now": [
   {
-   "organization": "Michael & Susan Dell Foundation",
-   "grant_name": "General Grant/Investment Application (rolling)",
-   "url": "https://www.dell.org/apply/",
-   "deadline": "Rolling, no fixed deadline",
-   "amount": "Not specified; caps contribution at ~10% of org's annual operating budget, ~25% of project budget",
-   "eligibility": "Nonprofits serving urban low-income communities in Texas (or other listed regions); no individuals, medical research, lobbying, or hardware",
-   "focus_area": "Quality Schools, Jobs & Livelihoods, Health Innovation, Strong Communities",
-   "notes": "Measure's racial-equity/data-justice/AI-governance focus isn't a clean match to Dell's stated categories -- 'Strong Communities' or 'Other' likely closest fit. Since this is a confirmed prior funder ($131,000 already given), the existing relationship likely opens a warmer path than the cold portal.",
-   "id": "dell-general-rolling"
-  },
-  {
    "organization": "Austin Community Foundation",
+   "ein": "741934031",
    "grant_name": "Community Grants Program",
    "url": "https://www.austincf.org/apply-for-funding/grants/",
-   "deadline": "Rolling (one request per 12 months); two named funds have a firm July 31, 2026 deadline (Hispanic Impact Fund $22k-$55.5k, Women's Fund $20k-$60k)",
-   "amount": "Discretion of individual fundholders; ACF advises requesting no more than 30% of annual operating budget",
+   "deadline": "Rolling (one request per 12 months); Hispanic Impact Fund / Women's Fund / Q2 Philanthropy Fund share a firm July 31, 2026 deadline, confirmed live 2026-07-23 (8 days out)",
+   "amount": "Hispanic Impact Fund $22,000-$55,500; Women's Fund $20,000-$60,000; Q2 Philanthropy Fund $5,000-$25,000",
    "eligibility": "501(c)(3) benefiting Travis/Williamson/Hays/Bastrop/Caldwell/Burnet County, TX",
-   "focus_area": "General/flexible, per individual fundholder interest",
-   "notes": "Confirmed prior funder. The two named July 31 funds (Hispanic Impact, Women's) are partial fits if Measure frames its equity/data-justice research around those specific populations -- not a clean match for the core public-safety-data/AI-governance work.",
+   "focus_area": "Economic mobility (Hispanic Impact Fund, Women's Fund); international plus Austin (Q2 Philanthropy Fund)",
+   "notes": "Confirmed prior funder. These three named funds are a partial fit only if Measure frames its equity/data-justice research around their specific named populations, not a clean match for the core public-safety-data/AI-governance work.",
    "id": "austin-cf-community-grants"
   },
   {
-   "organization": "Notley (Notley Impact / Notley Foundation)",
+   "organization": "Notley Impact",
+   "ein": "853304316",
    "grant_name": "Nonprofit Funding Interest Form",
    "url": "https://www.notley.com/nonprofit-funding",
-   "deadline": "Rolling; interest form, not a formal cycle",
+   "deadline": "Rolling; interest form, not a formal cycle. Confirmed live 2026-07-23.",
    "amount": "Not specified",
    "eligibility": "Austin-based nonprofits",
    "focus_area": "General social impact, civic/nonprofit capacity building; related Notley Tide program focuses on racial justice work in Central Texas",
-   "notes": "New top-ranked candidate (see funder_match_ranked_v1.json, #3). Not a guaranteed process -- Notley states high demand means not all requests get a response. Worth also checking Notley's other programs (Philanthropitch, Notley Fellowship, Notley Tide) separately, which have their own distinct processes.",
+   "notes": "Not a guaranteed process: the form itself warns that high demand means not all requests get a response. Worth also checking Notley's other programs (Philanthropitch, Notley Fellowship, Notley Tide) separately, which have their own distinct processes.",
    "id": "notley-nonprofit-funding-interest"
   },
   {
-   "organization": "W.K. Kellogg Foundation",
-   "grant_name": "General Grantmaking — Racial Equity Program Area",
-   "url": "https://www.wkkf.org/grantseekers/",
-   "deadline": "Rolling; LOI required via Fluxx portal, ~30 business day response",
-   "amount": "Varies; typically multi-year, multi-hundred-thousand-dollar community initiatives",
-   "eligibility": "501(c)(3) nonprofits nationally; Texas is outside WKKF's named priority geographies (Michigan, Mississippi, New Mexico, New Orleans)",
-   "focus_area": "Equity and healing from systemic racism; community-driven solutions",
-   "notes": "Real, open, non-invitation-only pathway via LOI -- but Texas competes in the general pool, not a priority geography. Worth confirming current fit with a program officer before investing LOI-writing time.",
-   "id": "wkkellogg-racial-equity"
+   "organization": "The Just Trust for Education",
+   "ein": "883436668",
+   "grant_name": "Criminal Justice Reform Work Grants",
+   "url": "https://www.thejusttrust.org/initiatives",
+   "deadline": "Rolling, inquiry-based. Could not get a definitive today-status re-confirmation (site was thin on current application mechanics); no evidence found that the program has closed.",
+   "amount": "Varies; typically multi-year general operating support, tens of thousands to low hundreds of thousands",
+   "eligibility": "501(c)(3) working on U.S. criminal justice reform; no state restriction",
+   "focus_area": "Advocacy infrastructure, media/narrative projects, justice alternatives, rapid response",
+   "notes": "Best thematic fit found for Measure's public-safety-metrics focus, but the organization states it is 'intentionally selective' and no longer proactively solicits unsolicited proposals. Treat the rolling inquiry as a relationship-building entry point, not a guaranteed competitive call. Name/EIN corrected 2026-07-23 (see rationale above).",
+   "id": "just-trust-education-criminal-justice-reform"
+  },
+  {
+   "organization": "Kapor Foundation",
+   "ein": "943330604",
+   "grant_name": "Kapor Foundation Grantmaking (Governance / Innovation) — open Letter of Inquiry",
+   "url": "https://kaporfoundation.org/grantmaking/",
+   "deadline": "Rolling, no fixed cycle; online LOI form confirmed live 2026-07-23",
+   "amount": "Not standardized; historically tens of thousands to low hundreds of thousands per grantee",
+   "eligibility": "U.S. 501(c)(3); prioritizes California/Oakland, Detroit, Atlanta, but nationwide LOIs accepted",
+   "focus_area": "Governance: algorithmic bias, AI safeguards, surveillance/civil rights, tech policy at the intersection of racial equity and technology",
+   "notes": "Strong direct thematic match for Measure's data-justice/algorithmic-accountability work. Expect a competitive/longer-shot fit given the hub-city priority, but Texas orgs are not excluded.",
+   "id": "kapor-governance-innovation-loi"
+  },
+  {
+   "organization": "St. David's Foundation",
+   "ein": "741356589",
+   "grant_name": "Catalyzing Community-Led Change / We All Benefit 2.0: Building Economic Stability",
+   "url": "https://www.stdavidsfoundation.org/how-we-work/grantmaking/funding-opportunities/",
+   "deadline": "No published deadline for either program; both confirmed live 2026-07-23. A third program, Housing + Health: Capital, is announced for an August 2026 open call, not yet open.",
+   "amount": "Not published",
+   "eligibility": "Not published on the funding-opportunities page",
+   "focus_area": "Catalyzing Community-Led Change: communities with significant health needs shaping priorities/policies. We All Benefit 2.0: economic-stability services for marginalized communities.",
+   "notes": "Confirmed prior funder. The foundation states it is \"shifting our approach and culture, including our grantmaking practices\" -- process may be evolving; confirm current mechanics directly before applying.",
+   "id": "stdavids-community-led-change"
   },
   {
    "organization": "The Meadows Foundation",
+   "ein": "756015322",
    "grant_name": "Civic & Public Affairs Grants",
    "url": "https://www.mfi.org/how-to-apply/",
-   "deadline": "Rolling within an annual cycle; board meets 5x/year (Jan/Apr/Jun/Sep/Nov); apply 4+ months ahead; one proposal per org per 12 months",
+   "deadline": "Rolling within an annual cycle, confirmed open 2026-07-23; board meets 5x/year (Jan/Apr/Jun/Sep/Nov); apply 4-5 months ahead; one proposal per org per 12 months",
    "amount": "Not published; typically tens of thousands to low hundreds of thousands",
    "eligibility": "501(c)(3) benefiting people of Texas (org need not be TX-headquartered)",
    "focus_area": "Civic & Public Affairs (one of five funding areas); explicitly seeks 'quantitatively measurable outcomes'",
@@ -1581,10 +1362,23 @@ const GRANTS={
    "id": "meadows-civic-public-affairs"
   },
   {
+   "organization": "Internet Society Foundation",
+   "ein": "823285688",
+   "grant_name": "Common Good Cyber Fund (CGCF) 2026",
+   "url": "https://www.isocfoundation.org/grant-programme/common-good-cyber-fund/",
+   "deadline": "Application window June 23 - August 4, 2026, 21:00 UTC -- confirmed STILL OPEN 2026-07-23 (12 days remaining)",
+   "amount": "$100,000-$300,000 per award, multi-year (2-year); at least $3.5M total in 2026",
+   "eligibility": "501(c)(3) or international equivalent; must register in Fluxx 24+ hours before deadline",
+   "focus_area": "Public-interest cybersecurity infrastructure, protecting civil society/journalists online",
+   "notes": "Adjacent, not direct: best framed as support for Measure's data-security/data-stewardship practices rather than its core AI-ethics research. 2026 geographic priority favors 'global majority' orgs, a competitive disadvantage for a U.S./Texas applicant despite formal eligibility.",
+   "id": "isoc-common-good-cyber-fund-2026"
+  },
+  {
    "organization": "Houston Endowment",
+   "ein": "746013920",
    "grant_name": "Civic Engagement Grantmaking",
    "url": "https://houstonendowment.org/grantmaking/",
-   "deadline": "Rolling; unsolicited inquiry submitted anytime, response (invite or decline) in ~3 months",
+   "deadline": "Rolling; unsolicited inquiry submitted anytime, response (invite or decline) in ~3 months. Could not get a definitive today-status re-confirmation (see method note above); no evidence found that this has closed.",
    "amount": "Not fixed; has made grants up to $20M across a portfolio, individual grants commonly tens of thousands to low millions",
    "eligibility": "501(c)(3) serving greater Houston/Harris County and contiguous counties",
    "focus_area": "Civic Engagement (one of four priorities); prior $20M dedicated to anti-Black-racism/systemic-injustice work in Houston",
@@ -1593,9 +1387,10 @@ const GRANTS={
   },
   {
    "organization": "The Powell Foundation",
+   "ein": "746104592",
    "grant_name": "Powell Foundation Grants (Operating/Program Support)",
    "url": "https://powellfoundation.org/grant-guidelines/",
-   "deadline": "Rolling; pre-applications reviewed continuously, decisions announced January and July",
+   "deadline": "Rolling; pre-applications reviewed continuously, decisions announced January and July. Could not get a definitive today-status re-confirmation (see method note above); no evidence found that this has closed.",
    "amount": "Not published; varies by need",
    "eligibility": "501(c)(3) serving Harris, Travis, or Walker County, TX; once per year per org",
    "focus_area": "Education, Arts, Conservation, Human Services; general operating costs eligible",
@@ -1603,51 +1398,26 @@ const GRANTS={
    "id": "powell-foundation-grants"
   },
   {
-   "organization": "OpenAI Foundation",
-   "grant_name": "People-First AI Fund (2026 round)",
-   "url": "https://openaifoundation.org/news/2026-people-first-ai-fund",
-   "deadline": "July 15, 2026, 11:59 PM PT",
-   "amount": "Drawn from a $50M 2026 commitment; prior round averaged ~$100K-$500K per org",
-   "eligibility": "U.S. 501(c)(3) with annual operating budget $500K-$10M",
-   "focus_area": "Community-led engagement with AI to reduce barriers, expand opportunity, elevate community voice",
-   "notes": "Direct thematic match to Measure's ethical-AI-governance/community-voice work. DEADLINE IS VERY CLOSE (about a week from the research date) -- verify Measure's operating budget falls in the $500K-$10M band immediately if pursuing this.",
-   "id": "openai-people-first-ai-fund-2026"
-  },
-  {
-   "organization": "Internet Society Foundation",
-   "grant_name": "Common Good Cyber Fund (CGCF) 2026",
-   "url": "https://www.isocfoundation.org/grant-programme/common-good-cyber-fund/",
-   "deadline": "Application window June 23 - August 4, 2026, 21:00 UTC",
-   "amount": "$100,000-$300,000 per award, multi-year (2-year); at least $3.5M total in 2026",
-   "eligibility": "501(c)(3) or international equivalent; must register in Fluxx 24+ hours before deadline",
-   "focus_area": "Public-interest cybersecurity infrastructure, protecting civil society/journalists online",
-   "notes": "Adjacent, not direct -- best framed as support for Measure's data-security/data-stewardship practices rather than its core AI-ethics research. 2026 geographic priority favors 'global majority' orgs, a competitive disadvantage for a U.S./Texas applicant despite formal eligibility.",
-   "id": "isoc-common-good-cyber-fund-2026"
-  },
-  {
-   "organization": "The Just Trust (and The Just Trust for Action)",
-   "grant_name": "Criminal Justice Reform Work Grants",
-   "url": "https://www.thejusttrust.org/initiatives",
-   "deadline": "Rolling, inquiry-based",
-   "amount": "Varies; typically multi-year general operating support, tens of thousands to low hundreds of thousands",
-   "eligibility": "501(c)(3) working on U.S. criminal justice reform; no state restriction",
-   "focus_area": "Advocacy infrastructure, media/narrative projects, justice alternatives, rapid response",
-   "notes": "Best thematic fit found for Measure's public-safety-metrics focus -- but The Just Trust states it's 'intentionally selective' and no longer proactively solicits unsolicited proposals. Treat the rolling inquiry as a relationship-building entry point, not a guaranteed competitive call.",
-   "id": "just-trust-criminal-justice-reform"
-  },
-  {
-   "organization": "Kapor Foundation",
-   "grant_name": "Kapor Foundation Grantmaking (Governance / Innovation) — open Letter of Inquiry",
-   "url": "https://kaporfoundation.org/grantmaking/",
-   "deadline": "Rolling, no fixed cycle; online LOI form",
-   "amount": "Not standardized; historically tens of thousands to low hundreds of thousands per grantee",
-   "eligibility": "U.S. 501(c)(3); prioritizes California/Oakland, Detroit, Atlanta, but nationwide LOIs accepted",
-   "focus_area": "Governance: algorithmic bias, AI safeguards, surveillance/civil rights, tech policy at the intersection of racial equity and technology",
-   "notes": "RECOVERED from a matching-bug false-rejection (see known_limitation above) -- the underlying research is solid and this is a strong direct thematic match for Measure's data-justice/algorithmic-accountability work. Expect a competitive/longer-shot fit given the hub-city priority, but Texas orgs are not excluded.",
-   "id": "kapor-governance-innovation-loi"
+   "organization": "W.K. Kellogg Foundation",
+   "ein": "381359264",
+   "grant_name": "General Grantmaking — Racial Equity Program Area",
+   "url": "https://www.wkkf.org/grantseekers/",
+   "deadline": "Rolling, confirmed \"always open\" 2026-07-23; LOI required via Fluxx portal, ~30 business day response",
+   "amount": "Not specified; historically multi-year, multi-hundred-thousand-dollar community initiatives",
+   "eligibility": "501(c)(3) nonprofits nationally; Texas is outside WKKF's named priority geographies (Michigan, Mississippi, New Mexico, New Orleans)",
+   "focus_area": "Equity and healing from systemic racism; community-driven solutions",
+   "notes": "Real, open, non-invitation-only pathway via LOI, but Texas competes in the general pool, not a priority geography. Worth confirming current fit with a program officer before investing LOI-writing time.",
+   "id": "wkkellogg-racial-equity"
   }
  ],
  "watch_list_not_yet_open": [
+  {
+   "organization": "Michael & Susan Dell Foundation",
+   "grant_name": "General Grant/Investment Application (rolling)",
+   "url": "https://www.dell.org/apply/",
+   "why_watch": "Measure's #1-ranked, confirmed prior funder ($131,000, explicitly for 'Data-Driven and Community Led Efforts'), but the application platform is down for a full rebuild as of 2026-07-23, expected back mid-August 2026; pending inquiries are being reviewed through end of July. Re-check dell.org/apply/ in mid-August and move back into the compiled list once it reopens.",
+   "id": "dell-general-rolling-rebuild-watch"
+  },
   {
    "organization": "Robert Wood Johnson Foundation",
    "grant_name": "Local Data for Equitable Communities",
@@ -1704,7 +1474,7 @@ function highlight(text,q){
   const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
   return esc(text).replace(re,'<mark>$1</mark>');
 }
-function money(n){return '$'+Number(n).toLocaleString();}
+function money(n){const v=Number(n);return (v<0?'-$':'$')+Math.abs(v).toLocaleString();}
 
 function statusOf(itemType,itemId){
   return state.statuses[itemType+':'+itemId]||{status:'not_started',notes:''};
@@ -1829,16 +1599,14 @@ async function load(){
   state.grants=GRANTS;
 
   document.getElementById('m-funders').textContent=state.funders.length;
-  document.getElementById('m-grants').textContent=state.grants.ready_now.length;
+  document.getElementById('m-grants').textContent=compileMatches().length;
 
   applyDisplay();
   renderProfile();
   buildTierFilter();
-  buildStatusFilter('match-status-filter',v=>{state.matchStatusFilter=v;applyMatches();},()=>state.matchStatusFilter);
-  buildStatusFilter('grant-status-filter',v=>{state.grantStatusFilter=v;applyGrants();},()=>state.grantStatusFilter);
+  buildStatusFilter('compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
   setAdminUI();
-  applyMatches();
-  applyGrants();
+  applyCompiled();
   renderWatchList();
 }
 
@@ -1906,36 +1674,63 @@ function buildTierFilter(){
   host.querySelectorAll('.chip-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
       state.activeTier=btn.getAttribute('data-tier')||null;
-      buildTierFilter();applyMatches();
+      buildTierFilter();applyCompiled();
     });
   });
 }
 
-function applyMatches(){
+/* GATING RULE (owner order, 2026-07-23): an organization only appears once a ranked match,
+   an IRS funder profile, and a currently actionable grant opportunity all exist for it --
+   joined here by EIN, not just displayed side by side in separate lists. compileMatches()
+   computes the join once; applyCompiled() searches/filters/renders the result. This first
+   cycle compiled 10 of Measure's 34 researched candidates; the rest either have no current
+   opening (see Watch List) or were checked and ruled out (see the method note above). */
+function compileMatches(){
+  return state.funders.map(f=>{
+    const profile=FUNDER_PROFILES[f.funder_ein];
+    const grant=state.grants.ready_now.find(g=>g.ein===f.funder_ein);
+    return Object.assign({},f,{profile:profile,grant:grant});
+  }).filter(f=>f.profile&&f.grant);
+}
+
+function applyCompiled(){
   const q=state.matchQ.toLowerCase().trim();
-  let list=state.funders.filter(f=>{
+  let list=compileMatches().filter(f=>{
     if(state.activeTier&&f.tier!==state.activeTier)return false;
     if(state.matchStatusFilter&&statusOf('funder',f.id).status!==state.matchStatusFilter)return false;
     if(q){
-      const hay=`${f.funder_name} ${f.rationale} ${f.geography}`.toLowerCase();
+      const hay=`${f.funder_name} ${f.rationale} ${f.geography} ${f.grant.focus_area} ${f.grant.grant_name}`.toLowerCase();
       if(!hay.includes(q))return false;
     }
     return true;
   });
-  document.getElementById('match-count').textContent=list.length;
-  document.getElementById('matches-method').textContent='Scored 0–100 against Measure\'s real profile, using BMF geography/financial data and actual IRS Schedule I giving-pattern history — not a blind keyword match. Verification anchor: Measure\'s two most-confident real funders rank #1 and #2.';
+  document.getElementById('compiled-count').textContent=list.length;
+  document.getElementById('m-grants').textContent=compileMatches().length;
+  document.getElementById('compiled-method').textContent=FUNDERS_DATA.method+' '+FUNDER_PROFILE_SOURCE_NOTE;
+  document.getElementById('compiled-cycle-note').textContent=CYCLE.note;
+  document.getElementById('grants-limitation').textContent=state.grants.known_limitation;
 
-  const host=document.getElementById('match-results');
+  const host=document.getElementById('compiled-results');
   if(!list.length){
     host.innerHTML='<div class="empty"><b>No matches</b> — try a different search or filter.</div>';
     return;
   }
   const tierBadge={tier_1_strong:'badge-tier1',tier_2_promising:'badge-tier2',tier_3_weak:'badge-tier3'};
   const tierLabel={tier_1_strong:'Strong',tier_2_promising:'Promising',tier_3_weak:'Weak'};
-  host.innerHTML=list.map(f=>`
-    <div class="match-card">
+  host.innerHTML=list.map(f=>{
+    const p=f.profile,g=f.grant;
+    const dlClass=deadlineClass(g.deadline);
+    const grantRows=[
+      ['Open Opportunity',`<a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a>`],
+      ['Focus Area',highlight(g.focus_area,q)],
+      ['Eligibility',highlight(g.eligibility,q)],
+      ['Amount',esc(g.amount)],
+      ['Deadline',`<span class="${dlClass}">${esc(g.deadline)}</span>`],
+      ['Notes',highlight(g.notes,q)],
+    ].map(([label,value])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
+    return `
+    <div class="match-card" id="${esc('funder-'+f.funder_ein)}">
       <div class="mc-head">
-        <div class="match-rank">#${f.rank}</div>
         <span class="fname">${highlight(f.funder_name,q)}</span>
         ${f.is_confirmed_prior_funder?'<span class="badge badge-confirmed">Confirmed funder</span>':'<span class="badge badge-new">New candidate</span>'}
         <span class="badge ${tierBadge[f.tier]}">${tierLabel[f.tier]}</span>
@@ -1947,14 +1742,22 @@ function applyMatches(){
       <div class="mc-body">
         <div class="match-geo">${esc(f.geography)}</div>
         <div class="match-rationale">${highlight(f.rationale,q)}</div>
+        <div class="impact-grid" style="margin-top:.9rem">
+          <div class="stat-tile"><div class="num">${money(p.assets)}</div><div class="lbl">Total assets (EOY)</div></div>
+          <div class="stat-tile"><div class="num">${money(p.revenue)}</div><div class="lbl">Total revenue</div></div>
+          <div class="stat-tile"><div class="num">${money(p.liabilities)}</div><div class="lbl">Total liabilities (EOY)</div></div>
+          <div class="stat-tile"><div class="num">${p.qualifying_distributions==null?'<span class="not-published">not returned by source</span>':money(p.qualifying_distributions)}</div><div class="lbl">Qualifying distributions (990-PF only)</div></div>
+        </div>
+        <div class="match-src">${esc(p.city)}, ${esc(p.state)} &middot; IRC 501(c)(${esc(String(p.subsection_code))}) &middot; foundation code ${esc(String(p.foundation_code))} &middot; NTEE ${p.ntee_code?esc(p.ntee_code):'<span class="not-published">not on file</span>'} &middot; tax year ${esc(String(p.tax_year))}. Source: ProPublica Nonprofit Explorer JSON API, projects.propublica.org/nonprofits/api/v2/organizations/${esc(f.funder_ein)}.json, fetched 2026-07-23.</div>
+        <div class="qa-grid" style="margin-top:.9rem">${grantRows}</div>
         ${statusRowHTML('funder',f.id)}
       </div>
     </div>
-  `).join('');
+  `;}).join('');
   wireStatusControls(host);
 }
 
-/* ---- Open Grants ---- */
+/* ---- Deadline urgency ---- */
 function deadlineClass(s){
   const m=(s||'').match(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/);
   if(!m)return'';
@@ -1967,44 +1770,6 @@ function deadlineClass(s){
   return'';
 }
 
-function applyGrants(){
-  const q=state.grantQ.toLowerCase().trim();
-  let list=state.grants.ready_now.filter(g=>{
-    if(state.grantStatusFilter&&statusOf('grant',g.id).status!==state.grantStatusFilter)return false;
-    if(!q)return true;
-    const hay=`${g.organization} ${g.grant_name} ${g.focus_area} ${g.notes}`.toLowerCase();
-    return hay.includes(q);
-  });
-  document.getElementById('grant-count').textContent=list.length;
-
-  const host=document.getElementById('grant-results');
-  if(!list.length){
-    host.innerHTML='<div class="empty"><b>No matches</b> — try a different search.</div>';
-  } else {
-    host.innerHTML=list.map(g=>{
-      const dlClass=deadlineClass(g.deadline);
-      const qaRows=[
-        ['Focus Area',highlight(g.focus_area,q)],
-        ['Eligibility',highlight(g.eligibility,q)],
-        ['Amount',esc(g.amount)],
-        ['Deadline',`<span class="${dlClass}">${esc(g.deadline)}</span>`],
-        ['Notes',highlight(g.notes,q)],
-      ].map(([label,value])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
-      return `<article class="entry">
-        <div class="head">
-          <span class="org">${highlight(g.organization,q)}</span>
-          <span class="name"><a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a></span>
-        </div>
-        <div class="qa-grid">${qaRows}</div>
-        ${statusRowHTML('grant',g.id)}
-      </article>`;
-    }).join('');
-    wireStatusControls(host);
-  }
-
-  document.getElementById('grants-limitation').textContent=state.grants.known_limitation;
-}
-
 function renderWatchList(){
   document.getElementById('watch-results').innerHTML=state.grants.watch_list_not_yet_open.map(w=>`
     <div class="watch-item">
@@ -2014,21 +1779,20 @@ function renderWatchList(){
   `).join('');
 }
 
-document.getElementById('match-search').addEventListener('input',e=>{state.matchQ=e.target.value;applyMatches();});
-document.getElementById('grant-search').addEventListener('input',e=>{state.grantQ=e.target.value;applyGrants();});
+document.getElementById('compiled-search').addEventListener('input',e=>{state.matchQ=e.target.value;applyCompiled();});
 document.getElementById('admin-toggle').addEventListener('click',()=>{
   if(state.adminKey){
     if(confirm('Log out of admin mode on this device?')){
-      state.adminKey="";localStorage.removeItem('grantStatusKey');setAdminUI();applyMatches();applyGrants();
+      state.adminKey="";localStorage.removeItem('grantStatusKey');setAdminUI();applyCompiled();
     }
   }else{
     promptForKey();
-    applyMatches();applyGrants();
+    applyCompiled();
   }
 });
 
 load().catch(err=>{
-  document.getElementById('match-results').innerHTML=`<div class="empty"><b>Couldn't load data</b> for org "${esc(ORG_SLUG)}" — check the ?org= parameter and make sure its three data files exist in data/.</div>`;
+  document.getElementById('compiled-results').innerHTML=`<div class="empty"><b>Couldn't load data</b> for org "${esc(ORG_SLUG)}" — the page's own inlined data failed to render.</div>`;
   console.error(err);
 });
 </script>
