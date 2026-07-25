@@ -34,8 +34,8 @@ a{color:var(--ink)}
 .section-head p{color:var(--wash);font-size:.94rem;max-width:72ch;margin:0}
 
 /* ---- Priority pick (hero card for drafts[0]) ---- */
-.priority-card{background:var(--well);border:1.5px solid var(--ink);border-top:5px solid var(--accent);padding:1.6rem 1.6rem}
-.priority-top{display:flex;gap:1.4rem;align-items:flex-start;flex-wrap:wrap}
+.priority-card{background:var(--well);border:1.5px solid var(--ink);border-top:5px solid var(--accent);padding:0}
+.priority-top{display:flex;gap:1.4rem;align-items:flex-start;flex-wrap:wrap;padding:1.3rem 1.6rem;border-bottom:1px solid var(--rule-soft)}
 .priority-main{flex:1;min-width:260px}
 .priority-flag{font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--accent);padding:.24rem .6rem;display:inline-block;margin-bottom:.7rem}
 .priority-card .pg-name{font-family:var(--serif);font-weight:700;font-size:1.55rem;line-height:1.2;margin:0}
@@ -82,6 +82,14 @@ a{color:var(--ink)}
 .dc-deadline.urgent{color:var(--urgent);font-weight:600}
 .dc-deadline.soon{color:var(--warn);font-weight:500}
 .dc-deadline.closed{color:var(--wash);font-style:italic}
+/* .dc-deadline had white-space:nowrap; a 146-char rolling-deadline string rendered 1205px
+   wide and forced the whole page to scroll horizontally. Let it wrap, and cap the track.
+   (Reconciled from demo-scribe, 2026-07-24 pattern-book application pass.) */
+.dc-deadline{white-space:normal;overflow-wrap:anywhere;max-width:15em}
+/* The wrap patch above post-dates the 640px rule and was silently re-capping
+   mobile deadlines at 15em (same specificity, later in source wins). Re-assert
+   the mobile full-width intent after it. */
+@media(max-width:640px){.dc-deadline{max-width:none}}
 .badge{font-family:var(--serif);font-size:12.5px;padding:.14rem .45rem;letter-spacing:.03em;text-transform:uppercase;border:1px solid var(--rule);color:var(--wash);vertical-align:middle;font-weight:700}
 .badge.sample{background:var(--ok);color:#fff;border-color:var(--ok)}
 /* ---- Card variants: sample (clickable, opens viewer) vs info-only (no viewer) ---- */
@@ -153,7 +161,7 @@ a{color:var(--ink)}
 .miss-tag{font-family:var(--mono);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#b34141;padding:.04rem .32rem;margin-right:.35rem;border-radius:2px;vertical-align:middle}
 /* ---- Reader notice box (conspicuous "how to read this" callout, near draft viewer) ---- */
 .reader-notice{background:var(--well);border:1.5px solid var(--accent);border-left-width:5px;padding:1rem 1.2rem;margin-bottom:1.4rem}
-.reader-notice h3{font-family:var(--mono);font-size:.84rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0 0 .6rem}
+.reader-notice h3{font-family:var(--serif);font-size:25px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0 0 .6rem}
 .reader-notice ul{list-style:none;margin:0;padding:0}
 .reader-notice li{position:relative;padding:.28rem 0 .28rem 1.1rem;font-size:1.125rem;line-height:1.5;color:var(--ink);border-bottom:1px solid var(--rule-soft)}
 .reader-notice li:last-child{border-bottom:none}
@@ -165,7 +173,7 @@ a{color:var(--ink)}
 .reader-notice em{color:var(--wash);font-style:italic}
 
 .fill-box{border:1.5px solid var(--warn);background:var(--well);padding:1.1rem 1.3rem;margin:1.4rem 0}
-.fill-box h3{font-family:var(--serif);font-weight:700;font-size:1.15rem;margin:0 0 .2rem}
+.fill-box h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 .2rem}
 .fill-box .fb-sub{font-family:var(--mono);font-size:.84rem;color:var(--wash);margin-bottom:.8rem}
 .fill-list{list-style:none;margin:0;padding:0}
 .fill-list li{padding:.6rem 0;border-bottom:1px solid var(--rule-soft);font-size:15px;line-height:1.5}
@@ -187,7 +195,7 @@ a{color:var(--ink)}
 .qa-note .qa-label{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash)}
 .qa-note .qa-align{font-size:15px;line-height:1.55;color:var(--ink);margin:.3rem 0 0}
 .sources{margin:1.4rem 0 0}
-.sources h3{font-family:var(--mono);font-size:.84rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);margin:0 0 .5rem}
+.sources h3{font-weight:700;font-family:var(--serif);font-size:25px;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);margin:0 0 .5rem}
 .sources ul{margin:0;padding-left:1.1rem}
 .sources li{font-family:var(--mono);font-size:14px;color:var(--wash);line-height:1.5;margin-bottom:.35rem}
 /* ---- Inline footnote citation refs + per-draft Sources list (web only) ---- */
@@ -195,7 +203,7 @@ a{color:var(--ink)}
 .fn-ref a{color:var(--accent);text-decoration:none;font-family:var(--mono);font-weight:700;padding:0 1px}
 .fn-ref a:hover{text-decoration:underline}
 .footnotes{margin:1.4rem 0 0}
-.footnotes h3{font-family:var(--mono);font-size:.84rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);margin:0 0 .5rem}
+.footnotes h3{font-weight:700;font-family:var(--serif);font-size:25px;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);margin:0 0 .5rem}
 .fn-list{list-style:none;margin:0;padding:0}
 .fn-list li{font-family:var(--mono);font-size:.84rem;color:var(--wash);line-height:1.5;margin-bottom:.4rem;display:flex;gap:.45rem}
 .fn-list li a{color:var(--accent)}

@@ -232,6 +232,10 @@ body{overflow-x:hidden}
 /* .dc-deadline had white-space:nowrap; a 146-char rolling-deadline string rendered 1205px
    wide and forced the whole page to scroll horizontally. Let it wrap, and cap the track. */
 .dc-deadline{white-space:normal;overflow-wrap:anywhere;max-width:15em}
+/* The wrap patch above post-dates the 640px rule and was silently re-capping
+   mobile deadlines at 15em (same specificity, later in source wins). Re-assert
+   the mobile full-width intent after it. */
+@media(max-width:640px){.dc-deadline{max-width:none}}
 /* em-based sizes compound against already-small parents (footnote refs bottomed out at 8.9px).
    max() keeps the relative look but floors it at a legible size. */
 .fn-ref{font-size:max(.8em,12.5px)}
