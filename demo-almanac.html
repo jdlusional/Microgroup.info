@@ -79,12 +79,32 @@ a{color:var(--ink)}
 .score-bar-fill.likely-fill{background:var(--warn)}
 .score-num.historical-label{color:var(--wash);font-size:.86rem;letter-spacing:.02em}
 .match-geo{font-family:var(--serif);font-size:17.5px;color:var(--wash);margin-top:.15rem;font-weight:700}
+.match-reason{font-family:var(--serif);font-size:17.5px;color:var(--ink);font-weight:700;margin-top:.35rem;line-height:1.4}
 .match-rationale{font-size:17.5px;color:var(--ink);margin-top:.4rem;line-height:1.55}
 .match-rationale.clamped{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .match-src{font-family:var(--serif);font-size:10px;color:var(--wash);margin-top:.45rem;overflow-wrap:anywhere;font-weight:700}
 .mc-more{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:none;padding:0;margin-top:.35rem;cursor:pointer}
 .mc-more:hover{text-decoration:underline}
 .match-score{text-align:right;margin-left:auto}
+
+/* ---- Card-level accordion (rule 8, Products Pattern Book Card Structure Rebuild,
+   2026-07-26): first card in each outcome-card list opens by default, the rest start
+   closed. Checked against the 2026-07-18 "no tab drops" removal above tool-shared.css's
+   .section-head rule before building this -- that removal was scoped to whole sections,
+   this is a narrower, distinct decision on individual repeated cards within a list. ---- */
+.mc-toggle{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;margin-left:auto;cursor:pointer;white-space:nowrap}
+.mc-toggle:hover{background:var(--paper)}
+.match-card.mc-closed .mc-body{display:none}
+@media(max-width:640px){.mc-toggle{width:100%;margin-left:0;margin-top:.5rem;text-align:center}}
+
+/* ---- Rule-out records (rule 5): a considered-and-excluded candidate gets a compact
+   record -- identity, one stated reason, an optional category tag -- not a narrated
+   paragraph. ---- */
+.ruleout-list{margin:.9rem 0}
+.ruleout-item{border-left:3px solid var(--rule);padding:.55rem .9rem;margin-top:.7rem;min-width:0}
+.ruleout-item .ro-name{font-family:var(--serif);font-weight:700;font-size:16px;color:var(--ink)}
+.ruleout-item .ro-tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;color:var(--wash);margin-left:.5rem}
+.ruleout-item .ro-reason{font-size:15px;color:var(--ink);margin-top:.3rem;line-height:1.5;overflow-wrap:anywhere}
 .score-num{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--accent)}
 .score-num.confirmed-label{font-size:.86rem;letter-spacing:.02em}
 .score-bar{width:70px;height:5px;background:var(--rule);margin-top:.35rem}
@@ -245,7 +265,7 @@ body{text-align:center}
     <div class="fold-body">
     <div class="section-lede">
       <div id="compiled-method"></div>
-      <p>Each entry below compiles all three pieces for one organization &mdash; the ranked match rationale, the funder's own IRS filing data, and a currently open grant opportunity or letter-of-inquiry channel &mdash; instead of three separate lists a reader has to cross-reference by hand. An organization is only included here once all three are available <em>and</em> its opportunity is actionable today: an open application window or a live inquiry channel, not a closed cycle. A funder that clears the match and the IRS profile but has no current opening does not appear, the same way a funder with an open cycle but no traceable IRS filing would not appear either.</p>
+      <p>Each entry below compiles all three pieces for one organization (the ranked match rationale, the funder's own IRS filing data, and a currently open grant opportunity or letter-of-inquiry channel) instead of three separate lists a reader has to cross-reference by hand. An organization is only included here once all three are available <em>and</em> its opportunity is actionable today: an open application window or a live inquiry channel, not a closed cycle. A funder that clears the match and the IRS profile but has no current opening does not appear, the same way a funder with an open cycle but no traceable IRS filing would not appear either.</p>
     </div>
       <div class="toolbar">
         <input class="search" id="compiled-search" type="search" placeholder="Search funder name, rationale, or focus area…" aria-label="Search funders" />
@@ -277,8 +297,9 @@ body{text-align:center}
           <div class="mc-head">
             <span class="fname">Lumina Foundation For Education</span>
             <span class="badge badge-discovery">EIN 35-1813228</span>
+            <button class="mc-toggle" type="button" aria-controls="discovered-1-body"></button>
           </div>
-          <div class="mc-body">
+          <div class="mc-body" id="discovered-1-body">
             <div class="match-geo">Indianapolis, IN</div>
             <div class="impact-grid" style="margin-top:.9rem">
               <div class="stat-tile"><div class="num">$1,544,151,334</div><div class="lbl">Total assets</div></div>
@@ -291,8 +312,9 @@ body{text-align:center}
           <div class="mc-head">
             <span class="fname">Endless Success Foundation</span>
             <span class="badge badge-discovery">EIN 47-2791355</span>
+            <button class="mc-toggle" type="button" aria-controls="discovered-2-body"></button>
           </div>
-          <div class="mc-body">
+          <div class="mc-body" id="discovered-2-body">
             <div class="match-geo">Indianapolis, IN</div>
             <div class="impact-grid" style="margin-top:.9rem">
               <div class="stat-tile"><div class="num">$895,480,315</div><div class="lbl">Total assets</div></div>
@@ -305,8 +327,9 @@ body{text-align:center}
           <div class="mc-head">
             <span class="fname">Central Indiana Community Foundation</span>
             <span class="badge badge-discovery">EIN 35-1793680</span>
+            <button class="mc-toggle" type="button" aria-controls="discovered-3-body"></button>
           </div>
-          <div class="mc-body">
+          <div class="mc-body" id="discovered-3-body">
             <div class="match-geo">Indianapolis, IN</div>
             <div class="impact-grid" style="margin-top:.9rem">
               <div class="stat-tile"><div class="num">$583,467,973</div><div class="lbl">Total assets</div></div>
@@ -319,8 +342,9 @@ body{text-align:center}
           <div class="mc-head">
             <span class="fname">Nina Mason Pulliam Charitable Trust</span>
             <span class="badge badge-discovery">EIN 35-6644088</span>
+            <button class="mc-toggle" type="button" aria-controls="discovered-4-body"></button>
           </div>
-          <div class="mc-body">
+          <div class="mc-body" id="discovered-4-body">
             <div class="match-geo">Indianapolis, IN</div>
             <div class="impact-grid" style="margin-top:.9rem">
               <div class="stat-tile"><div class="num">$441,084,433</div><div class="lbl">Total assets</div></div>
@@ -333,8 +357,9 @@ body{text-align:center}
           <div class="mc-head">
             <span class="fname">Elevance Health Foundation</span>
             <span class="badge badge-discovery">EIN 35-2122763</span>
+            <button class="mc-toggle" type="button" aria-controls="discovered-5-body"></button>
           </div>
-          <div class="mc-body">
+          <div class="mc-body" id="discovered-5-body">
             <div class="match-geo">Indianapolis, IN</div>
             <div class="impact-grid" style="margin-top:.9rem">
               <div class="stat-tile"><div class="num">$139,880,517</div><div class="lbl">Total assets</div></div>
@@ -353,7 +378,7 @@ body{text-align:center}
   <div class="method-box">
     <div class="method-kicker">Method</div>
     <h2>How this was built, and what it cannot tell you</h2>
-    <p><b>Where this comes from.</b> Every funder and every grant on this page is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages. Each match carries a link back to the source it came from, so nothing here has to be taken on trust. Where a funder does not publish a figure &mdash; an award range, a deadline, an eligibility rule &mdash; that gap is marked as unconfirmed rather than filled in.</p>
+    <p><b>Where this comes from.</b> Every funder and every grant on this page is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages. Each match carries a link back to the source it came from, so nothing here has to be taken on trust. Where a funder does not publish a figure (an award range, a deadline, an eligibility rule), that gap is marked as unconfirmed rather than filled in.</p>
     <p><b>What Almanac will not do.</b> It does not invent a fact about a funder. An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on. It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit. A candidate is never dressed up as a confirmed prior funder.</p>
     <p><b>What it cannot tell you.</b> Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved. A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records. The ranking is a judgment about fit, not a prediction of success. Treat every row as a lead to verify against the funder's own page before you spend real time on it.</p>
   </div>
@@ -471,11 +496,25 @@ const PROFILE={
 const FUNDERS_METHOD=[
 "<b>Basis:</b> Because the sample organization is fictional, it has no funding history, and so no funder here is a confirmed prior funder. Every entry is a candidate, and each is a real foundation or program that genuinely funds adult literacy or workforce readiness. Candidates were found by searching for funders whose own published guidelines name adult basic education, high school equivalency, English language acquisition, or workforce readiness, then filtering for the ones an Indianapolis nonprofit of this size could realistically approach. Each funder's page was fetched directly on 2026-07-13, and its focus, eligibility rules, award range, and cycle status were taken from that page rather than from a search snippet.",
 "<b>Gaps:</b> Where a funder does not publish an amount or a deadline, this page says so instead of estimating: several entries below read 'not published by the funder,' which is the honest answer, not a hole in the research.",
-"<b>Ranking:</b> Funders are not scored by an algorithm. Each is tiered by fit (Strong, Promising, Lower-confidence), with the reasons against written out alongside the reasons for. Several candidates were checked and then dropped for cause, and the rule-outs matter as much as the picks.",
-"<b>Example:</b> Truist Foundation is the closest call. Its career-pathways pillar is a real subject match, its own page says it has an open grant application process and that organizations do not have to be invited to apply, its deadlines are March 31, July 31 and November 30, and its minimum local or regional grant is $15,000. It is left off the list on odds, not on eligibility, and the distinction matters. The Foundation's page states that Truist Financial Corp operates in seventeen states and the District of Columbia, and that it focuses a significant portion of its giving in 'the entire southeastern seaboard over to Texas and up to the mid Atlantic region,' while also funding some organizations coast to coast. Indiana is not excluded: Truist's branch locator does return an Indiana location, in New Albany, roughly a hundred miles from Indianapolis. But an Indianapolis literacy nonprofit sits well outside the markets where Truist concentrates its giving, and the Foundation states plainly that it will not provide general operating support. That is a judgment about likelihood, and it is written here as one rather than dressed up as a rule.",
-"<b>Also excluded:</b> Lowe's Foundation funds skilled-trades training, but its own Gable Grants page marks both nonprofit tracks, community-based and national, invitation only. Bank of America's Neighborhood Builders page says the 2026 cycle is closed and the next one opens in Spring 2027. Knowing who not to write to is the more useful half of a funder match, and Truist, Lowe's, and Bank of America were all checked and ruled out before this page was published rather than padded into the list to inflate the count.",
-"<b>Scope &amp; sources:</b> The five below are the strongest candidates that survived that screen, not the full set of every funder researched. Sources: truistfoundation.org/grant-application and truist.com/branch/in, lowesfoundation.org/gable-grants/, and about.bankofamerica.com, all fetched 2026-07-13."
+"<b>Ranking:</b> Funders are not scored by an algorithm. Each is tiered by fit (Strong, Promising, Lower-confidence), with the reasons against written out alongside the reasons for. Several candidates were checked and then dropped for cause, and the rule-outs below matter as much as the picks above.",
+"<b>Scope &amp; sources:</b> The five above are the strongest candidates that survived the rule-outs below, not the full set of every funder researched. Sources: truistfoundation.org/grant-application and truist.com/branch/in, lowesfoundation.org/gable-grants/, and about.bankofamerica.com, all fetched 2026-07-13."
 ];
+
+/* Rule-out records (rule 5, Products Pattern Book Card Structure Rebuild, 2026-07-26):
+   a candidate considered and explicitly rejected gets a compact record -- identity, one
+   stated reason, an optional category tag -- not a narrated paragraph. Converted from the
+   former "Example"/"Also excluded" paragraph pair in FUNDERS_METHOD; every checkable fact
+   and the stated judgment carries over unchanged, only the connective narration is cut. */
+const FUNDER_RULEOUTS=[
+  {name:"Truist Foundation",tag:"Likelihood, not eligibility",reason:"Its career-pathways pillar is a real subject match, and its own page states an open grant application process (deadlines March 31, July 31, and November 30; a $15,000 minimum local or regional grant). But Truist Financial Corp concentrates giving across the southeastern seaboard through Texas and up to the mid-Atlantic, while also funding some organizations coast to coast; its branch locator does return one Indiana location, in New Albany, roughly a hundred miles from Indianapolis, yet an Indianapolis literacy nonprofit sits well outside the markets where Truist concentrates its giving, and the Foundation states plainly that it will not provide general operating support. That is a judgment about likelihood, stated as one, not a hard eligibility rule.",source:"truistfoundation.org/grant-application, truist.com/branch/in, fetched 2026-07-13."},
+  {name:"Lowe's Foundation",tag:"Invitation only",reason:"Its Gable Grants page funds skilled-trades training, a genuine subject match, but both nonprofit tracks it offers, community-based and national, are marked invitation only.",source:"lowesfoundation.org/gable-grants/, fetched 2026-07-13."},
+  {name:"Bank of America",tag:"Cycle closed",reason:"Its Neighborhood Builders page states the 2026 cycle is closed, with the next cycle opening Spring 2027.",source:"about.bankofamerica.com, fetched 2026-07-13."},
+];
+function renderRuleouts(){
+  return '<div class="ruleout-list">'+FUNDER_RULEOUTS.map(r=>
+    `<div class="ruleout-item"><span class="ro-name">${esc(r.name)}</span><span class="ro-tag">${esc(r.tag)}</span><div class="ro-reason">${esc(r.reason)}</div><div class="match-src">Source: ${esc(r.source)}</div></div>`
+  ).join('')+'</div>';
+}
 
 /* FIVE REAL FUNDERS (rule-of-5s trim, 2026-07-19; each also carries a compiled
    IRS profile and an open grant below, per the 2026-07-23 gating rule -- see
@@ -486,11 +525,11 @@ const FUNDERS_METHOD=[
    All five are CANDIDATES. The applicant is fictional, so none of these
    funders has given it anything, and none is marked as a prior funder. */
 const RANKED_FUNDERS=[
-  {funder_name:"ProLiteracy, Literacy Opportunity Fund",ein:"16-6076384",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"National (United States); Syracuse, NY funder",rationale:"<b>Verdict:</b> The strongest match here, and the only funder whose entire published eligibility test this applicant passes on the wording alone. The Literacy Opportunity Fund gives general operating grants of up to $6,000 to US nonprofits providing literacy services directly to students. <b>Eligibility:</b> ProLiteracy lists six conditions, not five: be a registered 501(c)(3), have an Employer Identification Number, provide literacy services directly to students, be located within the United States, not have already received a Literacy Opportunity Fund grant in the last 12 months, and submit a complete and detailed application. Four of the six are met on the face of the profile. A fifth, submitting a complete and detailed application, is procedural and is met by doing the work. The sixth, no award from this fund in the previous 12 months, is a record only the applicant holds. <b>Deadlines:</b> Grants are awarded four times a year and ProLiteracy publishes all four windows: Round 1 opens June 1 and closes July 1, Round 2 opens September 1 and closes October 1, Round 3 opens December 1 and closes January 3, Round 4 opens March 1 and closes April 1. No award minimum is published. <b>See also:</b> A full drafted application for this grant is on the Scribe demo page. Source: proliteracy.org, fetched 2026-07-13."},
-  {funder_name:"Richard M. Fairbanks Foundation",ein:"31-1189885",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"Greater Indianapolis (a stated requirement, not a preference)",rationale:"<b>Verdict:</b> The best geographic fit available, and unusually open at the moment. Fairbanks requires that a grantee demonstrate clear impact on Greater Indianapolis, which is this applicant's entire service area rather than a slice of it. Its focus areas are Education, Health, and the Vitality of Indianapolis. <b>Current window:</b> On a 2026-07-13 check its process page said the foundation is currently only accepting inquiries in Education, which is the area the applicant would apply under anyway, and that it expects to begin accepting Health inquiries in late 2026. That is a window the foundation itself says will move, so check the page rather than trusting this line. <b>Eligibility:</b> Eligible applicants are 501(c)(3) public charities or public entities designated under section 170(c). Unsolicited letters of inquiry are accepted and reviewed continuously, with proposals going to quarterly board meetings; full proposals are invitation-only, so the realistic action is a letter rather than an application. The foundation publishes no award range. Source: rmff.org/grants/process/, fetched 2026-07-13."},
-  {funder_name:"Joyce Foundation, Education & Economic Mobility",ein:"36-6079185",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"<b>Region:</b> Great Lakes: Illinois, Indiana, Michigan, Minnesota, Ohio and Wisconsin. <b>K-12 focus:</b> In the K-12 portfolio the foundation says it focuses mainly on Illinois, Indiana, Michigan and Minnesota, and at district level on Chicago, Indianapolis and Minneapolis. <b>Postsecondary:</b> On the postsecondary side its wording is 'We will consider select grants in Indiana and Wisconsin'",rationale:"<b>Verdict:</b> Substantially larger money than ProLiteracy, a real dated deadline, and Indiana genuinely in scope. Joyce accepts grant inquiries online throughout the year, and its apply page lists board proposal deadlines of April 1, August 3, and December 1, 2026. <b>Geography caveat:</b> Take the geography wording exactly as the foundation writes it: on the postsecondary side it says 'We will consider select grants in Indiana and Wisconsin,' which is an opening rather than a priority. <b>Obstacle:</b> And one obstacle has to be stated rather than buried. Joyce's general guidelines put 'Direct service programs' on the list of what it does not fund, and direct service is what this applicant does. Its stated aim is closing income and race disparities in college and career success at a systems level. An inquiry is worth writing only if the applicant has a systems-level case, meaning a policy change or a model other providers could adopt, rather than a request to run more classes. <b>Note:</b> The old joycefdn.org/programs/employment URL now returns 404; the Employment program has been folded into this one. No award range is published. Source: joycefdn.org/grants/general-guidelines (the does-not-fund list and the six-state scope), joycefdn.org/grants/education-economic-mobility-guidelines (the Indiana and Wisconsin wording and the Indianapolis district focus), and joycefdn.org/apply (the 2026 board proposal deadlines), fetched 2026-07-13."},
-  {funder_name:"Walmart Foundation, Spark Good Local Grants",ein:"20-5639919",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"National, but tied to a specific facility: the applicant must serve the same service area as the store it applies to",rationale:"<b>Verdict:</b> Small money, low friction, good odds, and actually open. Walmart US stores, Sam's Clubs, and distribution centers award local cash grants ranging from $250 to $5,000 each year, aimed at the needs of the communities where those facilities operate. <b>Eligibility:</b> Eligibility is broad (501(c)(3)s, government entities, schools, and faith-based organizations; 501(c)(4), (c)(6), and (c)(19) organizations are excluded) and Indianapolis has no shortage of qualifying facilities. The applicant must serve the same service area as the facility it requests funding from, and must hold a verified Spark Good account. The program runs in three cycles: February 1 to April 15, May 1 to July 15, and August 1 to November 30. (Some third-party write-ups say the program was formerly called Local Community Grants. Walmart's own guidelines page does not say so, and it is not repeated here as fact.) <b>Why it's worth it:</b> This will not fund a program by itself, but at that range it is nearly free to apply for, and a store relationship compounds over time. <b>Caveat:</b> The cycle dates come from a page labelled FY27, and it could not be confirmed from the page itself that these are the windows in force for calendar 2026. Verify before relying on the August 1 date. Source: walmart.org, Spark Good Local Grants guidelines, fetched 2026-07-13."},
-  {funder_name:"Lilly Endowment Inc.",ein:"35-0868122",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"Priority to Indianapolis and Indiana (its Religion program is national)",rationale:"<b>Verdict:</b> The largest Indiana funder an Indianapolis nonprofit can name, with a deliberately narrow door. Two of its program areas are relevant: Community Development (quality of life in Indianapolis and Indiana, including human and social needs) and Education and Youth (educational attainment and economic opportunities in Indiana). It gives explicit priority to work improving the quality of life in Indianapolis and Indiana, which is the applicant's whole geography. <b>Reading the invitational language:</b> The invitational language on the Endowment's page has to be read carefully, because it is easy to misread it as a locked door. What the guidelines actually say is that the Endowment supports programs in Indiana on an invitational basis, and that grants to institutions of higher learning outside Indiana are restricted to programs it offers on an invitational basis. That describes long odds and a curated pipeline. <b>The actual opening:</b> It is not a refusal to hear from anyone, and the same page says so: the Endowment invites any charitable organization whose request fits its guidelines to send a preliminary letter of no more than two pages, and states that it responds in writing to all preliminary inquiries. <b>Procedure:</b> The one hard procedural rule is the channel. Letters go by regular or overnight mail, and the Endowment does not accept unsolicited requests through its website's contact form. <b>Why this applicant qualifies:</b> Note too that its community development area, which covers human and social needs in Indianapolis, carries no invitational qualifier at all, and that its stated limitation on human services and general operations applies to organizations outside Indianapolis, which this applicant is not. So there is a real action here today. <b>Odds:</b> No award range is published, the Endowment says it can fund only a small percentage of the proposals it receives, and its board considers grants in March, June, September, November and December. A two-page letter costs almost nothing; treat it as a cheap shot at long odds, not as a plan. Source: lillyendowment.org/for-grantseekers/guidelines/, fetched 2026-07-13."},
+  {funder_name:"ProLiteracy, Literacy Opportunity Fund",ein:"16-6076384",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"National (United States); Syracuse, NY funder",reason:"The strongest match here, and the only funder whose entire published eligibility test this applicant passes on the wording alone.",rationale:"<b>Grant type:</b> The Literacy Opportunity Fund gives general operating grants of up to $6,000 to US nonprofits providing literacy services directly to students. <b>Eligibility:</b> ProLiteracy lists six conditions, not five: be a registered 501(c)(3), have an Employer Identification Number, provide literacy services directly to students, be located within the United States, not have already received a Literacy Opportunity Fund grant in the last 12 months, and submit a complete and detailed application. Four of the six are met on the face of the profile. A fifth, submitting a complete and detailed application, is procedural and is met by doing the work. The sixth, no award from this fund in the previous 12 months, is a record only the applicant holds. <b>Deadlines:</b> Grants are awarded four times a year and ProLiteracy publishes all four windows: Round 1 opens June 1 and closes July 1, Round 2 opens September 1 and closes October 1, Round 3 opens December 1 and closes January 3, Round 4 opens March 1 and closes April 1. No award minimum is published. <b>See also:</b> A full drafted application for this grant is on the Scribe demo page. Source: proliteracy.org, fetched 2026-07-13."},
+  {funder_name:"Richard M. Fairbanks Foundation",ein:"31-1189885",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"Greater Indianapolis (a stated requirement, not a preference)",reason:"The best geographic fit available, and unusually open at the moment.",rationale:"<b>Scope:</b> Fairbanks requires that a grantee demonstrate clear impact on Greater Indianapolis, which is this applicant's entire service area rather than a slice of it. Its focus areas are Education, Health, and the Vitality of Indianapolis. <b>Current window:</b> On a 2026-07-13 check its process page said the foundation is currently only accepting inquiries in Education, which is the area the applicant would apply under anyway, and that it expects to begin accepting Health inquiries in late 2026. That is a window the foundation itself says will move, so check the page rather than trusting this line. <b>Eligibility:</b> Eligible applicants are 501(c)(3) public charities or public entities designated under section 170(c). Unsolicited letters of inquiry are accepted and reviewed continuously, with proposals going to quarterly board meetings; full proposals are invitation-only, so the realistic action is a letter rather than an application. The foundation publishes no award range. Source: rmff.org/grants/process/, fetched 2026-07-13."},
+  {funder_name:"Joyce Foundation, Education & Economic Mobility",ein:"36-6079185",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"<b>Region:</b> Great Lakes: Illinois, Indiana, Michigan, Minnesota, Ohio and Wisconsin. <b>K-12 focus:</b> In the K-12 portfolio the foundation says it focuses mainly on Illinois, Indiana, Michigan and Minnesota, and at district level on Chicago, Indianapolis and Minneapolis. <b>Postsecondary:</b> On the postsecondary side its wording is 'We will consider select grants in Indiana and Wisconsin'",reason:"Substantially larger money than ProLiteracy, a real dated deadline, and Indiana genuinely in scope.",rationale:"<b>Deadlines:</b> Joyce accepts grant inquiries online throughout the year, and its apply page lists board proposal deadlines of April 1, August 3, and December 1, 2026. <b>Geography caveat:</b> Take the geography wording exactly as the foundation writes it: on the postsecondary side it says 'We will consider select grants in Indiana and Wisconsin,' which is an opening rather than a priority. <b>Obstacle:</b> And one obstacle has to be stated rather than buried. Joyce's general guidelines put 'Direct service programs' on the list of what it does not fund, and direct service is what this applicant does. Its stated aim is closing income and race disparities in college and career success at a systems level. An inquiry is worth writing only if the applicant has a systems-level case, meaning a policy change or a model other providers could adopt, rather than a request to run more classes. <b>Note:</b> The old joycefdn.org/programs/employment URL now returns 404; the Employment program has been folded into this one. No award range is published. Source: joycefdn.org/grants/general-guidelines (the does-not-fund list and the six-state scope), joycefdn.org/grants/education-economic-mobility-guidelines (the Indiana and Wisconsin wording and the Indianapolis district focus), and joycefdn.org/apply (the 2026 board proposal deadlines), fetched 2026-07-13."},
+  {funder_name:"Walmart Foundation, Spark Good Local Grants",ein:"20-5639919",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"National, but tied to a specific facility: the applicant must serve the same service area as the store it applies to",reason:"Small money, low friction, good odds, and actually open.",rationale:"<b>Grant type:</b> Walmart US stores, Sam's Clubs, and distribution centers award local cash grants ranging from $250 to $5,000 each year, aimed at the needs of the communities where those facilities operate. <b>Eligibility:</b> Eligibility is broad (501(c)(3)s, government entities, schools, and faith-based organizations; 501(c)(4), (c)(6), and (c)(19) organizations are excluded) and Indianapolis has no shortage of qualifying facilities. The applicant must serve the same service area as the facility it requests funding from, and must hold a verified Spark Good account. The program runs in three cycles: February 1 to April 15, May 1 to July 15, and August 1 to November 30. (Some third-party write-ups say the program was formerly called Local Community Grants. Walmart's own guidelines page does not say so, and it is not repeated here as fact.) <b>Why it's worth it:</b> This will not fund a program by itself, but at that range it is nearly free to apply for, and a store relationship compounds over time. <b>Caveat:</b> The cycle dates come from a page labelled FY27, and it could not be confirmed from the page itself that these are the windows in force for calendar 2026. Verify before relying on the August 1 date. Source: walmart.org, Spark Good Local Grants guidelines, fetched 2026-07-13."},
+  {funder_name:"Lilly Endowment Inc.",ein:"35-0868122",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"Priority to Indianapolis and Indiana (its Religion program is national)",reason:"The largest Indiana funder an Indianapolis nonprofit can name, with a deliberately narrow door.",rationale:"<b>Program areas:</b> Two of its program areas are relevant: Community Development (quality of life in Indianapolis and Indiana, including human and social needs) and Education and Youth (educational attainment and economic opportunities in Indiana). It gives explicit priority to work improving the quality of life in Indianapolis and Indiana, which is the applicant's whole geography. <b>Reading the invitational language:</b> The invitational language on the Endowment's page has to be read carefully, because it is easy to misread it as a locked door. What the guidelines actually say is that the Endowment supports programs in Indiana on an invitational basis, and that grants to institutions of higher learning outside Indiana are restricted to programs it offers on an invitational basis. That describes long odds and a curated pipeline. <b>The actual opening:</b> It is not a refusal to hear from anyone, and the same page says so: the Endowment invites any charitable organization whose request fits its guidelines to send a preliminary letter of no more than two pages, and states that it responds in writing to all preliminary inquiries. <b>Procedure:</b> The one hard procedural rule is the channel. Letters go by regular or overnight mail, and the Endowment does not accept unsolicited requests through its website's contact form. <b>Why this applicant qualifies:</b> Note too that its community development area, which covers human and social needs in Indianapolis, carries no invitational qualifier at all, and that its stated limitation on human services and general operations applies to organizations outside Indianapolis, which this applicant is not. So there is a real action here today. <b>Odds:</b> No award range is published, the Endowment says it can fund only a small percentage of the proposals it receives, and its board considers grants in March, June, September, November and December. A two-page letter costs almost nothing; treat it as a cheap shot at long odds, not as a plan. Source: lillyendowment.org/for-grantseekers/guidelines/, fetched 2026-07-13."},
 ];
 
 /* PER-FUNDER IRS PROFILE, one entry per EIN above. Pulled live from ProPublica
@@ -753,7 +792,7 @@ function renderProfile(){
   }
   const eff=p.expense_efficiency_fy2024;
   if(eff){
-    document.getElementById('p-efficiency').innerHTML=`<strong>${esc(eff.program_pct)}% to programs</strong> for the fiscal year ended ${esc(eff.fiscal_year_end)} (${esc(eff.mgmt_pct)}% management &amp; general, ${esc(eff.fundraising_pct)}% fundraising) &mdash; invented for this fictional organization. ${esc(eff.note)}`;
+    document.getElementById('p-efficiency').innerHTML=`<strong>${esc(eff.program_pct)}% to programs</strong> for the fiscal year ended ${esc(eff.fiscal_year_end)} (${esc(eff.mgmt_pct)}% management &amp; general, ${esc(eff.fundraising_pct)}% fundraising). Invented for this fictional organization. ${esc(eff.note)}`;
   }
 
   document.getElementById('p-funders-table').innerHTML=p.confirmed_prior_funders.map(f=>`
@@ -815,7 +854,12 @@ function applyCompiled(){
   });
   document.getElementById('compiled-count').textContent=list.length;
   document.getElementById('m-grants').textContent=compileMatches().length;
-  document.getElementById('compiled-method').innerHTML=FUNDERS_METHOD.concat([FUNDER_PROFILE_SOURCE_NOTE]).map(t=>'<p>'+t+'</p>').join('');
+  document.getElementById('compiled-method').innerHTML=
+    FUNDERS_METHOD.slice(0,3).map(t=>'<p>'+t+'</p>').join('')
+    +'<p><b>Considered and ruled out.</b> Checked against the same criteria as the candidates above, then excluded for a stated reason rather than left off silently.</p>'
+    +renderRuleouts()
+    +FUNDERS_METHOD.slice(3).map(t=>'<p>'+t+'</p>').join('')
+    +'<p>'+FUNDER_PROFILE_SOURCE_NOTE+'</p>';
   document.getElementById('compiled-limitation').textContent=GRANTS.known_limitation;
 
   const host=document.getElementById('compiled-results');
@@ -845,9 +889,11 @@ function applyCompiled(){
         <span class="fname">${highlight(f.funder_name,q)}</span>
         <span class="badge badge-new">EIN ${esc(f.ein)}</span>
         <div class="match-score"><div class="score-num confirmed-label">${esc(tierLabel[f.tier]||'Candidate')}</div></div>
+        <button class="mc-toggle" type="button" aria-controls="${esc('funder-'+f.ein)}-body"></button>
       </div>
-      <div class="mc-body">
+      <div class="mc-body" id="${esc('funder-'+f.ein)}-body">
         <div class="match-geo">${escKeepB(f.geography)}</div>
+        <div class="match-reason">${escKeepB(f.reason)}</div>
         <div class="match-rationale clamped">${highlightKeepB(analysis,q)}</div>
         ${src?`<div class="match-src">${highlight(src,q)}</div>`:''}
         <button class="mc-more" type="button" hidden>Show full rationale</button>
@@ -868,6 +914,7 @@ function applyCompiled(){
   `;}).join('');
   wireStatusControls(host);
   linkifySources(host);
+  wireAccordion(host);
   /* Clamp affordance: only offer the toggle when the rationale actually overflows 3 lines. */
   host.querySelectorAll('.match-card').forEach(card=>{
     const r=card.querySelector('.match-rationale');
@@ -918,6 +965,28 @@ function linkifySources(container){
   });
 }
 
+/* Card-level accordion (rule 8, Products Pattern Book Card Structure Rebuild, 2026-07-26):
+   within any container of .match-card elements, the first card opens, the rest start
+   closed, each with its own uniform, accessible toggle. Independent of the field-level
+   clamp above (.match-rationale.clamped/.mc-more): that toggle governs one field's
+   overflow inside an already-open card; this one governs whether the card is visible at
+   all. Re-run on every render, including a search/filter re-render, so "first card open"
+   always describes what is on screen right now. */
+function wireAccordion(host){
+  const cards=host.querySelectorAll('.match-card');
+  cards.forEach((card,i)=>{
+    const btn=card.querySelector('.mc-toggle');
+    if(!btn)return;
+    const setOpen=open=>{
+      card.classList.toggle('mc-closed',!open);
+      btn.setAttribute('aria-expanded',String(open));
+      btn.textContent=open?'Hide details':'Show details';
+    };
+    setOpen(i===0);
+    btn.addEventListener('click',()=>setOpen(card.classList.contains('mc-closed')));
+  });
+}
+
 function deadlineClass(s){
   const m=(s||'').match(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/);
   if(!m)return'';
@@ -947,6 +1016,7 @@ async function load(){
   buildStatusFilter('compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
   setAdminUI();
   applyCompiled();
+  wireAccordion(document.getElementById('discovered-results'));
 }
 
 document.getElementById('compiled-search').addEventListener('input',e=>{state.matchQ=e.target.value;applyCompiled();});
