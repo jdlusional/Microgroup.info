@@ -1,0 +1,172 @@
+{
+  "method": "Open opportunities identified by checking Measure's top-ranked funders for current cycles, plus targeted discovery across racial equity / community-led data, nonprofit capacity building, ethical AI governance, and criminal justice reform. Each listing was deduplicated by URL and verified.",
+  "run_date": "2026-07-07",
+  "known_limitation": "Open-grant opportunities are a point-in-time snapshot from public research. Confirm each program's current cycle, deadline, and eligibility on the funder's own website before applying.",
+  "ready_now": [
+    {
+      "organization": "Michael & Susan Dell Foundation",
+      "grant_name": "General Grant/Investment Application (rolling)",
+      "url": "https://www.dell.org/apply/",
+      "deadline": "Rolling, no fixed deadline",
+      "amount": "Not specified; caps contribution at ~10% of org's annual operating budget, ~25% of project budget",
+      "eligibility": "Nonprofits serving urban low-income communities in Texas (or other listed regions); no individuals, medical research, lobbying, or hardware",
+      "focus_area": "Quality Schools, Jobs & Livelihoods, Health Innovation, Strong Communities",
+      "notes": "Measure's racial-equity/data-justice/AI-governance focus isn't a clean match to Dell's stated categories -- 'Strong Communities' or 'Other' likely closest fit. Since this is a confirmed prior funder ($131,000 already given), the existing relationship likely opens a warmer path than the cold portal.",
+      "id": "dell-general-rolling"
+    },
+    {
+      "organization": "Austin Community Foundation",
+      "grant_name": "Community Grants Program",
+      "url": "https://www.austincf.org/apply-for-funding/grants/",
+      "deadline": "Rolling (one request per 12 months); two named funds have a firm July 31, 2026 deadline (Hispanic Impact Fund $22k-$55.5k, Women's Fund $20k-$60k)",
+      "amount": "Discretion of individual fundholders; ACF advises requesting no more than 30% of annual operating budget",
+      "eligibility": "501(c)(3) benefiting Travis/Williamson/Hays/Bastrop/Caldwell/Burnet County, TX",
+      "focus_area": "General/flexible, per individual fundholder interest",
+      "notes": "Confirmed prior funder. The two named July 31 funds (Hispanic Impact, Women's) are partial fits if Measure frames its equity/data-justice research around those specific populations -- not a clean match for the core public-safety-data/AI-governance work.",
+      "id": "austin-cf-community-grants"
+    },
+    {
+      "organization": "Notley (Notley Impact / Notley Foundation)",
+      "grant_name": "Nonprofit Funding Interest Form",
+      "url": "https://www.notley.com/nonprofit-funding",
+      "deadline": "Rolling; interest form, not a formal cycle",
+      "amount": "Not specified",
+      "eligibility": "Austin-based nonprofits",
+      "focus_area": "General social impact, civic/nonprofit capacity building; related Notley Tide program focuses on racial justice work in Central Texas",
+      "notes": "New top-ranked candidate (see funder_match_ranked_v1.json, #3). Not a guaranteed process -- Notley states high demand means not all requests get a response. Worth also checking Notley's other programs (Philanthropitch, Notley Fellowship, Notley Tide) separately, which have their own distinct processes.",
+      "id": "notley-nonprofit-funding-interest"
+    },
+    {
+      "organization": "W.K. Kellogg Foundation",
+      "grant_name": "General Grantmaking — Racial Equity Program Area",
+      "url": "https://www.wkkf.org/grantseekers/",
+      "deadline": "Rolling; LOI required via Fluxx portal, ~30 business day response",
+      "amount": "Varies; typically multi-year, multi-hundred-thousand-dollar community initiatives",
+      "eligibility": "501(c)(3) nonprofits nationally; Texas is outside WKKF's named priority geographies (Michigan, Mississippi, New Mexico, New Orleans)",
+      "focus_area": "Equity and healing from systemic racism; community-driven solutions",
+      "notes": "Real, open, non-invitation-only pathway via LOI -- but Texas competes in the general pool, not a priority geography. Worth confirming current fit with a program officer before investing LOI-writing time.",
+      "id": "wkkellogg-racial-equity"
+    },
+    {
+      "organization": "The Meadows Foundation",
+      "grant_name": "Civic & Public Affairs Grants",
+      "url": "https://www.mfi.org/how-to-apply/",
+      "deadline": "Rolling within an annual cycle; board meets 5x/year (Jan/Apr/Jun/Sep/Nov); apply 4+ months ahead; one proposal per org per 12 months",
+      "amount": "Not published; typically tens of thousands to low hundreds of thousands",
+      "eligibility": "501(c)(3) benefiting people of Texas (org need not be TX-headquartered)",
+      "focus_area": "Civic & Public Affairs (one of five funding areas); explicitly seeks 'quantitatively measurable outcomes'",
+      "notes": "No racial-equity-specific fund, but the explicit preference for measurable-outcomes proposals is a genuine natural fit for Measure's data/evaluation and nonprofit-governance capacity work -- frame around data/evaluation capacity, not equity-labeling.",
+      "id": "meadows-civic-public-affairs"
+    },
+    {
+      "organization": "Houston Endowment",
+      "grant_name": "Civic Engagement Grantmaking",
+      "url": "https://houstonendowment.org/grantmaking/",
+      "deadline": "Rolling; unsolicited inquiry submitted anytime, response (invite or decline) in ~3 months",
+      "amount": "Not fixed; has made grants up to $20M across a portfolio, individual grants commonly tens of thousands to low millions",
+      "eligibility": "501(c)(3) serving greater Houston/Harris County and contiguous counties",
+      "focus_area": "Civic Engagement (one of four priorities); prior $20M dedicated to anti-Black-racism/systemic-injustice work in Houston",
+      "notes": "Full applications are invitation-only, but unsolicited inquiries are the real entry point (up to 5 declines allowed before being barred from resubmitting). Geographic constraint is key: Measure's Houston office would need genuine local programmatic presence, not just Austin HQ work, to qualify.",
+      "id": "houston-endowment-civic-engagement"
+    },
+    {
+      "organization": "The Powell Foundation",
+      "grant_name": "Powell Foundation Grants (Operating/Program Support)",
+      "url": "https://powellfoundation.org/grant-guidelines/",
+      "deadline": "Rolling; pre-applications reviewed continuously, decisions announced January and July",
+      "amount": "Not published; varies by need",
+      "eligibility": "501(c)(3) serving Harris, Travis, or Walker County, TX; once per year per org",
+      "focus_area": "Education, Arts, Conservation, Human Services; general operating costs eligible",
+      "notes": "Travis County (Austin) is an explicit geographic priority. General operating support can cover organizational/governance capacity work, though 'capacity building' isn't named as its own category -- frame within operating-support or human-services.",
+      "id": "powell-foundation-grants"
+    },
+    {
+      "organization": "OpenAI Foundation",
+      "grant_name": "People-First AI Fund (2026 round)",
+      "url": "https://openaifoundation.org/news/2026-people-first-ai-fund",
+      "deadline": "July 15, 2026, 11:59 PM PT",
+      "amount": "Drawn from a $50M 2026 commitment; prior round averaged ~$100K-$500K per org",
+      "eligibility": "U.S. 501(c)(3) with annual operating budget $500K-$10M",
+      "focus_area": "Community-led engagement with AI to reduce barriers, expand opportunity, elevate community voice",
+      "notes": "Direct thematic match to Measure's ethical-AI-governance/community-voice work. DEADLINE IS VERY CLOSE (about a week from the research date) -- verify Measure's operating budget falls in the $500K-$10M band immediately if pursuing this.",
+      "id": "openai-people-first-ai-fund-2026"
+    },
+    {
+      "organization": "Internet Society Foundation",
+      "grant_name": "Common Good Cyber Fund (CGCF) 2026",
+      "url": "https://www.isocfoundation.org/grant-programme/common-good-cyber-fund/",
+      "deadline": "Application window June 23 - August 4, 2026, 21:00 UTC",
+      "amount": "$100,000-$300,000 per award, multi-year (2-year); at least $3.5M total in 2026",
+      "eligibility": "501(c)(3) or international equivalent; must register in Fluxx 24+ hours before deadline",
+      "focus_area": "Public-interest cybersecurity infrastructure, protecting civil society/journalists online",
+      "notes": "Adjacent, not direct -- best framed as support for Measure's data-security/data-stewardship practices rather than its core AI-ethics research. 2026 geographic priority favors 'global majority' orgs, a competitive disadvantage for a U.S./Texas applicant despite formal eligibility.",
+      "id": "isoc-common-good-cyber-fund-2026"
+    },
+    {
+      "organization": "The Just Trust (and The Just Trust for Action)",
+      "grant_name": "Criminal Justice Reform Work Grants",
+      "url": "https://www.thejusttrust.org/initiatives",
+      "deadline": "Rolling, inquiry-based",
+      "amount": "Varies; typically multi-year general operating support, tens of thousands to low hundreds of thousands",
+      "eligibility": "501(c)(3) working on U.S. criminal justice reform; no state restriction",
+      "focus_area": "Advocacy infrastructure, media/narrative projects, justice alternatives, rapid response",
+      "notes": "Best thematic fit found for Measure's public-safety-metrics focus -- but The Just Trust states it's 'intentionally selective' and no longer proactively solicits unsolicited proposals. Treat the rolling inquiry as a relationship-building entry point, not a guaranteed competitive call.",
+      "id": "just-trust-criminal-justice-reform"
+    },
+    {
+      "organization": "Kapor Foundation",
+      "grant_name": "Kapor Foundation Grantmaking (Governance / Innovation) — open Letter of Inquiry",
+      "url": "https://kaporfoundation.org/grantmaking/",
+      "deadline": "Rolling, no fixed cycle; online LOI form",
+      "amount": "Not standardized; historically tens of thousands to low hundreds of thousands per grantee",
+      "eligibility": "U.S. 501(c)(3); prioritizes California/Oakland, Detroit, Atlanta, but nationwide LOIs accepted",
+      "focus_area": "Governance: algorithmic bias, AI safeguards, surveillance/civil rights, tech policy at the intersection of racial equity and technology",
+      "notes": "RECOVERED from a matching-bug false-rejection (see known_limitation above) -- the underlying research is solid and this is a strong direct thematic match for Measure's data-justice/algorithmic-accountability work. Expect a competitive/longer-shot fit given the hub-city priority, but Texas orgs are not excluded.",
+      "id": "kapor-governance-innovation-loi"
+    }
+  ],
+  "watch_list_not_yet_open": [
+    {
+      "organization": "Robert Wood Johnson Foundation",
+      "grant_name": "Local Data for Equitable Communities",
+      "url": "https://www.rwjf.org/en/grants/active-funding-opportunities/2026/local-data-for-equitable-communities.html",
+      "why_watch": "Directly matches Measure's community-led data/evaluation mission in RWJF's own program language ($50,000/grant, up to 30 awards) -- but the 2026 round closed March 3, 2026. Recurring program; monitor RWJF's active-opportunities page for the next cycle.",
+      "id": "rwjf-local-data-equitable-communities"
+    },
+    {
+      "organization": "Impact Austin",
+      "grant_name": "Community/Education/Health & Well-Being Grants",
+      "url": "https://www.impactaustin.org/grantmaking",
+      "why_watch": "The only Central-Texas funder found that names 'capacity building' explicitly as a fundable use. 2026 cycle closed Feb 5, 2026; strong recurring annual pattern suggests a ~January 2027 reopening, though not yet confirmed/announced.",
+      "id": "impact-austin-community-education-health"
+    },
+    {
+      "organization": "Humanity AI (pooled fund of 10 foundations incl. Ford, MacArthur, Mellon, Mozilla)",
+      "grant_name": "Humanity AI 2026 Open Call",
+      "url": "https://humanityai.ai/",
+      "why_watch": "A ~$10M open call (first broadly competitive round of a $500M/5-year coalition) explicitly prioritizing community-led groups -- a strong potential future match. But as of the research date, no application mechanics, LOI process, or exact opening date exist yet. Sign up on humanityai.ai for the announcement.",
+      "id": "humanity-ai-2026-open-call"
+    },
+    {
+      "organization": "U.S. DOJ — National Institute of Justice / Bureau of Justice Statistics",
+      "grant_name": "FY 2026 State and Local Collection and Reporting of Crime Data",
+      "url": "https://nij.ojp.gov/funding/opportunities/o-nij-2026-172645",
+      "why_watch": "The single most on-theme match by title (public safety data/accountability), genuinely open (Grants.gov deadline July 30, 2026), but eligibility is unconfirmed for a standalone 501(c)(3) -- this program lineage has historically been restricted to state/local government leads. Pull the full NOFO's 'Eligible Applicants' section before investing time; likely path is as a named subrecipient/data-analysis partner to a government lead, not direct application.",
+      "id": "doj-nij-fy2026-crime-data-collection"
+    },
+    {
+      "organization": "Patrick J. McGovern Foundation",
+      "grant_name": "Data & AI for Good grantmaking",
+      "url": "https://www.mcgovern.org/grants/",
+      "why_watch": "Best-matched 'accountability data/ethical AI' funder found, but the specific Data Practice Accelerator program is confirmed archived/not accepting applications. Open cycles rotate themes -- worth monitoring for a reopened call to pitch a data-justice/racial-equity-data proposal via LOI.",
+      "id": "mcgovern-data-ai-for-good"
+    },
+    {
+      "organization": "Vera Institute of Justice",
+      "grant_name": "In Our Backyards Community Grants",
+      "url": "https://www.vera.org/ending-mass-incarceration/reducing-incarceration/reducing-jail-and-prison-population/in-our-backyards-initiative/community-grants",
+      "why_watch": "Explicit past Texas eligibility and a direct thematic match (reducing incarceration, racial/gender disparities), but most recent confirmed round dates to 2020-2021; no evidence of a current or announced 2025-2026 cycle. Targeted at small-city/rural communities specifically, a real geographic mismatch with Measure's Austin/Houston/Dallas metro focus. Verify status directly via Vera's Submittable portal.",
+      "id": "vera-in-our-backyards-community-grants"
+    }
+  ]
+}
