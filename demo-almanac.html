@@ -29,6 +29,16 @@ a{color:var(--ink)}
 .section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
 .section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0}
 
+/* ---- Section-level card + accordion (owner order, 2026-07-26): every top-level
+   section becomes its own bordered card, collapsible the same way as the cards
+   nested inside it. The section title stays visible in a header row alongside the
+   toggle; only .fold-body (or .method-box's own content, see below) collapses. ---- */
+.section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem}
+.section.section-card:last-of-type{margin-bottom:0}
+.section-head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.mc-closed .fold-body{display:none}
+@media(max-width:640px){.section-head-row{flex-wrap:wrap}.section-head-row .mc-toggle{width:100%;margin-left:0}}
+
 /* ---- Profile section ---- */
 .profile-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.5rem}
 @media(max-width:780px){.profile-grid{grid-template-columns:1fr}}
@@ -227,13 +237,16 @@ body{text-align:center}
   <div class="note"><strong>How to read this page.</strong> Second Shift Learning Collaborative does not exist. It is an illustrative adult-literacy nonprofit invented for this demo, and every number attached to it was invented along with it. No real client's data appears anywhere on this page.<br><br>The <strong>funders and grants are real</strong>. Each one is an actual foundation or program that funds adult literacy and workforce readiness, and each carries a link to its own page. Amounts, deadlines, and eligibility rules are quoted from those pages, or marked as unconfirmed where the funder does not publish them. Nothing about a real funder is estimated or invented here. What <em>is</em> illustrative is the match itself: the judgment that these funders suit this particular (made-up) organization.<br><br>Want the drafted application to go with a match? <a href="demo-scribe.html">See Scribe &#8594;</a><br><br>Want this run against your real organization? <a href="mailto:info@microgroup.info?subject=Almanac%20funder-match%20request">Request a funder match &#8594;</a></div>
 </header>
 
-<section class="section" id="profile">
+<section class="section section-card" id="profile">
   <div class="fold">
-    <div class="section-head">
-      <span class="kicker">The organization</span>
-      <h2>Funding Profile <span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--urgent);border:1px solid var(--urgent);padding:.14rem .45rem;vertical-align:middle">Fictional org</span></h2>
+    <div class="section-head-row">
+      <div class="section-head">
+        <span class="kicker">The organization</span>
+        <h2>Funding Profile <span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--urgent);border:1px solid var(--urgent);padding:.14rem .45rem;vertical-align:middle">Fictional org</span></h2>
+      </div>
+      <button class="mc-toggle" type="button" aria-controls="profile-fold-body"></button>
     </div>
-    <div class="fold-body">
+    <div class="fold-body" id="profile-fold-body">
     <div class="section-lede">
       <p>The mission, programs, and figures below belong to Second Shift Learning Collaborative, an organization invented for this demo. Almanac reads a profile like this one and works out which funders fit it. Everything in this section is made up; everything in the funder and grant sections below is not.</p>
     </div>
@@ -294,13 +307,16 @@ body{text-align:center}
   </div>
 </section>
 
-<section class="section" id="compiled">
+<section class="section section-card" id="compiled">
   <div class="fold">
-    <div class="section-head">
-      <span class="kicker">Who could fund this, right now</span>
-      <h2>Compiled Funder Matches <span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok);border:1px solid var(--ok);padding:.14rem .45rem;vertical-align:middle">Real funders</span> <span class="fold-count" data-count-from="compiled-count" data-count-label="organizations"></span></h2>
+    <div class="section-head-row">
+      <div class="section-head">
+        <span class="kicker">Who could fund this, right now</span>
+        <h2>Compiled Funder Matches <span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok);border:1px solid var(--ok);padding:.14rem .45rem;vertical-align:middle">Real funders</span> <span class="fold-count" data-count-from="compiled-count" data-count-label="organizations"></span></h2>
+      </div>
+      <button class="mc-toggle" type="button" aria-controls="compiled-fold-body"></button>
     </div>
-    <div class="fold-body">
+    <div class="fold-body" id="compiled-fold-body">
       <div class="toolbar">
         <input class="search" id="compiled-search" type="search" placeholder="Search funder name, rationale, or focus area…" aria-label="Search funders" />
         <div class="chip-filter" id="tier-filter"></div>
@@ -331,13 +347,16 @@ body{text-align:center}
   </div>
 </section>
 
-<section class="section" id="discovered">
+<section class="section section-card" id="discovered">
   <div class="fold">
-    <div class="section-head">
-      <span class="kicker">Beyond the researched list</span>
-      <h2>Newly Discovered Funders <span class="badge badge-discovery">Discovery only, unverified</span></h2>
+    <div class="section-head-row">
+      <div class="section-head">
+        <span class="kicker">Beyond the researched list</span>
+        <h2>Newly Discovered Funders <span class="badge badge-discovery">Discovery only, unverified</span></h2>
+      </div>
+      <button class="mc-toggle" type="button" aria-controls="discovered-fold-body"></button>
     </div>
-    <div class="fold-body">
+    <div class="fold-body" id="discovered-fold-body">
       <div class="res-count"><b>5</b> of 50 discovered candidates shown</div>
       <div id="discovered-results">
         <div class="match-card">
@@ -422,13 +441,20 @@ body{text-align:center}
 
 <section class="method-wrap" id="method">
   <div class="method-box">
-    <div class="method-kicker">Method</div>
-    <h2>How this was built, and what it cannot tell you</h2>
+    <div class="section-head-row">
+      <div>
+        <div class="method-kicker">Method</div>
+        <h2>How this was built, and what it cannot tell you</h2>
+      </div>
+      <button class="mc-toggle" type="button" aria-controls="method-fold-body"></button>
+    </div>
+    <div class="fold-body" id="method-fold-body">
     <p><b>Where this comes from.</b> Every funder and every grant on this page is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages. Each match carries a link back to the source it came from, so nothing here has to be taken on trust. Where a funder does not publish a figure (an award range, a deadline, an eligibility rule), that gap is marked as unconfirmed rather than filled in.</p>
     <p><b>What Almanac will not do.</b> It does not invent a fact about a funder. An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on. It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit. A candidate is never dressed up as a confirmed prior funder.</p>
     <p><b>What it cannot tell you.</b> Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved. A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records. The ranking is a judgment about fit, not a prediction of success. Treat every row as a lead to verify against the funder's own page before you spend real time on it. Grant deadlines and eligibility rules move too: every one on this page was fetched in July 2026, a snapshot rather than a promise, so confirm it directly with the funder before writing anything.</p>
     <p><b>How candidates are found and ranked.</b> Candidates are found by searching for funders whose own published guidelines name adult basic education, high school equivalency, English language acquisition, or workforce readiness, then filtering to the ones an Indianapolis nonprofit of this size could realistically approach; a parallel search of the Grants.gov public API, across roughly twenty keyword combinations and every plausible funding category, turned up one federal opportunity that could not confirm this applicant's state was in scope, so it is not shown here. Funders are not scored by an algorithm: each is tiered by fit (Strong, Promising, Lower-confidence), with the reasons against written out alongside the reasons for, and a candidate that is checked and ruled out is recorded with its reason rather than left off silently. Every IRS figure on a funder's page comes from ProPublica Nonprofit Explorer's JSON API, which parses the IRS's own e-file data for that organization's most recent processed return, fetched 2026-07-18; assets and liabilities are end-of-year balance-sheet figures, revenue is total revenue for the tax year shown, and qualifying distributions (roughly grants and charitable distributions paid) is reported only for 990-PF filers where ProPublica's summary endpoint returned a value, with "not returned by the source" meaning exactly that, never zero.</p>
     <p><b>How the discovery list differs.</b> Beyond the five compiled matches, a separate pass scans the IRS's national foundation list for every grantmaking foundation in Marion County, Indiana that this organization's profile has not already surfaced, scoring each candidate on cause-area fit and geography alone; it found 50 candidates for this organization, and the five shown scored highest. None of those five carries a researched profile, a checked funding history, or a known open opportunity, since the IRS foundation list itself carries only a name, a location, an asset figure, and a classification code, nothing about whether a foundation is currently accepting requests or has ever funded work like this. Treat a discovery candidate as a lead worth checking, not a match worth pitching; all five were nonetheless web-verified as real, currently active foundations, and pre-filtered against the five funders already compiled above, so none overlap.</p>
+    </div>
   </div>
 </section>
 
@@ -1029,6 +1055,7 @@ async function load(){
   applyCompiled();
   wireAccordion(document.getElementById('discovered-results'));
   wireAccordion(document.getElementById('profile'),'.card');
+  wireAccordion(document.body,'.section-card,.method-wrap');
 }
 
 document.getElementById('compiled-search').addEventListener('input',e=>{state.matchQ=e.target.value;applyCompiled();});
