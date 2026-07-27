@@ -29,6 +29,9 @@ a{color:var(--ink)}
 .section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
 .section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0 auto}
 .section-head h2{text-transform:uppercase;letter-spacing:.05em}
+.section-lede p{color:var(--ink);font-size:15px;font-style:normal;font-weight:400;margin:0 0 .8rem}
+.manifest-in{justify-content:center}
+.manifest .grow{display:none}
 .section-head-tags{margin-top:.6rem}
 .section-head-tags:empty{display:none}
 
@@ -257,7 +260,7 @@ body{text-align:center}
         </tr>
         <tr>
           <td>Next steps</td>
-          <td>Want the drafted application to go with a match? <a href="demo-scribe.html">See Scribe &#8594;</a><br><br>Want this run against your real organization? <a href="mailto:info@microgroup.info?subject=Almanac%20funder-match%20request">Request a funder match &#8594;</a></td>
+          <td>Want the drafted application to go with a match? <a href="demo-scribe.html">See Scribe &#8594;</a><br><br>Want this run against your real organization? <a href="/#contact">Request a funder match &#8594;</a></td>
         </tr>
       </tbody>
     </table></div>
@@ -387,7 +390,7 @@ body{text-align:center}
 
 <footer><div class="wrap">
   <p id="footer-credit">Almanac demo by Jonathan Lin Davis &middot; the organization shown is fictional; the funders are real.</p>
-  <p id="footer-links"><a href="demo-scribe.html">See Scribe, the grant drafter &#8594;</a> &middot; <a href="mailto:info@microgroup.info?subject=Almanac%20funder-match%20request">Request a funder match &#8594;</a></p>
+  <p id="footer-links"><a href="demo-scribe.html">See Scribe, the grant drafter &#8594;</a> &middot; <a href="/#contact">Request a funder match &#8594;</a></p>
   <p class="footer-improvements-wrap"><a class="footer-improvements" href="improvementlog.html">Improvement log</a></p>
   <p class="footer-custom-note"><a href="/#contact">Need something custom? Individualized builds outside this catalog are available on request &#8594;</a></p>
 </div></footer>
@@ -917,13 +920,12 @@ function linkifySources(container){
   });
 }
 
-/* Card-level accordion (rule 8, Products Pattern Book Card Structure Rebuild, 2026-07-26):
-   within any container of .match-card elements, the first card opens, the rest start
-   closed, each with its own uniform, accessible toggle. Independent of the field-level
-   clamp above (.match-rationale.clamped/.mc-more): that toggle governs one field's
-   overflow inside an already-open card; this one governs whether the card is visible at
-   all. Re-run on every render, including a search/filter re-render, so "first card open"
-   always describes what is on screen right now. */
+/* Card-level accordion. Every card with a toggle starts CLOSED on load/refresh, no
+   first-card exception (owner override, 2026-07-27, supersedes the earlier "first card
+   opens" default). Independent of the field-level clamp above
+   (.match-rationale.clamped/.mc-more): that toggle governs one field's overflow inside an
+   already-open card; this one governs whether the card is visible at all. Re-run on every
+   render, including a search/filter re-render. */
 function wireAccordion(host,cardSelector){
   const cards=host.querySelectorAll(cardSelector||'.match-card');
   cards.forEach((card,i)=>{
@@ -934,7 +936,7 @@ function wireAccordion(host,cardSelector){
       btn.setAttribute('aria-expanded',String(open));
       btn.textContent=open?'Hide details':'Show details';
     };
-    setOpen(i===0);
+    setOpen(false);
     btn.addEventListener('click',()=>setOpen(card.classList.contains('mc-closed')));
   });
 }
