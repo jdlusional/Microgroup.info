@@ -84,22 +84,11 @@ a{color:var(--ink)}
 .match-card{padding:0}
 .mc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
 .mc-head .fname{flex:1 1 auto;min-width:0;white-space:nowrap;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;text-align:left}
-.mc-head .match-rank{font-family:var(--mono);font-size:.88rem;color:var(--wash)}
 .mc-body{min-width:0}
 .match-card>.mc-body{padding:.9rem 1.2rem}
 @media(max-width:640px){.mc-head{gap:.4rem}.mc-head .fname{min-width:0;flex-basis:100%;white-space:normal;overflow-wrap:anywhere}}
-.match-body{min-width:0}
 .badge{font-family:var(--serif);font-size:12.5px;padding:.16rem .5rem;letter-spacing:.03em;text-transform:uppercase;font-weight:700}
-.badge-confirmed{background:var(--ok);color:#fff}
 .badge-new{background:var(--accent);color:#fff}
-.badge-discovery{background:#fff;color:var(--wash);border:1px solid var(--rule)}
-.score-bar-fill.likely-fill{background:var(--warn)}
-.match-geo{font-family:var(--serif);font-size:17.5px;color:var(--wash);margin-top:.15rem;font-weight:700}
-.match-reason{font-family:var(--serif);font-size:17.5px;color:var(--ink);font-weight:700;margin-top:.35rem;line-height:1.4}
-.match-rationale{font-size:17.5px;color:var(--ink);margin-top:.4rem;line-height:1.55}
-.match-rationale.clamped{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.mc-more{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:none;padding:0;margin-top:.35rem;cursor:pointer}
-.mc-more:hover{text-decoration:underline}
 
 /* ---- Card-level accordion (rule 8, Products Pattern Book Card Structure Rebuild,
    2026-07-26): first card in each outcome-card list opens by default, the rest start
@@ -127,9 +116,6 @@ a{color:var(--ink)}
 .card-head h3{margin:0}
 .card-head .mc-toggle{position:absolute;right:0;top:0}
 @media(max-width:560px){.card-head{padding-right:0;padding-bottom:2.6rem}.card-head .mc-toggle{left:0;right:0;top:auto;bottom:0;width:100%;margin-left:0}}
-
-.score-bar{width:70px;height:5px;background:var(--rule);margin-top:.35rem}
-.score-bar-fill{height:100%;background:var(--accent)}
 
 /* ---- Grant Q&A block (F4F Q&A pattern, adapted; now rendered inside .mc-body as part of
    the compiled match card, 2026-07-23 -- the standalone .entry wrapper this used to sit in
@@ -893,7 +879,7 @@ function applyCompiled(){
    that isn't already in the text itself. */
 function linkifySources(container){
   const re=/((?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/[^\s(),<>"']*)?)/g;
-  container.querySelectorAll('.match-rationale,.qa-source').forEach(el=>{
+  container.querySelectorAll('.qa-source').forEach(el=>{
     const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
     const nodes=[];let n;
     while((n=walker.nextNode()))nodes.push(n);
@@ -922,10 +908,7 @@ function linkifySources(container){
 
 /* Card-level accordion. Every card with a toggle starts CLOSED on load/refresh, no
    first-card exception (owner override, 2026-07-27, supersedes the earlier "first card
-   opens" default). Independent of the field-level clamp above
-   (.match-rationale.clamped/.mc-more): that toggle governs one field's overflow inside an
-   already-open card; this one governs whether the card is visible at all. Re-run on every
-   render, including a search/filter re-render. */
+   opens" default). Re-run on every render, including a search/filter re-render. */
 function wireAccordion(host,cardSelector){
   const cards=host.querySelectorAll(cardSelector||'.match-card');
   cards.forEach((card,i)=>{
