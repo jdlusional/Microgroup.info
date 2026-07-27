@@ -28,6 +28,7 @@ a{color:var(--ink)}
 
 .section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
 .section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0 auto}
+.section-head h2{text-transform:uppercase;letter-spacing:.05em}
 .section-head-tags{margin-top:.6rem}
 .section-head-tags:empty{display:none}
 
@@ -80,26 +81,23 @@ a{color:var(--ink)}
    this rule entirely rather than restated, so there's nothing here to fall out of sync again. */
 .match-card{padding:0}
 .mc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
-.mc-head .fname{flex:0 1 320px;min-width:0;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;overflow-wrap:anywhere}
+.mc-head .fname{flex:1 1 auto;min-width:0;white-space:nowrap;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28}
 .mc-head .match-rank{font-family:var(--mono);font-size:.88rem;color:var(--wash)}
 .mc-body{min-width:0}
 .match-card>.mc-body{padding:.9rem 1.2rem}
-@media(max-width:640px){.mc-head{gap:.4rem}.mc-head .fname{min-width:0;flex-basis:100%}}
+@media(max-width:640px){.mc-head{gap:.4rem}.mc-head .fname{min-width:0;flex-basis:100%;white-space:normal;overflow-wrap:anywhere}}
 .match-body{min-width:0}
 .badge{font-family:var(--serif);font-size:12.5px;padding:.16rem .5rem;letter-spacing:.03em;text-transform:uppercase;font-weight:700}
 .badge-confirmed{background:var(--ok);color:#fff}
 .badge-new{background:var(--accent);color:#fff}
 .badge-discovery{background:#fff;color:var(--wash);border:1px solid var(--rule)}
-.score-num.likely-label{color:var(--warn)}
 .score-bar-fill.likely-fill{background:var(--warn)}
-.score-num.historical-label{color:var(--wash);font-size:.86rem;letter-spacing:.02em}
 .match-geo{font-family:var(--serif);font-size:17.5px;color:var(--wash);margin-top:.15rem;font-weight:700}
 .match-reason{font-family:var(--serif);font-size:17.5px;color:var(--ink);font-weight:700;margin-top:.35rem;line-height:1.4}
 .match-rationale{font-size:17.5px;color:var(--ink);margin-top:.4rem;line-height:1.55}
 .match-rationale.clamped{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .mc-more{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:none;padding:0;margin-top:.35rem;cursor:pointer}
 .mc-more:hover{text-decoration:underline}
-.match-score{text-align:right;margin-left:auto}
 
 /* ---- Card-level accordion (rule 8, Products Pattern Book Card Structure Rebuild,
    2026-07-26): first card in each outcome-card list opens by default, the rest start
@@ -128,8 +126,6 @@ a{color:var(--ink)}
 .card-head .mc-toggle{position:absolute;right:0;top:0}
 @media(max-width:560px){.card-head{padding-right:0;padding-bottom:2.6rem}.card-head .mc-toggle{left:0;right:0;top:auto;bottom:0;width:100%;margin-left:0}}
 
-.score-num{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--accent)}
-.score-num.confirmed-label{font-size:.86rem;letter-spacing:.02em}
 .score-bar{width:70px;height:5px;background:var(--rule);margin-top:.35rem}
 .score-bar-fill{height:100%;background:var(--accent)}
 
@@ -141,10 +137,11 @@ a{color:var(--ink)}
 @media(max-width:580px){.qa-row{grid-template-columns:1fr;gap:.1rem}}
 .qa-label{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);white-space:nowrap}
 .qa-value{font-size:.94rem;line-height:1.5}
+.geo-highlight{font-weight:700;color:var(--accent)}
 /* The Open Opportunity row is the single most actionable fact on a compiled card --
-   the actual thing to click and act on -- so it gets a visual weight the other rows
-   don't. */
-.qa-row-featured{background:var(--paper);border:1px solid var(--rule);padding:.6rem .75rem;margin:-.1rem 0}
+   the actual thing to click and act on -- so its link gets visual weight the other
+   rows' values don't. It stays a plain row in the same grid/column layout as Focus
+   Area, Eligibility, etc; only the link text itself is emphasized. */
 .qa-row-featured .qa-value a{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--accent)}
 .qa-row-featured .qa-value a:hover{text-decoration:underline}
 .deadline-val.urgent{color:var(--urgent);font-weight:600}
@@ -274,11 +271,11 @@ body{text-align:center}
       <div class="section-head">
         <span class="kicker">The organization</span>
         <h2>Funding Profile</h2>
-        <div class="section-head-tags"><span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--urgent);border:1px solid var(--urgent);padding:.14rem .45rem;vertical-align:middle">Fictional org</span></div>
       </div>
       <button class="mc-toggle" type="button" aria-controls="profile-fold-body"></button>
     </div>
     <div class="fold-body" id="profile-fold-body">
+    <div class="section-head-tags"><span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--urgent);border:1px solid var(--urgent);padding:.14rem .45rem;vertical-align:middle">Fictional org</span></div>
     <div class="section-lede">
       <p>The mission, programs, and figures below belong to Second Shift Learning Collaborative, an organization invented for this demo. Almanac reads a profile like this one and works out which funders fit it. Everything in this section is made up; everything in the funder and grant sections below is not.</p>
     </div>
@@ -339,11 +336,11 @@ body{text-align:center}
       <div class="section-head">
         <span class="kicker">Who could fund this, right now</span>
         <h2>Compiled Funder Matches</h2>
-        <div class="section-head-tags"><span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok);border:1px solid var(--ok);padding:.14rem .45rem;vertical-align:middle">Real funders</span> <span class="fold-count" data-count-from="compiled-count" data-count-label="organizations"></span></div>
       </div>
       <button class="mc-toggle" type="button" aria-controls="compiled-fold-body"></button>
     </div>
     <div class="fold-body" id="compiled-fold-body">
+      <div class="section-head-tags"><span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok);border:1px solid var(--ok);padding:.14rem .45rem;vertical-align:middle">Real funders</span> <span class="fold-count" data-count-from="compiled-count" data-count-label="organizations"></span></div>
       <div class="toolbar">
         <div class="chip-filter" id="compiled-status-filter"></div>
       </div>
@@ -358,7 +355,7 @@ body{text-align:center}
     <div class="section-head-row">
       <div class="section-head">
         <span class="kicker">Method</span>
-        <h2>How this was built, and what it cannot tell you</h2>
+        <h2>How this was built</h2>
       </div>
       <button class="mc-toggle" type="button" aria-controls="method-fold-body"></button>
     </div>
@@ -434,13 +431,16 @@ const PROFILE={
   mission:"Second Shift Learning Collaborative helps adults in Marion County, Indiana finish the reading, math, and language work that a job now demands, on a schedule that fits around the shifts they already work. Classes run evenings and weekends, enrollment is open all year, and there is no cost to the learner.",
   tagline:"Adult literacy and job readiness, on the second shift",
   programs:[
-    "Adult basic education",
-    "HSE prep & test fees",
-    "English language acquisition",
-    "Digital skills lab",
-    "Job-readiness coaching",
-    "1:1 volunteer tutoring",
-    "On-site employer classes",
+    "Adult Basic Education",
+    "High School Equivalency Prep",
+    "English Language Acquisition",
+    "Digital Skills Lab",
+    "Job Readiness Coaching",
+    "One-To-One Tutoring",
+    "On-Site Employer Classes",
+    "Financial Literacy Workshops",
+    "Family Literacy Programming",
+    "Alumni Support Network",
   ],
   focus_areas:[
     "Adult literacy and numeracy",
@@ -642,6 +642,13 @@ function highlightKeepB(text,q){
   const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
   return escKeepB(text).replace(re,'<mark>$1</mark>');
 }
+/* Notes fields are dense multi-sentence prose; split to one sentence per line (rather than
+   one dense paragraph) for readability. Sentence boundaries are detected before highlighting
+   so a matched search term never straddles the split. */
+function sentenceBreak(text,q){
+  if(!text)return '';
+  return text.split(/(?<=[.!?])\s+(?=[A-Z0-9])/).map(s=>highlight(s,q)).join('<br><br>');
+}
 
 function statusOf(itemType,itemId){
   return state.statuses[itemType+':'+itemId]||{status:'not_started',notes:''};
@@ -764,7 +771,7 @@ function renderProfile(){
   document.getElementById('p-mission').textContent=p.mission;
   document.getElementById('p-focus').innerHTML=p.programs.map(f=>`<span class="tag">${esc(f)}</span>`).join('');
   document.getElementById('p-total').textContent=RANKED_FUNDERS.length;
-  document.getElementById('p-geo').innerHTML=`${esc(p.geography.primary)}<br>${p.geography.secondary.map(esc).join(', ')}`;
+  document.getElementById('p-geo').innerHTML=`<span class="geo-highlight">${esc(p.geography.primary)}</span><br>${p.geography.secondary.map(esc).join(', ')}`;
   document.getElementById('p-founded').innerHTML=`${esc(p.founded)}${p.board_size?' &middot; '+esc(String(p.board_size))+'-member board':''}`;
   const fin=p.financials_fy2025;
   if(fin){
@@ -823,7 +830,6 @@ function applyCompiled(){
     host.innerHTML='<div class="empty"><b>No matches</b> for this status filter.</div>';
     return;
   }
-  const tierLabel={tier_1_strong:'Strong candidate',tier_2_promising:'Promising candidate',tier_3_weak:'Lower-confidence candidate'};
   host.innerHTML=list.map(f=>{
     const p=f.profile,g=f.grant;
     const dlClass=deadlineClass(g.deadline);
@@ -832,22 +838,21 @@ function applyCompiled(){
       ['Reason',escKeepB(f.reason)],
     ];
     if(f.note)whyRows.push(['Note',highlight(f.note,q)]);
-    whyRows.push(['Source',esc(f.source)]);
-    const whyRowsHTML=whyRows.map(([label,value])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
+    whyRows.push(['Source',esc(f.source),true]);
+    const whyRowsHTML=whyRows.map(([label,value,isSource])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value${isSource?' qa-source':''}">${value}</div></div>`).join('');
     const grantRows=[
       ['Open Opportunity',`<a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a>`,true],
       ['Focus Area',highlight(g.focus_area,q)],
       ['Eligibility',highlight(g.eligibility,q)],
       ['Amount',esc(g.amount)],
       ['Deadline',`<span class="deadline-val ${dlClass}">${esc(g.deadline)}</span>`],
-      ['Notes',highlight(g.notes,q)],
+      ['Notes',sentenceBreak(g.notes,q)],
     ].map(([label,value,featured])=>`<div class="qa-row${featured?' qa-row-featured':''}"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
     return `
     <div class="match-card" id="${esc('funder-'+f.ein)}">
       <div class="mc-head">
         <span class="fname">${highlight(f.funder_name,q)}</span>
         <span class="badge badge-new">EIN ${esc(f.ein)}</span>
-        <div class="match-score"><div class="score-num confirmed-label">${esc(tierLabel[f.tier]||'Candidate')}</div></div>
         <button class="mc-toggle" type="button" aria-controls="${esc('funder-'+f.ein)}-body"></button>
       </div>
       <div class="mc-body" id="${esc('funder-'+f.ein)}-body">
@@ -880,12 +885,12 @@ function applyCompiled(){
   wireAccordion(host);
 }
 
-/* "Every claim links to a source" -- the match cards were the one section whose sources were
-   plain text. Turn bare lowercase domain/path tokens in the rationale into links after render;
-   nothing is added that isn't already in the rationale text. */
+/* "Every claim links to a source" -- rationale text and each card's own Source row were both
+   plain text. Turn bare lowercase domain/path tokens into links after render; nothing is added
+   that isn't already in the text itself. */
 function linkifySources(container){
   const re=/((?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/[^\s(),<>"']*)?)/g;
-  container.querySelectorAll('.match-rationale').forEach(el=>{
+  container.querySelectorAll('.match-rationale,.qa-source').forEach(el=>{
     const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
     const nodes=[];let n;
     while((n=walker.nextNode()))nodes.push(n);
