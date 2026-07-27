@@ -28,6 +28,8 @@ a{color:var(--ink)}
 
 .section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
 .section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0 auto}
+.section-head-tags{margin-top:.6rem}
+.section-head-tags:empty{display:none}
 
 /* ---- Section-level card + accordion (owner order, 2026-07-26): every top-level
    section becomes its own bordered card, collapsible the same way as the cards
@@ -271,7 +273,8 @@ body{text-align:center}
     <div class="section-head-row">
       <div class="section-head">
         <span class="kicker">The organization</span>
-        <h2>Funding Profile <span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--urgent);border:1px solid var(--urgent);padding:.14rem .45rem;vertical-align:middle">Fictional org</span></h2>
+        <h2>Funding Profile</h2>
+        <div class="section-head-tags"><span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--urgent);border:1px solid var(--urgent);padding:.14rem .45rem;vertical-align:middle">Fictional org</span></div>
       </div>
       <button class="mc-toggle" type="button" aria-controls="profile-fold-body"></button>
     </div>
@@ -335,7 +338,8 @@ body{text-align:center}
     <div class="section-head-row">
       <div class="section-head">
         <span class="kicker">Who could fund this, right now</span>
-        <h2>Compiled Funder Matches <span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok);border:1px solid var(--ok);padding:.14rem .45rem;vertical-align:middle">Real funders</span> <span class="fold-count" data-count-from="compiled-count" data-count-label="organizations"></span></h2>
+        <h2>Compiled Funder Matches</h2>
+        <div class="section-head-tags"><span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok);border:1px solid var(--ok);padding:.14rem .45rem;vertical-align:middle">Real funders</span> <span class="fold-count" data-count-from="compiled-count" data-count-label="organizations"></span></div>
       </div>
       <button class="mc-toggle" type="button" aria-controls="compiled-fold-body"></button>
     </div>
