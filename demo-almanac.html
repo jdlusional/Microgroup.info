@@ -27,17 +27,19 @@ a{color:var(--ink)}
 .hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1.4rem;text-align:center}
 
 .section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
-.section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0}
+.section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0 auto}
 
 /* ---- Section-level card + accordion (owner order, 2026-07-26): every top-level
    section becomes its own bordered card, collapsible the same way as the cards
-   nested inside it. The section title stays visible in a header row alongside the
-   toggle; only .fold-body (or .method-box's own content, see below) collapses. ---- */
+   nested inside it. The section title is centered across the full row; the toggle
+   is pinned to the corner via absolute positioning so it never pulls the title off
+   center. Only .fold-body (or .method-box's own content, see below) collapses. ---- */
 .section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem}
 .section.section-card:last-of-type{margin-bottom:0}
-.section-head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.section-head-row{position:relative;padding-right:9rem}
+.section-head-row .mc-toggle{position:absolute;right:0;top:0}
 .mc-closed .fold-body{display:none}
-@media(max-width:640px){.section-head-row{flex-wrap:wrap}.section-head-row .mc-toggle{width:100%;margin-left:0}}
+@media(max-width:640px){.section-head-row{padding-right:0;padding-bottom:3rem}.section-head-row .mc-toggle{left:0;right:0;top:auto;bottom:0;width:100%}}
 
 /* ---- Profile section ---- */
 .profile-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.5rem}
@@ -45,15 +47,16 @@ a{color:var(--ink)}
 .card{background:var(--well);border:1.5px solid var(--ink);padding:1.3rem 1.4rem;min-width:0;overflow-wrap:anywhere}
 .card h3{font-weight:700;font-family:var(--serif);font-size:25px;text-transform:uppercase;letter-spacing:.08em;color:var(--wash);margin:0 0 .6rem}
 .card p{margin:0 0 .8rem;font-size:15px}
-.tag-row{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center}
 .tag{font-family:var(--mono);font-size:14px;padding:.22rem .58rem;background:var(--paper);border:1px solid var(--rule);color:var(--ink)}
 .stat-tile{text-align:center;padding:1rem}
 .stat-tile .num{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--accent);line-height:1}
 .stat-tile .lbl{font-family:var(--mono);font-size:12.5px;color:var(--wash);text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem}
-.funder-mini-table{width:100%;min-width:480px;table-layout:fixed;border-collapse:collapse;font-size:15px;margin-top:.5rem}
+.funder-mini-table{width:100%;min-width:480px;table-layout:fixed;border-collapse:collapse;font-size:15px;margin-top:.5rem;text-align:left}
 .funder-mini-table th{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--wash);text-align:left;padding:.35rem .5rem;border-bottom:1px solid var(--rule)}
-.funder-mini-table td{padding:.45rem .5rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere}
+.funder-mini-table td{padding:.45rem .5rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere;text-align:left}
 .funder-mini-table th:first-child,.funder-mini-table td:first-child{width:26%}
+.method-table th:first-child,.method-table td:first-child{width:34%;font-weight:700}
 .funder-mini-table th:last-child,.funder-mini-table td:last-child{width:18%}
 .funder-mini-table .amt{font-family:var(--mono);text-align:right;color:var(--wash);font-size:14px}
 .impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin-top:.3rem}
@@ -120,19 +123,11 @@ a{color:var(--ink)}
 .mc-body .card h3{font-size:15px;letter-spacing:.05em;margin:0 0 .5rem}
 
 /* ---- Profile card head/toggle (accordion extension to the profile section) ---- */
-.card-head{display:flex;align-items:center;justify-content:space-between;gap:.7rem;margin-bottom:.6rem}
+.card-head{position:relative;padding-right:9rem;margin-bottom:.6rem}
 .card-head h3{margin:0}
-@media(max-width:560px){.card-head{flex-wrap:wrap}.card-head .mc-toggle{width:100%;margin-left:0;text-align:center}}
+.card-head .mc-toggle{position:absolute;right:0;top:0}
+@media(max-width:560px){.card-head{padding-right:0;padding-bottom:2.6rem}.card-head .mc-toggle{left:0;right:0;top:auto;bottom:0;width:100%;margin-left:0}}
 
-/* ---- Rule-out records (rule 5): a considered-and-excluded candidate gets a compact
-   record -- identity, one stated reason, an optional category tag -- not a narrated
-   paragraph. ---- */
-.ruleout-heading{font-family:var(--serif);font-weight:700;font-size:17.5px;color:var(--wash);margin:1.4rem 0 0;text-transform:none;letter-spacing:0}
-.ruleout-list{margin:.6rem 0 0}
-.ruleout-item{border-left:3px solid var(--rule);padding:.55rem .9rem;margin-top:.7rem;min-width:0}
-.ruleout-item .ro-name{font-family:var(--serif);font-weight:700;font-size:16px;color:var(--ink)}
-.ruleout-item .ro-tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;color:var(--wash);margin-left:.5rem}
-.ruleout-item .ro-reason{font-size:15px;color:var(--ink);margin-top:.3rem;line-height:1.5;overflow-wrap:anywhere}
 .score-num{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--accent)}
 .score-num.confirmed-label{font-size:.86rem;letter-spacing:.02em}
 .score-bar{width:70px;height:5px;background:var(--rule);margin-top:.35rem}
@@ -146,6 +141,12 @@ a{color:var(--ink)}
 @media(max-width:580px){.qa-row{grid-template-columns:1fr;gap:.1rem}}
 .qa-label{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);white-space:nowrap}
 .qa-value{font-size:.94rem;line-height:1.5}
+/* The Open Opportunity row is the single most actionable fact on a compiled card --
+   the actual thing to click and act on -- so it gets a visual weight the other rows
+   don't. */
+.qa-row-featured{background:var(--paper);border:1px solid var(--rule);padding:.6rem .75rem;margin:-.1rem 0}
+.qa-row-featured .qa-value a{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--accent)}
+.qa-row-featured .qa-value a:hover{text-decoration:underline}
 .deadline-val.urgent{color:var(--urgent);font-weight:600}
 .deadline-val.soon{color:var(--warn);font-weight:500}
 .deadline-val.closed{color:var(--wash);font-style:italic}
@@ -234,7 +235,7 @@ body{text-align:center}
   <div class="eyebrow">Demonstration page &middot; the organization shown is fictional</div>
   <h1>Almanac</h1>
   <p>Almanac finds the funders and open grants that fit a nonprofit, ranks them by fit, and shows the public source behind every one. This page runs Almanac against a made-up organization so you can see the output before you commission your own.</p>
-  <div class="note"><strong>How to read this page.</strong> Second Shift Learning Collaborative does not exist. It is an illustrative adult-literacy nonprofit invented for this demo, and every number attached to it was invented along with it. No real client's data appears anywhere on this page.<br><br>The <strong>funders and grants are real</strong>. Each one is an actual foundation or program that funds adult literacy and workforce readiness, and each carries a link to its own page. Amounts, deadlines, and eligibility rules are quoted from those pages, or marked as unconfirmed where the funder does not publish them. Nothing about a real funder is estimated or invented here. What <em>is</em> illustrative is the match itself: the judgment that these funders suit this particular (made-up) organization.<br><br>Want the drafted application to go with a match? <a href="demo-scribe.html">See Scribe &#8594;</a><br><br>Want this run against your real organization? <a href="mailto:info@microgroup.info?subject=Almanac%20funder-match%20request">Request a funder match &#8594;</a></div>
+  <div class="note"><strong>How to read this page.</strong><br><br>Second Shift Learning Collaborative does not exist. It is an illustrative adult-literacy nonprofit invented for this demo, and every number attached to it was invented along with it. No real client's data appears anywhere on this page.<br><br>The funders and grants are real. Each one is an actual foundation or program that funds adult literacy and workforce readiness, and each carries a link to its own page. Amounts, deadlines, and eligibility rules are quoted from those pages, or marked as unconfirmed where the funder does not publish them. Nothing about a real funder is estimated or invented here. What <em>is</em> illustrative is the match itself: the judgment that these funders suit this particular (made-up) organization.<br><br>Want the drafted application to go with a match? <a href="demo-scribe.html">See Scribe &#8594;</a><br><br>Want this run against your real organization? <a href="mailto:info@microgroup.info?subject=Almanac%20funder-match%20request">Request a funder match &#8594;</a></div>
 </header>
 
 <section class="section section-card" id="profile">
@@ -252,22 +253,16 @@ body{text-align:center}
     </div>
       <div class="profile-grid">
         <div class="card">
-          <div class="card-head">
-            <h3>Mission</h3>
-            <button class="mc-toggle" type="button" aria-controls="p-mission-body"></button>
-          </div>
-          <div class="mc-body" id="p-mission-body">
+          <h3>Mission</h3>
+          <div class="mc-body">
             <p id="p-mission"></p>
             <h3>Programs &amp; Services</h3>
             <div class="tag-row" id="p-focus"></div>
           </div>
         </div>
         <div class="card">
-          <div class="card-head">
-            <h3>At a glance</h3>
-            <button class="mc-toggle" type="button" aria-controls="p-glance-body"></button>
-          </div>
-          <div class="mc-body" id="p-glance-body">
+          <h3>At a glance</h3>
+          <div class="mc-body">
             <div class="stat-tile">
               <div class="num" id="p-total">0</div>
               <div class="lbl">candidate funders researched for this profile</div>
@@ -324,117 +319,6 @@ body{text-align:center}
       </div>
       <div class="res-count"><b id="compiled-count">0</b> compiled matches shown</div>
       <div id="compiled-results"></div>
-
-      <h3 class="ruleout-heading">Also considered, not pursued</h3>
-      <div class="ruleout-list">
-        <div class="ruleout-item">
-          <span class="ro-name">Truist Foundation</span><span class="ro-tag">Likelihood, not eligibility</span>
-          <div class="ro-reason">Its career-pathways pillar is a real subject match, and its own page states an open grant application process (deadlines March 31, July 31, and November 30; a $15,000 minimum local or regional grant). But Truist Financial Corp concentrates giving across the southeastern seaboard through Texas and up to the mid-Atlantic, while also funding some organizations coast to coast; its branch locator does return one Indiana location, in New Albany, roughly a hundred miles from Indianapolis, yet an Indianapolis literacy nonprofit sits well outside the markets where Truist concentrates its giving, and the Foundation states plainly that it will not provide general operating support. That is a judgment about likelihood, stated as one, not a hard eligibility rule.</div>
-          <div class="match-src">Source: truistfoundation.org/grant-application, truist.com/branch/in, fetched 2026-07-13.</div>
-        </div>
-        <div class="ruleout-item">
-          <span class="ro-name">Lowe's Foundation</span><span class="ro-tag">Invitation only</span>
-          <div class="ro-reason">Its Gable Grants page funds skilled-trades training, a genuine subject match, but both nonprofit tracks it offers, community-based and national, are marked invitation only.</div>
-          <div class="match-src">Source: lowesfoundation.org/gable-grants/, fetched 2026-07-13.</div>
-        </div>
-        <div class="ruleout-item">
-          <span class="ro-name">Bank of America</span><span class="ro-tag">Cycle closed</span>
-          <div class="ro-reason">Its Neighborhood Builders page states the 2026 cycle is closed, with the next cycle opening Spring 2027.</div>
-          <div class="match-src">Source: about.bankofamerica.com, fetched 2026-07-13.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-card" id="discovered">
-  <div class="fold">
-    <div class="section-head-row">
-      <div class="section-head">
-        <span class="kicker">Beyond the researched list</span>
-        <h2>Newly Discovered Funders <span class="badge badge-discovery">Discovery only, unverified</span></h2>
-      </div>
-      <button class="mc-toggle" type="button" aria-controls="discovered-fold-body"></button>
-    </div>
-    <div class="fold-body" id="discovered-fold-body">
-      <div class="res-count"><b>5</b> of 50 discovered candidates shown</div>
-      <div id="discovered-results">
-        <div class="match-card">
-          <div class="mc-head">
-            <span class="fname">Lumina Foundation For Education</span>
-            <span class="badge badge-discovery">EIN 35-1813228</span>
-            <button class="mc-toggle" type="button" aria-controls="discovered-1-body"></button>
-          </div>
-          <div class="mc-body" id="discovered-1-body">
-            <div class="match-geo">Indianapolis, IN</div>
-            <div class="impact-grid" style="margin-top:.9rem">
-              <div class="stat-tile"><div class="num">$1,544,151,334</div><div class="lbl">Total assets</div></div>
-              <div class="stat-tile"><div class="num">Private non-operating foundation</div><div class="lbl">Foundation type</div></div>
-            </div>
-            <div class="match-src">Surfaced from IRS Business Master File identity, geography, and NTEE classification (T20, private grantmaking foundations) only. No grants from this funder appear in the local Schedule I cache, and the source carries no grant history: verify current grantmaking (website, latest 990/990-PF) before outreach. A Business Master File listing is not proof of active giving. Source: IRS Business Master File, geocoded extract, generated 2026-07-19.</div>
-          </div>
-        </div>
-        <div class="match-card">
-          <div class="mc-head">
-            <span class="fname">Endless Success Foundation</span>
-            <span class="badge badge-discovery">EIN 47-2791355</span>
-            <button class="mc-toggle" type="button" aria-controls="discovered-2-body"></button>
-          </div>
-          <div class="mc-body" id="discovered-2-body">
-            <div class="match-geo">Indianapolis, IN</div>
-            <div class="impact-grid" style="margin-top:.9rem">
-              <div class="stat-tile"><div class="num">$895,480,315</div><div class="lbl">Total assets</div></div>
-              <div class="stat-tile"><div class="num">Private operating foundation</div><div class="lbl">Foundation type</div></div>
-            </div>
-            <div class="match-src">Surfaced from IRS Business Master File identity, geography, and NTEE classification (T20, private grantmaking foundations) only. No grants from this funder appear in the local Schedule I cache, and the source carries no grant history: verify current grantmaking before outreach. Source: IRS Business Master File, geocoded extract, generated 2026-07-19.</div>
-          </div>
-        </div>
-        <div class="match-card">
-          <div class="mc-head">
-            <span class="fname">Central Indiana Community Foundation</span>
-            <span class="badge badge-discovery">EIN 35-1793680</span>
-            <button class="mc-toggle" type="button" aria-controls="discovered-3-body"></button>
-          </div>
-          <div class="mc-body" id="discovered-3-body">
-            <div class="match-geo">Indianapolis, IN</div>
-            <div class="impact-grid" style="margin-top:.9rem">
-              <div class="stat-tile"><div class="num">$583,467,973</div><div class="lbl">Total assets</div></div>
-              <div class="stat-tile"><div class="num">Public charity, IRC 170(b)(1)(A)(vi)</div><div class="lbl">Foundation type</div></div>
-            </div>
-            <div class="match-src">Surfaced from IRS Business Master File identity, geography, and NTEE classification (T20, private grantmaking foundations) only. No grants from this funder appear in the local Schedule I cache, and the source carries no grant history: verify current grantmaking before outreach. Source: IRS Business Master File, geocoded extract, generated 2026-07-19.</div>
-          </div>
-        </div>
-        <div class="match-card">
-          <div class="mc-head">
-            <span class="fname">Nina Mason Pulliam Charitable Trust</span>
-            <span class="badge badge-discovery">EIN 35-6644088</span>
-            <button class="mc-toggle" type="button" aria-controls="discovered-4-body"></button>
-          </div>
-          <div class="mc-body" id="discovered-4-body">
-            <div class="match-geo">Indianapolis, IN</div>
-            <div class="impact-grid" style="margin-top:.9rem">
-              <div class="stat-tile"><div class="num">$441,084,433</div><div class="lbl">Total assets</div></div>
-              <div class="stat-tile"><div class="num">Private non-operating foundation</div><div class="lbl">Foundation type</div></div>
-            </div>
-            <div class="match-src">Surfaced from IRS Business Master File identity, geography, and NTEE classification (T20, private grantmaking foundations) only. No grants from this funder appear in the local Schedule I cache, and the source carries no grant history: verify current grantmaking before outreach. Source: IRS Business Master File, geocoded extract, generated 2026-07-19.</div>
-          </div>
-        </div>
-        <div class="match-card">
-          <div class="mc-head">
-            <span class="fname">Elevance Health Foundation</span>
-            <span class="badge badge-discovery">EIN 35-2122763</span>
-            <button class="mc-toggle" type="button" aria-controls="discovered-5-body"></button>
-          </div>
-          <div class="mc-body" id="discovered-5-body">
-            <div class="match-geo">Indianapolis, IN</div>
-            <div class="impact-grid" style="margin-top:.9rem">
-              <div class="stat-tile"><div class="num">$139,880,517</div><div class="lbl">Total assets</div></div>
-              <div class="stat-tile"><div class="num">Private non-operating foundation</div><div class="lbl">Foundation type</div></div>
-            </div>
-            <div class="match-src">Surfaced from IRS Business Master File identity, geography, and NTEE classification (T20, private grantmaking foundations) only. No grants from this funder appear in the local Schedule I cache, and the source carries no grant history: verify current grantmaking before outreach. Source: IRS Business Master File, geocoded extract, generated 2026-07-19.</div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -449,11 +333,27 @@ body{text-align:center}
       <button class="mc-toggle" type="button" aria-controls="method-fold-body"></button>
     </div>
     <div class="fold-body" id="method-fold-body">
-    <p><b>Where this comes from.</b> Every funder and every grant on this page is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages. Each match carries a link back to the source it came from, so nothing here has to be taken on trust. Where a funder does not publish a figure (an award range, a deadline, an eligibility rule), that gap is marked as unconfirmed rather than filled in.</p>
-    <p><b>What Almanac will not do.</b> It does not invent a fact about a funder. An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on. It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit. A candidate is never dressed up as a confirmed prior funder.</p>
-    <p><b>What it cannot tell you.</b> Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved. A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records. The ranking is a judgment about fit, not a prediction of success. Treat every row as a lead to verify against the funder's own page before you spend real time on it. Grant deadlines and eligibility rules move too: every one on this page was fetched in July 2026, a snapshot rather than a promise, so confirm it directly with the funder before writing anything.</p>
-    <p><b>How candidates are found and ranked.</b> Candidates are found by searching for funders whose own published guidelines name adult basic education, high school equivalency, English language acquisition, or workforce readiness, then filtering to the ones an Indianapolis nonprofit of this size could realistically approach; a parallel search of the Grants.gov public API, across roughly twenty keyword combinations and every plausible funding category, turned up one federal opportunity that could not confirm this applicant's state was in scope, so it is not shown here. Funders are not scored by an algorithm: each is tiered by fit (Strong, Promising, Lower-confidence), with the reasons against written out alongside the reasons for, and a candidate that is checked and ruled out is recorded with its reason rather than left off silently. Every IRS figure on a funder's page comes from ProPublica Nonprofit Explorer's JSON API, which parses the IRS's own e-file data for that organization's most recent processed return, fetched 2026-07-18; assets and liabilities are end-of-year balance-sheet figures, revenue is total revenue for the tax year shown, and qualifying distributions (roughly grants and charitable distributions paid) is reported only for 990-PF filers where ProPublica's summary endpoint returned a value, with "not returned by the source" meaning exactly that, never zero.</p>
-    <p><b>How the discovery list differs.</b> Beyond the five compiled matches, a separate pass scans the IRS's national foundation list for every grantmaking foundation in Marion County, Indiana that this organization's profile has not already surfaced, scoring each candidate on cause-area fit and geography alone; it found 50 candidates for this organization, and the five shown scored highest. None of those five carries a researched profile, a checked funding history, or a known open opportunity, since the IRS foundation list itself carries only a name, a location, an asset figure, and a classification code, nothing about whether a foundation is currently accepting requests or has ever funded work like this. Treat a discovery candidate as a lead worth checking, not a match worth pitching; all five were nonetheless web-verified as real, currently active foundations, and pre-filtered against the five funders already compiled above, so none overlap.</p>
+    <div class="table-scroll"><table class="funder-mini-table method-table">
+      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Where this comes from</td>
+          <td>Every funder and every grant on this page is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages. Each match carries a link back to the source it came from, so nothing here has to be taken on trust. Where a funder does not publish a figure (an award range, a deadline, an eligibility rule), that gap is marked as unconfirmed rather than filled in.</td>
+        </tr>
+        <tr>
+          <td>What Almanac will not do</td>
+          <td>It does not invent a fact about a funder. An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on. It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit. A candidate is never dressed up as a confirmed prior funder.</td>
+        </tr>
+        <tr>
+          <td>What it cannot tell you</td>
+          <td>Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved. A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records. The ranking is a judgment about fit, not a prediction of success. Treat every row as a lead to verify against the funder's own page before you spend real time on it. Grant deadlines and eligibility rules move too: every one on this page was fetched in July 2026, a snapshot rather than a promise, so confirm it directly with the funder before writing anything.</td>
+        </tr>
+        <tr>
+          <td>How candidates are found and ranked</td>
+          <td>Candidates are found by searching for funders whose own published guidelines name adult basic education, high school equivalency, English language acquisition, or workforce readiness, then filtering to the ones an Indianapolis nonprofit of this size could realistically approach; a parallel search of the Grants.gov public API, across roughly twenty keyword combinations and every plausible funding category, turned up one federal opportunity that could not confirm this applicant's state was in scope, so it is not shown here. Funders are not scored by an algorithm: each is tiered by fit (Strong, Promising, Lower-confidence). Every IRS figure on a funder's page comes from ProPublica Nonprofit Explorer's JSON API, which parses the IRS's own e-file data for that organization's most recent processed return, fetched 2026-07-18; assets and liabilities are end-of-year balance-sheet figures, revenue is total revenue for the tax year shown, and qualifying distributions (roughly grants and charitable distributions paid) is reported only for 990-PF filers where ProPublica's summary endpoint returned a value, with "not returned by the source" meaning exactly that, never zero.</td>
+        </tr>
+      </tbody>
+    </table></div>
     </div>
   </div>
 </section>
@@ -585,7 +485,7 @@ const PROFILE={
 const RANKED_FUNDERS=[
   {funder_name:"ProLiteracy, Literacy Opportunity Fund",ein:"16-6076384",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"National (United States); Syracuse, NY funder",reason:"The strongest match here, and the only funder whose entire published eligibility test this applicant passes on the wording alone.",source:"proliteracy.org, fetched 2026-07-13."},
   {funder_name:"Richard M. Fairbanks Foundation",ein:"31-1189885",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"Greater Indianapolis (a stated requirement, not a preference)",reason:"The best geographic fit available, and unusually open at the moment.",note:"The foundation's page also says it expects to begin accepting Health-area inquiries in late 2026, a window it states may move; confirm before relying on it.",source:"rmff.org/grants/process/, fetched 2026-07-13."},
-  {funder_name:"Joyce Foundation, Education & Economic Mobility",ein:"36-6079185",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"<b>Region:</b> Great Lakes: Illinois, Indiana, Michigan, Minnesota, Ohio and Wisconsin. <b>K-12 focus:</b> In the K-12 portfolio the foundation says it focuses mainly on Illinois, Indiana, Michigan and Minnesota, and at district level on Chicago, Indianapolis and Minneapolis. <b>Postsecondary:</b> On the postsecondary side its wording is 'We will consider select grants in Indiana and Wisconsin'",reason:"Substantially larger money than ProLiteracy, a real dated deadline, and Indiana genuinely in scope.",note:"Board proposal deadlines run three times a year: April 1, August 3, and December 1, 2026.",source:"joycefdn.org/grants/general-guidelines, joycefdn.org/grants/education-economic-mobility-guidelines, and joycefdn.org/apply, fetched 2026-07-13."},
+  {funder_name:"Joyce Foundation, Education & Economic Mobility",ein:"36-6079185",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"Region: Great Lakes: Illinois, Indiana, Michigan, Minnesota, Ohio and Wisconsin. K-12 focus: In the K-12 portfolio the foundation says it focuses mainly on Illinois, Indiana, Michigan and Minnesota, and at district level on Chicago, Indianapolis and Minneapolis. Postsecondary: On the postsecondary side its wording is 'We will consider select grants in Indiana and Wisconsin'",reason:"Substantially larger money than ProLiteracy, a real dated deadline, and Indiana genuinely in scope.",note:"Board proposal deadlines run three times a year: April 1, August 3, and December 1, 2026.",source:"joycefdn.org/grants/general-guidelines, joycefdn.org/grants/education-economic-mobility-guidelines, and joycefdn.org/apply, fetched 2026-07-13."},
   {funder_name:"Walmart Foundation, Spark Good Local Grants",ein:"20-5639919",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"National, but tied to a specific facility: the applicant must serve the same service area as the store it applies to",reason:"Small money, low friction, good odds, and actually open.",note:"Some third-party sources call this program \"Local Community Grants\"; that name does not appear on Walmart's own guidelines page.",source:"walmart.org, Spark Good Local Grants guidelines, fetched 2026-07-13."},
   {funder_name:"Lilly Endowment Inc.",ein:"35-0868122",is_confirmed_prior_funder:false,tier:"tier_2_promising",geography:"Priority to Indianapolis and Indiana (its Religion program is national)",reason:"The largest Indiana funder an Indianapolis nonprofit can name, with a deliberately narrow door.",source:"lillyendowment.org/for-grantseekers/guidelines/, fetched 2026-07-13."},
 ];
@@ -834,7 +734,7 @@ function renderProfile(){
   document.getElementById('p-mission').textContent=p.mission;
   document.getElementById('p-focus').innerHTML=p.programs.map(f=>`<span class="tag">${esc(f)}</span>`).join('');
   document.getElementById('p-total').textContent=RANKED_FUNDERS.length;
-  document.getElementById('p-geo').innerHTML=`<strong>${esc(p.geography.primary)}</strong><br>${p.geography.secondary.map(esc).join(', ')}`;
+  document.getElementById('p-geo').innerHTML=`${esc(p.geography.primary)}<br>${p.geography.secondary.map(esc).join(', ')}`;
   document.getElementById('p-founded').innerHTML=`${esc(p.founded)}${p.board_size?' &middot; '+esc(String(p.board_size))+'-member board':''}`;
   const fin=p.financials_fy2025;
   if(fin){
@@ -848,7 +748,7 @@ function renderProfile(){
   }
   const eff=p.expense_efficiency_fy2024;
   if(eff){
-    document.getElementById('p-efficiency').innerHTML=`<strong>${esc(eff.program_pct)}% to programs</strong> for the fiscal year ended ${esc(eff.fiscal_year_end)} (${esc(eff.mgmt_pct)}% management &amp; general, ${esc(eff.fundraising_pct)}% fundraising). Invented for this fictional organization. ${esc(eff.note)}`;
+    document.getElementById('p-efficiency').innerHTML=`${esc(eff.program_pct)}% to programs for the fiscal year ended ${esc(eff.fiscal_year_end)} (${esc(eff.mgmt_pct)}% management &amp; general, ${esc(eff.fundraising_pct)}% fundraising). Invented for this fictional organization. ${esc(eff.note)}`;
   }
 
   document.getElementById('p-funders-table').innerHTML=p.confirmed_prior_funders.map(f=>`
@@ -920,14 +820,21 @@ function applyCompiled(){
   host.innerHTML=list.map(f=>{
     const p=f.profile,g=f.grant;
     const dlClass=deadlineClass(g.deadline);
+    const whyRows=[
+      ['Geography',escKeepB(f.geography)],
+      ['Reason',escKeepB(f.reason)],
+    ];
+    if(f.note)whyRows.push(['Note',highlight(f.note,q)]);
+    whyRows.push(['Source',esc(f.source)]);
+    const whyRowsHTML=whyRows.map(([label,value])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
     const grantRows=[
-      ['Open Opportunity',`<a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a>`],
+      ['Open Opportunity',`<a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a>`,true],
       ['Focus Area',highlight(g.focus_area,q)],
       ['Eligibility',highlight(g.eligibility,q)],
       ['Amount',esc(g.amount)],
       ['Deadline',`<span class="deadline-val ${dlClass}">${esc(g.deadline)}</span>`],
       ['Notes',highlight(g.notes,q)],
-    ].map(([label,value])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
+    ].map(([label,value,featured])=>`<div class="qa-row${featured?' qa-row-featured':''}"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
     return `
     <div class="match-card" id="${esc('funder-'+f.ein)}">
       <div class="mc-head">
@@ -939,10 +846,7 @@ function applyCompiled(){
       <div class="mc-body" id="${esc('funder-'+f.ein)}-body">
         <div class="card">
           <h3>Why This Funder</h3>
-          <div class="match-geo">${escKeepB(f.geography)}</div>
-          <div class="match-reason">${escKeepB(f.reason)}</div>
-          ${f.note?`<div class="match-rationale">${highlight(f.note,q)}</div>`:''}
-          <div class="match-src">Source: ${esc(f.source)}</div>
+          <div class="qa-grid">${whyRowsHTML}</div>
         </div>
 
         <div class="card">
@@ -1053,7 +957,6 @@ async function load(){
   buildStatusFilter('compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
   setAdminUI();
   applyCompiled();
-  wireAccordion(document.getElementById('discovered-results'));
   wireAccordion(document.getElementById('profile'),'.card');
   wireAccordion(document.body,'.section-card,.method-wrap');
 }
