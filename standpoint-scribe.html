@@ -31,7 +31,32 @@ a{color:var(--ink)}
 .disclaimer-in p{margin:0;font-size:15px;line-height:1.5;color:var(--ink)}
 
 .section{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem}
-.section-head p{color:var(--wash);font-size:.94rem;max-width:72ch;margin:0}
+.section-head{text-align:center}
+.section-head p{color:var(--wash);font-size:.94rem;max-width:72ch;margin:0 auto}
+.section-head h2{text-transform:uppercase;letter-spacing:.05em}
+.section-lede p{color:var(--ink);font-size:15px;font-style:normal;font-weight:400;margin:0 0 .8rem}
+.manifest-in{justify-content:center}
+.manifest .grow{display:none}
+
+/* ---- Section-level card + accordion (current Almanac convention, propagated 2026-07-27):
+   every top-level section is its own bordered card, collapsible the same way as the cards
+   nested inside it on Almanac. Only Scribe's Ranked Shortlist has a card-level accordion of
+   its own (the priority card and viewer are each a single unit). The toggle sits on its own
+   centered line above the kicker/title. Only .fold-body collapses. ---- */
+.section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem}
+.section.section-card:last-of-type{margin-bottom:0}
+.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.mc-closed .fold-body{display:none}
+.mc-toggle{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;cursor:pointer;white-space:nowrap}
+.mc-toggle:hover{background:var(--paper)}
+
+/* ---- funder-mini-table / method-table (ported from Almanac's How-to-Read pattern; this
+   page had no table markup at all before) ---- */
+.funder-mini-table{width:100%;min-width:480px;table-layout:fixed;border-collapse:collapse;font-size:15px;margin-top:.5rem;text-align:left}
+.funder-mini-table th{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--wash);text-align:left;padding:.35rem .5rem;border-bottom:1px solid var(--rule)}
+.funder-mini-table td{padding:.45rem .5rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere;text-align:left}
+.funder-mini-table th:first-child,.funder-mini-table td:first-child{width:26%;font-weight:700}
+.funder-mini-table th:last-child,.funder-mini-table td:last-child{width:auto}
 
 /* ---- Priority pick (hero card for drafts[0]) ---- */
 .priority-card{background:var(--well);border:1.5px solid var(--ink);border-top:5px solid var(--accent);padding:0}
@@ -65,13 +90,17 @@ a{color:var(--ink)}
 
 /* ---- Ranked shortlist cards ---- */
 /* border/padding/title typography superseded by tool-shared.css's card-convergence block. */
-.draft-card{padding:0;cursor:pointer;transition:background .12s ease}
+.draft-card{padding:0}
 .dc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
-.dc-head .dc-name{flex:1;min-width:220px;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;overflow-wrap:anywhere}
+.dc-head .dc-name{flex:1 1 auto;min-width:0;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;overflow-wrap:anywhere}
 .dc-main{display:grid;grid-template-columns:64px 1fr;gap:1rem;align-items:start;padding:.9rem 1.2rem}
-.draft-card:hover{background:var(--well)}
-.draft-card.selected{background:var(--well);box-shadow:inset 4px 0 0 var(--accent)}
+.draft-card.selected{box-shadow:inset 4px 0 0 var(--accent)}
 @media(max-width:640px){.dc-main{grid-template-columns:52px 1fr;gap:.5rem}.dc-head{gap:.4rem}.dc-head .dc-name{min-width:0;flex-basis:100%}}
+/* ---- Card-level accordion (shortlist entries): every draft-card starts CLOSED on
+   load/re-render, no first-card exception, matching the section-level convention above. ---- */
+.mc-closed .mc-body{display:none}
+.dc-head .mc-toggle{margin-left:auto}
+@media(max-width:640px){.dc-head .mc-toggle{width:100%;margin-left:0;margin-top:.3rem;text-align:center}}
 .dc-score{text-align:center;padding-top:.2rem}
 .dc-score .dcs-num{font-family:var(--serif);font-weight:400;font-size:22.5px;color:var(--accent);line-height:1}
 .dc-score .dcs-lbl{font-family:var(--serif);font-size:15px;text-transform:none;letter-spacing:.01em;color:var(--wash);font-style:italic;font-weight:400}
@@ -92,12 +121,8 @@ a{color:var(--ink)}
 @media(max-width:640px){.dc-deadline{max-width:none}}
 .badge{font-family:var(--serif);font-size:12.5px;padding:.14rem .45rem;letter-spacing:.03em;text-transform:uppercase;border:1px solid var(--rule);color:var(--wash);vertical-align:middle;font-weight:700}
 .badge.sample{background:var(--ok);color:#fff;border-color:var(--ok)}
-/* ---- Card variants: sample (clickable, opens viewer) vs info-only (no viewer) ---- */
-.draft-card.sample-card{cursor:pointer}
-.draft-card.info-card{cursor:default}
-.draft-card.info-card:hover{background:transparent}
 .dc-note{font-family:var(--mono);font-size:.84rem;color:var(--wash);margin-top:.4rem;font-style:italic}
-.dc-actions{margin-top:.6rem}
+.dc-actions{margin-top:.6rem;display:flex;gap:.6rem;flex-wrap:wrap}
 .dc-actions .btn{font-size:.84rem;padding:.4rem .8rem}
 /* ---- Strength rating badges (small, for cards/priority) ---- */
 .sbadge{font-family:var(--serif);font-size:12.5px;font-weight:700;padding:.14rem .45rem;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--rule);vertical-align:middle;white-space:nowrap}
@@ -159,13 +184,15 @@ a{color:var(--ink)}
 /* ---- Missing (not currently possessed) marker — red ---- */
 .miss{background:#f7dcdc;color:#6b1f1f;padding:0 3px;border-bottom:1px solid #b34141;font-family:var(--mono);font-size:.86em;border-radius:2px;overflow-wrap:anywhere}
 .miss-tag{font-family:var(--mono);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#b34141;padding:.04rem .32rem;margin-right:.35rem;border-radius:2px;vertical-align:middle}
-/* ---- Reader notice box (conspicuous "how to read this" callout, near draft viewer) ---- */
-.reader-notice{background:var(--well);border:1.5px solid var(--accent);border-left-width:5px;padding:1rem 1.2rem;margin-bottom:1.4rem}
+/* ---- Reader notice box (conspicuous "how to read this" callout, near draft viewer). Fully
+   center-aligned (owner request, 2026-07-27, matching the Request form treatment). The
+   left-margin "›" bullet made sense for a left-aligned list; centered, it would float away
+   from the text it used to mark, so it's dropped rather than kept disconnected. ---- */
+.reader-notice{background:var(--well);border:1.5px solid var(--accent);border-left-width:5px;padding:1rem 1.2rem;margin-bottom:1.4rem;text-align:center}
 .reader-notice h3{font-family:var(--serif);font-size:25px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0 0 .6rem}
 .reader-notice ul{list-style:none;margin:0;padding:0}
-.reader-notice li{position:relative;padding:.28rem 0 .28rem 1.1rem;font-size:1.125rem;line-height:1.5;color:var(--ink);border-bottom:1px solid var(--rule-soft)}
+.reader-notice li{padding:.28rem 0;font-size:1.125rem;line-height:1.5;color:var(--ink);border-bottom:1px solid var(--rule-soft)}
 .reader-notice li:last-child{border-bottom:none}
-.reader-notice li::before{content:"›";position:absolute;left:0;color:var(--accent);font-weight:700}
 .reader-notice .rn-sug{background:#fff3b0;color:#5c4a00;padding:0 4px;border-radius:2px;font-family:var(--mono);font-size:.82em;font-weight:600}
 .reader-notice .rn-conf{background:#dcebfb;color:#123a63;padding:0 4px;border-radius:2px;font-family:var(--mono);font-size:.82em;font-weight:700}
 .reader-notice .rn-miss{background:#f7dcdc;color:#6b1f1f;padding:0 4px;border-radius:2px;font-family:var(--mono);font-size:.82em;font-weight:700}
@@ -196,8 +223,6 @@ a{color:var(--ink)}
 .qa-note .qa-align{font-size:15px;line-height:1.55;color:var(--ink);margin:.3rem 0 0}
 .sources{margin:1.4rem 0 0}
 .sources h3{font-weight:700;font-family:var(--serif);font-size:25px;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);margin:0 0 .5rem}
-.sources ul{margin:0;padding-left:1.1rem}
-.sources li{font-family:var(--mono);font-size:14px;color:var(--wash);line-height:1.5;margin-bottom:.35rem}
 /* ---- Inline footnote citation refs + per-draft Sources list (web only) ---- */
 .fn-ref{font-size:.8em;line-height:0;white-space:nowrap}
 .fn-ref a{color:var(--accent);text-decoration:none;font-family:var(--mono);font-weight:700;padding:0 1px}
@@ -212,18 +237,20 @@ a{color:var(--ink)}
 .fn-note{color:var(--wash);font-style:italic}
 
 
-/* ---- Request / submit form ---- */
+/* ---- Request / submit form (owner request, 2026-07-27: fully center-aligned). ---- */
+#submit .fold-body{text-align:center}
+#request-form{max-width:640px;margin:0 auto;text-align:center}
 .requesting-label{font-family:var(--mono);font-size:14px;color:var(--ink);background:var(--well);border-left:3px solid var(--accent);padding:.55rem .85rem;margin:.5rem 0 0;display:inline-block}
 .needs-back{display:inline-block;margin-bottom:1.4rem;text-decoration:none}
 .form-field{margin-bottom:1.3rem}
 .form-field label{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
-.form-field textarea{width:100%;font-family:var(--serif);font-size:.95rem;padding:.7rem .8rem;border:1.5px solid var(--ink);background:var(--well);color:var(--ink);resize:vertical;outline:none}
+.form-field textarea{width:100%;font-family:var(--serif);font-size:.95rem;padding:.7rem .8rem;border:1.5px solid var(--ink);background:var(--well);color:var(--ink);resize:vertical;outline:none;text-align:left}
 .form-field textarea:focus{outline:2px solid var(--ink);outline-offset:0}
 .form-field input[type="file"]{font-family:var(--mono);font-size:.88rem;color:var(--ink)}
 .field-hint{font-family:var(--mono);font-size:.84rem;color:var(--wash);margin-top:.35rem}
 /* Honeypot: visually hidden, still in the tab/DOM flow for bots that fill every field */
 .hp-field{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
-.form-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
+.form-actions{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
 .form-status{font-family:var(--mono);font-size:.88rem;color:var(--ok)}
 .form-status.error{color:var(--urgent)}
 
@@ -248,6 +275,9 @@ body{overflow-x:hidden}
 .hero{text-align:left;padding:3.2rem 1.25rem 2.2rem;border-bottom:1px solid var(--rule)}
 .section{padding:2.6rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
 @media(max-width:640px){.hero{padding:2.2rem 1.25rem 1.6rem}.hero h1{font-size:30px}}
+
+/* Footer fully center-aligned (owner request, 2026-07-27). */
+footer{text-align:center}
 </style>
 </head>
 <body>
@@ -260,9 +290,11 @@ body{overflow-x:hidden}
     <span class="stat">generated <strong id="m-date">…</strong></span>
     <span class="grow"></span>
     <nav>
+      <a href="#how-to-read">How to Read</a>
       <a href="#priority">Priority Pick</a>
       <a href="#shortlist">Shortlist</a>
       <a href="#viewer">Draft Viewer</a>
+      <a href="#method">How This Was Built</a>
       <a href="#submit">Request a Draft</a>
     </nav>
   </div>
@@ -282,13 +314,51 @@ body{overflow-x:hidden}
   </div>
 </div>
 
-<section class="section" id="priority">
+<section class="section section-card" id="how-to-read">
   <div class="fold">
-    <div class="section-head">
-      <span class="kicker">Draft this now</span>
-      <h2>Priority Pick</h2>
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="how-to-read-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Read This First</span>
+        <h2>How to read this page</h2>
+      </div>
     </div>
-    <div class="fold-body">
+    <div class="fold-body" id="how-to-read-fold-body">
+    <div class="table-scroll"><table class="funder-mini-table method-table">
+      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>This organization</td>
+          <td>Standpoint is real: a Minnesota nonprofit (legal name Battered Women's Legal Advocacy Project, dba Standpoint) that promotes justice for domestic and sexual violence victims through direct legal work inside the state's court systems.<br><br>Every fact on this page about Standpoint itself is sourced from standpointmn.org or its public IRS Form 990 filing via ProPublica Nonprofit Explorer, or flagged Confirm/Missing where it could not be.</td>
+        </tr>
+        <tr>
+          <td>The funder and grant</td>
+          <td>A real sample draft is included below: the joint Minnesota State Bar Foundation / Ramsey County Bar Foundation application.<br><br>Every amount, deadline, and eligibility rule quoted from either foundation is sourced from mnbars.org's own pages, or marked unconfirmed.<br><br>What is illustrative is the seven-section structure itself. The real application form is a Monday.com JavaScript single-page app that no automated fetch can render, so the sections below are a representative placeholder built from comparable bar-foundation applications, not the confirmed real form.</td>
+        </tr>
+        <tr>
+          <td>Reading the draft</td>
+          <td>An inline <span class="sug-tag" style="margin-right:0">Suggested</span> marks an AI-drafted plausible value to confirm or replace.<br><br>An inline <span class="conf-tag" style="margin-right:0">Confirm</span> marks a fact only Standpoint can supply.<br><br>An inline <span class="miss-tag" style="margin-right:0">Missing</span> marks information not currently possessed that must be produced or sourced.<br><br>Superscript footnotes cite the source of each fact, so you can verify or locate it.</td>
+        </tr>
+        <tr>
+          <td>Next steps</td>
+          <td>Want your own draft, against any grant on your shortlist? <a href="#submit">Request a draft &#8595;</a><br><br>Want the funder matches this draft was built from? <a href="standpoint-almanac.html">See Almanac &#8594;</a></td>
+        </tr>
+      </tbody>
+    </table></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-card" id="priority">
+  <div class="fold">
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="priority-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Draft this now</span>
+        <h2>Priority Pick</h2>
+      </div>
+    </div>
+    <div class="fold-body" id="priority-fold-body">
     <div class="section-lede">
       <p>The single highest-payoff opportunity right now, assessed on relevance, award fit, urgency, and confirmed-funder status. Start here.</p>
     </div>
@@ -297,29 +367,35 @@ body{overflow-x:hidden}
   </div>
 </section>
 
-<section class="section" id="shortlist">
+<section class="section section-card" id="shortlist">
   <div class="fold">
-    <div class="section-head">
-      <span class="kicker">Payoff-ranked</span>
-      <h2>Ranked Shortlist <span class="fold-count" data-count-from="draft-count" data-count-label="drafts"></span></h2>
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="shortlist-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Payoff-ranked</span>
+        <h2>Ranked Shortlist <span class="fold-count" data-count-from="draft-count" data-count-label="drafts"></span></h2>
+      </div>
     </div>
-    <div class="fold-body">
+    <div class="fold-body" id="shortlist-fold-body">
     <div class="section-lede">
       <p>Standpoint's five most-aligned funding opportunities, drawn from its Almanac funder matches (see Almanac). The sample opens in the draft viewer below; request a full draft for any grant here.</p>
     </div>
-      <div class="res-count"><b id="draft-count">0</b> drafts shown</div>
       <div id="shortlist-host"></div>
+      <div class="res-count"><b id="draft-count">0</b> drafts shown</div>
     </div>
   </div>
 </section>
 
-<section class="section" id="viewer">
+<section class="section section-card" id="viewer">
   <div class="fold">
-    <div class="section-head">
-      <span class="kicker">Full draft: included sample</span>
-      <h2>Draft Viewer</h2>
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="viewer-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Full draft: included sample</span>
+        <h2>Draft Viewer</h2>
+      </div>
     </div>
-    <div class="fold-body">
+    <div class="fold-body" id="viewer-fold-body">
     <div class="section-lede">
       <p>The MSBF/RCBF joint application sample's complete draft: seven application sections, the fact-check note, and sources (the "what we still need" checklist is just below). Copy or download the whole thing.</p>
     </div>
@@ -328,13 +404,16 @@ body{overflow-x:hidden}
   </div>
 </section>
 
-<section class="section" id="needs">
+<section class="section section-card" id="needs">
   <div class="fold">
-    <div class="section-head">
-      <span class="kicker">Before you submit</span>
-      <h2>What we still need from you</h2>
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="needs-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Before you submit</span>
+        <h2>What we still need from you</h2>
+      </div>
     </div>
-    <div class="fold-body">
+    <div class="fold-body" id="needs-fold-body">
     <div class="section-lede">
       <p>Every draft carries a checklist of facts only Standpoint can confirm or supply. Here's the sample draft's list; the grant you request will carry its own version of this checklist.</p>
     </div>
@@ -343,13 +422,16 @@ body{overflow-x:hidden}
   </div>
 </section>
 
-<section class="section" id="submit">
+<section class="section section-card" id="submit">
   <div class="fold">
-    <div class="section-head">
-      <span class="kicker">Add-on</span>
-      <h2>Request your draft</h2>
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="submit-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Add-on</span>
+        <h2>Request your draft</h2>
+      </div>
     </div>
-    <div class="fold-body">
+    <div class="fold-body" id="submit-fold-body">
     <div class="section-lede">
       <p id="requesting-label" class="requesting-label">Select a grant above</p>
     </div>
@@ -389,13 +471,38 @@ body{overflow-x:hidden}
   </div>
 </section>
 
-<section class="method-wrap" id="method">
-  <div class="method-box">
-    <div class="method-kicker">Method</div>
-    <h2>How this was built, and what it cannot tell you</h2>
-    <p><b>Where this comes from.</b> Each draft is built from two sources and no others: the Almanac match that identified the funder, with that funder's own published requirements, and the organization's own public record &mdash; its website, its filings, and the materials it has already put into the world. Every substantive claim in a draft traces back to one of those two places.</p>
-    <p><b>What Scribe will not do.</b> It does not invent facts about the organization. When an application asks for something only the applicant holds &mdash; a budget line, an outcome figure, a board resolution, a letter of support &mdash; Scribe does not guess at it. It leaves the space empty and puts the item on the list of what is still needed. This is the whole discipline of the tool: an invented number is worse than a blank one, because a blank gets filled in before it is filed and an invention gets submitted.</p>
-    <p><b>What it cannot tell you.</b> A draft is a draft, not a submission. Funder requirements change, portals impose their own formats and character limits, and the published guidance a draft was built from can already be out of date. Everything here has to be checked against the funder's live application before it is filed, and the organization's own people are the only ones who can confirm that what it says about them is true today. Scribe is built to remove the blank page. It is not built to remove the review.</p>
+<section class="section section-card" id="method">
+  <div class="fold">
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="method-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Method</span>
+        <h2>How this was built</h2>
+      </div>
+    </div>
+    <div class="fold-body" id="method-fold-body">
+    <div class="table-scroll"><table class="funder-mini-table method-table">
+      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Where this comes from</td>
+          <td>Each draft is built from two sources and no others: the Almanac match that identified the funder, with that funder's own published requirements, and the organization's own public record, its website, its filings, and the materials it has already put into the world.<br><br>Every substantive claim in a draft traces back to one of those two places.</td>
+        </tr>
+        <tr>
+          <td>What Scribe will not do</td>
+          <td>It does not invent facts about the organization.<br><br>When an application asks for something only the applicant holds, a budget line, an outcome figure, a board resolution, a letter of support, Scribe does not guess at it. It leaves the space empty and puts the item on the list of what is still needed.<br><br>This is the whole discipline of the tool: an invented number is worse than a blank one, because a blank gets filled in before it is filed and an invention gets submitted.</td>
+        </tr>
+        <tr>
+          <td>What it cannot tell you</td>
+          <td>A draft is a draft, not a submission.<br><br>Funder requirements change, portals impose their own formats and character limits, and the published guidance a draft was built from can already be out of date.<br><br>Everything here has to be checked against the funder's live application before it is filed, and the organization's own people are the only ones who can confirm that what it says about them is true today.<br><br>Scribe is built to remove the blank page. It is not built to remove the review.</td>
+        </tr>
+        <tr>
+          <td>How drafts are ranked</td>
+          <td id="method-scoring"></td>
+        </tr>
+      </tbody>
+    </table></div>
+    </div>
   </div>
 </section>
 
@@ -419,6 +526,29 @@ const state={selected:0};
 /* ---- Shared helpers (verbatim pattern from almanac.html / measure-scribe.html) ---- */
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function money(n){return '$'+Number(n).toLocaleString();}
+/* Dense multi-sentence prose (the disclaimer, in particular) is split to one sentence per
+   line rather than one dense paragraph, matching the Almanac convention. */
+function sentenceBreak(text){
+  if(!text)return '';
+  return text.split(/(?<=[.!?])\s+(?=[A-Z0-9])/).map(s=>esc(s)).join('<br><br>');
+}
+/* Card-level accordion. Every card with a toggle starts CLOSED on load/refresh, no
+   first-card exception. Re-run on every render, including a selection re-render. */
+function wireAccordion(host,cardSelector,toggleSelector){
+  const cards=host.querySelectorAll(cardSelector||'.section-card');
+  const tSel=toggleSelector||':scope > .fold > .section-head-row > .mc-toggle';
+  cards.forEach((card)=>{
+    const btn=card.querySelector(tSel);
+    if(!btn)return;
+    const setOpen=open=>{
+      card.classList.toggle('mc-closed',!open);
+      btn.setAttribute('aria-expanded',String(open));
+      btn.textContent=open?'Hide details':'Show details';
+    };
+    setOpen(false);
+    btn.addEventListener('click',()=>setOpen(card.classList.contains('mc-closed')));
+  });
+}
 function deadlineClass(s){
   const m=(s||'').match(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/);
   if(!m)return'';
@@ -726,14 +856,16 @@ function renderShortlist(){
     const sa=d.strength_analysis||{};
     const sbadge=sa.overall?`<span class="sbadge ${strengthClass(sa.overall)}" title="Application strength">${esc(sa.overall)}</span>`:'';
     const isSample=!!d.is_sample;
-    const clickableAttrs=isSample?' role="button" tabindex="0"':'';
     const sampleTag=isSample?'<span class="badge sample">Included sample</span> ':'';
     const availNote=isSample?'':'<div class="dc-note">Full draft available on request.</div>';
-    return `<div class="draft-card ${isSample?'sample-card':'info-card'}${isSample&&i===state.selected?' selected':''}" data-idx="${i}"${clickableAttrs}>
+    const viewBtn=isSample?`<button class="btn solid view-draft-btn" type="button" data-idx="${i}">View full draft &#8595;</button>`:'';
+    return `<div class="draft-card ${isSample?'sample-card':'info-card'}${isSample&&i===state.selected?' selected':''}" id="${'draft-'+i}">
       <div class="dc-head">
         <div class="dc-name">${sampleTag}${esc(d.grant_name)}${sbadge?' '+sbadge:''}</div>
         <div class="dc-deadline ${dlc}">${esc(d.grant_deadline)}</div>
+        <button class="mc-toggle" type="button" aria-controls="${'draft-'+i}-body"></button>
       </div>
+      <div class="mc-body" id="${'draft-'+i}-body">
       <div class="dc-main">
       <div class="dc-score">
         <div class="dcs-num">${esc(String(d.payoff_score))}</div>
@@ -743,30 +875,26 @@ function renderShortlist(){
         <div class="dc-funder">${esc(d.funder)}</div>
         <div class="dc-rationale">${esc(d.priority_rationale)}</div>
         ${availNote}
-        <div class="dc-actions"><button class="btn request-btn" type="button" data-idx="${i}">Request this draft</button></div>
+        <div class="dc-actions">${viewBtn}<button class="btn request-btn" type="button" data-idx="${i}">Request this draft</button></div>
+      </div>
       </div>
       </div>
     </div>`;
   }).join('');
 
-  host.querySelectorAll('.draft-card.sample-card').forEach(card=>{
-    const idx=Number(card.getAttribute('data-idx'));
-    card.addEventListener('click',e=>{
-      if(e.target.closest('.request-btn'))return;
+  host.querySelectorAll('.view-draft-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const idx=Number(btn.getAttribute('data-idx'));
       selectDraft(idx,true);
-    });
-    card.addEventListener('keydown',e=>{
-      if(e.target.closest('.request-btn'))return;
-      if(e.key==='Enter'||e.key===' '){e.preventDefault();selectDraft(idx,true);}
     });
   });
   host.querySelectorAll('.request-btn').forEach(btn=>{
-    btn.addEventListener('click',e=>{
-      e.stopPropagation();
+    btn.addEventListener('click',()=>{
       const idx=Number(btn.getAttribute('data-idx'));
       requestDraft(idx);
     });
   });
+  wireAccordion(host,'.draft-card',':scope > .dc-head > .mc-toggle');
 }
 
 /* ---- Draft viewer ---- */
@@ -812,7 +940,12 @@ function renderViewer(){
   const removedCount=(qa.hallucinated_facts_removed||[]).length;
   const verdict=qa.verdict||'not available';
 
-  const sources=(d.sources_used||[]).map(s=>`<li>${esc(s)}</li>`).join('');
+  const sources=(d.sources_used||[]).map(s=>{
+    const m=/^([A-Z][A-Z0-9 /&'-]*[A-Z0-9]):\s*(.*)$/s.exec(s);
+    const label=m?m[1]:'';
+    const detail=m?m[2]:s;
+    return `<li><span class="sf-factor">${esc(label)}</span><span class="sf-assess">${esc(detail)}</span></li>`;
+  }).join('');
   const footnotesList=renderFootnotes(d);
 
   const readerNotice=`
@@ -864,7 +997,7 @@ function renderViewer(){
 
     <div class="sources">
       <h3>Sources used</h3>
-      <ul>${sources}</ul>
+      <ul class="strength-factors">${sources}</ul>
     </div>
 
     ${footnotesList}`;
@@ -1148,13 +1281,15 @@ function downloadDraft(d){
 function load(){
   document.getElementById('m-drafts').textContent=DRAFTS.length;
   document.getElementById('m-date').textContent=GENERATED_DATE;
-  document.getElementById('disclaimer-text').textContent=DISCLAIMER;
+  document.getElementById('disclaimer-text').innerHTML=sentenceBreak(DISCLAIMER);
   document.getElementById('footer-links').innerHTML='<a href="https://www.standpointmn.org/" target="_blank" rel="noopener">standpointmn.org</a>';
+  document.getElementById('method-scoring').textContent=METHOD;
 
   renderPriority();
   renderShortlist();
   renderViewer();
   renderNeeds();
+  wireAccordion(document.body);
 }
 
 initRequestForm();
@@ -1162,9 +1297,7 @@ load();
 </script>
 <script>
 /* Two jobs:
-   (1) A hash-anchor link scrolls its target into view. Sections can no longer be hidden
-       (the fold/accordion mechanism was removed), but the explicit scroll is still needed -
-       nothing else moves the viewport to the anchor.
+   (1) A hash-anchor link scrolls its target into view.
    (2) Mirror each list section's own counter into its heading chip, so the count is never
        out of sync with what the section actually shows. */
 (function(){
