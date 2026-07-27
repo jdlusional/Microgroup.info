@@ -115,7 +115,12 @@ relevant to its own site rather than duplicating the other's detail.
   2026-07-23 from jonathanlindavis.com.
   - **KCT** (`kct.html` hub) branching to two destinations: `kct-website.html` (Katelyn C.
     Thompson's public brand site — self-contained with embedded base64 images,
-    `kct-hard-snap.js` drives the hard-snap scroll) and `kct-oppo.html` — **taken fully
+    `kct-hard-snap.js` drives the hard-snap scroll; **retired 2026-07-27**, migrated to her own
+    purchased domain `katelyncthompson.com` in a dedicated `jdlusional/katelyncthompson.com`
+    repo + Cloudflare Pages project; `kct-website(.html)` here now just 301s there, and the
+    `/kct*` Access app was narrowed from a wildcard to exact `microgroup.info/kct` +
+    `/kct.html` so the redirect fires publicly instead of hitting the login wall) and
+    `kct-oppo.html` — **taken fully
     offline 2026-07-23** (file removed; its Cloudflare Access app left in place, now
     protecting nothing) after the app's exact-path domain match briefly failed to cover the
     `.html` URL. That gap existed because this repo has no clean-URL middleware like
