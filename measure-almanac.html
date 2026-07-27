@@ -1476,6 +1476,12 @@ function highlight(text,q){
   return esc(text).replace(re,'<mark>$1</mark>');
 }
 function money(n){const v=Number(n);return (v<0?'-$':'$')+Math.abs(v).toLocaleString();}
+const PUBLIC_CHARITY_FOUNDATION_CODES=new Set([10,11,12,13,14,15,16,17,18,21,22,23,24]);
+function fmtQualDistrib(n,foundationCode){
+  if(n!==null&&n!==undefined)return money(n);
+  if(PUBLIC_CHARITY_FOUNDATION_CODES.has(foundationCode))return '<span class="not-published">Not applicable (public charity, not a 990-PF filer)</span>';
+  return '<span class="not-published">not returned by the source</span>';
+}
 
 function statusOf(itemType,itemId){
   return state.statuses[itemType+':'+itemId]||{status:'not_started',notes:''};
@@ -1747,7 +1753,7 @@ function applyCompiled(){
           <div class="stat-tile"><div class="num">${money(p.assets)}</div><div class="lbl">Total assets (EOY)</div></div>
           <div class="stat-tile"><div class="num">${money(p.revenue)}</div><div class="lbl">Total revenue</div></div>
           <div class="stat-tile"><div class="num">${money(p.liabilities)}</div><div class="lbl">Total liabilities (EOY)</div></div>
-          <div class="stat-tile"><div class="num">${p.qualifying_distributions==null?'<span class="not-published">not returned by source</span>':money(p.qualifying_distributions)}</div><div class="lbl">Qualifying distributions (990-PF only)</div></div>
+          <div class="stat-tile"><div class="num">${fmtQualDistrib(p.qualifying_distributions,p.foundation_code)}</div><div class="lbl">Qualifying distributions (990-PF only)</div></div>
         </div>
         <div class="match-src">${esc(p.city)}, ${esc(p.state)} &middot; IRC 501(c)(${esc(String(p.subsection_code))}) &middot; foundation code ${esc(String(p.foundation_code))} &middot; NTEE ${p.ntee_code?esc(p.ntee_code):'<span class="not-published">not on file</span>'} &middot; tax year ${esc(String(p.tax_year))}. Source: ProPublica Nonprofit Explorer JSON API, projects.propublica.org/nonprofits/api/v2/organizations/${esc(f.funder_ein)}.json, fetched 2026-07-23.</div>
         <div class="qa-grid" style="margin-top:.9rem">${grantRows}</div>
