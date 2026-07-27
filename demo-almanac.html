@@ -936,9 +936,10 @@ function deadlineClass(s){
   return'';
 }
 
+const PUBLIC_CHARITY_FOUNDATION_CODES=new Set([10,11,12,13,14,15,16,17,18,21,22,23,24]);
 function fmtQualDistrib(n,foundationCode){
   if(n!==null&&n!==undefined)return money(n);
-  if(foundationCode===15)return '<span class="not-published">Not applicable (public charity, not a 990-PF filer)</span>';
+  if(PUBLIC_CHARITY_FOUNDATION_CODES.has(foundationCode))return '<span class="not-published">Not applicable (public charity, not a 990-PF filer)</span>';
   return '<span class="not-published">not returned by the source</span>';
 }
 

@@ -26,7 +26,22 @@ a{color:var(--ink)}
 .hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1.4rem;text-align:center}
 
 .section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
-.section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0}
+.section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0 auto}
+.section-head h2{text-transform:uppercase;letter-spacing:.05em}
+.section-lede p{color:var(--ink);font-size:15px;font-style:normal;font-weight:400;margin:0 0 .8rem}
+.manifest-in{justify-content:center}
+.manifest .grow{display:none}
+.section-head-tags{margin-top:.6rem}
+.section-head-tags:empty{display:none}
+
+/* ---- Section-level card + accordion (current Almanac convention, propagated 2026-07-27):
+   every top-level section is its own bordered card, collapsible the same way as the cards
+   nested inside it. The toggle sits on its own centered line above the kicker/title. Only
+   .fold-body collapses. ---- */
+.section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem}
+.section.section-card:last-of-type{margin-bottom:0}
+.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.mc-closed .fold-body{display:none}
 
 /* ---- Profile section ---- */
 .profile-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.5rem}
@@ -34,52 +49,58 @@ a{color:var(--ink)}
 .card{background:var(--well);border:1px solid var(--rule);padding:1.3rem 1.4rem;min-width:0;overflow-wrap:anywhere}
 .card h3{font-weight:700;font-family:var(--serif);font-size:25px;text-transform:uppercase;letter-spacing:.08em;color:var(--wash);margin:0 0 .6rem}
 .card p{margin:0 0 .8rem;font-size:15px}
-.tag-row{display:flex;flex-wrap:wrap;gap:.4rem}
-.tag{font-family:var(--mono);font-size:14px;padding:.22rem .58rem;background:var(--paper);border:1px solid var(--rule);color:var(--ink)}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center}
+.tag{font-family:var(--mono);font-size:14px;padding:.22rem .58rem;background:var(--paper);border:1px solid var(--rule);color:var(--ink);white-space:nowrap}
 .stat-tile{text-align:center;padding:1rem}
 .stat-tile .num{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--accent);line-height:1}
 .stat-tile .lbl{font-family:var(--mono);font-size:12.5px;color:var(--wash);text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem}
-.funder-mini-table{width:100%;min-width:480px;table-layout:fixed;border-collapse:collapse;font-size:15px;margin-top:.5rem}
+.funder-mini-table{width:100%;min-width:480px;table-layout:fixed;border-collapse:collapse;font-size:15px;margin-top:.5rem;text-align:left}
 .funder-mini-table th{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--wash);text-align:left;padding:.35rem .5rem;border-bottom:1px solid var(--rule)}
-.funder-mini-table td{padding:.45rem .5rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere}
+.funder-mini-table td{padding:.45rem .5rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere;text-align:left}
 .funder-mini-table th:first-child,.funder-mini-table td:first-child{width:26%}
+.method-table th:first-child,.method-table td:first-child{font-weight:700}
 .funder-mini-table th:last-child,.funder-mini-table td:last-child{width:18%}
+.method-table th:last-child,.method-table td:last-child{width:auto}
 .funder-mini-table .amt{font-family:var(--mono);text-align:right;color:var(--wash);font-size:14px}
 .impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin-top:.3rem}
 .impact-grid .stat-tile{padding:.7rem .5rem;background:var(--paper);border:1px solid var(--rule);min-width:0}
 .impact-grid .stat-tile .num{font-size:24px}
 .impact-grid .stat-tile .lbl{white-space:normal;line-height:1.3}
+.not-published{color:var(--wash);font-style:italic;font-weight:400}
 
-/* ---- Search/filter bar (shared pattern) ---- */
+/* ---- Status/filter chip bar (shared pattern) ---- */
 .toolbar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-bottom:1.1rem}
-.search{flex:1;min-width:220px;padding:.6rem .75rem;border:1.5px solid var(--ink);border-radius:0;font-family:var(--serif);font-size:15px;background:var(--well);color:var(--ink);outline:none}
-.search:focus{outline:2px solid var(--ink);outline-offset:0}
 .chip-filter{display:flex;gap:.4rem;flex-wrap:wrap}
 .chip-btn{font-family:var(--mono);font-size:.84rem;padding:.32rem .65rem;border:1px solid var(--rule);background:var(--well);color:var(--wash);cursor:pointer}
 .chip-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 
 /* ---- Funder match cards ---- */
-/* border/padding/title typography superseded by tool-shared.css's card-convergence block. */
 .match-card{padding:0}
 .mc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
-.mc-head .fname{flex:1;min-width:220px;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;overflow-wrap:anywhere}
-.mc-head .match-rank{font-family:var(--mono);font-size:.88rem;color:var(--wash)}
-.mc-body{padding:.9rem 1.2rem;min-width:0}
-@media(max-width:640px){.mc-head{gap:.4rem}.mc-head .fname{min-width:0;flex-basis:100%}}
-.match-body{min-width:0}
+.mc-head .fname{flex:1 1 auto;min-width:0;white-space:nowrap;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;text-align:left}
+.mc-body{min-width:0}
+.match-card>.mc-body{padding:.9rem 1.2rem}
+@media(max-width:640px){.mc-head{gap:.4rem}.mc-head .fname{min-width:0;flex-basis:100%;white-space:normal;overflow-wrap:anywhere}}
 .badge{font-family:var(--serif);font-size:12.5px;padding:.16rem .5rem;letter-spacing:.03em;text-transform:uppercase;font-weight:700}
-.badge-confirmed{background:var(--ok);color:#fff}
 .badge-new{background:var(--accent);color:#fff}
-.score-num.likely-label{color:var(--warn)}
-.score-bar-fill.likely-fill{background:var(--warn)}
-.score-num.historical-label{color:var(--wash);font-size:.86rem;letter-spacing:.02em}
-.match-geo{font-family:var(--serif);font-size:17.5px;color:var(--wash);margin-top:.15rem;font-weight:700}
-.match-rationale{font-size:17.5px;color:var(--ink);margin-top:.4rem;line-height:1.55}
-.match-score{text-align:right;margin-left:auto}
-.score-num{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--accent)}
-.score-num.confirmed-label{font-size:.86rem;letter-spacing:.02em}
-.score-bar{width:70px;height:5px;background:var(--rule);margin-top:.35rem}
-.score-bar-fill{height:100%;background:var(--accent)}
+
+/* ---- Card-level accordion: every card with a toggle starts CLOSED on load/refresh,
+   no first-card exception. Re-run on every render, including a search/filter re-render. ---- */
+.mc-toggle{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;margin-left:auto;cursor:pointer;white-space:nowrap}
+.mc-toggle:hover{background:var(--paper)}
+.mc-closed .mc-body{display:none}
+@media(max-width:640px){.mc-toggle{width:100%;margin-left:0;margin-top:.5rem;text-align:center}}
+
+/* ---- Nested sub-cards inside a match/grant card ---- */
+.mc-body .card{background:var(--paper);border:1px solid var(--rule);padding:1rem 1.1rem;margin-top:.9rem}
+.mc-body .card:first-child{margin-top:0}
+.mc-body .card h3{font-size:15px;letter-spacing:.05em;margin:0 0 .5rem}
+
+/* ---- Profile card head/toggle (accordion extension to the profile section) ---- */
+.card-head{position:relative;padding-right:9rem;margin-bottom:.6rem}
+.card-head h3{margin:0}
+.card-head .mc-toggle{position:absolute;right:0;top:0}
+@media(max-width:560px){.card-head{padding-right:0;padding-bottom:2.6rem}.card-head .mc-toggle{left:0;right:0;top:auto;bottom:0;width:100%;margin-left:0}}
 
 /* ---- Grant entries (F4F Q&A pattern, adapted) ---- */
 .entry{border-bottom:1px solid var(--rule-soft);padding:1.1rem 0}
@@ -92,6 +113,9 @@ a{color:var(--ink)}
 @media(max-width:580px){.qa-row{grid-template-columns:1fr;gap:.1rem}}
 .qa-label{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);white-space:nowrap}
 .qa-value{font-size:.94rem;line-height:1.5}
+.geo-highlight{font-weight:700;color:var(--accent)}
+.qa-row-featured .qa-value a{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--accent)}
+.qa-row-featured .qa-value a:hover{text-decoration:underline}
 .deadline-val.urgent{color:var(--urgent);font-weight:600}
 .deadline-val.soon{color:var(--warn);font-weight:500}
 .deadline-val.closed{color:var(--wash);font-style:italic}
@@ -103,7 +127,8 @@ a{color:var(--ink)}
 
 .limitation-note{font-family:var(--mono);font-size:1.125rem;color:var(--wash);background:var(--well);border:1px dashed var(--rule);padding:.7rem .9rem;margin-top:1.2rem;line-height:1.5}
 
-/* ---- Status tracking ---- */
+/* ---- Status tracking (always on for this client build; no team-mode gate -- HRI is the
+   real, current user of this page, not a sales prospect being shown a demo). ---- */
 .admin-toggle{font-family:var(--mono);font-size:.84rem;padding:.3rem .7rem;border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer}
 .admin-toggle.on{background:var(--ink);color:var(--paper)}
 .status-row{display:flex;align-items:center;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
@@ -135,6 +160,18 @@ body{overflow-x:hidden}
 .hero{text-align:left;padding:3.2rem 1.25rem 2.2rem;border-bottom:1px solid var(--rule)}
 .section{padding:2.6rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
 @media(max-width:640px){.hero{padding:2.2rem 1.25rem 1.6rem}.hero h1{font-size:30px}}
+
+/* ---- Center-align pass (propagated from the current Almanac convention, 2026-07-27):
+   everything centers, including multi-line prose, by inheritance from body -- labeled
+   key-value pairs, tabular data, and interactive form controls are the only exceptions,
+   kept left-aligned for readability/usability. ---- */
+body{text-align:center}
+.hero{text-align:center}
+.hero .note{text-align:center}
+.qa-row,.qa-label,.qa-value,
+.funder-mini-table,.funder-mini-table th,.funder-mini-table td,
+.toolbar,.chip-filter,.chip-btn,
+.status-row,.status-select,.status-notes,.admin-toggle{text-align:left}
 </style>
 </head>
 <body>
@@ -151,6 +188,8 @@ body{overflow-x:hidden}
       <a href="#profile">Profile</a>
       <a href="#matches">Funder Matches</a>
       <a href="#grants">Open Grants</a>
+      <a href="#method">How This Was Built</a>
+      <a href="hri-scribe.html">See Scribe &#8594;</a>
     </nav>
   </div>
 </div>
@@ -163,66 +202,103 @@ body{overflow-x:hidden}
   <div class="note">Every funder listed here traces to a public source (HRI's own site, IRS Form 990 data via ProPublica, or a real grant record in the national Schedule I filing data). Nothing here is estimated or invented. This is a first pipeline pass, not yet a multi-round hand-verified search like Almanac's more mature client builds -- see the methodology note below for exactly what's confirmed and what isn't.</div>
 </header>
 
-<section class="section" id="profile">
+<section class="section section-card" id="how-to-read">
   <div class="fold">
-    <div class="section-head">
-      <span class="kicker">The organization</span>
-      <h2>Funding Profile</h2>
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="how-to-read-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Read This First</span>
+        <h2>How to read this page</h2>
+      </div>
     </div>
-    <div class="fold-body">
+    <div class="fold-body" id="how-to-read-fold-body">
+    <div class="table-scroll"><table class="funder-mini-table method-table">
+      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>This organization</td>
+          <td>Human Rights Initiative of North Texas is real.<br><br>Every fact on this page about HRI itself (mission, financials, geography) is sourced from HRI's own site (hrionline.org) or its public IRS Form 990 filing via ProPublica, fetched 2026-07-21. Nothing about HRI is estimated or invented.</td>
+        </tr>
+        <tr>
+          <td>The funders and grants</td>
+          <td>The candidate funders below are real organizations, and each traces to a real, dated grant record in the national Schedule I grants-paid dataset.<br><br>This is a first pipeline pass, not yet a multi-round hand-verified search like Almanac's more mature client builds.<br><br>No confirmed-prior-funder list is shown yet, and open-grant-opportunity research (live deadlines, application portals) has not been run for HRI -- see How This Was Built for exactly what's confirmed and what isn't.</td>
+        </tr>
+        <tr>
+          <td>Next steps</td>
+          <td>This engagement (Almanac + Scribe Pro) is provided to HRI as a 90-day in-kind donation.<br><br>Want the drafted application to go with a match? <a href="hri-scribe.html">See Scribe &#8594;</a><br><br>Questions about this page? <a href="/#contact">Get in touch &#8594;</a></td>
+        </tr>
+      </tbody>
+    </table></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-card" id="profile">
+  <div class="fold">
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="profile-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">The organization</span>
+        <h2>Funding Profile</h2>
+      </div>
+    </div>
+    <div class="fold-body" id="profile-fold-body">
     <div class="section-lede">
       <p>HRI's mission, programs, and confirmed funding history: the foundation the funder match and grants search are built on.</p>
     </div>
       <div class="profile-grid">
         <div class="card">
           <h3>Mission</h3>
-          <p id="p-mission"></p>
-          <h3>Programs &amp; Services</h3>
-          <div class="tag-row" id="p-focus"></div>
+          <div class="mc-body">
+            <p id="p-mission"></p>
+            <h3>Programs &amp; Services</h3>
+            <div class="tag-row" id="p-focus"></div>
+          </div>
         </div>
         <div class="card">
           <h3>At a glance</h3>
-          <div class="stat-tile">
-            <div class="num" id="p-total">0</div>
-            <div class="lbl">documented funder relationships (confirmed + 1 historical)</div>
+          <div class="mc-body">
+            <div class="stat-tile">
+              <div class="num" id="p-total">0</div>
+              <div class="lbl">documented funder relationships (confirmed + 1 historical)</div>
+            </div>
+            <h3 style="margin-top:1rem">Geography</h3>
+            <p id="p-geo" style="margin:0"></p>
+            <h3 style="margin-top:1rem">FY2024 Financials</h3>
+            <p id="p-financials" style="margin:0"></p>
           </div>
-          <h3 style="margin-top:1rem">Geography</h3>
-          <p id="p-geo" style="margin:0"></p>
-          <h3 style="margin-top:1rem">Founded &amp; Governance</h3>
-          <p id="p-founded" style="margin:0"></p>
-          <h3 style="margin-top:1rem">FY2024 Financials</h3>
-          <p id="p-financials" style="margin:0"></p>
         </div>
       </div>
       <div class="card" style="margin-top:1.2rem">
-        <h3>FY2024 Impact &amp; Program Efficiency</h3>
-        <div class="impact-grid" id="p-impact"></div>
-        <p id="p-efficiency" style="margin:.9rem 0 0"></p>
-      </div>
-      <div class="card" style="margin-top:1.2rem">
-        <h3>Confirmed Prior Funders</h3>
-        <div class="table-scroll"><table class="funder-mini-table">
-          <thead><tr><th>Funder</th><th>Purpose / Nature</th><th style="text-align:right">Amount</th></tr></thead>
-          <tbody id="p-funders-table"></tbody>
-        </table></div>
+        <div class="card-head">
+          <h3>Confirmed Prior Funders</h3>
+          <button class="mc-toggle" type="button" aria-controls="p-funders-body"></button>
+        </div>
+        <div class="mc-body" id="p-funders-body">
+          <div class="table-scroll"><table class="funder-mini-table">
+            <thead><tr><th>Funder</th><th>Purpose / Nature</th><th style="text-align:right">Amount</th></tr></thead>
+            <tbody id="p-funders-table"></tbody>
+          </table></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="matches">
+<section class="section section-card" id="matches">
   <div class="fold">
-    <div class="section-head">
-      <span class="kicker">Who could fund this</span>
-      <h2>Ranked Funder Matches <span class="fold-count" data-count-from="match-count" data-count-label="funders"></span></h2>
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="matches-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Who could fund this</span>
+        <h2>Ranked Funder Matches <span class="fold-count" data-count-from="match-count" data-count-label="funders"></span></h2>
+      </div>
     </div>
-    <div class="fold-body">
+    <div class="fold-body" id="matches-fold-body">
     <div class="section-lede">
       <p id="matches-method"></p>
     </div>
       <div class="toolbar">
-        <input class="search" id="match-search" type="search" placeholder="Search funder name or rationale…" aria-label="Search funders" />
-        <div class="chip-filter" id="tier-filter"></div>
         <div class="chip-filter" id="match-status-filter"></div>
       </div>
       <div class="res-count"><b id="match-count">0</b> funders shown</div>
@@ -231,18 +307,20 @@ body{overflow-x:hidden}
   </div>
 </section>
 
-<section class="section" id="grants">
+<section class="section section-card" id="grants">
   <div class="fold">
-    <div class="section-head">
-      <span class="kicker">Open right now</span>
-      <h2>Open Grant Opportunities <span class="fold-count" data-count-from="grant-count" data-count-label="open now"></span></h2>
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="grants-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Open right now</span>
+        <h2>Open Grant Opportunities <span class="fold-count" data-count-from="grant-count" data-count-label="open now"></span></h2>
+      </div>
     </div>
-    <div class="fold-body">
+    <div class="fold-body" id="grants-fold-body">
     <div class="section-lede">
       <p>Currently-open or clearly-upcoming grant opportunities from HRI's own confirmed funders, researched directly on each funder's current site. Not yet run for HRI -- see the note below.</p>
     </div>
       <div class="toolbar">
-        <input class="search" id="grant-search" type="search" placeholder="Search organization, focus area…" aria-label="Search grants" />
         <div class="chip-filter" id="grant-status-filter"></div>
       </div>
       <div class="res-count"><b id="grant-count">0</b> opportunities ready now</div>
@@ -261,19 +339,44 @@ body{overflow-x:hidden}
   </div>
 </section>
 
-<section class="method-wrap" id="method">
-  <div class="method-box">
-    <div class="method-kicker">Method</div>
-    <h2>How this was built, and what it cannot tell you</h2>
-    <p><b>Where this comes from.</b> Every funder and every grant on this page is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages. Each match carries a link back to the source it came from, so nothing here has to be taken on trust. Where a funder does not publish a figure &mdash; an award range, a deadline, an eligibility rule &mdash; that gap is marked as unconfirmed rather than filled in.</p>
-    <p><b>What Almanac will not do.</b> It does not invent a fact about a funder. An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on. It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit. A candidate is never dressed up as a confirmed prior funder.</p>
-    <p><b>What it cannot tell you.</b> Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved. A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records. The ranking is a judgment about fit, not a prediction of success. Treat every row as a lead to verify against the funder's own page before you spend real time on it.</p>
+<section class="section section-card" id="method">
+  <div class="fold">
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="method-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Method</span>
+        <h2>How this was built</h2>
+      </div>
+    </div>
+    <div class="fold-body" id="method-fold-body">
+    <div class="table-scroll"><table class="funder-mini-table method-table">
+      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Where this comes from</td>
+          <td>Every funder and every grant candidate on this page is drawn from a public record: IRS Form 990 filings (via ProPublica Nonprofit Explorer's JSON API) and the national Schedule I grants-paid dataset.<br><br>Each match is a real, dated grant record, not an estimate.<br><br>Where a funder does not publish a figure, that gap is marked as unconfirmed rather than filled in.</td>
+        </tr>
+        <tr>
+          <td>What Almanac will not do</td>
+          <td>It does not invent a fact about a funder.<br><br>It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit.<br><br>A candidate is never dressed up as a confirmed prior funder.</td>
+        </tr>
+        <tr>
+          <td>What it cannot tell you</td>
+          <td>This is a first-pass Almanac build for HRI, not yet a multi-round hand-verified search like Almanac's more mature client pages.<br><br>No confirmed-prior-funder list is shown: this pass did not independently verify HRI's actual current funding relationships (that would need a direct HRI 990 Schedule I read or an owner-supplied funder list), so nothing is asserted here that isn't backed by a source.<br><br>Open-grant-opportunity research (live deadlines, application portals, eligibility detail per funder) has not been run for HRI yet -- this pass covered org-profile confirmation and the Schedule I candidate-funder search only.</td>
+        </tr>
+        <tr>
+          <td>How candidates are found and ranked</td>
+          <td>The candidate funders come from one run of Almanac's v2 pipeline (NTEE/geography-weighted, scored token/phrase purpose matching against the national Schedule I grants-paid dataset), scoped to the currently available Texas-only Schedule I extract.<br><br>The national extract has not yet been added to this data repository (a known, tracked limitation), so this candidate list under-represents out-of-state immigration/human-rights funders that likely also fund HRI's work.<br><br>Every candidate below traces to a real, dated grant record in that dataset; nothing is estimated.</td>
+        </tr>
+      </tbody>
+    </table></div>
+    </div>
   </div>
 </section>
 
 <footer>
   <span id="footer-credit">Prepared for Human Rights Initiative of North Texas by Jonathan Lin Davis · Draft for review, not yet deployed</span>
-  <span id="footer-links">hrionline.org</span>
+  <span id="footer-links">hrionline.org &middot; <a href="hri-scribe.html">See Scribe, the grant drafter &#8594;</a></span>
   <span class="footer-improvements-wrap"><a class="footer-improvements" href="improvementlog.html">Improvement log</a></span>
   <p class="footer-custom-note"><a href="/#contact">Need something custom? Individualized builds outside this catalog are available on request &#8594;</a></p>
 </footer>
@@ -295,10 +398,10 @@ const PROFILE={
   mission:"To extend the safety, liberty, and hope America has given us to those who desperately need it -- providing free legal and social services to immigrant survivors of human rights abuses.",
   tagline:"Free legal services for immigrant survivors of human rights abuses",
   programs:[
-    "Legal services for immigrants seeking representation and legal status (asylum seekers, human trafficking survivors, unaccompanied children)",
-    "Social services supporting client families",
-    "Client support for survivors escaping abusive environments",
-    "Pro bono attorney partnerships",
+    "Immigration Legal Representation",
+    "Client Family Social Services",
+    "Survivor Support Services",
+    "Pro Bono Attorney Partnerships",
   ],
   focus_areas:[
     "Immigration legal services / asylum representation",
@@ -324,7 +427,9 @@ const PROFILE={
     net_assets:1161039,
     note:"Source: IRS Form 990 via ProPublica Nonprofit Explorer API (fetched 2026-07-21). Program/admin expense split not sourced this pass.",
   },
-  confirmed_prior_funders:[],
+  confirmed_prior_funders:[
+    {funder:"None on record",purpose:"This first pipeline pass did not independently verify HRI's actual current funding relationships. Every funder in the ranked matches below is a candidate, matched on mission and geography alone -- none is asserted to have given this organization anything.",amount:"n/a"},
+  ],
   confirmed_prior_funders_count:0,
   profile_built:"2026-07-21",
   profile_sources:[
@@ -352,7 +457,7 @@ const GRANTS={
 };
 
 /* ==================== helpers ==================== */
-const state={matchQ:"",activeTier:null,grantQ:"",statuses:{},adminKey:localStorage.getItem('grantStatusKey')||"",matchStatusFilter:null,grantStatusFilter:null};
+const state={matchQ:"",grantQ:"",statuses:{},adminKey:localStorage.getItem('grantStatusKey')||"",matchStatusFilter:null,grantStatusFilter:null};
 
 function esc(s){return(s||"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function money(n){return '$'+Number(n).toLocaleString();}
@@ -360,6 +465,13 @@ function highlight(text,q){
   if(!q||!text)return esc(text);
   const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
   return esc(text).replace(re,'<mark>$1</mark>');
+}
+/* Notes fields are dense multi-sentence prose; split to one sentence per line (rather than
+   one dense paragraph) for readability. Sentence boundaries are detected before highlighting
+   so a matched search term never straddles the split. */
+function sentenceBreak(text,q){
+  if(!text)return '';
+  return text.split(/(?<=[.!?])\s+(?=[A-Z0-9])/).map(s=>highlight(s,q)).join('<br><br>');
 }
 
 function statusOf(itemType,itemId){
@@ -479,21 +591,10 @@ function renderProfile(){
   document.getElementById('p-mission').textContent=p.mission;
   document.getElementById('p-focus').innerHTML=p.programs.map(f=>`<span class="tag">${esc(f)}</span>`).join('');
   document.getElementById('p-total').textContent=p.confirmed_prior_funders_count;
-  document.getElementById('p-geo').innerHTML=`<strong>${esc(p.geography.primary)}</strong><br>${p.geography.secondary.map(esc).join(', ')}`;
-  document.getElementById('p-founded').innerHTML=`${esc(p.founded)}${p.board_size?' &middot; '+esc(String(p.board_size))+'-member board':''}`;
+  document.getElementById('p-geo').innerHTML=`<span class="geo-highlight">${esc(p.geography.primary)}</span><br>${p.geography.secondary.map(esc).join(', ')}`;
   const fin=p.financials_fy2024;
   if(fin){
     document.getElementById('p-financials').innerHTML=`Revenue ${money(fin.total_revenue)} &middot; Expenses ${money(fin.total_expenses)} &middot; Net assets ${money(fin.net_assets)}`;
-  }
-  const imp=p.impact_fy2024;
-  if(imp){
-    document.getElementById('p-impact').innerHTML=imp.stats.map(s=>`
-      <div class="stat-tile"><div class="num">${esc(s.num)}</div><div class="lbl">${esc(s.lbl)}</div></div>
-    `).join('');
-  }
-  const eff=p.expense_efficiency_fy2024;
-  if(eff){
-    document.getElementById('p-efficiency').innerHTML=`<strong>${esc(eff.program_pct)}% to programs</strong> for the fiscal year ended ${esc(eff.fiscal_year_end)} (${esc(eff.mgmt_pct)}% management &amp; general, ${esc(eff.fundraising_pct)}% fundraising) &mdash; from Standpoint's own filed Form 990, the most recent fiscal year with a hand-verified expense split. ${esc(eff.note)}`;
   }
 
   document.getElementById('p-funders-table').innerHTML=p.confirmed_prior_funders.map(f=>`
@@ -505,39 +606,11 @@ function renderProfile(){
   `).join('');
 }
 
-/* ---- Funder Matches ---- */
-function buildTierFilter(){
-  const host=document.getElementById('tier-filter');
-  const tiers=[
-    {key:null,label:'All'},
-    {key:'confirmed',label:'Confirmed'},
-    {key:'likely',label:'Likely (verify)'},
-    {key:'historical',label:'Past funder'},
-    {key:'tier_1_strong',label:'Strong candidate'},
-    {key:'tier_2_promising',label:'Promising candidate'},
-    {key:'tier_3_weak',label:'Lower-confidence candidate'},
-  ];
-  host.innerHTML=tiers.map(t=>`<button class="chip-btn${t.key===state.activeTier?' active':''}" data-tier="${t.key||''}">${t.label}</button>`).join('');
-  host.querySelectorAll('.chip-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      state.activeTier=btn.getAttribute('data-tier')||null;
-      buildTierFilter();applyMatches();
-    });
-  });
-}
-
+/* ---- Ranked Funder Matches ---- */
 function applyMatches(){
   const q=state.matchQ.toLowerCase().trim();
   let list=RANKED_FUNDERS.filter(f=>{
-    if(state.activeTier==='confirmed'&&!(f.is_confirmed_prior_funder&&f.confidence!=='likely'&&f.confidence!=='historical'))return false;
-    if(state.activeTier==='likely'&&f.confidence!=='likely')return false;
-    if(state.activeTier==='historical'&&f.confidence!=='historical')return false;
-    if(state.activeTier&&!['confirmed','likely','historical'].includes(state.activeTier)&&f.tier!==state.activeTier)return false;
     if(state.matchStatusFilter&&statusOf('funder',f.funder_name).status!==state.matchStatusFilter)return false;
-    if(q){
-      const hay=`${f.funder_name} ${f.rationale} ${f.geography}`.toLowerCase();
-      if(!hay.includes(q))return false;
-    }
     return true;
   });
   document.getElementById('match-count').textContent=list.length;
@@ -545,42 +618,32 @@ function applyMatches(){
 
   const host=document.getElementById('match-results');
   if(!list.length){
-    host.innerHTML='<div class="empty"><b>No matches</b>, try a different search.</div>';
+    host.innerHTML='<div class="empty"><b>No matches</b> for this status filter.</div>';
     return;
   }
-  const tierLabel={tier_1_strong:'Strong candidate',tier_2_promising:'Promising candidate',tier_3_weak:'Lower-confidence candidate'};
   host.innerHTML=list.map(f=>{
-    const isHistorical=f.confidence==='historical';
-    const isLikely=f.confidence==='likely';
-    const isConfirmed=!!f.is_confirmed_prior_funder&&!isLikely&&!isHistorical;
-    const statusBadge=isHistorical
-      ?'<span class="badge badge-historical">Past funder &middot; not current</span>'
-      :isLikely
-      ?'<span class="badge badge-likely">Likely funder &middot; verify</span>'
-      :isConfirmed?'<span class="badge badge-confirmed">Confirmed funder</span>':'<span class="badge badge-new">New candidate</span>';
-    const scoreArea=isHistorical
-      ?`<div class="score-num historical-label">Past funder</div>`
-      :isLikely
-      ?`<div class="score-num confirmed-label likely-label">Likely</div><div class="score-bar"><div class="score-bar-fill likely-fill" style="width:60%"></div></div>`
-      :isConfirmed
-      ?`<div class="score-num confirmed-label">Confirmed</div><div class="score-bar"><div class="score-bar-fill" style="width:100%"></div></div>`
-      :`<div class="score-num confirmed-label">${esc(tierLabel[f.tier]||'Candidate')}</div>`;
+    const whyRowsHTML=[
+      ['Geography',esc(f.geography)],
+      ['Rationale',highlight(f.rationale,q)],
+    ].map(([label,value])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
     return `
-    <div class="match-card">
+    <div class="match-card" id="${esc('funder-'+f.funder_ein)}">
       <div class="mc-head">
-        <div class="match-rank">${isHistorical?'&#8211;':isConfirmed?'&#10003;':isLikely?'&#126;':'?'}</div>
         <span class="fname">${highlight(f.funder_name,q)}</span>
-        ${statusBadge}
-        <div class="match-score">${scoreArea}</div>
+        <span class="badge badge-new">EIN ${esc(f.funder_ein)}</span>
+        <button class="mc-toggle" type="button" aria-controls="${esc('funder-'+f.funder_ein)}-body"></button>
       </div>
-      <div class="mc-body">
-        <div class="match-geo">${esc(f.geography)}</div>
-        <div class="match-rationale">${highlight(f.rationale,q)}</div>
+      <div class="mc-body" id="${esc('funder-'+f.funder_ein)}-body">
+        <div class="card">
+          <h3>Why This Funder</h3>
+          <div class="qa-grid">${whyRowsHTML}</div>
+        </div>
         ${statusRowHTML('funder',f.funder_name)}
       </div>
     </div>
   `;}).join('');
   wireStatusControls(host);
+  wireAccordion(host);
 }
 
 /* ---- Open Grants ---- */
@@ -597,32 +660,29 @@ function deadlineClass(s){
 }
 
 function applyGrants(){
-  const q=state.grantQ.toLowerCase().trim();
   let list=GRANTS.ready_now.filter(g=>{
     if(state.grantStatusFilter&&statusOf('grant',g.id).status!==state.grantStatusFilter)return false;
-    if(!q)return true;
-    const hay=`${g.organization} ${g.grant_name} ${g.focus_area} ${g.notes}`.toLowerCase();
-    return hay.includes(q);
+    return true;
   });
   document.getElementById('grant-count').textContent=list.length;
 
   const host=document.getElementById('grant-results');
   if(!list.length){
-    host.innerHTML='<div class="empty"><b>No matches</b>, try a different search.</div>';
+    host.innerHTML='<div class="empty"><b>No open opportunities researched yet</b> -- see the note below.</div>';
   } else {
     host.innerHTML=list.map(g=>{
       const dlClass=deadlineClass(g.deadline);
       const qaRows=[
-        ['Focus Area',highlight(g.focus_area,q)],
-        ['Eligibility',highlight(g.eligibility,q)],
+        ['Opportunity',`<a href="${esc(g.url)}" target="_blank" rel="noopener">${esc(g.grant_name)}</a>`,true],
+        ['Focus Area',esc(g.focus_area)],
+        ['Eligibility',esc(g.eligibility)],
         ['Amount',esc(g.amount)],
         ['Deadline',`<span class="deadline-val ${dlClass}">${esc(g.deadline)}</span>`],
-        ['Notes',highlight(g.notes,q)],
-      ].map(([label,value])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
+        ['Notes',sentenceBreak(g.notes)],
+      ].map(([label,value,featured])=>`<div class="qa-row${featured?' qa-row-featured':''}"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
       return `<article class="entry">
         <div class="head">
-          <span class="org">${highlight(g.organization,q)}</span>
-          <span class="name"><a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a></span>
+          <span class="org">${esc(g.organization)}</span>
         </div>
         <div class="qa-grid">${qaRows}</div>
         ${statusRowHTML('grant',g.id)}
@@ -643,23 +703,39 @@ function renderWatchList(){
   `).join('');
 }
 
+/* Card-level accordion. Every card with a toggle starts CLOSED on load/refresh, no
+   first-card exception. Re-run on every render, including a search/filter re-render. */
+function wireAccordion(host,cardSelector){
+  const cards=host.querySelectorAll(cardSelector||'.match-card');
+  cards.forEach((card)=>{
+    const btn=card.querySelector('.mc-toggle');
+    if(!btn)return;
+    const setOpen=open=>{
+      card.classList.toggle('mc-closed',!open);
+      btn.setAttribute('aria-expanded',String(open));
+      btn.textContent=open?'Hide details':'Show details';
+    };
+    setOpen(false);
+    btn.addEventListener('click',()=>setOpen(card.classList.contains('mc-closed')));
+  });
+}
+
 async function load(){
   await fetchStatuses();
   document.getElementById('m-funders').textContent=RANKED_FUNDERS.length;
   document.getElementById('m-grants').textContent=GRANTS.ready_now.length;
 
   renderProfile();
-  buildTierFilter();
   buildStatusFilter('match-status-filter',v=>{state.matchStatusFilter=v;applyMatches();},()=>state.matchStatusFilter);
   buildStatusFilter('grant-status-filter',v=>{state.grantStatusFilter=v;applyGrants();},()=>state.grantStatusFilter);
   setAdminUI();
   applyMatches();
   applyGrants();
   renderWatchList();
+  wireAccordion(document.getElementById('profile'),'.card');
+  wireAccordion(document.body,'.section-card');
 }
 
-document.getElementById('match-search').addEventListener('input',e=>{state.matchQ=e.target.value;applyMatches();});
-document.getElementById('grant-search').addEventListener('input',e=>{state.grantQ=e.target.value;applyGrants();});
 document.getElementById('admin-toggle').addEventListener('click',()=>{
   if(state.adminKey){
     if(confirm('Log out of admin mode on this device?')){
@@ -676,9 +752,7 @@ load();
 
 <script>
 /* Two jobs:
-   (1) A hash-anchor link scrolls its target into view. Sections can no longer be hidden
-       (the fold/accordion mechanism was removed), but the explicit scroll is still needed -
-       nothing else moves the viewport to the anchor.
+   (1) A hash-anchor link scrolls its target into view.
    (2) Mirror each list section's own counter into its heading chip, so the count is never
        out of sync with what the section actually shows. */
 (function(){
