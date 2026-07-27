@@ -180,13 +180,15 @@ a{color:var(--ink)}
 /* ---- Missing (not currently possessed) marker — red ---- */
 .miss{background:#f7dcdc;color:#6b1f1f;padding:0 3px;border-bottom:1px solid #b34141;font-family:var(--mono);font-size:.86em;border-radius:2px;overflow-wrap:anywhere}
 .miss-tag{font-family:var(--mono);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#b34141;padding:.04rem .32rem;margin-right:.35rem;border-radius:2px;vertical-align:middle}
-/* ---- Reader notice box (conspicuous "how to read this" callout, near draft viewer) ---- */
-.reader-notice{background:var(--well);border:1.5px solid var(--accent);border-left-width:5px;padding:1rem 1.2rem;margin-bottom:1.4rem}
+/* ---- Reader notice box (conspicuous "how to read this" callout, near draft viewer) ----
+   Fully center-aligned (owner request, 2026-07-27, matching the Request form treatment). The
+   left-margin "›" bullet made sense for a left-aligned list; centered, it would float away
+   from the text it used to mark, so it's dropped rather than kept disconnected. */
+.reader-notice{background:var(--well);border:1.5px solid var(--accent);border-left-width:5px;padding:1rem 1.2rem;margin-bottom:1.4rem;text-align:center}
 .reader-notice h3{font-family:var(--serif);font-size:25px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0 0 .6rem}
 .reader-notice ul{list-style:none;margin:0;padding:0}
-.reader-notice li{position:relative;padding:.28rem 0 .28rem 1.1rem;font-size:1.125rem;line-height:1.5;color:var(--ink);border-bottom:1px solid var(--rule-soft)}
+.reader-notice li{padding:.28rem 0;font-size:1.125rem;line-height:1.5;color:var(--ink);border-bottom:1px solid var(--rule-soft)}
 .reader-notice li:last-child{border-bottom:none}
-.reader-notice li::before{content:"›";position:absolute;left:0;color:var(--accent);font-weight:700}
 .reader-notice .rn-sug{background:#fff3b0;color:#5c4a00;padding:0 4px;border-radius:2px;font-family:var(--mono);font-size:.82em;font-weight:600}
 .reader-notice .rn-conf{background:#dcebfb;color:#123a63;padding:0 4px;border-radius:2px;font-family:var(--mono);font-size:.82em;font-weight:700}
 .reader-notice .rn-miss{background:#f7dcdc;color:#6b1f1f;padding:0 4px;border-radius:2px;font-family:var(--mono);font-size:.82em;font-weight:700}
@@ -230,18 +232,22 @@ a{color:var(--ink)}
 .fn-num{color:var(--ink);font-weight:700;flex:none}
 .fn-note{color:var(--wash);font-style:italic}
 
-/* ---- Request / submit form ---- */
+/* ---- Request / submit form (owner request, 2026-07-27: fully center-aligned, unlike
+   Almanac's own qa-row/table/form exception -- the request form's short label/hint/button
+   text reads fine centered, so no exception is carved out here). ---- */
+#submit .fold-body{text-align:center}
+#request-form{max-width:640px;margin:0 auto;text-align:center}
 .requesting-label{font-family:var(--mono);font-size:14px;color:var(--ink);background:var(--well);border-left:3px solid var(--accent);padding:.55rem .85rem;margin:.5rem 0 0;display:inline-block}
 .needs-back{display:inline-block;margin-bottom:1.4rem;text-decoration:none}
 .form-field{margin-bottom:1.3rem}
 .form-field label{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
-.form-field textarea{width:100%;font-family:var(--serif);font-size:.95rem;padding:.7rem .8rem;border:1.5px solid var(--ink);background:var(--well);color:var(--ink);resize:vertical;outline:none}
+.form-field textarea{width:100%;font-family:var(--serif);font-size:.95rem;padding:.7rem .8rem;border:1.5px solid var(--ink);background:var(--well);color:var(--ink);resize:vertical;outline:none;text-align:left}
 .form-field textarea:focus{outline:2px solid var(--ink);outline-offset:0}
 .form-field input[type="file"]{font-family:var(--mono);font-size:.88rem;color:var(--ink)}
 .field-hint{font-family:var(--mono);font-size:.84rem;color:var(--wash);margin-top:.35rem}
 /* Honeypot: visually hidden, still in the tab/DOM flow for bots that fill every field */
 .hp-field{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
-.form-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
+.form-actions{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
 .form-status{font-family:var(--mono);font-size:.88rem;color:var(--ok)}
 .form-status.error{color:var(--urgent)}
 
@@ -280,6 +286,10 @@ body{overflow-x:hidden}
 .hero{text-align:left;padding:3.2rem 1.25rem 2.2rem;border-bottom:1px solid var(--rule)}
 .section{padding:2.6rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
 @media(max-width:640px){.hero{padding:2.2rem 1.25rem 1.6rem}.hero h1{font-size:30px}}
+
+/* Footer fully center-aligned (owner request, 2026-07-27) -- tool-shared.css's footer rules
+   don't set text-align, so it defaulted to left. */
+footer{text-align:center}
 
 /* the profile cards are not funder entries, but they sit on the same page and must not read as a
    different system: same border and paper, their own layout */
@@ -400,8 +410,8 @@ body{overflow-x:hidden}
     <div class="section-lede">
       <p>The five highest-payoff real opportunities for this fictional organization, drawn from the <a href="demo-almanac.html">Almanac</a> funder matches. The one marked as the included sample opens in the draft viewer below.</p>
     </div>
-      <div class="res-count"><b id="draft-count">0</b> drafts shown</div>
       <div id="shortlist-host"></div>
+      <div class="res-count"><b id="draft-count">0</b> drafts shown</div>
     </div>
   </div>
 </section>
@@ -551,6 +561,12 @@ const state={selected:0};
 /* ---- Shared helpers (verbatim pattern from almanac.html / measure-scribe.html) ---- */
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function money(n){return '$'+Number(n).toLocaleString();}
+/* Dense multi-sentence prose (the disclaimer, in particular) is split to one sentence per
+   line rather than one dense paragraph, matching the Almanac convention. */
+function sentenceBreak(text){
+  if(!text)return '';
+  return text.split(/(?<=[.!?])\s+(?=[A-Z0-9])/).map(s=>esc(s)).join('<br><br>');
+}
 function deadlineClass(s){
   const m=(s||'').match(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/);
   if(!m)return'';
@@ -1293,7 +1309,7 @@ function wireAccordion(host,cardSelector,toggleSelector){
 function load(){
   document.getElementById('m-drafts').textContent=DRAFTS.length;
   document.getElementById('m-date').textContent=GENERATED_DATE;
-  document.getElementById('disclaimer-text').textContent=DISCLAIMER;
+  document.getElementById('disclaimer-text').innerHTML=sentenceBreak(DISCLAIMER);
   document.getElementById('footer-links').innerHTML='<a href="demo-almanac.html">See Almanac, the funder &amp; grant match &#8594;</a>';
   document.getElementById('method-scoring').textContent=METHOD;
 
