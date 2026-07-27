@@ -33,6 +33,7 @@ a{color:var(--ink)}
 
 .section{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem}
 #glance{padding-bottom:0}
+.section-head{text-align:center}
 .section-head p{color:var(--wash);font-size:.94rem;max-width:72ch;margin:0 auto}
 .section-head h2{text-transform:uppercase;letter-spacing:.05em}
 .section-lede p{color:var(--ink);font-size:15px;font-style:normal;font-weight:400;margin:0 0 .8rem}
@@ -92,12 +93,11 @@ a{color:var(--ink)}
 
 /* ---- Ranked shortlist cards ---- */
 /* border/padding/title typography superseded by tool-shared.css's card-convergence block. */
-.draft-card{padding:0;cursor:pointer;transition:background .12s ease}
+.draft-card{padding:0}
 .dc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
-.dc-head .dc-name{flex:1;min-width:220px;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;overflow-wrap:anywhere}
+.dc-head .dc-name{flex:1 1 auto;min-width:0;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;overflow-wrap:anywhere}
 .dc-main{display:grid;grid-template-columns:64px 1fr;gap:1rem;align-items:start;padding:.9rem 1.2rem}
-.draft-card:hover{background:var(--well)}
-.draft-card.selected{background:var(--well);box-shadow:inset 4px 0 0 var(--accent)}
+.draft-card.selected{box-shadow:inset 4px 0 0 var(--accent)}
 @media(max-width:640px){.dc-main{grid-template-columns:52px 1fr;gap:.5rem}.dc-head{gap:.4rem}.dc-head .dc-name{min-width:0;flex-basis:100%}}
 .dc-score{text-align:center;padding-top:.2rem}
 .dc-score .dcs-num{font-family:var(--serif);font-weight:400;font-size:22.5px;color:var(--accent);line-height:1}
@@ -111,12 +111,14 @@ a{color:var(--ink)}
 .dc-deadline.closed{color:var(--wash);font-style:italic}
 .badge{font-family:var(--serif);font-size:12.5px;padding:.14rem .45rem;letter-spacing:.03em;text-transform:uppercase;border:1px solid var(--rule);color:var(--wash);vertical-align:middle;font-weight:700}
 .badge.sample{background:var(--ok);color:#fff;border-color:var(--ok)}
-/* ---- Card variants: sample (clickable, opens viewer) vs info-only (no viewer) ---- */
-.draft-card.sample-card{cursor:pointer}
-.draft-card.info-card{cursor:default}
-.draft-card.info-card:hover{background:transparent}
 .dc-note{font-family:var(--mono);font-size:.84rem;color:var(--wash);margin-top:.4rem;font-style:italic}
-.dc-actions{margin-top:.6rem}
+.dc-actions{margin-top:.6rem;display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* ---- Card-level accordion (shortlist entries): every draft-card starts CLOSED on
+   load/re-render, no first-card exception, matching the section-level convention above. ---- */
+.mc-closed .mc-body{display:none}
+.dc-head .mc-toggle{margin-left:auto}
+@media(max-width:640px){.dc-head .mc-toggle{width:100%;margin-left:0;margin-top:.3rem;text-align:center}}
 .dc-actions .btn{font-size:.84rem;padding:.4rem .8rem}
 /* ---- Strength rating badges (small, for cards/priority) ---- */
 .sbadge{font-family:var(--serif);font-size:12.5px;font-weight:700;padding:.14rem .45rem;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--rule);vertical-align:middle;white-space:nowrap}
@@ -215,8 +217,6 @@ a{color:var(--ink)}
 .qa-note .qa-align{font-size:15px;line-height:1.55;color:var(--ink);margin:.3rem 0 0}
 .sources{margin:1.4rem 0 0}
 .sources h3{font-weight:700;font-family:var(--serif);font-size:25px;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);margin:0 0 .5rem}
-.sources ul{margin:0;padding-left:1.1rem}
-.sources li{font-family:var(--mono);font-size:14px;color:var(--wash);line-height:1.5;margin-bottom:.35rem}
 /* ---- Inline footnote citation refs + per-draft Sources list (web only) ---- */
 .fn-ref{font-size:.8em;line-height:0;white-space:nowrap}
 .fn-ref a{color:var(--accent);text-decoration:none;font-family:var(--mono);font-weight:700;padding:0 1px}
@@ -862,14 +862,16 @@ function renderShortlist(){
     const sa=d.strength_analysis||{};
     const sbadge=sa.overall?`<span class="sbadge ${strengthClass(sa.overall)}" title="Application strength">${esc(sa.overall)}</span>`:'';
     const isSample=!!d.is_sample;
-    const clickableAttrs=isSample?' role="button" tabindex="0"':'';
     const sampleTag=isSample?'<span class="badge sample">Included sample</span> ':'';
     const availNote=isSample?'':'<div class="dc-note">Full draft available on request.</div>';
-    return `<div class="draft-card ${isSample?'sample-card':'info-card'}${isSample&&i===state.selected?' selected':''}" data-idx="${i}"${clickableAttrs}>
+    const viewBtn=isSample?`<button class="btn solid view-draft-btn" type="button" data-idx="${i}">View full draft &#8595;</button>`:'';
+    return `<div class="draft-card ${isSample?'sample-card':'info-card'}${isSample&&i===state.selected?' selected':''}" id="${'draft-'+i}">
       <div class="dc-head">
         <div class="dc-name">${sampleTag}${esc(d.grant_name)}${sbadge?' '+sbadge:''}</div>
         <div class="dc-deadline ${dlc}">${esc(d.grant_deadline)}</div>
+        <button class="mc-toggle" type="button" aria-controls="${'draft-'+i}-body"></button>
       </div>
+      <div class="mc-body" id="${'draft-'+i}-body">
       <div class="dc-main">
       <div class="dc-score">
         <div class="dcs-num">${esc(String(d.payoff_score))}</div>
@@ -879,30 +881,26 @@ function renderShortlist(){
         <div class="dc-funder">${esc(d.funder)}</div>
         <div class="dc-rationale">${esc(d.priority_rationale)}</div>
         ${availNote}
-        <div class="dc-actions"><button class="btn request-btn" type="button" data-idx="${i}">Request this draft</button></div>
+        <div class="dc-actions">${viewBtn}<button class="btn request-btn" type="button" data-idx="${i}">Request this draft</button></div>
+      </div>
       </div>
       </div>
     </div>`;
   }).join('');
 
-  host.querySelectorAll('.draft-card.sample-card').forEach(card=>{
-    const idx=Number(card.getAttribute('data-idx'));
-    card.addEventListener('click',e=>{
-      if(e.target.closest('.request-btn'))return;
+  host.querySelectorAll('.view-draft-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const idx=Number(btn.getAttribute('data-idx'));
       selectDraft(idx,true);
-    });
-    card.addEventListener('keydown',e=>{
-      if(e.target.closest('.request-btn'))return;
-      if(e.key==='Enter'||e.key===' '){e.preventDefault();selectDraft(idx,true);}
     });
   });
   host.querySelectorAll('.request-btn').forEach(btn=>{
-    btn.addEventListener('click',e=>{
-      e.stopPropagation();
+    btn.addEventListener('click',()=>{
       const idx=Number(btn.getAttribute('data-idx'));
       requestDraft(idx);
     });
   });
+  wireAccordion(host,'.draft-card',':scope > .dc-head > .mc-toggle');
 }
 
 /* ---- Draft viewer ---- */
@@ -948,7 +946,12 @@ function renderViewer(){
   const removedCount=(qa.hallucinated_facts_removed||[]).length;
   const verdict=qa.verdict||'not available';
 
-  const sources=(d.sources_used||[]).map(s=>`<li>${esc(s)}</li>`).join('');
+  const sources=(d.sources_used||[]).map(s=>{
+    const m=/^([A-Z][A-Z0-9 /&'-]*[A-Z0-9]):\s*(.*)$/s.exec(s);
+    const label=m?m[1]:'';
+    const detail=m?m[2]:s;
+    return `<li><span class="sf-factor">${esc(label)}</span><span class="sf-assess">${esc(detail)}</span></li>`;
+  }).join('');
   const footnotesList=renderFootnotes(d);
 
   const readerNotice=`
@@ -1000,7 +1003,7 @@ function renderViewer(){
 
     <div class="sources">
       <h3>Sources used</h3>
-      <ul>${sources}</ul>
+      <ul class="strength-factors">${sources}</ul>
     </div>
 
     ${footnotesList}`;
@@ -1265,14 +1268,16 @@ function downloadDraft(d){
   }catch(e){}
 }
 
-/* Card-level accordion. Every section-card starts CLOSED on load, no first-section
-   exception, matching the current Almanac convention. Scribe has no repeated-card lists of
-   its own (the priority card, shortlist, and viewer are each a single unit), so this only
-   wires the section layer. */
-function wireAccordion(host,cardSelector){
+/* Card-level accordion. Every card with a toggle starts CLOSED on load/refresh, no
+   first-card exception, matching the current Almanac convention. Used for section-cards
+   (toggle nested under .fold > .section-head-row) and, separately, for the Ranked
+   Shortlist's draft-cards (toggle sits directly in .dc-head) -- toggleSelector lets the
+   caller point at either. Re-run on every render, including a selection re-render. */
+function wireAccordion(host,cardSelector,toggleSelector){
   const cards=host.querySelectorAll(cardSelector||'.section-card');
+  const tSel=toggleSelector||':scope > .fold > .section-head-row > .mc-toggle';
   cards.forEach((card)=>{
-    const btn=card.querySelector(':scope > .fold > .section-head-row > .mc-toggle');
+    const btn=card.querySelector(tSel);
     if(!btn)return;
     const setOpen=open=>{
       card.classList.toggle('mc-closed',!open);
