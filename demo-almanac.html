@@ -35,17 +35,16 @@ a{color:var(--ink)}
 .section-head-tags{margin-top:.6rem}
 .section-head-tags:empty{display:none}
 
-/* ---- Section-level card + accordion (owner order, 2026-07-26): every top-level
-   section becomes its own bordered card, collapsible the same way as the cards
-   nested inside it. The section title is centered across the full row; the toggle
-   is pinned to the corner via absolute positioning so it never pulls the title off
-   center. Only .fold-body collapses. ---- */
+/* ---- Section-level card + accordion (owner order, 2026-07-26; toggle moved above
+   the header, 2026-07-27): every top-level section becomes its own bordered card,
+   collapsible the same way as the cards nested inside it. The toggle sits on its own
+   centered line above the kicker/title (not pinned to a corner) so the title block
+   below it centers on the section's true midpoint, with nothing reserving space on
+   either side. Only .fold-body collapses. ---- */
 .section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem}
 .section.section-card:last-of-type{margin-bottom:0}
-.section-head-row{position:relative;padding-right:9rem}
-.section-head-row .mc-toggle{position:absolute;right:0;top:0}
+.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
 .mc-closed .fold-body{display:none}
-@media(max-width:640px){.section-head-row{padding-right:0;padding-bottom:3rem}.section-head-row .mc-toggle{left:0;right:0;top:auto;bottom:0;width:100%}}
 
 /* ---- Profile section ---- */
 .profile-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.5rem}
@@ -223,7 +222,8 @@ body{text-align:center}
     <button class="admin-toggle" id="admin-toggle" type="button" title="Enter your key to mark status on funders and grants">Admin</button>
     <nav>
       <a href="#profile">Profile</a>
-      <a href="#compiled">Funder Matches</a>
+      <a href="#compiled">Compiled Funder Matches</a>
+      <a href="#method">How This Was Built</a>
       <a href="demo-scribe.html">See Scribe &#8594;</a>
       <a href="demo-pricing">Pricing &#8594;</a>
       <a href="demo">All demos &#8594;</a>
@@ -240,11 +240,11 @@ body{text-align:center}
 <section class="section section-card" id="how-to-read">
   <div class="fold">
     <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="how-to-read-fold-body"></button>
       <div class="section-head">
-        <span class="kicker">Read this first</span>
+        <span class="kicker">Read This First</span>
         <h2>How to read this page</h2>
       </div>
-      <button class="mc-toggle" type="button" aria-controls="how-to-read-fold-body"></button>
     </div>
     <div class="fold-body" id="how-to-read-fold-body">
     <div class="table-scroll"><table class="funder-mini-table method-table">
@@ -271,12 +271,12 @@ body{text-align:center}
 <section class="section section-card" id="profile">
   <div class="fold">
     <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="profile-fold-body"></button>
       <div class="section-head">
-        <span class="kicker">The organization</span>
+        <span class="kicker">The Organization</span>
         <h2>Funding Profile</h2>
         <div class="section-head-tags"><span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--urgent);border:1px solid var(--urgent);padding:.14rem .45rem;vertical-align:middle">Fictional org</span></div>
       </div>
-      <button class="mc-toggle" type="button" aria-controls="profile-fold-body"></button>
     </div>
     <div class="fold-body" id="profile-fold-body">
     <div class="section-lede">
@@ -336,12 +336,12 @@ body{text-align:center}
 <section class="section section-card" id="compiled">
   <div class="fold">
     <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="compiled-fold-body"></button>
       <div class="section-head">
-        <span class="kicker">Who could fund this, right now</span>
+        <span class="kicker">Who Could Fund This, Right Now</span>
         <h2>Compiled Funder Matches</h2>
         <div class="section-head-tags"><span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok);border:1px solid var(--ok);padding:.14rem .45rem;vertical-align:middle">Real funders</span> <span class="fold-count" data-count-from="compiled-count" data-count-label="organizations"></span></div>
       </div>
-      <button class="mc-toggle" type="button" aria-controls="compiled-fold-body"></button>
     </div>
     <div class="fold-body" id="compiled-fold-body">
       <div class="toolbar">
@@ -356,11 +356,11 @@ body{text-align:center}
 <section class="section section-card" id="method">
   <div class="fold">
     <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="method-fold-body"></button>
       <div class="section-head">
         <span class="kicker">Method</span>
         <h2>How this was built</h2>
       </div>
-      <button class="mc-toggle" type="button" aria-controls="method-fold-body"></button>
     </div>
     <div class="fold-body" id="method-fold-body">
     <div class="table-scroll"><table class="funder-mini-table method-table">
