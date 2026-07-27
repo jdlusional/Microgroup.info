@@ -29,7 +29,6 @@ a{color:var(--ink)}
 .section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
 .section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0 auto}
 .section-head h2{text-transform:uppercase;letter-spacing:.05em}
-.section-lede p{color:var(--ink);font-size:15px;font-style:normal;font-weight:400;margin:0 0 .8rem}
 .section-head-tags{margin-top:.6rem}
 .section-head-tags:empty{display:none}
 
@@ -60,7 +59,9 @@ a{color:var(--ink)}
 .funder-mini-table th{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--wash);text-align:left;padding:.35rem .5rem;border-bottom:1px solid var(--rule)}
 .funder-mini-table td{padding:.45rem .5rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere;text-align:left}
 .funder-mini-table th:first-child,.funder-mini-table td:first-child{width:26%}
+.method-table th:first-child,.method-table td:first-child{font-weight:700}
 .funder-mini-table th:last-child,.funder-mini-table td:last-child{width:18%}
+.method-table th:last-child,.method-table td:last-child{width:auto}
 .funder-mini-table .amt{font-family:var(--mono);text-align:right;color:var(--wash);font-size:14px}
 .impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin-top:.3rem}
 .impact-grid .stat-tile{padding:.7rem .5rem;background:var(--paper);border:1px solid var(--rule);min-width:0}
@@ -243,33 +244,23 @@ body{text-align:center}
       <button class="mc-toggle" type="button" aria-controls="how-to-read-fold-body"></button>
     </div>
     <div class="fold-body" id="how-to-read-fold-body">
-    <div class="card">
-      <div class="card-head">
-        <h3>This Organization</h3>
-        <button class="mc-toggle" type="button" aria-controls="htr-topic-1-body"></button>
-      </div>
-      <div class="mc-body" id="htr-topic-1-body">
-        <p>Second Shift Learning Collaborative does not exist.<br><br>It is an illustrative adult-literacy nonprofit invented for this demo, and every number attached to it was invented along with it.<br><br>No real client's data appears anywhere on this page.</p>
-      </div>
-    </div>
-    <div class="card" style="margin-top:.9rem">
-      <div class="card-head">
-        <h3>The Funders And Grants</h3>
-        <button class="mc-toggle" type="button" aria-controls="htr-topic-2-body"></button>
-      </div>
-      <div class="mc-body" id="htr-topic-2-body">
-        <p>The funders and grants are real.<br><br>Each one is an actual foundation or program that funds adult literacy and workforce readiness, and each carries a link to its own page.<br><br>Amounts, deadlines, and eligibility rules are quoted from those pages, or marked as unconfirmed where the funder does not publish them.<br><br>Nothing about a real funder is estimated or invented here.<br><br>What <em>is</em> illustrative is the match itself: the judgment that these funders suit this particular (made-up) organization.</p>
-      </div>
-    </div>
-    <div class="card" style="margin-top:.9rem">
-      <div class="card-head">
-        <h3>Next Steps</h3>
-        <button class="mc-toggle" type="button" aria-controls="htr-topic-3-body"></button>
-      </div>
-      <div class="mc-body" id="htr-topic-3-body">
-        <p>Want the drafted application to go with a match? <a href="demo-scribe.html">See Scribe &#8594;</a><br><br>Want this run against your real organization? <a href="mailto:info@microgroup.info?subject=Almanac%20funder-match%20request">Request a funder match &#8594;</a></p>
-      </div>
-    </div>
+    <div class="table-scroll"><table class="funder-mini-table method-table">
+      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>This organization</td>
+          <td>Second Shift Learning Collaborative does not exist.<br><br>It is an illustrative adult-literacy nonprofit invented for this demo, and every number attached to it was invented along with it.<br><br>No real client's data appears anywhere on this page.</td>
+        </tr>
+        <tr>
+          <td>The funders and grants</td>
+          <td>The funders and grants are real.<br><br>Each one is an actual foundation or program that funds adult literacy and workforce readiness, and each carries a link to its own page.<br><br>Amounts, deadlines, and eligibility rules are quoted from those pages, or marked as unconfirmed where the funder does not publish them.<br><br>Nothing about a real funder is estimated or invented here.<br><br>What <em>is</em> illustrative is the match itself: the judgment that these funders suit this particular (made-up) organization.</td>
+        </tr>
+        <tr>
+          <td>Next steps</td>
+          <td>Want the drafted application to go with a match? <a href="demo-scribe.html">See Scribe &#8594;</a><br><br>Want this run against your real organization? <a href="mailto:info@microgroup.info?subject=Almanac%20funder-match%20request">Request a funder match &#8594;</a></td>
+        </tr>
+      </tbody>
+    </table></div>
     </div>
   </div>
 </section>
@@ -369,42 +360,27 @@ body{text-align:center}
       <button class="mc-toggle" type="button" aria-controls="method-fold-body"></button>
     </div>
     <div class="fold-body" id="method-fold-body">
-    <div class="card">
-      <div class="card-head">
-        <h3>Where This Comes From</h3>
-        <button class="mc-toggle" type="button" aria-controls="method-topic-1-body"></button>
-      </div>
-      <div class="mc-body" id="method-topic-1-body">
-        <p>Every funder and every grant on this page is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages.<br><br>Each match carries a link back to the source it came from, so nothing here has to be taken on trust.<br><br>Where a funder does not publish a figure (an award range, a deadline, an eligibility rule), that gap is marked as unconfirmed rather than filled in.</p>
-      </div>
-    </div>
-    <div class="card" style="margin-top:.9rem">
-      <div class="card-head">
-        <h3>What Almanac Will Not Do</h3>
-        <button class="mc-toggle" type="button" aria-controls="method-topic-2-body"></button>
-      </div>
-      <div class="mc-body" id="method-topic-2-body">
-        <p>It does not invent a fact about a funder.<br><br>An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on.<br><br>It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit.<br><br>A candidate is never dressed up as a confirmed prior funder.</p>
-      </div>
-    </div>
-    <div class="card" style="margin-top:.9rem">
-      <div class="card-head">
-        <h3>What It Cannot Tell You</h3>
-        <button class="mc-toggle" type="button" aria-controls="method-topic-3-body"></button>
-      </div>
-      <div class="mc-body" id="method-topic-3-body">
-        <p>Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved.<br><br>A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records.<br><br>The ranking is a judgment about fit, not a prediction of success.<br><br>Treat every row as a lead to verify against the funder's own page before you spend real time on it.<br><br>Grant deadlines and eligibility rules move too: every one on this page was fetched in July 2026, a snapshot rather than a promise, so confirm it directly with the funder before writing anything.</p>
-      </div>
-    </div>
-    <div class="card" style="margin-top:.9rem">
-      <div class="card-head">
-        <h3>How Candidates Are Found And Ranked</h3>
-        <button class="mc-toggle" type="button" aria-controls="method-topic-4-body"></button>
-      </div>
-      <div class="mc-body" id="method-topic-4-body">
-        <p>Candidates are found by searching for funders whose own published guidelines name adult basic education, high school equivalency, English language acquisition, or workforce readiness, then filtering to the ones an Indianapolis nonprofit of this size could realistically approach; a parallel search of the Grants.gov public API, across roughly twenty keyword combinations and every plausible funding category, turned up one federal opportunity that could not confirm this applicant's state was in scope, so it is not shown here.<br><br>Funders are not scored by an algorithm: each is tiered by fit (Strong, Promising, Lower-confidence).<br><br>Every IRS figure on a funder's page comes from ProPublica Nonprofit Explorer's JSON API, which parses the IRS's own e-file data for that organization's most recent processed return, fetched 2026-07-18; assets and liabilities are end-of-year balance-sheet figures, revenue is total revenue for the tax year shown, and qualifying distributions (roughly grants and charitable distributions paid) is reported only for 990-PF filers where ProPublica's summary endpoint returned a value, with "not returned by the source" meaning exactly that, never zero.</p>
-      </div>
-    </div>
+    <div class="table-scroll"><table class="funder-mini-table method-table">
+      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Where this comes from</td>
+          <td>Every funder and every grant on this page is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages.<br><br>Each match carries a link back to the source it came from, so nothing here has to be taken on trust.<br><br>Where a funder does not publish a figure (an award range, a deadline, an eligibility rule), that gap is marked as unconfirmed rather than filled in.</td>
+        </tr>
+        <tr>
+          <td>What Almanac will not do</td>
+          <td>It does not invent a fact about a funder.<br><br>An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on.<br><br>It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit.<br><br>A candidate is never dressed up as a confirmed prior funder.</td>
+        </tr>
+        <tr>
+          <td>What it cannot tell you</td>
+          <td>Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved.<br><br>A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records.<br><br>The ranking is a judgment about fit, not a prediction of success.<br><br>Treat every row as a lead to verify against the funder's own page before you spend real time on it.<br><br>Grant deadlines and eligibility rules move too: every one on this page was fetched in July 2026, a snapshot rather than a promise, so confirm it directly with the funder before writing anything.</td>
+        </tr>
+        <tr>
+          <td>How candidates are found and ranked</td>
+          <td>Candidates are found by searching for funders whose own published guidelines name adult basic education, high school equivalency, English language acquisition, or workforce readiness, then filtering to the ones an Indianapolis nonprofit of this size could realistically approach; a parallel search of the Grants.gov public API, across roughly twenty keyword combinations and every plausible funding category, turned up one federal opportunity that could not confirm this applicant's state was in scope, so it is not shown here.<br><br>Funders are not scored by an algorithm: each is tiered by fit (Strong, Promising, Lower-confidence).<br><br>Every IRS figure on a funder's page comes from ProPublica Nonprofit Explorer's JSON API, which parses the IRS's own e-file data for that organization's most recent processed return, fetched 2026-07-18; assets and liabilities are end-of-year balance-sheet figures, revenue is total revenue for the tax year shown, and qualifying distributions (roughly grants and charitable distributions paid) is reported only for 990-PF filers where ProPublica's summary endpoint returned a value, with "not returned by the source" meaning exactly that, never zero.</td>
+        </tr>
+      </tbody>
+    </table></div>
     </div>
   </div>
 </section>
@@ -881,38 +857,23 @@ function applyCompiled(){
       </div>
       <div class="mc-body" id="${esc('funder-'+f.ein)}-body">
         <div class="card">
-          <div class="card-head">
-            <h3>Why This Funder</h3>
-            <button class="mc-toggle" type="button" aria-controls="${esc(f.ein)}-why-body"></button>
-          </div>
-          <div class="mc-body" id="${esc(f.ein)}-why-body">
-            <div class="qa-grid">${whyRowsHTML}</div>
+          <h3>Why This Funder</h3>
+          <div class="qa-grid">${whyRowsHTML}</div>
+        </div>
+
+        <div class="card">
+          <h3>Funder Snapshot</h3>
+          <div class="impact-grid">
+            <div class="stat-tile"><div class="num">${money(p.assets)}</div><div class="lbl">Total assets (EOY)</div></div>
+            <div class="stat-tile"><div class="num">${money(p.revenue)}</div><div class="lbl">Total revenue</div></div>
+            <div class="stat-tile"><div class="num">${money(p.liabilities)}</div><div class="lbl">Total liabilities (EOY)</div></div>
+            <div class="stat-tile"><div class="num">${fmtQualDistrib(p.qualifying_distributions,p.foundation_code)}</div><div class="lbl">Qualifying distributions (grants paid, 990-PF only)</div></div>
           </div>
         </div>
 
         <div class="card">
-          <div class="card-head">
-            <h3>Funder Snapshot</h3>
-            <button class="mc-toggle" type="button" aria-controls="${esc(f.ein)}-snapshot-body"></button>
-          </div>
-          <div class="mc-body" id="${esc(f.ein)}-snapshot-body">
-            <div class="impact-grid">
-              <div class="stat-tile"><div class="num">${money(p.assets)}</div><div class="lbl">Total assets (EOY)</div></div>
-              <div class="stat-tile"><div class="num">${money(p.revenue)}</div><div class="lbl">Total revenue</div></div>
-              <div class="stat-tile"><div class="num">${money(p.liabilities)}</div><div class="lbl">Total liabilities (EOY)</div></div>
-              <div class="stat-tile"><div class="num">${fmtQualDistrib(p.qualifying_distributions,p.foundation_code)}</div><div class="lbl">Qualifying distributions (grants paid, 990-PF only)</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-head">
-            <h3>Open Opportunity</h3>
-            <button class="mc-toggle" type="button" aria-controls="${esc(f.ein)}-opportunity-body"></button>
-          </div>
-          <div class="mc-body" id="${esc(f.ein)}-opportunity-body">
-            <div class="qa-grid">${grantRows}</div>
-          </div>
+          <h3>Open Opportunity</h3>
+          <div class="qa-grid">${grantRows}</div>
         </div>
 
         ${statusRowHTML('funder',f.funder_name)}
@@ -922,7 +883,6 @@ function applyCompiled(){
   wireStatusControls(host);
   linkifySources(host);
   wireAccordion(host);
-  host.querySelectorAll('.match-card').forEach(card=>wireAccordion(card,'.card'));
 }
 
 /* "Every claim links to a source" -- rationale text and each card's own Source row were both
@@ -1007,8 +967,6 @@ async function load(){
   setAdminUI();
   applyCompiled();
   wireAccordion(document.getElementById('profile'),'.card');
-  wireAccordion(document.getElementById('how-to-read'),'.card');
-  wireAccordion(document.getElementById('method'),'.card');
   wireAccordion(document.body,'.section-card');
 }
 
