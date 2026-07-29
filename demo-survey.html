@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tell Us About Your Organization — MICRO Group</title>
+<meta name="description" content="A short intake form for any organization: the information that isn't in public IRS filings and that Almanac, Scribe, and Concordance need directly from you." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/svg+xml" href="Assets/micro-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=51367c5bd8">
+<style>
+a{color:var(--ink)}
+
+.hero{max-width:900px;margin:0 auto;padding:2.2rem 1.25rem 1rem}
+.hero p{color:var(--wash);max-width:70ch;margin-top:.6rem}
+
+.section{max-width:900px;margin:0 auto;padding:1.6rem 1.25rem}
+.section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:.4rem 0 0}
+
+/* ---- Form (mirrors demo-pricing.html's request-form convention: form-field /
+   hp-field / form-actions) ---- */
+.form-field{margin-bottom:1.3rem}
+.form-field label{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
+.form-field input[type="text"],.form-field input[type="email"],.form-field input[type="file"]{
+  width:100%;font-family:var(--serif);font-size:.95rem;padding:.6rem .8rem;border:1.5px solid var(--ink);
+  background:var(--well);color:var(--ink);outline:none;max-width:520px}
+.form-field input:focus,.form-field textarea:focus{outline:2px solid var(--ink);outline-offset:0}
+.form-field textarea{width:100%;font-family:var(--serif);font-size:.95rem;padding:.7rem .8rem;border:1.5px solid var(--ink);background:var(--well);color:var(--ink);resize:vertical;outline:none}
+.field-hint{font-family:var(--mono);font-size:.82rem;color:var(--wash);margin-top:.35rem;line-height:1.5}
+.optional-tag{font-family:var(--mono);text-transform:none;letter-spacing:0;color:var(--wash);font-weight:400}
+.hp-field{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
+.form-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
+.form-status{font-family:var(--mono);font-size:.88rem;color:var(--ok)}
+.form-status.error{color:var(--urgent)}
+.btn{font-family:var(--mono);font-size:.86rem;letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);background:var(--paper);padding:.55rem 1.2rem;cursor:pointer;transition:all .15s ease}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent)}
+
+.scope-box{background:var(--well);border:1px solid var(--rule);border-left:4px solid var(--ink);padding:1.1rem 1.3rem;font-size:.94rem;margin:0 auto 1.6rem;max-width:900px}
+.scope-box p{margin:0 0 .6rem}
+.scope-box p:last-child{margin-bottom:0}
+
+.doc-list{font-size:.92rem;color:var(--ink);margin:.3rem 0 0;padding-left:1.2rem}
+.doc-list li{margin-bottom:.3rem}
+
+footer{max-width:900px;margin:0 auto;padding:1.5rem 1.25rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:.72rem;letter-spacing:.02em}
+
+@media(max-width:640px){
+  .form-field input[type="text"],.form-field input[type="email"],.form-field input[type="file"]{max-width:none}
+}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand"><b>MICRO Group</b> Organization Intake</span>
+    <span class="grow"></span>
+    <nav>
+      <a href="#scope">What this is</a>
+      <a href="#form">The form</a>
+      <a href="demo">All demos &#8594;</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">For any organization</div>
+  <h1>Tell Us About Your Organization</h1>
+  <p>Almanac, Scribe, and Concordance already pull what's public: a filed Form 990, board rosters, prior grants reported on Schedule I, giving history. This form is for everything that isn't public: your own goals, the problems you're trying to solve, and the documents and history only your organization can supply.</p>
+</header>
+
+<div class="scope-box" id="scope">
+  <p><strong>What we already have.</strong> Revenue, expenses, net assets, officer compensation, filed NTEE code, and prior reported grants come from your public IRS filings automatically. You don't need to re-enter any of that here.</p>
+  <p><strong>What we're asking for instead.</strong> Current goals and priorities, funder relationships and history beyond what's on file, your own board roster (needed to find who could make an introduction), and copies of documents like your most recent Form 990 and recent grant applications, including ones that weren't funded.</p>
+  <p>Every question below is optional except your name, organization, and email. Answer what applies and leave the rest blank; a partial answer is still useful.</p>
+</div>
+
+<div class="section" id="form">
+  <div class="section-head">
+    <h2>The Form</h2>
+    <p>Submitting this sends an email directly to Jonathan Lin Davis. It is not a contract, an application, or a request for services, and nothing here is shared beyond that.</p>
+  </div>
+
+  <form id="survey-form" novalidate>
+
+    <div class="form-field">
+      <label for="s-name">Your name</label>
+      <input type="text" id="s-name" name="name" required>
+    </div>
+    <div class="form-field">
+      <label for="s-title">Your title <span class="optional-tag">(optional)</span></label>
+      <input type="text" id="s-title" name="title">
+    </div>
+    <div class="form-field">
+      <label for="s-org">Organization</label>
+      <input type="text" id="s-org" name="org" required>
+    </div>
+    <div class="form-field">
+      <label for="s-email">Email</label>
+      <input type="email" id="s-email" name="email" required>
+    </div>
+    <div class="form-field">
+      <label for="s-ein">EIN <span class="optional-tag">(optional, helps match your organization to its own public filings)</span></label>
+      <input type="text" id="s-ein" name="ein" placeholder="XX-XXXXXXX">
+    </div>
+
+    <div class="form-field">
+      <label for="s-mission">Your mission and focus, in your own words <span class="optional-tag">(optional)</span></label>
+      <textarea id="s-mission" name="mission_text" rows="3" placeholder="Filed classifications often undersell what an organization actually does day to day."></textarea>
+    </div>
+    <div class="form-field">
+      <label for="s-areas">Where you currently operate <span class="optional-tag">(optional)</span></label>
+      <textarea id="s-areas" name="operating_areas" rows="2" placeholder="Including any expansion or new geography not yet reflected in a filing."></textarea>
+    </div>
+    <div class="form-field">
+      <label for="s-short-goals">Short-term goals, next 6 to 12 months <span class="optional-tag">(optional)</span></label>
+      <textarea id="s-short-goals" name="short_term_goals" rows="3"></textarea>
+    </div>
+    <div class="form-field">
+      <label for="s-long-goals">Long-term goals, next 2 to 5 years <span class="optional-tag">(optional)</span></label>
+      <textarea id="s-long-goals" name="long_term_goals" rows="3"></textarea>
+    </div>
+    <div class="form-field">
+      <label for="s-problems">The problems you're trying to address right now <span class="optional-tag">(optional)</span></label>
+      <textarea id="s-problems" name="problems" rows="3"></textarea>
+    </div>
+
+    <div class="form-field">
+      <label for="s-relationships">Funder relationships beyond what's public <span class="optional-tag">(optional)</span></label>
+      <textarea id="s-relationships" name="relationship_notes" rows="3" placeholder="Which funders on your prior 990s are live relationships versus dormant or one-time; anything about a relationship that a filing wouldn't show."></textarea>
+    </div>
+    <div class="form-field">
+      <label for="s-exclusions">Funders or funder types to exclude or deprioritize <span class="optional-tag">(optional)</span></label>
+      <textarea id="s-exclusions" name="funder_exclusions" rows="2"></textarea>
+    </div>
+    <div class="form-field">
+      <label for="s-watch">Funders or pages you'd like watched <span class="optional-tag">(optional)</span></label>
+      <textarea id="s-watch" name="watch_requests" rows="2" placeholder="Any private or invitation-only funders, or specific staff-contact pages, that a public search wouldn't surface on its own."></textarea>
+    </div>
+
+    <div class="form-field">
+      <label for="s-applications">Recent grant applications and their outcomes <span class="optional-tag">(optional)</span></label>
+      <textarea id="s-applications" name="recent_applications" rows="4" placeholder="Funder, amount requested, whether it was awarded or declined, and any reviewer feedback you received."></textarea>
+    </div>
+    <div class="form-field">
+      <label for="s-pipeline">Applications currently in progress <span class="optional-tag">(optional, so we don't suggest a duplicate ask)</span></label>
+      <textarea id="s-pipeline" name="pipeline_notes" rows="2"></textarea>
+    </div>
+
+    <div class="form-field">
+      <label for="s-board">Current board or trustee roster <span class="optional-tag">(optional)</span></label>
+      <textarea id="s-board" name="board_roster" rows="3" placeholder="Names and any professional affiliations you know of. This is what lets us look for a shared board seat with a funder, something no public filing does on its own."></textarea>
+    </div>
+    <div class="form-field">
+      <label for="s-leadership">Leadership background <span class="optional-tag">(optional)</span></label>
+      <textarea id="s-leadership" name="leadership_notes" rows="2" placeholder="Tenure, prior roles, or a short bio for key staff beyond the bare name and title on a 990."></textarea>
+    </div>
+
+    <div class="form-field">
+      <label for="s-files">Documents <span class="optional-tag">(optional &mdash; most recent Form 990, audited financials, your 501(c)(3) determination letter, or recent grant applications, either successful or declined)</span></label>
+      <input type="file" id="s-files" name="files" multiple accept=".pdf,.doc,.docx">
+      <div class="field-hint">PDF, DOC, or DOCX, up to 25&nbsp;MB total. If a file's easier to share as a link instead, use the field below.</div>
+    </div>
+    <div class="form-field">
+      <label for="s-links">Links to shared documents <span class="optional-tag">(optional)</span></label>
+      <textarea id="s-links" name="document_links" rows="2" placeholder="One or more links to a Drive, Dropbox, or other shared folder, if that's easier than uploading."></textarea>
+    </div>
+
+    <div class="form-field">
+      <label for="s-wishlist">Anything else we should know <span class="optional-tag">(optional)</span></label>
+      <textarea id="s-wishlist" name="wishlist" rows="3"></textarea>
+    </div>
+
+    <!-- honeypot: hidden from people, bots fill it -->
+    <div class="hp-field" aria-hidden="true">
+      <label for="website">Website</label>
+      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+    </div>
+
+    <div class="form-actions">
+      <button class="btn solid" type="submit" id="submit-btn">Send</button>
+      <span class="form-status" id="submit-status"></span>
+    </div>
+  </form>
+</div>
+
+<footer>
+  <p>Organization intake &middot; sent directly to Jonathan Lin Davis, not stored on this site &middot; <a href="demo">All demos &#8594;</a></p>
+  <p>Developed in Python, CSS, and JavaScript using Claude Code and Jonathan Lin Davis's proprietary, copyrighted Code Development Program</p>
+</footer>
+
+<script>
+(function(){
+  const form=document.getElementById('survey-form');
+  if(!form)return;
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    const statusEl=document.getElementById('submit-status');
+    const btn=document.getElementById('submit-btn');
+    const setStatus=function(msg,isErr){
+      if(statusEl){statusEl.textContent=msg;statusEl.classList.toggle('error',!!isErr);}
+    };
+
+    const name=(document.getElementById('s-name')||{}).value||'';
+    const org=(document.getElementById('s-org')||{}).value||'';
+    const email=(document.getElementById('s-email')||{}).value||'';
+    const emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!name.trim()||!org.trim()){
+      setStatus('Please enter your name and organization.',true);
+      return;
+    }
+    if(!emailRe.test(email)){
+      setStatus('Please enter a valid email.',true);
+      return;
+    }
+
+    const files=(document.getElementById('s-files')||{}).files||[];
+    let totalBytes=0;
+    for(let i=0;i<files.length;i++){totalBytes+=files[i].size;}
+    if(totalBytes>25*1024*1024){
+      setStatus('Attached files exceed the 25 MB total limit. Please use the link field instead for large files.',true);
+      return;
+    }
+
+    const fd=new FormData();
+    fd.append('name',name);
+    fd.append('title',(document.getElementById('s-title')||{}).value||'');
+    fd.append('org',org);
+    fd.append('email',email);
+    fd.append('ein',(document.getElementById('s-ein')||{}).value||'');
+    fd.append('mission_text',(document.getElementById('s-mission')||{}).value||'');
+    fd.append('operating_areas',(document.getElementById('s-areas')||{}).value||'');
+    fd.append('short_term_goals',(document.getElementById('s-short-goals')||{}).value||'');
+    fd.append('long_term_goals',(document.getElementById('s-long-goals')||{}).value||'');
+    fd.append('problems',(document.getElementById('s-problems')||{}).value||'');
+    fd.append('relationship_notes',(document.getElementById('s-relationships')||{}).value||'');
+    fd.append('funder_exclusions',(document.getElementById('s-exclusions')||{}).value||'');
+    fd.append('watch_requests',(document.getElementById('s-watch')||{}).value||'');
+    fd.append('recent_applications',(document.getElementById('s-applications')||{}).value||'');
+    fd.append('pipeline_notes',(document.getElementById('s-pipeline')||{}).value||'');
+    fd.append('board_roster',(document.getElementById('s-board')||{}).value||'');
+    fd.append('leadership_notes',(document.getElementById('s-leadership')||{}).value||'');
+    fd.append('document_links',(document.getElementById('s-links')||{}).value||'');
+    fd.append('wishlist',(document.getElementById('s-wishlist')||{}).value||'');
+    fd.append('website',(document.getElementById('website')||{}).value||'');
+    fd.append('page_url',window.location.href);
+    for(let i=0;i<files.length;i++){fd.append('files',files[i]);}
+
+    const origLabel=btn?btn.textContent:'Send';
+    let success=false;
+    if(btn){btn.disabled=true;btn.textContent='Sending…';}
+    setStatus('',false);
+    try{
+      const res=await fetch('/api/survey',{method:'POST',body:fd});
+      if(res.ok){
+        success=true;
+        if(btn)btn.textContent='Sent ✓';
+        setStatus("Sent. We'll follow up at the email you provided.",false);
+        form.reset();
+      }else{
+        const t=await res.json().catch(function(){return{};});
+        setStatus((t&&t.error)?t.error:'Could not send. Please try again.',true);
+      }
+    }catch(err){
+      setStatus('Network error. Please try again.',true);
+    }finally{
+      if(!success&&btn){btn.disabled=false;btn.textContent=origLabel;}
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
