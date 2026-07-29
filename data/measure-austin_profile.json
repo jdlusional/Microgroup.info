@@ -101,10 +101,10 @@
     "verified_facts": [
       {
         "field": "organization_legal_name",
-        "value": "Measure Austin (IRS legal name); publicly branded \"Measure\"",
+        "value": "Measure, f/k/a Measure Austin; Texas SOS legal name amended 2024-07-16, IRS record not yet updated",
         "source_url": "https://projects.propublica.org/nonprofits/organizations/822372196",
         "confidence": "high",
-        "note": "IRS legal name remains 'Measure Austin' under EIN 82-2372196; current site brands as 'Measure' at wemeasure.org."
+        "note": "Texas SOS Certificate of Amendment (Filing #802777532, obtained 2026-07-29) shows the legal name changed from 'Measure Austin' to 'Measure' effective 2024-07-16. The FY2024 Form 990 (accepted by the IRS 2025-10-01) still files under 'Measure Austin' -- the IRS record has evidently not caught up to the SOS amendment. Current public branding is 'Measure' at wemeasure.org, EIN 82-2372196 unchanged."
       },
       {
         "field": "ein",
