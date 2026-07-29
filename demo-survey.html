@@ -29,17 +29,18 @@ a{color:var(--ink)}
 .section{max-width:900px;margin:0 auto;padding:1.6rem 1.25rem}
 .section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:.4rem 0 0}
 
-/* ---- Form (mirrors demo-pricing.html's request-form convention: form-field /
-   hp-field / form-actions) ---- */
-.form-field{margin-bottom:1.3rem}
-.form-field label{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
-.form-field input[type="text"],.form-field input[type="email"],.form-field input[type="file"]{
-  width:100%;font-family:var(--serif);font-size:.95rem;padding:.6rem .8rem;border:1.5px solid var(--ink);
-  background:var(--well);color:var(--ink);outline:none;max-width:520px}
+/* Every field, single-line or multi-line, stops at the same considered reading
+   width (roughly 65-70 characters at this type size) instead of inputs and
+   textareas disagreeing with each other, which is what made the old 520px
+   input cap next to full-width textareas look like an arbitrary cutoff. */
+.form-field input[type="text"],.form-field input[type="email"],.form-field input[type="file"],.form-field textarea{
+  width:100%;max-width:640px;font-family:var(--serif);font-size:.95rem;padding:.6rem .8rem;border:1.5px solid var(--ink);
+  background:var(--well);color:var(--ink);outline:none;box-sizing:border-box}
+.form-field textarea{padding:.7rem .8rem;resize:vertical}
 .form-field input:focus,.form-field textarea:focus{outline:2px solid var(--ink);outline-offset:0}
-.form-field textarea{width:100%;font-family:var(--serif);font-size:.95rem;padding:.7rem .8rem;border:1.5px solid var(--ink);background:var(--well);color:var(--ink);resize:vertical;outline:none}
-.field-hint{font-family:var(--mono);font-size:.82rem;color:var(--wash);margin-top:.35rem;line-height:1.5}
-.optional-tag{font-family:var(--mono);text-transform:none;letter-spacing:0;color:var(--wash);font-weight:400}
+.form-field label{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
+.form-field{margin-bottom:1.3rem}
+.field-hint{font-family:var(--mono);font-size:.82rem;color:var(--wash);margin-top:.35rem;line-height:1.5;max-width:640px}
 .hp-field{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
 .form-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
 .form-status{font-family:var(--mono);font-size:.88rem;color:var(--ok)}
@@ -52,14 +53,21 @@ a{color:var(--ink)}
 .scope-box{background:var(--well);border:1px solid var(--rule);border-left:4px solid var(--ink);padding:1.1rem 1.3rem;font-size:.94rem;margin:0 auto 1.6rem;max-width:900px}
 .scope-box p{margin:0 0 .6rem}
 .scope-box p:last-child{margin-bottom:0}
+.scope-box .mandatory-note{font-weight:700}
 
-.doc-list{font-size:.92rem;color:var(--ink);margin:.3rem 0 0;padding-left:1.2rem}
-.doc-list li{margin-bottom:.3rem}
+/* In-form section dividers (2026-07-29 UX pass): the form grew to roughly 20
+   required fields, so it now needs visible groupings to stay scannable, not
+   just implicit paragraph breaks between unrelated questions. */
+.form-section{border-top:1px solid var(--rule-soft);margin:2rem 0 1.4rem;padding-top:1.4rem}
+.form-section:first-child{border-top:none;margin-top:0;padding-top:0}
+.form-section h3{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink);margin:0 0 .3rem}
+.form-section .form-section-note{font-size:.88rem;color:var(--wash);margin:0 0 1rem;max-width:70ch}
 
 footer{max-width:900px;margin:0 auto;padding:1.5rem 1.25rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:.72rem;letter-spacing:.02em}
 
 @media(max-width:640px){
-  .form-field input[type="text"],.form-field input[type="email"],.form-field input[type="file"]{max-width:none}
+  .form-field input[type="text"],.form-field input[type="email"],.form-field input[type="file"],.form-field textarea{max-width:none}
+  .field-hint{max-width:none}
 }
 </style>
 </head>
@@ -87,7 +95,7 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.25rem 3rem;border-top:1px 
 <div class="scope-box" id="scope">
   <p><strong>What we already have.</strong> Revenue, expenses, net assets, officer compensation, filed NTEE code, and prior reported grants come from your public IRS filings automatically. You don't need to re-enter any of that here.</p>
   <p><strong>What we're asking for instead.</strong> Current goals and priorities, funder relationships and history beyond what's on file, your own board roster (needed to find who could make an introduction), and copies of documents like your most recent Form 990 and recent grant applications, including ones that weren't funded.</p>
-  <p>Every question below is optional except your name, organization, and email. Answer what applies and leave the rest blank; a partial answer is still useful.</p>
+  <p class="mandatory-note">Every question below is required. If a question genuinely doesn't apply to your organization, write "N/A" rather than leaving it blank; a stated N/A tells us you saw the question, an empty field doesn't.</p>
 </div>
 
 <div class="section" id="form">
@@ -98,92 +106,118 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.25rem 3rem;border-top:1px 
 
   <form id="survey-form" novalidate>
 
-    <div class="form-field">
-      <label for="s-name">Your name</label>
-      <input type="text" id="s-name" name="name" required>
-    </div>
-    <div class="form-field">
-      <label for="s-title">Your title <span class="optional-tag">(optional)</span></label>
-      <input type="text" id="s-title" name="title">
-    </div>
-    <div class="form-field">
-      <label for="s-org">Organization</label>
-      <input type="text" id="s-org" name="org" required>
-    </div>
-    <div class="form-field">
-      <label for="s-email">Email</label>
-      <input type="email" id="s-email" name="email" required>
-    </div>
-    <div class="form-field">
-      <label for="s-ein">EIN <span class="optional-tag">(optional, helps match your organization to its own public filings)</span></label>
-      <input type="text" id="s-ein" name="ein" placeholder="XX-XXXXXXX">
-    </div>
-
-    <div class="form-field">
-      <label for="s-mission">Your mission and focus, in your own words <span class="optional-tag">(optional)</span></label>
-      <textarea id="s-mission" name="mission_text" rows="3" placeholder="Filed classifications often undersell what an organization actually does day to day."></textarea>
-    </div>
-    <div class="form-field">
-      <label for="s-areas">Where you currently operate <span class="optional-tag">(optional)</span></label>
-      <textarea id="s-areas" name="operating_areas" rows="2" placeholder="Including any expansion or new geography not yet reflected in a filing."></textarea>
-    </div>
-    <div class="form-field">
-      <label for="s-short-goals">Short-term goals, next 6 to 12 months <span class="optional-tag">(optional)</span></label>
-      <textarea id="s-short-goals" name="short_term_goals" rows="3"></textarea>
-    </div>
-    <div class="form-field">
-      <label for="s-long-goals">Long-term goals, next 2 to 5 years <span class="optional-tag">(optional)</span></label>
-      <textarea id="s-long-goals" name="long_term_goals" rows="3"></textarea>
-    </div>
-    <div class="form-field">
-      <label for="s-problems">The problems you're trying to address right now <span class="optional-tag">(optional)</span></label>
-      <textarea id="s-problems" name="problems" rows="3"></textarea>
+    <div class="form-section">
+      <h3>About You and Your Organization</h3>
+      <div class="form-field">
+        <label for="s-name">Your name</label>
+        <input type="text" id="s-name" name="name" required>
+      </div>
+      <div class="form-field">
+        <label for="s-title">Your title</label>
+        <input type="text" id="s-title" name="title" required>
+      </div>
+      <div class="form-field">
+        <label for="s-org">Organization</label>
+        <input type="text" id="s-org" name="org" required>
+      </div>
+      <div class="form-field">
+        <label for="s-email">Email</label>
+        <input type="email" id="s-email" name="email" required>
+      </div>
+      <div class="form-field">
+        <label for="s-ein">EIN</label>
+        <input type="text" id="s-ein" name="ein" placeholder="XX-XXXXXXX" required>
+        <div class="field-hint">Helps match your organization to its own public filings.</div>
+      </div>
     </div>
 
-    <div class="form-field">
-      <label for="s-relationships">Funder relationships beyond what's public <span class="optional-tag">(optional)</span></label>
-      <textarea id="s-relationships" name="relationship_notes" rows="3" placeholder="Which funders on your prior 990s are live relationships versus dormant or one-time; anything about a relationship that a filing wouldn't show."></textarea>
-    </div>
-    <div class="form-field">
-      <label for="s-exclusions">Funders or funder types to exclude or deprioritize <span class="optional-tag">(optional)</span></label>
-      <textarea id="s-exclusions" name="funder_exclusions" rows="2"></textarea>
-    </div>
-    <div class="form-field">
-      <label for="s-watch">Funders or pages you'd like watched <span class="optional-tag">(optional)</span></label>
-      <textarea id="s-watch" name="watch_requests" rows="2" placeholder="Any private or invitation-only funders, or specific staff-contact pages, that a public search wouldn't surface on its own."></textarea>
-    </div>
-
-    <div class="form-field">
-      <label for="s-applications">Recent grant applications and their outcomes <span class="optional-tag">(optional)</span></label>
-      <textarea id="s-applications" name="recent_applications" rows="4" placeholder="Funder, amount requested, whether it was awarded or declined, and any reviewer feedback you received."></textarea>
-    </div>
-    <div class="form-field">
-      <label for="s-pipeline">Applications currently in progress <span class="optional-tag">(optional, so we don't suggest a duplicate ask)</span></label>
-      <textarea id="s-pipeline" name="pipeline_notes" rows="2"></textarea>
+    <div class="form-section">
+      <h3>Mission and Positioning</h3>
+      <div class="form-field">
+        <label for="s-mission">Your mission and focus, in your own words</label>
+        <textarea id="s-mission" name="mission_text" rows="3" required placeholder="Filed classifications often undersell what an organization actually does day to day."></textarea>
+      </div>
+      <div class="form-field">
+        <label for="s-areas">Where you currently operate</label>
+        <textarea id="s-areas" name="operating_areas" rows="2" required placeholder="Including any expansion or new geography not yet reflected in a filing."></textarea>
+      </div>
     </div>
 
-    <div class="form-field">
-      <label for="s-board">Current board or trustee roster <span class="optional-tag">(optional)</span></label>
-      <textarea id="s-board" name="board_roster" rows="3" placeholder="Names and any professional affiliations you know of. This is what lets us look for a shared board seat with a funder, something no public filing does on its own."></textarea>
-    </div>
-    <div class="form-field">
-      <label for="s-leadership">Leadership background <span class="optional-tag">(optional)</span></label>
-      <textarea id="s-leadership" name="leadership_notes" rows="2" placeholder="Tenure, prior roles, or a short bio for key staff beyond the bare name and title on a 990."></textarea>
-    </div>
-
-    <div class="form-field">
-      <label for="s-files">Documents <span class="optional-tag">(optional &mdash; most recent Form 990, audited financials, your 501(c)(3) determination letter, or recent grant applications, either successful or declined)</span></label>
-      <input type="file" id="s-files" name="files" multiple accept=".pdf,.doc,.docx">
-      <div class="field-hint">PDF, DOC, or DOCX, up to 25&nbsp;MB total. If a file's easier to share as a link instead, use the field below.</div>
-    </div>
-    <div class="form-field">
-      <label for="s-links">Links to shared documents <span class="optional-tag">(optional)</span></label>
-      <textarea id="s-links" name="document_links" rows="2" placeholder="One or more links to a Drive, Dropbox, or other shared folder, if that's easier than uploading."></textarea>
+    <div class="form-section">
+      <h3>Goals and Problems</h3>
+      <div class="form-field">
+        <label for="s-short-goals">Short-term goals, next 6 to 12 months</label>
+        <textarea id="s-short-goals" name="short_term_goals" rows="3" required></textarea>
+      </div>
+      <div class="form-field">
+        <label for="s-long-goals">Long-term goals, next 2 to 5 years</label>
+        <textarea id="s-long-goals" name="long_term_goals" rows="3" required></textarea>
+      </div>
+      <div class="form-field">
+        <label for="s-problems">The problems you're trying to address right now</label>
+        <textarea id="s-problems" name="problems" rows="3" required></textarea>
+      </div>
     </div>
 
-    <div class="form-field">
-      <label for="s-wishlist">Anything else we should know <span class="optional-tag">(optional)</span></label>
-      <textarea id="s-wishlist" name="wishlist" rows="3"></textarea>
+    <div class="form-section">
+      <h3>Funding Relationships</h3>
+      <div class="form-field">
+        <label for="s-relationships">Funder relationships beyond what's public</label>
+        <textarea id="s-relationships" name="relationship_notes" rows="3" required placeholder="Which funders on your prior 990s are live relationships versus dormant or one-time; anything about a relationship that a filing wouldn't show."></textarea>
+      </div>
+      <div class="form-field">
+        <label for="s-exclusions">Funders or funder types to exclude or deprioritize</label>
+        <textarea id="s-exclusions" name="funder_exclusions" rows="2" required></textarea>
+      </div>
+      <div class="form-field">
+        <label for="s-watch">Funders or pages you'd like watched</label>
+        <textarea id="s-watch" name="watch_requests" rows="2" required placeholder="Any private or invitation-only funders, or specific staff-contact pages, that a public search wouldn't surface on its own."></textarea>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Grant History</h3>
+      <div class="form-field">
+        <label for="s-applications">Recent grant applications and their outcomes</label>
+        <textarea id="s-applications" name="recent_applications" rows="4" required placeholder="Funder, amount requested, whether it was awarded or declined, and any reviewer feedback you received."></textarea>
+      </div>
+      <div class="form-field">
+        <label for="s-pipeline">Applications currently in progress</label>
+        <textarea id="s-pipeline" name="pipeline_notes" rows="2" required placeholder="So we don't suggest a duplicate ask."></textarea>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Board and Leadership</h3>
+      <div class="form-field">
+        <label for="s-board">Current board or trustee roster</label>
+        <textarea id="s-board" name="board_roster" rows="3" required placeholder="Names and any professional affiliations you know of. This is what lets us look for a shared board seat with a funder, something no public filing does on its own."></textarea>
+      </div>
+      <div class="form-field">
+        <label for="s-leadership">Leadership background</label>
+        <textarea id="s-leadership" name="leadership_notes" rows="2" required placeholder="Tenure, prior roles, or a short bio for key staff beyond the bare name and title on a 990."></textarea>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Documents</h3>
+      <div class="form-field">
+        <label for="s-files">Upload files <span style="text-transform:none;font-weight:400">(optional picker; use the link field below if you'd rather not upload, or write N/A there)</span></label>
+        <input type="file" id="s-files" name="files" multiple accept=".pdf,.doc,.docx">
+        <div class="field-hint">PDF, DOC, or DOCX, up to 25&nbsp;MB total. Most recent Form 990, audited financials, your 501(c)(3) determination letter, or recent grant applications, either successful or declined.</div>
+      </div>
+      <div class="form-field">
+        <label for="s-links">Links to shared documents</label>
+        <textarea id="s-links" name="document_links" rows="2" required placeholder="One or more links to a Drive, Dropbox, or other shared folder, if that's easier than uploading. Write N/A if you've uploaded files above instead, or have nothing to share."></textarea>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Anything Else</h3>
+      <div class="form-field">
+        <label for="s-wishlist">Anything else we should know</label>
+        <textarea id="s-wishlist" name="wishlist" rows="3" required></textarea>
+      </div>
     </div>
 
     <!-- honeypot: hidden from people, bots fill it -->
@@ -208,6 +242,33 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.25rem 3rem;border-top:1px 
 (function(){
   const form=document.getElementById('survey-form');
   if(!form)return;
+
+  // Every required text/textarea field, in the order they appear, paired with
+  // a human label used in the error message. Checked as a single loop instead
+  // of one if-statement per field so adding or renaming a question doesn't
+  // require touching this validation logic separately.
+  const REQUIRED_FIELDS=[
+    ['s-name','your name'],
+    ['s-title','your title'],
+    ['s-org','organization'],
+    ['s-email','email'],
+    ['s-ein','EIN'],
+    ['s-mission','mission and focus'],
+    ['s-areas','where you operate'],
+    ['s-short-goals','short-term goals'],
+    ['s-long-goals','long-term goals'],
+    ['s-problems','problems being addressed'],
+    ['s-relationships','funder relationships'],
+    ['s-exclusions','funders to exclude'],
+    ['s-watch','requested watch list'],
+    ['s-applications','recent applications'],
+    ['s-pipeline','current pipeline'],
+    ['s-board','board roster'],
+    ['s-leadership','leadership background'],
+    ['s-links','document links'],
+    ['s-wishlist','anything else']
+  ];
+
   form.addEventListener('submit',async function(e){
     e.preventDefault();
     const statusEl=document.getElementById('submit-status');
@@ -216,14 +277,18 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.25rem 3rem;border-top:1px 
       if(statusEl){statusEl.textContent=msg;statusEl.classList.toggle('error',!!isErr);}
     };
 
-    const name=(document.getElementById('s-name')||{}).value||'';
-    const org=(document.getElementById('s-org')||{}).value||'';
+    for(let i=0;i<REQUIRED_FIELDS.length;i++){
+      const id=REQUIRED_FIELDS[i][0],label=REQUIRED_FIELDS[i][1];
+      const el=document.getElementById(id);
+      if(!el||!el.value.trim()){
+        setStatus('Please fill in "'+label+'" (write N/A if it doesn\'t apply), then send again.',true);
+        if(el)el.focus();
+        return;
+      }
+    }
+
     const email=(document.getElementById('s-email')||{}).value||'';
     const emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if(!name.trim()||!org.trim()){
-      setStatus('Please enter your name and organization.',true);
-      return;
-    }
     if(!emailRe.test(email)){
       setStatus('Please enter a valid email.',true);
       return;
@@ -238,9 +303,9 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.25rem 3rem;border-top:1px 
     }
 
     const fd=new FormData();
-    fd.append('name',name);
+    fd.append('name',(document.getElementById('s-name')||{}).value||'');
     fd.append('title',(document.getElementById('s-title')||{}).value||'');
-    fd.append('org',org);
+    fd.append('org',(document.getElementById('s-org')||{}).value||'');
     fd.append('email',email);
     fd.append('ein',(document.getElementById('s-ein')||{}).value||'');
     fd.append('mission_text',(document.getElementById('s-mission')||{}).value||'');

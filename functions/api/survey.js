@@ -202,6 +202,18 @@ export async function onRequestPost(context) {
   const pageUrl = clean(form.get("page_url"));
   const title = fields.title;
 
+  // Every question is required (owner order, 2026-07-29); the frontend already
+  // enforces this, but a submission bypassing the page's own JS (a disabled
+  // script, a direct API call) must not silently produce a survey response
+  // with blank sections. "N/A" is an accepted answer, an empty string is not.
+  for (const group of FIELD_GROUPS) {
+    for (const [key, label] of group.keys) {
+      if (!fields[key]) {
+        return json({ error: `Please fill in "${label}" (write N/A if it doesn't apply).` }, 400);
+      }
+    }
+  }
+
   const files = form
     .getAll("files")
     .filter((f) => f && typeof f === "object" && "size" in f && "name" in f && f.size > 0);
