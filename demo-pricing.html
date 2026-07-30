@@ -106,7 +106,7 @@ a{color:var(--ink)}
   <h1>Pricing</h1>
   <p>Standing annual rates for Almanac and Scribe, and an optional plan that keeps every product an organization has purchased on current infrastructure. This is the same rate card every organization sees; nothing here is negotiated in the abstract before a request comes in.</p>
   <p class="note">Current prices are guaranteed through July 31, 2026: any request submitted and confirmed by that date locks in the rates shown here, regardless of any later change to this page.</p>
-  <p class="note">Unlike the product demo pages, this page describes <strong>Jonathan Lin Davis's actual current pricing</strong>, not a simulation against a fictional organization. Submitting the form below does not create a contract; it opens a conversation, and final terms are confirmed in writing.</p>
+  <p class="note">Unlike the product demo pages, this page describes Jonathan Lin Davis's actual current pricing, not a simulation against a fictional organization. Submitting the form below does not create a contract; it opens a conversation, and final terms are confirmed in writing.</p>
 </header>
 
 <div class="section" id="products">
@@ -314,7 +314,7 @@ a{color:var(--ink)}
     const referrerPhone=(document.getElementById('r-phone')||{}).value||'';
     const anyReferralField=referrerName.trim()||referralDate.trim()||referrerEmail.trim()||referrerPhone.trim();
     if(anyReferralField&&(!referrerName.trim()||!referralDate.trim())){
-      setStatus("If you're crediting a referrer, please include their full name and the date of referral.",true);
+      setStatus("If you are crediting a referrer, please include their full name and the date of referral.",true);
       return;
     }
 
@@ -348,7 +348,7 @@ a{color:var(--ink)}
       if(res.ok){
         success=true;
         if(btn)btn.textContent='Request sent ✓';
-        setStatus("Request sent. We'll follow up at the email you provided.",false);
+        setStatus("Request sent. MICRO Group will follow up at the email you provided.",false);
         form.reset();
       }else{
         const t=await res.json().catch(function(){return{};});
