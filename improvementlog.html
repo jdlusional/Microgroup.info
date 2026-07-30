@@ -111,6 +111,10 @@ ORDER.forEach(name => {
   const byDate = {};
   entries.forEach(e => { (byDate[e.d] = byDate[e.d] || []).push(e.t); });
   const dates = Object.keys(byDate).sort().reverse();
+  /* no-tab-drops exception, owner-ratified 2026-07-29: the six product accordions stay
+     CLOSED by default by deliberate owner choice (reviewed in the 2026-07-29 CSS/UX review's
+     tab-drops pass and kept as-is) -- the per-product counts in each summary act as the
+     scannable surface; do not flip these open in a future pass without a fresh owner call. */
   const det = document.createElement("details");
   det.className = "prod";
   det.innerHTML = `<summary>${esc(name)}<span class="count">${entries.length} improvements</span></summary>` +
