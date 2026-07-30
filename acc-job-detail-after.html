@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manager, Programs & Community Growth — Nonprofit Austin</title>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="referrer" content="no-referrer">
+<style>
+  :root{
+    --teal:#009688; --teal-deep:#00796b; --green:#0b8043;
+    --ink:#16201e; --slate:#5c6b67; --line:#e2e8e6; --line-soft:#eef2f1;
+    --paper:#f7f9f8; --card:#ffffff; --coral:#ff6b54; --amber:#b8860b;
+    --r:14px; --maxw:1140px;
+    --shadow:0 1px 2px rgba(22,32,30,.05),0 10px 30px rgba(22,32,30,.07);
+    --display:"Plus Jakarta Sans",system-ui,sans-serif;
+    --body:"Inter",system-ui,sans-serif;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+  .topbar{background:linear-gradient(135deg,var(--teal-deep),var(--teal));color:#fff}
+  .topbar .in{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:800;letter-spacing:-.02em}
+  .brand .mark{width:30px;height:30px;border-radius:8px;background:#fff;color:var(--teal-deep);display:grid;place-items:center;font-weight:800}
+  .back{color:#e7f3f1;text-decoration:none;font-size:.9rem;font-weight:600}
+
+  .crumb{max-width:var(--maxw);margin:18px auto 0;padding:0 24px;font-size:.85rem;color:var(--slate)}
+  .crumb a{color:var(--teal-deep);text-decoration:none;font-weight:600}
+
+  .shell{max-width:var(--maxw);margin:14px auto 90px;padding:0 24px;display:grid;grid-template-columns:1fr 320px;gap:34px;align-items:start}
+
+  .head h1{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,3.2vw,2.4rem);line-height:1.1;letter-spacing:-.02em}
+  .head .org{margin-top:6px;font-size:1.05rem}
+  .head .org a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+  .head .quickfacts{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+  .qf{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:600;padding:6px 12px;border-radius:8px;background:#fff;border:1px solid var(--line);color:var(--ink)}
+  .qf svg{width:14px;height:14px;stroke:var(--teal-deep);fill:none;stroke-width:2}
+  .qf.new{background:#fdeee9;border-color:#f8d3ca;color:var(--coral)}
+
+  .body{margin-top:30px}
+  .tabbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+  .tabbar button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 18px;font:inherit;font-weight:600;font-size:.9rem;color:var(--slate);cursor:pointer}
+  .tabbar button.on{background:var(--teal-deep);color:#fff;border-color:var(--teal-deep)}
+
+  section.blk{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);margin-bottom:16px;overflow:hidden;display:none}
+  section.blk.shown{display:block}
+  .blk > h2{font-family:var(--display);font-weight:700;font-size:1.2rem;letter-spacing:-.01em;padding:20px 24px}
+  .blk .content{padding:0 24px 22px}
+  .blk h3{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--slate);text-transform:uppercase;letter-spacing:.05em;margin:18px 0 8px}
+  .blk h3:first-child{margin-top:0}
+  .blk p{margin:10px 0;color:#27322f}
+  .blk ul{margin:8px 0 8px 4px;list-style:none}
+  .blk li{position:relative;padding-left:22px;margin:7px 0;color:#27322f}
+  .blk li::before{content:"";position:absolute;left:4px;top:10px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+  .blk li.win{padding-left:24px}
+  .blk li.win::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--green);top:8px}
+  .blk strong{color:var(--ink);font-weight:700}
+  .apply-cta{display:inline-block;background:var(--teal-deep);color:#fff;font-weight:700;text-decoration:none;padding:10px 22px;border-radius:999px;margin-top:6px}
+
+  aside{position:sticky;top:18px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:22px}
+  .panel .apply{display:block;text-align:center;background:var(--teal-deep);color:#fff;font-weight:700;font-size:1rem;text-decoration:none;padding:14px;border-radius:10px}
+  .panel .apply:hover{background:var(--teal)}
+  .panel .row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:.9rem}
+  .panel .row:last-child{border-bottom:none}
+  .panel .row .k{color:var(--slate);font-weight:600}
+  .panel .row .v{text-align:right;font-weight:600}
+  .panel .sub{margin-top:18px}
+  .countdown{margin-top:16px;background:#fdeee9;border:1px solid #f8d3ca;border-radius:10px;padding:12px 14px;text-align:center}
+  .countdown b{display:block;font-family:var(--display);font-size:1.4rem;color:var(--coral);line-height:1}
+  .countdown span{font-size:.78rem;color:var(--slate);font-weight:600}
+  .actions{display:flex;gap:8px;margin-top:12px}
+  .actions button{flex:1;border:1px solid var(--line);background:#fff;border-radius:9px;padding:9px;font:inherit;font-weight:600;font-size:.82rem;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+  .actions button:hover{background:var(--paper);border-color:var(--teal)}
+  .actions svg{width:15px;height:15px;stroke:var(--teal-deep);fill:none;stroke-width:2}
+  .actions button.saved svg{fill:var(--coral);stroke:var(--coral)}
+  .pdfbtn{width:100%;margin-top:8px;border:1px solid var(--teal);background:#fff;color:var(--teal-deep);border-radius:9px;padding:11px;font:inherit;font-weight:700;font-size:.86rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px}
+  .pdfbtn:hover{background:var(--teal);color:#fff}
+  .pdfbtn:hover svg{stroke:#fff}
+  .pdfbtn svg{width:16px;height:16px;stroke:var(--teal-deep);fill:none;stroke-width:2}
+
+  .similar{max-width:var(--maxw);margin:0 auto 90px;padding:0 24px}
+  .similar h2{font-family:var(--display);font-weight:700;font-size:1.3rem;margin-bottom:14px}
+  .simgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  .simcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:var(--shadow);text-decoration:none;color:inherit;transition:transform .14s}
+  .simcard:hover{transform:translateY(-3px)}
+  .simcard h3{font-family:var(--display);font-weight:700;font-size:1rem}
+  .simcard .o{color:var(--teal-deep);font-weight:600;font-size:.88rem;margin-top:2px}
+  .simcard .m{margin-top:10px;font-size:.78rem;color:var(--slate)}
+
+  .mobilebar{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:12px 18px;z-index:20;box-shadow:0 -4px 18px rgba(22,32,30,.08);align-items:center;justify-content:space-between;gap:12px}
+  .mobilebar .mb-info b{font-family:var(--display);font-size:.95rem}
+  .mobilebar .mb-info span{display:block;font-size:.78rem;color:var(--slate)}
+  .mobilebar a{background:var(--teal-deep);color:#fff;font-weight:700;text-decoration:none;padding:12px 26px;border-radius:999px;white-space:nowrap}
+
+  .toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:9px;font-size:.88rem;font-weight:600;opacity:0;transition:opacity .25s;pointer-events:none;z-index:40}
+  .toast.show{opacity:1}
+
+  @media(max-width:880px){
+    .shell{grid-template-columns:1fr}
+    aside{position:static}
+    .panel .apply{display:none}
+    .mobilebar{display:flex}
+    body{padding-bottom:74px}
+  }
+  @media(prefers-reduced-motion:reduce){.simcard{transition:none}}
+
+  /* ---- PRINT / PDF: expand every tab, drop chrome, format as a document ---- */
+  @media print{
+    @page{margin:18mm 16mm}
+    body{background:#fff;padding:0}
+    .topbar,.crumb,.tabbar,aside,.similar,.mobilebar,.toast{display:none !important}
+    .shell{display:block;margin:0;padding:0;max-width:none}
+    .head h1{font-size:22pt}
+    .head .quickfacts{margin-top:10px}
+    .qf{border:1px solid #ccc;color:#000}
+    .qf svg{display:none}
+    section.blk{display:block !important;box-shadow:none;border:none;border-top:1.5px solid #000;border-radius:0;margin:0;page-break-inside:avoid}
+    .blk > h2{padding:14px 0 6px;font-size:14pt}
+    .blk .content{padding:0 0 10px}
+    .apply-cta{display:none}
+    .body{margin-top:16px}
+    .print-foot{display:block !important;margin-top:24px;padding-top:10px;border-top:1px solid #999;font-size:9pt;color:#444}
+  }
+  .print-foot{display:none}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="topbar"><div class="in">
+  <div class="brand"><span class="mark">N</span> Nonprofit Austin</div>
+  <a class="back" href="#">← Back to job board</a>
+</div></div>
+
+<nav class="crumb"><a href="#">Job Board</a> › <span>Manager, Programs &amp; Community Growth</span></nav>
+
+<div class="shell">
+  <main>
+    <div class="head">
+      <h1>Manager, Programs &amp; Community Growth</h1>
+      <div class="org">at <a href="#">The Kindness Campaign</a></div>
+      <div class="quickfacts">
+        <span class="qf new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg>Posted today</span>
+        <span class="qf"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg>$60,000/year</span>
+        <span class="qf"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Full Time</span>
+        <span class="qf"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Hybrid · Downtown Austin</span>
+        <span class="qf"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>Verified nonprofit</span>
+      </div>
+    </div>
+
+    <div class="body">
+      <div class="tabbar" id="tabbar"></div>
+
+      <section class="blk shown" data-tab="Requirements">
+        <h2>Requirements</h2>
+        <div class="content">
+          <h3>Preferred Experience</h3>
+          <ul>
+            <li>5+ years in program management, community engagement, education, nonprofit leadership, partnerships, events, or operations</li>
+            <li>Experience managing projects or initiatives from concept to execution</li>
+            <li>Experience working with schools, volunteers, partners, or community organizations</li>
+            <li>Strong operational and organizational skills</li>
+            <li>Experience building systems, processes, or scalable programs preferred</li>
+            <li>Familiarity with AI tools, automation, or modern operational systems</li>
+          </ul>
+          <h3>Bonus Points For</h3>
+          <ul>
+            <li>Startup or growth-stage experience</li>
+            <li>Volunteer management experience</li>
+            <li>Experience with experiential programming or community-building</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="blk" data-tab="Description">
+        <h2>Description</h2>
+        <div class="content">
+          <h3>About the Role</h3>
+          <p>This is not a traditional nonprofit coordinator role. We're looking for a builder: someone who can help take ideas and turn them into scalable programs, systems, experiences, partnerships, and community initiatives.</p>
+          <p>This role will help support and grow TKC's programming, community engagement, volunteer experiences, partnerships, and future initiatives as the organization continues to expand nationally. The ideal candidate is highly organized, strategic, creative, emotionally intelligent, and excited to help build the future of TKC.</p>
+          <h3>What You'll Do</h3>
+          <ul>
+            <li>Help manage and grow TKC programs and community experiences</li>
+            <li>Build systems, playbooks, and processes</li>
+            <li>Lead and own volunteer and community engagement initiatives</li>
+            <li>Coordinate with schools, partners, sponsors, volunteers, and community organizations</li>
+            <li>Support events, activations, and organizational initiatives</li>
+            <li>Help develop and launch new ideas and opportunities for growth</li>
+            <li>Identify ways to improve scalability, efficiency, and impact</li>
+          </ul>
+          <h3>What Success Looks Like</h3>
+          <ul>
+            <li class="win"><strong>Launch a scalable program playbook</strong> within your first 90 days in two or more emerging markets that any future TKC team member or partner can run</li>
+            <li class="win"><strong>Own and grow the volunteer program</strong>, turning one-off volunteer moments into a repeatable engagement engine</li>
+            <li class="win"><strong>Deepen and grow school and community partnerships</strong>, hitting 80–90% partnership retention and 25% revenue growth from existing accounts</li>
+          </ul>
+          <h3>Who You Are</h3>
+          <p>You're probably already doing a version of this job somewhere else, just without the mission, the runway, or the permission to build something that matters.</p>
+          <p>You want a role where the ceiling is high, the work is visible, and what you build actually reaches kids, families, and communities. You see kindness not as a slogan, but as a discipline.</p>
+          <p><strong>To apply:</strong> Send your CV, cover letter, and answer two short prompts in your application about translating a vision into operational reality and a community or program you've built or grown.</p>
+        </div>
+      </section>
+
+      <section class="blk" data-tab="Salary &amp; Benefits">
+        <h2>Salary &amp; Benefits</h2>
+        <div class="content">
+          <p>Starting base salary: <strong>$60,000 annually</strong></p>
+          <h3>You'll Also Receive</h3>
+          <ul>
+            <li>100% employer-paid health, dental, vision, and life insurance beginning the 1st of the month after your start date</li>
+            <li>Observance of NYSE trading holidays, plus the day after Thanksgiving</li>
+            <li>Up to 6 weeks of PTO annually after 6 months of full-time employment</li>
+            <li>401(k) plan (no employer matching at this time)</li>
+          </ul>
+          <h3>You'll Have the Chance To</h3>
+          <ul>
+            <li>Create meaningful national impact</li>
+            <li>Help shape the future growth of TKC</li>
+            <li>Build programs and experiences that change lives</li>
+            <li>Work directly with leadership and grow alongside a rapidly expanding organization</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="blk" data-tab="Company">
+        <h2>Company</h2>
+        <div class="content">
+          <p><strong>The Kindness Campaign</strong> is a nationally growing nonprofit focused on emotional health, emotional literacy, and community impact for children, teens, families, schools, and communities.</p>
+          <p>TKC creates experiences, programs, tools, and partnerships that help people build emotional health skills for life.</p>
+          <p><a class="apply-cta" href="#">Visit tkckindness.org →</a></p>
+        </div>
+      </section>
+    </div>
+
+    <div class="print-foot">
+      Sourced from the Nonprofit Austin Job Board · nonprofitaustin.org/job-board · Verified nonprofit employer · Downloaded for personal reference. Contact the hiring organization directly to apply.
+    </div>
+  </main>
+
+  <aside>
+    <div class="panel">
+      <a class="apply" href="#">Apply now</a>
+      <button class="pdfbtn" id="pdfBtn"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Download as PDF</button>
+      <div class="countdown" id="cd"><b id="cddays">–</b><span>days left to apply</span></div>
+      <div class="actions">
+        <button id="saveBtn"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>Save</button>
+        <button id="shareBtn"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>Share</button>
+      </div>
+      <div class="sub">
+        <div class="row"><span class="k">Organization</span><span class="v">The Kindness Campaign</span></div>
+        <div class="row"><span class="k">Industry</span><span class="v">Non-Profit / Volunteering</span></div>
+        <div class="row"><span class="k">Salary</span><span class="v">$60,000 / year</span></div>
+        <div class="row"><span class="k">Job type</span><span class="v">Full Time</span></div>
+        <div class="row"><span class="k">Work location</span><span class="v">Hybrid · Downtown Austin</span></div>
+        <div class="row"><span class="k">County</span><span class="v">Travis</span></div>
+        <div class="row"><span class="k">Posted</span><span class="v">Jun 25, 2026</span></div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<div class="similar">
+  <h2>Similar roles</h2>
+  <div class="simgrid">
+    <a class="simcard" href="#"><h3>Child Advocacy Specialist</h3><div class="o">CASA of Travis County</div><div class="m">Travis County · Full Time · Office</div></a>
+    <a class="simcard" href="#"><h3>Senior Development Director</h3><div class="o">Samaritan Center</div><div class="m">Travis County · Full Time · Hybrid</div></a>
+    <a class="simcard" href="#"><h3>Marketing &amp; Digital Content Coordinator</h3><div class="o">Art Spark Texas</div><div class="m">Travis County · Part Time · Office</div></a>
+  </div>
+</div>
+
+<div class="mobilebar">
+  <div class="mb-info"><b>$60,000/yr</b><span>Full Time · Hybrid</span></div>
+  <a href="#">Apply now</a>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ----- tabs ----- */
+const blks=[...document.querySelectorAll(".blk")];
+const bar=document.getElementById("tabbar");
+blks.forEach((b,i)=>{
+  const btn=document.createElement("button");
+  btn.innerHTML=b.dataset.tab; btn.classList.toggle("on",i===0);
+  btn.addEventListener("click",()=>{
+    blks.forEach(x=>x.classList.remove("shown"));
+    bar.querySelectorAll("button").forEach(x=>x.classList.remove("on"));
+    b.classList.add("shown"); btn.classList.add("on");
+  });
+  bar.appendChild(btn);
+});
+
+/* ----- countdown ----- */
+(function(){
+  const d=new Date(); d.setDate(d.getDate()+18);
+  document.getElementById("cddays").textContent=Math.max(0,Math.ceil((d-new Date())/86400000));
+})();
+
+/* ----- save / share ----- */
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1600);}
+document.getElementById("saveBtn").addEventListener("click",function(){
+  this.classList.toggle("saved");
+  this.childNodes[1].textContent=this.classList.contains("saved")?"Saved":"Save";
+  toast(this.classList.contains("saved")?"Saved to your list":"Removed from your list");
+});
+document.getElementById("shareBtn").addEventListener("click",async function(){
+  const data={title:"Manager, Programs & Community Growth — The Kindness Campaign",url:location.href};
+  if(navigator.share){try{await navigator.share(data);}catch(e){}} else {toast("Link copied");}
+});
+
+/* ----- Download as PDF -----
+   The print stylesheet expands every tab and strips page chrome, so the export
+   contains the full job content regardless of which tab is open on screen.
+   We set a clean filename via document.title for the print dialog. */
+document.getElementById("pdfBtn").addEventListener("click",function(){
+  const original=document.title;
+  document.title="Manager-Programs-Community-Growth_The-Kindness-Campaign";
+  toast("Opening PDF… choose “Save as PDF”");
+  setTimeout(()=>{ window.print(); document.title=original; }, 250);
+});
+</script>
+</body>
+</html>
