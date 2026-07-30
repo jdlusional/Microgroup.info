@@ -31,7 +31,10 @@
 
 /* ===== Hero title + footer type (all pages) ===== */
 .hero h1{font-family:var(--serif);font-weight:700;font-size:40px;margin:0 0 .5rem;line-height:1.15;letter-spacing:-.015em}
-footer{padding:2.4rem 0 3.2rem;color:var(--wash);font-size:12px;font-family:var(--serif);font-weight:400}
+/* Footer link-row convention (owner order, 2026-07-30): footer content (credit line,
+   link rows, improvement-log link, custom-build note) is centered, not left-aligned,
+   across every page that shares this stylesheet. */
+footer{padding:2.4rem 0 3.2rem;color:var(--wash);font-size:12px;font-family:var(--serif);font-weight:400;text-align:center}
 
 /* ===== Method box (all pages) -- type is pixel-fixed on purpose; see the CSS unification
    doc for why (Concordance rendered at 1092px/16px while the others sat at 1180px/17px until
