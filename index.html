@@ -88,6 +88,14 @@ html.stack-page .pcard-open:hover{color:var(--ink);text-decoration:underline}
    (Product Demo Hub), distinct from an actual product in its own right. */
 html.stack-page .pcard.pcard-meta{background:var(--paper);border:1.5px dashed var(--rule)}
 html.stack-page .pcard.pcard-meta .pcard-title{color:var(--wash)}
+/* Switcher-card convention (2026-07-30, owner order): standing pattern for any
+   projects-section whose first card is a navigational shortcut to a switcher/hub page.
+   The switcher card is pulled out of the grid entirely and shown centered, prominent,
+   directly under the section heading; every card in the section (switcher included) is
+   center-aligned rather than the family's default left alignment. */
+html.stack-page .projects-section.has-switcher .pcard{text-align:center;align-items:center}
+html.stack-page .pcard-meta.switcher-featured{max-width:440px;margin:0 auto 1.4rem;border:1.5px solid var(--accent);background:var(--well)}
+html.stack-page .pcard-meta.switcher-featured .pcard-title{color:var(--accent)}
 #offer .projects-section{max-width:1040px;margin:0 auto 40px}
 .footprint-note{max-width:840px;margin:0 auto;text-align:center;font-size:.9rem;color:var(--wash)}
 #contact{padding:72px 0}
@@ -289,9 +297,6 @@ html.stack-page .chess::before{
       </div>
       <div class="bio">
         <p>Each engagement is shaped around your organization's own goals rather than a fixed template. Beyond consulting, MICRO Group builds and sells purpose-built software for nonprofit grant-seeking: Almanac and Scribe are live today, with Concordance, Herald, Atlas, and Dossier built to varying degrees behind them.</p>
-        <ul class="credentials-list">
-          <li>Co-founder, <a href="https://wemeasure.org/" target="_blank" rel="noopener">Measure</a>, a 501(c)(3) nonprofit research and public education organization (2017)</li>
-        </ul>
       </div>
     </div>
     <a class="chevron" href="#offer" aria-label="Scroll to What We Offer">EXPLORE
@@ -318,10 +323,10 @@ html.stack-page .chess::before{
         </div>
       </div>
 
-      <div class="projects-section">
+      <div class="projects-section has-switcher">
         <h3 class="projects-subhead">Enterprise Products</h3>
+        <article class="pcard pcard-meta switcher-featured"><h4 class="pcard-title">Product Demo Hub</h4><p class="pcard-desc">Every product demo in one place: browse the full switcher page rather than one product at a time.</p><a class="pcard-open" href="demo.html">Open <span class="arr">&rarr;</span></a></article>
         <div class="proj-list">
-          <article class="pcard pcard-meta"><h4 class="pcard-title">Product Demo Hub</h4><p class="pcard-desc">Every product demo in one place: browse the full switcher page rather than one product at a time.</p><a class="pcard-open" href="demo.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard"><h4 class="pcard-title">Pricing</h4><p class="pcard-desc">The full rate card for every product, plus a request-pricing form.</p><a class="pcard-open" href="demo-pricing.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard"><h4 class="pcard-title">Referral Program</h4><p class="pcard-desc">Refer an organization to Almanac or Scribe and earn 5% of their first-year subscription as a one-time bonus.</p><a class="pcard-open" href="demo-referrals.html">Open <span class="arr">&rarr;</span></a></article>
           <article class="pcard"><h4 class="pcard-title">Almanac</h4><span class="pcard-price">$1,500-$3,000 / year</span><p class="pcard-desc">Finds and ranks funders and open grants that fit your organization, with a public source shown for every match. Standard: refreshed quarterly. Pro: refreshed monthly.</p><a class="pcard-open" href="demo-almanac.html">Open <span class="arr">&rarr;</span></a></article>
@@ -365,7 +370,7 @@ html.stack-page .chess::before{
            conversion path renders visible on scroll instead of requiring a click; the summary
            pill stays as a collapse affordance and the nav Connect link's open-on-click JS is
            now a harmless no-op when already open. -->
-      <details id="contact-drop" class="contact-drop" open>
+      <details id="contact-drop" class="contact-drop">
         <summary class="contact-drop-summary">Get started.</summary>
         <div class="contact-drop-body">
 
@@ -455,11 +460,6 @@ html.stack-page .chess::before{
     </div>
     <div class="footer-credit">This website was created and is managed by MICRO Group, LLC.<br>1801 E 51st St., STE 365, PMB 354, Austin, Texas</div>
     <div class="footer-license">CC BY 4.0 data, MIT code.</div>
-    <div class="switcher footer-switcher">
-      <span class="footer-switcher-label">Index</span>
-      <a class="tab" href="public-index.html">Public</a>
-      <a class="tab" href="https://jonathanlindavis.com/private-index.html" target="_blank" rel="noopener">Private</a>
-    </div>
     <div class="footer-legal">© <span id="yr"></span> MICRO Group, LLC. All rights reserved. Austin, Texas.</div>
   </section>
 
