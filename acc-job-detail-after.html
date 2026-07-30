@@ -287,16 +287,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-/* ----- tabs ----- */
+/* ----- tabs -----
+   no-tab-drops exception, owner-ratified 2026-07-29: this page is a redesign DEMO artifact
+   whose tabbed layout is itself the thing being demonstrated (the "after" of a before/after
+   case study); the tab pattern stays, with ARIA tab semantics added the same day. */
 const blks=[...document.querySelectorAll(".blk")];
 const bar=document.getElementById("tabbar");
+bar.setAttribute("role","tablist");
+bar.setAttribute("aria-label","Job posting sections");
 blks.forEach((b,i)=>{
   const btn=document.createElement("button");
+  const panelId="blk-"+i;
+  b.id=panelId; b.setAttribute("role","tabpanel"); b.setAttribute("aria-labelledby","tabbtn-"+i);
+  btn.id="tabbtn-"+i; btn.setAttribute("role","tab"); btn.setAttribute("aria-controls",panelId);
+  btn.setAttribute("aria-selected", i===0 ? "true" : "false");
   btn.innerHTML=b.dataset.tab; btn.classList.toggle("on",i===0);
   btn.addEventListener("click",()=>{
     blks.forEach(x=>x.classList.remove("shown"));
-    bar.querySelectorAll("button").forEach(x=>x.classList.remove("on"));
-    b.classList.add("shown"); btn.classList.add("on");
+    bar.querySelectorAll("button").forEach(x=>{x.classList.remove("on");x.setAttribute("aria-selected","false");});
+    b.classList.add("shown"); btn.classList.add("on"); btn.setAttribute("aria-selected","true");
   });
   bar.appendChild(btn);
 });
