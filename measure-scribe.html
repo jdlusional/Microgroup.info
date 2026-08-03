@@ -182,6 +182,13 @@ a{color:var(--ink)}
 /* ---- Missing (not currently possessed) marker — red ---- */
 .miss{background:#f7dcdc;color:#6b1f1f;padding:0 3px;border-bottom:1px solid #b34141;font-family:var(--mono);font-size:.86em;border-radius:2px;overflow-wrap:anywhere}
 .miss-tag{font-family:var(--mono);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#b34141;padding:.04rem .32rem;margin-right:.35rem;border-radius:2px;vertical-align:middle}
+/* ---- Evidence (filed fact about the FUNDER) marker — green ---- */
+/* Deliberately the only calm colour in the set. Suggested, Confirm and Missing all mean something
+   is UNRESOLVED and the reader has work to do. Evidence means the opposite: this is sourced, filed,
+   and settled. Before this existed the marker fell through to .ph, the amber placeholder style, so
+   the strongest claim in the draft was styled exactly like an unfilled gap. */
+.evi{background:#dff2e3;color:#14492a;padding:0 3px;border-bottom:1px solid #3d8f5f;font-family:var(--mono);font-size:.86em;border-radius:2px;overflow-wrap:anywhere}
+.evi-tag{font-family:var(--mono);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#2f7048;padding:.04rem .32rem;margin-right:.35rem;border-radius:2px;vertical-align:middle}
 /* ---- Reader notice box (conspicuous "how to read this" callout, near draft viewer).
    Fully center-aligned (owner request, 2026-07-27). The left-margin "›" bullet made sense
    for a left-aligned list; centered, it would float away from the text it used to mark, so
@@ -550,11 +557,18 @@ function deadlineClass(s){
   return'';
 }
 
-/* Wrap the three inline marker types in already-escaped section prose (web).
+/* Wrap the four inline marker types in already-escaped section prose (web).
    Order matters and the passes must not collide:
    1. [^N] footnote refs -> superscript link (done first; leaves no '[' behind)
    2. [SUGGESTED: …]      -> gold "Suggested" highlight span
-   3. [CONFIRM: …]/[Measure …] and any other [ … ] -> existing .ph placeholder.
+   3. [CONFIRM: …]/[Measure …] -> blue "Confirm" span
+   4. [MISSING: …]        -> red "Missing" span
+   5. [EVIDENCE: …]       -> green "Evidence" span. ADDED 2026-08-03. The first three all mean
+      something is UNRESOLVED; this one means a fact about the FUNDER is sourced and settled, drawn
+      from its filed IRS returns. It must be matched BEFORE the catch-all: without this branch it
+      fell through to .ph and rendered in the amber placeholder style, so the strongest and least
+      copyable claim in the product looked exactly like an unfilled gap.
+   6. anything else [ … ]  -> existing .ph placeholder.
    Input is the ESCAPED paragraph, so esc() must run before this. */
 function wrapMarkers(escaped){
   let out=escaped.replace(/\[\^(\d+)\]/g,(m,n)=>
@@ -567,6 +581,8 @@ function wrapMarkers(escaped){
       return `<span class="conf"><span class="conf-tag">Confirm</span>${mm[1].trim()}</span>`;
     if(mm=/^\[MISSING:\s*([\s\S]*?)\]$/i.exec(m))
       return `<span class="miss"><span class="miss-tag">Missing</span>${mm[1].trim()}</span>`;
+    if(mm=/^\[EVIDENCE:\s*([\s\S]*?)\]$/i.exec(m))
+      return `<span class="evi"><span class="evi-tag">Evidence</span>${mm[1].trim()}</span>`;
     return `<span class="ph">${m}</span>`;
   });
   return out;
@@ -1061,12 +1077,19 @@ function fallbackCopy(text,done){
    - strip [^N] footnote refs entirely (Word stays clean, no footnote apparatus)
    - [SUGGESTED: X] -> real yellow highlight Word honors + leading [Suggested] tag
    - [CONFIRM: X]/[Measure …] -> distinct bracketed bold
-   Function-form replacements so a '$' in the value isn't read as a backreference. */
+   - [EVIDENCE: X] -> green, ADDED 2026-08-03
+   Function-form replacements so a '$' in the value isn't read as a backreference.
+
+   THERE IS NO CATCH-ALL HERE, unlike wrapMarkers, and that is why this function is the easy one to
+   forget. An unhandled marker does not fall into a placeholder style; it passes through as literal
+   bracket text into a .doc a client sends to a funder. Any marker added to wrapMarkers must be
+   added here in the same commit. */
 function wordWrapMarkers(escaped){
   let out=escaped.replace(/\s?\[\^\d+\]/g,'');
   out=out.replace(/\[SUGGESTED:\s*([^\]]*)\]/gi,(m,v)=>`<span style="background:#fff3b0;">[Suggested] ${v.trim()}</span>`);
   out=out.replace(/\[MISSING:\s*([^\]]*)\]/gi,(m,v)=>`<span style="background:#f7dcdc;">[Missing] ${v.trim()}</span>`);
   out=out.replace(/\[(?:CONFIRM|Measure)[:\s]\s*([^\]]*)\]/gi,(m,v)=>`<span style="background:#dcebfb;">[Confirm] ${v.trim()}</span>`);
+  out=out.replace(/\[EVIDENCE:\s*([^\]]*)\]/gi,(m,v)=>`<span style="background:#dff2e3;">[Evidence] ${v.trim()}</span>`);
   return out;
 }
 function proseToHtmlParas(text){

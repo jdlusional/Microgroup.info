@@ -180,6 +180,16 @@ a{color:var(--ink)}
 /* ---- Missing (not currently possessed) marker — red ---- */
 .miss{background:#f7dcdc;color:#6b1f1f;padding:0 3px;border-bottom:1px solid #b34141;font-family:var(--mono);font-size:.86em;border-radius:2px;overflow-wrap:anywhere}
 .miss-tag{font-family:var(--mono);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#b34141;padding:.04rem .32rem;margin-right:.35rem;border-radius:2px;vertical-align:middle}
+/* ---- Evidence (filed fact about the FUNDER) marker — green ---- */
+/* CSS ONLY, added 2026-08-03 by owner decision. This page does NOT emit [EVIDENCE:] markers and its
+   renderer does not handle them; measure-scribe.html is the reference implementation and the other
+   Scribe pages follow later. The styles live here because this page is the pattern book's EXTRACTION
+   SOURCE for the Scribe family: inline_css() reads them at build time and re-scopes them under
+   .spec-scribe, so without them the book's Evidence legend row would render unstyled.
+   Green deliberately: Suggested, Confirm and Missing all mean something is unresolved and ask the
+   drafter to act. Evidence is settled and asks nothing. */
+.evi{background:#dff2e3;color:#14492a;padding:0 3px;border-bottom:1px solid #3d8f5f;font-family:var(--mono);font-size:.86em;border-radius:2px;overflow-wrap:anywhere}
+.evi-tag{font-family:var(--mono);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#2f7048;padding:.04rem .32rem;margin-right:.35rem;border-radius:2px;vertical-align:middle}
 /* ---- Reader notice box (conspicuous "how to read this" callout, near draft viewer) ----
    Fully center-aligned (owner request, 2026-07-27, matching the Request form treatment). The
    left-margin "›" bullet made sense for a left-aligned list; centered, it would float away
@@ -192,6 +202,8 @@ a{color:var(--ink)}
 .reader-notice .rn-sug{background:#fff3b0;color:#5c4a00;padding:0 4px;border-radius:2px;font-family:var(--mono);font-size:.82em;font-weight:600}
 .reader-notice .rn-conf{background:#dcebfb;color:#123a63;padding:0 4px;border-radius:2px;font-family:var(--mono);font-size:.82em;font-weight:700}
 .reader-notice .rn-miss{background:#f7dcdc;color:#6b1f1f;padding:0 4px;border-radius:2px;font-family:var(--mono);font-size:.82em;font-weight:700}
+/* Legend chip for the Evidence marker. CSS only; see the .evi note above. */
+.reader-notice .rn-evi{background:#dff2e3;color:#14492a;padding:0 4px;border-radius:2px;font-family:var(--mono);font-size:.82em;font-weight:700}
 .reader-notice .rn-fn{color:var(--accent);font-weight:700}
 .reader-notice em{color:var(--wash);font-style:italic}
 
@@ -270,7 +282,7 @@ body{overflow-x:hidden}
 /* em-based sizes compound against already-small parents (footnote refs bottomed out at 8.9px).
    max() keeps the relative look but floors it at a legible size. */
 .fn-ref{font-size:max(.8em,12.5px)}
-.reader-notice .rn-sug,.reader-notice .rn-conf,.reader-notice .rn-miss{font-size:max(.82em,12.5px)}
+.reader-notice .rn-sug,.reader-notice .rn-conf,.reader-notice .rn-miss,.reader-notice .rn-evi{font-size:max(.82em,12.5px)}
 .ph,.sug,.conf,.miss{font-size:max(.86em,12.5px)}
 
 /* Wrap width: .section-head p was capped at 70/72ch -- it rendered 526px inside a 1140px
