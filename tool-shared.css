@@ -17,10 +17,22 @@
 }
 *{box-sizing:border-box}
 
-/* ===== Section headers (all pages) -- plain, always-visible; the click-to-expand fold/
-   accordion mechanism (native <details>/<summary>) was removed 2026-07-18 across the whole
-   pattern-book family (the "no tab drops" convention) so every section's content shows with
-   no collapse step anywhere. .fold/.section-head are now plain <div>s kept only for layout. ===== */
+/* ===== Section headers -- plain and always-visible on DEMO AND SINGLE-PRODUCT PAGES; the
+   click-to-expand fold/accordion mechanism (native <details>/<summary>) was removed 2026-07-18
+   across the pattern-book family (the "no tab drops" convention). .fold/.section-head are plain
+   <div>s kept for layout on those pages.
+
+   NOT UNIVERSAL SINCE 2026-08-03. This comment used to end "so every section's content shows
+   with no collapse step anywhere", and that sentence became false the moment an enterprise page
+   linked this stylesheet. Owner ruling 2026-08-03: on a CLIENT ENTERPRISE page every product
+   accordion, every section and every h3 sub-heading starts CLOSED. measure-enterprise.html links
+   this file and does exactly that, driven by script rather than by <details>, so nothing in this
+   stylesheet had to change. The claim did.
+
+   The reasoning is capacity, which is what changed. One page carrying one product is fine open;
+   two products already exceed 200 KB of markup and a client may hold up to six, at which point a
+   fully expanded page has no navigable top. See merge_enterprise_page.py and the Websites
+   Portfolio Context File. ===== */
 .section-head{border-top:none;padding-top:0;margin-bottom:1.5rem}
 .section-head h2{font-family:var(--serif);font-weight:700;font-size:30px;margin:0 0 .55rem}
 .section-head .kicker{font-family:var(--serif);display:block;font-size:15px;letter-spacing:.01em;text-transform:none;color:var(--wash);margin-bottom:.35rem;font-style:italic;font-weight:400}
