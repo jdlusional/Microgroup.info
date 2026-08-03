@@ -1,2 +1,12 @@
 /kct-website  https://katelyncthompson.com/  301
 /kct-website.html  https://katelyncthompson.com/  301
+
+# MEASURE product pages consolidated onto /measure-enterprise (owner direction 2026-08-03).
+# Almanac and Scribe now sit in one primary accordion each on a single page; the /measure switcher
+# stays. These two source files are DELETED rather than left in place: Cloudflare Pages serves a
+# static asset in preference to a redirect rule, so leaving the .html files would have made both
+# redirects silently dead while looking correct in this file.
+/measure-almanac       /measure-enterprise  301
+/measure-almanac.html  /measure-enterprise  301
+/measure-scribe        /measure-enterprise  301
+/measure-scribe.html   /measure-enterprise  301
