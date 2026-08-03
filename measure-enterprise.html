@@ -167,6 +167,18 @@ body{text-align:center}
 .funder-mini-table,.funder-mini-table th,.funder-mini-table td,
 .toolbar,.chip-filter,.chip-btn,
 .status-row,.status-select,.status-notes,.admin-toggle{text-align:left}
+
+/* SUB-HEADING FOLDS, owner ruling 2026-08-03: every h3 inside a section is its own collapsible
+   block, closed on open, exactly like the section above it. The closed state reuses the page's
+   existing `.mc-closed .fold-body{display:none}` rule rather than introducing a second mechanism. */
+.subfold{margin:0 0 1.1rem}
+.subfold-head{display:flex;align-items:flex-start;gap:.75rem}
+.subfold-head h3{margin:0}
+.subfold-head .mc-toggle{margin-left:auto;flex:0 0 auto}
+@media(max-width:560px){
+  .subfold-head{flex-direction:column;align-items:stretch}
+  .subfold-head .mc-toggle{width:100%;margin-left:0}
+}
 </style>
 </head>
 <body>
@@ -1849,6 +1861,66 @@ load().catch(err=>{
     setOpen(false);
     btn.addEventListener('click',function(){setOpen(sec.classList.contains('mc-closed'));});
   });
+
+  /* SUB-HEADING FOLDS. Every h3 inside a section body becomes its own collapsible block, closed
+     on load, and all of them are PEERS.
+
+     The naive rule, "an h3 owns its following siblings up to the next h3", is wrong on this markup
+     and was caught by simulating it before shipping. The sub-headings are not siblings: Funding
+     Profile's first card is [h3 Mission][mc-body [p][h3 Focus Areas][tag-row]], so Focus Areas sits
+     one level deeper and the sibling rule folded it INSIDE Mission. Collapsing Mission would have
+     taken Focus Areas with it.
+
+     So flatten first, then group. Any child of the block that CONTAINS an h3 is unwrapped into the
+     block, repeatedly, until every h3 is a direct child; only then is the sibling rule true. The
+     unwrapped wrapper's class is carried onto the generated bodies so its styling is not lost.
+
+     A block that already carries its own toggle is left alone. Funding Profile's third card has a
+     card-head with a real toggle and is already wired by its own product; adding another would be
+     the double-wiring failure one level down. */
+  function foldSubheads(root){
+    var blocks=[];
+    (root||document).querySelectorAll('.fold-body h3').forEach(function(h){
+      if(h.closest('.subfold-head'))return;
+      var b=h.parentNode;
+      if(b && blocks.indexOf(b)<0)blocks.push(b);
+    });
+    blocks.forEach(function(block){
+      if(block.querySelector(':scope > .mc-toggle'))return;
+      var inherited='',w;
+      while((w=Array.prototype.filter.call(block.children,function(c){
+        return c.tagName!=='H3' && c.querySelector('h3');}) [0])){
+        if(w.className)inherited=w.className;
+        while(w.firstChild)block.insertBefore(w.firstChild,w);
+        w.parentNode.removeChild(w);
+      }
+      Array.prototype.filter.call(block.children,function(c){return c.tagName==='H3';})
+        .forEach(function(h){
+          if(h.closest('.subfold-head'))return;
+          /* Collect BEFORE moving anything: reparenting h3 destroys its sibling chain. */
+          var sibs=[],n=h.nextSibling;
+          while(n && !(n.nodeType===1 && n.tagName==='H3')){sibs.push(n);n=n.nextSibling;}
+          var wrap=document.createElement('div');wrap.className='subfold';
+          var head=document.createElement('div');head.className='subfold-head';
+          var body=document.createElement('div');body.className=(inherited?inherited+' ':'')+'fold-body';
+          var btn=document.createElement('button');btn.className='mc-toggle';btn.type='button';
+          h.parentNode.insertBefore(wrap,h);
+          head.appendChild(h);head.appendChild(btn);
+          sibs.forEach(function(s){body.appendChild(s);});
+          wrap.appendChild(head);wrap.appendChild(body);
+          var setOpen=function(open){
+            wrap.classList.toggle('mc-closed',!open);
+            btn.setAttribute('aria-expanded',String(open));
+            btn.textContent=open?'Hide':'Show';
+          };
+          setOpen(false);
+          btn.addEventListener('click',function(){setOpen(wrap.classList.contains('mc-closed'));});
+        });
+    });
+  }
+  foldSubheads(document);
+  /* Exposed so a later render pass can fold sub-headings it just created. */
+  window.foldSubheads=foldSubheads;
 })();
 </script>
 </body>
