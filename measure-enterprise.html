@@ -183,7 +183,7 @@ body{text-align:center}
       <a href="#alm-profile">Profile</a>
       <a href="#alm-compiled">Compiled Funder Matches</a>
       <a href="#alm-method">How This Was Built</a>
-      <a href="#product-scribe">See Scribe below &#8594;</a>
+      <a href="measure-scribe.html">See Scribe &#8594;</a>
     </nav>
   </div>
 </div>
@@ -235,7 +235,7 @@ body{text-align:center}
         </tr>
         <tr>
           <td>Next steps</td>
-          <td>Want the drafted application to go with a match? <a href="#product-scribe">See Scribe below &#8594;</a><br><br>Questions about this page? <a href="/#contact">Get in touch &#8594;</a></td>
+          <td>Want the drafted application to go with a match? <a href="measure-scribe.html">See Scribe &#8594;</a><br><br>Questions about this page? <a href="/#contact">Get in touch &#8594;</a></td>
         </tr>
       </tbody>
     </table></div>
@@ -404,7 +404,7 @@ body{text-align:center}
         </tr>
         <tr>
           <td>Next steps</td>
-          <td>Want the funder matches this draft was built from? <a href="#product-almanac">See Almanac above &#8594;</a><br><br>Questions about this page? <a href="/#contact">Get in touch &#8594;</a></td>
+          <td>Want the funder matches this draft was built from? <a href="measure-almanac.html">See Almanac &#8594;</a><br><br>Questions about this page? <a href="/#contact">Get in touch &#8594;</a></td>
         </tr>
       </tbody>
     </table></div>
@@ -567,8 +567,8 @@ body{text-align:center}
 
 
 <footer>
-  <span id="footer-credit">Prepared by Jonathan Lin Davis</span>
-  <span id="footer-links"></span>
+  <span id="alm-footer-credit">Prepared by Jonathan Lin Davis</span>
+  <span id="alm-footer-links"></span>
   <span class="footer-improvements-wrap"><a class="footer-improvements" href="improvementlog.html">Improvement log</a></span>
   <p class="footer-custom-note"><a href="/#contact">Need something custom? Individualized builds outside this catalog are available on request &#8594;</a></p>
 </footer>
@@ -741,7 +741,7 @@ function promptForKey(){
 }
 
 function setAdminUI(){
-  const btn=document.getElementById('admin-toggle');
+  const btn=document.getElementById('alm-admin-toggle');
   const isOn=!!state.adminKey;
   btn.classList.toggle('on',isOn);
   btn.textContent=isOn?'Admin ✓':'Admin';
@@ -821,18 +821,18 @@ async function load(){
   state.matchesMethod=FUNDERS_DATA.method;
   state.grants=GRANTS;
 
-  document.getElementById('m-funders').textContent=state.funders.length;
-  document.getElementById('m-grants').textContent=compileMatches().length;
+  document.getElementById('alm-m-funders').textContent=state.funders.length;
+  document.getElementById('alm-m-grants').textContent=compileMatches().length;
 
   applyDisplay();
   renderProfile();
-  document.getElementById('method-scoring').textContent=FUNDERS_DATA.method+' '+FUNDER_PROFILE_SOURCE_NOTE;
-  document.getElementById('method-cycle').textContent=CYCLE.note;
+  document.getElementById('alm-method-scoring').textContent=FUNDERS_DATA.method+' '+FUNDER_PROFILE_SOURCE_NOTE;
+  document.getElementById('alm-method-cycle').textContent=CYCLE.note;
   buildStatusFilter('compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
   setAdminUI();
   applyCompiled();
   renderWatchList();
-  wireAccordion(document.getElementById('profile'),'.card');
+  wireAccordion(document.getElementById('alm-profile'),'.card');
   wireAccordion(document.body,'.section-card');
 }
 
@@ -840,7 +840,7 @@ async function load(){
 /* Bold the tool name, per the "Almanac for [Org]" brand-bar convention.
    Built from text nodes rather than innerHTML: brand_bar_text is org-supplied. */
 function setBrand(text){
-  const el=document.getElementById('brand-text');
+  const el=document.getElementById('alm-brand-text');
   if(!el)return;
   el.textContent='';
   const m=text.match(/^(Almanac|Scribe)(\s+for\s+.+)$/);
@@ -861,10 +861,10 @@ function applyDisplay(){
     if(m)m.setAttribute('content',d.meta_description);
   }
   if(d.brand_bar_text)setBrand(d.brand_bar_text);
-  if(d.hero_heading)document.getElementById('hero-heading').textContent=d.hero_heading;
-  if(d.hero_subtext)document.getElementById('hero-subtext').textContent=d.hero_subtext;
-  if(d.footer_credit)document.getElementById('footer-credit').textContent=d.footer_credit;
-  document.getElementById('footer-links').innerHTML=
+  if(d.hero_heading)document.getElementById('alm-hero-heading').textContent=d.hero_heading;
+  if(d.hero_subtext)document.getElementById('alm-hero-subtext').textContent=d.hero_subtext;
+  if(d.footer_credit)document.getElementById('alm-footer-credit').textContent=d.footer_credit;
+  document.getElementById('alm-footer-links').innerHTML=
     `<a href="data/${ORG_SLUG}_profile.json">profile</a> &middot; `+
     `<a href="data/${ORG_SLUG}_funders.json">funders</a> &middot; `+
     `<a href="data/${ORG_SLUG}_grants.json">grants</a>`;
@@ -873,12 +873,12 @@ function applyDisplay(){
 /* ---- Profile ---- */
 function renderProfile(){
   const p=state.profile;
-  document.getElementById('p-mission').textContent=p.mission;
-  document.getElementById('p-focus').innerHTML=p.focus_areas.map(f=>`<span class="tag">${esc(f)}</span>`).join('');
-  document.getElementById('p-total').textContent=money(p.confirmed_prior_funders_total);
-  document.getElementById('p-geo').innerHTML=`<strong>${esc(p.geography.primary)}</strong> (primary)<br>${p.geography.secondary.map(esc).join(', ')} (secondary)`;
+  document.getElementById('alm-p-mission').textContent=p.mission;
+  document.getElementById('alm-p-focus').innerHTML=p.focus_areas.map(f=>`<span class="tag">${esc(f)}</span>`).join('');
+  document.getElementById('alm-p-total').textContent=money(p.confirmed_prior_funders_total);
+  document.getElementById('alm-p-geo').innerHTML=`<strong>${esc(p.geography.primary)}</strong> (primary)<br>${p.geography.secondary.map(esc).join(', ')} (secondary)`;
 
-  document.getElementById('p-funders-table').innerHTML=p.confirmed_prior_funders.map(f=>`
+  document.getElementById('alm-p-funders-table').innerHTML=p.confirmed_prior_funders.map(f=>`
     <tr>
       <td><strong>${esc(f.funder)}</strong></td>
       <td>${esc(f.purpose)}</td>
@@ -907,11 +907,11 @@ function applyCompiled(){
     if(state.matchStatusFilter&&statusOf('funder',f.id).status!==state.matchStatusFilter)return false;
     return true;
   });
-  document.getElementById('compiled-count').textContent=list.length;
-  document.getElementById('m-grants').textContent=compileMatches().length;
-  document.getElementById('grants-limitation').textContent=state.grants.known_limitation;
+  document.getElementById('alm-compiled-count').textContent=list.length;
+  document.getElementById('alm-m-grants').textContent=compileMatches().length;
+  document.getElementById('alm-grants-limitation').textContent=state.grants.known_limitation;
 
-  const host=document.getElementById('compiled-results');
+  const host=document.getElementById('alm-compiled-results');
   if(!list.length){
     host.innerHTML='<div class="empty"><b>No matches</b> for this status filter.</div>';
     return;
@@ -981,7 +981,7 @@ function deadlineClass(s){
 }
 
 function renderWatchList(){
-  document.getElementById('watch-results').innerHTML=state.grants.watch_list_not_yet_open.map(w=>`
+  document.getElementById('alm-watch-results').innerHTML=state.grants.watch_list_not_yet_open.map(w=>`
     <div class="watch-item">
       <div class="org"><a href="${esc(w.url)}" target="_blank" rel="noopener">${esc(w.organization)}</a><br><span style="font-family:var(--mono);font-size:.78rem;color:var(--wash);font-weight:400">${esc(w.grant_name)}</span></div>
       <div class="why">${esc(w.why_watch)}</div>
@@ -989,7 +989,7 @@ function renderWatchList(){
   `).join('');
 }
 
-document.getElementById('admin-toggle').addEventListener('click',()=>{
+document.getElementById('alm-admin-toggle').addEventListener('click',()=>{
   if(state.adminKey){
     if(confirm('Log out of admin mode on this device?')){
       state.adminKey="";localStorage.removeItem('grantStatusKey');setAdminUI();applyCompiled();
@@ -1001,7 +1001,7 @@ document.getElementById('admin-toggle').addEventListener('click',()=>{
 });
 
 load().catch(err=>{
-  document.getElementById('compiled-results').innerHTML=`<div class="empty"><b>Couldn't load data</b> for org "${esc(ORG_SLUG)}" — the page's own inlined data failed to render.</div>`;
+  document.getElementById('alm-compiled-results').innerHTML=`<div class="empty"><b>Couldn't load data</b> for org "${esc(ORG_SLUG)}" — the page's own inlined data failed to render.</div>`;
   console.error(err);
 });
 </script>
