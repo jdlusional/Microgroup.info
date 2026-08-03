@@ -844,8 +844,8 @@ async function load(){
   setAdminUI();
   applyCompiled();
   renderWatchList();
-  wireAccordion(document.getElementById('alm-profile'),'.card');
-  wireAccordion(document.getElementById('product-almanac'),'.section-card');
+  wireAccordion(document.getElementById('alm-profile'),'.card');if(window.foldSubheads)window.foldSubheads();
+  wireAccordion(document.getElementById('product-almanac'),'.section-card');if(window.foldSubheads)window.foldSubheads();
 }
 
 /* ---- Org-specific display strings (title, hero, footer) ---- */
@@ -976,7 +976,7 @@ function applyCompiled(){
     </div>
   `;}).join('');
   wireStatusControls(host);
-  wireAccordion(host);
+  wireAccordion(host);if(window.foldSubheads)window.foldSubheads();
 }
 
 /* ---- Deadline urgency ---- */
@@ -1337,7 +1337,7 @@ function renderShortlist(){
       requestDraft(idx);
     });
   });
-  wireAccordion(host,'.draft-card',':scope > .dc-head > .mc-toggle');
+  wireAccordion(host,'.draft-card',':scope > .dc-head > .mc-toggle');if(window.foldSubheads)window.foldSubheads();
 }
 
 /* ---- Draft viewer ---- */
@@ -1782,7 +1782,7 @@ async function load(){
   renderShortlist();
   renderViewer();
   renderNeeds();
-  wireAccordion(document.getElementById('product-scribe'));
+  wireAccordion(document.getElementById('product-scribe'));if(window.foldSubheads)window.foldSubheads();
 }
 
 initRequestForm();
@@ -1887,6 +1887,12 @@ load().catch(err=>{
     });
     blocks.forEach(function(block){
       if(block.querySelector(':scope > .mc-toggle'))return;
+      /* A HEADING ROW IS NOT A SUB-HEADING. Blocks whose class ends in -head (vw-head, mc-head,
+         dc-head, card-head, strength-head, section-head) carry a card's own TITLE plus its meta.
+         The draft viewer's h3.vh-name is the grant name; folding it would collapse the funder,
+         the deadline and the caveat under the draft's own title, which is not a sub-heading fold,
+         it is hiding the card behind itself. */
+      if(/(^|\s)[\w-]*-head(\s|$)/.test(block.className||''))return;
       var inherited='',w;
       while((w=Array.prototype.filter.call(block.children,function(c){
         return c.tagName!=='H3' && c.querySelector('h3');}) [0])){
