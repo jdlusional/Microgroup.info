@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clown Dog Bikes Rebuild Questionnaire — MICRO Group</title>
+<meta name="description" content="A short set of open questions for the owner of Clown Dog Bikes, needed directly from him before the site rebuild can proceed." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/svg+xml" href="Assets/micro-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=51367c5bd8">
+<style>
+a{color:var(--ink)}
+
+.hero{max-width:900px;margin:0 auto;padding:2.2rem 1.25rem 1rem}
+.hero p{color:var(--wash);margin-top:.6rem}
+
+.section{max-width:900px;margin:0 auto;padding:1.6rem 1.25rem}
+.section-head p{color:var(--wash);font-size:.94rem;margin:.4rem 0 0}
+
+/* Same full-width rule as demo-survey.html: every field fills the same
+   content column as everything else on the page, no field-specific
+   max-width cap. */
+.form-field input[type="text"],.form-field input[type="email"],.form-field input[type="file"],.form-field textarea{
+  width:100%;font-family:var(--serif);font-size:.95rem;padding:.6rem .8rem;border:1.5px solid var(--ink);
+  background:var(--well);color:var(--ink);outline:none;box-sizing:border-box}
+.form-field textarea{padding:.7rem .8rem;resize:vertical}
+.form-field input:focus,.form-field textarea:focus{outline:2px solid var(--ink);outline-offset:0}
+.form-field label{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
+.form-field{margin-bottom:1.3rem}
+.field-hint{font-family:var(--mono);font-size:.82rem;color:var(--wash);margin-top:.35rem;line-height:1.5}
+.hp-field{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
+.form-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
+.form-status{font-family:var(--mono);font-size:.88rem;color:var(--ok)}
+.form-status.error{color:var(--urgent)}
+.btn{font-family:var(--mono);font-size:.86rem;letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);background:var(--paper);padding:.55rem 1.2rem;cursor:pointer;transition:all .15s ease}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent)}
+
+.scope-box{background:var(--well);border:1px solid var(--rule);border-left:4px solid var(--ink);padding:1.1rem 1.3rem;font-size:.94rem;margin:0 auto 1.6rem;max-width:900px}
+.scope-box p{margin:0 0 .6rem}
+.scope-box p:last-child{margin-bottom:0}
+.scope-box .mandatory-note{font-weight:700}
+
+.form-section{border-top:1px solid var(--rule-soft);margin:2rem 0 1.4rem;padding-top:1.4rem}
+.form-section:first-child{border-top:none;margin-top:0;padding-top:0}
+.form-section h3{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink);margin:0 0 .3rem}
+.form-section .form-section-note{font-size:.88rem;color:var(--wash);margin:0 0 1rem}
+
+/* Radio-button question groups: a fieldset styled to match .form-field's
+   label/spacing so a multiple-choice question reads as the same product
+   family as a text or textarea question, not a bolted-on control. */
+.form-field fieldset{border:none;margin:0;padding:0}
+.form-field legend{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.5rem;padding:0;width:100%}
+.radio-option{display:flex;align-items:flex-start;gap:.55rem;font-family:var(--serif);font-size:.95rem;padding:.4rem 0;cursor:pointer}
+.radio-option input[type="radio"]{margin-top:.25rem;flex:0 0 auto;accent-color:var(--ink);width:16px;height:16px;cursor:pointer}
+.radio-option span{flex:1 1 auto}
+.conditional-field{margin-top:.6rem;padding-left:1.5rem;border-left:2px solid var(--rule-soft);display:none}
+.conditional-field.show{display:block}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand"><b>MICRO Group</b> Clown Dog Bikes Questionnaire</span>
+    <span class="grow"></span>
+    <nav>
+      <a href="#scope">What this is</a>
+      <a href="#form">The form</a>
+      <a href="demo">All demos &#8594;</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">For Clown Dog Bikes</div>
+  <h1>A Few Questions Before We Build</h1>
+  <p>This is a short set of open questions for you, the owner, about the Clown Dog Bikes rebuild. Some have a bounded set of answers and are multiple choice; the rest are genuinely open, and there's room to write as much or as little as you want.</p>
+</header>
+
+<div class="scope-box" id="scope">
+  <p><strong>Why we're asking.</strong> A few of these questions came up while reviewing the current clowndogbikes.com site directly: a restocking-fee policy that never states a percentage, some marketing claims we couldn't independently verify, and basic access questions (the domain registrar, the current site's admin backend) that only you can answer.</p>
+  <p class="mandatory-note">Most questions below are required. If a question genuinely doesn't apply, write "N/A" rather than leaving it blank. The restocking-fee question and the document upload are optional; the two "who has it" / "which system" follow-ups are only required when the answer that triggers them is selected.</p>
+</div>
+
+<div class="section" id="form">
+  <div class="section-head">
+    <h2>The Form</h2>
+    <p>Submitting this sends an email directly to Jonathan Lin Davis. It is not a contract, and nothing here is shared beyond that.</p>
+  </div>
+
+  <form id="survey-form" novalidate>
+
+    <div class="form-section">
+      <h3>About You</h3>
+      <div class="form-field">
+        <label for="s-name">Your name</label>
+        <input type="text" id="s-name" name="name" required>
+      </div>
+      <div class="form-field">
+        <label for="s-email">Email</label>
+        <input type="email" id="s-email" name="email" required>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Returns and Restocking</h3>
+      <div class="form-field">
+        <label for="s-restock">What percentage restocking fee, if any, should apply to used-merchandise returns?</label>
+        <input type="text" id="s-restock" name="restocking_fee_pct" inputmode="decimal" placeholder="e.g. 15%">
+        <div class="field-hint">The current policy says a fee may apply to used-merchandise returns but never states a percentage anywhere. Leave this blank or enter 0 if no fee should apply.</div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Domain and Access</h3>
+      <div class="form-field">
+        <fieldset>
+          <legend>Do you have login access to the registrar/DNS for clowndogbikes.com?</legend>
+          <label class="radio-option"><input type="radio" name="registrar_access" value="have_login" required> <span>I have the login</span></label>
+          <label class="radio-option"><input type="radio" name="registrar_access" value="know_who_has_it" required> <span>I don't have it, but know who does</span></label>
+          <label class="radio-option"><input type="radio" name="registrar_access" value="not_sure" required> <span>Not sure who has it</span></label>
+        </fieldset>
+        <div class="conditional-field" id="registrar-other-wrap">
+          <label for="s-registrar-other">If someone else has it, who?</label>
+          <input type="text" id="s-registrar-other" name="registrar_access_other" placeholder="Name or company">
+        </div>
+      </div>
+      <div class="form-field">
+        <fieldset>
+          <legend>What should happen to the clowndogbikes.com domain once the new site is live?</legend>
+          <label class="radio-option"><input type="radio" name="domain_future" value="redirect" required> <span>Redirect the old site to the new one</span></label>
+          <label class="radio-option"><input type="radio" name="domain_future" value="keep_both" required> <span>Keep both live separately</span></label>
+          <label class="radio-option"><input type="radio" name="domain_future" value="let_lapse" required> <span>Let the old domain lapse</span></label>
+          <label class="radio-option"><input type="radio" name="domain_future" value="not_sure" required> <span>Not sure yet, let's discuss</span></label>
+        </fieldset>
+      </div>
+      <div class="form-field">
+        <fieldset>
+          <legend>Can you log into the current site's backend (product/order data)?</legend>
+          <label class="radio-option"><input type="radio" name="admin_access" value="yes" required> <span>Yes, I can log into the current site's backend</span></label>
+          <label class="radio-option"><input type="radio" name="admin_access" value="no" required> <span>No, I don't have that login</span></label>
+          <label class="radio-option"><input type="radio" name="admin_access" value="not_sure" required> <span>Not sure</span></label>
+        </fieldset>
+        <div class="field-hint">This determines whether product and order data can be exported directly for the rebuild, versus rebuilt from scratch.</div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Homepage Marketing Claims</h3>
+      <div class="form-field">
+        <div class="field-hint" style="margin-bottom:.7rem;font-size:.95rem;color:var(--ink);font-family:var(--serif)">The current homepage states "Austin's Oldest Bike Shop," "the number one shop for campus, Hyde Park, and beyond," "unrivaled turnaround," and "25% cheaper than the big chain stores." We couldn't independently verify any of these, and "Austin's Oldest Bike Shop" appears to be contradicted by a longer-running competitor.</div>
+        <fieldset>
+          <legend>What should we do with these claims?</legend>
+          <label class="radio-option"><input type="radio" name="homepage_claims_decision" value="keep_as_is" required> <span>Keep these claims as-is for now</span></label>
+          <label class="radio-option"><input type="radio" name="homepage_claims_decision" value="replace_now" required> <span>Replace them now with a different angle</span></label>
+          <label class="radio-option"><input type="radio" name="homepage_claims_decision" value="verify_first" required> <span>I want to verify them before deciding</span></label>
+        </fieldset>
+      </div>
+      <div class="form-field">
+        <label for="s-claims-context">Context either way</label>
+        <textarea id="s-claims-context" name="homepage_claims_context" rows="3" required placeholder="Where these claims came from, what you'd replace them with, or what would help verify them."></textarea>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Shipping and Fulfillment</h3>
+      <div class="form-field">
+        <fieldset>
+          <legend>Do you ship orders, or is it pickup only?</legend>
+          <label class="radio-option"><input type="radio" name="shipping_pickup" value="pickup_only" required> <span>Pickup only</span></label>
+          <label class="radio-option"><input type="radio" name="shipping_pickup" value="also_ship" required> <span>We also ship</span></label>
+          <label class="radio-option"><input type="radio" name="shipping_pickup" value="case_by_case" required> <span>Sometimes, case by case</span></label>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Point of Sale</h3>
+      <div class="form-field">
+        <fieldset>
+          <legend>What point-of-sale system do you use in-store?</legend>
+          <label class="radio-option"><input type="radio" name="pos_system" value="lightspeed" required> <span>Lightspeed Retail</span></label>
+          <label class="radio-option"><input type="radio" name="pos_system" value="square" required> <span>Square</span></label>
+          <label class="radio-option"><input type="radio" name="pos_system" value="other" required> <span>Something else</span></label>
+          <label class="radio-option"><input type="radio" name="pos_system" value="none" required> <span>No POS system</span></label>
+        </fieldset>
+        <div class="conditional-field" id="pos-other-wrap">
+          <label for="s-pos-other">Which system?</label>
+          <input type="text" id="s-pos-other" name="pos_system_other" placeholder="Name of your POS system">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Photography</h3>
+      <div class="form-field">
+        <fieldset>
+          <legend>Should we schedule a new photo shoot (storefront, staff, repairs in progress)?</legend>
+          <label class="radio-option"><input type="radio" name="photography" value="yes_schedule" required> <span>Yes, let's schedule a new photo shoot</span></label>
+          <label class="radio-option"><input type="radio" name="photography" value="not_now" required> <span>Not right now</span></label>
+          <label class="radio-option"><input type="radio" name="photography" value="need_info" required> <span>Need more information first</span></label>
+        </fieldset>
+      </div>
+      <div class="form-field">
+        <label for="s-photo-notes">Scheduling availability or notes</label>
+        <textarea id="s-photo-notes" name="photography_notes" rows="2" required placeholder="Days/times that generally work, or anything else about the shoot. Write N/A if not applicable."></textarea>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Inventory</h3>
+      <div class="form-field">
+        <label for="s-inventory">List what you currently have in stock that you want featured on the new site (brands, models, anything specific)</label>
+        <textarea id="s-inventory" name="inventory_notes" rows="4" required></textarea>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Documents</h3>
+      <div class="form-field">
+        <label for="s-files">Upload files <span style="text-transform:none;font-weight:400">(optional)</span></label>
+        <input type="file" id="s-files" name="files" multiple accept=".jpg,.jpeg,.png,.gif,.webp,.heic,.pdf,.doc,.docx,.csv,.xlsx">
+        <div class="field-hint">Inventory lists, photos, logo files, or any reference documents. These are saved directly to a shared folder for the rebuild. Images, PDF, DOC/DOCX, CSV, or XLSX, up to 25&nbsp;MB total.</div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Anything Else</h3>
+      <div class="form-field">
+        <label for="s-wishlist">Anything else we should know</label>
+        <textarea id="s-wishlist" name="wishlist" rows="3" required></textarea>
+      </div>
+    </div>
+
+    <!-- honeypot: hidden from people, bots fill it -->
+    <div class="hp-field" aria-hidden="true">
+      <label for="website">Website</label>
+      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+    </div>
+
+    <div class="form-actions">
+      <button class="btn solid" type="submit" id="submit-btn">Send</button>
+      <span class="form-status" id="submit-status"></span>
+    </div>
+  </form>
+</div>
+
+<footer>
+  <p>Clown Dog Bikes questionnaire &middot; sent directly to Jonathan Lin Davis, not stored on this site &middot; <a href="demo">All demos &#8594;</a></p>
+  <p>Developed in Python, CSS, and JavaScript using Claude Code and Jonathan Lin Davis's proprietary, copyrighted Code Development Program</p>
+</footer>
+
+<script>
+(function(){
+  const form=document.getElementById('survey-form');
+  if(!form)return;
+
+  // Conditional follow-ups: show a plain text field only when the radio
+  // option that makes it relevant is selected. Kept deliberately simple
+  // (no framework, no data-binding) to match the rest of this page.
+  function wireConditional(radioName,triggerValue,wrapId){
+    const wrap=document.getElementById(wrapId);
+    if(!wrap)return;
+    const radios=document.querySelectorAll('input[name="'+radioName+'"]');
+    function sync(){
+      let show=false;
+      radios.forEach(function(r){if(r.checked&&r.value===triggerValue)show=true;});
+      wrap.classList.toggle('show',show);
+      // Clear any stale value the moment the field is hidden, so switching
+      // an answer away from the trigger option can't leave contradictory
+      // data (e.g. registrar_access=have_login alongside a leftover
+      // registrar_access_other) in the submitted FormData.
+      if(!show){const inp=wrap.querySelector('input,textarea');if(inp)inp.value='';}
+    }
+    radios.forEach(function(r){r.addEventListener('change',sync);});
+    // form.reset() doesn't fire 'change' on radios, so the wrap would
+    // otherwise stay visible (empty) after a successful submit. The
+    // timeout matters: reset handlers run before the browser actually
+    // clears input values, so checking radio state synchronously here
+    // would still see the pre-reset selection.
+    form.addEventListener('reset',function(){setTimeout(sync,0);});
+    sync();
+  }
+  wireConditional('registrar_access','know_who_has_it','registrar-other-wrap');
+  wireConditional('pos_system','other','pos-other-wrap');
+
+  // Every required text/textarea field, in the order they appear, paired
+  // with a human label used in the error message. Radio-button questions
+  // are validated separately below since they have no single element id.
+  const REQUIRED_FIELDS=[
+    ['s-name','your name'],
+    ['s-email','email'],
+    ['s-claims-context','homepage claims context'],
+    ['s-photo-notes','photography notes'],
+    ['s-inventory','current inventory'],
+    ['s-wishlist','anything else']
+  ];
+
+  // Required radio-button groups: [group name, human label].
+  const REQUIRED_RADIO_GROUPS=[
+    ['registrar_access','registrar/DNS access'],
+    ['domain_future',"the domain's future"],
+    ['admin_access','current site admin access'],
+    ['homepage_claims_decision','the homepage claims question'],
+    ['shipping_pickup','shipping vs. pickup'],
+    ['pos_system','point-of-sale system'],
+    ['photography','photography']
+  ];
+
+  function radioValue(name){
+    const checked=document.querySelector('input[name="'+name+'"]:checked');
+    return checked?checked.value:'';
+  }
+
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    const statusEl=document.getElementById('submit-status');
+    const btn=document.getElementById('submit-btn');
+    const setStatus=function(msg,isErr){
+      if(statusEl){statusEl.textContent=msg;statusEl.classList.toggle('error',!!isErr);}
+    };
+
+    for(let i=0;i<REQUIRED_FIELDS.length;i++){
+      const id=REQUIRED_FIELDS[i][0],label=REQUIRED_FIELDS[i][1];
+      const el=document.getElementById(id);
+      if(!el||!el.value.trim()){
+        setStatus('Please fill in "'+label+'" (write N/A if it doesn\'t apply), then send again.',true);
+        if(el)el.focus();
+        return;
+      }
+    }
+
+    for(let i=0;i<REQUIRED_RADIO_GROUPS.length;i++){
+      const name=REQUIRED_RADIO_GROUPS[i][0],label=REQUIRED_RADIO_GROUPS[i][1];
+      if(!radioValue(name)){
+        setStatus('Please choose an answer for "'+label+'", then send again.',true);
+        return;
+      }
+    }
+
+    // Conditional follow-ups: required only when their triggering option
+    // was picked, so validated after the radio groups themselves.
+    if(radioValue('registrar_access')==='know_who_has_it'){
+      const el=document.getElementById('s-registrar-other');
+      if(!el||!el.value.trim()){
+        setStatus('Please tell us who has the registrar/DNS login, then send again.',true);
+        if(el)el.focus();
+        return;
+      }
+    }
+    if(radioValue('pos_system')==='other'){
+      const el=document.getElementById('s-pos-other');
+      if(!el||!el.value.trim()){
+        setStatus('Please name your point-of-sale system, then send again.',true);
+        if(el)el.focus();
+        return;
+      }
+    }
+
+    const email=(document.getElementById('s-email')||{}).value||'';
+    const emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailRe.test(email)){
+      setStatus('Please enter a valid email.',true);
+      return;
+    }
+
+    const files=(document.getElementById('s-files')||{}).files||[];
+    let totalBytes=0;
+    for(let i=0;i<files.length;i++){totalBytes+=files[i].size;}
+    if(totalBytes>25*1024*1024){
+      setStatus('Attached files exceed the 25 MB total limit.',true);
+      return;
+    }
+
+    const fd=new FormData();
+    fd.append('name',(document.getElementById('s-name')||{}).value||'');
+    fd.append('email',email);
+    fd.append('restocking_fee_pct',(document.getElementById('s-restock')||{}).value||'');
+    fd.append('registrar_access',radioValue('registrar_access'));
+    fd.append('registrar_access_other',(document.getElementById('s-registrar-other')||{}).value||'');
+    fd.append('domain_future',radioValue('domain_future'));
+    fd.append('homepage_claims_decision',radioValue('homepage_claims_decision'));
+    fd.append('homepage_claims_context',(document.getElementById('s-claims-context')||{}).value||'');
+    fd.append('admin_access',radioValue('admin_access'));
+    fd.append('shipping_pickup',radioValue('shipping_pickup'));
+    fd.append('pos_system',radioValue('pos_system'));
+    fd.append('pos_system_other',(document.getElementById('s-pos-other')||{}).value||'');
+    fd.append('photography',radioValue('photography'));
+    fd.append('photography_notes',(document.getElementById('s-photo-notes')||{}).value||'');
+    fd.append('inventory_notes',(document.getElementById('s-inventory')||{}).value||'');
+    fd.append('wishlist',(document.getElementById('s-wishlist')||{}).value||'');
+    fd.append('website',(document.getElementById('website')||{}).value||'');
+    fd.append('page_url',window.location.href);
+    for(let i=0;i<files.length;i++){fd.append('files',files[i]);}
+
+    const origLabel=btn?btn.textContent:'Send';
+    let success=false;
+    if(btn){btn.disabled=true;btn.textContent='Sending…';}
+    setStatus('',false);
+    try{
+      const res=await fetch('/api/clowndog-questionnaire',{method:'POST',body:fd});
+      if(res.ok){
+        success=true;
+        if(btn)btn.textContent='Sent ✓';
+        setStatus("Sent. We'll follow up at the email you provided.",false);
+        form.reset();
+      }else{
+        const t=await res.json().catch(function(){return{};});
+        setStatus((t&&t.error)?t.error:'Could not send. Please try again.',true);
+      }
+    }catch(err){
+      setStatus('Network error. Please try again.',true);
+    }finally{
+      if(!success&&btn){btn.disabled=false;btn.textContent=origLabel;}
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
