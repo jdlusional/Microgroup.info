@@ -74,6 +74,7 @@ section.block p:last-child{margin-bottom:0}
 .stamp{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--pine-dark);background:var(--paper);border:2px dashed var(--pine);padding:.4rem .8rem;transform:rotate(-3deg)}
 footer{max-width:900px;margin:1.5rem auto 0;padding:2rem 1.5rem 3rem;color:var(--wash);font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;border-top:3px dashed var(--rule)}
 footer a{color:var(--wash)}
+.footer-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.6rem}
 @media(max-width:560px){.now-grid{grid-template-columns:1fr}.btn-row{flex-direction:column;align-items:stretch}.btn{justify-content:center}.bar-nav{gap:.7rem}.hero{background-size:14px 14px}.hero .wheel-motif{width:130px;height:130px}}
 
 /* Homepage-specific additions */
@@ -89,6 +90,9 @@ footer a{color:var(--wash)}
 .tier .tier-name{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--pine-dark);background:var(--paper);border:2px dashed var(--pine);padding:.3rem .55rem;transform:rotate(-3deg);display:inline-block}
 .tier .tier-price{font-family:var(--mono);font-weight:700;font-size:1.6rem;color:var(--accent-dark);margin:.6rem 0 0}
 @media(max-width:560px){.teaser-grid{grid-template-columns:1fr}}
+.insta-row{display:flex;gap:1.3rem;flex-wrap:wrap;justify-content:center;margin-top:1.2rem}
+.insta-row iframe,.insta-row blockquote{max-width:100%;min-width:0}
+.insta-cta{margin-top:1.2rem}
 </style>
 </head>
 <body>
@@ -111,7 +115,7 @@ footer a{color:var(--wash)}
 <header class="hero">
   <svg class="wheel-motif" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.8 5.8l4.2 4.2M14 14l4.2 4.2M18.2 5.8L14 10M10 14l-4.2 4.2"/></svg>
   <div class="kicker-row">
-    <span class="kicker">Repair shop, north of UT Austin</span>
+    <span class="kicker">Austin's Oldest and Most Reliable Bike Shop</span>
     <span class="stamp">Since 2000</span>
   </div>
   <h1>Bring us the bike. We'll tell you what it actually needs.</h1>
@@ -187,6 +191,19 @@ footer a{color:var(--wash)}
   </section>
 
   <section class="block">
+    <h2>From the shop's Instagram</h2>
+    <p>Real, live posts from <a href="https://instagram.com/clowndogbikes" target="_blank" rel="noopener">@clowndogbikes</a> &mdash; embedded straight from Instagram, not screenshots.</p>
+    <div class="insta-row">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaqHcZTEc7H/" data-instgrm-version="14" style="width:100%;max-width:340px;margin:0"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUWEWqlESWA/" data-instgrm-version="14" style="width:100%;max-width:340px;margin:0"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DPl_owyEevL/" data-instgrm-version="14" style="width:100%;max-width:340px;margin:0"></blockquote>
+    </div>
+    <div class="btn-row insta-cta">
+      <a class="btn outline" href="https://instagram.com/clowndogbikes" target="_blank" rel="noopener">Follow @clowndogbikes</a>
+    </div>
+  </section>
+
+  <section class="block">
     <h2>What people say</h2>
     <p class="review-line"><span class="stars">★★★★★</span> Customer reviews across platforms currently average roughly 4.8 to 4.9 out of 5.</p>
   </section>
@@ -194,8 +211,14 @@ footer a{color:var(--wash)}
 </div>
 
 <footer>
-  microgroup.info &middot; Clown Dog Bikes preview build, not the final site &middot; <a href="/clown-dog">project hub</a>
+  Content and business information &copy; 2026 Clown Dog Bikes. Website design and build &copy; 2026 <a href="https://microgroup.info" target="_blank" rel="noopener">MICRO Group</a>, designed and managed by Jonathan Lin Davis. &middot; preview build, not the final site &middot; <a href="/clown-dog">project hub</a>
+  <div class="footer-links">
+    <a href="/clown-dog-website-policies">Store Policies</a>
+    <a href="/clown-dog-website-privacy">Privacy Policy</a>
+    <a href="/clown-dog-website-accessibility">Accessibility</a>
+  </div>
 </footer>
 
+<script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>

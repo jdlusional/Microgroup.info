@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J4XGXZ4CN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4J4XGXZ4CN');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Accessibility — Clown Dog Bikes</title>
+<meta name="description" content="Clown Dog Bikes' accessibility commitment. Preview build of the new site." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/svg+xml" href="MICRO_mark_icon_transparent.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1d1006; --wash:#5c4736; --paper:#f8f0dc; --well:#e8b866;
+  --rule:#cbb37e; --accent:#c93f16; --accent-dark:#8a2c0f;
+  --pine:#1f6f5c; --pine-dark:#144539; --gold:#c98a1f;
+  --sans:'IBM Plex Sans',Arial,sans-serif;
+  --mono:'JetBrains Mono','Courier New',monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--accent-dark);text-decoration:none}
+a:hover{text-decoration:underline}
+.bar{background:var(--well);border-bottom:3px solid var(--ink)}
+.bar-in{max-width:900px;margin:0 auto;padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.bar-brand{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:700;font-size:1.15rem;color:var(--ink);letter-spacing:-.01em}
+.bar-brand .mark{color:var(--accent);flex:0 0 auto}
+.bar-nav{display:flex;gap:1.2rem;flex-wrap:wrap;font-family:var(--mono);font-size:.76rem;letter-spacing:.03em;text-transform:uppercase}
+.bar-nav a{color:var(--wash);font-weight:600}
+.bar-nav a.active,.bar-nav a:hover{color:var(--accent-dark)}
+.demo-note{background:var(--ink);color:var(--paper);text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;padding:.5rem 1rem}
+.demo-note a{color:#fff;text-decoration:underline}
+.hero{
+  position:relative;overflow:hidden;max-width:900px;margin:0 auto;padding:3.4rem 1.5rem 1.2rem;
+  background-image:radial-gradient(var(--rule) 1.5px, transparent 1.5px);
+  background-size:20px 20px;background-position:-10px -6px;
+}
+.hero .wheel-motif{position:absolute;top:-10%;right:-4%;width:200px;height:200px;color:var(--ink);opacity:.06;pointer-events:none}
+.hero .kicker-row{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;position:relative}
+.hero .kicker{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--pine);border:2px solid var(--ink);padding:.35rem .7rem}
+.hero h1{position:relative;font-family:var(--sans);font-weight:700;font-size:clamp(2rem,5.5vw,2.8rem);color:var(--ink);margin:1rem 0 1.1rem;line-height:1.08;letter-spacing:-.02em}
+.hero p{position:relative;color:var(--wash);max-width:64ch;font-size:1.05rem;margin:0 0 1rem}
+.wrap{max-width:900px;margin:0 auto;padding:.5rem 1.5rem 4rem}
+section.block{margin:2.4rem 0;background:var(--paper);border:2.5px solid var(--ink);padding:1.6rem 1.7rem;box-shadow:6px 6px 0 var(--rule)}
+section.block h2{font-family:var(--sans);font-weight:700;font-size:1.2rem;color:var(--ink);margin:0 0 .8rem;letter-spacing:-.01em}
+section.block p{color:var(--ink);font-size:.96rem;margin:0 0 .9rem}
+section.block p:last-child{margin-bottom:0}
+.legal-note{font-family:var(--mono);font-size:.78rem;color:var(--pine-dark);background:var(--paper);border:2px dashed var(--pine);padding:.7rem .9rem;margin:0 0 1.6rem}
+footer{max-width:900px;margin:1.5rem auto 0;padding:2rem 1.5rem 3rem;color:var(--wash);font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;border-top:3px dashed var(--rule)}
+footer a{color:var(--wash)}
+.footer-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.6rem}
+@media(max-width:560px){.bar-nav{gap:.7rem}.hero{background-size:14px 14px}.hero .wheel-motif{width:130px;height:130px}}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="demo-note">Preview build. The real storefront (online cart and checkout) is not live yet — <a href="/clown-dog-website-contact">contact the shop directly</a> for now.</div>
+<div class="bar">
+  <div class="bar-in">
+    <a class="bar-brand" href="/clown-dog-website"><svg class="mark" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.8 5.8l4.2 4.2M14 14l4.2 4.2M18.2 5.8L14 10M10 14l-4.2 4.2"/></svg>Clown Dog Bikes</a>
+    <nav class="bar-nav">
+      <a href="/clown-dog-website">Home</a>
+      <a href="/clown-dog-website-repair">Repair &amp; Service</a>
+      <a href="/clown-dog-website-shop">Shop</a>
+      <a href="/clown-dog-website-story">Our Story</a>
+      <a href="/clown-dog-website-contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <svg class="wheel-motif" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.8 5.8l4.2 4.2M14 14l4.2 4.2M18.2 5.8L14 10M10 14l-4.2 4.2"/></svg>
+  <div class="kicker-row">
+    <span class="kicker">Legal</span>
+  </div>
+  <h1>Accessibility</h1>
+  <p>Our commitment to making this site usable for everyone.</p>
+</header>
+
+<div class="wrap">
+
+  <div class="legal-note">This wording is deliberately a general commitment rather than a specific technical standard claim, since the site's accessibility work (alt text, keyboard navigation, screen-reader testing) is still in progress on this preview build.</div>
+
+  <section class="block">
+    <p>Clown Dog Bikes is committed to making this website accessible to everyone, including customers who use assistive technology. We're actively working on accessibility as we build out this new site &mdash; things like clear image descriptions, keyboard navigation, and readable contrast &mdash; and we'll keep improving it after launch, not just at launch.</p>
+    <p>If you run into anything on this site that's hard to use, please <a href="/clown-dog-website-contact">contact us</a> and let us know. We'll do our best to help right away and to fix the underlying issue.</p>
+  </section>
+
+</div>
+
+<footer>
+  &copy; 2026 Clown Dog Bikes &middot; Site designed and managed by Jonathan Lin Davis of <a href="https://microgroup.info" target="_blank" rel="noopener">MICRO Group</a> &middot; preview build, not the final site &middot; <a href="/clown-dog">project hub</a>
+  <div class="footer-links">
+    <a href="/clown-dog-website-policies">Store Policies</a>
+    <a href="/clown-dog-website-privacy">Privacy Policy</a>
+    <a href="/clown-dog-website-accessibility">Accessibility</a>
+  </div>
+</footer>
+
+</body>
+</html>

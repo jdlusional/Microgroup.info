@@ -74,6 +74,7 @@ section.block p:last-child{margin-bottom:0}
 .stamp{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--pine-dark);background:var(--paper);border:2px dashed var(--pine);padding:.4rem .8rem;transform:rotate(-3deg)}
 footer{max-width:900px;margin:1.5rem auto 0;padding:2rem 1.5rem 3rem;color:var(--wash);font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;border-top:3px dashed var(--rule)}
 footer a{color:var(--wash)}
+.footer-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.6rem}
 @media(max-width:560px){.now-grid{grid-template-columns:1fr}.btn-row{flex-direction:column;align-items:stretch}.btn{justify-content:center}.bar-nav{gap:.7rem}.hero{background-size:14px 14px}.hero .wheel-motif{width:130px;height:130px}}
 
 /* --- shop-page additions --- */
@@ -92,6 +93,11 @@ footer a{color:var(--wash)}
 .variant-note{font-family:var(--mono);font-size:.72rem;color:var(--wash);margin-top:-.3rem;margin-bottom:.9rem}
 .shop-intro-card{background:var(--well);border:2.5px solid var(--ink);padding:1.6rem 1.7rem;margin-bottom:2.2rem;box-shadow:6px 6px 0 var(--ink)}
 .shop-intro-card h2{margin-top:0}
+.product-photo{border:2px solid var(--ink);margin:0 0 .9rem;overflow:hidden;background:#fff;aspect-ratio:4/3}
+.product-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.product-photo-row{display:flex;gap:.7rem;margin:0 0 .9rem}
+.product-photo-row .product-photo{flex:1 1 0;margin:0}
+.photo-credit{font-family:var(--mono);font-size:.65rem;color:var(--wash);margin:-.6rem 0 .9rem}
 @media(max-width:560px){.shop-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -142,6 +148,11 @@ footer a{color:var(--wash)}
     <div class="shop-grid">
       <div class="product-card full-width">
         <div class="brand">Benno</div>
+        <div class="product-photo-row">
+          <div class="product-photo"><img src="/clown-dog-assets/benno-remidemi-9d-evo-2-anthracite-gray.jpg" alt="Benno RemiDemi 9D Evo 2 ebike in Anthracite Gray" loading="lazy" /></div>
+          <div class="product-photo"><img src="/clown-dog-assets/benno-remidemi-9d-evo-2-turmeric-yellow.jpg" alt="Benno RemiDemi 9D Evo 2 ebike in Turmeric Yellow" loading="lazy" /></div>
+        </div>
+        <p class="photo-credit">Manufacturer photos, both color options carried &middot; bennobikes.com</p>
         <h3>RemiDemi 9D Evo 2 Performance Sport Ebike</h3>
         <div class="price">$2,200.00</div>
         <p class="desc">A compact, low step-through cargo ebike built for city riding and hauling — fat 20-inch tires, a Bosch Performance Sport Gen 3 mid-drive motor (250W / 65Nm), 400Wh battery, and rack/accessory mounts that work with Benno's tray and Yepp child-seat systems.</p>
@@ -160,6 +171,8 @@ footer a{color:var(--wash)}
     <div class="shop-grid">
       <div class="product-card">
         <div class="brand">Surly</div>
+        <div class="product-photo"><img src="/clown-dog-assets/surly-grappler-frameset.jpg" alt="Surly Grappler Frameset" loading="lazy" /></div>
+        <p class="photo-credit">Manufacturer photo &middot; surlybikes.com</p>
         <h3>Grappler Frameset</h3>
         <div class="price">$799.00</div>
         <p class="desc">A do-it-all drop-bar frameset built to run big tires and take on gravel, dirt roads, and light touring loads.</p>
@@ -168,6 +181,8 @@ footer a{color:var(--wash)}
       </div>
       <div class="product-card">
         <div class="brand">Surly</div>
+        <div class="product-photo"><img src="/clown-dog-assets/surly-straggler-700c-frameset.jpg" alt="Surly Straggler 700c Frameset" loading="lazy" /></div>
+        <p class="photo-credit">Manufacturer photo &middot; surlybikes.com</p>
         <h3>Straggler 700c Frameset</h3>
         <div class="price">$630.00</div>
         <p class="desc">Surly's steel cyclocross/all-road frameset — disc brakes, clearance for wide tires, at home on pavement or dirt.</p>
@@ -176,6 +191,8 @@ footer a{color:var(--wash)}
       </div>
       <div class="product-card">
         <div class="brand">Surly</div>
+        <div class="product-photo"><img src="/clown-dog-assets/surly-straggler-650b-frameset.jpg" alt="Surly Straggler 650b Frameset" loading="lazy" /></div>
+        <p class="photo-credit">Manufacturer photo &middot; surlybikes.com</p>
         <h3>Straggler 650b Frameset</h3>
         <div class="price">$630.00</div>
         <p class="desc">Same Straggler platform built around 650b wheels for extra tire volume — a good pick if you want more cushion off pavement.</p>
@@ -184,6 +201,8 @@ footer a{color:var(--wash)}
       </div>
       <div class="product-card">
         <div class="brand">Fuji</div>
+        <div class="product-photo"><img src="/clown-dog-assets/fuji-jari-2.5.png" alt="Fuji Jari 2.5 gravel bike" loading="lazy" /></div>
+        <p class="photo-credit">Manufacturer photo &middot; fujibikes.com</p>
         <h3>Jari 2.5</h3>
         <div class="price">$800.00</div>
         <p class="desc">A complete gravel bike built to handle mixed-surface rides, from paved climbs to loose backroads.</p>
@@ -192,6 +211,8 @@ footer a{color:var(--wash)}
       </div>
       <div class="product-card">
         <div class="brand">Fuji</div>
+        <div class="product-photo"><img src="/clown-dog-assets/fuji-absolute-2.1-st.png" alt="Fuji Absolute 2.1 ST hybrid bike" loading="lazy" /></div>
+        <p class="photo-credit">Manufacturer photo &middot; fujibikes.com</p>
         <h3>Absolute 2.1 ST</h3>
         <div class="price">$589.00</div>
         <p class="desc">A comfortable fitness/hybrid road bike with a step-through frame — a common recommendation for commuting or fitness riders who want something upright and easy to live with.</p>
@@ -209,6 +230,8 @@ footer a{color:var(--wash)}
     <div class="shop-grid">
       <div class="product-card">
         <div class="brand">Surly</div>
+        <div class="product-photo"><img src="/clown-dog-assets/surly-karate-monkey-frameset.jpg" alt="Surly Karate Monkey Frameset" loading="lazy" /></div>
+        <p class="photo-credit">Manufacturer photo &middot; surlybikes.com</p>
         <h3>Karate Monkey Frameset</h3>
         <div class="price">$1,099.00</div>
         <p class="desc">Surly's classic steel hardtail frameset — a proven, versatile platform for trail riding, bikepacking builds, or just an all-around rigid mountain bike.</p>
@@ -217,6 +240,8 @@ footer a{color:var(--wash)}
       </div>
       <div class="product-card">
         <div class="brand">Surly</div>
+        <div class="product-photo"><img src="/clown-dog-assets/surly-karate-monkey-rigid.jpg" alt="Surly Karate Monkey Rigid complete bike" loading="lazy" /></div>
+        <p class="photo-credit">Manufacturer photo &middot; surlybikes.com</p>
         <h3>Karate Monkey Rigid</h3>
         <div class="price">$1,849.00</div>
         <p class="desc">The Karate Monkey as a complete, rigid-fork build rather than a frame-only — ready to ride off the floor.</p>
@@ -225,6 +250,8 @@ footer a{color:var(--wash)}
       </div>
       <div class="product-card">
         <div class="brand">Surly</div>
+        <div class="product-photo"><img src="/clown-dog-assets/surly-krampus-frameset.jpg" alt="Surly Krampus Frameset" loading="lazy" /></div>
+        <p class="photo-credit">Manufacturer photo &middot; surlybikes.com</p>
         <h3>Krampus Frameset</h3>
         <div class="price">$785.00</div>
         <p class="desc">Surly's plus-tire hardtail frameset, built around big 29+ rubber for extra traction and float over rough terrain.</p>
@@ -233,6 +260,8 @@ footer a{color:var(--wash)}
       </div>
       <div class="product-card">
         <div class="brand">Surly</div>
+        <div class="product-photo"><img src="/clown-dog-assets/surly-ecr-frameset.jpg" alt="Surly ECR" loading="lazy" /></div>
+        <p class="photo-credit">Manufacturer photo (complete-bike shot, same frame &mdash; no dedicated frameset-only photo exists) &middot; surlybikes.com</p>
         <h3>ECR Frameset</h3>
         <div class="price">$785.00</div>
         <p class="desc">A 29+ expedition/touring-capable frameset from Surly, built for loaded off-road travel and big-tire versatility.</p>
@@ -241,6 +270,8 @@ footer a{color:var(--wash)}
       </div>
       <div class="product-card">
         <div class="brand">Surly</div>
+        <div class="product-photo"><img src="/clown-dog-assets/surly-ogre-frameset.jpg" alt="Surly Ogre Frameset" loading="lazy" /></div>
+        <p class="photo-credit">Manufacturer photo &middot; surlybikes.com</p>
         <h3>Ogre Frameset</h3>
         <div class="price">$735.00 &ndash; $899.00</div>
         <p class="desc">A rugged drop-bar or flat-bar-capable touring frameset, equally happy loaded down for a long trip or set up as a rigid mountain bike.</p>
@@ -258,6 +289,8 @@ footer a{color:var(--wash)}
     <div class="shop-grid">
       <div class="product-card full-width">
         <div class="brand">SE Bikes</div>
+        <div class="product-photo"><img src="/clown-dog-assets/se-bikes-lager.jpg" alt="SE Bikes Lager single-speed, dark blue" loading="lazy" /></div>
+        <p class="photo-credit">Manufacturer photo, closest available (model discontinued in SE's current lineup)</p>
         <h3>Lager</h3>
         <div class="price">$299.99</div>
         <p class="desc">A simple, affordable single-speed commuter — a good entry point if you want a no-fuss bike for getting around town without gears to fuss with.</p>
@@ -279,7 +312,12 @@ footer a{color:var(--wash)}
 </div>
 
 <footer>
-  microgroup.info &middot; Clown Dog Bikes preview build, not the final site &middot; <a href="/clown-dog">project hub</a>
+  Content and business information &copy; 2026 Clown Dog Bikes. Website design and build &copy; 2026 <a href="https://microgroup.info" target="_blank" rel="noopener">MICRO Group</a>, designed and managed by Jonathan Lin Davis. &middot; preview build, not the final site &middot; <a href="/clown-dog">project hub</a>
+  <div class="footer-links">
+    <a href="/clown-dog-website-policies">Store Policies</a>
+    <a href="/clown-dog-website-privacy">Privacy Policy</a>
+    <a href="/clown-dog-website-accessibility">Accessibility</a>
+  </div>
 </footer>
 </body>
 </html>

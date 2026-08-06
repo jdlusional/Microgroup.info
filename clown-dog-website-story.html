@@ -73,7 +73,11 @@ section.block p:last-child{margin-bottom:0}
 .stamp{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--pine-dark);background:var(--paper);border:2px dashed var(--pine);padding:.4rem .8rem;transform:rotate(-3deg)}
 footer{max-width:900px;margin:1.5rem auto 0;padding:2rem 1.5rem 3rem;color:var(--wash);font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;border-top:3px dashed var(--rule)}
 footer a{color:var(--wash)}
+.footer-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.6rem}
 @media(max-width:560px){.now-grid{grid-template-columns:1fr}.btn-row{flex-direction:column;align-items:stretch}.btn{justify-content:center}.bar-nav{gap:.7rem}.hero{background-size:14px 14px}.hero .wheel-motif{width:130px;height:130px}}
+.story-photo{margin:1.4rem 0 0;border:2.5px solid var(--ink);box-shadow:6px 6px 0 var(--rule);overflow:hidden}
+.story-photo img{display:block;width:100%;height:auto}
+.story-photo figcaption{font-family:var(--mono);font-size:.74rem;color:var(--wash);padding:.6rem .9rem;border-top:2px solid var(--ink);background:var(--paper)}
 </style>
 </head>
 <body>
@@ -95,7 +99,7 @@ footer a{color:var(--wash)}
 <div class="hero">
   <svg class="wheel-motif" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.8 5.8l4.2 4.2M14 14l4.2 4.2M18.2 5.8L14 10M10 14l-4.2 4.2"/></svg>
   <div class="kicker-row">
-    <span class="kicker">Our Story</span>
+    <span class="kicker">Austin's Oldest and Most Reliable Bike Shop</span>
     <span class="stamp">Since 2000</span>
   </div>
   <h1>We'd rather fix your bike right than make you feel dumb for asking.</h1>
@@ -108,6 +112,10 @@ footer a{color:var(--wash)}
     <h2>How it started</h2>
     <p>John Chisholm and Bryce Holt opened Clown Dog Bikes in 2000, a block from campus, with a simple bet: a bike shop could be genuinely welcoming and still know exactly what it's doing. A 2025 profile in Community Impact marked the shop's 25th year in business, still in the same stretch of San Jacinto Blvd where it started.</p>
     <p>That location was never an accident. Being the closest full-service shop to UT Austin meant the daily customer was as likely to be a freshman who'd never touched a derailleur as it was a longtime commuter. The shop was built to work for both.</p>
+    <figure class="story-photo">
+      <img src="/clown-dog-assets/shop-crew-instagram.jpg" alt="A group at Clown Dog Bikes posing with a customer's custom-built bike in the shop" loading="lazy" />
+      <figcaption>From the shop's Instagram — the crew with a customer's build, "Mechanic Bike Day."</figcaption>
+    </figure>
   </section>
 
   <section class="block">
@@ -151,7 +159,12 @@ footer a{color:var(--wash)}
 </div>
 
 <footer>
-  microgroup.info &middot; Clown Dog Bikes preview build, not the final site &middot; <a href="/clown-dog">project hub</a>
+  Content and business information &copy; 2026 Clown Dog Bikes. Website design and build &copy; 2026 <a href="https://microgroup.info" target="_blank" rel="noopener">MICRO Group</a>, designed and managed by Jonathan Lin Davis. &middot; preview build, not the final site &middot; <a href="/clown-dog">project hub</a>
+  <div class="footer-links">
+    <a href="/clown-dog-website-policies">Store Policies</a>
+    <a href="/clown-dog-website-privacy">Privacy Policy</a>
+    <a href="/clown-dog-website-accessibility">Accessibility</a>
+  </div>
 </footer>
 
 </body>
