@@ -34,7 +34,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Archivo+Black&family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Parisienne&display=swap" rel="stylesheet">
 <!-- Favicon: was king-mark.svg, a crown icon unrelated to MICRO Group's actual mark
      (chess pieces). Assets/micro-mark.svg is the real brand mark in miniature, recolored
      to the site's --ink/--accent green+bronze to match the current logo. -->
@@ -76,11 +76,12 @@ html.stack-page {
   --f-cards:   'JetBrains Mono', ui-monospace, monospace;
   --f-label:   'JetBrains Mono', ui-monospace, monospace;
   --f-script:  'Parisienne', cursive;
-  /* Archivo Black: matches the actual MICRO wordmark typeface used in
-     MICRO_logo_site.png's own wordmark typeface -- Parisienne stays
-     reserved for the italic slogan line, matching the logo's own
-     "your goals" script styling. */
-  --f-script-caps: 'Archivo Black', sans-serif;
+  /* Playfair Display: matches the serif wordmark typeface used in
+     MICRO_logo_site.png (2026-08-06, replacing Archivo Black once the new
+     Canva-generated logo switched from a bold sans wordmark to a serif
+     one) -- Parisienne stays reserved for the italic slogan line,
+     matching the logo's own "your goals" script styling. */
+  --f-script-caps: 'Playfair Display', serif;
 }
 
 #home{padding:40px 0 56px}
@@ -133,8 +134,11 @@ html.stack-page #home{border-top:0}
 html.stack-page .shead .intro{margin:0 auto}
 
 html.stack-page .site-header{background:var(--paper)}
-html.stack-page .nav-name{font-family:var(--f-script-caps);color:var(--ink);font-weight:400;font-size:1.5rem;letter-spacing:.01em;text-transform:uppercase}
-html.stack-page .nav-name .nav-name-sub{text-transform:lowercase}
+/* Nav wordmark matches MICRO_logo_site.png's own treatment (2026-08-06): "MICRO" bold in
+   --accent, "Group" regular in --ink, title case -- no text-transform, since the logo
+   doesn't uppercase/lowercase either word. */
+html.stack-page .nav-name{font-family:var(--f-script-caps);color:var(--accent);font-weight:700;font-size:1.5rem;letter-spacing:.01em}
+html.stack-page .nav-name .nav-name-sub{color:var(--ink);font-weight:400}
 html.stack-page .nav-links a{color:var(--ink)}
 html.stack-page .nav-links a:hover,
 html.stack-page .nav-links a[aria-current="page"]{border-bottom-color:var(--accent)}
