@@ -92,8 +92,10 @@ footer p:last-of-type{margin-bottom:.9rem}
 .tier .tier-name{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--pine-dark);background:var(--paper);border:2px dashed var(--pine);padding:.3rem .55rem;transform:rotate(-3deg);display:inline-block}
 .tier .tier-price{font-family:var(--mono);font-weight:700;font-size:1.6rem;color:var(--accent-dark);margin:.6rem 0 0}
 @media(max-width:560px){.teaser-grid{grid-template-columns:1fr}}
-.insta-row{display:flex;gap:1.3rem;flex-wrap:wrap;justify-content:center;margin-top:1.2rem}
+.insta-row{display:flex;gap:1.3rem;flex-wrap:wrap;justify-content:center;margin-top:1.2rem;min-height:280px;opacity:1;transition:opacity .6s ease}
+.insta-row.fading{opacity:0}
 .insta-row iframe,.insta-row blockquote{max-width:100%;min-width:0}
+.insta-row .insta-slot{flex:1 1 300px;max-width:340px}
 .insta-cta{margin-top:1.2rem}
 </style>
 </head>
@@ -194,12 +196,8 @@ footer p:last-of-type{margin-bottom:.9rem}
 
   <section class="block">
     <h2>From the shop's Instagram</h2>
-    <p>Real, live posts from <a href="https://instagram.com/clowndogbikes" target="_blank" rel="noopener">@clowndogbikes</a> &mdash; embedded straight from Instagram, not screenshots.</p>
-    <div class="insta-row">
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaqHcZTEc7H/" data-instgrm-version="14" style="width:100%;max-width:340px;margin:0"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUWEWqlESWA/" data-instgrm-version="14" style="width:100%;max-width:340px;margin:0"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DPl_owyEevL/" data-instgrm-version="14" style="width:100%;max-width:340px;margin:0"></blockquote>
-    </div>
+    <p>Real, live posts from <a href="https://instagram.com/clowndogbikes" target="_blank" rel="noopener">@clowndogbikes</a> &mdash; embedded straight from Instagram, not screenshots. Cycles through more of the feed every few seconds.</p>
+    <div class="insta-row" id="insta-row"></div>
     <div class="btn-row insta-cta">
       <a class="btn outline" href="https://instagram.com/clowndogbikes" target="_blank" rel="noopener">Follow @clowndogbikes</a>
     </div>
@@ -224,5 +222,53 @@ footer p:last-of-type{margin-bottom:.9rem}
 </footer>
 
 <script async src="//www.instagram.com/embed.js"></script>
+<script>
+(function(){
+  // Real posts pulled from instagram.com/clowndogbikes, confirmed to exist.
+  var POSTS = [
+    'DaqHcZTEc7H','DUWEWqlESWA','DR5TYT-kT7-','DQzXsEEEasb','DPl_owyEevL',
+    'DMbINYaRmUa','DK0ee5uxbXw','DKkJwWWxqlb','DKaV8mmxuMa','DKU6StJRPPb',
+    'DKSJwNJxnxO','DJr2ydWx4Bf'
+  ];
+  var PER_BATCH = 5;
+  var CYCLE_MS = 9000;
+  var FADE_MS = 600;
+  var idx = 0;
+  var row = document.getElementById('insta-row');
+  if (!row) return;
+
+  function renderBatch(){
+    row.innerHTML = '';
+    for (var i = 0; i < PER_BATCH; i++){
+      var post = POSTS[(idx + i) % POSTS.length];
+      var wrap = document.createElement('div');
+      wrap.className = 'insta-slot';
+      var bq = document.createElement('blockquote');
+      bq.className = 'instagram-media';
+      bq.setAttribute('data-instgrm-permalink', 'https://www.instagram.com/p/' + post + '/');
+      bq.setAttribute('data-instgrm-version', '14');
+      bq.style.width = '100%';
+      bq.style.margin = '0';
+      wrap.appendChild(bq);
+      row.appendChild(wrap);
+    }
+    if (window.instgrm && window.instgrm.Embeds) {
+      window.instgrm.Embeds.process();
+    }
+  }
+
+  function nextBatch(){
+    row.classList.add('fading');
+    setTimeout(function(){
+      idx = (idx + PER_BATCH) % POSTS.length;
+      renderBatch();
+      row.classList.remove('fading');
+    }, FADE_MS);
+  }
+
+  renderBatch();
+  setInterval(nextBatch, CYCLE_MS);
+})();
+</script>
 </body>
 </html>
