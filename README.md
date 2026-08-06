@@ -66,20 +66,28 @@ relevant to its own site rather than duplicating the other's detail.
     not yet deployed" on both pages — not Access-gated, not linked from any hub or index,
     same undeployed state as when these pages first landed here (2026-07-23, reconstructed
     from a stale jonathanlindavis.com preview branch onto this repo's current structure).
-  - **Clown Dog Bikes** (`clown-dog.html` hub + `clown-dog-website.html` +
-    `clown-dog-questionnaire.html`) — a different kind of engagement than the Almanac/Scribe
-    product family: a full e-commerce rebuild for a real Austin, TX bike shop, planned for
-    Shopify (Storefront API from static pages, checkout on a dedicated subdomain since Shopify
-    checkout cannot live under a path). New 2026-08-05. `clown-dog-website.html` is a holding
-    page, not the real rebuild (unbuilt). `clown-dog-questionnaire.html` is an owner intake
-    form, backed by `functions/api/clowndog-questionnaire.js`: submissions email via Resend
-    (`RESEND_KEY`, already configured) and best-effort upload any attached files straight to a
-    Google Drive folder via a service-account, which needs three additional secrets set before
-    it activates (`GOOGLE_DRIVE_SERVICE_ACCOUNT_EMAIL`, `GOOGLE_DRIVE_SERVICE_ACCOUNT_PRIVATE_KEY`,
-    `GOOGLE_DRIVE_CLOWNDOG_FOLDER_ID`) — see the function's own top-of-file comment for setup
-    steps; until then it degrades gracefully to email-only. Unlisted (noindex), not Access-gated
-    (matches `demo-survey.html`'s public-intake pattern, since the respondent has no Cloudflare
-    Access login). Full planning trail on the Drive:
+  - **Clown Dog Bikes** (`clown-dog.html` hub + a 5-page demo site
+    `clown-dog-website*.html` [home, repair, shop, story, contact] + 3 footer-only legal pages
+    `clown-dog-website-{policies,privacy,accessibility}.html` + `clown-dog-questionnaire.html`) —
+    a different kind of engagement than the Almanac/Scribe product family: a full e-commerce
+    rebuild for a real Austin, TX bike shop, planned for Shopify (Storefront API from static
+    pages, checkout on a dedicated subdomain since Shopify checkout cannot live under a path).
+    New 2026-08-05. The demo site is real content (real price list, real curated catalog with
+    manufacturer product photos in `clown-dog-assets/`, real brand story, a live Instagram embed
+    section) but NOT the real Shopify rebuild — no cart/checkout exists yet, every buy/book
+    action routes to phone/text/contact instead. Store Policies and Privacy Policy migrated
+    verbatim from the live site (legally load-bearing text); Accessibility deliberately does NOT
+    repeat the live site's WCAG 2.1 AA claim (contradicted by that site's own empty alt
+    attributes), using a general commitment statement instead. `clown-dog-questionnaire.html` is
+    an owner intake form, backed by `functions/api/clowndog-questionnaire.js`: submissions email
+    via Resend (`RESEND_KEY`, already configured) and best-effort upload any attached files
+    straight to a Google Drive folder via a service-account, which needs three additional
+    secrets set before it activates (`GOOGLE_DRIVE_SERVICE_ACCOUNT_EMAIL`,
+    `GOOGLE_DRIVE_SERVICE_ACCOUNT_PRIVATE_KEY`, `GOOGLE_DRIVE_CLOWNDOG_FOLDER_ID`) — see the
+    function's own top-of-file comment for setup steps; until then it degrades gracefully to
+    email-only. All pages unlisted (noindex, confirmed on every page) and confirmed ungated (no
+    Cloudflare Access application covers any `/clown-dog*` path, checked directly via the API).
+    Full planning trail on the Drive:
     `Portfolios\Websites\Microgroup.info\Clown Dog Bikes (files not website)\`.
   - **Custodian** (`jp-morgan.html`) — a different product than Almanac/Scribe/Concordance:
     surfaces which foundations name an identifiable investment-management contractor on
