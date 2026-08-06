@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J4XGXZ4CN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4J4XGXZ4CN');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shop — Clown Dog Bikes</title>
+<meta name="description" content="A small curated selection of bikes at Clown Dog Bikes, Austin TX. Preview build of the new site." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/svg+xml" href="MICRO_mark_icon_transparent.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2c1c11; --wash:#6b5847; --paper:#f4efe2; --well:#ecd9bd;
+  --rule:#c8c2b5; --accent:#c1501f; --accent-dark:#8f3813;
+  --sans:'IBM Plex Sans',Arial,sans-serif;
+  --mono:'JetBrains Mono','Courier New',monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent-dark);text-decoration:none}
+a:hover{text-decoration:underline}
+.bar{background:var(--well);border-bottom:2px solid var(--ink)}
+.bar-in{max-width:900px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.bar-brand{font-family:var(--sans);font-weight:700;font-size:1.05rem;color:var(--ink)}
+.bar-nav{display:flex;gap:1.1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.78rem;letter-spacing:.02em}
+.bar-nav a{color:var(--wash);font-weight:500}
+.bar-nav a.active,.bar-nav a:hover{color:var(--accent-dark)}
+.demo-note{background:var(--ink);color:var(--paper);text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;padding:.45rem 1rem}
+.demo-note a{color:#fff;text-decoration:underline}
+.hero{max-width:900px;margin:0 auto;padding:3.2rem 1.5rem 0}
+.hero .kicker{display:inline-block;font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--accent);padding:.3rem .65rem}
+.hero h1{font-family:var(--sans);font-weight:700;font-size:clamp(1.9rem,5vw,2.6rem);color:var(--ink);margin:.9rem 0 1rem;line-height:1.2}
+.hero p{color:var(--wash);max-width:64ch;font-size:1.03rem;margin:0 0 1rem}
+.hero .lede{color:var(--ink);font-size:1.08rem}
+.wrap{max-width:900px;margin:0 auto;padding:.5rem 1.5rem 4rem}
+section.block{margin:2.4rem 0}
+section.block h2{font-family:var(--sans);font-weight:700;font-size:1.25rem;color:var(--ink);margin:0 0 .8rem}
+section.block p{color:var(--ink);font-size:.98rem;margin:0 0 .9rem}
+section.block p:last-child{margin-bottom:0}
+.now-card{background:var(--well);border:1.5px solid var(--ink);padding:1.5rem 1.6rem}
+.now-card h2{margin-top:0}
+.now-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;margin-top:1.1rem}
+.now-item{font-size:.95rem;min-width:0;overflow-wrap:anywhere}
+.now-item .label{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--wash);margin-bottom:.25rem}
+.now-item a{color:var(--ink);font-weight:600}
+.now-item a:hover{color:var(--accent-dark)}
+.btn-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.3rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.85rem;letter-spacing:.02em;font-weight:500;color:#fff;background:var(--accent);border:1.5px solid var(--accent);padding:.65rem 1.2rem;transition:all .15s ease}
+.btn:hover{background:var(--accent-dark);border-color:var(--accent-dark);text-decoration:none}
+.btn.outline{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.outline:hover{background:var(--ink);color:#fff}
+.review-line{font-family:var(--mono);font-size:.85rem;color:var(--wash);margin-top:-.3rem}
+footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;color:var(--wash);font-family:var(--mono);font-size:.72rem;letter-spacing:.02em}
+footer a{color:var(--wash)}
+@media(max-width:560px){.now-grid{grid-template-columns:1fr}.btn-row{flex-direction:column}.btn{justify-content:center}.bar-nav{gap:.7rem}}
+
+/* --- shop-page additions --- */
+.filter-row{display:flex;gap:.6rem;flex-wrap:wrap;margin:0 0 1.6rem}
+.filter-pill{font-family:var(--mono);font-size:.74rem;letter-spacing:.03em;text-transform:uppercase;color:var(--wash);background:var(--well);border:1.5px solid var(--rule);padding:.35rem .75rem}
+.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;margin-top:.5rem}
+.product-card{background:var(--well);border:1.5px solid var(--ink);padding:1.3rem 1.4rem;display:flex;flex-direction:column;min-width:0}
+.product-card .brand{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--wash);margin-bottom:.3rem}
+.product-card h3{font-family:var(--sans);font-weight:700;font-size:1.05rem;color:var(--ink);margin:0 0 .4rem;line-height:1.3}
+.product-card .price{font-family:var(--mono);font-weight:700;font-size:1rem;color:var(--accent-dark);margin-bottom:.55rem}
+.product-card .desc{font-size:.9rem;color:var(--ink);margin:0 0 .5rem;flex-grow:1}
+.product-card .spec-line{font-family:var(--mono);font-size:.72rem;color:var(--wash);margin:0 0 .9rem}
+.product-card .btn{align-self:flex-start;font-size:.78rem;padding:.55rem 1rem}
+.product-card.full-width{grid-column:1 / -1}
+.variant-note{font-family:var(--mono);font-size:.72rem;color:var(--wash);margin-top:-.3rem;margin-bottom:.9rem}
+.shop-intro-card{background:var(--well);border:1.5px solid var(--ink);padding:1.5rem 1.6rem;margin-bottom:2rem}
+.shop-intro-card h2{margin-top:0}
+@media(max-width:560px){.shop-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="demo-note">Preview build. The real storefront (online cart and checkout) is not live yet — <a href="/clown-dog-website-contact">contact the shop directly</a> for now.</div>
+<div class="bar">
+  <div class="bar-in">
+    <a class="bar-brand" href="/clown-dog-website">Clown Dog Bikes</a>
+    <nav class="bar-nav">
+      <a href="/clown-dog-website">Home</a>
+      <a href="/clown-dog-website-repair">Repair &amp; Service</a>
+      <a href="/clown-dog-website-shop" class="active">Shop</a>
+      <a href="/clown-dog-website-story">Our Story</a>
+      <a href="/clown-dog-website-contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="hero">
+  <span class="kicker">Shop</span>
+  <h1>A look at what's on the floor</h1>
+  <p class="lede">Surly framesets, a couple of Fuji road and gravel bikes, an SE Bikes single-speed, and one Benno cargo ebike — this is the real lineup we carry, shown here as a preview while the new online shop gets built.</p>
+</div>
+
+<div class="wrap">
+
+  <div class="shop-intro-card">
+    <h2>Online ordering isn't live yet</h2>
+    <p>This page is a preview of real inventory pulled from our current catalog — it is not a working store. There's no cart, no checkout, and stock changes day to day, so treat everything below as "usually available" rather than guaranteed on the shelf right now. To confirm what's actually in stock, hold a bike, or ask about sizing and color options, call, text, or stop by. Once the real online shop is live, this page gets replaced with the real thing.</p>
+    <div class="btn-row">
+      <a class="btn" href="/clown-dog-website-contact">Contact the shop</a>
+      <a class="btn outline" href="/clown-dog-website-repair">See repair &amp; service</a>
+    </div>
+  </div>
+
+  <section class="block">
+    <h2>Electric</h2>
+    <div class="filter-row">
+      <span class="filter-pill">Benno</span>
+      <span class="filter-pill">Cargo / commuter ebike</span>
+    </div>
+    <div class="shop-grid">
+      <div class="product-card full-width">
+        <div class="brand">Benno</div>
+        <h3>RemiDemi 9D Evo 2 Performance Sport Ebike</h3>
+        <div class="price">$2,200.00</div>
+        <p class="desc">A compact, low step-through cargo ebike built for city riding and hauling — fat 20-inch tires, a Bosch Performance Sport Gen 3 mid-drive motor (250W / 65Nm), 400Wh battery, and rack/accessory mounts that work with Benno's tray and Yepp child-seat systems.</p>
+        <p class="spec-line">6061 aluminum + CRMO frame &middot; Shimano Sora 9-speed &middot; Shimano hydraulic disc brakes &middot; Bosch Purion display, 5 ride modes &middot; colors: Anthracite Gray / Turmeric Yellow</p>
+        <a class="btn" href="/clown-dog-website-contact">Ask about this bike</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Road &amp; gravel</h2>
+    <div class="filter-row">
+      <span class="filter-pill">Surly</span>
+      <span class="filter-pill">Fuji</span>
+    </div>
+    <div class="shop-grid">
+      <div class="product-card">
+        <div class="brand">Surly</div>
+        <h3>Grappler Frameset</h3>
+        <div class="price">$799.00</div>
+        <p class="desc">A do-it-all drop-bar frameset built to run big tires and take on gravel, dirt roads, and light touring loads.</p>
+        <p class="spec-line">Frame only &middot; build it your way</p>
+        <a class="btn" href="/clown-dog-website-contact">Ask about this bike</a>
+      </div>
+      <div class="product-card">
+        <div class="brand">Surly</div>
+        <h3>Straggler 700c Frameset</h3>
+        <div class="price">$630.00</div>
+        <p class="desc">Surly's steel cyclocross/all-road frameset — disc brakes, clearance for wide tires, at home on pavement or dirt.</p>
+        <p class="spec-line">Frame only &middot; 700c wheel size</p>
+        <a class="btn" href="/clown-dog-website-contact">Ask about this bike</a>
+      </div>
+      <div class="product-card">
+        <div class="brand">Surly</div>
+        <h3>Straggler 650b Frameset</h3>
+        <div class="price">$630.00</div>
+        <p class="desc">Same Straggler platform built around 650b wheels for extra tire volume — a good pick if you want more cushion off pavement.</p>
+        <p class="spec-line">Frame only &middot; 650b wheel size</p>
+        <a class="btn" href="/clown-dog-website-contact">Ask about this bike</a>
+      </div>
+      <div class="product-card">
+        <div class="brand">Fuji</div>
+        <h3>Jari 2.5</h3>
+        <div class="price">$800.00</div>
+        <p class="desc">A complete gravel bike built to handle mixed-surface rides, from paved climbs to loose backroads.</p>
+        <p class="spec-line">Complete bike, ready to ride</p>
+        <a class="btn" href="/clown-dog-website-contact">Ask about this bike</a>
+      </div>
+      <div class="product-card">
+        <div class="brand">Fuji</div>
+        <h3>Absolute 2.1 ST</h3>
+        <div class="price">$589.00</div>
+        <p class="desc">A comfortable fitness/hybrid road bike with a step-through frame — a common recommendation for commuting or fitness riders who want something upright and easy to live with.</p>
+        <p class="spec-line">Complete bike, ready to ride</p>
+        <a class="btn" href="/clown-dog-website-contact">Ask about this bike</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Mountain</h2>
+    <div class="filter-row">
+      <span class="filter-pill">Surly</span>
+    </div>
+    <div class="shop-grid">
+      <div class="product-card">
+        <div class="brand">Surly</div>
+        <h3>Karate Monkey Frameset</h3>
+        <div class="price">$1,099.00</div>
+        <p class="desc">Surly's classic steel hardtail frameset — a proven, versatile platform for trail riding, bikepacking builds, or just an all-around rigid mountain bike.</p>
+        <p class="spec-line">Frame only &middot; build it your way</p>
+        <a class="btn" href="/clown-dog-website-contact">Ask about this bike</a>
+      </div>
+      <div class="product-card">
+        <div class="brand">Surly</div>
+        <h3>Karate Monkey Rigid</h3>
+        <div class="price">$1,849.00</div>
+        <p class="desc">The Karate Monkey as a complete, rigid-fork build rather than a frame-only — ready to ride off the floor.</p>
+        <p class="spec-line">Complete bike, rigid fork</p>
+        <a class="btn" href="/clown-dog-website-contact">Ask about this bike</a>
+      </div>
+      <div class="product-card">
+        <div class="brand">Surly</div>
+        <h3>Krampus Frameset</h3>
+        <div class="price">$785.00</div>
+        <p class="desc">Surly's plus-tire hardtail frameset, built around big 29+ rubber for extra traction and float over rough terrain.</p>
+        <p class="spec-line">Frame only &middot; 29+ tire clearance</p>
+        <a class="btn" href="/clown-dog-website-contact">Ask about this bike</a>
+      </div>
+      <div class="product-card">
+        <div class="brand">Surly</div>
+        <h3>ECR Frameset</h3>
+        <div class="price">$785.00</div>
+        <p class="desc">A 29+ expedition/touring-capable frameset from Surly, built for loaded off-road travel and big-tire versatility.</p>
+        <p class="spec-line">Frame only &middot; touring/bikepacking geometry</p>
+        <a class="btn" href="/clown-dog-website-contact">Ask about this bike</a>
+      </div>
+      <div class="product-card">
+        <div class="brand">Surly</div>
+        <h3>Ogre Frameset</h3>
+        <div class="price">$735.00 &ndash; $899.00</div>
+        <p class="desc">A rugged drop-bar or flat-bar-capable touring frameset, equally happy loaded down for a long trip or set up as a rigid mountain bike.</p>
+        <p class="spec-line">Frame only &middot; two price points depending on spec</p>
+        <a class="btn" href="/clown-dog-website-contact">Ask about this bike</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Commuter &amp; single-speed</h2>
+    <div class="filter-row">
+      <span class="filter-pill">SE Bikes</span>
+    </div>
+    <div class="shop-grid">
+      <div class="product-card full-width">
+        <div class="brand">SE Bikes</div>
+        <h3>Lager</h3>
+        <div class="price">$299.99</div>
+        <p class="desc">A simple, affordable single-speed commuter — a good entry point if you want a no-fuss bike for getting around town without gears to fuss with.</p>
+        <p class="spec-line">Complete bike &middot; single-speed &middot; color: Electric Blue</p>
+        <a class="btn" href="/clown-dog-website-contact">Ask about this bike</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Not seeing what you want?</h2>
+    <p>This is a representative slice of the current floor, not the entire shop. We also carry additional Surly frameset options and can special-order what we don't have on hand. The best way to check exact stock, sizes, and colors is to reach out directly.</p>
+    <div class="btn-row">
+      <a class="btn" href="/clown-dog-website-contact">Contact the shop</a>
+      <a class="btn outline" href="/clown-dog-website">Back to home</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  microgroup.info &middot; Clown Dog Bikes preview build, not the final site &middot; <a href="/clown-dog">project hub</a>
+</footer>
+</body>
+</html>
