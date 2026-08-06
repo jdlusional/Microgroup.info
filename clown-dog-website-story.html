@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J4XGXZ4CN"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -11,8 +10,8 @@
 </script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Clown Dog Bikes — Austin Bike Repair &amp; Shop</title>
-<meta name="description" content="Clown Dog Bikes: bike repair and a small curated shop in Austin, TX, near UT Austin. Preview build of the new site." />
+<title>Our Story — Clown Dog Bikes</title>
+<meta name="description" content="The story of Clown Dog Bikes, an independent bike shop near UT Austin since 2000. Preview build of the new site." />
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
 <meta name="referrer" content="no-referrer" />
 <link rel="icon" type="image/svg+xml" href="MICRO_mark_icon_transparent.svg">
@@ -78,69 +77,71 @@ footer p{margin:0 0 .4rem}
 footer p:last-of-type{margin-bottom:.9rem}
 .footer-links{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:.6rem}
 @media(max-width:560px){.now-grid{grid-template-columns:1fr}.btn-row{flex-direction:column;align-items:stretch}.btn{justify-content:center}.bar-nav{gap:.7rem}.hero{background-size:14px 14px}.hero .wheel-motif{width:130px;height:130px}}
-
-/* Homepage-specific additions */
-.teaser-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:0}
-.teaser-card{border:2.5px solid var(--ink);padding:1.4rem 1.5rem;background:var(--paper);box-shadow:5px 5px 0 var(--rule);transition:transform .15s ease,box-shadow .15s ease;min-width:0}
-.teaser-card:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--rule)}
-.teaser-card h3{font-family:var(--sans);font-weight:700;font-size:1.1rem;margin:0 0 .6rem;color:var(--ink)}
-.teaser-card p{font-size:.94rem;color:var(--wash);margin:0 0 1rem}
-.teaser-card a.btn{padding:.5rem .95rem;font-size:.76rem}
-.tier-row{display:flex;gap:1.1rem;flex-wrap:wrap;margin:1.2rem 0 0}
-.tier{flex:1 1 150px;background:var(--paper);border:2.5px solid var(--ink);padding:1.1rem 1.2rem;box-shadow:5px 5px 0 var(--ink);transition:transform .15s ease,box-shadow .15s ease;min-width:0}
-.tier:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink)}
-.tier .tier-name{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--pine-dark);background:var(--paper);border:2px dashed var(--pine);padding:.3rem .55rem;transform:rotate(-3deg);display:inline-block}
-.tier .tier-price{font-family:var(--mono);font-weight:700;font-size:1.6rem;color:var(--accent-dark);margin:.6rem 0 0}
-@media(max-width:560px){.teaser-grid{grid-template-columns:1fr}}
-.insta-row{display:flex;gap:1.3rem;flex-wrap:wrap;justify-content:center;margin-top:1.2rem;min-height:280px;opacity:1;transition:opacity .6s ease}
-.insta-row.fading{opacity:0}
-.insta-row iframe,.insta-row blockquote{max-width:100%;min-width:0}
-.insta-row .insta-slot{flex:1 1 300px;max-width:340px}
-.insta-cta{margin-top:1.2rem}
+.story-photo{margin:1.4rem 0 0;border:2.5px solid var(--ink);box-shadow:6px 6px 0 var(--rule);overflow:hidden}
+.story-photo img{display:block;width:100%;height:auto}
+.story-photo figcaption{font-family:var(--mono);font-size:.74rem;color:var(--wash);padding:.6rem .9rem;border-top:2px solid var(--ink);background:var(--paper)}
 </style>
 </head>
 <body>
-<!-- writing-convention: general -->
 
 <div class="demo-note">Preview build. The real storefront (online cart and checkout) is not live yet — <a href="/clown-dog-website-contact">contact the shop directly</a> for now.</div>
 <div class="bar">
   <div class="bar-in">
     <a class="bar-brand" href="/clown-dog-website"><svg class="mark" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.8 5.8l4.2 4.2M14 14l4.2 4.2M18.2 5.8L14 10M10 14l-4.2 4.2"/></svg>Clown Dog Bikes</a>
     <nav class="bar-nav">
-      <a href="/clown-dog-website" class="active">Home</a>
+      <a href="/clown-dog-website">Home</a>
       <a href="/clown-dog-website-repair">Repair &amp; Service</a>
       <a href="/clown-dog-website-shop">Shop</a>
-      <a href="/clown-dog-website-story">Our Story</a>
+      <a href="/clown-dog-website-story" class="active">Our Story</a>
       <a href="/clown-dog-website-contact">Contact</a>
     </nav>
   </div>
 </div>
 
-<header class="hero">
+<div class="hero">
   <svg class="wheel-motif" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.8 5.8l4.2 4.2M14 14l4.2 4.2M18.2 5.8L14 10M10 14l-4.2 4.2"/></svg>
   <div class="kicker-row">
     <span class="kicker">Austin's Oldest and Most Reliable Bike Shop</span>
     <span class="stamp">Since 2000</span>
   </div>
-  <h1>Bring us the bike. We'll tell you what it actually needs.</h1>
-  <p class="lede">Clown Dog Bikes has been fixing bikes at 2821 San Jacinto Blvd, just north of the UT Austin campus, since 2000. Repair is the core of the shop, not something bolted onto a sales floor: a diagnosis first, a free estimate before any work starts, then the fix.</p>
-  <p>Same treatment whether it's your first flat tire or your twentieth overhaul.</p>
-</header>
+  <h1>We'd rather fix your bike right than make you feel dumb for asking.</h1>
+  <p class="lede">Clown Dog Bikes has been on San Jacinto Blvd, just north of the UT Austin campus, since 2000. Twenty-five years in, the shop is still built around one idea: treat every rider — first flat tire or fiftieth century ride — like they belong here.</p>
+</div>
 
 <div class="wrap">
 
-  <section class="block now-card">
-    <h2>Need your bike fixed?</h2>
-    <span class="stamp" style="margin-bottom:.9rem">Free Estimate</span>
-    <p>Call, text, or bring it by. Diagnosis first, then a free estimate before anything gets touched.</p>
+  <section class="block">
+    <h2>How it started</h2>
+    <p>John Chisholm and Bryce Holt opened Clown Dog Bikes in 2000, a block from campus, with a simple bet: a bike shop could be genuinely welcoming and still know exactly what it's doing. A 2025 profile in Community Impact marked the shop's 25th year in business, still in the same stretch of San Jacinto Blvd where it started.</p>
+    <p>That location was never an accident. Being the closest full-service shop to UT Austin meant the daily customer was as likely to be a freshman who'd never touched a derailleur as it was a longtime commuter. The shop was built to work for both.</p>
+    <figure class="story-photo">
+      <img src="/clown-dog-assets/shop-crew-instagram.jpg" alt="Four people at Clown Dog Bikes posing with a customer's road bike in the repair shop" loading="lazy" />
+      <figcaption>From the shop's Instagram — the crew in the workshop with a customer's finished build.</figcaption>
+    </figure>
+  </section>
+
+  <section class="block">
+    <h2>The anti-elitist streak</h2>
+    <p>Bike shops have a reputation, earned in plenty of places, for being cliquish — the kind of counter where an amateur question gets an eye-roll. Chisholm and Holt built Clown Dog Bikes as the opposite of that on purpose. In a profile with The Austinot, the founders described pushing back directly against that culture: no gatekeeping, no attitude, no assumption that you should already know the answer.</p>
+    <p>That shows up in concrete ways. The shop has offered DIY repair videos so customers can learn to handle simple fixes themselves instead of paying for every small job. And when Clown Dog genuinely isn't the right source for something — the Austinot piece cites an example of tracking down a hard-to-find 24-inch wheelchair wheel from elsewhere — the answer is a referral, not a stall.</p>
+  </section>
+
+  <section class="block">
+    <h2>What the shop actually is, day to day</h2>
+    <p>Repair is the core of the business, not a side counter to the retail floor. A 2025 press profile put the shop at roughly 500 repairs a month — that volume is the real center of gravity here, more than any single bike sale.</p>
+    <p>The reviews track the same story. Customers consistently point to staff going out of their way to help, patience with beginners and out-of-practice riders, pricing that comes in fair — sometimes under the original estimate — and turnaround that doesn't drag. None of it reads as a sales pitch; it reads as a shop that just does the work.</p>
+  </section>
+
+  <div class="now-card">
+    <h2>Visit the shop</h2>
     <div class="now-grid">
       <div class="now-item">
         <span class="label">Address</span>
-        2821 San Jacinto Blvd<br>Austin, TX 78705
+        2821 San Jacinto Blvd, Austin, TX 78705
       </div>
       <div class="now-item">
         <span class="label">Hours</span>
-        Mon&ndash;Fri 10am&ndash;5pm<br>Sat 10am&ndash;4pm &middot; Sun closed
+        Mon–Fri 10am–5pm, Sat 10am–4pm, Sun closed
       </div>
       <div class="now-item">
         <span class="label">Call</span>
@@ -148,65 +149,14 @@ footer p:last-of-type{margin-bottom:.9rem}
       </div>
       <div class="now-item">
         <span class="label">Text</span>
-        <a href="sms:+15127666058">(512) 766-6058</a>
+        <a href="tel:+15127666058">(512) 766-6058</a>
       </div>
     </div>
     <div class="btn-row">
       <a class="btn" href="/clown-dog-website-repair">See repair &amp; service</a>
-      <a class="btn outline" href="/clown-dog-website-contact">Contact the shop</a>
+      <a class="btn outline" href="/clown-dog-website-contact">Get directions &amp; contact</a>
     </div>
-  </section>
-
-  <section class="block">
-    <h2>Tune-ups, named and priced</h2>
-    <p>Three tiers, no guessing. Full pricing and the à la carte list live on the repair page.</p>
-    <div class="tier-row">
-      <div class="tier">
-        <span class="tier-name">Single Speed</span>
-        <div class="tier-price">$80</div>
-      </div>
-      <div class="tier">
-        <span class="tier-name">Basic</span>
-        <div class="tier-price">$90</div>
-      </div>
-      <div class="tier">
-        <span class="tier-name">Deluxe</span>
-        <div class="tier-price">$120</div>
-      </div>
-    </div>
-    <div class="btn-row">
-      <a class="btn outline" href="/clown-dog-website-repair">Compare tune-ups</a>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="teaser-grid">
-      <div class="teaser-card">
-        <h3>Our story</h3>
-        <p>Founded in 2000 by John Chisholm and Bryce Holt, a couple blocks off campus. "We treat each bike we service as if it were our own" isn't a tagline here, it's the actual policy.</p>
-        <a class="btn outline" href="/clown-dog-website-story">Read our story</a>
-      </div>
-      <div class="teaser-card">
-        <h3>Shop</h3>
-        <p>A small, curated selection alongside the repair bench, not a warehouse. Worth a look if you're after something specific rather than everything.</p>
-        <a class="btn outline" href="/clown-dog-website-shop">Browse the shop</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <h2>From the shop's Instagram</h2>
-    <p>Real, live posts from <a href="https://instagram.com/clowndogbikes" target="_blank" rel="noopener">@clowndogbikes</a> &mdash; embedded straight from Instagram, not screenshots. Cycles through more of the feed every few seconds.</p>
-    <div class="insta-row" id="insta-row"></div>
-    <div class="btn-row insta-cta">
-      <a class="btn outline" href="https://instagram.com/clowndogbikes" target="_blank" rel="noopener">Follow @clowndogbikes</a>
-    </div>
-  </section>
-
-  <section class="block">
-    <h2>What people say</h2>
-    <p class="review-line"><span class="stars">★★★★★</span> Customer reviews across platforms currently average roughly 4.8 to 4.9 out of 5.</p>
-  </section>
+  </div>
 
 </div>
 
@@ -221,54 +171,5 @@ footer p:last-of-type{margin-bottom:.9rem}
   </div>
 </footer>
 
-<script async src="//www.instagram.com/embed.js"></script>
-<script>
-(function(){
-  // Real posts pulled from instagram.com/clowndogbikes, confirmed to exist.
-  var POSTS = [
-    'DaqHcZTEc7H','DUWEWqlESWA','DR5TYT-kT7-','DQzXsEEEasb','DPl_owyEevL',
-    'DMbINYaRmUa','DK0ee5uxbXw','DKkJwWWxqlb','DKaV8mmxuMa','DKU6StJRPPb',
-    'DKSJwNJxnxO','DJr2ydWx4Bf'
-  ];
-  var PER_BATCH = 5;
-  var CYCLE_MS = 9000;
-  var FADE_MS = 600;
-  var idx = 0;
-  var row = document.getElementById('insta-row');
-  if (!row) return;
-
-  function renderBatch(){
-    row.innerHTML = '';
-    for (var i = 0; i < PER_BATCH; i++){
-      var post = POSTS[(idx + i) % POSTS.length];
-      var wrap = document.createElement('div');
-      wrap.className = 'insta-slot';
-      var bq = document.createElement('blockquote');
-      bq.className = 'instagram-media';
-      bq.setAttribute('data-instgrm-permalink', 'https://www.instagram.com/p/' + post + '/');
-      bq.setAttribute('data-instgrm-version', '14');
-      bq.style.width = '100%';
-      bq.style.margin = '0';
-      wrap.appendChild(bq);
-      row.appendChild(wrap);
-    }
-    if (window.instgrm && window.instgrm.Embeds) {
-      window.instgrm.Embeds.process();
-    }
-  }
-
-  function nextBatch(){
-    row.classList.add('fading');
-    setTimeout(function(){
-      idx = (idx + PER_BATCH) % POSTS.length;
-      renderBatch();
-      row.classList.remove('fading');
-    }, FADE_MS);
-  }
-
-  renderBatch();
-  setInterval(nextBatch, CYCLE_MS);
-})();
-</script>
 </body>
 </html>
