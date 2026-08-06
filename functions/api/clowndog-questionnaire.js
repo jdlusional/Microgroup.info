@@ -560,7 +560,7 @@ export async function onRequestPost(context) {
       );
     }
     if (f.size > MAX_FILE_BYTES) {
-      return json({ error: `${f.name} exceeds the 10 MB per-file size limit.` }, 413);
+      return json({ error: `${f.name} exceeds the 25 MB per-file size limit.` }, 413);
     }
   }
 
