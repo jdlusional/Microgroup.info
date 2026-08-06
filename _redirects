@@ -1,6 +1,12 @@
 /kct-website  https://katelyncthompson.com/  301
 /kct-website.html  https://katelyncthompson.com/  301
 
+# No private-index.html exists on this domain by design (owner order 2026-08-06):
+# the canonical private index lives on jonathanlindavis.com, this is a pointer to it
+# rather than a second index to keep in sync.
+/private-index         https://jonathanlindavis.com/private-index.html  301
+/private-index.html    https://jonathanlindavis.com/private-index.html  301
+
 # MEASURE product pages consolidated onto /measure-enterprise (owner direction 2026-08-03).
 # Almanac and Scribe now sit in one primary accordion each on a single page; the /measure switcher
 # stays. These two source files are DELETED rather than left in place: Cloudflare Pages serves a
