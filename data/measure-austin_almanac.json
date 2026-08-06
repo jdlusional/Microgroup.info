@@ -1,7 +1,7 @@
 {
  "product": "almanac",
  "client_slug": "measure-austin",
- "generated_date": "2026-08-03",
+ "generated_date": "2026-08-05",
  "method": "Generated from the Almanac shelf, which is itself built from the IRS 990 corpus and a hand-curated opportunity register. Eligibility is decided by the shelf and read here, never recomputed. Prior funders joined on recipient EIN are exact; 990-PF Part XV name matches are probabilistic and labelled as such.",
  "tiers": {
   "tier_1_strong": "Confirmed prior funder, joined on recipient EIN in Schedule I.",
@@ -1491,6 +1491,13 @@
    "why_watch": "Recorded closed on 2026-07-31. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
   },
   {
+   "id": "3e87638dd2cb7fd4",
+   "organization": "Joyce Foundation",
+   "grant_name": "Education & Economic Mobility (letter of inquiry)",
+   "url": "https://www.joycefdn.org/apply",
+   "why_watch": "Recorded closed on 2026-08-03. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
    "id": "2cafc401345bbf4d",
    "organization": "Laredo Area Community Foundation",
    "grant_name": "LACF annual competitive grant cycle, five $5,000 awards",
@@ -1510,19 +1517,12 @@
    "grant_name": "Team Grants, twice-yearly windows (15 April to 15 June, 15 October to 15 December); between cycles at time of check",
    "url": "https://www.midwayusafoundation.org/teamgrants/",
    "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "b596ddd8126aac00",
-   "organization": "Methodist Healthcare Ministries of South Texas Inc",
-   "grant_name": "2027 Annual Open Grant Cycle",
-   "url": "https://www.mhm.org/our-work/2027-annual-grant-cycle/",
-   "why_watch": "Recorded closed on 2026-07-24. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
   }
  ],
  "counts": {
   "ranked_funders": 63,
   "ready_now": 53,
   "watch_list": 25,
-  "watch_list_total": 46
+  "watch_list_total": 47
  }
 }
