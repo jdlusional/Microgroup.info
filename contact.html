@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="Assets/micro-mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&family=Archivo+Black&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 <link rel="canonical" href="https://microgroup.info/contact.html">
 <style>
 :root{
@@ -33,7 +33,10 @@ a:hover{text-decoration:underline}
 
 .bar{background:var(--well);border-bottom:2px solid var(--ink)}
 .bar-in{max-width:820px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.bar-brand{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:1.05rem;letter-spacing:.01em;text-transform:uppercase;color:var(--ink)}
+/* Matches MICRO_logo_site.png's own treatment (2026-08-06): "MICRO" bold in --accent,
+   "Group" regular in --ink, title case, Playfair Display -- see index.html's .nav-name. */
+.bar-brand{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;letter-spacing:.01em;color:var(--accent)}
+.bar-brand-sub{font-weight:400;color:var(--ink)}
 .bar-note{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;color:var(--wash)}
 
 .hero{max-width:820px;margin:0 auto;padding:3rem 1.5rem 0}
@@ -88,7 +91,7 @@ footer a{color:var(--wash)}
 
 <div class="bar">
   <div class="bar-in">
-    <span class="bar-brand">MICRO Group</span>
+    <span class="bar-brand">MICRO <span class="bar-brand-sub">Group</span></span>
     <span class="bar-note"><a href="public-index.html">Public index</a></span>
   </div>
 </div>
