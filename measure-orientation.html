@@ -93,12 +93,12 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
 .or-lede{color:var(--wash);font-style:italic;font-size:20px;margin:0 0 1.4rem;max-width:64ch}
 .section-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:1.6rem 0 .5rem}
 .section-card p{max-width:66ch}
-.or-box{background:#fff;border:1px solid var(--rule);padding:1.1rem 1.2rem;margin:0 0 1.2rem}
+.or-box{background:var(--well);border:1px solid var(--rule);padding:1.1rem 1.2rem;margin:0 0 1.2rem}
 .or-box.accent{border-left:3px solid var(--accent)}
-.or-box.warn{border-left:3px solid var(--urgent)}
+.or-box.warn{border-left:3px solid var(--warn)}
 .or-kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--wash);margin:0 0 .5rem;display:block}
 .or-figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:0 0 1.4rem}
-.or-fig{background:#fff;padding:.95rem 1rem}
+.or-fig{background:var(--paper);padding:.95rem 1rem}
 .or-fig .n{font-family:var(--serif);font-size:22.5px;font-weight:700;display:block;line-height:1.1}
 .or-fig .l{font-size:15px;color:var(--wash);font-style:italic;display:block;margin-top:.2rem}
 .or-headline .n{font-size:40px;color:var(--accent)}
@@ -110,21 +110,21 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
 .or-fact .m{font-size:15px;color:var(--wash);margin-top:.35rem;display:block}
 .or-conf{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid currentColor;padding:.08rem .35rem;margin-left:.4rem;white-space:nowrap;vertical-align:.08em}
 .or-conf-high{color:var(--ok)}
-.or-conf-medium{color:#8a6d1f}
+.or-conf-medium{color:var(--warn)}
 .or-conf-low{color:var(--urgent)}
 .or-list{margin:0 0 1.2rem;padding-left:1.1rem}
 .or-list li{margin:0 0 .6rem;max-width:66ch}
-.or-tablewrap{overflow-x:auto;border:1px solid var(--rule);background:#fff;margin:0 0 1.2rem}
+.or-tablewrap{overflow-x:auto;border:1px solid var(--rule);background:var(--paper);margin:0 0 1.2rem}
 table.or-t{border-collapse:collapse;width:100%;font-size:15px;min-width:520px}
 table.or-t th,table.or-t td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top}
 table.or-t th{font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--wash);font-weight:500}
 table.or-t tr:last-child td{border-bottom:none}
-.or-rule{border:1px solid var(--rule);background:#fff;padding:1.1rem 1.2rem;margin:0 0 1rem}
+.or-rule{border:1px solid var(--rule);background:var(--well);padding:1.1rem 1.2rem;margin:0 0 1rem}
 .or-rule .rid{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;color:var(--accent);font-weight:500}
 .or-rule h3{margin:.3rem 0 .5rem;font-size:25px}
 .or-rule .trig{font-size:15px;color:var(--wash);font-style:italic;margin:0 0 .6rem}
 .or-rule .nums{font-family:var(--mono);font-size:14px;line-height:1.6;margin:0;background:var(--well);padding:.6rem .7rem}
-details.or-fold{border:1px solid var(--rule);background:#fff;margin:0 0 1.2rem}
+details.or-fold{border:1px solid var(--rule);background:var(--paper);margin:0 0 1.2rem}
 details.or-fold>summary{cursor:pointer;padding:.75rem 1rem;font-family:var(--mono);font-size:15px;letter-spacing:.03em;color:var(--ink);list-style:none;background:var(--well)}
 details.or-fold>summary::-webkit-details-marker{display:none}
 details.or-fold>summary::before{content:"\25B8 ";color:var(--accent)}
@@ -133,7 +133,7 @@ details.or-fold>.or-foldbody{padding:1rem}
 .or-appendix{border-top:3px double var(--ink);padding-top:1.8rem;margin-top:1rem}
 .or-appendix .or-tag{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--urgent);display:block;margin-bottom:.5rem}
 .or-src{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--wash)}
-.or-msg{border:1px solid var(--urgent);border-left:3px solid var(--urgent);background:#fff;padding:1rem 1.1rem;margin:0 0 1.2rem;font-size:15px}
+.or-msg{border:1px solid var(--urgent);border-left:3px solid var(--urgent);background:var(--well);padding:1rem 1.1rem;margin:0 0 1.2rem;font-size:15px}
 .or-msg .or-kicker{color:var(--urgent)}
 .or-noscript{border:1px solid var(--rule);background:var(--well);padding:1rem 1.1rem;margin:1rem 0;font-size:15px}
 .or-quiet{color:var(--wash);font-size:15px}
@@ -160,6 +160,40 @@ details.or-fold>.or-foldbody{padding:1rem}
 }
 @media(max-width:400px){
   .or-figs{grid-template-columns:1fr}
+}
+
+/* ---- PRINT. A LIVE DEFECT UNTIL NOW, and one this page's own convention created:
+   closed-on-open means a reader who prints this gets EIGHT HEADINGS AND NOTHING ELSE.
+   The collapse is applied by script and expressed as a class, so print simply overrides
+   the class rather than needing any JS involvement.
+   A client asked to read a funding brief will try to print it; that is the whole reason
+   this exists. ---- */
+@media print{
+  /* Expand every fold: the section accordions, the generated sub-heading folds, and the
+     native <details> disclosures, which are three separate mechanisms on this page. */
+  .mc-closed .fold-body{display:block !important}
+  details.or-fold{display:block}
+  details.or-fold>.or-foldbody{display:block !important}
+  /* Controls are meaningless on paper. */
+  .mc-toggle,.or-nav,.bar{display:none !important}
+  details.or-fold>summary{list-style:none}
+  /* Ink and paper: the screen palette wastes toner and reads worse in greyscale. */
+  body{background:#fff;color:#000;font-size:11pt}
+  .or-box,.or-rule,.or-msg,.or-fig,.or-tablewrap,details.or-fold,.section.section-card{
+    background:#fff;border-color:#999}
+  /* Keep a card and its heading together, and never split a fact across a page. */
+  .section.section-card,.or-rule,.or-box,.or-fact,.subfold{break-inside:avoid;page-break-inside:avoid}
+  .section-card h2,.section-card h3{break-after:avoid;page-break-after:avoid}
+  /* A URL a reader cannot see is a citation they cannot check. */
+  .or-fact .m a::after,.or-src a::after{content:" (" attr(href) ")";font-size:9pt;word-break:break-all}
+  .or-wrap{max-width:none;padding:0}
+}
+
+/* ---- Motion. Nothing on this page animates today, but the fold toggles are the obvious
+   place a transition gets added later, and the guard costs nothing now. ---- */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;scroll-behavior:auto !important}
 }
 </style>
 </head>
