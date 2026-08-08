@@ -999,6 +999,30 @@ function renderPriorFunders(){
    gone. Groups are authored; the values, sources and confidences are
    read straight off the file.
    ================================================================= */
+/* APPENDIX FAMILIES. The appendix used to dump all 104 verified facts into one <details>,
+   roughly 40,000 characters with no structure -- the worst readability problem on the page.
+   Grouping alone converts that wall into a navigable set, because foldSubheads() turns every
+   h3 inside a fold body into its own collapsible block.
+
+   MATCHED ON SUBSTRINGS, NOT ON AN ENUMERATED FIELD LIST, and that is the load-bearing
+   decision. The profile JSON is regenerated monthly. A hand-listed set of 104 field names
+   would silently drop any field added later; a keyword rule puts an unrecognised field in
+   "Everything else", which is visible and fixable rather than invisible and lost.
+
+   First match wins, so order matters. Verified against the live file: 104 of 104 facts land
+   in a named family and "Everything else" is empty -- but it stays in the list precisely so
+   that a future field HAS somewhere to land. */
+const APPENDIX_FAMILIES=[
+  ['Finances as filed',['990','revenue','expense','asset','financial','payroll','grant','tax','earned','filings']],
+  ['People and leadership',['founder','board','staff','team','leadership','led','officer','core_']],
+  ['Partnerships and government',['government','partner','coalition']],
+  ['Programs and services',['program','curriculum','ignite','crown_act','gathering','evaluation','cerc','bdcp','curfew','methodology','innocence','care','communities','free_','service','data_']],
+  ['Recognition, publications and press',['recognition','publication','press','media','award','black_paper','counters','statistics','clients_']],
+  ['Governance and commitments',['governance','ethical','responsible']],
+  ['Identity and registration',['organization','ein','state','founding','hq','geographic','secondary','contact','ntee','named','legal','mission','funder']],
+  ['Everything else',[]]
+];
+
 const FACT_GROUPS=[
   {title:'The organization itself',
    lede:'What a funder confirms first, and where your own filings do not yet agree with your own registration.',
@@ -1288,7 +1312,22 @@ function renderAppendix(){
 
   const all=enr.verified_facts||[];
   const host=document.getElementById('or-allfacts');
-  all.forEach(f=>host.appendChild(factNode(f)));
+  /* Group rather than dump. Each family becomes an h3, which foldSubheads() then makes its
+     own collapsible block, so the appendix opens as seven headings instead of 104 facts. */
+  const fams=APPENDIX_FAMILIES.map(([t,keys])=>[t,keys,[]]);
+  const other=fams[fams.length-1][2];
+  all.forEach(f=>{
+    const k=String(f&&f.field||'').toLowerCase();
+    const hit=fams.find(([t,keys])=>keys.length&&keys.some(x=>k.indexOf(x)>=0));
+    (hit?hit[2]:other).push(f);
+  });
+  fams.forEach(([title,keys,items])=>{
+    if(!items.length)return;
+    host.appendChild(el('h3',null,title+' ('+items.length+')'));
+    const wrap=el('div','or-facts');
+    items.forEach(f=>wrap.appendChild(factNode(f)));
+    host.appendChild(wrap);
+  });
   setText('or-allfacts-count','('+all.length+')');
 }
 
