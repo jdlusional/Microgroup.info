@@ -21,12 +21,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="tool-shared.css?v=51367c5bd8">
 <style>
-:root{
-  --ink:#1b3a6b; --wash:#5a6b82; --paper:#f4efe2; --well:#e8e2d4;
-  --rule:#c8c2b5; --accent:#2f7fd1; --urgent:#a33; --ok:#2c6e49;
-  --serif:'Spectral',Georgia,'Times New Roman',serif;
-  --mono:'JetBrains Mono','Courier New',monospace;
-}
+/* ---- DESIGN TOKENS COME FROM tool-shared.css. DO NOT REDECLARE THEM HERE.
+   Corrected 2026-08-07. This page previously carried its own :root block that
+   silently overrode four shared tokens with different values, so it rendered
+   off-brand against every other product page and at lower contrast:
+     --wash    #5a6b82 here against #4a5a72 shared  (body prose, the worst one)
+     --accent  #2f7fd1 here against #1f66ad shared  (every link and toggle)
+     --urgent  #a33    here against #8a2828 shared
+     --ok      #2c6e49 here against #286644 shared
+   It also omitted --rule-soft and --warn entirely, so any rule referencing
+   either resolved to nothing. The override was invisible on this page alone
+   and only showed up next to the enterprise page. Shared tokens now apply
+   unmodified; if a token genuinely needs to change, change it in
+   tool-shared.css so every page moves together. ---- */
 *{box-sizing:border-box}
 body{margin:0;font-family:var(--serif);color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit}
@@ -364,6 +371,53 @@ details.or-fold>.or-foldbody{padding:1rem}
     <span class="or-tag">Appendix &middot; technical</span>
     <h2><span class="num">Section eight</span>Method, provenance and stated limits</h2>
     <p class="or-lede">Written for a reader who wants to audit the numbers rather than use them. Nothing here is required to read the seven sections above.</p>
+
+    <!-- MIGRATED FROM measure-enterprise.html 2026-08-07, owner order: the enterprise page's two
+         "How this was built" sections are removed there and consolidated here, so method lives in
+         one place instead of being restated per product. The three prose blocks per product below
+         are the hand-written originals moved verbatim; only the JS-filled rows stayed behind on
+         the enterprise page's own data and are re-rendered from the same source here. -->
+    <h3>Almanac: where this comes from</h3>
+    <div class="or-box">
+      <p>Every funder and every grant on your shelf is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages.</p>
+      <p>Each match carries a link back to the source it came from, so nothing has to be taken on trust.</p>
+      <p>Where a funder does not publish a figure, an award range, a deadline, an eligibility rule, that gap is marked as unconfirmed rather than filled in.</p>
+    </div>
+
+    <h3>Almanac: what it will not do</h3>
+    <div class="or-box">
+      <p>It does not invent a fact about a funder.</p>
+      <p>An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on.</p>
+      <p>It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit. A candidate is never dressed up as a confirmed prior funder.</p>
+    </div>
+
+    <h3>Almanac: what it cannot tell you</h3>
+    <div class="or-box">
+      <p>Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved.</p>
+      <p>A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records.</p>
+      <p>The ranking is a judgment about fit, not a prediction of success. Treat every row as a lead to verify against the funder's own page before you spend real time on it.</p>
+    </div>
+
+    <h3>Scribe: where this comes from</h3>
+    <div class="or-box">
+      <p>Each draft is built from two sources and no others: the Almanac match that identified the funder, with that funder's own published requirements, and the organization's own public record, its website, its filings, and the materials it has already put into the world.</p>
+      <p>Every substantive claim in a draft traces back to one of those two places.</p>
+    </div>
+
+    <h3>Scribe: what it will not do</h3>
+    <div class="or-box">
+      <p>It does not invent facts about the organization.</p>
+      <p>When an application asks for something only the applicant holds, a budget line, an outcome figure, a board resolution, a letter of support, Scribe does not guess at it. It leaves the space empty and puts the item on the list of what is still needed.</p>
+      <p>This is the whole discipline of the tool: an invented number is worse than a blank one, because a blank gets filled in before it is filed and an invention gets submitted.</p>
+    </div>
+
+    <h3>Scribe: what it cannot tell you</h3>
+    <div class="or-box">
+      <p>A draft is a draft, not a submission.</p>
+      <p>Funder requirements change, portals impose their own formats and character limits, and the published guidance a draft was built from can already be out of date.</p>
+      <p>Everything here has to be checked against the funder's live application before it is filed, and the organization's own people are the only ones who can confirm that what it says about them is true today.</p>
+      <p>Scribe is built to remove the blank page. It is not built to remove the review.</p>
+    </div>
 
     <h3>How the shelf is built</h3>
     <div class="or-box"><p id="or-method-almanac"></p></div>

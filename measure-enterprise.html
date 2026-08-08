@@ -335,6 +335,12 @@ body{text-align:center}
   </div>
 </section>
 
+<!-- METHOD SECTION REMOVED 2026-08-07, owner order. Both products' "How this was built"
+     sections are consolidated onto measure-orientation.html so method is stated once for the
+     client rather than restated per product. The three hand-written prose blocks per product
+     were MIGRATED there verbatim before this deletion, not dropped. See
+     merge_enterprise_page.py, which now strips these sections on any future rebuild so a
+     regenerated shell cannot reintroduce them. -->
 <section class="section section-card" id="alm-method">
   <div class="fold">
     <div class="section-head-row">
@@ -345,31 +351,8 @@ body{text-align:center}
       </div>
     </div>
     <div class="fold-body" id="alm-method-fold-body">
-    <div class="table-scroll"><table class="funder-mini-table method-table">
-      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>Where this comes from</td>
-          <td>Every funder and every grant on this page is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages.<br><br>Each match carries a link back to the source it came from, so nothing here has to be taken on trust.<br><br>Where a funder does not publish a figure (an award range, a deadline, an eligibility rule), that gap is marked as unconfirmed rather than filled in.</td>
-        </tr>
-        <tr>
-          <td>What Almanac will not do</td>
-          <td>It does not invent a fact about a funder.<br><br>An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on.<br><br>It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit. A candidate is never dressed up as a confirmed prior funder.</td>
-        </tr>
-        <tr>
-          <td>What it cannot tell you</td>
-          <td>Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved.<br><br>A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records.<br><br>The ranking is a judgment about fit, not a prediction of success. Treat every row as a lead to verify against the funder's own page before you spend real time on it.</td>
-        </tr>
-        <tr>
-          <td>How candidates are found and ranked</td>
-          <td id="alm-method-scoring"></td>
-        </tr>
-        <tr>
-          <td>This cycle</td>
-          <td id="alm-method-cycle"></td>
-        </tr>
-      </tbody>
-    </table></div>
+      <p style="max-width:70ch;margin:0 auto;text-align:center">Method, provenance and the stated limits of both tools now live in one place, on the orientation page, rather than being restated under each product.</p>
+      <p style="text-align:center;margin:.9rem 0 0"><a href="measure-orientation.html">Read the method and limits on the orientation page &#8594;</a></p>
     </div>
   </div>
 </section>
@@ -539,6 +522,12 @@ body{text-align:center}
     </div>
   </div>
 </section>
+<!-- METHOD SECTION REMOVED 2026-08-07, owner order. Both products' "How this was built"
+     sections are consolidated onto measure-orientation.html so method is stated once for the
+     client rather than restated per product. The three hand-written prose blocks per product
+     were MIGRATED there verbatim before this deletion, not dropped. See
+     merge_enterprise_page.py, which now strips these sections on any future rebuild so a
+     regenerated shell cannot reintroduce them. -->
 <section class="section section-card" id="scr-method">
   <div class="fold">
     <div class="section-head-row">
@@ -549,27 +538,8 @@ body{text-align:center}
       </div>
     </div>
     <div class="fold-body" id="scr-method-fold-body">
-    <div class="table-scroll"><table class="funder-mini-table method-table">
-      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>Where this comes from</td>
-          <td>Each draft is built from two sources and no others: the Almanac match that identified the funder, with that funder's own published requirements, and the organization's own public record, its website, its filings, and the materials it has already put into the world.<br><br>Every substantive claim in a draft traces back to one of those two places.</td>
-        </tr>
-        <tr>
-          <td>What Scribe will not do</td>
-          <td>It does not invent facts about the organization.<br><br>When an application asks for something only the applicant holds, a budget line, an outcome figure, a board resolution, a letter of support, Scribe does not guess at it. It leaves the space empty and puts the item on the list of what is still needed.<br><br>This is the whole discipline of the tool: an invented number is worse than a blank one, because a blank gets filled in before it is filed and an invention gets submitted.</td>
-        </tr>
-        <tr>
-          <td>What it cannot tell you</td>
-          <td>A draft is a draft, not a submission.<br><br>Funder requirements change, portals impose their own formats and character limits, and the published guidance a draft was built from can already be out of date.<br><br>Everything here has to be checked against the funder's live application before it is filed, and the organization's own people are the only ones who can confirm that what it says about them is true today.<br><br>Scribe is built to remove the blank page. It is not built to remove the review.</td>
-        </tr>
-        <tr>
-          <td>Current status</td>
-          <td id="scr-method-status"></td>
-        </tr>
-      </tbody>
-    </table></div>
+      <p style="max-width:70ch;margin:0 auto;text-align:center">Method, provenance and the stated limits of both tools now live in one place, on the orientation page, rather than being restated under each product.</p>
+      <p style="text-align:center;margin:.9rem 0 0"><a href="measure-orientation.html">Read the method and limits on the orientation page &#8594;</a></p>
     </div>
   </div>
 </section>
@@ -838,8 +808,9 @@ async function load(){
 
   applyDisplay();
   renderProfile();
-  document.getElementById('alm-method-scoring').textContent=FUNDERS_DATA.method+' '+FUNDER_PROFILE_SOURCE_NOTE;
-  document.getElementById('alm-method-cycle').textContent=CYCLE.note;
+  /* alm-method-scoring / alm-method-cycle / scr-method-status writes removed 2026-08-07
+     with the Method sections themselves. Leaving them would throw on a null element and kill
+     every line after, which is exactly how this page rendered blank toggles on 2026-08-03. */
   buildStatusFilter('compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
   setAdminUI();
   applyCompiled();
@@ -1771,7 +1742,6 @@ async function load(){
   document.getElementById('scr-m-drafts').textContent=state.drafts.length;
   document.getElementById('scr-m-date').textContent=state.generatedDate;
   document.getElementById('scr-disclaimer-text').innerHTML=sentenceBreak(state.disclaimer);
-  document.getElementById('scr-method-status').textContent=state.method;
 
   const credit=state.profile&&state.profile.display&&state.profile.display.footer_credit;
   if(credit)document.getElementById('scr-footer-credit').textContent=credit;
