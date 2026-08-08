@@ -12,82 +12,1178 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Measure Orientation</title>
-<meta name="description" content="Orientation for the Measure enterprise tools. Placeholder; not yet written. Unlisted and gated." />
+<meta name="description" content="Orientation for the Measure enterprise tools: what Almanac and Scribe are, what the public record says about the organization, and what it is eligible for now. Unlisted and gated." />
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
 <meta name="referrer" content="no-referrer" />
 <link rel="icon" type="image/svg+xml" href="Assets/micro-mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=51367c5bd8">
 <style>
 :root{
   --ink:#1b3a6b; --wash:#5a6b82; --paper:#f4efe2; --well:#e8e2d4;
-  --rule:#c8c2b5; --accent:#2f7fd1;
+  --rule:#c8c2b5; --accent:#2f7fd1; --urgent:#a33; --ok:#2c6e49;
   --serif:'Spectral',Georgia,'Times New Roman',serif;
   --mono:'JetBrains Mono','Courier New',monospace;
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:var(--serif);color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
+a{color:inherit}
 .bar{background:var(--well);border-bottom:2px solid var(--ink)}
 .bar-in{max-width:900px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .bar-brand{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink)}
 .bar-note{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;color:var(--wash)}
-.hero{max-width:900px;margin:0 auto;padding:3.2rem 1.5rem 1rem;text-align:center}
+.hero{max-width:900px;margin:0 auto;padding:3.2rem 1.5rem 1rem}
 .hero .kicker{font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:500}
 .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,5vw,3rem);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
-.hero p{color:var(--wash);max-width:60ch;margin:0 auto;font-size:1.04rem}
-.picker{max-width:1120px;margin:0 auto;padding:2.8rem 1.5rem 4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
-.pick-card{display:flex;flex-direction:column;align-items:center;text-align:center;background:#fff;border:1.5px solid var(--ink);padding:2.2rem 1.8rem;transition:box-shadow .18s ease,transform .18s ease}
-.pick-card:hover{box-shadow:0 14px 32px rgba(27,58,107,.14);transform:translateY(-3px)}
-.pick-card.disabled{opacity:.6;cursor:default;pointer-events:none}
-.pick-card p{color:var(--ink);font-size:.95rem;margin:0 0 1.1rem;flex:1}
-.pc-kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:.7rem}
-.pick-card h2{font-family:var(--serif);font-weight:700;font-size:1.55rem;color:var(--ink);margin:0 0 .7rem}
-
-.pc-status{font-family:var(--mono);font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;color:var(--wash);margin-bottom:.6rem}
-.pc-go{align-self:center;font-family:var(--mono);font-size:.78rem;letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);padding:.55rem 1.2rem;transition:all .15s ease}
-.pick-card:hover:not(.disabled) .pc-go{background:var(--ink);color:#fff}
+.hero p{color:var(--wash);max-width:64ch;font-size:1.04rem;margin:0 0 1rem}
 footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:.72rem;letter-spacing:.02em}
-@media(max-width:900px){.picker{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.picker{grid-template-columns:1fr}}
+
+/* ---- Orientation page's own styles. tool-shared.css is linked, never edited:
+       another session may be live in this repo. Anything new lives here. ---- */
+.or-wrap{max-width:900px;margin:0 auto;padding:0 1.5rem}
+.or-nav{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:1.4rem 0 2.4rem}
+.or-nav ol{list-style:none;margin:0;padding:.7rem 0;display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;counter-reset:ornav}
+.or-nav li{counter-increment:ornav;font-family:var(--mono);font-size:.72rem;letter-spacing:.02em}
+.or-nav li::before{content:counter(ornav) ". ";color:var(--wash)}
+.or-nav a{color:var(--wash);text-decoration:none}
+.or-nav a:hover{color:var(--ink);text-decoration:underline}
+.or-sec{margin:0 0 3.4rem;scroll-margin-top:1rem}
+.or-sec>h2{font-family:var(--serif);font-weight:700;font-size:1.7rem;margin:0 0 .5rem;line-height:1.2}
+.or-sec>h2 .num{font-family:var(--mono);font-size:.8rem;color:var(--accent);display:block;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;font-weight:500}
+.or-lede{color:var(--wash);font-style:italic;font-size:1.05rem;margin:0 0 1.4rem;max-width:64ch}
+.or-sec h3{font-family:var(--serif);font-weight:700;font-size:1.05rem;margin:1.6rem 0 .5rem}
+.or-sec p{max-width:66ch}
+.or-box{background:#fff;border:1px solid var(--rule);padding:1.1rem 1.2rem;margin:0 0 1.2rem}
+.or-box.accent{border-left:3px solid var(--accent)}
+.or-box.warn{border-left:3px solid var(--urgent)}
+.or-kicker{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--wash);margin:0 0 .5rem;display:block}
+.or-figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:0 0 1.4rem}
+.or-fig{background:#fff;padding:.95rem 1rem}
+.or-fig .n{font-family:var(--serif);font-size:1.9rem;font-weight:700;display:block;line-height:1.1}
+.or-fig .l{font-size:.85rem;color:var(--wash);font-style:italic;display:block;margin-top:.2rem}
+.or-headline .n{font-size:3.2rem;color:var(--accent)}
+.or-facts{margin:0}
+.or-fact{border-top:1px solid var(--rule);padding:.85rem 0}
+.or-fact:last-child{border-bottom:1px solid var(--rule)}
+.or-fact .f{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--wash);text-transform:uppercase;display:block;margin-bottom:.25rem}
+.or-fact .v{display:block}
+.or-fact .m{font-size:.82rem;color:var(--wash);margin-top:.35rem;display:block}
+.or-conf{font-family:var(--mono);font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid currentColor;padding:.08rem .35rem;margin-left:.4rem;white-space:nowrap;vertical-align:.08em}
+.or-conf-high{color:var(--ok)}
+.or-conf-medium{color:#8a6d1f}
+.or-conf-low{color:var(--urgent)}
+.or-list{margin:0 0 1.2rem;padding-left:1.1rem}
+.or-list li{margin:0 0 .6rem;max-width:66ch}
+.or-tablewrap{overflow-x:auto;border:1px solid var(--rule);background:#fff;margin:0 0 1.2rem}
+table.or-t{border-collapse:collapse;width:100%;font-size:.88rem;min-width:520px}
+table.or-t th,table.or-t td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top}
+table.or-t th{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--wash);font-weight:500}
+table.or-t tr:last-child td{border-bottom:none}
+.or-rule{border:1px solid var(--rule);background:#fff;padding:1.1rem 1.2rem;margin:0 0 1rem}
+.or-rule .rid{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:var(--accent);font-weight:500}
+.or-rule h3{margin:.3rem 0 .5rem;font-size:1.12rem}
+.or-rule .trig{font-size:.85rem;color:var(--wash);font-style:italic;margin:0 0 .6rem}
+.or-rule .nums{font-family:var(--mono);font-size:.8rem;line-height:1.6;margin:0;background:var(--well);padding:.6rem .7rem}
+details.or-fold{border:1px solid var(--rule);background:#fff;margin:0 0 1.2rem}
+details.or-fold>summary{cursor:pointer;padding:.75rem 1rem;font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;color:var(--ink);list-style:none;background:var(--well)}
+details.or-fold>summary::-webkit-details-marker{display:none}
+details.or-fold>summary::before{content:"\25B8 ";color:var(--accent)}
+details.or-fold[open]>summary::before{content:"\25BE ";color:var(--accent)}
+details.or-fold>.or-foldbody{padding:1rem}
+.or-appendix{border-top:3px double var(--ink);padding-top:1.8rem;margin-top:1rem}
+.or-appendix .or-tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--urgent);display:block;margin-bottom:.5rem}
+.or-src{font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;color:var(--wash)}
+.or-msg{border:1px solid var(--urgent);border-left:3px solid var(--urgent);background:#fff;padding:1rem 1.1rem;margin:0 0 1.2rem;font-size:.92rem}
+.or-msg .or-kicker{color:var(--urgent)}
+.or-noscript{border:1px solid var(--rule);background:var(--well);padding:1rem 1.1rem;margin:1rem 0;font-size:.92rem}
+.or-quiet{color:var(--wash);font-size:.86rem}
+/* ---- Mobile. This page is plain flow: no hard-snap, no 100vh, so no --vh fix
+       is needed here. The two real risks are a grid/flex child refusing to
+       shrink below its content and a long unbroken string (a URL, an EIN, a
+       source note) pushing the body sideways. Both are handled explicitly:
+       min-width:0 on every grid and flex child, overflow-wrap on every text
+       container, and every table sealed inside its own scrolling wrapper so
+       the table scrolls and the page never does. ---- */
+.or-figs>*,.or-nav li,.or-fact,.or-box,.or-rule,.or-msg,.or-list li,details.or-fold>.or-foldbody{min-width:0}
+.or-fact .v,.or-fact .m,.or-box p,.or-rule .nums,.or-list li,.or-src,.or-quiet,table.or-t td,table.or-t th{overflow-wrap:anywhere}
+/* No overflow-x:hidden on body. It would not prevent overflow, only clip it, and
+   clipping here would swallow the horizontal scroll the .or-tablewrap tables need
+   on a narrow screen, putting the Deadline and Source columns out of reach. */
+@media(max-width:640px){
+  .or-headline .n{font-size:2.4rem}
+  .or-sec>h2{font-size:1.4rem}
+  .or-wrap,.hero,.bar-in{padding-left:1.1rem;padding-right:1.1rem}
+  .or-figs{grid-template-columns:1fr 1fr}
+  .or-box,.or-rule,.or-msg,details.or-fold>.or-foldbody{padding:.9rem 1rem}
+  .or-nav ol{gap:.25rem .8rem}
+  .hero{padding-top:2.2rem}
+}
+@media(max-width:400px){
+  .or-figs{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 <!-- writing-convention: general -->
-<!-- PLACEHOLDER PAGE, created 2026-08-03 on owner instruction. The orientation content is not
-     written yet. It exists now so the switcher has a real destination rather than a dead card, and
-     so the URL is reserved under the gated /measure* namespace before anything links to it.
-     No tab drop here: everything on this page is visible on load. -->
+<!-- MEASURE client orientation page, written 2026-08-07.
+     Two hard rules govern this file and neither is negotiable.
+
+     1. ALMANAC OWNS THE SHELF. Eligibility is READ from data/measure-austin_almanac.json,
+        never recomputed here and never queried from the warehouse. When Scribe re-derived
+        eligibility, three components reported 109, 95 and 46 for the same client on the same
+        day and six opportunities reached draft stage that the shelf had excluded. Every count
+        on this page comes out of counts{} or off a shelf-assigned label. Nothing is hardcoded.
+
+     2. THE SHELF IS SHARED, SO IT LEAKS. open_opportunities_curated is one register serving
+        every client. Verified against the deployed file on 2026-08-07: five ready_now rows
+        name a different organization outright inside `notes`, describing how well the call
+        fits that organization's model, and `eligibility`/`focus_area` on further rows carry
+        service areas in states this organization does not work in, which is another party's
+        find sitting on this shelf. The pipeline file's `fit_notes` is the same prose under a
+        different column name; `notes` is what reached the client-facing JSON.
+        THEREFORE: no free-text curator prose from any shelf row is rendered on this page at
+        all. Suppression is by FIELD across every row, not per row, so a regeneration cannot
+        reopen the hole. See SUPPRESSED_FIELDS and rowIsSafe() below.
+
+     Folds fail OPEN: every <details> ships with the `open` attribute in markup and JS removes
+     it on load. With scripting off the appendix is fully readable. -->
 
 <div class="bar">
   <div class="bar-in">
-    <span class="bar-brand">Measure</span>
+    <span class="bar-brand" id="or-brand">Measure</span>
     <span class="bar-note">Private project index &middot; not a public page</span>
   </div>
 </div>
 
 <header class="hero">
   <div class="kicker">Orientation</div>
-  <h1>Getting started with Measure&rsquo;s tools</h1>
-  <p>This page is reserved and not yet written. It will explain how to read the Almanac shelf and the Scribe drafts: what a confirmed prior funder means against a name match, why a draft carries markers rather than finished prose, and what the organization needs to supply before anything is submitted.</p>
+  <h1 id="or-hero-h1">Getting started with Measure&rsquo;s tools</h1>
+  <p id="or-hero-sub">This page explains what the two tools are, what the public record already says about the organization, and what the organization is eligible to apply for right now. The front half is written for the organization. The appendix at the end carries the method, the provenance and the limits.</p>
+  <p class="or-src">Shelf generated <span id="or-generated">&hellip;</span> &middot; public-record enrichment as of <span id="or-asof">&hellip;</span></p>
 </header>
 
-<div class="picker" style="grid-template-columns:1fr">
-  <div class="pick-card disabled">
-    <div class="pc-kicker">Not yet written</div>
-    <h2>Orientation</h2>
-    <p>Nothing has been drafted here yet. The tools themselves are live and usable without it: the enterprise page carries Almanac and Scribe together, each with its own method section explaining where every figure comes from.</p>
-    <div class="pc-status">In development</div>
-  </div>
+<div class="or-wrap">
+  <nav class="or-nav" aria-label="Sections">
+    <ol>
+      <li><a href="#or-s1">What Almanac and Scribe are</a></li>
+      <li><a href="#or-s2">Who you are on the record</a></li>
+      <li><a href="#or-s3">What the public record says</a></li>
+      <li><a href="#or-s4">Where the record disagrees with itself</a></li>
+      <li><a href="#or-s5">What you are eligible for right now</a></li>
+      <li><a href="#or-s6">What we still need from you</a></li>
+      <li><a href="#or-s7">Where you could strengthen your position</a></li>
+      <li><a href="#or-s8">Appendix: method, provenance and limits</a></li>
+    </ol>
+  </nav>
+
+  <div id="or-loaderr"></div>
+
+  <noscript>
+    <div class="or-noscript">
+      <!-- Naming the data paths here was a pointer to files served outside this page's own
+           access gate. The disclosure the reader needs is that the numbers are missing and
+           why, which does not require the paths. -->
+      This page reads its figures at load time rather than carrying a copy of them, so with
+      scripting turned off every number, table and list below is blank. Nothing has been
+      hidden from you: the folds on this page all ship open, and the headings and explanations
+      are the same ones a reader with scripting sees. Turn scripting on for this page, or ask
+      us for the same content as a document.
+    </div>
+  </noscript>
+
+  <!-- ============ 1 ============ -->
+  <section class="or-sec" id="or-s1">
+    <h2><span class="num">Section one</span>What Almanac and Scribe are</h2>
+    <p class="or-lede">Two tools, one shelf. Almanac decides what you are eligible for. Scribe writes against what Almanac decided, and never decides anything itself.</p>
+
+    <div class="or-box">
+      <span class="or-kicker">Almanac</span>
+      <p><strong>Almanac</strong> is the shelf. It joins your IRS Form 990 record against a hand-curated register of funders and open calls, ranks what fits, and records what does not fit and why. Every eligibility question on this page was answered by Almanac. Nothing on this page re-derives it.</p>
+      <p>That single-source rule is the whole design. An earlier build let a second component re-check eligibility for itself, and three parts of the same system reported three different totals for this organization on the same day. Opportunities the shelf had already excluded reached draft stage anyway. The shelf now decides once and everything downstream reads the answer.</p>
+    </div>
+
+    <div class="or-box">
+      <span class="or-kicker">Scribe</span>
+      <p><strong>Scribe</strong> is the drafter. It assembles an application draft from your profile, your 990 figures and the funder&rsquo;s own stated priorities, and it marks every place where it does not have a fact rather than inventing one. A Scribe draft is a starting document with the gaps labelled, not a finished submission.</p>
+    </div>
+
+    <h3>Exact match against name match, and why the difference matters</h3>
+    <p>A funder appears on your shelf in one of three ways, and they are not equally certain. This is the single most important thing to understand before reading any list here.</p>
+
+    <div class="or-figs" id="or-tier-figs"></div>
+
+    <div class="or-tablewrap">
+      <table class="or-t">
+        <thead><tr><th>Tier</th><th>Count</th><th>What the shelf means by it</th></tr></thead>
+        <tbody id="or-tier-rows"></tbody>
+      </table>
+    </div>
+
+    <div class="or-box accent">
+      <span class="or-kicker">The practical rule</span>
+      <p id="or-tier-rule"></p>
+    </div>
+  </section>
+
+  <!-- ============ 2 ============ -->
+  <section class="or-sec" id="or-s2">
+    <h2><span class="num">Section two</span>Who you are on the record</h2>
+    <p class="or-lede">This is the profile the matching engine runs against. If any of it is wrong, the matches are wrong, and the fastest correction you can make is here.</p>
+
+    <div class="or-tablewrap">
+      <table class="or-t">
+        <tbody id="or-identity"></tbody>
+      </table>
+    </div>
+
+    <h3>What you told us you do</h3>
+    <div id="or-programs"></div>
+
+    <h3>The filed NTEE code</h3>
+    <div class="or-box warn" id="or-ntee-box">
+      <span class="or-kicker">Worth reading closely</span>
+      <p id="or-ntee-line"></p>
+      <p id="or-ntee-note" class="or-quiet"></p>
+    </div>
+
+    <h3>Funders you have confirmed to us</h3>
+    <p class="or-quiet">These are the funders you named directly. They are not the same list as the funding history reconstructed from IRS filings, and the two disagree on amounts for good reason. Section eight explains why.</p>
+    <div class="or-tablewrap">
+      <table class="or-t">
+        <!-- Headers name the fields renderPriorFunders actually appends: funder, amount,
+             purpose, source. They previously read Year and Note, so a grant purpose sat
+             under Year and a CSV filename under Note. -->
+        <thead><tr><th>Funder</th><th>Amount</th><th>Purpose</th><th>Where we got it</th></tr></thead>
+        <tbody id="or-priorfunders"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 3 ============ -->
+  <section class="or-sec" id="or-s3">
+    <h2><span class="num">Section three</span>What the public record says about you</h2>
+    <p class="or-lede">Everything a funder can find out about you without asking, gathered and sourced. Below is a narrated selection. The full set is in the appendix.</p>
+
+    <div class="or-figs" id="or-fact-figs"></div>
+
+    <div id="or-fact-groups"></div>
+
+    <p class="or-quiet" id="or-fact-more"></p>
+  </section>
+
+  <!-- ============ 4 ============ -->
+  <section class="or-sec" id="or-s4">
+    <h2><span class="num">Section four</span>Where the public record disagrees with itself</h2>
+    <p class="or-lede">A funder doing diligence will find these before you do. Each one is a place two of your own public sources give different answers, and each one is easier to fix now than to explain later.</p>
+
+    <div class="or-box accent">
+      <p>None of these is an accusation. Most are a stale page, a figure from a different fiscal year, or a counter that was updated in one place and not another. They matter because a reviewer who finds two numbers has to pick one, and the one they pick is usually the smaller.</p>
+    </div>
+
+    <ol class="or-list" id="or-conflicts"></ol>
+  </section>
+
+  <!-- ============ 5 ============ -->
+  <section class="or-sec" id="or-s5">
+    <h2><span class="num">Section five</span>What you are eligible for right now</h2>
+    <p class="or-lede">One number, read directly off the shelf.</p>
+
+    <div class="or-figs or-headline" id="or-headline-figs"></div>
+
+    <div class="or-box accent">
+      <span class="or-kicker">How that number was derived</span>
+      <p id="or-derivation"></p>
+    </div>
+
+    <div class="or-box">
+      <span class="or-kicker">The limit that comes with it</span>
+      <p id="or-known-limitation"></p>
+    </div>
+
+    <details class="or-fold" open id="or-fold-ready">
+      <summary>The open calls behind that number <span id="or-ready-count"></span></summary>
+      <div class="or-foldbody">
+        <p class="or-quiet" id="or-ready-guardnote"></p>
+        <div class="or-tablewrap">
+          <table class="or-t">
+            <thead><tr><th>Funder</th><th>Opportunity</th><th>Deadline</th><th>Source</th></tr></thead>
+            <tbody id="or-ready-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <details class="or-fold" open id="or-fold-watch">
+      <summary>Not open yet, being watched <span id="or-watch-count"></span></summary>
+      <div class="or-foldbody">
+        <p class="or-quiet">A closed cycle is the only signal a reopening can be predicted from, and no public source keeps it. These are held for that reason.</p>
+        <div class="or-tablewrap">
+          <table class="or-t">
+            <thead><tr><th>Funder</th><th>Status</th><th>Source</th></tr></thead>
+            <tbody id="or-watch-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ 6 ============ -->
+  <section class="or-sec" id="or-s6">
+    <h2><span class="num">Section six</span>What we still need from you</h2>
+    <p class="or-lede">Three lists, in order of how much of your time they cost. The first list is the one that pays back fastest: those facts exist and only you have them.</p>
+
+    <h3>Only you can supply this <span class="or-src" id="or-legacy-n"></span></h3>
+    <p class="or-quiet">Nothing public answers these. Each one is a short answer from someone at the organization, and each one unblocks something in a draft.</p>
+    <ul class="or-list" id="or-legacy"></ul>
+
+    <h3>Findable, but behind a paywall or a login <span class="or-src" id="or-gated-n"></span></h3>
+    <p class="or-quiet">These exist in a source we cannot reach without an account or a purchase. Tell us which are worth buying and we will get them; otherwise they stay open.</p>
+    <ul class="or-list" id="or-gated"></ul>
+
+    <h3>Not knowable from any source <span class="or-src" id="or-unknowable-n"></span></h3>
+    <p class="or-quiet">Recorded so that nobody spends time looking again. These are internal figures or judgements that appear on no filing and no page.</p>
+    <ul class="or-list" id="or-unknowable"></ul>
+  </section>
+
+  <!-- ============ 7 ============ -->
+  <section class="or-sec" id="or-s7">
+    <h2><span class="num">Section seven</span>Where you could strengthen your position</h2>
+    <p class="or-lede">Deterministic rules, not advice. Each one is a condition that either holds against your data or does not, with the numbers that made it fire.</p>
+
+    <div class="or-box">
+      <p>Nothing in this section was written by a model reading your file and forming an opinion. Each item below is a rule with a stated trigger: a threshold, a date comparison or a count. The rule fired because your data met the condition. Where a rule rests on a name match rather than a verified identity, it says so, and you should confirm before acting on it.</p>
+    </div>
+
+    <div id="or-rules"></div>
+  </section>
+
+  <!-- ============ 8 ============ -->
+  <section class="or-sec or-appendix" id="or-s8">
+    <span class="or-tag">Appendix &middot; technical</span>
+    <h2><span class="num">Section eight</span>Method, provenance and stated limits</h2>
+    <p class="or-lede">Written for a reader who wants to audit the numbers rather than use them. Nothing here is required to read the seven sections above.</p>
+
+    <h3>How the shelf is built</h3>
+    <div class="or-box"><p id="or-method-almanac"></p></div>
+
+    <h3>How the public-record enrichment was gathered</h3>
+    <div class="or-box"><p id="or-method-enrichment"></p></div>
+
+    <h3>Stated limits</h3>
+    <p class="or-quiet">Limits of the method, recorded so a number on this page is never read as more than it is. Each carries the file and line that proves it.</p>
+    <div id="or-limits"></div>
+
+    <h3>Financial summary as filed</h3>
+    <div class="or-box"><p id="or-financial-summary"></p></div>
+    <div class="or-box"><span class="or-kicker">Operating budget band</span><p id="or-budget-band"></p></div>
+    <div class="or-box"><span class="or-kicker">Leadership demographics, as evidenced</span><p id="or-bipoc"></p></div>
+
+    <h3>Profile sources</h3>
+    <ul class="or-list or-quiet" id="or-profile-sources"></ul>
+
+    <details class="or-fold" open id="or-fold-allfacts">
+      <summary>Every verified fact, with source and confidence <span id="or-allfacts-count"></span></summary>
+      <div class="or-foldbody">
+        <div class="or-facts" id="or-allfacts"></div>
+      </div>
+    </details>
+  </section>
+
+  <p style="margin:0 0 3rem"><a href="measure-enterprise.html">Go to the Measure enterprise page &#8594;</a></p>
 </div>
 
-<div style="max-width:760px;margin:0 auto 3rem;padding:0 1.2rem">
-  <p style="text-align:center"><a href="measure-enterprise.html">Go to the Measure enterprise page &#8594;</a></p>
-</div>
-
-<footer>
+<footer id="or-footer">
   Prepared research and tools for Measure &middot; This page is unlisted and shared directly &middot; Built from IRS Form 990 data and live web scraping; developed in Python and CSS using Claude Code and Jonathan Lin Davis&rsquo;s proprietary, copyrighted Code Development Program
 </footer>
+
+<script>
+/* =================================================================
+   DATA SOURCES. Fetched at runtime exactly as measure-enterprise.html
+   does, rather than inlined. Editing a JavaScript literal inside a live
+   client page is what made the quarterly refresh unsustainable.
+   ================================================================= */
+const PROFILE_URL='data/measure-austin_profile.json';
+const ALMANAC_URL='data/measure-austin_almanac.json';
+const ORIENTATION_URL='data/measure-austin_orientation.json';
+
+/* CONTRACT for ORIENTATION_URL, written for the agent generating it.
+   Expected shape, top level:
+     {
+       "generated_date": "YYYY-MM-DD",
+       "client_slug": "measure-austin",
+       "rules": [
+         {
+           "id":          "R1",
+           "headline":    "The filed NTEE code is steering the whole match engine",
+           "trigger":     "filed major differs from top-weighted major, and the client says the code does not describe them",
+           "key_numbers": "filed B05 Education; weights put R and S at 1.0, B at 0.8; 40 of 40 ...",
+           "detail":      "optional longer paragraph, plain text",
+           "verify_first": false
+         }
+       ]
+     }
+   `key_numbers` may be a string or an array of strings. `rules` is the only
+   required key. If the file is absent or malformed the section renders a
+   visible panel naming the file and what it expected; it never renders empty.
+
+   THE GENERATOR IS orientation_page_data.py, and it maps its own richer output onto
+   this shape on the way out: `detail` is each rule's client-facing sentence, and
+   `key_numbers` is built from the numbers that sentence was computed from. Its
+   `numbers`, `proven_by`, `stated_limit`, `notes` and `rows` keys are the audit
+   trail and are deliberately not read here. `rules` carries FIRED rules only; the
+   evaluated total arrives as counts.rules_evaluated and is stated beneath the cards.
+   Do not render a rule whose `fired` is false: every headline is an assertion, so a
+   quiet rule shown as a card reads as a finding that held. */
+
+let PROFILE=null, ALMANAC=null, ORIENTATION=null;
+
+/* =================================================================
+   CONFIDENTIALITY GUARD. Highest-priority item on this page.
+
+   open_opportunities_curated is a SHARED register. Verified against the
+   deployed almanac file on 2026-08-07: five ready_now rows name a
+   different organization outright inside `notes`, and `eligibility` and
+   `focus_area` on further rows carry service areas in states this
+   organization does not work in. The pipeline file calls the same prose
+   `fit_notes`; `notes` is the name it reaches the client-facing JSON under.
+
+   Two layers, deliberately redundant:
+     A. SUPPRESSED_FIELDS -- curator free text is never read out of a row
+        at all, for any row, under any of its known names. Suppression is
+        by FIELD across the whole list rather than per row, so a
+        regeneration that reintroduces the leak cannot reopen the hole.
+        This is the layer that does the real work: it removes every field
+        in which a cross-client reference has actually been observed.
+     B. rowIsSafe() -- the few fields that ARE rendered (funder name,
+        opportunity name, deadline, link) are dropped whole on the
+        register's own cross-client markers: found_for_this_client set
+        false, commercial marked client-confidential, or prose that
+        refers to a client in the third person. Those keys are absent
+        from the current file and the checks cost nothing if they return.
+
+   ON WHAT IS DELIBERATELY NOT HERE. A blocklist of the other clients'
+   names would catch more. It is kept out of this file on purpose: this
+   page is served to one client, every other client's page on this site
+   is unlisted and gated, and shipping their names inside this one's
+   source would be the exact disclosure the guard exists to prevent.
+   A reader can open the source. That check belongs in the generator,
+   which runs server side and already knows every slug, not in a page
+   that a single client holds a copy of.
+
+   The guard reports how many rows it withheld rather than hiding the fact.
+   ================================================================= */
+const SUPPRESSED_FIELDS=['fit_notes','notes','why_watch','eligibility','focus_area','rationale','commercial'];
+const RENDERED_FIELDS=['organization','grant_name','deadline','amount','url','id','ein'];
+/* Name-free markers of prose written ABOUT a client rather than about a funder.
+   A row describing an opportunity has no reason to refer to a client at all. */
+const LEAK_PHRASES=[/\bthe client'?s?\b/i,/\bthis client\b/i,/\banother client\b/i,/\bfound_for\b/i];
+let GUARD_WITHHELD=0;
+
+/* C. grant_name is the one rendered field observed carrying curator status prose
+   rather than a clean opportunity title, and curator prose is where a service
+   area belonging to somebody else's find shows up. Checked positively against
+   this organization's OWN geography, read from the profile at runtime, so no
+   other party is named anywhere: if the title names a US state this organization
+   does not work in AND that state appears nowhere else on the row, the title is
+   withheld and the row still renders with its funder, deadline and link. Measured
+   against the deployed file it now fires on 0 rows of 78, because the one row it
+   used to catch had the state in its own funder name and lost its explanation for
+   nothing. Full state names only, never the two-letter codes, which collide with
+   ordinary words (IN, OR, ME, DE) and would suppress most of the shelf. */
+const US_STATES=['alabama','alaska','arizona','arkansas','california','colorado','connecticut',
+'delaware','florida','georgia','hawaii','idaho','illinois','indiana','iowa','kansas','kentucky',
+'louisiana','maine','maryland','massachusetts','michigan','minnesota','mississippi','missouri',
+'montana','nebraska','nevada','new hampshire','new jersey','new mexico','new york','north carolina',
+'north dakota','ohio','oklahoma','oregon','pennsylvania','rhode island','south carolina',
+'south dakota','tennessee','texas','utah','vermont','virginia','washington','west virginia',
+'wisconsin','wyoming'];
+const STATE_CODE={AL:'alabama',AK:'alaska',AZ:'arizona',AR:'arkansas',CA:'california',CO:'colorado',
+CT:'connecticut',DE:'delaware',FL:'florida',GA:'georgia',HI:'hawaii',ID:'idaho',IL:'illinois',
+IN:'indiana',IA:'iowa',KS:'kansas',KY:'kentucky',LA:'louisiana',ME:'maine',MD:'maryland',
+MA:'massachusetts',MI:'michigan',MN:'minnesota',MS:'mississippi',MO:'missouri',MT:'montana',
+NE:'nebraska',NV:'nevada',NH:'new hampshire',NJ:'new jersey',NM:'new mexico',NY:'new york',
+NC:'north carolina',ND:'north dakota',OH:'ohio',OK:'oklahoma',OR:'oregon',PA:'pennsylvania',
+RI:'rhode island',SC:'south carolina',SD:'south dakota',TN:'tennessee',TX:'texas',UT:'utah',
+VT:'vermont',VA:'virginia',WA:'washington',WV:'west virginia',WI:'wisconsin',WY:'wyoming'};
+let OWN_STATES=[];
+function computeOwnStates(){
+  const g=(PROFILE&&PROFILE.geography)||{};
+  const parts=[g.primary].concat(Array.isArray(g.secondary)?g.secondary:[]);
+  const out={};
+  parts.forEach(s=>{
+    const txt=String(s||'');
+    const code=(txt.match(/,\s*([A-Z]{2})\b/)||[])[1];
+    if(code&&STATE_CODE[code])out[STATE_CODE[code]]=true;
+    US_STATES.forEach(n=>{if(new RegExp('\\b'+n+'\\b','i').test(txt))out[n]=true;});
+  });
+  OWN_STATES=Object.keys(out);
+}
+/* A state already printed on the same row cannot be disclosed by the title, and
+   withholding the title anyway costs the reader the reason the row is there. The
+   observed case: the funder cell renders ARIZONA COMMUNITY FOUNDATION while the
+   title, which says the funder is Arizona-only and therefore why the row sits on
+   the watch list rather than the open list, was withheld for containing "Arizona".
+   So the check now compares the title's states against what the row ALREADY shows.
+   It can only ever un-withhold a state the reader can see regardless; a title
+   naming a state that appears nowhere else on the row is still withheld. */
+function statesIn(s){
+  const t=String(s||'');
+  return US_STATES.filter(n=>new RegExp('\\b'+n+'\\b','i').test(t));
+}
+function titleIsSafe(title,alreadyShown){
+  const foreign=statesIn(title).filter(n=>OWN_STATES.indexOf(n)===-1);
+  if(!foreign.length)return true;
+  const shown=statesIn(alreadyShown);
+  return foreign.every(n=>shown.indexOf(n)!==-1);
+}
+let TITLES_WITHHELD=0;
+function safeTitle(row){
+  const t=safeField(row,'grant_name');
+  if(!t)return t;
+  if(titleIsSafe(t,safeField(row,'organization')))return t;
+  TITLES_WITHHELD++;
+  return '';
+}
+
+function rowIsSafe(row){
+  if(!row||typeof row!=='object')return false;
+  if(row.found_for_this_client===false)return false;
+  if(row.commercial==='client-confidential')return false;
+  const visible=RENDERED_FIELDS.map(k=>String(row[k]==null?'':row[k])).join(' ');
+  if(LEAK_PHRASES.some(re=>re.test(visible)))return false;
+  return true;
+}
+function guardRows(rows){
+  if(!Array.isArray(rows))return [];
+  const kept=rows.filter(rowIsSafe);
+  GUARD_WITHHELD+=(rows.length-kept.length);
+  return kept;
+}
+/* Reads only the allow-listed keys off a row. Anything in SUPPRESSED_FIELDS is
+   unreachable by construction rather than by remembering not to use it. */
+function safeField(row,key){
+  if(SUPPRESSED_FIELDS.indexOf(key)!==-1)return '';
+  const v=row?row[key]:'';
+  return v==null?'':String(v);
+}
+
+/* =================================================================
+   DOM helpers. textContent throughout: every string below is fetched
+   data, and none of it is trusted as markup.
+   ================================================================= */
+function el(tag,cls,text){
+  const n=document.createElement(tag);
+  if(cls)n.className=cls;
+  if(text!=null)n.textContent=text;
+  return n;
+}
+function setText(id,text){
+  const n=document.getElementById(id);
+  if(n)n.textContent=(text==null?'':String(text));
+}
+function safeHref(url){
+  const u=String(url||'').trim();
+  return /^https?:\/\//i.test(u)?u:'';
+}
+function linkCell(url,label){
+  const td=el('td');
+  const href=safeHref(url);
+  if(!href){td.appendChild(el('span','or-quiet','no link recorded'));return td;}
+  const a=el('a',null,label||'Funder page');
+  a.href=href;a.rel='noopener noreferrer';a.target='_blank';
+  td.appendChild(a);
+  return td;
+}
+function row(cells){
+  const tr=el('tr');
+  cells.forEach(c=>tr.appendChild(c instanceof Node?c:el('td',null,c)));
+  return tr;
+}
+function fig(n,label){
+  const d=el('div','or-fig');
+  d.appendChild(el('span','n',n));
+  d.appendChild(el('span','l',label));
+  return d;
+}
+function confBadge(c){
+  const v=String(c||'').toLowerCase();
+  const s=el('span','or-conf or-conf-'+(['high','medium','low'].indexOf(v)!==-1?v:'medium'),v||'unrated');
+  return s;
+}
+/* A shelf row can carry status open with a date that has since passed: the shelf is a
+   point-in-time snapshot and its own known_limitation says so. The COUNT above the table
+   is the shelf's and is never adjusted here, per the read-never-recompute rule. The row
+   is another matter, and showing a lapsed date under "what you are eligible for right
+   now" with nothing to mark it is how somebody spends a morning on a closed call. The
+   comparison is made against the reader's own clock and is labelled as a display note,
+   not as a shelf verdict. */
+/* Parsed to LOCAL midnight whatever the format. Date.parse treats a bare ISO date as
+   UTC and a prose date as local, so an ISO deadline would read as already passed for
+   most of its own due date in any timezone west of Greenwich. Today's file carries
+   prose dates only; the split is handled here so a regeneration that emits ISO cannot
+   quietly start telling the client a live call has closed. */
+function localMidnight(s){
+  const iso=String(s||'').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if(iso)return new Date(+iso[1],+iso[2]-1,+iso[3]).getTime();
+  const t=Date.parse(s);
+  if(!isFinite(t))return NaN;
+  const d=new Date(t);d.setHours(0,0,0,0);
+  return d.getTime();
+}
+function deadlineCell(text){
+  const s=String(text||'');
+  const td=el('td',null,s||'not dated');
+  const t=s?localMidnight(s):NaN;
+  if(isFinite(t)){
+    const today=new Date();today.setHours(0,0,0,0);
+    if(t<today.getTime()){
+      const m=el('span','or-quiet',' this date has already passed, confirm the current cycle');
+      td.appendChild(m);
+    }
+  }
+  return td;
+}
+function usd(n){
+  const x=Number(n);
+  return isFinite(x)?'$'+x.toLocaleString('en-US'):String(n==null?'':n);
+}
+/* Folds fail OPEN. Markup ships `open`; this removes it so the page loads tidy
+   for a reader with scripting, and a reader without scripting sees everything. */
+function closeFolds(){
+  document.querySelectorAll('details.or-fold').forEach(d=>d.removeAttribute('open'));
+}
+
+/* =================================================================
+   SECTION 1. Tier counts are read off the shelf's own tier labels,
+   which the shelf assigned. Counting rows already labelled by Almanac
+   is a read, not a recomputation of eligibility.
+   ================================================================= */
+const TIER_ORDER=['tier_1_strong','tier_2_promising','tier_3_watch'];
+const TIER_LABEL={tier_1_strong:'Verified by EIN',tier_2_promising:'Name match, confirm first',tier_3_watch:'Peer funder, no relationship'};
+
+/* The shelf's tier definitions are written in pipeline voice for an internal reader:
+   tier_3_watch reads "Funds peer organisations in this client's NTEE band." Rendered
+   verbatim on a page addressed to that organization, "this client" is both odd and a
+   reminder that the shelf is shared. Rewritten to second person on display only; the
+   file is not edited and the meaning is unchanged. */
+function clientVoice(s){
+  return String(s||'')
+    .replace(/\bthis client(?:’|')?s\b/gi,'your')
+    .replace(/\bthe client(?:’|')?s\b/gi,'your')
+    .replace(/\bthis client\b/gi,'you');
+}
+function tierCounts(){
+  const out={};
+  (ALMANAC.ranked_funders||[]).forEach(r=>{
+    const t=r&&r.tier;
+    if(t)out[t]=(out[t]||0)+1;
+  });
+  return out;
+}
+function renderTiers(){
+  const counts=tierCounts();
+  const tiers=ALMANAC.tiers||{};
+  const figs=document.getElementById('or-tier-figs');
+  const rows=document.getElementById('or-tier-rows');
+  TIER_ORDER.forEach(t=>{
+    if(!(t in counts))return;
+    figs.appendChild(fig(counts[t],TIER_LABEL[t]||t));
+    rows.appendChild(row([
+      el('td',null,TIER_LABEL[t]||t),
+      el('td',null,String(counts[t])),
+      el('td',null,clientVoice(tiers[t]))
+    ]));
+  });
+  Object.keys(counts).forEach(t=>{
+    if(TIER_ORDER.indexOf(t)!==-1)return;
+    figs.appendChild(fig(counts[t],t));
+    rows.appendChild(row([el('td',null,t),el('td',null,String(counts[t])),el('td',null,clientVoice(tiers[t]))]));
+  });
+  const strong=counts.tier_1_strong,name=counts.tier_2_promising;
+  let rule='';
+  if(strong!=null&&name!=null){
+    rule='Of the funders with a prior relationship to you, '+strong+' are matched on your own EIN inside the '
+      +'funder’s IRS Schedule I, which is an exact identity match and can be treated as fact. The other '
+      +name+' come from 990-PF Part XV, a source that records a recipient name and no recipient EIN at all. '
+      +'Those '+name+' are probably you and are not proven to be you. Confirm each one before you write to '
+      +'them as a returning grantee, because the cost of getting it wrong is a letter that opens by thanking '
+      +'a funder for a grant they never made.';
+  }else{
+    rule='Tier labels were not present on the shelf rows in this run, so the exact-against-name-match split '
+      +'cannot be shown. The tier definitions above still apply.';
+  }
+  setText('or-tier-rule',rule);
+}
+
+/* =================================================================
+   SECTION 2
+   ================================================================= */
+function renderIdentity(){
+  const tb=document.getElementById('or-identity');
+  const g=PROFILE.geography||{};
+  const scale=PROFILE.reported_scale||{};
+  const pairs=[
+    ['Organization',PROFILE.organization],
+    ['EIN',PROFILE.ein],
+    ['Website',PROFILE.website],
+    ['Mission on file',PROFILE.mission],
+    ['Primary geography',g.primary],
+    ['Secondary geography',Array.isArray(g.secondary)?g.secondary.join(', '):g.secondary],
+    ['Target populations',Array.isArray(PROFILE.target_populations)?PROFILE.target_populations.join('; '):PROFILE.target_populations],
+    ['Filed NTEE code',(PROFILE.ntee_code_filed||'')+(PROFILE.ntee_major_filed?' ('+PROFILE.ntee_major_filed+')':'')],
+    ['Self-reported scale',(scale.care_model_grants_distributed!=null?usd(scale.care_model_grants_distributed)+' distributed':'')
+      +(scale.organizations_supported?', '+scale.organizations_supported+' organizations supported':'')],
+    ['Profile built',PROFILE.profile_built]
+  ];
+  pairs.forEach(p=>{
+    if(p[1]==null||p[1]==='')return;
+    const th=el('th',null,p[0]);
+    tb.appendChild(row([th,el('td',null,String(p[1]))]));
+  });
+  if(scale.note){
+    const wrap=document.getElementById('or-identity').closest('.or-tablewrap');
+    const p=el('p','or-quiet','Scale figures above: '+scale.note+'. Section four returns to this.');
+    if(wrap&&wrap.parentNode)wrap.parentNode.insertBefore(p,wrap.nextSibling);
+  }
+}
+function renderPrograms(){
+  const host=document.getElementById('or-programs');
+  const mk=(title,arr)=>{
+    if(!Array.isArray(arr)||!arr.length)return;
+    const box=el('div','or-box');
+    box.appendChild(el('span','or-kicker',title));
+    const ul=el('ul','or-list');
+    arr.forEach(x=>ul.appendChild(el('li',null,String(x))));
+    box.appendChild(ul);
+    host.appendChild(box);
+  };
+  mk('Programs on file',PROFILE.programs);
+  mk('Focus areas on file',PROFILE.focus_areas);
+}
+function renderNtee(){
+  const filed=PROFILE.ntee_code_filed||'', major=PROFILE.ntee_major_filed||'';
+  setText('or-ntee-line','Your IRS Business Master File record carries NTEE code '+filed
+    +(major?', which places you under '+major:'')+'. That single code is doing more work than it looks like it '
+    +'is doing: the matching engine uses the NTEE major group to decide which funders fund organizations like '
+    +'you, so a code that describes you loosely produces a shelf that fits you loosely. Changing it is not a '
+    +'form you can file on its own, but naming the mismatch changes how the rest of this page should be read.');
+  setText('or-ntee-note',PROFILE.ntee_code_note||'');
+}
+function renderPriorFunders(){
+  const tb=document.getElementById('or-priorfunders');
+  const list=PROFILE.confirmed_prior_funders||[];
+  list.forEach(f=>{
+    tb.appendChild(row([
+      el('td',null,f.funder||''),
+      el('td',null,f.amount!=null?usd(f.amount):''),
+      el('td',null,f.purpose||''),
+      el('td',null,f.source||'')
+    ]));
+  });
+  if(PROFILE.confirmed_prior_funders_total!=null){
+    const tr=el('tr');
+    const th=el('th',null,'Total, as you reported it');
+    tr.appendChild(th);
+    tr.appendChild(el('td',null,usd(PROFILE.confirmed_prior_funders_total)));
+    tr.appendChild(el('td',null,''));
+    tr.appendChild(el('td',null,'Sum of the rows above'));
+    tb.appendChild(tr);
+  }
+}
+
+/* =================================================================
+   SECTION 3. Facts are selected BY FIELD NAME, never by array index.
+   An index list narrates the wrong facts the first time the array
+   regenerates; a field list simply skips anything that has moved or
+   gone. Groups are authored; the values, sources and confidences are
+   read straight off the file.
+   ================================================================= */
+const FACT_GROUPS=[
+  {title:'The organization itself',
+   lede:'What a funder confirms first, and where your own filings do not yet agree with your own registration.',
+   fields:['organization_legal_name','ein','founding_year','state_of_incorporation','geographic_footprint','ntee_per_propublica']},
+  {title:'The people a funder will look up',
+   lede:'Board and staff are the first thing a program officer checks against a proposal, and the first thing that goes stale on a website.',
+   fields:['founder','board_members','core_staff','team_size']},
+  {title:'What the most recent 990 shows',
+   lede:'These are the figures a reviewer will pull rather than ask you for. They are already public.',
+   fields:['most_recent_990','total_revenue_fy2024','total_expenses_fy2024','net_assets_fy2024','revenue_composition_multiyear']},
+  {title:'Programs a funder can verify without asking you',
+   lede:'Each of these is documented publicly, which means it can be cited in an application and checked.',
+   fields:['mission_verbatim','program_care_model','program_communities_in_the_loop','program_free_data_support']}
+];
+
+function factIndex(){
+  const idx={};
+  (PROFILE.public_profile_enrichment.verified_facts||[]).forEach(f=>{
+    if(f&&f.field&&!(f.field in idx))idx[f.field]=f;
+  });
+  return idx;
+}
+function factNode(f){
+  const d=el('div','or-fact');
+  const fl=el('span','f',f.field);
+  d.appendChild(fl);
+  const v=el('span','v',String(f.value==null?'':f.value));
+  v.appendChild(confBadge(f.confidence));
+  d.appendChild(v);
+  if(f.note)d.appendChild(el('span','m',f.note));
+  const href=safeHref(f.source_url);
+  if(href){
+    const m=el('span','m');
+    const a=el('a',null,'Source');
+    a.href=href;a.rel='noopener noreferrer';a.target='_blank';
+    m.appendChild(a);
+    d.appendChild(m);
+  }
+  return d;
+}
+function renderFacts(){
+  const enr=PROFILE.public_profile_enrichment;
+  const all=enr.verified_facts||[];
+  const idx=factIndex();
+  const conf={};
+  all.forEach(f=>{const c=String(f.confidence||'unrated').toLowerCase();conf[c]=(conf[c]||0)+1;});
+
+  const figs=document.getElementById('or-fact-figs');
+  figs.appendChild(fig(all.length,'facts established and sourced'));
+  ['high','medium','low'].forEach(c=>{if(conf[c])figs.appendChild(fig(conf[c],'rated '+c+' confidence'));});
+  if(Array.isArray(enr.conflicts))figs.appendChild(fig(enr.conflicts.length,'places the record contradicts itself'));
+
+  const host=document.getElementById('or-fact-groups');
+  let shown=0;
+  FACT_GROUPS.forEach(g=>{
+    const present=g.fields.map(k=>idx[k]).filter(Boolean);
+    if(!present.length)return;
+    host.appendChild(el('h3',null,g.title));
+    host.appendChild(el('p','or-quiet',g.lede));
+    const wrap=el('div','or-facts');
+    present.forEach(f=>{wrap.appendChild(factNode(f));shown++;});
+    host.appendChild(wrap);
+  });
+  setText('or-fact-more','Narrated above: '+shown+' of '+all.length+' established facts. '
+    +'The remaining '+(all.length-shown)+' are in the appendix, each with the same source link and '
+    +'confidence rating, and none of them was selected out for being unflattering. They were left out '
+    +'for length.');
+}
+
+/* =================================================================
+   SECTION 4
+   ================================================================= */
+function renderConflicts(){
+  const ol=document.getElementById('or-conflicts');
+  (PROFILE.public_profile_enrichment.conflicts||[]).forEach(c=>ol.appendChild(el('li',null,String(c))));
+}
+
+/* =================================================================
+   SECTION 5. THE HEADLINE IS READ, NEVER RECOMPUTED.
+   counts.ready_now is what Almanac decided. This page does not filter
+   it, re-derive it, or adjust it for anything, including a deadline
+   that has since passed. The shelf's own known_limitation says exactly
+   that and is rendered next to it verbatim.
+   The table below is a DISPLAY of those rows, passed through the
+   confidentiality guard. Rows the guard withholds are withheld from
+   the table only. The count above the table stays the shelf's count.
+   ================================================================= */
+function renderEligibility(){
+  const counts=ALMANAC.counts||{};
+  const figs=document.getElementById('or-headline-figs');
+  if(counts.ready_now!=null)figs.appendChild(fig(counts.ready_now,'open calls you are eligible for now'));
+  if(counts.watch_list!=null)figs.appendChild(fig(counts.watch_list,'held on the watch list'));
+  if(counts.ranked_funders!=null)figs.appendChild(fig(counts.ranked_funders,'funders ranked against you'));
+
+  setText('or-derivation','Almanac joined your IRS Form 990 record against its curated register of funders and '
+    +'open calls, applied the eligibility test to every row, and recorded the result. This page reads that '
+    +'result and does not recompute it. That is a deliberate constraint rather than a shortcut: when a second '
+    +'component was allowed to re-derive eligibility for itself, three parts of the same system returned three '
+    +'different totals for this organization on the same day, and opportunities the shelf had excluded reached '
+    +'draft stage anyway. One decision, made once, read everywhere.');
+  setText('or-known-limitation',ALMANAC.known_limitation||'');
+
+  /* Guard BOTH lists before any note is written, so the withheld count the
+     note reports is the total across both and not just the first one seen. */
+  const ready=guardRows(ALMANAC.ready_now||[]);
+  const watch=guardRows(ALMANAC.watch_list_not_yet_open||[]);
+
+  const tb=document.getElementById('or-ready-rows');
+  ready.forEach(r=>{
+    const title=safeTitle(r);
+    tb.appendChild(row([
+      el('td',null,safeField(r,'organization')),
+      title?el('td',null,title):el('td','or-quiet','title withheld, read it on the funder page'),
+      deadlineCell(safeField(r,'deadline')),
+      linkCell(safeField(r,'url'),'Funder page')
+    ]));
+  });
+  setText('or-ready-count','('+ready.length+' shown)');
+
+  const wb=document.getElementById('or-watch-rows');
+  watch.forEach(r=>{
+    const title=safeTitle(r);
+    wb.appendChild(row([
+      el('td',null,safeField(r,'organization')),
+      title?el('td',null,title):el('td','or-quiet','status withheld, read it on the funder page'),
+      linkCell(safeField(r,'url'),'Funder page')
+    ]));
+  });
+  setText('or-watch-count','('+watch.length+' shown)');
+
+  /* Written last, so the withheld tallies it quotes cover both tables. */
+  setText('or-ready-guardnote','Funder, opportunity name, deadline and the funder’s own page only. '
+    +'The register’s free-text curator notes are not reproduced anywhere on this page: it is a shared '
+    +'register, its notes are written across clients, and reproducing them here would disclose other '
+    +'organizations’ work. Read each opportunity on the funder’s own page, which is linked. '
+    +(GUARD_WITHHELD?('Rows withheld from the tables on this page by that rule: '+GUARD_WITHHELD+'. '):'')
+    +(TITLES_WITHHELD?('Opportunity titles withheld because the title named a state this organization does '
+      +'not work in: '+TITLES_WITHHELD+'. '):'')
+    +((GUARD_WITHHELD||TITLES_WITHHELD)?('Anything withheld remains counted in the figure above, which is '
+      +'the shelf’s own count and is not adjusted here.'):''));
+}
+
+/* =================================================================
+   SECTION 6
+   ================================================================= */
+function renderNeeds(){
+  const enr=PROFILE.public_profile_enrichment;
+  const fill=(id,nid,arr)=>{
+    const ul=document.getElementById(id);
+    const list=Array.isArray(arr)?arr:[];
+    list.forEach(x=>ul.appendChild(el('li',null,String(x))));
+    setText(nid,'('+list.length+')');
+    if(!list.length)ul.appendChild(el('li','or-quiet','Nothing outstanding in this category.'));
+  };
+  fill('or-legacy','or-legacy-n',enr.still_needs_measure_legacy);
+  fill('or-gated','or-gated-n',enr.still_findable_gated);
+  fill('or-unknowable','or-unknowable-n',enr.truly_unknowable);
+}
+
+/* =================================================================
+   SECTION 7. Rules come from ORIENTATION_URL and nothing else. If that
+   file is missing or malformed, this renders a panel naming the file
+   and the key it expected. It never renders empty and it never
+   substitutes written advice for a rule that did not load.
+   ================================================================= */
+function renderRulesMissing(reason){
+  const host=document.getElementById('or-rules');
+  host.textContent='';
+  const box=el('div','or-msg');
+  box.appendChild(el('span','or-kicker','This section has not loaded'));
+  box.appendChild(el('p',null,'The deterministic rules for this section are generated into '
+    +ORIENTATION_URL+' and read from there. '+reason));
+  box.appendChild(el('p',null,'Nothing is shown in its place. This section carries rule output only: '
+    +'a condition that either held against your data or did not, with the numbers that made it fire. '
+    +'Written recommendations are not a substitute for that and are not generated here.'));
+  box.appendChild(el('p','or-quiet','Expected: a JSON object with a "rules" array, each entry carrying '
+    +'id, headline, trigger and key_numbers.'));
+  host.appendChild(box);
+}
+function renderRules(){
+  const host=document.getElementById('or-rules');
+  let rules=(ORIENTATION&&Array.isArray(ORIENTATION.rules))?ORIENTATION.rules:null;
+  if(!rules){renderRulesMissing('The file responded but did not carry a "rules" array.');return;}
+  /* Second guard on the same rule as the contract note above. The generator already
+     filters, so this drops nothing today; it exists so that a generator that stops
+     filtering cannot silently publish a finding that did not hold. */
+  rules=rules.filter(r=>!(r&&r.fired===false));
+  if(!rules.length){renderRulesMissing('The file loaded and contained no rules, which means no rule fired '
+    +'against your data in this run.');return;}
+  host.textContent='';
+  rules.forEach(r=>{
+    if(!r||typeof r!=='object')return;
+    const card=el('div','or-rule');
+    if(r.id)card.appendChild(el('div','rid',String(r.id)));
+    card.appendChild(el('h3',null,String(r.headline||r.title||'Untitled rule')));
+    if(r.trigger)card.appendChild(el('p','trig','Fires when: '+String(r.trigger)));
+    if(r.detail)card.appendChild(el('p',null,String(r.detail)));
+    const kn=r.key_numbers!=null?r.key_numbers:r.numbers;
+    if(kn!=null){
+      const p=el('p','nums',Array.isArray(kn)?kn.map(String).join(' · '):String(kn));
+      card.appendChild(p);
+    }
+    if(r.verify_first)card.appendChild(el('p','or-quiet','This rule rests at least partly on a name match '
+      +'rather than a verified EIN. Confirm the identity before acting on it.'));
+    host.appendChild(card);
+  });
+  /* The generator puts ONLY fired rules in `rules` and carries the evaluated total in
+     counts, so this line states both. It used to read rules.length + ' rules fired',
+     which was true only as long as nothing quiet was ever shipped, and a quiet rule
+     rendered as a card reads as a fired one: every headline here is an assertion. */
+  const c=(ORIENTATION&&ORIENTATION.counts)||{};
+  const evaluated=Number(c.rules_evaluated);
+  const n=el('p','or-quiet',rules.length+' rule'+(rules.length===1?'':'s')+' fired against your data'
+    +(isFinite(evaluated)&&evaluated?' out of '+evaluated+' evaluated':'')
+    +(ORIENTATION.generated_date?', generated '+ORIENTATION.generated_date:'')
+    +'. A rule that did not fire is not shown, because its headline states a finding that '
+    +'did not hold.');
+  host.appendChild(n);
+}
+
+/* =================================================================
+   SECTION 8. Stated limits. These are properties of the METHOD, not
+   figures read off either data file, so each is carried with the file
+   and line that proves it rather than presented as page data. They
+   belong here and nowhere else on the page: neither is a headline.
+   ================================================================= */
+/* ON WHAT THESE LIMITS MAY SAY. The rule that keeps other organizations out of the
+   confidentiality guard applies here too, and it applies to this comment as much as to
+   the strings below, because a reader can open this file. A limit is a property of the
+   METHOD and can always be stated from the method's own code: the register's geography
+   column resolves at state level, and --limit defaults to 40. Neither point needs a
+   figure drawn from anybody else's shelf, and an earlier draft that reached for one was
+   making the same disclosure this guard exists to prevent, in the section of the page
+   least likely to be read closely. */
+const STATED_LIMITS=[
+  {claim:'The curated open-opportunity tier is filtered by state, not by locality.',
+   detail:'The opportunity register’s geography column resolves at state level only, so a curated row is '
+     +'selected for being open in Texas rather than for being open in Austin. The matching code says so in '
+     +'its own comments and applies a rank-not-filter mitigation, sorting rows curated for this organization '
+     +'first, but the underlying split into a funder location and a funding scope has not been applied to the '
+     +'file the code actually reads. The consequence is that the size of the curated tier is a Texas number '
+     +'rather than a Measure number, which is why it is not a headline anywhere on this page. The eligibility '
+     +'count in section five is not that number: it is the shelf’s own decision about this organization.',
+   src:'nonprofit-data/opportunity_register/opportunity_register.csv, geography column; almanac_match.py, the geography_fit call and the rank-not-filter comment above it'},
+  {claim:'The federal tier is capped at 40 and the real ceiling is unknown.',
+   detail:'Forty is the default value of the matcher’s --limit argument, applied to both prospective funders '
+     +'and open opportunities. A run that comes back with exactly 40 has hit that setting, which is not the '
+     +'same as having exhausted the supply. Nobody has asked for more than 40, so how many federal '
+     +'opportunities exist beyond it has not been measured. Treat 40 as a setting, never as a finding.',
+   src:'nonprofit-data/almanac_match.py line 741, ap.add_argument("--limit", type=int, default=40)'},
+  {claim:'Blank is not zero.',
+   detail:'Award ceilings are absent on most non-barred rows and award floors are absent on most federal rows. '
+     +'No figure on this page concludes anything from a missing value, and neither should you. The register’s '
+     +'own coverage note states that absence is not evidence.',
+   src:'Almanac shelf, coverage_note'},
+  {claim:'The two funding-history sources are counting different things.',
+   detail:'Your own confirmed prior funders and the funding history reconstructed from IRS filings report '
+     +'different amounts for the same funder. Neither is wrong. The confirmed rows are single-grant snapshots, '
+     +'and the reconstructed rows are multi-year lifetime sums. Any portfolio arithmetic in section seven uses '
+     +'the EIN-verified reconstruction alone, because it is the only one of the two with a consistent denominator.',
+   src:'profile.confirmed_prior_funders against the shelf’s EIN-joined prior funders'},
+  {claim:'Name matches carry no recipient EIN, because the source has none.',
+   detail:'Funders that appear by name match come from 990-PF Part XV. That form records a recipient name and no '
+     +'recipient EIN on any row of it, so identity cannot be proven from the source no matter how the match is '
+     +'made. Those rows are labelled as needing verification everywhere they appear.',
+   src:'Almanac shelf tier definitions, tier_2_promising'}
+];
+function renderAppendix(){
+  const enr=PROFILE.public_profile_enrichment;
+  setText('or-method-almanac',ALMANAC.method||'');
+  setText('or-method-enrichment',enr.method||'');
+  setText('or-financial-summary',enr.financial_summary||'');
+  setText('or-budget-band',enr.operating_budget_band||'');
+  setText('or-bipoc',enr.is_black_bipoc_led||'');
+
+  const lim=document.getElementById('or-limits');
+  STATED_LIMITS.forEach(l=>{
+    const b=el('div','or-box');
+    b.appendChild(el('span','or-kicker',l.claim));
+    b.appendChild(el('p',null,l.detail));
+    b.appendChild(el('p','or-src','Proof: '+l.src));
+    lim.appendChild(b);
+  });
+
+  const ps=document.getElementById('or-profile-sources');
+  (PROFILE.profile_sources||[]).forEach(s=>ps.appendChild(el('li',null,String(s))));
+
+  const all=enr.verified_facts||[];
+  const host=document.getElementById('or-allfacts');
+  all.forEach(f=>host.appendChild(factNode(f)));
+  setText('or-allfacts-count','('+all.length+')');
+}
+
+/* =================================================================
+   LOAD
+   ================================================================= */
+function showLoadError(msg){
+  const host=document.getElementById('or-loaderr');
+  const box=el('div','or-msg');
+  box.appendChild(el('span','or-kicker','This page did not load its data'));
+  box.appendChild(el('p',null,msg));
+  box.appendChild(el('p',null,'A half-rendered orientation showing a profile with no shelf, or a shelf with no '
+    +'profile, is worse than an honest failure: it looks like a complete answer that happens to be empty. '
+    +'Treat any section below that is blank or partial as not having loaded, rather than as having '
+    +'nothing to report.'));
+  host.appendChild(box);
+}
+
+async function load(){
+  /* Both core files must load. The orientation rules file is allowed to be
+     absent: it is generated separately and section seven degrades visibly. */
+  let pRes,aRes;
+  try{
+    [pRes,aRes]=await Promise.all([
+      fetch(PROFILE_URL,{cache:'no-store'}),
+      fetch(ALMANAC_URL,{cache:'no-store'})
+    ]);
+  }catch(e){
+    showLoadError('Neither data file could be requested. '+e);
+    return;
+  }
+  if(!pRes.ok){showLoadError('Could not load '+PROFILE_URL+' (HTTP '+pRes.status+').');return;}
+  if(!aRes.ok){showLoadError('Could not load '+ALMANAC_URL+' (HTTP '+aRes.status+').');return;}
+  /* Parsing is inside the try as well as fetching. A truncated deploy, or a server that
+     answers 200 with an error page, fails HERE and not at the request, and an unhandled
+     rejection at this point leaves the error panel empty and the page half-rendered. */
+  try{
+    PROFILE=await pRes.json();
+    ALMANAC=await aRes.json();
+  }catch(e){
+    showLoadError('A data file was served but could not be parsed as JSON: '+e);
+    return;
+  }
+  if(!PROFILE.public_profile_enrichment){
+    showLoadError('The profile loaded without its public-record enrichment block.');
+    return;
+  }
+
+  const disp=PROFILE.display||{};
+  if(PROFILE.organization){
+    setText('or-brand',PROFILE.organization);
+    document.title='Orientation '+String.fromCharCode(183)+' '+PROFILE.organization;
+    setText('or-hero-h1','Getting started with '+PROFILE.organization+'’s tools');
+  }
+  if(disp.footer_credit)setText('or-footer',disp.footer_credit);
+  setText('or-generated',ALMANAC.generated_date||'date not recorded');
+  setText('or-asof',PROFILE.public_profile_enrichment.as_of||'date not recorded');
+
+  computeOwnStates();
+  renderTiers();
+  renderIdentity();
+  renderPrograms();
+  renderNtee();
+  renderPriorFunders();
+  renderFacts();
+  renderConflicts();
+  renderEligibility();
+  renderNeeds();
+  renderAppendix();
+
+  /* Rules last: it is the only section allowed to fail on its own. */
+  try{
+    const oRes=await fetch(ORIENTATION_URL,{cache:'no-store'});
+    if(!oRes.ok){
+      renderRulesMissing('The file is not present yet (HTTP '+oRes.status+'). It is being generated separately '
+        +'from the rest of this page.');
+    }else{
+      ORIENTATION=await oRes.json();
+      renderRules();
+    }
+  }catch(e){
+    renderRulesMissing('The file could not be read: '+e+'.');
+  }
+
+  closeFolds();
+}
+/* Every render below the first two sections can throw on a shape the file did not
+   have when this was written, and an uncaught throw here used to leave sections one
+   and two complete, sections three to eight as bare headings, and the error panel
+   empty: a page that looks finished and is not. The catch is what makes the panel's
+   own promise, that nothing below is filled in, true rather than aspirational. */
+load().catch(e=>showLoadError('The page loaded its data but failed while rendering it: '+e
+  +'. Some sections above may be incomplete, and any section that is blank is blank for '
+  +'this reason and not because there was nothing to show.'));
+</script>
 </body>
 </html>
