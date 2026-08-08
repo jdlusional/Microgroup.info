@@ -56,12 +56,43 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
 .or-nav li::before{content:counter(ornav) ". ";color:var(--wash)}
 .or-nav a{color:var(--wash);text-decoration:none}
 .or-nav a:hover{color:var(--ink);text-decoration:underline}
-.or-sec{margin:0 0 3.4rem;scroll-margin-top:1rem}
-.or-sec>h2{font-family:var(--serif);font-weight:700;font-size:1.7rem;margin:0 0 .5rem;line-height:1.2}
-.or-sec>h2 .num{font-family:var(--mono);font-size:.8rem;color:var(--accent);display:block;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;font-weight:500}
+/* ---- ENTERPRISE PAGE CONVENTIONS, adopted 2026-08-08 at owner instruction. Ported from
+   measure-enterprise.html rather than rewritten, so the two pages cannot drift: every
+   top-level section is its own bordered card with a centred toggle above its kicker and
+   title, only .fold-body collapses, and every h3 inside a section body becomes its own
+   collapsible block. The selectors and the .mc-closed mechanism are the enterprise page's
+   own, character for character; only the surrounding or-* content styles are local.
+   Owner ruling 2026-08-03 governs the initial state: closed on open. ---- */
+.section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem;padding:1.6rem 1.4rem}
+.section.section-card:last-of-type{margin-bottom:0}
+.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.section-head{text-align:center}
+.mc-closed .fold-body{display:none}
+.mc-toggle{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;cursor:pointer;white-space:nowrap}
+.mc-toggle:hover{background:var(--well)}
+@media(max-width:640px){.mc-toggle{width:100%;margin-left:0;margin-top:.5rem;text-align:center}}
+/* SUB-HEADING FOLDS, same ruling. Reuses .mc-closed .fold-body rather than introducing a
+   second hide mechanism, exactly as the enterprise page does. */
+.subfold{margin:0 0 1.1rem}
+.subfold-head{display:flex;align-items:flex-start;gap:.75rem}
+.subfold-head h3{margin:0}
+.subfold-head .mc-toggle{margin-left:auto;flex:0 0 auto}
+@media(max-width:560px){
+  .subfold-head{flex-direction:column;align-items:stretch}
+  .subfold-head .mc-toggle{width:100%;margin-left:0}
+}
+/* The section wrapper class changed from .or-sec to .section.section-card in the same pass,
+   so every rule below is repointed. Caught by grepping for orphaned selectors rather than by
+   looking at the page: .or-sec h3 and .or-sec p would have matched NOTHING, silently dropping
+   heading sizing and the 66ch measure, and a page with unstyled-but-present text still looks
+   like a page that works. */
+.section-card{scroll-margin-top:1rem}
+.section-card h2{font-family:var(--serif);font-weight:700;font-size:1.7rem;margin:0;line-height:1.2}
+.section-card .kicker{font-family:var(--mono);font-size:.8rem;color:var(--accent);display:block;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;font-weight:500}
+.section-card .fold-body{margin-top:1.4rem}
 .or-lede{color:var(--wash);font-style:italic;font-size:1.05rem;margin:0 0 1.4rem;max-width:64ch}
-.or-sec h3{font-family:var(--serif);font-weight:700;font-size:1.05rem;margin:1.6rem 0 .5rem}
-.or-sec p{max-width:66ch}
+.section-card h3{font-family:var(--serif);font-weight:700;font-size:1.05rem;margin:1.6rem 0 .5rem}
+.section-card p{max-width:66ch}
 .or-box{background:#fff;border:1px solid var(--rule);padding:1.1rem 1.2rem;margin:0 0 1.2rem}
 .or-box.accent{border-left:3px solid var(--accent)}
 .or-box.warn{border-left:3px solid var(--urgent)}
@@ -201,8 +232,16 @@ details.or-fold>.or-foldbody{padding:1rem}
   </noscript>
 
   <!-- ============ 1 ============ -->
-  <section class="or-sec" id="or-s1">
-    <h2><span class="num">Section one</span>What Almanac and Scribe are</h2>
+  <section class="section section-card" id="or-s1">
+    <div class="fold">
+      <div class="section-head-row">
+        <button class="mc-toggle" type="button" aria-controls="or-s1-body"></button>
+        <div class="section-head">
+          <span class="kicker"></span>
+          <h2>Section one</h2>
+        </div>
+      </div>
+      <div class="fold-body" id="or-s1-body">
     <p class="or-lede">Two tools, one shelf. Almanac decides what you are eligible for. Scribe writes against what Almanac decided, and never decides anything itself.</p>
 
     <div class="or-box">
@@ -232,11 +271,21 @@ details.or-fold>.or-foldbody{padding:1rem}
       <span class="or-kicker">The practical rule</span>
       <p id="or-tier-rule"></p>
     </div>
+      </div>
+    </div>
   </section>
 
   <!-- ============ 2 ============ -->
-  <section class="or-sec" id="or-s2">
-    <h2><span class="num">Section two</span>Who you are on the record</h2>
+  <section class="section section-card" id="or-s2">
+    <div class="fold">
+      <div class="section-head-row">
+        <button class="mc-toggle" type="button" aria-controls="or-s2-body"></button>
+        <div class="section-head">
+          <span class="kicker"></span>
+          <h2>Section two</h2>
+        </div>
+      </div>
+      <div class="fold-body" id="or-s2-body">
     <p class="or-lede">This is the profile the matching engine runs against. If any of it is wrong, the matches are wrong, and the fastest correction you can make is here.</p>
 
     <div class="or-tablewrap">
@@ -266,11 +315,21 @@ details.or-fold>.or-foldbody{padding:1rem}
         <tbody id="or-priorfunders"></tbody>
       </table>
     </div>
+      </div>
+    </div>
   </section>
 
   <!-- ============ 3 ============ -->
-  <section class="or-sec" id="or-s3">
-    <h2><span class="num">Section three</span>What the public record says about you</h2>
+  <section class="section section-card" id="or-s3">
+    <div class="fold">
+      <div class="section-head-row">
+        <button class="mc-toggle" type="button" aria-controls="or-s3-body"></button>
+        <div class="section-head">
+          <span class="kicker"></span>
+          <h2>Section three</h2>
+        </div>
+      </div>
+      <div class="fold-body" id="or-s3-body">
     <p class="or-lede">Everything a funder can find out about you without asking, gathered and sourced. Below is a narrated selection. The full set is in the appendix.</p>
 
     <div class="or-figs" id="or-fact-figs"></div>
@@ -278,11 +337,21 @@ details.or-fold>.or-foldbody{padding:1rem}
     <div id="or-fact-groups"></div>
 
     <p class="or-quiet" id="or-fact-more"></p>
+      </div>
+    </div>
   </section>
 
   <!-- ============ 4 ============ -->
-  <section class="or-sec" id="or-s4">
-    <h2><span class="num">Section four</span>Where the public record disagrees with itself</h2>
+  <section class="section section-card" id="or-s4">
+    <div class="fold">
+      <div class="section-head-row">
+        <button class="mc-toggle" type="button" aria-controls="or-s4-body"></button>
+        <div class="section-head">
+          <span class="kicker"></span>
+          <h2>Section four</h2>
+        </div>
+      </div>
+      <div class="fold-body" id="or-s4-body">
     <p class="or-lede">A funder doing diligence will find these before you do. Each one is a place two of your own public sources give different answers, and each one is easier to fix now than to explain later.</p>
 
     <div class="or-box accent">
@@ -290,11 +359,21 @@ details.or-fold>.or-foldbody{padding:1rem}
     </div>
 
     <ol class="or-list" id="or-conflicts"></ol>
+      </div>
+    </div>
   </section>
 
   <!-- ============ 5 ============ -->
-  <section class="or-sec" id="or-s5">
-    <h2><span class="num">Section five</span>What you are eligible for right now</h2>
+  <section class="section section-card" id="or-s5">
+    <div class="fold">
+      <div class="section-head-row">
+        <button class="mc-toggle" type="button" aria-controls="or-s5-body"></button>
+        <div class="section-head">
+          <span class="kicker"></span>
+          <h2>Section five</h2>
+        </div>
+      </div>
+      <div class="fold-body" id="or-s5-body">
     <p class="or-lede">One number, read directly off the shelf.</p>
 
     <div class="or-figs or-headline" id="or-headline-figs"></div>
@@ -334,11 +413,21 @@ details.or-fold>.or-foldbody{padding:1rem}
         </div>
       </div>
     </details>
+      </div>
+    </div>
   </section>
 
   <!-- ============ 6 ============ -->
-  <section class="or-sec" id="or-s6">
-    <h2><span class="num">Section six</span>What we still need from you</h2>
+  <section class="section section-card" id="or-s6">
+    <div class="fold">
+      <div class="section-head-row">
+        <button class="mc-toggle" type="button" aria-controls="or-s6-body"></button>
+        <div class="section-head">
+          <span class="kicker"></span>
+          <h2>Section six</h2>
+        </div>
+      </div>
+      <div class="fold-body" id="or-s6-body">
     <p class="or-lede">Three lists, in order of how much of your time they cost. The first list is the one that pays back fastest: those facts exist and only you have them.</p>
 
     <h3>Only you can supply this <span class="or-src" id="or-legacy-n"></span></h3>
@@ -352,11 +441,21 @@ details.or-fold>.or-foldbody{padding:1rem}
     <h3>Not knowable from any source <span class="or-src" id="or-unknowable-n"></span></h3>
     <p class="or-quiet">Recorded so that nobody spends time looking again. These are internal figures or judgements that appear on no filing and no page.</p>
     <ul class="or-list" id="or-unknowable"></ul>
+      </div>
+    </div>
   </section>
 
   <!-- ============ 7 ============ -->
-  <section class="or-sec" id="or-s7">
-    <h2><span class="num">Section seven</span>Where you could strengthen your position</h2>
+  <section class="section section-card" id="or-s7">
+    <div class="fold">
+      <div class="section-head-row">
+        <button class="mc-toggle" type="button" aria-controls="or-s7-body"></button>
+        <div class="section-head">
+          <span class="kicker"></span>
+          <h2>Section seven</h2>
+        </div>
+      </div>
+      <div class="fold-body" id="or-s7-body">
     <p class="or-lede">Deterministic rules, not advice. Each one is a condition that either holds against your data or does not, with the numbers that made it fire.</p>
 
     <div class="or-box">
@@ -364,12 +463,23 @@ details.or-fold>.or-foldbody{padding:1rem}
     </div>
 
     <div id="or-rules"></div>
+      </div>
+    </div>
   </section>
 
   <!-- ============ 8 ============ -->
-  <section class="or-sec or-appendix" id="or-s8">
-    <span class="or-tag">Appendix &middot; technical</span>
-    <h2><span class="num">Section eight</span>Method, provenance and stated limits</h2>
+  <section class="section section-card or-appendix" id="or-s8">
+    <div class="fold">
+      <div class="section-head-row">
+        <button class="mc-toggle" type="button" aria-controls="or-s8-body"></button>
+        <div class="section-head">
+        <span class="or-tag">Appendix &middot; technical</span>
+          <span class="kicker">    <span class="or-tag">Appendix &middot; technical</span>
+</span>
+          <h2>Section eight</h2>
+        </div>
+      </div>
+      <div class="fold-body" id="or-s8-body">
     <p class="or-lede">Written for a reader who wants to audit the numbers rather than use them. Nothing here is required to read the seven sections above.</p>
 
     <!-- MIGRATED FROM measure-enterprise.html 2026-08-07, owner order: the enterprise page's two
@@ -443,6 +553,8 @@ details.or-fold>.or-foldbody{padding:1rem}
         <div class="or-facts" id="or-allfacts"></div>
       </div>
     </details>
+      </div>
+    </div>
   </section>
 
   <p style="margin:0 0 3rem"><a href="measure-enterprise.html">Go to the Measure enterprise page &#8594;</a></p>
@@ -1238,6 +1350,82 @@ async function load(){
 load().catch(e=>showLoadError('The page loaded its data but failed while rendering it: '+e
   +'. Some sections above may be incomplete, and any section that is blank is blank for '
   +'this reason and not because there was nothing to show.'));
+</script>
+<script>
+/* SECTION ACCORDIONS AND SUB-HEADING FOLDS. Ported from measure-enterprise.html 2026-08-08 at
+   owner instruction, so the two pages share one mechanism rather than two that drift.
+
+   Owner ruling 2026-08-03: everything CLOSED ON OPEN for this page type. That ruling reversed
+   the older no-tab-drops convention and requires the ratification be named next to the element;
+   this comment is that.
+
+   FAILS OPEN. The closed state is applied by script, never in markup, so with scripting off
+   every section is fully expanded and nothing is hidden. That property already held for this
+   page's <details> folds and is preserved here rather than replaced.
+
+   The sub-heading logic below is the enterprise page's, kept intact rather than simplified,
+   because its two guards were each learned the hard way there:
+     - FLATTEN BEFORE GROUPING. "An h3 owns its following siblings up to the next h3" is false
+       when an h3 sits one level deeper than its peer; the naive rule folds the deeper one
+       INSIDE the shallower, so collapsing the first takes the second with it.
+     - A HEADING ROW IS NOT A SUB-HEADING. Blocks whose class ends in -head carry a card's own
+       title, and folding one hides the card behind itself. */
+(function(){
+  document.querySelectorAll('.section-card').forEach(function(sec){
+    var btn=sec.querySelector(':scope > .fold > .section-head-row > .mc-toggle');
+    if(!btn)return;
+    var setOpen=function(open){
+      sec.classList.toggle('mc-closed',!open);
+      btn.setAttribute('aria-expanded',String(open));
+      btn.textContent=open?'Hide section':'Show section';
+    };
+    setOpen(false);
+    btn.addEventListener('click',function(){setOpen(sec.classList.contains('mc-closed'));});
+  });
+
+  function foldSubheads(root){
+    var blocks=[];
+    (root||document).querySelectorAll('.fold-body h3').forEach(function(h){
+      if(h.closest('.subfold-head'))return;
+      var b=h.parentNode;
+      if(b && blocks.indexOf(b)<0)blocks.push(b);
+    });
+    blocks.forEach(function(block){
+      if(block.querySelector(':scope > .mc-toggle'))return;
+      if(/(^|\s)[\w-]*-head(\s|$)/.test(block.className||''))return;
+      var inherited='',w;
+      while((w=Array.prototype.filter.call(block.children,function(c){
+        return c.tagName!=='H3' && c.querySelector('h3');}) [0])){
+        if(w.className)inherited=w.className;
+        while(w.firstChild)block.insertBefore(w.firstChild,w);
+        w.parentNode.removeChild(w);
+      }
+      Array.prototype.filter.call(block.children,function(c){return c.tagName==='H3';})
+        .forEach(function(h){
+          if(h.closest('.subfold-head'))return;
+          var sibs=[],n=h.nextSibling;
+          while(n && !(n.nodeType===1 && n.tagName==='H3')){sibs.push(n);n=n.nextSibling;}
+          var wrap=document.createElement('div');wrap.className='subfold';
+          var head=document.createElement('div');head.className='subfold-head';
+          var body=document.createElement('div');body.className=(inherited?inherited+' ':'')+'fold-body';
+          var btn=document.createElement('button');btn.className='mc-toggle';btn.type='button';
+          h.parentNode.insertBefore(wrap,h);
+          head.appendChild(h);head.appendChild(btn);
+          sibs.forEach(function(s){body.appendChild(s);});
+          wrap.appendChild(head);wrap.appendChild(body);
+          var setOpen=function(open){
+            wrap.classList.toggle('mc-closed',!open);
+            btn.setAttribute('aria-expanded',String(open));
+            btn.textContent=open?'Hide':'Show';
+          };
+          setOpen(false);
+          btn.addEventListener('click',function(){setOpen(wrap.classList.contains('mc-closed'));});
+        });
+    });
+  }
+  foldSubheads(document);
+  window.foldSubheads=foldSubheads;
+})();
 </script>
 </body>
 </html>
