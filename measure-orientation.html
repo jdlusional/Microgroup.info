@@ -39,20 +39,20 @@ body{margin:0;font-family:var(--serif);color:var(--ink);background:var(--paper);
 a{color:inherit}
 .bar{background:var(--well);border-bottom:2px solid var(--ink)}
 .bar-in{max-width:900px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.bar-brand{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink)}
-.bar-note{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;color:var(--wash)}
+.bar-brand{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--ink)}
+.bar-note{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--wash)}
 .hero{max-width:900px;margin:0 auto;padding:3.2rem 1.5rem 1rem}
-.hero .kicker{font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:500}
-.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,5vw,3rem);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
-.hero p{color:var(--wash);max-width:64ch;font-size:1.04rem;margin:0 0 1rem}
-footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:.72rem;letter-spacing:.02em}
+.hero .kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,5vw,40px);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
+.hero p{color:var(--wash);max-width:64ch;font-size:20px;margin:0 0 1rem}
+footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:12px;letter-spacing:.02em}
 
 /* ---- Orientation page's own styles. tool-shared.css is linked, never edited:
        another session may be live in this repo. Anything new lives here. ---- */
 .or-wrap{max-width:900px;margin:0 auto;padding:0 1.5rem}
 .or-nav{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:1.4rem 0 2.4rem}
 .or-nav ol{list-style:none;margin:0;padding:.7rem 0;display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;counter-reset:ornav}
-.or-nav li{counter-increment:ornav;font-family:var(--mono);font-size:.72rem;letter-spacing:.02em}
+.or-nav li{counter-increment:ornav;font-family:var(--mono);font-size:12.5px;letter-spacing:.02em}
 .or-nav li::before{content:counter(ornav) ". ";color:var(--wash)}
 .or-nav a{color:var(--wash);text-decoration:none}
 .or-nav a:hover{color:var(--ink);text-decoration:underline}
@@ -68,7 +68,7 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
 .section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
 .section-head{text-align:center}
 .mc-closed .fold-body{display:none}
-.mc-toggle{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;cursor:pointer;white-space:nowrap}
+.mc-toggle{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;cursor:pointer;white-space:nowrap}
 .mc-toggle:hover{background:var(--well)}
 @media(max-width:640px){.mc-toggle{width:100%;margin-left:0;margin-top:.5rem;text-align:center}}
 /* SUB-HEADING FOLDS, same ruling. Reuses .mc-closed .fold-body rather than introducing a
@@ -87,56 +87,56 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
    heading sizing and the 66ch measure, and a page with unstyled-but-present text still looks
    like a page that works. */
 .section-card{scroll-margin-top:1rem}
-.section-card h2{font-family:var(--serif);font-weight:700;font-size:1.7rem;margin:0;line-height:1.2}
-.section-card .kicker{font-family:var(--mono);font-size:.8rem;color:var(--accent);display:block;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;font-weight:500}
+.section-card h2{font-family:var(--serif);font-weight:700;font-size:30px;margin:0;line-height:1.2}
+.section-card .kicker{font-family:var(--mono);font-size:15px;color:var(--accent);display:block;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;font-weight:500}
 .section-card .fold-body{margin-top:1.4rem}
-.or-lede{color:var(--wash);font-style:italic;font-size:1.05rem;margin:0 0 1.4rem;max-width:64ch}
-.section-card h3{font-family:var(--serif);font-weight:700;font-size:1.05rem;margin:1.6rem 0 .5rem}
+.or-lede{color:var(--wash);font-style:italic;font-size:20px;margin:0 0 1.4rem;max-width:64ch}
+.section-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:1.6rem 0 .5rem}
 .section-card p{max-width:66ch}
 .or-box{background:#fff;border:1px solid var(--rule);padding:1.1rem 1.2rem;margin:0 0 1.2rem}
 .or-box.accent{border-left:3px solid var(--accent)}
 .or-box.warn{border-left:3px solid var(--urgent)}
-.or-kicker{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--wash);margin:0 0 .5rem;display:block}
+.or-kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--wash);margin:0 0 .5rem;display:block}
 .or-figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:0 0 1.4rem}
 .or-fig{background:#fff;padding:.95rem 1rem}
-.or-fig .n{font-family:var(--serif);font-size:1.9rem;font-weight:700;display:block;line-height:1.1}
-.or-fig .l{font-size:.85rem;color:var(--wash);font-style:italic;display:block;margin-top:.2rem}
-.or-headline .n{font-size:3.2rem;color:var(--accent)}
+.or-fig .n{font-family:var(--serif);font-size:22.5px;font-weight:700;display:block;line-height:1.1}
+.or-fig .l{font-size:15px;color:var(--wash);font-style:italic;display:block;margin-top:.2rem}
+.or-headline .n{font-size:40px;color:var(--accent)}
 .or-facts{margin:0}
 .or-fact{border-top:1px solid var(--rule);padding:.85rem 0}
 .or-fact:last-child{border-bottom:1px solid var(--rule)}
-.or-fact .f{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--wash);text-transform:uppercase;display:block;margin-bottom:.25rem}
+.or-fact .f{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--wash);text-transform:uppercase;display:block;margin-bottom:.25rem}
 .or-fact .v{display:block}
-.or-fact .m{font-size:.82rem;color:var(--wash);margin-top:.35rem;display:block}
-.or-conf{font-family:var(--mono);font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid currentColor;padding:.08rem .35rem;margin-left:.4rem;white-space:nowrap;vertical-align:.08em}
+.or-fact .m{font-size:15px;color:var(--wash);margin-top:.35rem;display:block}
+.or-conf{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid currentColor;padding:.08rem .35rem;margin-left:.4rem;white-space:nowrap;vertical-align:.08em}
 .or-conf-high{color:var(--ok)}
 .or-conf-medium{color:#8a6d1f}
 .or-conf-low{color:var(--urgent)}
 .or-list{margin:0 0 1.2rem;padding-left:1.1rem}
 .or-list li{margin:0 0 .6rem;max-width:66ch}
 .or-tablewrap{overflow-x:auto;border:1px solid var(--rule);background:#fff;margin:0 0 1.2rem}
-table.or-t{border-collapse:collapse;width:100%;font-size:.88rem;min-width:520px}
+table.or-t{border-collapse:collapse;width:100%;font-size:15px;min-width:520px}
 table.or-t th,table.or-t td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top}
-table.or-t th{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--wash);font-weight:500}
+table.or-t th{font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--wash);font-weight:500}
 table.or-t tr:last-child td{border-bottom:none}
 .or-rule{border:1px solid var(--rule);background:#fff;padding:1.1rem 1.2rem;margin:0 0 1rem}
-.or-rule .rid{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:var(--accent);font-weight:500}
-.or-rule h3{margin:.3rem 0 .5rem;font-size:1.12rem}
-.or-rule .trig{font-size:.85rem;color:var(--wash);font-style:italic;margin:0 0 .6rem}
-.or-rule .nums{font-family:var(--mono);font-size:.8rem;line-height:1.6;margin:0;background:var(--well);padding:.6rem .7rem}
+.or-rule .rid{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;color:var(--accent);font-weight:500}
+.or-rule h3{margin:.3rem 0 .5rem;font-size:25px}
+.or-rule .trig{font-size:15px;color:var(--wash);font-style:italic;margin:0 0 .6rem}
+.or-rule .nums{font-family:var(--mono);font-size:14px;line-height:1.6;margin:0;background:var(--well);padding:.6rem .7rem}
 details.or-fold{border:1px solid var(--rule);background:#fff;margin:0 0 1.2rem}
-details.or-fold>summary{cursor:pointer;padding:.75rem 1rem;font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;color:var(--ink);list-style:none;background:var(--well)}
+details.or-fold>summary{cursor:pointer;padding:.75rem 1rem;font-family:var(--mono);font-size:15px;letter-spacing:.03em;color:var(--ink);list-style:none;background:var(--well)}
 details.or-fold>summary::-webkit-details-marker{display:none}
 details.or-fold>summary::before{content:"\25B8 ";color:var(--accent)}
 details.or-fold[open]>summary::before{content:"\25BE ";color:var(--accent)}
 details.or-fold>.or-foldbody{padding:1rem}
 .or-appendix{border-top:3px double var(--ink);padding-top:1.8rem;margin-top:1rem}
-.or-appendix .or-tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--urgent);display:block;margin-bottom:.5rem}
-.or-src{font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;color:var(--wash)}
-.or-msg{border:1px solid var(--urgent);border-left:3px solid var(--urgent);background:#fff;padding:1rem 1.1rem;margin:0 0 1.2rem;font-size:.92rem}
+.or-appendix .or-tag{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--urgent);display:block;margin-bottom:.5rem}
+.or-src{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--wash)}
+.or-msg{border:1px solid var(--urgent);border-left:3px solid var(--urgent);background:#fff;padding:1rem 1.1rem;margin:0 0 1.2rem;font-size:15px}
 .or-msg .or-kicker{color:var(--urgent)}
-.or-noscript{border:1px solid var(--rule);background:var(--well);padding:1rem 1.1rem;margin:1rem 0;font-size:.92rem}
-.or-quiet{color:var(--wash);font-size:.86rem}
+.or-noscript{border:1px solid var(--rule);background:var(--well);padding:1rem 1.1rem;margin:1rem 0;font-size:15px}
+.or-quiet{color:var(--wash);font-size:15px}
 /* ---- Mobile. This page is plain flow: no hard-snap, no 100vh, so no --vh fix
        is needed here. The two real risks are a grid/flex child refusing to
        shrink below its content and a long unbroken string (a URL, an EIN, a
@@ -150,8 +150,8 @@ details.or-fold>.or-foldbody{padding:1rem}
    clipping here would swallow the horizontal scroll the .or-tablewrap tables need
    on a narrow screen, putting the Deadline and Source columns out of reach. */
 @media(max-width:640px){
-  .or-headline .n{font-size:2.4rem}
-  .or-sec>h2{font-size:1.4rem}
+  .or-headline .n{font-size:30px}
+  .section-card h2{font-size:25px}
   .or-wrap,.hero,.bar-in{padding-left:1.1rem;padding-right:1.1rem}
   .or-figs{grid-template-columns:1fr 1fr}
   .or-box,.or-rule,.or-msg,details.or-fold>.or-foldbody{padding:.9rem 1rem}
@@ -1340,6 +1340,15 @@ async function load(){
   }
 
   closeFolds();
+
+  /* SUB-HEADINGS INJECTED BY THIS RENDER, folded now that they exist.
+     foldSubheads(document) runs at page-script time, while this function is still awaiting
+     its fetches, so it can only ever see the STATIC headings. Every heading rendered above
+     -- the grouped fact blocks and the rule cards -- arrives afterwards and was silently
+     left unfolded, so the convention applied to about half the page.
+     It is idempotent: a block already carrying its own .mc-toggle is skipped, so re-running
+     it cannot double-wrap what the first pass already did. */
+  if(window.foldSubheads)window.foldSubheads(document);
 }
 /* Every render below the first two sections can throw on a shape the file did not
    have when this was written, and an uncaught throw here used to leave sections one
@@ -1392,6 +1401,10 @@ load().catch(e=>showLoadError('The page loaded its data but failed while renderi
     blocks.forEach(function(block){
       if(block.querySelector(':scope > .mc-toggle'))return;
       if(/(^|\s)[\w-]*-head(\s|$)/.test(block.className||''))return;
+      /* A RULE CARD'S h3 IS ITS TITLE. .or-rule does not end in -head, so the guard above
+         does not catch it, and folding here would collapse each card's body under its own
+         headline. Found by simulating the re-fold before shipping it, not by seeing it. */
+      if(block.classList && block.classList.contains('or-rule'))return;
       var inherited='',w;
       while((w=Array.prototype.filter.call(block.children,function(c){
         return c.tagName!=='H3' && c.querySelector('h3');}) [0])){
