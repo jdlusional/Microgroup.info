@@ -152,3 +152,50 @@ footer p{max-width:none;margin:.4rem 0}
 .footer-custom-note{display:block;margin-top:.4rem;font-family:var(--mono);font-size:12px;color:var(--wash)}
 .footer-custom-note a{color:var(--wash);text-decoration:underline}
 .footer-custom-note a:hover{color:var(--ink)}
+
+/* =====================================================================
+   PRINT, added 2026-08-08. Owner-approved shared change, verified across all
+   23 pages that link this file.
+
+   WHY IT IS SHARED RATHER THAN PER-PAGE. Every enterprise and orientation page
+   in this family adopted CLOSED-ON-OPEN (owner ruling 2026-08-03), which means
+   a reader who prints one gets HEADINGS AND NOTHING ELSE. measure-enterprise
+   carries 17 collapsed section cards; measure-orientation carries 8. The defect
+   is identical on both and on every page that adopts the convention next, so it
+   belongs here rather than being fixed once per page.
+
+   Measured before writing: 22 of the 23 pages linking this file had NO print
+   rules and no reduced-motion rules at all, and none redeclares body font-size,
+   so nothing here can collide with an existing local rule.
+
+   The collapse is applied by script but expressed as CLASSES, so print overrides
+   the class and needs no JavaScript involvement.
+   ===================================================================== */
+@media print{
+  /* The three collapse mechanisms this family uses. A page carrying only one of
+     them simply no-ops on the other two. */
+  .mc-closed .fold-body,.mc-closed .mc-body{display:block !important}
+  details{display:block}
+  details>summary{list-style:none}
+  /* Controls do nothing on paper. */
+  .mc-toggle,.manifest,.bar,.toolbar,.chip-filter,.status-select,.admin-toggle{display:none !important}
+  /* Ink on white: the paper palette wastes toner and reads worse in greyscale. */
+  body{background:#fff;color:#000;font-size:11pt}
+  .card,.match-card,.entry,.watch-item,.draft-card,.method-box,.section-card,.stat-row .stat{
+    background:#fff;border-color:#999}
+  /* Keep a card whole, and keep a heading with what it introduces. */
+  .card,.match-card,.entry,.watch-item,.draft-card,.section-card,.subfold{
+    break-inside:avoid;page-break-inside:avoid}
+  h2,h3,.mc-head,.card-head,.section-head{break-after:avoid;page-break-after:avoid}
+  /* A citation a reader cannot see is a citation they cannot check. */
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;word-break:break-all}
+  .wrap,.method-wrap,.manifest-in{max-width:none;padding:0}
+}
+
+/* Motion. Little in this family animates today, but the fold toggles are where a
+   transition gets added next, and the guard costs nothing now. */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;scroll-behavior:auto !important}
+}

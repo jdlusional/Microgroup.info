@@ -1,0 +1,772 @@
+{
+ "product": "orientation",
+ "client_slug": "measure-austin",
+ "ein": "822372196",
+ "generated_date": "2026-08-07",
+ "spec": "orientation-insight-rules-spec.md, design pass 2026-08-07",
+ "inputs_read": {
+  "shelf": "C:\\Users\\jonat\\repos\\jonathanlindavis-pipelines\\nonprofit-data\\almanac_match_822372196.json",
+  "profile": "C:\\Users\\jonat\\repos\\jonathanlindavis-pipelines\\measure\\measure-austin_profile.json",
+  "almanac_page_data": "C:\\Users\\jonat\\repos\\Microgroup.info\\data\\measure-austin_almanac.json",
+  "opportunity_register": "C:\\Users\\jonat\\repos\\jonathanlindavis-pipelines\\nonprofit-data\\opportunity_register\\opportunity_register.csv"
+ },
+ "method": "Ten deterministic rules, each computed from named fields in the Almanac shelf, the client profile, the Almanac page data and the curated opportunity register. Every number on the page is computed here; the page performs no arithmetic. Nothing on this page is written advice or model-generated prose. Eligibility is read from the Almanac shelf and never recomputed, and the warehouse is never queried.",
+ "headline": {
+  "ready_now": 53,
+  "source": "counts.ready_now, read as published",
+  "source_file": "C:\\Users\\jonat\\repos\\Microgroup.info\\data\\measure-austin_almanac.json",
+  "note": "Read from the Almanac page data. Not recounted here, and not derived from the register's own row totals, which are stated limits rather than a result."
+ },
+ "confidentiality_guard": {
+  "rule": "open_opportunities_curated is a SHARED shelf. Rows whose found_for_this_client is false belong to another client and are dropped. Emitted rows are built from an explicit field allowlist, so curator free text cannot reach the page even if a new leak phrasing appears.",
+  "allowlist_at_emit": [
+   "funder_name",
+   "title",
+   "close_date",
+   "deadline",
+   "source_url",
+   "confidence"
+  ],
+  "fields_measured_on_emitted_rows": [
+   "close_date",
+   "confidence",
+   "deadline",
+   "funder_name",
+   "prior_funder_grants",
+   "prior_funder_name",
+   "prior_funder_total_usd",
+   "relationship_evidence",
+   "source_url",
+   "title"
+  ],
+  "emitted_rows_measured": 22,
+  "suppressed_fields_checked": [
+   "fit_notes",
+   "barred_reason",
+   "on_shelf_because",
+   "eligibility_note",
+   "source_evidence",
+   "notes",
+   "why_watch",
+   "rationale",
+   "commercial"
+  ],
+  "suppressed_fields_found_on_emitted_rows": [],
+  "note": "Every figure in this block was measured against the rows in this file, not declared from a constant. Fields beyond the emit-time allowlist are prior funder attributes added by R4 from this client's own EIN-verified history; none of them originates in the shared register."
+ },
+ "rules": [
+  {
+   "id": "R1",
+   "headline": "The filed NTEE code is steering the whole match engine",
+   "trigger": "the filed NTEE major differs from the top-weighted major in your own profile, and you told us the filed code does not describe you",
+   "key_numbers": [
+    "Filed code B05 (Education)",
+    "40 of 40 prospective funders matched on the same NTEE major",
+    "40 of 40 federal rows carry the ED category",
+    "Your profile weights major B at 0.8, against 1.0 for R and S"
+   ],
+   "verify_first": false,
+   "fired": true,
+   "numbers": {
+    "filed_code": "B05",
+    "filed_major": "B",
+    "filed_major_name": "Education",
+    "filed_major_weight": 0.8,
+    "top_weight": 1.0,
+    "top_weighted_majors": [
+     "R",
+     "S"
+    ],
+    "client_says_code_does_not_describe_them": true,
+    "prospective_funders": 40,
+    "prospective_matched_on_same_ntee_major": 40,
+    "federal_rows": 40,
+    "federal_category_for_filed_major": "ED",
+    "federal_rows_carrying_that_category": 40
+   },
+   "sentence": "Your filed NTEE code is B05 (Education), and it is what the matching runs on. 40 of the 40 prospective funders the shelf returned were reached because they fund peers in that same band, and 40 of the 40 federal opportunities it returned carry the ED category. Your own profile weights major B at 0.8, below the 1.0 given to R and S, and you told us the filed code does not describe you.",
+   "proven_by": [
+    "profile.ntee_code_filed",
+    "profile.ntee_major_filed",
+    "profile.ntee_major_weights",
+    "profile.survey_response.positioning.filed_ntee_matches_self_view",
+    "almanac_match.prospective_funders[].closest_peer_match",
+    "almanac_match.open_opportunities_federal[].funding_categories"
+   ],
+   "stated_limit": "Both 40s are the shelf's own result cap, not a census: --limit defaults to 40 in almanac_match.py (line 741) and bounds the prospective and federal lists alike. The finding is that everything returned came back on the filed band, not that only 40 such funders exist.",
+   "detail": "Your filed NTEE code is B05 (Education), and it is what the matching runs on. 40 of the 40 prospective funders the shelf returned were reached because they fund peers in that same band, and 40 of the 40 federal opportunities it returned carry the ED category. Your own profile weights major B at 0.8, below the 1.0 given to R and S, and you told us the filed code does not describe you."
+  },
+  {
+   "id": "R2",
+   "headline": "One funder is 46 percent of documented history",
+   "trigger": "the largest single prior funder holds more than 30 percent of the documented total",
+   "key_numbers": [
+    "ST DAVID'S FOUNDATION: $947,000 of $2,072,796",
+    "45.7% of the documented history",
+    "Top three funders: $1,482,000, 71.5%",
+    "17 funders in the EIN-verified reconstruction"
+   ],
+   "verify_first": false,
+   "fired": true,
+   "numbers": {
+    "funders": 17,
+    "documented_total_usd": 2072796,
+    "largest_funder": "ST DAVID'S FOUNDATION",
+    "largest_funder_usd": 947000,
+    "largest_funder_pct": 45.7,
+    "top_three_usd": 1482000,
+    "top_three_pct": 71.5,
+    "threshold_pct": 30.0
+   },
+   "sentence": "ST DAVID'S FOUNDATION is 45.7% of your $2,072,796 documented funding history, and your three largest funders are 71.5% of it between them. That is a single relationship carrying close to half the record.",
+   "proven_by": [
+    "almanac_match.prior_funders_exact[].total_usd",
+    "almanac_match.prior_funders_exact[].funder_name"
+   ],
+   "detail": "ST DAVID'S FOUNDATION is 45.7% of your $2,072,796 documented funding history, and your three largest funders are 71.5% of it between them. That is a single relationship carrying close to half the record."
+  },
+  {
+   "id": "R3",
+   "headline": "Three quarters of funders gave once and never returned",
+   "trigger": "more than 60 percent of confirmed funders have exactly one recorded grant",
+   "key_numbers": [
+    "13 of 17 funders gave exactly once",
+    "76.5% of the confirmed list",
+    "4 funders have given more than once"
+   ],
+   "verify_first": false,
+   "fired": true,
+   "numbers": {
+    "funders": 17,
+    "one_grant_funders": 13,
+    "repeat_funders": 4,
+    "one_grant_pct": 76.5,
+    "threshold_pct": 60.0,
+    "one_grant_funder_names": [
+     "THE DALLAS FOUNDATION",
+     "IMPACT AUSTIN FOUNDATION",
+     "Mission Capital",
+     "Massachusetts Institute of Technology",
+     "Network for Good",
+     "UNITED WAY FOR GREATER AUSTIN",
+     "Silicon Valley Community Foundation",
+     "BETTER BUSINESS BUREAU",
+     "PHILANTHROPITCH",
+     "Social Venture Partners International",
+     "Capacity Catalyst",
+     "AMERICAN ONLINE GIVING FOUNDATION INC",
+     "COMMUNITY FOUNDATION OF NORTH TEXAS INC"
+    ]
+   },
+   "sentence": "13 of your 17 confirmed funders gave exactly once and did not return, which is 76.5% of them. Only 4 have given more than once.",
+   "proven_by": [
+    "almanac_match.prior_funders_exact[].grants"
+   ],
+   "detail": "13 of your 17 confirmed funders gave exactly once and did not return, which is 76.5% of them. Only 4 have given more than once."
+  },
+  {
+   "id": "R4",
+   "headline": "Funders who already gave have a call open now",
+   "trigger": "a prior funder's normalised name matches a non-barred open call whose deadline has not passed as of the generation date",
+   "key_numbers": [
+    "7 open calls across 6 prior funders",
+    "2 calls from 2 EIN-verified funders",
+    "5 calls from 4 name-matched funders, confirm first"
+   ],
+   "verify_first": true,
+   "fired": true,
+   "numbers": {
+    "open_calls_from_prior_funders": 7,
+    "distinct_prior_funders": 6,
+    "ein_verified_calls": 2,
+    "name_matched_calls_needing_confirmation": 5,
+    "prior_funders": [
+     "Capacity Catalyst",
+     "HOUSTON ENDOWMENT INC",
+     "LAURA AND JOHN ARNOLD FOUNDATION",
+     "SHIELD-AYRES FOUNDATION",
+     "ST DAVID'S FOUNDATION",
+     "THE ALICE KLEBERG REYNOLDS MEYER"
+    ],
+    "as_of": "2026-08-07"
+   },
+   "sentence": "7 open calls belong to funders that have already given to you, across 6 funders. 2 of those calls come from 2 funders confirmed on recipient EIN in Schedule I; the other 5 come from 4 funders matched by name in 990-PF Part XV, a source that carries no recipient EIN at all, so each has to be confirmed before anyone is contacted.",
+   "rows": [
+    {
+     "funder_name": "SHIELD-AYRES FOUNDATION",
+     "title": "Letter of Inquiry, third-quarter board cycle",
+     "close_date": "2026-08-15",
+     "deadline": "August 15, 2026",
+     "source_url": "https://www.shield-ayresfoundation.org/grant-making/apply/",
+     "confidence": "verified",
+     "prior_funder_name": "SHIELD-AYRES FOUNDATION",
+     "prior_funder_total_usd": 40000,
+     "prior_funder_grants": 4,
+     "relationship_evidence": "name match, IRS Form 990-PF Part XV, no recipient EIN exists in that source; confirm before contact"
+    },
+    {
+     "funder_name": "THE ALICE KLEBERG REYNOLDS MEYER",
+     "title": "Alice Kleberg Reynolds Foundation 2026 grant cycle (opens 26 May 2026, closes 26 August 2026 at noon CST)",
+     "close_date": "2026-08-26",
+     "deadline": "August 26, 2026",
+     "source_url": "https://akrfoundation.org/guidelines/",
+     "confidence": "verified",
+     "prior_funder_name": "THE ALICE KLEBERG REYNOLDS MEYER",
+     "prior_funder_total_usd": 7500,
+     "prior_funder_grants": 1,
+     "relationship_evidence": "name match, IRS Form 990-PF Part XV, no recipient EIN exists in that source; confirm before contact"
+    },
+    {
+     "funder_name": "LAURA AND JOHN ARNOLD FOUNDATION",
+     "title": "Strengthening Evidence RFP (Evidence and Evaluation)",
+     "close_date": "2026-09-11",
+     "deadline": "September 11, 2026",
+     "source_url": "https://www.arnoldventures.org/grantees",
+     "confidence": "verified",
+     "prior_funder_name": "LAURA AND JOHN ARNOLD FOUNDATION",
+     "prior_funder_total_usd": 44412,
+     "prior_funder_grants": 1,
+     "relationship_evidence": "name match, IRS Form 990-PF Part XV, no recipient EIN exists in that source; confirm before contact"
+    },
+    {
+     "funder_name": "LAURA AND JOHN ARNOLD FOUNDATION",
+     "title": "Building Evidence RFP (Evidence and Evaluation)",
+     "close_date": "2026-09-11",
+     "deadline": "September 11, 2026",
+     "source_url": "https://www.arnoldventures.org/grantees",
+     "confidence": "verified",
+     "prior_funder_name": "LAURA AND JOHN ARNOLD FOUNDATION",
+     "prior_funder_total_usd": 44412,
+     "prior_funder_grants": 1,
+     "relationship_evidence": "name match, IRS Form 990-PF Part XV, no recipient EIN exists in that source; confirm before contact"
+    },
+    {
+     "funder_name": "St David's Foundation",
+     "title": "Community Health Grants, 2026 cycle",
+     "close_date": "2026-10-15",
+     "deadline": "October 15, 2026",
+     "source_url": "https://stdavidsfoundation.org/grants/",
+     "confidence": "reported",
+     "prior_funder_name": "ST DAVID'S FOUNDATION",
+     "prior_funder_total_usd": 947000,
+     "prior_funder_grants": 4,
+     "relationship_evidence": "recipient EIN, IRS Form 990 Schedule I"
+    },
+    {
+     "funder_name": "Capacity Catalyst",
+     "title": "Community-Engaged Research and externship placement partnership (in-kind research capacity, rolling inquiry, NOT a cash grant call)",
+     "close_date": "",
+     "deadline": "Rolling or undated",
+     "source_url": "https://www.capacitycatalyst.org/",
+     "confidence": "reported",
+     "prior_funder_name": "Capacity Catalyst",
+     "prior_funder_total_usd": 9000,
+     "prior_funder_grants": 1,
+     "relationship_evidence": "recipient EIN, IRS Form 990 Schedule I"
+    },
+    {
+     "funder_name": "Houston Endowment",
+     "title": "Civic Engagement Grantmaking",
+     "close_date": "",
+     "deadline": "Rolling or undated",
+     "source_url": "https://houstonendowment.org/grantmaking/",
+     "confidence": "reported",
+     "prior_funder_name": "HOUSTON ENDOWMENT INC",
+     "prior_funder_total_usd": 150000,
+     "prior_funder_grants": 1,
+     "relationship_evidence": "name match, IRS Form 990-PF Part XV, no recipient EIN exists in that source; confirm before contact"
+    }
+   ],
+   "withheld_by_confidentiality_guard": 0,
+   "withheld_by_do_not_duplicate": 0,
+   "proven_by": [
+    "almanac_match.open_opportunities_curated[].client_barred",
+    "almanac_match.open_opportunities_curated[].close_date",
+    "almanac_match.open_opportunities_curated[].found_for_this_client",
+    "almanac_match.prior_funders_exact[].funder_name",
+    "almanac_match.prior_funders_named_review_required[].funder_name",
+    "profile.survey_response.funder_relationships.already_in_active_pipeline_do_not_duplicate"
+   ],
+   "notes": [
+    "Join is full-string on the normalised funder name with an alias map, never substring. The files spell St David's three ways and all three normalise to one key, so both of that funder's open calls appear."
+   ],
+   "detail": "7 open calls belong to funders that have already given to you, across 6 funders. 2 of those calls come from 2 funders confirmed on recipient EIN in Schedule I; the other 5 come from 4 funders matched by name in 990-PF Part XV, a source that carries no recipient EIN at all, so each has to be confirmed before anyone is contacted."
+  },
+  {
+   "id": "R5",
+   "headline": "Lapsed relationships, counted in dollars",
+   "trigger": "a confirmed funder's last recorded grant year is 2021 or earlier",
+   "key_numbers": [
+    "$315,296 across 10 funders",
+    "Last gave in 2021 or earlier",
+    "Largest lapsed: IMPACT AUSTIN FOUNDATION, $110,000, last gave 2019",
+    "Funders whose last year is not recorded: 0"
+   ],
+   "verify_first": false,
+   "fired": true,
+   "numbers": {
+    "lapsed_funders": 10,
+    "lapsed_total_usd": 315296,
+    "last_year_cutoff": 2021,
+    "years_back": 5,
+    "funders_with_unknown_last_year": 0,
+    "still_described_as_active_by_client": [],
+    "detail": [
+     {
+      "funder_name": "IMPACT AUSTIN FOUNDATION",
+      "total_usd": 110000,
+      "last_year": "2019",
+      "grants": 1
+     },
+     {
+      "funder_name": "Mission Capital",
+      "total_usd": 50000,
+      "last_year": "2018",
+      "grants": 1
+     },
+     {
+      "funder_name": "Massachusetts Institute of Technology",
+      "total_usd": 38000,
+      "last_year": "2021",
+      "grants": 1
+     },
+     {
+      "funder_name": "Network for Good",
+      "total_usd": 33643,
+      "last_year": "2020",
+      "grants": 1
+     },
+     {
+      "funder_name": "UNITED WAY FOR GREATER AUSTIN",
+      "total_usd": 30000,
+      "last_year": "2020",
+      "grants": 1
+     },
+     {
+      "funder_name": "BETTER BUSINESS BUREAU",
+      "total_usd": 20000,
+      "last_year": "2020",
+      "grants": 1
+     },
+     {
+      "funder_name": "PHILANTHROPITCH",
+      "total_usd": 11675,
+      "last_year": "2021",
+      "grants": 1
+     },
+     {
+      "funder_name": "Social Venture Partners International",
+      "total_usd": 10000,
+      "last_year": "2020",
+      "grants": 1
+     },
+     {
+      "funder_name": "AMERICAN ONLINE GIVING FOUNDATION INC",
+      "total_usd": 6978,
+      "last_year": "2020",
+      "grants": 1
+     },
+     {
+      "funder_name": "COMMUNITY FOUNDATION OF NORTH TEXAS INC",
+      "total_usd": 5000,
+      "last_year": "2020",
+      "grants": 1
+     }
+    ]
+   },
+   "sentence": "$315,296 sits with 10 funders who last gave in 2021 or earlier. None of them appears in your own list of current relationships.",
+   "proven_by": [
+    "almanac_match.prior_funders_exact[].last_year",
+    "almanac_match.prior_funders_exact[].total_usd",
+    "profile.survey_response.funder_relationships.warm",
+    "profile.survey_response.funder_relationships.warm_note"
+   ],
+   "notes": [
+    "Threshold is last_year <= as-of year minus 5. The spec's prose says minus 4; its own re-derived key numbers (10 funders, $315,296) require minus 5, and the numbers govern.",
+    "A lapsed funder is named as still-active only when it appears by FULL normalised name in the client's own warm or dormant-worth-reengaging lists. Free-text survey notes are not searched, because searching them is substring matching and produces the same sentence whether the note affirms the relationship or records ending it."
+   ],
+   "detail": "$315,296 sits with 10 funders who last gave in 2021 or earlier. None of them appears in your own list of current relationships."
+  },
+  {
+   "id": "R6",
+   "headline": "Part of the history is an individual donor you cannot name",
+   "trigger": "a funder in the EIN-verified reconstruction carries an EIN your own profile flags as a donor-advised-fund sponsor",
+   "key_numbers": [
+    "$227,000, 11.0% of documented history",
+    "FIDELITY INVESTMENTS CHARITABLE GIFT FUND across 3 grants, 2019 to 2023",
+    "Denominator: $2,072,796 across the EIN-verified reconstruction"
+   ],
+   "verify_first": false,
+   "fired": true,
+   "numbers": {
+    "daf_funders": 1,
+    "daf_total_usd": 227000,
+    "daf_share_of_documented_history_pct": 11.0,
+    "documented_total_usd": 2072796,
+    "detail": [
+     {
+      "funder_name": "FIDELITY INVESTMENTS CHARITABLE GIFT FUND",
+      "funder_ein": "110303001",
+      "total_usd": 227000,
+      "grants": 3,
+      "first_year": "2019",
+      "last_year": "2023",
+      "share_of_documented_history_pct": 11.0,
+      "profile_note": "flagged in the client profile as a donor-advised-fund sponsor"
+     }
+    ]
+   },
+   "sentence": "11.0% of your documented history, $227,000, came through FIDELITY INVESTMENTS CHARITABLE GIFT FUND, which your own profile records as a donor-advised-fund sponsor. That money is real, but it is one individual donor's recommendation routed through a platform, and there is no institution behind it to re-approach.",
+   "proven_by": [
+    "profile.confirmed_prior_funders[].note",
+    "profile.confirmed_prior_funders[].funder_ein",
+    "almanac_match.prior_funders_exact[].funder_ein",
+    "almanac_match.prior_funders_exact[].total_usd"
+   ],
+   "detail": "11.0% of your documented history, $227,000, came through FIDELITY INVESTMENTS CHARITABLE GIFT FUND, which your own profile records as a donor-advised-fund sponsor. That money is real, but it is one individual donor's recommendation routed through a platform, and there is no institution behind it to re-approach."
+  },
+  {
+   "id": "R7",
+   "headline": "Secondary-market work is real but is not registering as eligibility",
+   "trigger": "rows barred on geography exist, and at least one prior funder's register-recorded funding geography names a secondary market you work in",
+   "key_numbers": [
+    "$540,000 already received from 3 funders funding in Dallas, TX",
+    "122 of 174 curated rows barred for you, 51 of those on geography",
+    "24 of the geography-barred rows name one of those markets",
+    "0 prior funders have no geography recorded in the register, which is unknown rather than absent"
+   ],
+   "verify_first": false,
+   "fired": true,
+   "numbers": {
+    "curated_shelf_rows_considered": 174,
+    "barred_rows": 122,
+    "barred_on_geography": 51,
+    "barred_on_geography_naming_a_secondary_market": 24,
+    "secondary_markets_on_file": [
+     "Houston, TX",
+     "Dallas, TX"
+    ],
+    "secondary_markets_matched_in_the_register": [
+     "Dallas, TX"
+    ],
+    "secondary_markets_with_no_register_match": [
+     "Houston, TX"
+    ],
+    "prior_funders_in_secondary_markets": 3,
+    "prior_funder_usd_from_secondary_markets": 540000,
+    "prior_funders_without_register_geography": 0,
+    "detail": [
+     {
+      "funder_name": "CHILD POVERTY ACTION LAB",
+      "total_usd": 285000,
+      "matched_markets": [
+       "Dallas, TX"
+      ]
+     },
+     {
+      "funder_name": "THE DALLAS FOUNDATION",
+      "total_usd": 250000,
+      "matched_markets": [
+       "Dallas, TX"
+      ]
+     },
+     {
+      "funder_name": "COMMUNITY FOUNDATION OF NORTH TEXAS INC",
+      "total_usd": 5000,
+      "matched_markets": [
+       "Dallas, TX"
+      ]
+     }
+    ]
+   },
+   "sentence": "You have already received $540,000 from 3 funders whose register-recorded funding geography names Dallas, TX, and your survey describes real programming and partnerships there. 51 rows on the shared register are nonetheless barred for you on geography, because your filed address reads as a single market.",
+   "proven_by": [
+    "almanac_match.open_opportunities_curated[].client_barred",
+    "almanac_match.open_opportunities_curated[].barred_reason",
+    "opportunity_register.csv.geography joined on funder_ein",
+    "almanac_match.prior_funders_exact[].total_usd",
+    "profile.geography.secondary",
+    "profile.survey_response.positioning.houston_dallas_presence"
+   ],
+   "stated_limit": "Two limits, and neither is in the client-facing sentence. First, the curated tier this rule counts over is 174 rows, which is the size of the CURATED SHELF for this client and not the size of the opportunity register, which is far larger; the shelf is that size because the register's geography column resolves at STATE level only, so a row is selected for being open in Texas rather than for being open in Austin. Second, that geography column records the OPPORTUNITY'S FUNDING GEOGRAPHY, not the funder's headquarters, and some rows state both in one string. A funder matched here funds INTO the named market; it is not necessarily seated there, and the sentence says funding geography for that reason.",
+   "notes": [
+    "The sentence names only the secondary markets a register row actually matched. Markets on file with no matching register row are carried in the numbers block as secondary_markets_with_no_register_match rather than being named as though they had produced the dollars."
+   ],
+   "detail": "You have already received $540,000 from 3 funders whose register-recorded funding geography names Dallas, TX, and your survey describes real programming and partnerships there. 51 rows on the shared register are nonetheless barred for you on geography, because your filed address reads as a single market."
+  },
+  {
+   "id": "R8",
+   "headline": "Dated deadlines inside 60 days against one part-time writer",
+   "trigger": "a call open to you carries a dated deadline between the generation date and 60 days later",
+   "key_numbers": [
+    "8 dated deadlines between August 7, 2026 and October 6, 2026",
+    "29 further calls are rolling or carry no stated date",
+    "Recorded writing capacity: One part-time grant writer, plus Meme Styles also writes grants"
+   ],
+   "verify_first": false,
+   "fired": true,
+   "numbers": {
+    "horizon_days": 60,
+    "as_of": "2026-08-07",
+    "horizon_date": "2026-10-06",
+    "dated_deadlines_visible": 8,
+    "dated_deadlines_on_shelf": 10,
+    "rolling_or_undated_visible": 29,
+    "rolling_or_undated_on_shelf": 37,
+    "grant_writing_bandwidth": "One part-time grant writer, plus Meme Styles also writes grants"
+   },
+   "sentence": "8 of the calls open to you carry a dated deadline between August 7, 2026 and October 6, 2026. Another 29 are rolling or carry no stated date. Your recorded writing capacity is: One part-time grant writer, plus Meme Styles also writes grants.",
+   "rows": [
+    {
+     "funder_name": "SHIELD-AYRES FOUNDATION",
+     "title": "Letter of Inquiry, third-quarter board cycle",
+     "close_date": "2026-08-15",
+     "deadline": "August 15, 2026",
+     "source_url": "https://www.shield-ayresfoundation.org/grant-making/apply/",
+     "confidence": "verified"
+    },
+    {
+     "funder_name": "THE ALICE KLEBERG REYNOLDS MEYER",
+     "title": "Alice Kleberg Reynolds Foundation 2026 grant cycle (opens 26 May 2026, closes 26 August 2026 at noon CST)",
+     "close_date": "2026-08-26",
+     "deadline": "August 26, 2026",
+     "source_url": "https://akrfoundation.org/guidelines/",
+     "confidence": "verified"
+    },
+    {
+     "funder_name": "THE JUNIOR LEAGUE OF AUSTIN INC",
+     "title": "Community Partner application for the 2027-2028 League year (volunteers plus community funding)",
+     "close_date": "2026-08-28",
+     "deadline": "August 28, 2026",
+     "source_url": "https://www.jlaustin.org/community/request-volunteers/apply-to-be-a-project/",
+     "confidence": "verified"
+    },
+    {
+     "funder_name": "LAURA AND JOHN ARNOLD FOUNDATION",
+     "title": "Strengthening Evidence RFP (Evidence and Evaluation)",
+     "close_date": "2026-09-11",
+     "deadline": "September 11, 2026",
+     "source_url": "https://www.arnoldventures.org/grantees",
+     "confidence": "verified"
+    },
+    {
+     "funder_name": "LAURA AND JOHN ARNOLD FOUNDATION",
+     "title": "Building Evidence RFP (Evidence and Evaluation)",
+     "close_date": "2026-09-11",
+     "deadline": "September 11, 2026",
+     "source_url": "https://www.arnoldventures.org/grantees",
+     "confidence": "verified"
+    },
+    {
+     "funder_name": "TEXAS MUTUAL INSURANCE COMPANY",
+     "title": "Texas Workforce Development Grant, second 2026 cycle, opens 10 August and closes 11 September",
+     "close_date": "2026-09-11",
+     "deadline": "September 11, 2026",
+     "source_url": "https://www.texasmutual.com/abouttxm/community-funding",
+     "confidence": "verified"
+    },
+    {
+     "funder_name": "BOWEN FAMILY FOUNDATION",
+     "title": "Bowen Family Foundation 2026 grant application cycle",
+     "close_date": "2026-09-30",
+     "deadline": "September 30, 2026",
+     "source_url": "https://bowenfamilyfoundation.org/grant-application/",
+     "confidence": "verified"
+    },
+    {
+     "funder_name": "NOLAN RYAN FOUNDATION",
+     "title": "50/50 Raffle Community Grant Program, 2026 cycle currently accepting applications",
+     "close_date": "2026-10-01",
+     "deadline": "October 1, 2026",
+     "source_url": "https://nolanryanfoundation.org/pages/community-grants-scholarships",
+     "confidence": "verified"
+    }
+   ],
+   "withheld_by_confidentiality_guard": 2,
+   "withheld_by_do_not_duplicate": 0,
+   "proven_by": [
+    "almanac_match.open_opportunities_curated[].close_date",
+    "almanac_match.open_opportunities_curated[].client_barred",
+    "almanac_match.open_opportunities_curated[].found_for_this_client",
+    "profile.survey_response.capacity.grant_writing_bandwidth"
+   ],
+   "notes": [
+    "Deadline counts describe YOUR action list, so they are computed after the confidentiality guard. The shelf-level figure is carried alongside so the difference is visible rather than implied."
+   ],
+   "detail": "8 of the calls open to you carry a dated deadline between August 7, 2026 and October 6, 2026. Another 29 are rolling or carry no stated date. Your recorded writing capacity is: One part-time grant writer, plus Meme Styles also writes grants."
+  },
+  {
+   "id": "R10",
+   "headline": "Federal eligibility is inferred rather than published on part of your tier",
+   "trigger": "federal rows are open to you, you have screening criteria on file, and at least one open federal row carries eligibility_basis 'inferred from opportunity text'",
+   "key_numbers": [
+    "39 federal opportunities open to you as of August 7, 2026",
+    "8 of them carry inferred rather than published eligibility",
+    "5 screening criteria on file"
+   ],
+   "verify_first": true,
+   "fired": true,
+   "numbers": {
+    "federal_rows": 40,
+    "federal_rows_open_at_as_of": 39,
+    "eligibility_inferred_from_text_open": 8,
+    "eligibility_inferred_from_text_all_rows": 9,
+    "federal_rows_recording_a_client_screen": 0,
+    "federal_row_fields_present": [
+     "agency",
+     "award_ceiling",
+     "award_floor",
+     "close_date",
+     "cost_sharing_required",
+     "eligibility_basis",
+     "expected_awards",
+     "funding_categories",
+     "international_flag",
+     "opportunity_number",
+     "post_date",
+     "program_funding",
+     "scope_note",
+     "source",
+     "title"
+    ],
+    "client_screening_criteria_count": 5,
+    "client_screening_criteria": [
+     "business practices contributing to racial inequity",
+     "community harm",
+     "environmental injustice",
+     "predatory financial practices",
+     "surveillance technologies disproportionately impacting marginalized communities"
+    ],
+    "client_verbatim_caution": "Also... we need to be careful with government grants that harm organization led by black women."
+   },
+   "sentence": "39 federal opportunities are open to you as of August 7, 2026, and on 8 of them the eligibility line was inferred from the opportunity text rather than coded by the publisher, so whether you qualify is a reading of the notice and not a published fact. You gave us 5 screening criteria and one explicit caution, and the federal tier carries no field in which a screen against them could be recorded, so nothing on it has been checked against your criteria by anything but a person.",
+   "proven_by": [
+    "almanac_match.open_opportunities_federal[].close_date",
+    "almanac_match.open_opportunities_federal[].eligibility_basis",
+    "profile.survey_response.money.funders_to_avoid_or_deprioritize.screening_criteria",
+    "profile.survey_response.money.funders_to_avoid_or_deprioritize.flagged_by_client_verbatim"
+   ],
+   "stated_limit": "Federal rows come from Grants.gov and carry no client verdict of any kind. The union of keys across all 40 of them is agency, award_ceiling, award_floor, close_date, cost_sharing_required, eligibility_basis, expected_awards, funding_categories, international_flag, opportunity_number, post_date, program_funding, scope_note, source, title, which contains none of client_barred, found_for_this_client, client_screen, barred_reason. That absence is a property of the SOURCE SCHEMA and would hold for every client on every run, so it is recorded here as a limit and is deliberately not what makes this rule fire. What makes it fire is the inferred-eligibility count, which is measured and can be zero.",
+   "notes": [
+    "Counts run over rows OPEN at the generation date. Counting over all 40 rows would import rows whose close date has already passed."
+   ],
+   "detail": "39 federal opportunities are open to you as of August 7, 2026, and on 8 of them the eligibility line was inferred from the opportunity text rather than coded by the publisher, so whether you qualify is a reading of the notice and not a published fact. You gave us 5 screening criteria and one explicit caution, and the federal tier carries no field in which a screen against them could be recorded, so nothing on it has been checked against your criteria by anything but a person."
+  }
+ ],
+ "rules_not_fired": [
+  {
+   "id": "R9",
+   "headline": "Part of the calls open to you are reported, not verified",
+   "trigger": "more than 20 percent of the calls open to you, after the confidentiality guard, carry confidence 'reported' rather than a verified check",
+   "key_numbers": [],
+   "verify_first": false,
+   "fired": false,
+   "numbers": {
+    "reported_visible": 7,
+    "visible_rows": 41,
+    "reported_share_of_visible_pct": 17.1,
+    "reported_before_confidentiality_guard": 12,
+    "reported_withheld_as_another_clients_find": 5,
+    "shelf_ready_now_read_from_almanac": 53,
+    "threshold_pct": 20.0,
+    "client_self_reported_figures": [
+     {
+      "field": "care_model_grants_distributed",
+      "value": 783893,
+      "note": "Self-reported on wemeasure.org, not independently verified",
+      "phrase": "$783,893 care model grants distributed"
+     },
+     {
+      "field": "organizations_supported",
+      "value": "82+",
+      "note": "Self-reported on wemeasure.org, not independently verified",
+      "phrase": "82+ organizations supported"
+     }
+    ]
+   },
+   "sentence": "7 of the 41 calls open to you are recorded as reported rather than verified, 17.1%, which is below the 20 percent at which this rule fires. Almost everything on your live shelf was checked against the funder's own page.",
+   "rows": [
+    {
+     "funder_name": "4point0 Schools",
+     "title": "From Kitchen Napkin to Classroom (three-month sprint with coaching and seed funding); plus Test Your Idea in 2 Days and Lets Build Together",
+     "close_date": "",
+     "deadline": "Rolling or undated",
+     "source_url": "https://4pt0.org/programs",
+     "confidence": "reported"
+    },
+    {
+     "funder_name": "BOREALIS PHILANTHROPY",
+     "title": "Just Futures Initiative, rolling grant opportunity for grassroots community-safety and democracy organisations, $50,000 to $200,000",
+     "close_date": "",
+     "deadline": "Rolling or undated",
+     "source_url": "https://borealisphilanthropy.org/news-and-views/just-futures-initiative-grant-opportunity/",
+     "confidence": "reported"
+    },
+    {
+     "funder_name": "Capacity Catalyst",
+     "title": "Community-Engaged Research and externship placement partnership (in-kind research capacity, rolling inquiry, NOT a cash grant call)",
+     "close_date": "",
+     "deadline": "Rolling or undated",
+     "source_url": "https://www.capacitycatalyst.org/",
+     "confidence": "reported"
+    },
+    {
+     "funder_name": "Houston Endowment",
+     "title": "Civic Engagement Grantmaking",
+     "close_date": "",
+     "deadline": "Rolling or undated",
+     "source_url": "https://houstonendowment.org/grantmaking/",
+     "confidence": "reported"
+    },
+    {
+     "funder_name": "NEO Philanthropy Inc",
+     "title": "NEO Philanthropy collaborative funds run episodic OPEN RFPs alongside a default no-unsolicited-requests policy; Economic Mobility and Opportunity Fund most recent verified call, now closed",
+     "close_date": "",
+     "deadline": "Rolling or undated",
+     "source_url": "https://neophilanthropy.org/economic-mobility-and-opportunity-fund-opens-new-grant-application/",
+     "confidence": "reported"
+    },
+    {
+     "funder_name": "St David's Foundation",
+     "title": "Community Health Grants, 2026 cycle",
+     "close_date": "2026-10-15",
+     "deadline": "October 15, 2026",
+     "source_url": "https://stdavidsfoundation.org/grants/",
+     "confidence": "reported"
+    },
+    {
+     "funder_name": "The Powell Foundation",
+     "title": "Powell Foundation Grants (Operating/Program Support)",
+     "close_date": "",
+     "deadline": "Rolling or undated",
+     "source_url": "https://powellfoundation.org/grant-guidelines/",
+     "confidence": "reported"
+    }
+   ],
+   "withheld_by_confidentiality_guard": 5,
+   "proven_by": [
+    "almanac_match.open_opportunities_curated[].confidence",
+    "almanac_match.open_opportunities_curated[].found_for_this_client",
+    "almanac_page_data.counts.ready_now",
+    "profile.reported_scale.note"
+   ],
+   "notes": [
+    "Numerator and denominator are the same population: the calls open to you after both the close-date filter and the confidentiality guard. The published counts.ready_now is carried above and is the page headline, READ and never recounted, but it applies neither of those filters, so dividing by it would compare two different populations and would count rows that are not yours toward your own rate."
+   ],
+   "detail": "7 of the 41 calls open to you are recorded as reported rather than verified, 17.1%, which is below the 20 percent at which this rule fires. Almost everything on your live shelf was checked against the funder's own page."
+  }
+ ],
+ "counts": {
+  "rules_evaluated": 10,
+  "rules_fired": 9,
+  "rules_quiet": 1,
+  "curated_rows_on_shared_shelf": 174,
+  "non_barred_rows": 52,
+  "non_barred_rows_withheld_by_confidentiality_guard": 10,
+  "live_rows_at_as_of": 51,
+  "live_rows_withheld_by_confidentiality_guard": 10,
+  "shared_shelf_prospect_rows_belonging_to_other_clients": 148,
+  "live_rows_suppressed_as_already_in_pipeline": 1,
+  "rows_emitted": 22
+ }
+}
