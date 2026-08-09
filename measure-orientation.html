@@ -137,12 +137,6 @@ table.or-t tr:last-child td{border-bottom:none}
 .or-rule h3{margin:.3rem 0 .5rem;font-size:25px}
 .or-rule .trig{font-size:15px;color:var(--wash);font-style:italic;margin:0 0 .6rem}
 .or-rule .nums{font-size:14px;line-height:1.6;margin:0;background:var(--well);padding:.6rem .7rem;white-space:pre-line}
-details.or-fold{border:1px solid var(--rule);background:var(--paper);margin:0 0 1.2rem}
-details.or-fold>summary{cursor:pointer;padding:.75rem 1rem;font-family:var(--mono);font-size:15px;letter-spacing:.03em;color:var(--ink);list-style:none;background:var(--well)}
-details.or-fold>summary::-webkit-details-marker{display:none}
-details.or-fold>summary::before{content:"\25B8 ";color:var(--accent)}
-details.or-fold[open]>summary::before{content:"\25BE ";color:var(--accent)}
-details.or-fold>.or-foldbody{padding:1rem}
 .or-appendix{border-top:3px double var(--ink);padding-top:1.8rem;margin-top:1rem}
 .or-appendix .or-tag{font-size:13px;letter-spacing:.02em;color:var(--urgent);font-weight:600;display:block;margin-bottom:.5rem}
 .or-src{font-size:13px;font-style:italic;color:var(--wash)}
@@ -169,7 +163,7 @@ details.or-fold>.or-foldbody{padding:1rem}
        breakpoint or-t-narrow's nowrap is reset to normal, because the
        label-above-value restack no longer needs it and a forced nowrap on
        a narrow phone width is itself an overflow risk. ---- */
-.or-figs>*,.or-nav li,.or-fact,.or-box,.or-rule,.or-msg,.or-list li,details.or-fold>.or-foldbody{min-width:0}
+.or-figs>*,.or-nav li,.or-fact,.or-box,.or-rule,.or-msg,.or-list li{min-width:0}
 .or-fact .v,.or-fact .m,.or-box p,.or-rule .nums,.or-list li,.or-src,.or-quiet{overflow-wrap:anywhere}
 /* No overflow-x:hidden on body. It would not prevent overflow, only clip it. */
 @media(max-width:640px){
@@ -177,7 +171,7 @@ details.or-fold>.or-foldbody{padding:1rem}
   .section-card h2{font-size:25px}
   .or-wrap,.hero,.bar-in{padding-left:1.1rem;padding-right:1.1rem}
   .or-figs{grid-template-columns:1fr 1fr}
-  .or-box,.or-rule,.or-msg,details.or-fold>.or-foldbody{padding:.9rem 1rem}
+  .or-box,.or-rule,.or-msg{padding:.9rem 1rem}
   .or-allfacts-block{padding:1rem 1.1rem}
   .or-nav ol{gap:.25rem .8rem}
   .hero{padding-top:2.2rem}
@@ -208,17 +202,14 @@ details.or-fold>.or-foldbody{padding:1rem}
    A client asked to read a funding brief will try to print it; that is the whole reason
    this exists. ---- */
 @media print{
-  /* Expand every fold: the section accordions, the generated sub-heading folds, and the
-     native <details> disclosures, which are three separate mechanisms on this page. */
+  /* Expand every fold: the section accordions and the generated sub-heading
+     folds, which are the two collapse mechanisms left on this page. */
   .mc-closed .fold-body{display:block !important}
-  details.or-fold{display:block}
-  details.or-fold>.or-foldbody{display:block !important}
   /* Controls are meaningless on paper. */
   .mc-toggle,.or-nav,.bar{display:none !important}
-  details.or-fold>summary{list-style:none}
   /* Ink and paper: the screen palette wastes toner and reads worse in greyscale. */
   body{background:#fff;color:#000;font-size:11pt}
-  .or-box,.or-rule,.or-msg,.or-fig,.or-tablewrap,details.or-fold,.section.section-card,.or-allfacts-block{
+  .or-box,.or-rule,.or-msg,.or-fig,.or-tablewrap,.section.section-card,.or-allfacts-block{
     background:#fff;border-color:#999}
   /* Keep a card and its heading together, and never split a fact across a page. */
   .section.section-card,.or-rule,.or-box,.or-fact,.subfold{break-inside:avoid;page-break-inside:avoid}
@@ -734,12 +725,6 @@ function usd(n){
   const x=Number(n);
   return isFinite(x)?'$'+x.toLocaleString('en-US'):String(n==null?'':n);
 }
-/* Folds fail OPEN. Markup ships `open`; this removes it so the page loads tidy
-   for a reader with scripting, and a reader without scripting sees everything. */
-function closeFolds(){
-  document.querySelectorAll('details.or-fold').forEach(d=>d.removeAttribute('open'));
-}
-
 /* =================================================================
    SECTION 1. Tier counts are read off the shelf's own tier labels,
    which the shelf assigned. Counting rows already labelled by Almanac
@@ -1370,8 +1355,6 @@ async function load(){
   }catch(e){
     renderRulesMissing('The file could not be read: '+e+'.');
   }
-
-  closeFolds();
 
   /* SUB-HEADINGS INJECTED BY THIS RENDER, folded now that they exist.
      foldSubheads(document) runs at page-script time, while this function is still awaiting
