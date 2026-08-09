@@ -145,7 +145,7 @@ html.mandatory-snap .panel,html.mandatory-snap .footer-panel{scroll-snap-align:s
 .home-hero{text-align:center}
 .home-hero h1{color:var(--paper);font-size:clamp(3rem,7vw,5.2rem);line-height:1.02;max-width:18ch;margin:0 auto;font-weight:600}
 .home-hero h1 .em{color:var(--gold);font-style:italic;text-decoration:underline;text-decoration-thickness:.06em;text-underline-offset:.08em}
-.home-hero .lede{max-width:62ch;margin:26px auto 0;color:var(--muted-light);font-size:var(--t-lead);text-align:center}
+.home-hero .lede{margin:26px auto 0;color:var(--muted-light);font-size:var(--t-lead);text-align:center}
 .roles{margin:34px auto 0;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 .roles span{font-family:var(--f-eyebrow);font-size:.95rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:var(--gold);border-radius:999px;padding:9px 22px;box-shadow:0 4px 14px rgba(241,196,0,.18)}
 
