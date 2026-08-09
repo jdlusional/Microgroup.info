@@ -3,19 +3,11 @@
  "client_slug": "measure-austin",
  "ein": "822372196",
  "generated_date": "2026-08-07",
- "spec": "orientation-insight-rules-spec.md, design pass 2026-08-07",
- "inputs_read": {
-  "shelf": "C:\\Users\\jonat\\repos\\jonathanlindavis-pipelines\\nonprofit-data\\almanac_match_822372196.json",
-  "profile": "C:\\Users\\jonat\\repos\\jonathanlindavis-pipelines\\measure\\measure-austin_profile.json",
-  "almanac_page_data": "C:\\Users\\jonat\\repos\\Microgroup.info\\data\\measure-austin_almanac.json",
-  "opportunity_register": "C:\\Users\\jonat\\repos\\jonathanlindavis-pipelines\\nonprofit-data\\opportunity_register\\opportunity_register.csv"
- },
- "method": "Ten deterministic rules, each computed from named fields in the Almanac shelf, the client profile, the Almanac page data and the curated opportunity register. Every number on the page is computed here; the page performs no arithmetic. Nothing on this page is written advice or model-generated prose. Eligibility is read from the Almanac shelf and never recomputed, and the warehouse is never queried.",
+ "method": "Ten deterministic rules, each computed from named fields in Almanac's shelf, the client profile, and the curated register of funders and open calls. Every number on the page is computed here; the page performs no arithmetic. Nothing on this page is written advice or model-generated prose. Eligibility is read from Almanac's shelf and never recomputed.",
  "headline": {
   "ready_now": 53,
   "source": "counts.ready_now, read as published",
-  "source_file": "C:\\Users\\jonat\\repos\\Microgroup.info\\data\\measure-austin_almanac.json",
-  "note": "Read from the Almanac page data. Not recounted here, and not derived from the register's own row totals, which are stated limits rather than a result."
+  "note": "Read from Almanac's shelf. Not recounted here, and not derived from the register's own row totals, which are stated limits rather than a result."
  },
  "confidentiality_guard": {
   "rule": "open_opportunities_curated is a SHARED shelf. Rows whose found_for_this_client is false belong to another client and are dropped. Emitted rows are built from an explicit field allowlist, so curator free text cannot reach the page even if a new leak phrasing appears.",
@@ -93,7 +85,7 @@
     "almanac_match.prospective_funders[].closest_peer_match",
     "almanac_match.open_opportunities_federal[].funding_categories"
    ],
-   "stated_limit": "Both 40s are the shelf's own result cap, not a census: --limit defaults to 40 in almanac_match.py (line 741) and bounds the prospective and federal lists alike. The finding is that everything returned came back on the filed band, not that only 40 such funders exist.",
+   "stated_limit": "Both 40s are the shelf's own result cap, not a census: Almanac deliberately caps each list at its 40 best-fit results, so the list stays actionable rather than exhaustive, and the same cap applies identically to the prospective and federal lists. The finding is that everything returned came back on the filed band, not that only 40 such funders exist.",
    "detail": "Your filed NTEE code is B05 (Education), and it is what the matching runs on. 40 of the 40 prospective funders the shelf returned were reached because they fund peers in that same band, and 40 of the 40 federal opportunities it returned carry the ED category. Your own profile weights major B at 0.8, below the 1.0 given to R and S, and you told us the filed code does not describe you."
   },
   {
@@ -483,7 +475,7 @@
    "proven_by": [
     "almanac_match.open_opportunities_curated[].client_barred",
     "almanac_match.open_opportunities_curated[].barred_reason",
-    "opportunity_register.csv.geography joined on funder_ein",
+    "the curated register's own geography field, joined on this funder's EIN",
     "almanac_match.prior_funders_exact[].total_usd",
     "profile.geography.secondary",
     "profile.survey_response.positioning.houston_dallas_presence"
