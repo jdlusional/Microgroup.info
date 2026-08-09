@@ -45,7 +45,7 @@ a{color:inherit}
 .hero .kicker{font-size:13px;letter-spacing:.03em;color:var(--accent);font-weight:600}
 .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,5vw,40px);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
 .hero p{color:var(--wash);font-size:20px;margin:0 0 1rem}
-footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:12px;letter-spacing:.02em;white-space:pre-line}
+footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:12px;letter-spacing:.02em;white-space:pre-line;text-align:center}
 
 /* ---- Orientation page's own styles. tool-shared.css is linked, never edited:
        another session may be live in this repo. Anything new lives here. ---- */
@@ -165,6 +165,7 @@ table.or-t tr:last-child td{border-bottom:none}
        a narrow phone width is itself an overflow risk. ---- */
 .or-figs>*,.or-nav li,.or-fact,.or-box,.or-rule,.or-msg,.or-list li{min-width:0}
 .or-fact .v,.or-fact .m,.or-box p,.or-rule .nums,.or-list li,.or-src,.or-quiet{overflow-wrap:anywhere}
+.or-box p,.or-quiet{white-space:pre-line}
 /* No overflow-x:hidden on body. It would not prevent overflow, only clip it. */
 @media(max-width:640px){
   .or-headline .n{font-size:30px}
@@ -624,12 +625,11 @@ table.or-t tr:last-child td{border-bottom:none}
 <footer id="or-footer">
   Prepared for Measure by Jonathan Lin Davis of Micro Group
   Built from IRS Form 990 data and live web scraping
+  <!-- FOOTER-COPYRIGHT:START (synced from index.html .footer-legal by pattern-book/sync_footer_copyright.py; do not hand-edit) -->
+    <div class="footer-legal">© <span id="yr"></span> MICRO Group, LLC. All rights reserved. Austin, Texas.</div>
+    <script>(function(){var y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear();})();</script>
+    <!-- FOOTER-COPYRIGHT:END -->
 </footer>
-<!-- FOOTER-COPYRIGHT:START (synced from index.html .footer-legal by pattern-book/sync_footer_copyright.py; do not hand-edit) -->
-  <div class="footer-legal">© <span id="yr"></span> MICRO Group, LLC. All rights reserved. Austin, Texas.</div>
-  <script>(function(){var y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear();})();</script>
-  <!-- FOOTER-COPYRIGHT:END -->
-
 
 <script>
 /* =================================================================
@@ -840,12 +840,12 @@ function renderPrograms(){
 }
 function renderNtee(){
   const filed=PROFILE.ntee_code_filed||'', major=PROFILE.ntee_major_filed||'';
-  setText('or-ntee-line','Your IRS Business Master File record carries NTEE code '+filed
+  setText('or-ntee-line',splitFactValue('Your IRS Business Master File record carries NTEE code '+filed
     +(major?', which places you under '+major:'')+'. That single code is doing more work than it looks like it '
     +'is doing: the matching engine uses the NTEE major group to decide which funders fund organizations like '
     +'you, so a code that describes you loosely produces a shelf that fits you loosely. Changing it is not a '
-    +'form you can file on its own, but naming the mismatch changes how the rest of this page should be read.');
-  setText('or-ntee-note',PROFILE.ntee_code_note||'');
+    +'form you can file on its own, but naming the mismatch changes how the rest of this page should be read.').join('\n'));
+  setText('or-ntee-note',splitFactValue(PROFILE.ntee_code_note||'').join('\n'));
 }
 function renderPriorFunders(){
   const tb=document.getElementById('or-priorfunders');
@@ -1105,13 +1105,13 @@ function renderEligibility(){
   if(counts.watch_list!=null)figs.appendChild(fig(counts.watch_list,'Not open yet, being watched'));
   if(counts.ranked_funders!=null)figs.appendChild(fig(counts.ranked_funders,'Funders ranked against you'));
 
-  setText('or-derivation','Almanac joined your IRS Form 990 record against its curated register of funders and '
+  setText('or-derivation',splitFactValue('Almanac joined your IRS Form 990 record against its curated register of funders and '
     +'open calls, applied the eligibility test to every row, and recorded the result. This page reads that '
     +'result and does not recompute it. That is a deliberate constraint rather than a shortcut: when a second '
     +'component was allowed to re-derive eligibility for itself, three parts of the same system returned three '
     +'different totals for this organization on the same day, and opportunities the shelf had excluded reached '
-    +'draft stage anyway. One decision, made once, read everywhere.');
-  setText('or-known-limitation',ALMANAC.known_limitation||'');
+    +'draft stage anyway. One decision, made once, read everywhere.').join('\n'));
+  setText('or-known-limitation',splitFactValue(ALMANAC.known_limitation||'').join('\n'));
 }
 
 /* =================================================================
@@ -1243,11 +1243,11 @@ const STATED_LIMITS=[
 ];
 function renderAppendix(){
   const enr=PROFILE.public_profile_enrichment;
-  setText('or-method-almanac',ALMANAC.method||'');
-  setText('or-method-enrichment',enr.method||'');
-  setText('or-financial-summary',enr.financial_summary||'');
-  setText('or-budget-band',enr.operating_budget_band||'');
-  setText('or-bipoc',enr.is_black_bipoc_led||'');
+  setText('or-method-almanac',splitFactValue(ALMANAC.method||'').join('\n'));
+  setText('or-method-enrichment',splitFactValue(enr.method||'').join('\n'));
+  setText('or-financial-summary',splitFactValue(enr.financial_summary||'').join('\n'));
+  setText('or-budget-band',splitFactValue(enr.operating_budget_band||'').join('\n'));
+  setText('or-bipoc',splitFactValue(enr.is_black_bipoc_led||'').join('\n'));
 
   const lim=document.getElementById('or-limits');
   STATED_LIMITS.forEach(l=>{
