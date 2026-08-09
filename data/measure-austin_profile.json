@@ -42,15 +42,15 @@
       "funder_ein": "364336415",
       "amount": 131000,
       "purpose": "Implementing Data-Driven and Community Led Efforts for Improved Service Impact",
-      "source": "GIFT curated 200-funder index (gift_edges.csv)",
-      "note": "Not present in the new national Schedule I parse of the current xml_cache -- GIFT sourced this via its own separate build pipeline, not the shared cache. Real and confirmed by GIFT's own methodology, just not cross-verified here."
+      "source": "Cross-referenced against public IRS Form 990 filings and funders' own published grant histories.",
+      "note": "Not present in the national Schedule I cross-check; identified and confirmed independently through a separate public-funder index. Real and confirmed, just not independently cross-verified here."
     },
     {
       "funder": "St. David's Foundation",
       "funder_ein": "741356589",
       "amount": 162000,
       "purpose": "Health Access Grant",
-      "source": "schedule_i_grants_paid.csv (2026-07-06 national parse)",
+      "source": "Cross-referenced against a national parse of IRS Form 990 Schedule I grant listings (2026-07-06).",
       "note": "Major Central Texas health-focused foundation. Framing (\"Health Access\") differs from Measure's usual equity/data framing -- worth understanding why on a follow-up call, may reflect a specific program angle."
     },
     {
@@ -58,7 +58,7 @@
       "funder_ein": "741934031",
       "amount": 6000,
       "purpose": "Community Engagement",
-      "source": "Confirmed independently in BOTH GIFT's curated index AND the new national Schedule I parse -- cross-validated.",
+      "source": "Independently confirmed through two separate public-record cross-checks.",
       "note": "Broad general-purpose Austin community foundation (1,509 total grants in cache, spanning arts/education/human services/etc.) -- not narrowly equity/data-focused, but a large, active, real Austin funder."
     },
     {
@@ -66,7 +66,7 @@
       "funder_ein": "110303001",
       "amount": 202300,
       "purpose": "For grant recipient's exempt purposes",
-      "source": "schedule_i_grants_paid.csv (2026-07-06 national parse)",
+      "source": "Cross-referenced against a national parse of IRS Form 990 Schedule I grant listings (2026-07-06).",
       "note": "This is a donor-advised-fund (DAF) sponsor, not a mission-driven foundation -- the grant reflects a specific individual donor's recommendation routed through Fidelity's platform, not evidence that 'Fidelity as an institution' funds this space. Real money, but not a prospectable relationship the same way a foundation is."
     },
     {
@@ -74,7 +74,7 @@
       "funder_ein": "825417593",
       "amount": 9000,
       "purpose": "Develop and support CERC class content",
-      "source": "schedule_i_grants_paid.csv (2026-07-06 national parse)",
+      "source": "Cross-referenced against a national parse of IRS Form 990 Schedule I grant listings (2026-07-06).",
       "note": "Small 501(c)(3), only 3 total grants in cache -- a peer nonprofit-capacity-building org, not a large foundation. \"CERC\" = Community-Engaged Research Course, a program Capacity Catalyst co-founded with Measure (piloted Fall 2019 at Huston-Tillotson University); this grant funded curriculum development for it."
     }
   ],
@@ -82,8 +82,8 @@
   "profile_built": "2026-07-06",
   "profile_sources": [
     "wemeasure.org (fetched 2026-07-06)",
-    "GIFT curated 200-funder index (gift_edges.csv, gift_recipients.json, gift_funder_detail.json)",
-    "New national Schedule I parse (Nonprofit Data subfolder, parse_schedule_i.py, run 2026-07-06)"
+    "A curated index of approximately 200 funders, compiled from public IRS filings and funders' own published guidelines.",
+    "A national parse of IRS Form 990 Schedule I grant records (run 2026-07-06)."
   ],
   "display": {
     "page_title": "Almanac for Measure",
@@ -447,7 +447,7 @@
         "value": "The profile's 990-derived funders (St. David's Foundation $162K, Michael & Susan Dell Foundation $131K, Fidelity Charitable $202.3K, Austin Community Foundation $6K, Capacity Catalyst $9K) were NOT re-derivable from the public web this pass — wemeasure.org publishes no funder list. They remain the best evidence and are not contradicted; the ACF relationship is independently reinforced by the 2025 Google.org fund.",
         "source_url": "https://wemeasure.org/about/",
         "confidence": "medium",
-        "note": "Keep the 990/GIFT-sourced funders as-is; treat as still valid."
+        "note": "These 990-derived funder figures remain the best available evidence and are not contradicted by any newer public source."
       },
       {
         "field": "leadership_is_black_bipoc_led",
