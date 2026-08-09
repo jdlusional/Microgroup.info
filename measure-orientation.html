@@ -93,6 +93,10 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
 .or-lede{color:var(--wash);font-style:italic;font-size:20px;margin:0 0 1.4rem;max-width:64ch}
 .section-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:1.6rem 0 .5rem}
 .section-card p{max-width:66ch}
+/* One h3 per product (Almanac, Scribe); h4 sub-points sit inside, indented,
+   so the product name is stated once instead of repeated per sub-point. */
+.or-method-sub{margin:0 0 1.1rem;padding-left:1rem;border-left:2px solid var(--rule)}
+.or-method-sub h4{font-family:var(--serif);font-weight:700;font-size:18px;margin:0 0 .5rem;color:var(--ink)}
 .or-box{background:var(--well);border:1px solid var(--rule);padding:1.1rem 1.2rem;margin:0 0 1.2rem}
 .or-box.accent{border-left:3px solid var(--accent)}
 .or-box.warn{border-left:3px solid var(--warn)}
@@ -105,19 +109,20 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
 .or-facts{margin:0}
 .or-fact{border-top:1px solid var(--rule);padding:.85rem 0}
 .or-fact:last-child{border-bottom:1px solid var(--rule)}
-.or-fact .f{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--wash);text-transform:uppercase;display:block;margin-bottom:.25rem}
+.or-fact .f{font-size:13px;font-weight:600;color:var(--wash);display:block;margin-bottom:.25rem}
 .or-fact .v{display:block}
 .or-fact .m{font-size:15px;color:var(--wash);margin-top:.35rem;display:block}
-.or-conf{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid currentColor;padding:.08rem .35rem;margin-left:.4rem;white-space:nowrap;vertical-align:.08em}
+.or-conf{font-size:12.5px;border:1px solid currentColor;border-radius:1em;padding:.08rem .5rem;margin-left:.4rem;white-space:nowrap;vertical-align:.08em}
 .or-conf-high{color:var(--ok)}
 .or-conf-medium{color:var(--warn)}
 .or-conf-low{color:var(--urgent)}
 .or-list{margin:0 0 1.2rem;padding-left:1.1rem}
 .or-list li{margin:0 0 .6rem;max-width:66ch}
 .or-tablewrap{overflow-x:auto;border:1px solid var(--rule);background:var(--paper);margin:0 0 1.2rem}
-table.or-t{border-collapse:collapse;width:100%;font-size:15px;min-width:520px}
-table.or-t th,table.or-t td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top}
-table.or-t th{font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--wash);font-weight:500}
+table.or-t{border-collapse:collapse;width:100%;font-size:15px;table-layout:fixed}
+table.or-t th,table.or-t td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top;overflow-wrap:break-word}
+table.or-t th{font-size:12.5px;letter-spacing:.02em;color:var(--wash);font-weight:600}
+table.or-t th.or-t-narrow{white-space:nowrap}
 table.or-t tr:last-child td{border-bottom:none}
 .or-rule{border:1px solid var(--rule);background:var(--well);padding:1.1rem 1.2rem;margin:0 0 1rem}
 .or-rule .rid{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;color:var(--accent);font-weight:500}
@@ -132,7 +137,7 @@ details.or-fold[open]>summary::before{content:"\25BE ";color:var(--accent)}
 details.or-fold>.or-foldbody{padding:1rem}
 .or-appendix{border-top:3px double var(--ink);padding-top:1.8rem;margin-top:1rem}
 .or-appendix .or-tag{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--urgent);display:block;margin-bottom:.5rem}
-.or-src{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--wash)}
+.or-src{font-size:13px;font-style:italic;color:var(--wash)}
 .or-msg{border:1px solid var(--urgent);border-left:3px solid var(--urgent);background:var(--well);padding:1rem 1.1rem;margin:0 0 1.2rem;font-size:15px}
 .or-msg .or-kicker{color:var(--urgent)}
 .or-noscript{border:1px solid var(--rule);background:var(--well);padding:1rem 1.1rem;margin:1rem 0;font-size:15px}
@@ -141,14 +146,20 @@ details.or-fold>.or-foldbody{padding:1rem}
        is needed here. The two real risks are a grid/flex child refusing to
        shrink below its content and a long unbroken string (a URL, an EIN, a
        source note) pushing the body sideways. Both are handled explicitly:
-       min-width:0 on every grid and flex child, overflow-wrap on every text
-       container, and every table sealed inside its own scrolling wrapper so
-       the table scrolls and the page never does. ---- */
+       min-width:0 on every grid and flex child, and overflow-wrap on every
+       text container.
+       TABLES (2026-08-08 redesign, owner order, ratified Option B): a narrow
+       fixed-width header ("Count", "Tier") used to sit inside this same
+       overflow-wrap:anywhere rule with no table-layout set, so the browser
+       compressed and broke it mid-word rather than letting a neighbouring
+       column simply take more space. table.or-t headers are OUT of this rule
+       now (line 119 gives them overflow-wrap:break-word instead, a real word
+       boundary, never a mid-word split) and every or-t table restacks to
+       label-above-value below the breakpoint instead of relying on
+       horizontal scroll, so there is no narrow column left to break. ---- */
 .or-figs>*,.or-nav li,.or-fact,.or-box,.or-rule,.or-msg,.or-list li,details.or-fold>.or-foldbody{min-width:0}
-.or-fact .v,.or-fact .m,.or-box p,.or-rule .nums,.or-list li,.or-src,.or-quiet,table.or-t td,table.or-t th{overflow-wrap:anywhere}
-/* No overflow-x:hidden on body. It would not prevent overflow, only clip it, and
-   clipping here would swallow the horizontal scroll the .or-tablewrap tables need
-   on a narrow screen, putting the Deadline and Source columns out of reach. */
+.or-fact .v,.or-fact .m,.or-box p,.or-rule .nums,.or-list li,.or-src,.or-quiet{overflow-wrap:anywhere}
+/* No overflow-x:hidden on body. It would not prevent overflow, only clip it. */
 @media(max-width:640px){
   .or-headline .n{font-size:30px}
   .section-card h2{font-size:25px}
@@ -157,6 +168,20 @@ details.or-fold>.or-foldbody{padding:1rem}
   .or-box,.or-rule,.or-msg,details.or-fold>.or-foldbody{padding:.9rem 1rem}
   .or-nav ol{gap:.25rem .8rem}
   .hero{padding-top:2.2rem}
+
+  /* Label-above-value restack for every or-t table (tier, prior-funders,
+     identity). thead is hidden and each cell prints its own column header
+     via data-label, set by the row-building JS, as a generated block above
+     the value. The identity table has no thead at all (its th IS the row
+     label already) and needs nothing beyond the shared display:block rule. */
+  .or-tablewrap{overflow-x:visible}
+  table.or-t{width:100%}
+  table.or-t thead{display:none}
+  table.or-t,table.or-t tbody,table.or-t tr,table.or-t th,table.or-t td{display:block;width:auto}
+  table.or-t tr{border-bottom:1px solid var(--rule);padding:.5rem 0}
+  table.or-t tr:last-child{border-bottom:none}
+  table.or-t th,table.or-t td{border-bottom:none;padding:.15rem 0}
+  table.or-t td[data-label]::before{content:attr(data-label);display:block;font-size:12.5px;font-weight:600;color:var(--wash)}
 }
 @media(max-width:400px){
   .or-figs{grid-template-columns:1fr}
@@ -208,16 +233,19 @@ details.or-fold>.or-foldbody{padding:1rem}
         day and six opportunities reached draft stage that the shelf had excluded. Every count
         on this page comes out of counts{} or off a shelf-assigned label. Nothing is hardcoded.
 
-     2. THE SHELF IS SHARED, SO IT LEAKS. open_opportunities_curated is one register serving
-        every client. Verified against the deployed file on 2026-08-07: five ready_now rows
-        name a different organization outright inside `notes`, describing how well the call
-        fits that organization's model, and `eligibility`/`focus_area` on further rows carry
-        service areas in states this organization does not work in, which is another party's
-        find sitting on this shelf. The pipeline file's `fit_notes` is the same prose under a
-        different column name; `notes` is what reached the client-facing JSON.
-        THEREFORE: no free-text curator prose from any shelf row is rendered on this page at
-        all. Suppression is by FIELD across every row, not per row, so a regeneration cannot
-        reopen the hole. See SUPPRESSED_FIELDS and rowIsSafe() below.
+     2. THE SHELF IS SHARED, SO IT DOES NOT GET SHOWN ROW BY ROW (2026-08-08 redesign, owner
+        order). open_opportunities_curated is one register serving every client, and an
+        earlier version of this page displayed it as two itemized tables (every open call,
+        every watched call, funder name and outbound link included). That both leaked
+        curator prose written about other organizations and, more basically, handed a
+        client raw access to the shared register a paid product is built on top of, which
+        defeats the point of selling curated insight. Section 5 now shows counts only
+        (`or-headline-figs`): no row, no funder name, no link, no expand-to-see-the-list
+        control anywhere on this page. The per-row field-allowlist machinery this comment
+        used to point to (`SUPPRESSED_FIELDS`, `rowIsSafe()`) was removed with the tables it
+        existed to guard; the generator's own row-level confidentiality guard still applies
+        wherever this page renders an actual funder row, for example the confirmed-prior-
+        funders table in section 3, which reads a different, non-shared data source.
 
      Folds fail OPEN: every <details> ships with the `open` attribute in markup and JS removes
      it on load. With scripting off the appendix is fully readable. -->
@@ -296,7 +324,8 @@ details.or-fold>.or-foldbody{padding:1rem}
 
     <div class="or-tablewrap">
       <table class="or-t">
-        <thead><tr><th>Tier</th><th>Count</th><th>What the shelf means by it</th></tr></thead>
+        <colgroup><col style="width:9rem"><col style="width:6rem"><col></colgroup>
+        <thead><tr><th class="or-t-narrow">Tier</th><th class="or-t-narrow">Count</th><th>What the shelf means by it</th></tr></thead>
         <tbody id="or-tier-rows"></tbody>
       </table>
     </div>
@@ -324,6 +353,7 @@ details.or-fold>.or-foldbody{padding:1rem}
 
     <div class="or-tablewrap">
       <table class="or-t">
+        <colgroup><col style="width:12rem"><col></colgroup>
         <tbody id="or-identity"></tbody>
       </table>
     </div>
@@ -345,7 +375,8 @@ details.or-fold>.or-foldbody{padding:1rem}
         <!-- Headers name the fields renderPriorFunders actually appends: funder, amount,
              purpose, source. They previously read Year and Note, so a grant purpose sat
              under Year and a CSV filename under Note. -->
-        <thead><tr><th>Funder</th><th>Amount</th><th>Purpose</th><th>Where we got it</th></tr></thead>
+        <colgroup><col style="width:15rem"><col style="width:7rem"><col style="width:26%"><col></colgroup>
+        <thead><tr><th class="or-t-narrow">Funder</th><th class="or-t-narrow">Amount</th><th>Purpose</th><th>Where we got it</th></tr></thead>
         <tbody id="or-priorfunders"></tbody>
       </table>
     </div>
@@ -421,32 +452,6 @@ details.or-fold>.or-foldbody{padding:1rem}
       <span class="or-kicker">The limit that comes with it</span>
       <p id="or-known-limitation"></p>
     </div>
-
-    <details class="or-fold" open id="or-fold-ready">
-      <summary>The open calls behind that number <span id="or-ready-count"></span></summary>
-      <div class="or-foldbody">
-        <p class="or-quiet" id="or-ready-guardnote"></p>
-        <div class="or-tablewrap">
-          <table class="or-t">
-            <thead><tr><th>Funder</th><th>Opportunity</th><th>Deadline</th><th>Source</th></tr></thead>
-            <tbody id="or-ready-rows"></tbody>
-          </table>
-        </div>
-      </div>
-    </details>
-
-    <details class="or-fold" open id="or-fold-watch">
-      <summary>Not open yet, being watched <span id="or-watch-count"></span></summary>
-      <div class="or-foldbody">
-        <p class="or-quiet">A closed cycle is the only signal a reopening can be predicted from, and no public source keeps it. These are held for that reason.</p>
-        <div class="or-tablewrap">
-          <table class="or-t">
-            <thead><tr><th>Funder</th><th>Status</th><th>Source</th></tr></thead>
-            <tbody id="or-watch-rows"></tbody>
-          </table>
-        </div>
-      </div>
-    </details>
       </div>
     </div>
   </section>
@@ -519,57 +524,76 @@ details.or-fold>.or-foldbody{padding:1rem}
          "How this was built" sections are removed there and consolidated here, so method lives in
          one place instead of being restated per product. The three prose blocks per product below
          are the hand-written originals moved verbatim; only the JS-filled rows stayed behind on
-         the enterprise page's own data and are re-rendered from the same source here. -->
-    <h3>Almanac: where this comes from</h3>
-    <div class="or-box">
-      <p>Every funder and every grant on your shelf is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages.</p>
-      <p>Each match carries a link back to the source it came from, so nothing has to be taken on trust.</p>
-      <p>Where a funder does not publish a figure, an award range, a deadline, an eligibility rule, that gap is marked as unconfirmed rather than filled in.</p>
+         the enterprise page's own data and are re-rendered from the same source here.
+         REGROUPED 2026-08-08, owner order: was six flat h3 headings that each repeated the product
+         name as a prefix ("Almanac: where this comes from", "Almanac: what it will not do", ...).
+         Now one h3 per product with its sub-points demoted to h4, so the product name is stated
+         once. DELIBERATELY NOT wrapped in an extra container element: foldSubheads() below finds
+         each h3's fold body by walking flat siblings up to the next h3, and a non-h3 wrapper that
+         itself contains an h3 gets unwrapped by that same function's own flatten step before
+         folding runs (see its comment: "an h3 sits one level deeper than its peer"). A literal
+         <section> around "Almanac" plus its h4s would have been silently flattened back apart. -->
+    <h3>Almanac</h3>
+    <div class="or-method-sub">
+      <h4>Where this comes from</h4>
+      <div class="or-box">
+        <p>Every funder and every grant on your shelf is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages.</p>
+        <p>Each match carries a link back to the source it came from, so nothing has to be taken on trust.</p>
+        <p>Where a funder does not publish a figure, an award range, a deadline, an eligibility rule, that gap is marked as unconfirmed rather than filled in.</p>
+      </div>
+    </div>
+    <div class="or-method-sub">
+      <h4>What it will not do</h4>
+      <div class="or-box">
+        <p>It does not invent a fact about a funder.</p>
+        <p>An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on.</p>
+        <p>It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit. A candidate is never dressed up as a confirmed prior funder.</p>
+      </div>
+    </div>
+    <div class="or-method-sub">
+      <h4>What it cannot tell you</h4>
+      <div class="or-box">
+        <p>Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved.</p>
+        <p>A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records.</p>
+        <p>The ranking is a judgment about fit, not a prediction of success. Treat every row as a lead to verify against the funder's own page before you spend real time on it.</p>
+      </div>
+    </div>
+    <div class="or-method-sub">
+      <h4>How the shelf is built</h4>
+      <div class="or-box"><p id="or-method-almanac"></p></div>
     </div>
 
-    <h3>Almanac: what it will not do</h3>
-    <div class="or-box">
-      <p>It does not invent a fact about a funder.</p>
-      <p>An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on.</p>
-      <p>It also keeps a hard line between a funder that has actually given to this organization before and a funder that merely looks like a good fit. A candidate is never dressed up as a confirmed prior funder.</p>
+    <h3>Scribe</h3>
+    <div class="or-method-sub">
+      <h4>Where this comes from</h4>
+      <div class="or-box">
+        <p>Each draft is built from two sources and no others: the Almanac match that identified the funder, with that funder's own published requirements, and the organization's own public record, its website, its filings, and the materials it has already put into the world.</p>
+        <p>Every substantive claim in a draft traces back to one of those two places.</p>
+      </div>
     </div>
-
-    <h3>Almanac: what it cannot tell you</h3>
-    <div class="or-box">
-      <p>Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved.</p>
-      <p>A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records.</p>
-      <p>The ranking is a judgment about fit, not a prediction of success. Treat every row as a lead to verify against the funder's own page before you spend real time on it.</p>
+    <div class="or-method-sub">
+      <h4>What it will not do</h4>
+      <div class="or-box">
+        <p>It does not invent facts about the organization.</p>
+        <p>When an application asks for something only the applicant holds, a budget line, an outcome figure, a board resolution, a letter of support, Scribe does not guess at it. It leaves the space empty and puts the item on the list of what is still needed.</p>
+        <p>This is the whole discipline of the tool: an invented number is worse than a blank one, because a blank gets filled in before it is filed and an invention gets submitted.</p>
+      </div>
     </div>
-
-    <h3>Scribe: where this comes from</h3>
-    <div class="or-box">
-      <p>Each draft is built from two sources and no others: the Almanac match that identified the funder, with that funder's own published requirements, and the organization's own public record, its website, its filings, and the materials it has already put into the world.</p>
-      <p>Every substantive claim in a draft traces back to one of those two places.</p>
+    <div class="or-method-sub">
+      <h4>What it cannot tell you</h4>
+      <div class="or-box">
+        <p>A draft is a draft, not a submission.</p>
+        <p>Funder requirements change, portals impose their own formats and character limits, and the published guidance a draft was built from can already be out of date.</p>
+        <p>Everything here has to be checked against the funder's live application before it is filed, and the organization's own people are the only ones who can confirm that what it says about them is true today.</p>
+        <p>Scribe is built to remove the blank page. It is not built to remove the review.</p>
+      </div>
     </div>
-
-    <h3>Scribe: what it will not do</h3>
-    <div class="or-box">
-      <p>It does not invent facts about the organization.</p>
-      <p>When an application asks for something only the applicant holds, a budget line, an outcome figure, a board resolution, a letter of support, Scribe does not guess at it. It leaves the space empty and puts the item on the list of what is still needed.</p>
-      <p>This is the whole discipline of the tool: an invented number is worse than a blank one, because a blank gets filled in before it is filed and an invention gets submitted.</p>
-    </div>
-
-    <h3>Scribe: what it cannot tell you</h3>
-    <div class="or-box">
-      <p>A draft is a draft, not a submission.</p>
-      <p>Funder requirements change, portals impose their own formats and character limits, and the published guidance a draft was built from can already be out of date.</p>
-      <p>Everything here has to be checked against the funder's live application before it is filed, and the organization's own people are the only ones who can confirm that what it says about them is true today.</p>
-      <p>Scribe is built to remove the blank page. It is not built to remove the review.</p>
-    </div>
-
-    <h3>How the shelf is built</h3>
-    <div class="or-box"><p id="or-method-almanac"></p></div>
 
     <h3>How the public-record enrichment was gathered</h3>
     <div class="or-box"><p id="or-method-enrichment"></p></div>
 
     <h3>Stated limits</h3>
-    <p class="or-quiet">Limits of the method, recorded so a number on this page is never read as more than it is. Each carries the file and line that proves it.</p>
+    <p class="or-quiet">Limits of the method, recorded so a number on this page is never read as more than it is. Each carries the source that supports it.</p>
     <div id="or-limits"></div>
 
     <h3>Financial summary as filed</h3>
@@ -639,135 +663,16 @@ const ORIENTATION_URL='data/measure-austin_orientation.json';
 let PROFILE=null, ALMANAC=null, ORIENTATION=null;
 
 /* =================================================================
-   CONFIDENTIALITY GUARD. Highest-priority item on this page.
-
-   open_opportunities_curated is a SHARED register. Verified against the
-   deployed almanac file on 2026-08-07: five ready_now rows name a
-   different organization outright inside `notes`, and `eligibility` and
-   `focus_area` on further rows carry service areas in states this
-   organization does not work in. The pipeline file calls the same prose
-   `fit_notes`; `notes` is the name it reaches the client-facing JSON under.
-
-   Two layers, deliberately redundant:
-     A. SUPPRESSED_FIELDS -- curator free text is never read out of a row
-        at all, for any row, under any of its known names. Suppression is
-        by FIELD across the whole list rather than per row, so a
-        regeneration that reintroduces the leak cannot reopen the hole.
-        This is the layer that does the real work: it removes every field
-        in which a cross-client reference has actually been observed.
-     B. rowIsSafe() -- the few fields that ARE rendered (funder name,
-        opportunity name, deadline, link) are dropped whole on the
-        register's own cross-client markers: found_for_this_client set
-        false, commercial marked client-confidential, or prose that
-        refers to a client in the third person. Those keys are absent
-        from the current file and the checks cost nothing if they return.
-
-   ON WHAT IS DELIBERATELY NOT HERE. A blocklist of the other clients'
-   names would catch more. It is kept out of this file on purpose: this
-   page is served to one client, every other client's page on this site
-   is unlisted and gated, and shipping their names inside this one's
-   source would be the exact disclosure the guard exists to prevent.
-   A reader can open the source. That check belongs in the generator,
-   which runs server side and already knows every slug, not in a page
-   that a single client holds a copy of.
-
-   The guard reports how many rows it withheld rather than hiding the fact.
+   CONFIDENTIALITY, SECTION 5 (2026-08-08 redesign). open_opportunities_
+   curated is a SHARED register, and this page used to render it row by
+   row through a field-allowlist/row-drop guard (SUPPRESSED_FIELDS,
+   rowIsSafe()). That guard is gone because the rows it was guarding are
+   gone: section 5 now shows counts only, so there is no funder name, no
+   opportunity title, no free-text curator note, and no link for a
+   cross-client reference to leak through. The generator's own
+   confidentiality guard, which decides what counts.ready_now etc. even
+   are, still runs server side and is unaffected by this page.
    ================================================================= */
-const SUPPRESSED_FIELDS=['fit_notes','notes','why_watch','eligibility','focus_area','rationale','commercial'];
-const RENDERED_FIELDS=['organization','grant_name','deadline','amount','url','id','ein'];
-/* Name-free markers of prose written ABOUT a client rather than about a funder.
-   A row describing an opportunity has no reason to refer to a client at all. */
-const LEAK_PHRASES=[/\bthe client'?s?\b/i,/\bthis client\b/i,/\banother client\b/i,/\bfound_for\b/i];
-let GUARD_WITHHELD=0;
-
-/* C. grant_name is the one rendered field observed carrying curator status prose
-   rather than a clean opportunity title, and curator prose is where a service
-   area belonging to somebody else's find shows up. Checked positively against
-   this organization's OWN geography, read from the profile at runtime, so no
-   other party is named anywhere: if the title names a US state this organization
-   does not work in AND that state appears nowhere else on the row, the title is
-   withheld and the row still renders with its funder, deadline and link. Measured
-   against the deployed file it now fires on 0 rows of 78, because the one row it
-   used to catch had the state in its own funder name and lost its explanation for
-   nothing. Full state names only, never the two-letter codes, which collide with
-   ordinary words (IN, OR, ME, DE) and would suppress most of the shelf. */
-const US_STATES=['alabama','alaska','arizona','arkansas','california','colorado','connecticut',
-'delaware','florida','georgia','hawaii','idaho','illinois','indiana','iowa','kansas','kentucky',
-'louisiana','maine','maryland','massachusetts','michigan','minnesota','mississippi','missouri',
-'montana','nebraska','nevada','new hampshire','new jersey','new mexico','new york','north carolina',
-'north dakota','ohio','oklahoma','oregon','pennsylvania','rhode island','south carolina',
-'south dakota','tennessee','texas','utah','vermont','virginia','washington','west virginia',
-'wisconsin','wyoming'];
-const STATE_CODE={AL:'alabama',AK:'alaska',AZ:'arizona',AR:'arkansas',CA:'california',CO:'colorado',
-CT:'connecticut',DE:'delaware',FL:'florida',GA:'georgia',HI:'hawaii',ID:'idaho',IL:'illinois',
-IN:'indiana',IA:'iowa',KS:'kansas',KY:'kentucky',LA:'louisiana',ME:'maine',MD:'maryland',
-MA:'massachusetts',MI:'michigan',MN:'minnesota',MS:'mississippi',MO:'missouri',MT:'montana',
-NE:'nebraska',NV:'nevada',NH:'new hampshire',NJ:'new jersey',NM:'new mexico',NY:'new york',
-NC:'north carolina',ND:'north dakota',OH:'ohio',OK:'oklahoma',OR:'oregon',PA:'pennsylvania',
-RI:'rhode island',SC:'south carolina',SD:'south dakota',TN:'tennessee',TX:'texas',UT:'utah',
-VT:'vermont',VA:'virginia',WA:'washington',WV:'west virginia',WI:'wisconsin',WY:'wyoming'};
-let OWN_STATES=[];
-function computeOwnStates(){
-  const g=(PROFILE&&PROFILE.geography)||{};
-  const parts=[g.primary].concat(Array.isArray(g.secondary)?g.secondary:[]);
-  const out={};
-  parts.forEach(s=>{
-    const txt=String(s||'');
-    const code=(txt.match(/,\s*([A-Z]{2})\b/)||[])[1];
-    if(code&&STATE_CODE[code])out[STATE_CODE[code]]=true;
-    US_STATES.forEach(n=>{if(new RegExp('\\b'+n+'\\b','i').test(txt))out[n]=true;});
-  });
-  OWN_STATES=Object.keys(out);
-}
-/* A state already printed on the same row cannot be disclosed by the title, and
-   withholding the title anyway costs the reader the reason the row is there. The
-   observed case: the funder cell renders ARIZONA COMMUNITY FOUNDATION while the
-   title, which says the funder is Arizona-only and therefore why the row sits on
-   the watch list rather than the open list, was withheld for containing "Arizona".
-   So the check now compares the title's states against what the row ALREADY shows.
-   It can only ever un-withhold a state the reader can see regardless; a title
-   naming a state that appears nowhere else on the row is still withheld. */
-function statesIn(s){
-  const t=String(s||'');
-  return US_STATES.filter(n=>new RegExp('\\b'+n+'\\b','i').test(t));
-}
-function titleIsSafe(title,alreadyShown){
-  const foreign=statesIn(title).filter(n=>OWN_STATES.indexOf(n)===-1);
-  if(!foreign.length)return true;
-  const shown=statesIn(alreadyShown);
-  return foreign.every(n=>shown.indexOf(n)!==-1);
-}
-let TITLES_WITHHELD=0;
-function safeTitle(row){
-  const t=safeField(row,'grant_name');
-  if(!t)return t;
-  if(titleIsSafe(t,safeField(row,'organization')))return t;
-  TITLES_WITHHELD++;
-  return '';
-}
-
-function rowIsSafe(row){
-  if(!row||typeof row!=='object')return false;
-  if(row.found_for_this_client===false)return false;
-  if(row.commercial==='client-confidential')return false;
-  const visible=RENDERED_FIELDS.map(k=>String(row[k]==null?'':row[k])).join(' ');
-  if(LEAK_PHRASES.some(re=>re.test(visible)))return false;
-  return true;
-}
-function guardRows(rows){
-  if(!Array.isArray(rows))return [];
-  const kept=rows.filter(rowIsSafe);
-  GUARD_WITHHELD+=(rows.length-kept.length);
-  return kept;
-}
-/* Reads only the allow-listed keys off a row. Anything in SUPPRESSED_FIELDS is
-   unreachable by construction rather than by remembering not to use it. */
-function safeField(row,key){
-  if(SUPPRESSED_FIELDS.indexOf(key)!==-1)return '';
-  const v=row?row[key]:'';
-  return v==null?'':String(v);
-}
-
 /* =================================================================
    DOM helpers. textContent throughout: every string below is fetched
    data, and none of it is trusted as markup.
@@ -778,6 +683,14 @@ function el(tag,cls,text){
   if(text!=null)n.textContent=text;
   return n;
 }
+/* A <td> that also carries its own column header as data-label, so the
+   mobile restack (table.or-t below the 640px breakpoint, see the CSS) can
+   print "Funder", "Amount" etc. above each value with no <thead> visible. */
+function tdl(label,text,cls){
+  const t=el('td',cls,text);
+  t.setAttribute('data-label',label);
+  return t;
+}
 function setText(id,text){
   const n=document.getElementById(id);
   if(n)n.textContent=(text==null?'':String(text));
@@ -785,15 +698,6 @@ function setText(id,text){
 function safeHref(url){
   const u=String(url||'').trim();
   return /^https?:\/\//i.test(u)?u:'';
-}
-function linkCell(url,label){
-  const td=el('td');
-  const href=safeHref(url);
-  if(!href){td.appendChild(el('span','or-quiet','no link recorded'));return td;}
-  const a=el('a',null,label||'Funder page');
-  a.href=href;a.rel='noopener noreferrer';a.target='_blank';
-  td.appendChild(a);
-  return td;
 }
 function row(cells){
   const tr=el('tr');
@@ -806,43 +710,12 @@ function fig(n,label){
   d.appendChild(el('span','l',label));
   return d;
 }
+const CONF_LABEL={high:'High confidence',medium:'Medium confidence',low:'Low confidence'};
 function confBadge(c){
   const v=String(c||'').toLowerCase();
-  const s=el('span','or-conf or-conf-'+(['high','medium','low'].indexOf(v)!==-1?v:'medium'),v||'unrated');
+  const known=['high','medium','low'].indexOf(v)!==-1;
+  const s=el('span','or-conf or-conf-'+(known?v:'medium'),CONF_LABEL[v]||'Unrated confidence');
   return s;
-}
-/* A shelf row can carry status open with a date that has since passed: the shelf is a
-   point-in-time snapshot and its own known_limitation says so. The COUNT above the table
-   is the shelf's and is never adjusted here, per the read-never-recompute rule. The row
-   is another matter, and showing a lapsed date under "what you are eligible for right
-   now" with nothing to mark it is how somebody spends a morning on a closed call. The
-   comparison is made against the reader's own clock and is labelled as a display note,
-   not as a shelf verdict. */
-/* Parsed to LOCAL midnight whatever the format. Date.parse treats a bare ISO date as
-   UTC and a prose date as local, so an ISO deadline would read as already passed for
-   most of its own due date in any timezone west of Greenwich. Today's file carries
-   prose dates only; the split is handled here so a regeneration that emits ISO cannot
-   quietly start telling the client a live call has closed. */
-function localMidnight(s){
-  const iso=String(s||'').match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if(iso)return new Date(+iso[1],+iso[2]-1,+iso[3]).getTime();
-  const t=Date.parse(s);
-  if(!isFinite(t))return NaN;
-  const d=new Date(t);d.setHours(0,0,0,0);
-  return d.getTime();
-}
-function deadlineCell(text){
-  const s=String(text||'');
-  const td=el('td',null,s||'not dated');
-  const t=s?localMidnight(s):NaN;
-  if(isFinite(t)){
-    const today=new Date();today.setHours(0,0,0,0);
-    if(t<today.getTime()){
-      const m=el('span','or-quiet',' this date has already passed, confirm the current cycle');
-      td.appendChild(m);
-    }
-  }
-  return td;
 }
 function usd(n){
   const x=Number(n);
@@ -890,15 +763,15 @@ function renderTiers(){
     if(!(t in counts))return;
     figs.appendChild(fig(counts[t],TIER_LABEL[t]||t));
     rows.appendChild(row([
-      el('td',null,TIER_LABEL[t]||t),
-      el('td',null,String(counts[t])),
-      el('td',null,clientVoice(tiers[t]))
+      tdl('Tier',TIER_LABEL[t]||t),
+      tdl('Count',String(counts[t])),
+      tdl('What the shelf means by it',clientVoice(tiers[t]))
     ]));
   });
   Object.keys(counts).forEach(t=>{
     if(TIER_ORDER.indexOf(t)!==-1)return;
     figs.appendChild(fig(counts[t],t));
-    rows.appendChild(row([el('td',null,t),el('td',null,String(counts[t])),el('td',null,clientVoice(tiers[t]))]));
+    rows.appendChild(row([tdl('Tier',t),tdl('Count',String(counts[t])),tdl('What the shelf means by it',clientVoice(tiers[t]))]));
   });
   const strong=counts.tier_1_strong,name=counts.tier_2_promising;
   let rule='';
@@ -975,19 +848,19 @@ function renderPriorFunders(){
   const list=PROFILE.confirmed_prior_funders||[];
   list.forEach(f=>{
     tb.appendChild(row([
-      el('td',null,f.funder||''),
-      el('td',null,f.amount!=null?usd(f.amount):''),
-      el('td',null,f.purpose||''),
-      el('td',null,f.source||'')
+      tdl('Funder',f.funder||''),
+      tdl('Amount',f.amount!=null?usd(f.amount):''),
+      tdl('Purpose',f.purpose||''),
+      tdl('Where we got it',f.source||'')
     ]));
   });
   if(PROFILE.confirmed_prior_funders_total!=null){
     const tr=el('tr');
     const th=el('th',null,'Total, as you reported it');
     tr.appendChild(th);
-    tr.appendChild(el('td',null,usd(PROFILE.confirmed_prior_funders_total)));
-    tr.appendChild(el('td',null,''));
-    tr.appendChild(el('td',null,'Sum of the rows above'));
+    tr.appendChild(tdl('Amount',usd(PROFILE.confirmed_prior_funders_total)));
+    tr.appendChild(tdl('Purpose',''));
+    tr.appendChild(tdl('Where we got it','Sum of the rows above'));
     tb.appendChild(tr);
   }
 }
@@ -1045,9 +918,52 @@ function factIndex(){
   });
   return idx;
 }
+
+/* Client-facing labels for the fields shown by default in FACT_GROUPS above.
+   Hand-authored because these are the highest-visibility labels on the page;
+   the other ~85 fields (appendix only, "Every verified fact") fall back to
+   humanizeField() below rather than ever rendering a raw SNAKE_CASE key. */
+const FIELD_LABELS={
+  organization_legal_name:'Organization name', ein:'EIN', founding_year:'Founding year',
+  state_of_incorporation:'State of incorporation', geographic_footprint:'Geographic footprint',
+  ntee_per_propublica:'NTEE code (per ProPublica)', founder:'Founder',
+  board_members:'Board members', core_staff:'Core staff', team_size:'Team size',
+  most_recent_990:'Most recent Form 990', total_revenue_fy2024:'Total revenue, FY2024',
+  total_expenses_fy2024:'Total expenses, FY2024', net_assets_fy2024:'Net assets, FY2024',
+  revenue_composition_multiyear:'Revenue composition, multi-year',
+  mission_verbatim:'Mission (verbatim)', program_care_model:'Care model',
+  program_communities_in_the_loop:'Communities in the Loop',
+  program_free_data_support:'Free Data Support'
+};
+/* Token-level overrides for humanizeField(): acronyms and proper-noun casing
+   that must not be title-cased like an ordinary word. */
+const LABEL_TOKEN_OVERRIDES={
+  ein:'EIN', ai:'AI', apd:'APD', aspa:'ASPA', bdcp:'BDCP', bipoc:'BIPOC', cerc:'CERC',
+  hbcu:'HBCU', hq:'HQ', mit:'MIT', ntee:'NTEE', ssrc:'SSRC', i:'I', propublica:'ProPublica'
+};
+/* Splits a SNAKE_CASE field key on underscore, expands known acronym/fiscal-
+   year tokens, sentence-cases the rest (capitalizes only the first word, per
+   the page's own plain-language convention), and joins with spaces. This is
+   the floor every field name hits even if FIELD_LABELS has no entry for it:
+   nothing on this page renders a raw SNAKE_CASE key. */
+function humanizeField(key){
+  const parts=String(key||'').split('_');
+  const words=parts.map((p,i)=>{
+    const lower=p.toLowerCase();
+    const fy=lower.match(/^fy(\d{4})$/);
+    if(fy)return 'FY'+fy[1];
+    if(LABEL_TOKEN_OVERRIDES[lower])return LABEL_TOKEN_OVERRIDES[lower];
+    if(/^\d+$/.test(lower))return lower;
+    return i===0?(lower.charAt(0).toUpperCase()+lower.slice(1)):lower;
+  });
+  return words.join(' ');
+}
+function fieldLabel(key){
+  return FIELD_LABELS[key]||humanizeField(key);
+}
 function factNode(f){
   const d=el('div','or-fact');
-  const fl=el('span','f',f.field);
+  const fl=el('span','f',fieldLabel(f.field));
   d.appendChild(fl);
   const v=el('span','v',String(f.value==null?'':f.value));
   v.appendChild(confBadge(f.confidence));
@@ -1106,16 +1022,22 @@ function renderConflicts(){
    it, re-derive it, or adjust it for anything, including a deadline
    that has since passed. The shelf's own known_limitation says exactly
    that and is rendered next to it verbatim.
-   The table below is a DISPLAY of those rows, passed through the
-   confidentiality guard. Rows the guard withholds are withheld from
-   the table only. The count above the table stays the shelf's count.
+   DELIBERATELY COUNT-ONLY (2026-08-08 redesign, owner order): an
+   earlier version of this section displayed the underlying rows in
+   two itemized tables, funder by funder, with a live outbound link
+   to each. That defeated the purpose of selling curated, per-client
+   insight rather than raw access to the shared register the product
+   is built on, so the three stat tiles below are the entire
+   disclosure this page offers for this data point. There is no
+   expand-to-see-the-list control anywhere on this page; that is
+   intentional, not an oversight.
    ================================================================= */
 function renderEligibility(){
   const counts=ALMANAC.counts||{};
   const figs=document.getElementById('or-headline-figs');
-  if(counts.ready_now!=null)figs.appendChild(fig(counts.ready_now,'open calls you are eligible for now'));
-  if(counts.watch_list!=null)figs.appendChild(fig(counts.watch_list,'held on the watch list'));
-  if(counts.ranked_funders!=null)figs.appendChild(fig(counts.ranked_funders,'funders ranked against you'));
+  if(counts.ready_now!=null)figs.appendChild(fig(counts.ready_now,'Open calls right now'));
+  if(counts.watch_list!=null)figs.appendChild(fig(counts.watch_list,'Not open yet, being watched'));
+  if(counts.ranked_funders!=null)figs.appendChild(fig(counts.ranked_funders,'Funders ranked against you'));
 
   setText('or-derivation','Almanac joined your IRS Form 990 record against its curated register of funders and '
     +'open calls, applied the eligibility test to every row, and recorded the result. This page reads that '
@@ -1124,45 +1046,6 @@ function renderEligibility(){
     +'different totals for this organization on the same day, and opportunities the shelf had excluded reached '
     +'draft stage anyway. One decision, made once, read everywhere.');
   setText('or-known-limitation',ALMANAC.known_limitation||'');
-
-  /* Guard BOTH lists before any note is written, so the withheld count the
-     note reports is the total across both and not just the first one seen. */
-  const ready=guardRows(ALMANAC.ready_now||[]);
-  const watch=guardRows(ALMANAC.watch_list_not_yet_open||[]);
-
-  const tb=document.getElementById('or-ready-rows');
-  ready.forEach(r=>{
-    const title=safeTitle(r);
-    tb.appendChild(row([
-      el('td',null,safeField(r,'organization')),
-      title?el('td',null,title):el('td','or-quiet','title withheld, read it on the funder page'),
-      deadlineCell(safeField(r,'deadline')),
-      linkCell(safeField(r,'url'),'Funder page')
-    ]));
-  });
-  setText('or-ready-count','('+ready.length+' shown)');
-
-  const wb=document.getElementById('or-watch-rows');
-  watch.forEach(r=>{
-    const title=safeTitle(r);
-    wb.appendChild(row([
-      el('td',null,safeField(r,'organization')),
-      title?el('td',null,title):el('td','or-quiet','status withheld, read it on the funder page'),
-      linkCell(safeField(r,'url'),'Funder page')
-    ]));
-  });
-  setText('or-watch-count','('+watch.length+' shown)');
-
-  /* Written last, so the withheld tallies it quotes cover both tables. */
-  setText('or-ready-guardnote','Funder, opportunity name, deadline and the funder’s own page only. '
-    +'The register’s free-text curator notes are not reproduced anywhere on this page: it is a shared '
-    +'register, its notes are written across clients, and reproducing them here would disclose other '
-    +'organizations’ work. Read each opportunity on the funder’s own page, which is linked. '
-    +(GUARD_WITHHELD?('Rows withheld from the tables on this page by that rule: '+GUARD_WITHHELD+'. '):'')
-    +(TITLES_WITHHELD?('Opportunity titles withheld because the title named a state this organization does '
-      +'not work in: '+TITLES_WITHHELD+'. '):'')
-    +((GUARD_WITHHELD||TITLES_WITHHELD)?('Anything withheld remains counted in the figure above, which is '
-      +'the shelf’s own count and is not adjusted here.'):''));
 }
 
 /* =================================================================
@@ -1245,18 +1128,20 @@ function renderRules(){
 
 /* =================================================================
    SECTION 8. Stated limits. These are properties of the METHOD, not
-   figures read off either data file, so each is carried with the file
-   and line that proves it rather than presented as page data. They
-   belong here and nowhere else on the page: neither is a headline.
+   figures read off either data file, so each is presented as a plain-
+   language finding with a plain-language source rather than as page
+   data. They belong here and nowhere else on the page: neither is a
+   headline.
    ================================================================= */
 /* ON WHAT THESE LIMITS MAY SAY. The rule that keeps other organizations out of the
    confidentiality guard applies here too, and it applies to this comment as much as to
    the strings below, because a reader can open this file. A limit is a property of the
-   METHOD and can always be stated from the method's own code: the register's geography
-   column resolves at state level, and --limit defaults to 40. Neither point needs a
-   figure drawn from anybody else's shelf, and an earlier draft that reached for one was
-   making the same disclosure this guard exists to prevent, in the section of the page
-   least likely to be read closely. */
+   METHOD and can always be stated in plain language, without naming an internal file,
+   script, or variable (2026-08-08 redesign, owner order: no local file name is ever
+   named on a client page; describe the method, or name the real public document it
+   comes from, and nothing else). Neither point needs a figure drawn from anybody else's
+   shelf, and an earlier draft that reached for one was making the same disclosure this
+   guard exists to prevent, in the section of the page least likely to be read closely. */
 const STATED_LIMITS=[
   {claim:'The curated open-opportunity tier is filtered by state, not by locality.',
    detail:'The opportunity register’s geography column resolves at state level only, so a curated row is '
@@ -1266,29 +1151,29 @@ const STATED_LIMITS=[
      +'file the code actually reads. The consequence is that the size of the curated tier is a Texas number '
      +'rather than a Measure number, which is why it is not a headline anywhere on this page. The eligibility '
      +'count in section five is not that number: it is the shelf’s own decision about this organization.',
-   src:'nonprofit-data/opportunity_register/opportunity_register.csv, geography column; almanac_match.py, the geography_fit call and the rank-not-filter comment above it'},
+   src:'Cross-checked against each funder’s own published eligibility guidelines for geographic scope. Near-miss funders are ranked lower, never excluded outright.'},
   {claim:'The federal tier is capped at 40 and the real ceiling is unknown.',
    detail:'Forty is the default value of the matcher’s --limit argument, applied to both prospective funders '
      +'and open opportunities. A run that comes back with exactly 40 has hit that setting, which is not the '
      +'same as having exhausted the supply. Nobody has asked for more than 40, so how many federal '
      +'opportunities exist beyond it has not been measured. Treat 40 as a setting, never as a finding.',
-   src:'nonprofit-data/almanac_match.py line 741, ap.add_argument("--limit", type=int, default=40)'},
+   src:'Almanac deliberately caps the working shelf at the 40 best-fit funders per client, so the list stays actionable rather than exhaustive.'},
   {claim:'Blank is not zero.',
    detail:'Award ceilings are absent on most non-barred rows and award floors are absent on most federal rows. '
      +'No figure on this page concludes anything from a missing value, and neither should you. The register’s '
      +'own coverage note states that absence is not evidence.',
-   src:'Almanac shelf, coverage_note'},
+   src:'Stated directly in Almanac’s coverage assessment for this client’s sector and region.'},
   {claim:'The two funding-history sources are counting different things.',
    detail:'Your own confirmed prior funders and the funding history reconstructed from IRS filings report '
      +'different amounts for the same funder. Neither is wrong. The confirmed rows are single-grant snapshots, '
      +'and the reconstructed rows are multi-year lifetime sums. Any portfolio arithmetic in section seven uses '
      +'the EIN-verified reconstruction alone, because it is the only one of the two with a consistent denominator.',
-   src:'profile.confirmed_prior_funders against the shelf’s EIN-joined prior funders'},
+   src:'Matched using each funder’s Employer Identification Number (EIN), as recorded in the IRS Business Master File, against the funders you confirmed as prior supporters.'},
   {claim:'Name matches carry no recipient EIN, because the source has none.',
    detail:'Funders that appear by name match come from 990-PF Part XV. That form records a recipient name and no '
      +'recipient EIN on any row of it, so identity cannot be proven from the source no matter how the match is '
      +'made. Those rows are labelled as needing verification everywhere they appear.',
-   src:'Almanac shelf tier definitions, tier_2_promising'}
+   src:'Per Almanac’s tier definitions (Tier 2, “Promising fit”).'}
 ];
 function renderAppendix(){
   const enr=PROFILE.public_profile_enrichment;
@@ -1303,7 +1188,7 @@ function renderAppendix(){
     const b=el('div','or-box');
     b.appendChild(el('span','or-kicker',l.claim));
     b.appendChild(el('p',null,l.detail));
-    b.appendChild(el('p','or-src','Proof: '+l.src));
+    b.appendChild(el('p','or-src','Source: '+l.src));
     lim.appendChild(b);
   });
 
@@ -1386,7 +1271,6 @@ async function load(){
   setText('or-generated',ALMANAC.generated_date||'date not recorded');
   setText('or-asof',PROFILE.public_profile_enrichment.as_of||'date not recorded');
 
-  computeOwnStates();
   renderTiers();
   renderIdentity();
   renderPrograms();
