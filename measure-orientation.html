@@ -42,7 +42,7 @@ a{color:inherit}
 .bar-brand{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--ink)}
 .bar-note{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--wash)}
 .hero{max-width:900px;margin:0 auto;padding:3.2rem 1.5rem 1rem}
-.hero .kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.hero .kicker{font-size:13px;letter-spacing:.03em;color:var(--accent);font-weight:600}
 .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,5vw,40px);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
 .hero p{color:var(--wash);font-size:20px;margin:0 0 1rem}
 footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:12px;letter-spacing:.02em}
@@ -88,7 +88,7 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
    like a page that works. */
 .section-card{scroll-margin-top:1rem}
 .section-card h2{font-family:var(--serif);font-weight:700;font-size:30px;margin:0;line-height:1.2}
-.section-card .kicker{font-family:var(--mono);font-size:15px;color:var(--accent);display:block;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;font-weight:500}
+.section-card .kicker{font-size:15px;color:var(--accent);display:block;letter-spacing:.02em;margin-bottom:.35rem;font-weight:600}
 .section-card .fold-body{margin-top:1.4rem}
 .or-lede{color:var(--wash);font-style:italic;font-size:20px;margin:0 0 1.4rem}
 .section-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:1.6rem 0 .5rem}
@@ -99,17 +99,20 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
 .or-box{background:var(--well);border:1px solid var(--rule);padding:1.1rem 1.2rem;margin:0 0 1.2rem}
 .or-box.accent{border-left:3px solid var(--accent)}
 .or-box.warn{border-left:3px solid var(--warn)}
-.or-kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--wash);margin:0 0 .5rem;display:block}
+.or-kicker{font-size:13px;letter-spacing:.02em;color:var(--wash);font-weight:600;margin:0 0 .5rem;display:block}
 .or-figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:0 0 1.4rem}
 .or-fig{background:var(--paper);padding:.95rem 1rem}
 .or-fig .n{font-family:var(--serif);font-size:22.5px;font-weight:700;display:block;line-height:1.1}
 .or-fig .l{font-size:15px;color:var(--wash);font-style:italic;display:block;margin-top:.2rem}
 .or-headline .n{font-size:40px;color:var(--accent)}
+.or-allfacts-block{border:1px solid var(--accent);border-left:4px solid var(--accent);background:var(--paper);padding:1.3rem 1.4rem 1.5rem;margin:1.6rem 0 1.2rem}
+.or-allfacts-block h3{margin:0 0 .5rem}
+.or-allfacts-block>.or-quiet{margin:0 0 1rem}
 .or-facts{margin:0}
 .or-fact{border-top:1px solid var(--rule);padding:.85rem 0}
 .or-fact:last-child{border-bottom:1px solid var(--rule)}
 .or-fact .f{font-size:13px;font-weight:600;color:var(--wash);display:block;margin-bottom:.25rem}
-.or-fact .v{display:block}
+.or-fact .v{display:block;white-space:pre-line}
 .or-fact .m{font-size:15px;color:var(--wash);margin-top:.35rem;display:block}
 .or-conf{font-size:12.5px;border:1px solid currentColor;border-radius:1em;padding:.08rem .5rem;margin-left:.4rem;white-space:nowrap;vertical-align:.08em}
 .or-conf-high{color:var(--ok)}
@@ -124,16 +127,16 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
 .or-conflict h4{font-family:var(--serif);font-weight:700;font-size:17px;margin:0 0 .4rem;color:var(--ink)}
 .or-conflict p{margin:0}
 .or-tablewrap{overflow-x:auto;border:1px solid var(--rule);background:var(--paper);margin:0 0 1.2rem}
-table.or-t{border-collapse:collapse;width:100%;font-size:15px;table-layout:fixed}
+table.or-t{border-collapse:collapse;width:100%;font-size:15px;table-layout:auto}
 table.or-t th,table.or-t td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top;overflow-wrap:break-word}
 table.or-t th{font-size:12.5px;letter-spacing:.02em;color:var(--wash);font-weight:600}
-table.or-t th.or-t-narrow{white-space:nowrap}
+table.or-t th.or-t-narrow,table.or-t td.or-t-narrow{white-space:nowrap}
 table.or-t tr:last-child td{border-bottom:none}
 .or-rule{border:1px solid var(--rule);background:var(--well);padding:1.1rem 1.2rem;margin:0 0 1rem}
 .or-rule .rid{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;color:var(--accent);font-weight:500}
 .or-rule h3{margin:.3rem 0 .5rem;font-size:25px}
 .or-rule .trig{font-size:15px;color:var(--wash);font-style:italic;margin:0 0 .6rem}
-.or-rule .nums{font-family:var(--mono);font-size:14px;line-height:1.6;margin:0;background:var(--well);padding:.6rem .7rem}
+.or-rule .nums{font-size:14px;line-height:1.6;margin:0;background:var(--well);padding:.6rem .7rem;white-space:pre-line}
 details.or-fold{border:1px solid var(--rule);background:var(--paper);margin:0 0 1.2rem}
 details.or-fold>summary{cursor:pointer;padding:.75rem 1rem;font-family:var(--mono);font-size:15px;letter-spacing:.03em;color:var(--ink);list-style:none;background:var(--well)}
 details.or-fold>summary::-webkit-details-marker{display:none}
@@ -141,7 +144,7 @@ details.or-fold>summary::before{content:"\25B8 ";color:var(--accent)}
 details.or-fold[open]>summary::before{content:"\25BE ";color:var(--accent)}
 details.or-fold>.or-foldbody{padding:1rem}
 .or-appendix{border-top:3px double var(--ink);padding-top:1.8rem;margin-top:1rem}
-.or-appendix .or-tag{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--urgent);display:block;margin-bottom:.5rem}
+.or-appendix .or-tag{font-size:13px;letter-spacing:.02em;color:var(--urgent);font-weight:600;display:block;margin-bottom:.5rem}
 .or-src{font-size:13px;font-style:italic;color:var(--wash)}
 .or-msg{border:1px solid var(--urgent);border-left:3px solid var(--urgent);background:var(--well);padding:1rem 1.1rem;margin:0 0 1.2rem;font-size:15px}
 .or-msg .or-kicker{color:var(--urgent)}
@@ -153,15 +156,19 @@ details.or-fold>.or-foldbody{padding:1rem}
        source note) pushing the body sideways. Both are handled explicitly:
        min-width:0 on every grid and flex child, and overflow-wrap on every
        text container.
-       TABLES (2026-08-08 redesign, owner order, ratified Option B): a narrow
-       fixed-width header ("Count", "Tier") used to sit inside this same
-       overflow-wrap:anywhere rule with no table-layout set, so the browser
-       compressed and broke it mid-word rather than letting a neighbouring
-       column simply take more space. table.or-t headers are OUT of this rule
-       now (line 119 gives them overflow-wrap:break-word instead, a real word
-       boundary, never a mid-word split) and every or-t table restacks to
-       label-above-value below the breakpoint instead of relying on
-       horizontal scroll, so there is no narrow column left to break. ---- */
+       TABLES (2026-08-08 redesign, owner order, ratified Option B; revised
+       2026-08-09): table.or-t is table-layout:auto with hand-guessed
+       <colgroup> widths removed, so each column sizes from its own content
+       instead of a fixed width that could be narrower than a real value
+       (e.g. a 9rem Tier column that made "Peer funder, no relationship"
+       wrap three lines deep). Columns that are always short and discrete
+       (Tier, Count, Amount, and the identity table's row labels) carry
+       or-t-narrow on their th/td, forcing white-space:nowrap so they never
+       wrap; prose columns (Purpose, "What the Shelf Means by It") are left
+       to wrap normally, which is correct for a full sentence. Below the
+       breakpoint or-t-narrow's nowrap is reset to normal, because the
+       label-above-value restack no longer needs it and a forced nowrap on
+       a narrow phone width is itself an overflow risk. ---- */
 .or-figs>*,.or-nav li,.or-fact,.or-box,.or-rule,.or-msg,.or-list li,details.or-fold>.or-foldbody{min-width:0}
 .or-fact .v,.or-fact .m,.or-box p,.or-rule .nums,.or-list li,.or-src,.or-quiet{overflow-wrap:anywhere}
 /* No overflow-x:hidden on body. It would not prevent overflow, only clip it. */
@@ -171,6 +178,7 @@ details.or-fold>.or-foldbody{padding:1rem}
   .or-wrap,.hero,.bar-in{padding-left:1.1rem;padding-right:1.1rem}
   .or-figs{grid-template-columns:1fr 1fr}
   .or-box,.or-rule,.or-msg,details.or-fold>.or-foldbody{padding:.9rem 1rem}
+  .or-allfacts-block{padding:1rem 1.1rem}
   .or-nav ol{gap:.25rem .8rem}
   .hero{padding-top:2.2rem}
 
@@ -186,6 +194,7 @@ details.or-fold>.or-foldbody{padding:1rem}
   table.or-t tr{border-bottom:1px solid var(--rule);padding:.5rem 0}
   table.or-t tr:last-child{border-bottom:none}
   table.or-t th,table.or-t td{border-bottom:none;padding:.15rem 0}
+  table.or-t th.or-t-narrow,table.or-t td.or-t-narrow{white-space:normal}
   table.or-t td[data-label]::before{content:attr(data-label);display:block;font-size:12.5px;font-weight:600;color:var(--wash)}
 }
 @media(max-width:400px){
@@ -209,7 +218,7 @@ details.or-fold>.or-foldbody{padding:1rem}
   details.or-fold>summary{list-style:none}
   /* Ink and paper: the screen palette wastes toner and reads worse in greyscale. */
   body{background:#fff;color:#000;font-size:11pt}
-  .or-box,.or-rule,.or-msg,.or-fig,.or-tablewrap,details.or-fold,.section.section-card{
+  .or-box,.or-rule,.or-msg,.or-fig,.or-tablewrap,details.or-fold,.section.section-card,.or-allfacts-block{
     background:#fff;border-color:#999}
   /* Keep a card and its heading together, and never split a fact across a page. */
   .section.section-card,.or-rule,.or-box,.or-fact,.subfold{break-inside:avoid;page-break-inside:avoid}
@@ -277,7 +286,7 @@ details.or-fold>.or-foldbody{padding:1rem}
       <li><a href="#or-s3">What the Public Record Says</a></li>
       <li><a href="#or-s4">Where the Record Disagrees With Itself</a></li>
       <li><a href="#or-s5">What You Are Eligible for Right Now</a></li>
-      <li><a href="#or-s6">What We Still Need From You</a></li>
+      <li><a href="#or-s6">What We Could Still Use From You</a></li>
       <li><a href="#or-s7">Where You Could Strengthen Your Position</a></li>
       <li><a href="#or-s8">Appendix: Method, Provenance and Limits</a></li>
     </ol>
@@ -331,7 +340,6 @@ details.or-fold>.or-foldbody{padding:1rem}
 
     <div class="or-tablewrap">
       <table class="or-t">
-        <colgroup><col style="width:9rem"><col style="width:6rem"><col></colgroup>
         <thead><tr><th class="or-t-narrow">Tier</th><th class="or-t-narrow">Count</th><th>What the Shelf Means by It</th></tr></thead>
         <tbody id="or-tier-rows"></tbody>
       </table>
@@ -360,7 +368,6 @@ details.or-fold>.or-foldbody{padding:1rem}
 
     <div class="or-tablewrap">
       <table class="or-t">
-        <colgroup><col style="width:12rem"><col></colgroup>
         <tbody id="or-identity"></tbody>
       </table>
     </div>
@@ -382,8 +389,7 @@ details.or-fold>.or-foldbody{padding:1rem}
         <!-- Headers name the fields renderPriorFunders actually appends: funder, amount,
              purpose, source. They previously read Year and Note, so a grant purpose sat
              under Year and a CSV filename under Note. -->
-        <colgroup><col style="width:15rem"><col style="width:7rem"><col style="width:26%"><col></colgroup>
-        <thead><tr><th class="or-t-narrow">Funder</th><th class="or-t-narrow">Amount</th><th>Purpose</th><th>Where We Got It</th></tr></thead>
+        <thead><tr><th>Funder</th><th class="or-t-narrow">Amount</th><th>Purpose</th><th>Where We Got It</th></tr></thead>
         <tbody id="or-priorfunders"></tbody>
       </table>
     </div>
@@ -470,21 +476,21 @@ details.or-fold>.or-foldbody{padding:1rem}
         <button class="mc-toggle" type="button" aria-controls="or-s6-body"></button>
         <div class="section-head">
           <span class="kicker">Before You Submit</span>
-          <h2>What We Still Need From You</h2>
+          <h2>What We Could Still Use From You</h2>
         </div>
       </div>
       <div class="fold-body" id="or-s6-body">
     <p class="or-lede">Three lists, in order of how much of your time they cost. The first list is the one that pays back fastest: those facts exist and only you have them.</p>
 
-    <h3>Only you can supply this <span class="or-src" id="or-legacy-n"></span></h3>
+    <h3>Only You Can Supply This <span class="or-src" id="or-legacy-n"></span></h3>
     <p class="or-quiet">Nothing public answers these. Each one is a short answer from someone at the organization, and each one unblocks something in a draft.</p>
     <ul class="or-list" id="or-legacy"></ul>
 
-    <h3>Findable, but behind a paywall or a login <span class="or-src" id="or-gated-n"></span></h3>
+    <h3>Findable, but Behind a Paywall or a Login <span class="or-src" id="or-gated-n"></span></h3>
     <p class="or-quiet">These exist in a source we cannot reach without an account or a purchase. Tell us which are worth buying and we will get them; otherwise they stay open.</p>
     <ul class="or-list" id="or-gated"></ul>
 
-    <h3>Not knowable from any source <span class="or-src" id="or-unknowable-n"></span></h3>
+    <h3>Not Knowable From Any Source <span class="or-src" id="or-unknowable-n"></span></h3>
     <p class="or-quiet">Recorded so that nobody spends time looking again. These are internal figures or judgements that appear on no filing and no page.</p>
     <ul class="or-list" id="or-unknowable"></ul>
       </div>
@@ -519,7 +525,7 @@ details.or-fold>.or-foldbody{padding:1rem}
       <div class="section-head-row">
         <button class="mc-toggle" type="button" aria-controls="or-s8-body"></button>
         <div class="section-head">
-          <span class="or-tag">Appendix &middot; technical</span>
+          <span class="or-tag">Appendix &middot; Technical</span>
           <span class="kicker">Method</span>
           <h2>Method, Provenance and Stated Limits</h2>
         </div>
@@ -611,12 +617,12 @@ details.or-fold>.or-foldbody{padding:1rem}
     <h3>Profile Sources</h3>
     <ul class="or-list or-quiet" id="or-profile-sources"></ul>
 
-    <details class="or-fold" open id="or-fold-allfacts">
-      <summary>Every verified fact, with source and confidence <span id="or-allfacts-count"></span></summary>
-      <div class="or-foldbody">
-        <div class="or-facts" id="or-allfacts"></div>
-      </div>
-    </details>
+    <div class="or-allfacts-block" id="or-fold-allfacts">
+      <span class="or-kicker">The Complete Record</span>
+      <h3>Every Verified Fact, With Source and Confidence <span id="or-allfacts-count"></span></h3>
+      <p class="or-quiet">Every fact this page and the matching engine draw on, in one place, each carrying the source it came from and how confident the enrichment pass was in it. Nothing above rests on a fact that is not listed here.</p>
+      <div class="or-facts" id="or-allfacts"></div>
+    </div>
       </div>
     </div>
   </section>
@@ -770,15 +776,15 @@ function renderTiers(){
     if(!(t in counts))return;
     figs.appendChild(fig(counts[t],TIER_LABEL[t]||t));
     rows.appendChild(row([
-      tdl('Tier',TIER_LABEL[t]||t),
-      tdl('Count',String(counts[t])),
+      tdl('Tier',TIER_LABEL[t]||t,'or-t-narrow'),
+      tdl('Count',String(counts[t]),'or-t-narrow'),
       tdl('What the Shelf Means by It',clientVoice(tiers[t]))
     ]));
   });
   Object.keys(counts).forEach(t=>{
     if(TIER_ORDER.indexOf(t)!==-1)return;
     figs.appendChild(fig(counts[t],t));
-    rows.appendChild(row([tdl('Tier',t),tdl('Count',String(counts[t])),tdl('What the Shelf Means by It',clientVoice(tiers[t]))]));
+    rows.appendChild(row([tdl('Tier',t,'or-t-narrow'),tdl('Count',String(counts[t]),'or-t-narrow'),tdl('What the Shelf Means by It',clientVoice(tiers[t]))]));
   });
   const strong=counts.tier_1_strong,name=counts.tier_2_promising;
   let rule='';
@@ -818,7 +824,7 @@ function renderIdentity(){
   ];
   pairs.forEach(p=>{
     if(p[1]==null||p[1]==='')return;
-    const th=el('th',null,p[0]);
+    const th=el('th','or-t-narrow',p[0]);
     tb.appendChild(row([th,el('td',null,String(p[1]))]));
   });
   if(scale.note){
@@ -856,7 +862,7 @@ function renderPriorFunders(){
   list.forEach(f=>{
     tb.appendChild(row([
       tdl('Funder',f.funder||''),
-      tdl('Amount',f.amount!=null?usd(f.amount):''),
+      tdl('Amount',f.amount!=null?usd(f.amount):'','or-t-narrow'),
       tdl('Purpose',f.purpose||''),
       tdl('Where We Got It',f.source||'')
     ]));
@@ -865,7 +871,7 @@ function renderPriorFunders(){
     const tr=el('tr');
     const th=el('th',null,'Total, as You Reported It');
     tr.appendChild(th);
-    tr.appendChild(tdl('Amount',usd(PROFILE.confirmed_prior_funders_total)));
+    tr.appendChild(tdl('Amount',usd(PROFILE.confirmed_prior_funders_total),'or-t-narrow'));
     tr.appendChild(tdl('Purpose',''));
     tr.appendChild(tdl('Where We Got It','Sum of the rows above'));
     tb.appendChild(tr);
@@ -974,11 +980,56 @@ function humanizeField(key){
 function fieldLabel(key){
   return FIELD_LABELS[key]||humanizeField(key);
 }
+/* Dense fact values read better one item per line than as one flowing
+   string: semicolon-separated lists (named individuals, dated line items)
+   and stat-dense multi-sentence values (numbers, currency, percent signs
+   at least as numerous as the sentences) both split; narrative bio-style
+   prose with an incidental second sentence stays as flowing prose. A
+   single left-to-right scan tracks paren depth so both splitters only cut
+   at depth 0 - a title like "(VP Ops; founder of X)" or a date aside like
+   "(Tuesdays, e.g. Sept 15)" never fragments mid-parenthetical - and skips
+   known abbreviations (Dr., St., e.g.) and single-letter initials (T.
+   Harrison) so neither reads as a false sentence boundary. */
+var FACT_SPLIT_ABBR=/(?:e\.g|i\.e|vs|Mr|Mrs|Ms|Dr|Rev|Jr|Sr|St|Inc|Corp|Co|Ltd|etc|approx|dept|no|vol|pt|pp|U\.S|U\.K)$/i;
+function splitFactValue(text){
+  const s=String(text||'');
+  const segments=[];
+  let cur='', depth=0;
+  for(let i=0;i<s.length;i++){
+    const ch=s[i];
+    cur+=ch;
+    if(ch==='(')depth++;
+    else if(ch===')')depth=Math.max(0,depth-1);
+    if(depth===0){
+      if(ch===';' && s[i+1]===' '){
+        segments.push(cur.slice(0,-1));
+        cur='';
+        i++;
+      }else if((ch==='.'||ch==='!'||ch==='?') && s[i+1]===' ' && /[A-Z0-9]/.test(s[i+2]||'')){
+        const before=cur.slice(0,-1).trim();
+        const lastWord=(before.match(/([A-Za-z.]+)$/)||[''])[0];
+        const isInitial=/^[A-Za-z]$/.test(lastWord);
+        if(!FACT_SPLIT_ABBR.test(lastWord) && !isInitial){
+          segments.push(cur.trim());
+          cur='';
+          i++;
+        }
+      }
+    }
+  }
+  if(cur.trim())segments.push(cur.trim());
+  if(segments.length<=1)return [s];
+  const noParens=s.replace(/\([^)]*\)/g,'');
+  const hadSemicolon=/;\s/.test(noParens);
+  const statHits=(s.match(/[$%]|\b\d{2,}\b/g)||[]).length;
+  if(hadSemicolon || statHits>=segments.length) return segments;
+  return [s];
+}
 function factNode(f){
   const d=el('div','or-fact');
   const fl=el('span','f',fieldLabel(f.field));
   d.appendChild(fl);
-  const v=el('span','v',String(f.value==null?'':f.value));
+  const v=el('span','v',splitFactValue(f.value).join('\n'));
   v.appendChild(confBadge(f.confidence));
   d.appendChild(v);
   if(f.note)d.appendChild(el('span','m',f.note));
@@ -1129,7 +1180,7 @@ function renderRules(){
     if(r.detail)card.appendChild(el('p',null,String(r.detail)));
     const kn=r.key_numbers!=null?r.key_numbers:r.numbers;
     if(kn!=null){
-      const p=el('p','nums',Array.isArray(kn)?kn.map(String).join(' · '):String(kn));
+      const p=el('p','nums',Array.isArray(kn)?kn.map(String).join('\n'):String(kn));
       card.appendChild(p);
     }
     if(r.verify_first)card.appendChild(el('p','or-quiet','This rule rests at least partly on a name match '

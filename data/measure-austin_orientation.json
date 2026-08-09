@@ -49,7 +49,7 @@
  "rules": [
   {
    "id": "R1",
-   "headline": "The filed NTEE code is steering the whole match engine",
+   "headline": "The Filed NTEE Code Is Steering the Whole Match Engine",
    "trigger": "the filed NTEE major differs from the top-weighted major in your own profile, and you told us the filed code does not describe you",
    "key_numbers": [
     "Filed code B05 (Education)",
@@ -90,7 +90,7 @@
   },
   {
    "id": "R2",
-   "headline": "One funder is 46 percent of documented history",
+   "headline": "One Funder Is 46 Percent of Documented History",
    "trigger": "the largest single prior funder holds more than 30 percent of the documented total",
    "key_numbers": [
     "ST DAVID'S FOUNDATION: $947,000 of $2,072,796",
@@ -119,7 +119,7 @@
   },
   {
    "id": "R3",
-   "headline": "Three quarters of funders gave once and never returned",
+   "headline": "Three Quarters of Funders Gave Once and Never Returned",
    "trigger": "more than 60 percent of confirmed funders have exactly one recorded grant",
    "key_numbers": [
     "13 of 17 funders gave exactly once",
@@ -158,7 +158,7 @@
   },
   {
    "id": "R4",
-   "headline": "Funders who already gave have a call open now",
+   "headline": "Funders Who Already Gave Have a Call Open Now",
    "trigger": "a prior funder's normalised name matches a non-barred open call whose deadline has not passed as of the generation date",
    "key_numbers": [
     "7 open calls across 6 prior funders",
@@ -286,7 +286,7 @@
   },
   {
    "id": "R5",
-   "headline": "Lapsed relationships, counted in dollars",
+   "headline": "Lapsed Relationships, Counted in Dollars",
    "trigger": "a confirmed funder's last recorded grant year is 2021 or earlier",
    "key_numbers": [
     "$315,296 across 10 funders",
@@ -381,7 +381,7 @@
   },
   {
    "id": "R6",
-   "headline": "Part of the history is an individual donor you cannot name",
+   "headline": "Part of the History Is an Individual Donor You Cannot Name",
    "trigger": "a funder in the EIN-verified reconstruction carries an EIN your own profile flags as a donor-advised-fund sponsor",
    "key_numbers": [
     "$227,000, 11.0% of documented history",
@@ -419,7 +419,7 @@
   },
   {
    "id": "R7",
-   "headline": "Secondary-market work is real but is not registering as eligibility",
+   "headline": "Secondary-Market Work Is Real but Is Not Registering as Eligibility",
    "trigger": "rows barred on geography exist, and at least one prior funder's register-recorded funding geography names a secondary market you work in",
    "key_numbers": [
     "$540,000 already received from 3 funders funding in Dallas, TX",
@@ -488,7 +488,7 @@
   },
   {
    "id": "R8",
-   "headline": "Dated deadlines inside 60 days against one part-time writer",
+   "headline": "Dated Deadlines Inside 60 Days Against One Part-Time Writer",
    "trigger": "a call open to you carries a dated deadline between the generation date and 60 days later",
    "key_numbers": [
     "8 dated deadlines between August 7, 2026 and October 6, 2026",
@@ -589,7 +589,7 @@
   },
   {
    "id": "R10",
-   "headline": "Federal eligibility is inferred rather than published on part of your tier",
+   "headline": "Federal Eligibility Is Inferred Rather Than Published on Part of Your Tier",
    "trigger": "federal rows are open to you, you have screening criteria on file, and at least one open federal row carries eligibility_basis 'inferred from opportunity text'",
    "key_numbers": [
     "39 federal opportunities open to you as of August 7, 2026",
@@ -648,7 +648,7 @@
  "rules_not_fired": [
   {
    "id": "R9",
-   "headline": "Part of the calls open to you are reported, not verified",
+   "headline": "Part of the Calls Open to You Are Reported, Not Verified",
    "trigger": "more than 20 percent of the calls open to you, after the confidentiality guard, carry confidence 'reported' rather than a verified check",
    "key_numbers": [],
    "verify_first": false,
