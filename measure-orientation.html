@@ -44,7 +44,7 @@ a{color:inherit}
 .hero{max-width:900px;margin:0 auto;padding:3.2rem 1.5rem 1rem}
 .hero .kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:500}
 .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,5vw,40px);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
-.hero p{color:var(--wash);max-width:64ch;font-size:20px;margin:0 0 1rem}
+.hero p{color:var(--wash);font-size:20px;margin:0 0 1rem}
 footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:12px;letter-spacing:.02em}
 
 /* ---- Orientation page's own styles. tool-shared.css is linked, never edited:
@@ -90,9 +90,8 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
 .section-card h2{font-family:var(--serif);font-weight:700;font-size:30px;margin:0;line-height:1.2}
 .section-card .kicker{font-family:var(--mono);font-size:15px;color:var(--accent);display:block;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;font-weight:500}
 .section-card .fold-body{margin-top:1.4rem}
-.or-lede{color:var(--wash);font-style:italic;font-size:20px;margin:0 0 1.4rem;max-width:64ch}
+.or-lede{color:var(--wash);font-style:italic;font-size:20px;margin:0 0 1.4rem}
 .section-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:1.6rem 0 .5rem}
-.section-card p{max-width:66ch}
 /* One h3 per product (Almanac, Scribe); h4 sub-points sit inside, indented,
    so the product name is stated once instead of repeated per sub-point. */
 .or-method-sub{margin:0 0 1.1rem;padding-left:1rem;border-left:2px solid var(--rule)}
@@ -117,7 +116,13 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
 .or-conf-medium{color:var(--warn)}
 .or-conf-low{color:var(--urgent)}
 .or-list{margin:0 0 1.2rem;padding-left:1.1rem}
-.or-list li{margin:0 0 .6rem;max-width:66ch}
+.or-list li{margin:0 0 .6rem}
+/* Each conflict is a bolded sentence-preview subheader followed by its own body text,
+   not a numbered list item; the number carried no information the preview doesn't. */
+.or-conflict{border-top:1px solid var(--rule);padding:1rem 0}
+.or-conflict:first-child{border-top:none;padding-top:0}
+.or-conflict h4{font-family:var(--serif);font-weight:700;font-size:17px;margin:0 0 .4rem;color:var(--ink)}
+.or-conflict p{margin:0}
 .or-tablewrap{overflow-x:auto;border:1px solid var(--rule);background:var(--paper);margin:0 0 1.2rem}
 table.or-t{border-collapse:collapse;width:100%;font-size:15px;table-layout:fixed}
 table.or-t th,table.or-t td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top;overflow-wrap:break-word}
@@ -259,25 +264,27 @@ details.or-fold>.or-foldbody{padding:1rem}
 
 <header class="hero">
   <div class="kicker">Orientation</div>
-  <h1 id="or-hero-h1">Getting started with Measure&rsquo;s tools</h1>
+  <h1 id="or-hero-h1">Getting Started With Measure&rsquo;s Tools</h1>
   <p id="or-hero-sub">This page explains what the two tools are, what the public record already says about the organization, and what the organization is eligible to apply for right now. The front half is written for the organization. The appendix at the end carries the method, the provenance and the limits.</p>
   <p class="or-src">Shelf generated <span id="or-generated">&hellip;</span> &middot; public-record enrichment as of <span id="or-asof">&hellip;</span></p>
+  <!-- MOVED INTO THE HEADER 2026-08-09, owner order: this TOC previously sat below the header,
+       separated from it only by a horizontal rule, and read as a stray hyperlinked block rather
+       than part of the page's own orientation chrome. -->
+  <nav class="or-nav" aria-label="Sections">
+    <ol>
+      <li><a href="#or-s1">What Almanac and Scribe Are</a></li>
+      <li><a href="#or-s2">Who You Are on the Record</a></li>
+      <li><a href="#or-s3">What the Public Record Says</a></li>
+      <li><a href="#or-s4">Where the Record Disagrees With Itself</a></li>
+      <li><a href="#or-s5">What You Are Eligible for Right Now</a></li>
+      <li><a href="#or-s6">What We Still Need From You</a></li>
+      <li><a href="#or-s7">Where You Could Strengthen Your Position</a></li>
+      <li><a href="#or-s8">Appendix: Method, Provenance and Limits</a></li>
+    </ol>
+  </nav>
 </header>
 
 <div class="or-wrap">
-  <nav class="or-nav" aria-label="Sections">
-    <ol>
-      <li><a href="#or-s1">What Almanac and Scribe are</a></li>
-      <li><a href="#or-s2">Who you are on the record</a></li>
-      <li><a href="#or-s3">What the public record says</a></li>
-      <li><a href="#or-s4">Where the record disagrees with itself</a></li>
-      <li><a href="#or-s5">What you are eligible for right now</a></li>
-      <li><a href="#or-s6">What we still need from you</a></li>
-      <li><a href="#or-s7">Where you could strengthen your position</a></li>
-      <li><a href="#or-s8">Appendix: method, provenance and limits</a></li>
-    </ol>
-  </nav>
-
   <div id="or-loaderr"></div>
 
   <noscript>
@@ -300,7 +307,7 @@ details.or-fold>.or-foldbody{padding:1rem}
         <button class="mc-toggle" type="button" aria-controls="or-s1-body"></button>
         <div class="section-head">
           <span class="kicker">Read This First</span>
-          <h2>What Almanac and Scribe are</h2>
+          <h2>What Almanac and Scribe Are</h2>
         </div>
       </div>
       <div class="fold-body" id="or-s1-body">
@@ -317,7 +324,7 @@ details.or-fold>.or-foldbody{padding:1rem}
       <p><strong>Scribe</strong> is the drafter. It assembles an application draft from your profile, your 990 figures and the funder&rsquo;s own stated priorities, and it marks every place where it does not have a fact rather than inventing one. A Scribe draft is a starting document with the gaps labelled, not a finished submission.</p>
     </div>
 
-    <h3>Exact match against name match, and why the difference matters</h3>
+    <h3>Exact Match Against Name Match, and Why the Difference Matters</h3>
     <p>A funder appears on your shelf in one of three ways, and they are not equally certain. This is the single most important thing to understand before reading any list here.</p>
 
     <div class="or-figs" id="or-tier-figs"></div>
@@ -325,13 +332,13 @@ details.or-fold>.or-foldbody{padding:1rem}
     <div class="or-tablewrap">
       <table class="or-t">
         <colgroup><col style="width:9rem"><col style="width:6rem"><col></colgroup>
-        <thead><tr><th class="or-t-narrow">Tier</th><th class="or-t-narrow">Count</th><th>What the shelf means by it</th></tr></thead>
+        <thead><tr><th class="or-t-narrow">Tier</th><th class="or-t-narrow">Count</th><th>What the Shelf Means by It</th></tr></thead>
         <tbody id="or-tier-rows"></tbody>
       </table>
     </div>
 
     <div class="or-box accent">
-      <span class="or-kicker">The practical rule</span>
+      <span class="or-kicker">The Practical Rule</span>
       <p id="or-tier-rule"></p>
     </div>
       </div>
@@ -344,8 +351,8 @@ details.or-fold>.or-foldbody{padding:1rem}
       <div class="section-head-row">
         <button class="mc-toggle" type="button" aria-controls="or-s2-body"></button>
         <div class="section-head">
-          <span class="kicker">The organization</span>
-          <h2>Who you are on the record</h2>
+          <span class="kicker">The Organization</span>
+          <h2>Who You Are on the Record</h2>
         </div>
       </div>
       <div class="fold-body" id="or-s2-body">
@@ -358,17 +365,17 @@ details.or-fold>.or-foldbody{padding:1rem}
       </table>
     </div>
 
-    <h3>What you told us you do</h3>
+    <h3>What You Told Us You Do</h3>
     <div id="or-programs"></div>
 
-    <h3>The filed NTEE code</h3>
+    <h3>The Filed NTEE Code</h3>
     <div class="or-box warn" id="or-ntee-box">
-      <span class="or-kicker">Worth reading closely</span>
+      <span class="or-kicker">Worth Reading Closely</span>
       <p id="or-ntee-line"></p>
       <p id="or-ntee-note" class="or-quiet"></p>
     </div>
 
-    <h3>Funders you have confirmed to us</h3>
+    <h3>Funders You Have Confirmed to Us</h3>
     <p class="or-quiet">These are the funders you named directly. They are not the same list as the funding history reconstructed from IRS filings, and the two disagree on amounts for good reason. Section eight explains why.</p>
     <div class="or-tablewrap">
       <table class="or-t">
@@ -376,7 +383,7 @@ details.or-fold>.or-foldbody{padding:1rem}
              purpose, source. They previously read Year and Note, so a grant purpose sat
              under Year and a CSV filename under Note. -->
         <colgroup><col style="width:15rem"><col style="width:7rem"><col style="width:26%"><col></colgroup>
-        <thead><tr><th class="or-t-narrow">Funder</th><th class="or-t-narrow">Amount</th><th>Purpose</th><th>Where we got it</th></tr></thead>
+        <thead><tr><th class="or-t-narrow">Funder</th><th class="or-t-narrow">Amount</th><th>Purpose</th><th>Where We Got It</th></tr></thead>
         <tbody id="or-priorfunders"></tbody>
       </table>
     </div>
@@ -390,8 +397,8 @@ details.or-fold>.or-foldbody{padding:1rem}
       <div class="section-head-row">
         <button class="mc-toggle" type="button" aria-controls="or-s3-body"></button>
         <div class="section-head">
-          <span class="kicker">Verified public record</span>
-          <h2>What the public record says about you</h2>
+          <span class="kicker">Verified Public Record</span>
+          <h2>What the Public Record Says About You</h2>
         </div>
       </div>
       <div class="fold-body" id="or-s3-body">
@@ -412,8 +419,8 @@ details.or-fold>.or-foldbody{padding:1rem}
       <div class="section-head-row">
         <button class="mc-toggle" type="button" aria-controls="or-s4-body"></button>
         <div class="section-head">
-          <span class="kicker">Where sources conflict</span>
-          <h2>Where the public record disagrees with itself</h2>
+          <span class="kicker">Where Sources Conflict</span>
+          <h2>Where the Public Record Disagrees With Itself</h2>
         </div>
       </div>
       <div class="fold-body" id="or-s4-body">
@@ -423,7 +430,7 @@ details.or-fold>.or-foldbody{padding:1rem}
       <p>None of these is an accusation. Most are a stale page, a figure from a different fiscal year, or a counter that was updated in one place and not another. They matter because a reviewer who finds two numbers has to pick one, and the one they pick is usually the smaller.</p>
     </div>
 
-    <ol class="or-list" id="or-conflicts"></ol>
+    <div id="or-conflicts"></div>
       </div>
     </div>
   </section>
@@ -434,8 +441,8 @@ details.or-fold>.or-foldbody{padding:1rem}
       <div class="section-head-row">
         <button class="mc-toggle" type="button" aria-controls="or-s5-body"></button>
         <div class="section-head">
-          <span class="kicker">Open to you now</span>
-          <h2>What you are eligible for right now</h2>
+          <span class="kicker">Open to You Now</span>
+          <h2>What You Are Eligible for Right Now</h2>
         </div>
       </div>
       <div class="fold-body" id="or-s5-body">
@@ -444,12 +451,12 @@ details.or-fold>.or-foldbody{padding:1rem}
     <div class="or-figs or-headline" id="or-headline-figs"></div>
 
     <div class="or-box accent">
-      <span class="or-kicker">How that number was derived</span>
+      <span class="or-kicker">How That Number Was Derived</span>
       <p id="or-derivation"></p>
     </div>
 
     <div class="or-box">
-      <span class="or-kicker">The limit that comes with it</span>
+      <span class="or-kicker">The Limit That Comes With It</span>
       <p id="or-known-limitation"></p>
     </div>
       </div>
@@ -462,8 +469,8 @@ details.or-fold>.or-foldbody{padding:1rem}
       <div class="section-head-row">
         <button class="mc-toggle" type="button" aria-controls="or-s6-body"></button>
         <div class="section-head">
-          <span class="kicker">Before you submit</span>
-          <h2>What we still need from you</h2>
+          <span class="kicker">Before You Submit</span>
+          <h2>What We Still Need From You</h2>
         </div>
       </div>
       <div class="fold-body" id="or-s6-body">
@@ -490,8 +497,8 @@ details.or-fold>.or-foldbody{padding:1rem}
       <div class="section-head-row">
         <button class="mc-toggle" type="button" aria-controls="or-s7-body"></button>
         <div class="section-head">
-          <span class="kicker">Payoff-ranked</span>
-          <h2>Where you could strengthen your position</h2>
+          <span class="kicker">Payoff-Ranked</span>
+          <h2>Where You Could Strengthen Your Position</h2>
         </div>
       </div>
       <div class="fold-body" id="or-s7-body">
@@ -514,7 +521,7 @@ details.or-fold>.or-foldbody{padding:1rem}
         <div class="section-head">
           <span class="or-tag">Appendix &middot; technical</span>
           <span class="kicker">Method</span>
-          <h2>Method, provenance and stated limits</h2>
+          <h2>Method, Provenance and Stated Limits</h2>
         </div>
       </div>
       <div class="fold-body" id="or-s8-body">
@@ -535,7 +542,7 @@ details.or-fold>.or-foldbody{padding:1rem}
          <section> around "Almanac" plus its h4s would have been silently flattened back apart. -->
     <h3>Almanac</h3>
     <div class="or-method-sub">
-      <h4>Where this comes from</h4>
+      <h4>Where This Comes From</h4>
       <div class="or-box">
         <p>Every funder and every grant on your shelf is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own grant pages.</p>
         <p>Each match carries a link back to the source it came from, so nothing has to be taken on trust.</p>
@@ -543,7 +550,7 @@ details.or-fold>.or-foldbody{padding:1rem}
       </div>
     </div>
     <div class="or-method-sub">
-      <h4>What it will not do</h4>
+      <h4>What it Will Not Do</h4>
       <div class="or-box">
         <p>It does not invent a fact about a funder.</p>
         <p>An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date, because a made-up deadline is worse than a missing one: a missing deadline gets checked, and an invented one gets relied on.</p>
@@ -551,7 +558,7 @@ details.or-fold>.or-foldbody{padding:1rem}
       </div>
     </div>
     <div class="or-method-sub">
-      <h4>What it cannot tell you</h4>
+      <h4>What it Cannot Tell You</h4>
       <div class="or-box">
         <p>Form 990 filings reach the public a year or more after the fact, so a funder's priorities may already have moved.</p>
         <p>A foundation that funds this kind of work is not therefore open to you: many accept no unsolicited proposals at all, and some of the best matches here will be closed doors for reasons no filing records.</p>
@@ -559,20 +566,20 @@ details.or-fold>.or-foldbody{padding:1rem}
       </div>
     </div>
     <div class="or-method-sub">
-      <h4>How the shelf is built</h4>
+      <h4>How the Shelf Is Built</h4>
       <div class="or-box"><p id="or-method-almanac"></p></div>
     </div>
 
     <h3>Scribe</h3>
     <div class="or-method-sub">
-      <h4>Where this comes from</h4>
+      <h4>Where This Comes From</h4>
       <div class="or-box">
         <p>Each draft is built from two sources and no others: the Almanac match that identified the funder, with that funder's own published requirements, and the organization's own public record, its website, its filings, and the materials it has already put into the world.</p>
         <p>Every substantive claim in a draft traces back to one of those two places.</p>
       </div>
     </div>
     <div class="or-method-sub">
-      <h4>What it will not do</h4>
+      <h4>What it Will Not Do</h4>
       <div class="or-box">
         <p>It does not invent facts about the organization.</p>
         <p>When an application asks for something only the applicant holds, a budget line, an outcome figure, a board resolution, a letter of support, Scribe does not guess at it. It leaves the space empty and puts the item on the list of what is still needed.</p>
@@ -580,7 +587,7 @@ details.or-fold>.or-foldbody{padding:1rem}
       </div>
     </div>
     <div class="or-method-sub">
-      <h4>What it cannot tell you</h4>
+      <h4>What it Cannot Tell You</h4>
       <div class="or-box">
         <p>A draft is a draft, not a submission.</p>
         <p>Funder requirements change, portals impose their own formats and character limits, and the published guidance a draft was built from can already be out of date.</p>
@@ -589,19 +596,19 @@ details.or-fold>.or-foldbody{padding:1rem}
       </div>
     </div>
 
-    <h3>How the public-record enrichment was gathered</h3>
+    <h3>How the Public-Record Enrichment Was Gathered</h3>
     <div class="or-box"><p id="or-method-enrichment"></p></div>
 
-    <h3>Stated limits</h3>
+    <h3>Stated Limits</h3>
     <p class="or-quiet">Limits of the method, recorded so a number on this page is never read as more than it is. Each carries the source that supports it.</p>
     <div id="or-limits"></div>
 
-    <h3>Financial summary as filed</h3>
+    <h3>Financial Summary as Filed</h3>
     <div class="or-box"><p id="or-financial-summary"></p></div>
-    <div class="or-box"><span class="or-kicker">Operating budget band</span><p id="or-budget-band"></p></div>
-    <div class="or-box"><span class="or-kicker">Leadership demographics, as evidenced</span><p id="or-bipoc"></p></div>
+    <div class="or-box"><span class="or-kicker">Operating Budget Band</span><p id="or-budget-band"></p></div>
+    <div class="or-box"><span class="or-kicker">Leadership Demographics, as Evidenced</span><p id="or-bipoc"></p></div>
 
-    <h3>Profile sources</h3>
+    <h3>Profile Sources</h3>
     <ul class="or-list or-quiet" id="or-profile-sources"></ul>
 
     <details class="or-fold" open id="or-fold-allfacts">
@@ -765,13 +772,13 @@ function renderTiers(){
     rows.appendChild(row([
       tdl('Tier',TIER_LABEL[t]||t),
       tdl('Count',String(counts[t])),
-      tdl('What the shelf means by it',clientVoice(tiers[t]))
+      tdl('What the Shelf Means by It',clientVoice(tiers[t]))
     ]));
   });
   Object.keys(counts).forEach(t=>{
     if(TIER_ORDER.indexOf(t)!==-1)return;
     figs.appendChild(fig(counts[t],t));
-    rows.appendChild(row([tdl('Tier',t),tdl('Count',String(counts[t])),tdl('What the shelf means by it',clientVoice(tiers[t]))]));
+    rows.appendChild(row([tdl('Tier',t),tdl('Count',String(counts[t])),tdl('What the Shelf Means by It',clientVoice(tiers[t]))]));
   });
   const strong=counts.tier_1_strong,name=counts.tier_2_promising;
   let rule='';
@@ -800,14 +807,14 @@ function renderIdentity(){
     ['Organization',PROFILE.organization],
     ['EIN',PROFILE.ein],
     ['Website',PROFILE.website],
-    ['Mission on file',PROFILE.mission],
-    ['Primary geography',g.primary],
-    ['Secondary geography',Array.isArray(g.secondary)?g.secondary.join(', '):g.secondary],
-    ['Target populations',Array.isArray(PROFILE.target_populations)?PROFILE.target_populations.join('; '):PROFILE.target_populations],
-    ['Filed NTEE code',(PROFILE.ntee_code_filed||'')+(PROFILE.ntee_major_filed?' ('+PROFILE.ntee_major_filed+')':'')],
-    ['Self-reported scale',(scale.care_model_grants_distributed!=null?usd(scale.care_model_grants_distributed)+' distributed':'')
+    ['Mission on File',PROFILE.mission],
+    ['Primary Geography',g.primary],
+    ['Secondary Geography',Array.isArray(g.secondary)?g.secondary.join(', '):g.secondary],
+    ['Target Populations',Array.isArray(PROFILE.target_populations)?PROFILE.target_populations.join('; '):PROFILE.target_populations],
+    ['Filed NTEE Code',(PROFILE.ntee_code_filed||'')+(PROFILE.ntee_major_filed?' ('+PROFILE.ntee_major_filed+')':'')],
+    ['Self-Reported Scale',(scale.care_model_grants_distributed!=null?usd(scale.care_model_grants_distributed)+' distributed':'')
       +(scale.organizations_supported?', '+scale.organizations_supported+' organizations supported':'')],
-    ['Profile built',PROFILE.profile_built]
+    ['Profile Built',PROFILE.profile_built]
   ];
   pairs.forEach(p=>{
     if(p[1]==null||p[1]==='')return;
@@ -851,16 +858,16 @@ function renderPriorFunders(){
       tdl('Funder',f.funder||''),
       tdl('Amount',f.amount!=null?usd(f.amount):''),
       tdl('Purpose',f.purpose||''),
-      tdl('Where we got it',f.source||'')
+      tdl('Where We Got It',f.source||'')
     ]));
   });
   if(PROFILE.confirmed_prior_funders_total!=null){
     const tr=el('tr');
-    const th=el('th',null,'Total, as you reported it');
+    const th=el('th',null,'Total, as You Reported It');
     tr.appendChild(th);
     tr.appendChild(tdl('Amount',usd(PROFILE.confirmed_prior_funders_total)));
     tr.appendChild(tdl('Purpose',''));
-    tr.appendChild(tdl('Where we got it','Sum of the rows above'));
+    tr.appendChild(tdl('Where We Got It','Sum of the rows above'));
     tb.appendChild(tr);
   }
 }
@@ -886,27 +893,27 @@ function renderPriorFunders(){
    in a named family and "Everything else" is empty -- but it stays in the list precisely so
    that a future field HAS somewhere to land. */
 const APPENDIX_FAMILIES=[
-  ['Finances as filed',['990','revenue','expense','asset','financial','payroll','grant','tax','earned','filings']],
-  ['People and leadership',['founder','board','staff','team','leadership','led','officer','core_']],
-  ['Partnerships and government',['government','partner','coalition']],
-  ['Programs and services',['program','curriculum','ignite','crown_act','gathering','evaluation','cerc','bdcp','curfew','methodology','innocence','care','communities','free_','service','data_']],
-  ['Recognition, publications and press',['recognition','publication','press','media','award','black_paper','counters','statistics','clients_']],
-  ['Governance and commitments',['governance','ethical','responsible']],
-  ['Identity and registration',['organization','ein','state','founding','hq','geographic','secondary','contact','ntee','named','legal','mission','funder']],
-  ['Everything else',[]]
+  ['Finances as Filed',['990','revenue','expense','asset','financial','payroll','grant','tax','earned','filings']],
+  ['People and Leadership',['founder','board','staff','team','leadership','led','officer','core_']],
+  ['Partnerships and Government',['government','partner','coalition']],
+  ['Programs and Services',['program','curriculum','ignite','crown_act','gathering','evaluation','cerc','bdcp','curfew','methodology','innocence','care','communities','free_','service','data_']],
+  ['Recognition, Publications and Press',['recognition','publication','press','media','award','black_paper','counters','statistics','clients_']],
+  ['Governance and Commitments',['governance','ethical','responsible']],
+  ['Identity and Registration',['organization','ein','state','founding','hq','geographic','secondary','contact','ntee','named','legal','mission','funder']],
+  ['Everything Else',[]]
 ];
 
 const FACT_GROUPS=[
-  {title:'The organization itself',
+  {title:'The Organization Itself',
    lede:'What a funder confirms first, and where your own filings do not yet agree with your own registration.',
    fields:['organization_legal_name','ein','founding_year','state_of_incorporation','geographic_footprint','ntee_per_propublica']},
-  {title:'The people a funder will look up',
+  {title:'The People a Funder Will Look Up',
    lede:'Board and staff are the first thing a program officer checks against a proposal, and the first thing that goes stale on a website.',
    fields:['founder','board_members','core_staff','team_size']},
-  {title:'What the most recent 990 shows',
+  {title:'What the Most Recent 990 Shows',
    lede:'These are the figures a reviewer will pull rather than ask you for. They are already public.',
    fields:['most_recent_990','total_revenue_fy2024','total_expenses_fy2024','net_assets_fy2024','revenue_composition_multiyear']},
-  {title:'Programs a funder can verify without asking you',
+  {title:'Programs a Funder Can Verify Without Asking You',
    lede:'Each of these is documented publicly, which means it can be cited in an application and checked.',
    fields:['mission_verbatim','program_care_model','program_communities_in_the_loop','program_free_data_support']}
 ];
@@ -924,14 +931,14 @@ function factIndex(){
    the other ~85 fields (appendix only, "Every verified fact") fall back to
    humanizeField() below rather than ever rendering a raw SNAKE_CASE key. */
 const FIELD_LABELS={
-  organization_legal_name:'Organization name', ein:'EIN', founding_year:'Founding year',
-  state_of_incorporation:'State of incorporation', geographic_footprint:'Geographic footprint',
-  ntee_per_propublica:'NTEE code (per ProPublica)', founder:'Founder',
-  board_members:'Board members', core_staff:'Core staff', team_size:'Team size',
-  most_recent_990:'Most recent Form 990', total_revenue_fy2024:'Total revenue, FY2024',
-  total_expenses_fy2024:'Total expenses, FY2024', net_assets_fy2024:'Net assets, FY2024',
-  revenue_composition_multiyear:'Revenue composition, multi-year',
-  mission_verbatim:'Mission (verbatim)', program_care_model:'Care model',
+  organization_legal_name:'Organization Name', ein:'EIN', founding_year:'Founding Year',
+  state_of_incorporation:'State of Incorporation', geographic_footprint:'Geographic Footprint',
+  ntee_per_propublica:'NTEE Code (per ProPublica)', founder:'Founder',
+  board_members:'Board Members', core_staff:'Core Staff', team_size:'Team Size',
+  most_recent_990:'Most Recent Form 990', total_revenue_fy2024:'Total Revenue, FY2024',
+  total_expenses_fy2024:'Total Expenses, FY2024', net_assets_fy2024:'Net Assets, FY2024',
+  revenue_composition_multiyear:'Revenue Composition, Multi-Year',
+  mission_verbatim:'Mission (Verbatim)', program_care_model:'Care Model',
   program_communities_in_the_loop:'Communities in the Loop',
   program_free_data_support:'Free Data Support'
 };
@@ -941,11 +948,15 @@ const LABEL_TOKEN_OVERRIDES={
   ein:'EIN', ai:'AI', apd:'APD', aspa:'ASPA', bdcp:'BDCP', bipoc:'BIPOC', cerc:'CERC',
   hbcu:'HBCU', hq:'HQ', mit:'MIT', ntee:'NTEE', ssrc:'SSRC', i:'I', propublica:'ProPublica'
 };
+/* Minor words the title-case rule (General Writing Convention Core, ratified
+   2026-08-09) excludes from capitalization, except always at the first or
+   last position of the header. */
+const TITLE_CASE_MINOR=['a','an','and','as','at','but','by','for','in','it','nor',
+  'of','on','or','per','so','the','to','up','yet'];
 /* Splits a SNAKE_CASE field key on underscore, expands known acronym/fiscal-
-   year tokens, sentence-cases the rest (capitalizes only the first word, per
-   the page's own plain-language convention), and joins with spaces. This is
-   the floor every field name hits even if FIELD_LABELS has no entry for it:
-   nothing on this page renders a raw SNAKE_CASE key. */
+   year tokens, title-cases the rest per the ratified header rule, and joins
+   with spaces. This is the floor every field name hits even if FIELD_LABELS
+   has no entry for it: nothing on this page renders a raw SNAKE_CASE key. */
 function humanizeField(key){
   const parts=String(key||'').split('_');
   const words=parts.map((p,i)=>{
@@ -954,7 +965,9 @@ function humanizeField(key){
     if(fy)return 'FY'+fy[1];
     if(LABEL_TOKEN_OVERRIDES[lower])return LABEL_TOKEN_OVERRIDES[lower];
     if(/^\d+$/.test(lower))return lower;
-    return i===0?(lower.charAt(0).toUpperCase()+lower.slice(1)):lower;
+    const isEdge=(i===0||i===parts.length-1);
+    if(!isEdge&&TITLE_CASE_MINOR.indexOf(lower)!==-1)return lower;
+    return lower.charAt(0).toUpperCase()+lower.slice(1);
   });
   return words.join(' ');
 }
@@ -1012,8 +1025,19 @@ function renderFacts(){
    SECTION 4
    ================================================================= */
 function renderConflicts(){
-  const ol=document.getElementById('or-conflicts');
-  (PROFILE.public_profile_enrichment.conflicts||[]).forEach(c=>ol.appendChild(el('li',null,String(c))));
+  const host=document.getElementById('or-conflicts');
+  (PROFILE.public_profile_enrichment.conflicts||[]).forEach(c=>{
+    const block=el('div','or-conflict');
+    if(c&&typeof c==='object'){
+      block.appendChild(el('h4',null,String(c.preview||'')));
+      block.appendChild(el('p',null,String(c.detail||'')));
+    }else{
+      /* Fallback only: no live data ships a bare string, but a future regeneration
+         should not go blank if one ever does. */
+      block.appendChild(el('p',null,String(c)));
+    }
+    host.appendChild(block);
+  });
 }
 
 /* =================================================================
@@ -1265,7 +1289,7 @@ async function load(){
   if(PROFILE.organization){
     setText('or-brand',PROFILE.organization);
     document.title='Orientation '+String.fromCharCode(183)+' '+PROFILE.organization;
-    setText('or-hero-h1','Getting started with '+PROFILE.organization+'’s tools');
+    setText('or-hero-h1','Getting Started With '+PROFILE.organization+'’s Tools');
   }
   if(disp.footer_credit)setText('or-footer',disp.footer_credit);
   setText('or-generated',ALMANAC.generated_date||'date not recorded');
