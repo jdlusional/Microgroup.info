@@ -11,7 +11,7 @@
 </script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Atlas — Corporate Foundation Peer Benchmark Demo</title>
+<title>Atlas: Corporate Foundation Peer Benchmark Demo</title>
 <meta name="description" content="Atlas benchmarks a corporate foundation's giving against real aggregate statistics computed from IRS Form 990-PF filings by Texas-registered foundations. This demonstration page uses a fictional building-materials company's foundation." />
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
 <meta name="referrer" content="no-referrer" />
@@ -97,10 +97,10 @@ code{overflow-wrap:anywhere}
 <header class="hero">
   <div class="eyebrow">Demonstration page &middot; the organization shown is fictional</div>
   <h1>Atlas</h1>
-  <p>Atlas benchmarks a corporate foundation's giving against real aggregate statistics computed from actual IRS Form 990-PF Part XV filings by Texas-registered foundations &mdash; not a claim about the entire national universe of corporate foundations. This page runs Atlas against a made-up foundation so you can see the output before you commission your own.</p>
+  <p>Atlas benchmarks a corporate foundation's giving against real aggregate statistics computed from actual IRS Form 990-PF Part XV filings by Texas-registered foundations, not a claim about the entire national universe of corporate foundations. This page runs Atlas against a made-up foundation so you can see the output before you commission your own.</p>
   <div class="note">
-    <p><strong>How to read this page.</strong> Thornbury Materials Foundation does not exist. It is an invented corporate foundation, made up for this demo along with every figure attached to it &mdash; founding date, assets, grant volume, recipient list. No real client's data appears anywhere on this page.</p>
-    <p>The <strong>benchmark statistics are real</strong>: aggregate percentile bands, recipient-state distribution, and purpose-string frequency, computed directly from 353,820 real Part XV grant rows filed by 8,754 distinct Texas-registered 990-PF foundations. Nothing about the benchmark is invented. What <em>is</em> illustrative is Thornbury itself &mdash; a stand-in so you can see how a real foundation's figures would sit against this real peer set.</p>
+    <p><strong>How to read this page.</strong> Thornbury Materials Foundation does not exist. It is an invented corporate foundation, made up for this demo along with every figure attached to it: founding date, assets, grant volume, recipient list. No real client's data appears anywhere on this page.</p>
+    <p>The <strong>benchmark statistics are real</strong>: aggregate percentile bands, recipient-state distribution, and purpose-string frequency, computed directly from 353,820 real Part XV grant rows filed by 8,754 distinct Texas-registered 990-PF foundations. Nothing about the benchmark is invented. What <em>is</em> illustrative is Thornbury itself, a stand-in so you can see how a real foundation's figures would sit against this real peer set.</p>
     <p>Want to see how Atlas and Dossier work together on the same foundation? <a href="demo-dossier.html" class="cross-link">See Dossier &#8594;</a></p>
     <p>Want this run against your real foundation? <a href="mailto:jonathan@microgroup.info?subject=Atlas%20peer-benchmark%20request">Request a peer benchmark &#8594;</a></p>
   </div>
@@ -158,7 +158,7 @@ code{overflow-wrap:anywhere}
     </div>
     <div class="fold-body">
     <div class="section-lede">
-      <p>Grant-size percentile bands, recipient-state distribution, and raw purpose-string frequency, computed from every Part XV grant row filed by <b id="benchmark-peer-count-inline"></b> distinct Texas-registered 990-PF foundations &mdash; the actual usable peer set in this corpus, not every corporate foundation nationally.</p>
+      <p>Grant-size percentile bands, recipient-state distribution, and raw purpose-string frequency, computed from every Part XV grant row filed by <b id="benchmark-peer-count-inline"></b> distinct Texas-registered 990-PF foundations, the actual usable peer set in this corpus, not every corporate foundation nationally.</p>
     </div>
       <div class="card">
         <h3>Grant-Size Percentile Bands, Real Aggregate</h3>
@@ -174,7 +174,7 @@ code{overflow-wrap:anywhere}
       </div>
       <div class="card" style="margin-top:1.2rem">
         <h3>Purpose-String Frequency, Real Aggregate (Top 10, Verbatim)</h3>
-        <p style="font-size:18px;color:var(--wash);margin:0 0 .5rem">Uncoded free text as filed &mdash; not a program-area taxonomy. Some strings (e.g. an unexplained "MEF" abbreviation) appear exactly as filers wrote them, with no invented decoding.</p>
+        <p style="font-size:18px;color:var(--wash);margin:0 0 .5rem">Uncoded free text as filed, not a program-area taxonomy. Some strings (e.g. an unexplained "MEF" abbreviation) appear exactly as filers wrote them, with no invented decoding.</p>
         <div class="table-scroll"><table class="freq-table">
           <thead><tr><th>Purpose (as filed)</th><th style="text-align:right">Occurrences</th></tr></thead>
           <tbody id="benchmark-purpose-table"></tbody>
@@ -182,7 +182,7 @@ code{overflow-wrap:anywhere}
       </div>
 
       <div class="callout-note">
-        <b>Not included in this demo: payout-ratio and asset-based peer benchmarking.</b> The <code>filer_ein</code> join from the grants-paid corpus to the asset/payout dataset (a stratified IRS sample, not a census) fails for all 6 of the real named companies checked against it, and one of them has no filer-side grants data in this corpus at all. The foundations that would join are an unverified subset never checked against any real named target. This is a scoped follow-on requiring a name-resolution or expanded-sample build &mdash; not a bug being quietly worked around with a placeholder number.
+        <b>Not included in this demo: payout-ratio and asset-based peer benchmarking.</b> The <code>filer_ein</code> join from the grants-paid corpus to the asset/payout dataset (a stratified IRS sample, not a census) fails for all 6 of the real named companies checked against it, and one of them has no filer-side grants data in this corpus at all. The foundations that would join are an unverified subset never checked against any real named target. This is a scoped follow-on requiring a name-resolution or expanded-sample build, not a bug being quietly worked around with a placeholder number.
       </div>
     </div>
   </div>
@@ -192,9 +192,9 @@ code{overflow-wrap:anywhere}
   <div class="method-box">
     <div class="method-kicker">Method</div>
     <h2>How this was built, and what it cannot tell you</h2>
-    <p><b>Where this comes from.</b> The peer-benchmark figures on this page are computed from <code>tx_990pf_grants_paid.csv</code>, 278,608 real grant rows drawn from Part XV of Form 990-PF filings by Texas-registered private foundations. <code>core_2024_990pf_merged.csv</code>, a separate stratified sample carrying asset and payout-ratio fields, exists in this pipeline but is not joined into this demo &mdash; see the callout above.</p>
-    <p><b>What Atlas will not do.</b> It will not estimate or infer a payout ratio, an asset figure, or any core-file-dependent metric for a real company until a working resolution join is built and verified. It will not present this Texas-filer peer pool as a national corporate-foundation universe &mdash; every benchmark number on this page is scoped explicitly to Texas-registered filers.</p>
-    <p><b>What it cannot tell you.</b> It cannot currently benchmark payout ratio or asset-based metrics at all. It cannot categorize program areas beyond raw purpose-string text, because the source field is uncoded free text with no controlled vocabulary &mdash; an abbreviation like "MEF" appears exactly as filed, undecoded. Year-over-year growth is only available for filers with more than one <code>tax_year</code> present in the corpus.</p>
+    <p><b>Where this comes from.</b> The peer-benchmark figures on this page are computed from <code>tx_990pf_grants_paid.csv</code>, 278,608 real grant rows drawn from Part XV of Form 990-PF filings by Texas-registered private foundations. <code>core_2024_990pf_merged.csv</code>, a separate stratified sample carrying asset and payout-ratio fields, exists in this pipeline but is not joined into this demo; see the callout above.</p>
+    <p><b>What Atlas will not do.</b> It will not estimate or infer a payout ratio, an asset figure, or any core-file-dependent metric for a real company until a working resolution join is built and verified. It will not present this Texas-filer peer pool as a national corporate-foundation universe; every benchmark number on this page is scoped explicitly to Texas-registered filers.</p>
+    <p><b>What it cannot tell you.</b> It cannot currently benchmark payout ratio or asset-based metrics at all. It cannot categorize program areas beyond raw purpose-string text, because the source field is uncoded free text with no controlled vocabulary: an abbreviation like "MEF" appears exactly as filed, undecoded. Year-over-year growth is only available for filers with more than one <code>tax_year</code> present in the corpus.</p>
   </div>
 </section>
 
