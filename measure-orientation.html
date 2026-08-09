@@ -45,7 +45,7 @@ a{color:inherit}
 .hero .kicker{font-size:13px;letter-spacing:.03em;color:var(--accent);font-weight:600}
 .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,5vw,40px);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
 .hero p{color:var(--wash);font-size:20px;margin:0 0 1rem}
-footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:12px;letter-spacing:.02em}
+footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:12px;letter-spacing:.02em;white-space:pre-line}
 
 /* ---- Orientation page's own styles. tool-shared.css is linked, never edited:
        another session may be live in this repo. Anything new lives here. ---- */
@@ -622,8 +622,14 @@ table.or-t tr:last-child td{border-bottom:none}
 </div>
 
 <footer id="or-footer">
-  Prepared research and tools for Measure &middot; This page is unlisted and shared directly &middot; Built from IRS Form 990 data and live web scraping; developed in Python and CSS using Claude Code and Jonathan Lin Davis&rsquo;s proprietary, copyrighted Code Development Program
+  Prepared for Measure by Jonathan Lin Davis of Micro Group
+  Built from IRS Form 990 data and live web scraping
 </footer>
+<!-- FOOTER-COPYRIGHT:START (synced from index.html .footer-legal by pattern-book/sync_footer_copyright.py; do not hand-edit) -->
+  <div class="footer-legal">© <span id="yr"></span> MICRO Group, LLC. All rights reserved. Austin, Texas.</div>
+  <script>(function(){var y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear();})();</script>
+  <!-- FOOTER-COPYRIGHT:END -->
+
 
 <script>
 /* =================================================================
