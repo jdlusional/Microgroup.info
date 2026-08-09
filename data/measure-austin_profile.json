@@ -137,7 +137,7 @@
       {
         "field": "founding_story",
         "value": "Founded 2015 after challenging APD to 'show me the numbers' behind its performance metrics; built a methodology to measure community policing and expanded to health, education, and economic disparities. Began as a team of four Austin community leaders (activism, technology, research, education backgrounds).",
-        "source_url": "https://www.measureaustin.org/our-story.html",
+        "source_url": "http://web.archive.org/web/20260211055334/https://www.measureaustin.org/our-story.html",
         "confidence": "high",
         "note": "'Team of four' detail is medium-confidence (legacy/secondary framing)."
       },
@@ -164,9 +164,9 @@
       {
         "field": "hq_address_prior",
         "value": "2921 E 17th Street, Building D, Box 6 (PeopleFund Building), Austin, TX 78702",
-        "source_url": "https://www.measureaustin.org/our-story.html",
+        "source_url": "http://web.archive.org/web/20260211055334/https://www.measureaustin.org/our-story.html",
         "confidence": "medium",
-        "note": "Earlier address on the legacy measureaustin.org site; org has since moved to E Huntland Dr."
+        "note": "Earlier address, archived from Measure's former web presence (that domain has since been taken over and no longer belongs to Measure); org has since moved to E Huntland Dr."
       },
       {
         "field": "secondary_office_houston",
@@ -289,10 +289,10 @@
       },
       {
         "field": "staff_turnover_note",
-        "value": "Legacy domain measureaustin.org/meet-the-team lists an entirely different, now-outdated leadership team (Precious Azurée, Kathleen Houlihan, Nic Hollins, Chris Harris, Malick Djiba, Rebecca Dejean, Meg Moore), indicating significant turnover. wemeasure.org/about is authoritative for the current team.",
-        "source_url": "https://www.measureaustin.org/meet-the-team.html",
+        "value": "An earlier, archived version of Measure's team page lists an entirely different, now-outdated leadership team (Precious Azurée, Kathleen Houlihan, Nic Hollins, Chris Harris, Malick Djiba, Rebecca Dejean, Meg Moore), indicating significant turnover. wemeasure.org/about is authoritative for the current team.",
+        "source_url": "http://web.archive.org/web/20260510080941/https://www.measureaustin.org/meet-the-team.html",
         "confidence": "medium",
-        "note": "Legacy domain is stale/spam-injected; treat those names as former staff."
+        "note": "The domain that page was on has since been taken over by an unrelated business and no longer belongs to Measure; treat those names as former staff, sourced from the archived snapshot only."
       },
       {
         "field": "mission_verbatim",
@@ -438,7 +438,7 @@
       {
         "field": "recognition_centex_aspa",
         "value": "CenTex ASPA (Central Texas chapter, American Society for Public Administration) Public Service Innovation Award, reported 2017.",
-        "source_url": "https://www.measureaustin.org/our-story.html",
+        "source_url": "http://web.archive.org/web/20260211055334/https://www.measureaustin.org/our-story.html",
         "confidence": "low",
         "note": "Award asserted on Measure's site; the 2017 year is tentative; no primary CenTex ASPA record naming Measure was located."
       },
@@ -739,14 +739,14 @@
       {
         "field": "legacy_program_bdcp_conference",
         "value": "Measure's original flagship program (absent from the current site) was the Big Data & Community Policing (BDCP) Conference & Forums, a multi-day Austin event convening police, community, activists, academics, and developers around open data and evidence-based policing. Mayor Steve Adler called it 'Austin's #1 Technology Project.' Named partners/sponsors: Mark43 (policing software; CEO Scott Crouch), the Austin Police Department, Huston-Tillotson University, Capital Metro, and the American Society of Evidence Based Policing.",
-        "source_url": "https://www.measureaustin.org/bdcp2017.html",
+        "source_url": "http://web.archive.org/web/20260510075825/https://www.measureaustin.org/bdcp2017.html",
         "confidence": "high",
         "note": "Net-new founding-era signature initiative establishing deep early ties (APD, HTU predating CERC, Capital Metro, Mark43) and a citable Mayor Adler endorsement."
       },
       {
         "field": "methodology_origin_and_codesign",
         "value": "Measure's original community-policing measurement methodology (precursor to the CARE Model) was built by adapting Stacey Barr's PuMP performance-measurement program and U.S. military strategic-planning frameworks. The CARE Model itself was co-designed through facilitated dialogue with ~400 community members and 25 community leaders, community-built, not authored top-down.",
-        "source_url": "https://www.measureaustin.org/meet-the-team.html",
+        "source_url": "http://web.archive.org/web/20260510080941/https://www.measureaustin.org/meet-the-team.html",
         "confidence": "medium",
         "note": "Net-new intellectual lineage (consistent with the founder's GWU performance-measurement cert and Army background); the ~400/25 co-design scale is single-source (VoyageDallas), treat as approximate."
       },
