@@ -1,53 +1,50 @@
 {
  "tool": "Scribe",
  "count": 5,
- "generated_date": "2026-08-05",
+ "generated_date": "2026-08-09",
  "disclaimer": "This is an AI-generated starting draft, not a final application. An inline [SUGGESTED: value] marks an AI-drafted plausible value to confirm or replace; an inline [CONFIRM: item] marks a fact only the organization can supply that cannot be responsibly estimated; an inline [MISSING: item] marks information not currently possessed that must be produced or sourced. An inline [EVIDENCE: claim] is different from all three: it is a statement about the FUNDER, drawn from its own filed returns and from its own published terms captured on the date shown, not a statement about this organization. Source footnotes [^N] map each fact to a traceable source. Filed history is not a promise of current intent. Confirm the funder's current cycle, deadline, and eligibility directly on its own website before applying.",
  "method": "Opportunities are drawn from the opportunity register, where each was established by hand against the funder's own page rather than an aggregator. Funder behaviour is drawn from filed IRS Form 990 Schedule I returns. Filed history is reported as filed and is never presented as current intent. Narrative prose is not generated: these are evidence-grounded scaffolds with labelled gaps for the drafting pass.",
  "drafts": [
   {
-   "grant_id": "2c0eeab2941caf56",
-   "grant_name": "Common Good Cyber Fund (CGCF) 2026",
-   "funder": "Internet Society Foundation",
-   "grant_url": "https://www.isocfoundation.org/grant-programme/common-good-cyber-fund/",
-   "grant_deadline": "August 4, 2026",
-   "close_date_iso": "2026-08-04",
-   "grant_eligibility": "501(c)(3) or international equivalent; must register in Fluxx 24+ hours before deadline",
-   "grant_focus_area": "Public-interest cybersecurity infrastructure, protecting civil society/journalists online",
+   "grant_id": "5bc98adbb18b8de6",
+   "grant_name": "FY 26-27 HIA (HIV Intervention & Treatment) Services RFP",
+   "funder": "TRG (The Resource Group, formerly Houston Regional HIV/AIDS Resource Group)",
+   "grant_url": "https://www.houstonresourcegroup.org/rpfannouncements",
+   "grant_deadline": "August 14, 2026",
+   "close_date_iso": "2026-08-14",
+   "grant_eligibility": "TRG is the local administrative agency for six Texas DSHS Health Service Delivery Areas covering 51 counties of East/Southeast Texas (Ryan White Parts B/C/D, HOPWA); this RFP is for HIV Intervention & Treatment (HIA) services. Full proposals due Aug 14, 2026, but the Letter of Intent deadline (July 21, 2026) has already passed, which may bar new applicants from this specific cycle -- worth confirming with TRG directly.",
+   "grant_focus_area": "HIV/AIDS prevention, intervention and treatment services (Ryan White pass-through funding)",
    "organization": "MEASURE AUSTIN",
-   "generated_date": "2026-08-05",
+   "generated_date": "2026-08-09",
    "is_sample": true,
    "payoff_components": {
-    "relevance": 0.442,
-    "award": 0.61,
-    "urgency": 1.0,
+    "relevance": 0.25,
+    "award": 1.0,
+    "urgency": 0.972,
     "fit": 0.85
    },
-   "payoff_score": 70.1,
+   "payoff_score": 68.7,
    "payoff_weights": {
     "relevance": 0.35,
     "award": 0.15,
     "urgency": 0.2,
     "fit": 0.3
    },
-   "priority_rationale": "Adjacent, not direct: best framed as support for Measure's data-security/data-stewardship practices rather than its core AI-ethics research. 2026 geographic priority favors global-majority orgs, a real competitive disadvantage for a US/Texas applicant.",
-   "curator_caution": [
-    "adjacent, not direct",
-    "competitive disadvantage"
-   ],
-   "score_caveat": "Scored 70.1 on filed history and timing, but the curator recorded a reservation this score cannot see: adjacent, not direct; competitive disadvantage. Read the rationale before the number.",
+   "priority_rationale": "Open to HIV/AIDS service provider nonprofits operating within TRG's 51-county Southeast Texas service area; not a general-purpose grant, sector-specific to HIV/AIDS services. New applicants likely needed to submit an LOI by July 21, 2026, which has passed as of this research date (2026-08-06), so practical eligibility for this specific cycle is uncertain.",
+   "curator_caution": [],
+   "score_caveat": "",
    "sections": [
     {
      "label": "Why this funder",
-     "text": "What Internet Society Foundation has actually filed.[^1] [EVIDENCE: filed 125 grants across 7 tax years, 2018 to 2024, median $152,500] [EVIDENCE: 24 of those 125 grants went to organisations in NTEE major group B]\n\nStated terms, captured from the funder's own page on 2026-08-05.[^2] 501(c)(3) or international equivalent; must register in Fluxx 24+ hours before deadline[^2]\n\nDeadline 2026-08-04, as published by the funder.[^2]"
+     "text": "What TRG (The Resource Group, formerly Houston Regional HIV/AIDS Resource Group) has actually filed.[^1] [EVIDENCE: filed 121 grants across 7 tax years, 2015 to 2021, median $290,382] [EVIDENCE: none of those 121 filed grants went to an organisation in NTEE major group B]\n\nStated terms, captured from the funder's own page on 2026-08-09.[^2] TRG is the local administrative agency for six Texas DSHS Health Service Delivery Areas covering 51 counties of East/Southeast Texas (Ryan White Parts B/C/D, HOPWA); this RFP is for HIV Intervention & Treatment (HIA) services.[^2] Full proposals due Aug 14, 2026, but the Letter of Intent deadline (July 21, 2026) has already passed, which may bar new applicants from this specific cycle -- worth confirming with TRG directly.[^2]\n\nDeadline 2026-08-14, as published by the funder.[^2]"
     },
     {
      "label": "Requested amount",
-     "text": "This organization requests [SUGGESTED: $152,500, this funder's median filed grant] from Internet Society Foundation.[^1] The median is what this funder actually granted, not a figure it published, and it is a starting point for the ask rather than the ask itself."
+     "text": "This organization requests [SUGGESTED: $290,382, this funder's median filed grant] from TRG (The Resource Group, formerly Houston Regional HIV/AIDS Resource Group).[^1] The median is what this funder actually granted, not a figure it published, and it is a starting point for the ask rather than the ask itself."
     },
     {
      "label": "Fit",
-     "text": "Curator assessment, recorded against the funder's own page on the date shown.[^2] Adjacent, not direct: best framed as support for Measure's data-security/data-stewardship practices rather than its core AI-ethics research.[^2] 2026 geographic priority favors global-majority orgs, a real competitive disadvantage for a US/Texas applicant.[^2]\n\n[CONFIRM: which of this organization's current programmes this proposal will name] [MISSING: the programme budget for the period covered by this request]"
+     "text": "Curator assessment, recorded against the funder's own page on the date shown.[^2] Open to HIV/AIDS service provider nonprofits operating within TRG's 51-county Southeast Texas service area; not a general-purpose grant, sector-specific to HIV/AIDS services.[^2] New applicants likely needed to submit an LOI by July 21, 2026, which has passed as of this research date (2026-08-06), so practical eligibility for this specific cycle is uncertain.[^2]\n\n[CONFIRM: which of this organization's current programmes this proposal will name] [MISSING: the programme budget for the period covered by this request]"
     }
    ],
    "qa": {
@@ -57,14 +54,14 @@
    },
    "funder_evidence": [
     {
-     "claim": "filed 125 grants across 7 tax years, 2018 to 2024, median $152,500",
+     "claim": "filed 121 grants across 7 tax years, 2015 to 2021, median $290,382",
      "source": "IRS Form 990 Schedule I, as filed",
-     "checked": "2026-08-05"
+     "checked": "2026-08-09"
     },
     {
-     "claim": "24 of those 125 grants went to organisations in NTEE major group B",
+     "claim": "none of those 121 filed grants went to an organisation in NTEE major group B",
      "source": "IRS Form 990 Schedule I joined to the IRS BMF",
-     "checked": "2026-08-05"
+     "checked": "2026-08-09"
     }
    ],
    "gaps_to_fill": [
@@ -81,7 +78,7 @@
     {
      "label": "Requested amount",
      "detail": "the amount to request from this funder",
-     "suggested": "$152,500, this funder's median filed grant"
+     "suggested": "$290,382, this funder's median filed grant"
     }
    ],
    "footnotes": [
@@ -94,12 +91,103 @@
     {
      "id": 2,
      "type": "online",
-     "source": "Funder's own page, checked 2026-08-05",
-     "url": "https://www.isocfoundation.org/grant-programme/common-good-cyber-fund/"
+     "source": "Funder's own page, checked 2026-08-09",
+     "url": "https://www.houstonresourcegroup.org/rpfannouncements"
     }
    ],
    "sources_used": [
-    "FUNDER PAGE: https://www.isocfoundation.org/grant-programme/common-good-cyber-fund/, checked 2026-08-05",
+    "FUNDER PAGE: https://www.houstonresourcegroup.org/rpfannouncements, checked 2026-08-09",
+    "IRS FILING: Form 990 Schedule I, as filed"
+   ],
+   "model_note": "Scaffold generated from the opportunity register and the filed IRS record. Narrative prose is deliberately not generated here: this tool has no knowledge of the applicant's programmes and does not invent facts about the organization."
+  },
+  {
+   "grant_id": "779a7794334493c8",
+   "grant_name": "Capital grant program (June-August 2026 cycle)",
+   "funder": "Hoblitzelle Foundation",
+   "grant_url": "https://hoblitzelle.org/how-to-apply",
+   "grant_deadline": "August 15, 2026",
+   "close_date_iso": "2026-08-15",
+   "grant_eligibility": "Nonprofit with tax-exempt status, annual budget exceeding $250,000, external financial audit within last two years, one-year waiting period between submissions, typically no grants to same org more than once every 3-4 years. Recommends contacting the foundation before applying (info@hoblitzelle.org).",
+   "grant_focus_area": "Capital projects only: building construction, renovation, equipment, vehicles, technology. Does NOT fund operations, programs, debt retirement, endowments, research, or scholarships.",
+   "organization": "MEASURE AUSTIN",
+   "generated_date": "2026-08-09",
+   "is_sample": true,
+   "payoff_components": {
+    "relevance": 0.25,
+    "award": 0.3,
+    "urgency": 0.967,
+    "fit": 0.4
+   },
+   "payoff_score": 44.6,
+   "payoff_weights": {
+    "relevance": 0.35,
+    "award": 0.15,
+    "urgency": 0.2,
+    "fit": 0.3
+   },
+   "priority_rationale": "No curator assessment was recorded for this opportunity.",
+   "curator_caution": [],
+   "score_caveat": "",
+   "sections": [
+    {
+     "label": "Why this funder",
+     "text": "What Hoblitzelle Foundation has actually filed.[^1] [EVIDENCE: no grants from this funder appear in the filed Schedule I record, which is not evidence that it makes none]\n\nStated terms, captured from the funder's own page on 2026-08-09.[^2] Nonprofit with tax-exempt status, annual budget exceeding $250,000, external financial audit within last two years, one-year waiting period between submissions, typically no grants to same org more than once every 3-4 years.[^2] Recommends contacting the foundation before applying (info@hoblitzelle.org).[^2]\n\nDeadline 2026-08-15, as published by the funder.[^2]"
+    },
+    {
+     "label": "Requested amount",
+     "text": "The filed record shows no median grant for this funder, so no amount is proposed here.[^1] [CONFIRM: the amount to request]"
+    },
+    {
+     "label": "Fit",
+     "text": "Curator assessment, recorded against the funder's own page on the date shown.[^2] no fit note recorded[^2]\n\n[CONFIRM: which of this organization's current programmes this proposal will name] [MISSING: the programme budget for the period covered by this request]"
+    }
+   ],
+   "qa": {
+    "verdict": "scaffold",
+    "hallucinated_facts_removed": [],
+    "alignment_notes": "No narrative prose has been generated for this opportunity yet, so no fact-checking pass has run. Every statement here is either the funder's own words, a figure from its filed IRS return, or a labelled gap."
+   },
+   "funder_evidence": [
+    {
+     "claim": "no grants from this funder appear in the filed Schedule I record, which is not evidence that it makes none",
+     "source": "IRS Form 990 Schedule I, absence of matching rows",
+     "checked": "2026-08-09"
+    }
+   ],
+   "gaps_to_fill": [
+    {
+     "label": "Named programme",
+     "kind": "confirm",
+     "detail": "which of this organization's current programmes this proposal will name"
+    },
+    {
+     "label": "Programme budget",
+     "kind": "missing",
+     "detail": "the programme budget for the period covered by this request"
+    },
+    {
+     "label": "Requested amount",
+     "kind": "confirm",
+     "detail": "the amount to request"
+    }
+   ],
+   "footnotes": [
+    {
+     "id": 1,
+     "type": "internal",
+     "source": "IRS Form 990 Schedule I, as filed",
+     "url": ""
+    },
+    {
+     "id": 2,
+     "type": "online",
+     "source": "Funder's own page, checked 2026-08-09",
+     "url": "https://hoblitzelle.org/how-to-apply"
+    }
+   ],
+   "sources_used": [
+    "FUNDER PAGE: https://hoblitzelle.org/how-to-apply, checked 2026-08-09",
     "IRS FILING: Form 990 Schedule I, as filed"
    ],
    "model_note": "Scaffold generated from the opportunity register and the filed IRS record. Narrative prose is deliberately not generated here: this tool has no knowledge of the applicant's programmes and does not invent facts about the organization."
@@ -114,28 +202,28 @@
    "grant_eligibility": "GATED. Funder page verbatim: 'The Shield-Ayres Foundation has paused its open application process' and 'Only organizations that have previously received funding from the Shield-Ayres Foundation are eligible to submit a Letter of Inquiry (LOI).' MEASURE appears to be a prior grantee via 990-PF Part XV, but that is a NAME MATCH with no recipient EIN in the source, so the prior-grantee status MUST be confirmed with the foundation before relying on it. Also: one application per twelve months, and up to three consecutive years.",
    "grant_focus_area": "Capital campaign, endowment, program, capacity building, unrestricted operating",
    "organization": "MEASURE AUSTIN",
-   "generated_date": "2026-08-05",
+   "generated_date": "2026-08-09",
    "is_sample": true,
    "payoff_components": {
     "relevance": 0.25,
     "award": 0.3,
-    "urgency": 0.944,
+    "urgency": 0.967,
     "fit": 0.4
    },
-   "payoff_score": 44.1,
+   "payoff_score": 44.6,
    "payoff_weights": {
     "relevance": 0.35,
     "award": 0.15,
     "urgency": 0.2,
     "fit": 0.3
    },
-   "priority_rationale": "TIME-CRITICAL AND ACTIONABLE. Deadline 2026-08-15 is 13 days from the check date. Geography fits: MEASURE is in Austin, Travis County, which is named. Two fixed LOI deadlines a year, 15 February and 15 August, so this is a clean recurrence candidate. NOTE the funder page states the deadlines as recurring dates without a year, so 2026-08-15 is this curator's inference from the stated pattern and sh",
+   "priority_rationale": "Time-critical: the 2026-08-15 deadline is close. Geography fits, since Austin and Travis County are named. Two fixed LOI deadlines run each year, 15 February and 15 August, making this a clean recurring opportunity. The funder's page states these deadlines as a recurring pattern without giving the year explicitly, so the 2026-08-15 date is inferred from that pattern and should be confirmed before ",
    "curator_caution": [],
    "score_caveat": "",
    "sections": [
     {
      "label": "Why this funder",
-     "text": "What SHIELD-AYRES FOUNDATION has actually filed.[^1] [EVIDENCE: no grants from this funder appear in the filed Schedule I record, which is not evidence that it makes none]\n\nStated terms, captured from the funder's own page on 2026-08-05.[^2] GATED.[^2] Funder page verbatim: 'The Shield-Ayres Foundation has paused its open application process' and 'Only organizations that have previously received funding from the Shield-Ayres Foundation are eligible to submit a Letter of Inquiry (LOI).' MEASURE appears to be a prior grantee via 990-PF Part XV, but that is a NAME MATCH with no recipient EIN in the source, so the prior-grantee status MUST be confirmed with the foundation before relying on it.[^2] Also: one application per twelve months, and up to three consecutive years.[^2]\n\nDeadline 2026-08-15, as published by the funder.[^2]"
+     "text": "What SHIELD-AYRES FOUNDATION has actually filed.[^1] [EVIDENCE: no grants from this funder appear in the filed Schedule I record, which is not evidence that it makes none]\n\nStated terms, captured from the funder's own page on 2026-08-09.[^2] GATED.[^2] Funder page verbatim: 'The Shield-Ayres Foundation has paused its open application process' and 'Only organizations that have previously received funding from the Shield-Ayres Foundation are eligible to submit a Letter of Inquiry (LOI).' MEASURE appears to be a prior grantee via 990-PF Part XV, but that is a NAME MATCH with no recipient EIN in the source, so the prior-grantee status MUST be confirmed with the foundation before relying on it.[^2] Also: one application per twelve months, and up to three consecutive years.[^2]\n\nDeadline 2026-08-15, as published by the funder.[^2]"
     },
     {
      "label": "Requested amount",
@@ -143,7 +231,7 @@
     },
     {
      "label": "Fit",
-     "text": "Curator assessment, recorded against the funder's own page on the date shown.[^2] TIME-CRITICAL AND ACTIONABLE.[^2] Deadline 2026-08-15 is 13 days from the check date.[^2] Geography fits: MEASURE is in Austin, Travis County, which is named.[^2] Two fixed LOI deadlines a year, 15 February and 15 August, so this is a clean recurrence candidate.[^2] NOTE the funder page states the deadlines as recurring dates without a year, so 2026-08-15 is this curator's inference from the stated pattern and should be confirmed.[^2] LOI form is posted 4 weeks before each deadline.[^2] Checked 2026-08-02.[^2]\n\n[CONFIRM: which of this organization's current programmes this proposal will name] [MISSING: the programme budget for the period covered by this request]"
+     "text": "Curator assessment, recorded against the funder's own page on the date shown.[^2] Time-critical: the 2026-08-15 deadline is close.[^2] Geography fits, since Austin and Travis County are named.[^2] Two fixed LOI deadlines run each year, 15 February and 15 August, making this a clean recurring opportunity.[^2] The funder's page states these deadlines as a recurring pattern without giving the year explicitly, so the 2026-08-15 date is inferred from that pattern and should be confirmed before relying on it (last checked 2026-08-02).[^2] The LOI form is posted four weeks before each deadline.[^2]\n\n[CONFIRM: which of this organization's current programmes this proposal will name] [MISSING: the programme budget for the period covered by this request]"
     }
    ],
    "qa": {
@@ -155,7 +243,7 @@
     {
      "claim": "no grants from this funder appear in the filed Schedule I record, which is not evidence that it makes none",
      "source": "IRS Form 990 Schedule I, absence of matching rows",
-     "checked": "2026-08-05"
+     "checked": "2026-08-09"
     }
    ],
    "gaps_to_fill": [
@@ -185,149 +273,56 @@
     {
      "id": 2,
      "type": "online",
-     "source": "Funder's own page, checked 2026-08-05",
+     "source": "Funder's own page, checked 2026-08-09",
      "url": "https://www.shield-ayresfoundation.org/grant-making/apply/"
     }
    ],
    "sources_used": [
-    "FUNDER PAGE: https://www.shield-ayresfoundation.org/grant-making/apply/, checked 2026-08-05",
+    "FUNDER PAGE: https://www.shield-ayresfoundation.org/grant-making/apply/, checked 2026-08-09",
     "IRS FILING: Form 990 Schedule I, as filed"
    ],
    "model_note": "Scaffold generated from the opportunity register and the filed IRS record. Narrative prose is deliberately not generated here: this tool has no knowledge of the applicant's programmes and does not invent facts about the organization."
   },
   {
-   "grant_id": "a68d99a4f311cdaf",
-   "grant_name": "Alice Kleberg Reynolds Foundation 2026 grant cycle (opens 26 May 2026, closes 26 August 2026 at noon CST)",
-   "funder": "THE ALICE KLEBERG REYNOLDS MEYER",
-   "grant_url": "https://akrfoundation.org/guidelines/",
-   "grant_deadline": "August 26, 2026",
-   "close_date_iso": "2026-08-26",
-   "grant_eligibility": "\"The Alice Kleberg Reynolds Foundation makes grants to qualified non-profit organizations\" operating in the designated service area. New applicants must register the organisation using its Tax Identification Number; existing applicants log in with the same TIN. Limit of two applications per organisation annually. Exclusions stated: capital campaigns are not funded (though brick and mortar projects are supported), scholarships are not funded, and galas/general capital projects are excluded per an Advisory Director preference.",
-   "grant_focus_area": "\"arts/culture, charitable, education, literacy, medical and scientific purposes\"",
+   "grant_id": "6141c8cdc945c188",
+   "grant_name": "OPEN: FY27 Elevate and Thrive cultural arts grants (part of $23M+ ACME funding programs), applications open through August 18, 2026",
+   "funder": "Greater Austin Performing Arts Center (The Long Center, administrator of City of Austin ACME cultural arts grants)",
+   "grant_url": "https://www.kut.org/life-arts/2026-07-08/austin-tx-arts-music-grants-applications-open-acme",
+   "grant_deadline": "August 18, 2026",
+   "close_date_iso": "2026-08-18",
+   "grant_eligibility": "Thrive requires being a 501(c)(3) arts nonprofit at time of application, with at least 5 years operating in the City of Austin/MSA and more than half of creative production within Austin City Council districts. Nexus (a related but separately-timed program, closed April 16 2026 for this cycle) offers $5,000-$10,000, 12-month awards to emerging/established artists and arts groups. Elevate supports creative/administrative/operational expenses for producing creative events, open July 7-Aug 18 2026. Apply via thelongcenter.submittable.com. Full eligibility varies by sub-program; contact applicationhelp@thelongcenter.org.",
+   "grant_focus_area": "Arts, culture, and music (city cultural-arts hotel-occupancy-tax funded grant programs: Elevate, Thrive, Nexus, Austin Live Music Fund, Heritage Preservation Grant, Creative Space Assistance Program)",
    "organization": "MEASURE AUSTIN",
-   "generated_date": "2026-08-05",
-   "is_sample": true,
-   "payoff_components": {
-    "relevance": 0.25,
-    "award": 0.3,
-    "urgency": 0.883,
-    "fit": 0.4
-   },
-   "payoff_score": 42.9,
-   "payoff_weights": {
-    "relevance": 0.35,
-    "award": 0.15,
-    "urgency": 0.2,
-    "fit": 0.3
-   },
-   "priority_rationale": "THE HEADLINE OPEN CALL IN THIS CHUNK, and the only one in chunk 1 with a live future deadline MEASURE could realistically meet. Cycle dates are stated on the funder's own guidelines page WITH EXPLICIT YEARS, so no year inference is involved: opens Tuesday 26 May 2026, closes Wednesday 26 August 2026 at noon (12pm) CST, decisions by 21 September 2026. As of 2026-08-02 that is 24 days of runway. IDE",
-   "curator_caution": [
-    "would need"
-   ],
-   "score_caveat": "Scored 42.9 on filed history and timing, but the curator recorded a reservation this score cannot see: would need. Read the rationale before the number.",
-   "sections": [
-    {
-     "label": "Why this funder",
-     "text": "What THE ALICE KLEBERG REYNOLDS MEYER has actually filed.[^1] [EVIDENCE: no grants from this funder appear in the filed Schedule I record, which is not evidence that it makes none]\n\nStated terms, captured from the funder's own page on 2026-08-05.[^2] \"The Alice Kleberg Reynolds Foundation makes grants to qualified non-profit organizations\" operating in the designated service area.[^2] New applicants must register the organisation using its Tax Identification Number; existing applicants log in with the same TIN.[^2] Limit of two applications per organisation annually.[^2] Exclusions stated: capital campaigns are not funded (though brick and mortar projects are supported), scholarships are not funded, and galas/general capital projects are excluded per an Advisory Director preference.[^2]\n\nDeadline 2026-08-26, as published by the funder.[^2]"
-    },
-    {
-     "label": "Requested amount",
-     "text": "The filed record shows no median grant for this funder, so no amount is proposed here.[^1] [CONFIRM: the amount to request]"
-    },
-    {
-     "label": "Fit",
-     "text": "Curator assessment, recorded against the funder's own page on the date shown.[^2] THE HEADLINE OPEN CALL IN THIS CHUNK, and the only one in chunk 1 with a live future deadline MEASURE could realistically meet.[^2] Cycle dates are stated on the funder's own guidelines page WITH EXPLICIT YEARS, so no year inference is involved: opens Tuesday 26 May 2026, closes Wednesday 26 August 2026 at noon (12pm) CST, decisions by 21 September 2026.[^2] As of 2026-08-02 that is 24 days of runway.[^2] IDENTITY CONFLICT INVESTIGATED AND RESOLVED, since this is the one line anyone will act on.[^2] The apparent problem was that EIN 742847652 files with the IRS as ALICE KLEBERG REYNOLDS MEYER FDN TR while the website at akrfoundation.org calls itself THE ALICE KLEBERG REYNOLDS FOUNDATION, with no Meyer.[^2] Four converging checks say they are the same trust and the website simply uses a shortened working name: ProPublica Nonprofit Explorer, used here for the IRS-FILED NAME AND LOCATION it reproduces rather than for any status, shows EIN 74-2847652 as Alice Kleberg Reynolds Meyer Fdn Tr, San Antonio TX, a 501(c)(3) private grantmaking foundation tax-exempt since September 1997, with returns filed for 2023, 2024 and 2025 (the 2025 return filed 13 May 2026, so the entity is currently active); the foundation's own guidelines page describes a 50-county south and central Texas service area, which matches the 50-county description attached to EIN 742847652 in every EIN-keyed listing; both are San Antonio with a 1997 formation; and Instrumentl's profile titled Alice Kleberg Reynolds Foundation resolves to the slug alice-kleberg-reynolds-meyer-fdn-tr, i.e.[^2] the same trust under both names.[^2] BEWARE A GENUINE SIBLING: GuideStar carries a separate ALICE KLEBERG REYNOLDS MEYER FOUNDATION at EIN 74-2020227, a DIFFERENT EIN from this row, and Candid carries a profile under key MEYE011; do not merge those records with this one.[^2] GEOGRAPHY, now much stronger than a guess.[^2] The guidelines page names the service area only as 50 specific counties in south and central Texas and publishes the list as a downloadable map rather than as text, so Travis County is still not confirmed IN THE FUNDER'S OWN WORDS.[^2] However the Ann Richards School for Young Women Leaders, an AUSTIN public school in Travis County, publishes a Reach for the Stars sponsor profile of The Alice Kleberg Reynolds Foundation, which is direct third-party evidence that this funder does in fact grant into Austin and Travis County.[^2] Treat Travis County as very likely in scope, and confirm against the county map before drafting.[^2] Programme fit is plausible rather than tailored: eligible purposes are arts/culture, charitable, education, literacy, medical and scientific, and MEASURE's research and evaluation work would need framing under charitable or medical/scientific, with the maternal health equity line the strongest candidate; there is no explicit research, data or public-safety category.[^2] Scale, from aggregators and therefore background only: about 110 grants totalling roughly $1.76M to $1.8M in 2024, most awards in the $5,000 to $25,000 band and a stated range up to $200,000, total assets about $18.8M.[^2] One residual caution: this row arrived qualified 'prior funder by name match, REVIEW REQUIRED' with 0 grants and 0 recipients in the measured pattern, so the tie to MEASURE specifically is unevidenced and may be a name-join artifact; the OPEN CALL, however, does not depend on that tie.[^2] Contact per aggregators: PO Box 2950, Tax Dept Floor 5, San Antonio TX 78299-2950; Frost Bank reported as trustee (not confirmed on the funder's own pages).[^2] Apply by registering the organisation's TIN at akrfoundation.org.[^2]\n\n[CONFIRM: which of this organization's current programmes this proposal will name] [MISSING: the programme budget for the period covered by this request]"
-    }
-   ],
-   "qa": {
-    "verdict": "scaffold",
-    "hallucinated_facts_removed": [],
-    "alignment_notes": "No narrative prose has been generated for this opportunity yet, so no fact-checking pass has run. Every statement here is either the funder's own words, a figure from its filed IRS return, or a labelled gap."
-   },
-   "funder_evidence": [
-    {
-     "claim": "no grants from this funder appear in the filed Schedule I record, which is not evidence that it makes none",
-     "source": "IRS Form 990 Schedule I, absence of matching rows",
-     "checked": "2026-08-05"
-    }
-   ],
-   "gaps_to_fill": [
-    {
-     "label": "Named programme",
-     "kind": "confirm",
-     "detail": "which of this organization's current programmes this proposal will name"
-    },
-    {
-     "label": "Programme budget",
-     "kind": "missing",
-     "detail": "the programme budget for the period covered by this request"
-    },
-    {
-     "label": "Requested amount",
-     "kind": "confirm",
-     "detail": "the amount to request"
-    }
-   ],
-   "footnotes": [
-    {
-     "id": 1,
-     "type": "internal",
-     "source": "IRS Form 990 Schedule I, as filed",
-     "url": ""
-    },
-    {
-     "id": 2,
-     "type": "online",
-     "source": "Funder's own page, checked 2026-08-05",
-     "url": "https://akrfoundation.org/guidelines/"
-    }
-   ],
-   "sources_used": [
-    "FUNDER PAGE: https://akrfoundation.org/guidelines/, checked 2026-08-05",
-    "IRS FILING: Form 990 Schedule I, as filed"
-   ],
-   "model_note": "Scaffold generated from the opportunity register and the filed IRS record. Narrative prose is deliberately not generated here: this tool has no knowledge of the applicant's programmes and does not invent facts about the organization."
-  },
-  {
-   "grant_id": "231c39132766b68f",
-   "grant_name": "Community Partner application for the 2027-2028 League year (volunteers plus community funding)",
-   "funder": "THE JUNIOR LEAGUE OF AUSTIN INC",
-   "grant_url": "https://www.jlaustin.org/community/request-volunteers/apply-to-be-a-project/",
-   "grant_deadline": "August 28, 2026",
-   "close_date_iso": "2026-08-28",
-   "grant_eligibility": "Funder's own page: \"JLA's community partner application for the 2027-2028 League year goes live on Monday, Aug. 3, and closes at 12 p.m. CT on Friday, Aug. 28.\" A virtual informational session is held Wednesday, August 5, 1-2 p.m., at which JLA will discuss ongoing community projects, Done-in-a-Day, and community funding; the page states \"Any nonprofit representatives, including grant writers and volunteer coordinators, are welcome to attend.\" The page states no explicit sector or budget-size bar. Contacts given: researcherschair@jlaustin.org and communityliaison@jlaustin.org.",
-   "grant_focus_area": "Community projects placing JLA volunteers, Done-in-a-Day short-term projects, and community funding",
-   "organization": "MEASURE AUSTIN",
-   "generated_date": "2026-08-05",
+   "generated_date": "2026-08-09",
    "is_sample": false,
    "payoff_components": {
-    "relevance": 0.315,
-    "award": 0.1,
-    "urgency": 0.872,
+    "relevance": 0.289,
+    "award": 0.144,
+    "urgency": 0.95,
     "fit": 0.85
    },
-   "payoff_score": 55.5,
+   "payoff_score": 56.8,
    "payoff_weights": {
     "relevance": 0.35,
     "award": 0.15,
     "urgency": 0.2,
     "fit": 0.3
    },
-   "priority_rationale": "MEASURE is eligible: Austin-based nonprofit, JLA's own service area, and the page states no sector bar, so no ineligibility marker applies. The realistic caveat is programmatic fit rather than eligibility: JLA's model pairs funding with placement of League volunteers on direct-service projects (Coats for Kids, Food In Tummies, Kids In Cool Shoes are its own), and MEASURE is a research and evaluati",
+   "priority_rationale": "GENUINE OPEN CALL, currently live with a near-term deadline (Aug 18, 2026). Important structural note: Greater Austin Performing Arts Center (the Long Center) is not distributing its own private foundation money here -- it administers the City of Austin's ACME cultural funding programs (hotel-occupancy-tax funded, ~$23M FY27) under a City contract. This explains the unusually high recipient count ",
    "curator_caution": [],
    "score_caveat": "",
    "sections": [
     {
      "label": "Why this funder",
-     "text": "What THE JUNIOR LEAGUE OF AUSTIN INC has actually filed.[^1] [EVIDENCE: filed 185 grants across 10 tax years, 2015 to 2024, median $10,000] [EVIDENCE: 12 of those 185 grants went to organisations in NTEE major group B]\n\nStated terms, captured from the funder's own page on 2026-08-05.[^2] Funder's own page: \"JLA's community partner application for the 2027-2028 League year goes live on Monday, Aug.[^2] 3, and closes at 12 p.m.[^2] CT on Friday, Aug.[^2] 28.\" A virtual informational session is held Wednesday, August 5, 1-2 p.m., at which JLA will discuss ongoing community projects, Done-in-a-Day, and community funding; the page states \"Any nonprofit representatives, including grant writers and volunteer coordinators, are welcome to attend.\" The page states no explicit sector or budget-size bar.[^2] Contacts given: researcherschair@jlaustin.org and communityliaison@jlaustin.org.[^2]\n\nDeadline 2026-08-28, as published by the funder.[^2]"
+     "text": "What Greater Austin Performing Arts Center (The Long Center, administrator of City of Austin ACME cultural arts grants) has actually filed.[^1] [EVIDENCE: filed 256 grants across 4 tax years, 2020 to 2023, median $36,000] [EVIDENCE: 10 of those 256 grants went to organisations in NTEE major group B]\n\nStated terms, captured from the funder's own page on 2026-08-09.[^2] Thrive requires being a 501(c)(3) arts nonprofit at time of application, with at least 5 years operating in the City of Austin/MSA and more than half of creative production within Austin City Council districts.[^2] Nexus (a related but separately-timed program, closed April 16 2026 for this cycle) offers $5,000-$10,000, 12-month awards to emerging/established artists and arts groups.[^2] Elevate supports creative/administrative/operational expenses for producing creative events, open July 7-Aug 18 2026.[^2] Apply via thelongcenter.submittable.com.[^2] Full eligibility varies by sub-program; contact applicationhelp@thelongcenter.org.[^2]\n\nDeadline 2026-08-18, as published by the funder.[^2]"
     },
     {
      "label": "Requested amount",
-     "text": "This organization requests [SUGGESTED: $10,000, this funder's median filed grant] from THE JUNIOR LEAGUE OF AUSTIN INC.[^1] The median is what this funder actually granted, not a figure it published, and it is a starting point for the ask rather than the ask itself."
+     "text": "This organization requests [SUGGESTED: $36,000, this funder's median filed grant] from Greater Austin Performing Arts Center (The Long Center, administrator of City of Austin ACME cultural arts grants).[^1] The median is what this funder actually granted, not a figure it published, and it is a starting point for the ask rather than the ask itself."
     },
     {
      "label": "Fit",
-     "text": "Curator assessment, recorded against the funder's own page on the date shown.[^2] MEASURE is eligible: Austin-based nonprofit, JLA's own service area, and the page states no sector bar, so no ineligibility marker applies.[^2] The realistic caveat is programmatic fit rather than eligibility: JLA's model pairs funding with placement of League volunteers on direct-service projects (Coats for Kids, Food In Tummies, Kids In Cool Shoes are its own), and MEASURE is a research and evaluation shop with limited volunteer-absorbing direct service.[^2] A data or evaluation partnership framing would be the angle.[^2] YEAR DERIVATION, FLAGGED: the page states the deadline as bare dates without a year.[^2] THE DECISIVE ANCHOR IS THAT TODAY IS 2026-08-03 AND THE PAGE NAMES MONDAY AUG.[^2] 3 AS THE DAY THE APPLICATION GOES LIVE, so the page is describing today.[^2] Three day-of-week anchors on the same page corroborate it and exclude every adjacent year: Monday Aug.[^2] 3, Wednesday August 5 and Friday Aug.[^2] 28 are all correct for 2026.[^2] Note the day-of-week test alone would NOT be conclusive, since 1 August also falls on a Saturday in 2015, 2020 and 2037; it is the coincidence with today's date that fixes the year.[^2] A curator wanting a stated year should ask JLA directly.[^2] Retrieval log: https://www.jlaustin.org/community/grants/ returned 404, https://www.jlaustin.org/community/apply-to-be-a-community-partner/ returned 404; the live path was found from the homepage navigation.[^2]\n\n[CONFIRM: which of this organization's current programmes this proposal will name] [MISSING: the programme budget for the period covered by this request]"
+     "text": "Curator assessment, recorded against the funder's own page on the date shown.[^2] GENUINE OPEN CALL, currently live with a near-term deadline (Aug 18, 2026).[^2] Important structural note: Greater Austin Performing Arts Center (the Long Center) is not distributing its own private foundation money here -- it administers the City of Austin's ACME cultural funding programs (hotel-occupancy-tax funded, ~$23M FY27) under a City contract.[^2] This explains the unusually high recipient count (221 TX recipients/255 grants) for what looks like a performing-arts venue: it is effectively a fiscal/administrative pass-through for a public grant program.[^2] Eligibility is Austin-specific (must be based in / produce work in the Austin MSA), so only relevant to Austin-area TX nonprofits, and specifically arts/culture/music orgs -- not a general nonprofit grant.[^2]\n\n[CONFIRM: which of this organization's current programmes this proposal will name] [MISSING: the programme budget for the period covered by this request]"
     }
    ],
    "qa": {
@@ -337,14 +332,14 @@
    },
    "funder_evidence": [
     {
-     "claim": "filed 185 grants across 10 tax years, 2015 to 2024, median $10,000",
+     "claim": "filed 256 grants across 4 tax years, 2020 to 2023, median $36,000",
      "source": "IRS Form 990 Schedule I, as filed",
-     "checked": "2026-08-05"
+     "checked": "2026-08-09"
     },
     {
-     "claim": "12 of those 185 grants went to organisations in NTEE major group B",
+     "claim": "10 of those 256 grants went to organisations in NTEE major group B",
      "source": "IRS Form 990 Schedule I joined to the IRS BMF",
-     "checked": "2026-08-05"
+     "checked": "2026-08-09"
     }
    ],
    "gaps_to_fill": [
@@ -361,7 +356,7 @@
     {
      "label": "Requested amount",
      "detail": "the amount to request from this funder",
-     "suggested": "$10,000, this funder's median filed grant"
+     "suggested": "$36,000, this funder's median filed grant"
     }
    ],
    "footnotes": [
@@ -374,56 +369,56 @@
     {
      "id": 2,
      "type": "online",
-     "source": "Funder's own page, checked 2026-08-05",
-     "url": "https://www.jlaustin.org/community/request-volunteers/apply-to-be-a-project/"
+     "source": "Funder's own page, checked 2026-08-09",
+     "url": "https://www.kut.org/life-arts/2026-07-08/austin-tx-arts-music-grants-applications-open-acme"
     }
    ],
    "sources_used": [
-    "FUNDER PAGE: https://www.jlaustin.org/community/request-volunteers/apply-to-be-a-project/, checked 2026-08-05",
+    "FUNDER PAGE: https://www.kut.org/life-arts/2026-07-08/austin-tx-arts-music-grants-applications-open-acme, checked 2026-08-09",
     "IRS FILING: Form 990 Schedule I, as filed"
    ],
    "model_note": "Scaffold generated from the opportunity register and the filed IRS record. Narrative prose is deliberately not generated here: this tool has no knowledge of the applicant's programmes and does not invent facts about the organization."
   },
   {
-   "grant_id": "1a82027a3cc305ab",
-   "grant_name": "Strengthening Evidence RFP (Evidence and Evaluation)",
-   "funder": "LAURA AND JOHN ARNOLD FOUNDATION",
-   "grant_url": "https://www.arnoldventures.org/grantees",
-   "grant_deadline": "September 11, 2026",
-   "close_date_iso": "2026-09-11",
-   "grant_eligibility": "Arnold Ventures states verbatim: 'We do not currently accept unsolicited grant proposals.' Entry is via this open RFP only, not by general application.",
-   "grant_focus_area": "Evidence and evaluation",
+   "grant_id": "d86cbbc451654e5d",
+   "grant_name": "RRF Pilot Study Grant (retina research)",
+   "funder": "Retina Research Foundation",
+   "grant_url": "https://retinaresearchfnd.org/pilot-study-grants/grant-info/",
+   "grant_deadline": "August 18, 2026",
+   "close_date_iso": "2026-08-18",
+   "grant_eligibility": "Applicant must hold MD and/or PhD, conduct retina research in the US at a university, medical school, or eye institute (for-profit/industry centers excluded), be a US citizen or permanent resident, and commit at least 3 years to the project. PI salary, travel, publication costs, and indirect costs are not fundable.",
+   "grant_focus_area": "Biomedical research - retina/ophthalmology",
    "organization": "MEASURE AUSTIN",
-   "generated_date": "2026-08-05",
+   "generated_date": "2026-08-09",
    "is_sample": false,
    "payoff_components": {
-    "relevance": 0.25,
-    "award": 0.3,
-    "urgency": 0.794,
-    "fit": 0.4
+    "relevance": 0.555,
+    "award": 0.172,
+    "urgency": 0.95,
+    "fit": 0.85
    },
-   "payoff_score": 41.1,
+   "payoff_score": 66.5,
    "payoff_weights": {
     "relevance": 0.35,
     "award": 0.15,
     "urgency": 0.2,
     "fit": 0.3
    },
-   "priority_rationale": "STRONG FIT. Prior funder by name match (990-PF Part XV, review required). Evidence and Evaluation is MEASURE's own domain: community-led data and evaluation, NTEE B05. Open with a live deadline. Verified on the funder's own RFP page 2026-08-02.",
+   "priority_rationale": "Genuine open annual grant cycle with a real deadline (Aug 18, 2026 for 2027 cycle), but this funds individual physician-scientist researchers at academic/medical institutions doing retina research specifically, not general 501(c)(3) operating or program grants. Only relevant to Texas medical schools/eye institutes with qualifying retina researchers, not a general nonprofit fit.",
    "curator_caution": [],
    "score_caveat": "",
    "sections": [
     {
      "label": "Why this funder",
-     "text": "What LAURA AND JOHN ARNOLD FOUNDATION has actually filed.[^1] [EVIDENCE: no grants from this funder appear in the filed Schedule I record, which is not evidence that it makes none]\n\nStated terms, captured from the funder's own page on 2026-08-05.[^2] Arnold Ventures states verbatim: 'We do not currently accept unsolicited grant proposals.' Entry is via this open RFP only, not by general application.[^2]\n\nDeadline 2026-09-11, as published by the funder.[^2]"
+     "text": "What Retina Research Foundation has actually filed.[^1] [EVIDENCE: filed 128 grants across 10 tax years, 2015 to 2024, median $43,000] [EVIDENCE: 39 of those 128 grants went to organisations in NTEE major group B]\n\nStated terms, captured from the funder's own page on 2026-08-09.[^2] Applicant must hold MD and/or PhD, conduct retina research in the US at a university, medical school, or eye institute (for-profit/industry centers excluded), be a US citizen or permanent resident, and commit at least 3 years to the project.[^2] PI salary, travel, publication costs, and indirect costs are not fundable.[^2]\n\nDeadline 2026-08-18, as published by the funder.[^2]"
     },
     {
      "label": "Requested amount",
-     "text": "The filed record shows no median grant for this funder, so no amount is proposed here.[^1] [CONFIRM: the amount to request]"
+     "text": "This organization requests [SUGGESTED: $43,000, this funder's median filed grant] from Retina Research Foundation.[^1] The median is what this funder actually granted, not a figure it published, and it is a starting point for the ask rather than the ask itself."
     },
     {
      "label": "Fit",
-     "text": "Curator assessment, recorded against the funder's own page on the date shown.[^2] STRONG FIT.[^2] Prior funder by name match (990-PF Part XV, review required).[^2] Evidence and Evaluation is MEASURE's own domain: community-led data and evaluation, NTEE B05.[^2] Open with a live deadline.[^2] Verified on the funder's own RFP page 2026-08-02.[^2]\n\n[CONFIRM: which of this organization's current programmes this proposal will name] [MISSING: the programme budget for the period covered by this request]"
+     "text": "Curator assessment, recorded against the funder's own page on the date shown.[^2] Genuine open annual grant cycle with a real deadline (Aug 18, 2026 for 2027 cycle), but this funds individual physician-scientist researchers at academic/medical institutions doing retina research specifically, not general 501(c)(3) operating or program grants.[^2] Only relevant to Texas medical schools/eye institutes with qualifying retina researchers, not a general nonprofit fit.[^2]\n\n[CONFIRM: which of this organization's current programmes this proposal will name] [MISSING: the programme budget for the period covered by this request]"
     }
    ],
    "qa": {
@@ -433,9 +428,14 @@
    },
    "funder_evidence": [
     {
-     "claim": "no grants from this funder appear in the filed Schedule I record, which is not evidence that it makes none",
-     "source": "IRS Form 990 Schedule I, absence of matching rows",
-     "checked": "2026-08-05"
+     "claim": "filed 128 grants across 10 tax years, 2015 to 2024, median $43,000",
+     "source": "IRS Form 990 Schedule I, as filed",
+     "checked": "2026-08-09"
+    },
+    {
+     "claim": "39 of those 128 grants went to organisations in NTEE major group B",
+     "source": "IRS Form 990 Schedule I joined to the IRS BMF",
+     "checked": "2026-08-09"
     }
    ],
    "gaps_to_fill": [
@@ -451,8 +451,8 @@
     },
     {
      "label": "Requested amount",
-     "kind": "confirm",
-     "detail": "the amount to request"
+     "detail": "the amount to request from this funder",
+     "suggested": "$43,000, this funder's median filed grant"
     }
    ],
    "footnotes": [
@@ -465,12 +465,12 @@
     {
      "id": 2,
      "type": "online",
-     "source": "Funder's own page, checked 2026-08-05",
-     "url": "https://www.arnoldventures.org/grantees"
+     "source": "Funder's own page, checked 2026-08-09",
+     "url": "https://retinaresearchfnd.org/pilot-study-grants/grant-info/"
     }
    ],
    "sources_used": [
-    "FUNDER PAGE: https://www.arnoldventures.org/grantees, checked 2026-08-05",
+    "FUNDER PAGE: https://retinaresearchfnd.org/pilot-study-grants/grant-info/, checked 2026-08-09",
     "IRS FILING: Form 990 Schedule I, as filed"
    ],
    "model_note": "Scaffold generated from the opportunity register and the filed IRS record. Narrative prose is deliberately not generated here: this tool has no knowledge of the applicant's programmes and does not invent facts about the organization."

@@ -2,10 +2,10 @@
  "product": "orientation",
  "client_slug": "measure-austin",
  "ein": "822372196",
- "generated_date": "2026-08-07",
+ "generated_date": "2026-08-09",
  "method": "Ten deterministic rules, each computed from named fields in Almanac's shelf, the client profile, and the curated register of funders and open calls. Every number on the page is computed here; the page performs no arithmetic. Nothing on this page is written advice or model-generated prose. Eligibility is read from Almanac's shelf and never recomputed.",
  "headline": {
-  "ready_now": 53,
+  "ready_now": 125,
   "source": "counts.ready_now, read as published",
   "note": "Read from Almanac's shelf. Not recounted here, and not derived from the register's own row totals, which are stated limits rather than a result."
  },
@@ -31,7 +31,7 @@
    "source_url",
    "title"
   ],
-  "emitted_rows_measured": 22,
+  "emitted_rows_measured": 24,
   "suppressed_fields_checked": [
    "fit_notes",
    "barred_reason",
@@ -180,7 +180,7 @@
      "ST DAVID'S FOUNDATION",
      "THE ALICE KLEBERG REYNOLDS MEYER"
     ],
-    "as_of": "2026-08-07"
+    "as_of": "2026-08-09"
    },
    "sentence": "7 open calls belong to funders that have already given to you, across 6 funders. 2 of those calls come from 2 funders confirmed on recipient EIN in Schedule I; the other 5 come from 4 funders matched by name in 990-PF Part XV, a source that carries no recipient EIN at all, so each has to be confirmed before anyone is contacted.",
    "rows": [
@@ -423,15 +423,15 @@
    "trigger": "rows barred on geography exist, and at least one prior funder's register-recorded funding geography names a secondary market you work in",
    "key_numbers": [
     "$540,000 already received from 3 funders funding in Dallas, TX",
-    "122 of 174 curated rows barred for you, 51 of those on geography",
+    "135 of 260 curated rows barred for you, 51 of those on geography",
     "24 of the geography-barred rows name one of those markets",
     "0 prior funders have no geography recorded in the register, which is unknown rather than absent"
    ],
    "verify_first": false,
    "fired": true,
    "numbers": {
-    "curated_shelf_rows_considered": 174,
-    "barred_rows": 122,
+    "curated_shelf_rows_considered": 260,
+    "barred_rows": 135,
     "barred_on_geography": 51,
     "barred_on_geography_naming_a_secondary_market": 24,
     "secondary_markets_on_file": [
@@ -480,7 +480,7 @@
     "profile.geography.secondary",
     "profile.survey_response.positioning.houston_dallas_presence"
    ],
-   "stated_limit": "Two limits, and neither is in the client-facing sentence. First, the curated tier this rule counts over is 174 rows, which is the size of the CURATED SHELF for this client and not the size of the opportunity register, which is far larger; the shelf is that size because the register's geography column resolves at STATE level only, so a row is selected for being open in Texas rather than for being open in Austin. Second, that geography column records the OPPORTUNITY'S FUNDING GEOGRAPHY, not the funder's headquarters, and some rows state both in one string. A funder matched here funds INTO the named market; it is not necessarily seated there, and the sentence says funding geography for that reason.",
+   "stated_limit": "Two limits, and neither is in the client-facing sentence. First, the curated tier this rule counts over is 260 rows, which is the size of the CURATED SHELF for this client and not the size of the opportunity register, which is far larger; the shelf is that size because the register's geography column resolves at STATE level only, so a row is selected for being open in Texas rather than for being open in Austin. Second, that geography column records the OPPORTUNITY'S FUNDING GEOGRAPHY, not the funder's headquarters, and some rows state both in one string. A funder matched here funds INTO the named market; it is not necessarily seated there, and the sentence says funding geography for that reason.",
    "notes": [
     "The sentence names only the secondary markets a register row actually matched. Markets on file with no matching register row are carried in the numbers block as secondary_markets_with_no_register_match rather than being named as though they had produced the dollars."
    ],
@@ -491,7 +491,7 @@
    "headline": "Dated Deadlines Inside 60 Days Against One Part-Time Writer",
    "trigger": "a call open to you carries a dated deadline between the generation date and 60 days later",
    "key_numbers": [
-    "8 dated deadlines between August 7, 2026 and October 6, 2026",
+    "9 dated deadlines between August 9, 2026 and October 8, 2026",
     "29 further calls are rolling or carry no stated date",
     "Recorded writing capacity: One part-time grant writer, plus Meme Styles also writes grants"
    ],
@@ -499,15 +499,15 @@
    "fired": true,
    "numbers": {
     "horizon_days": 60,
-    "as_of": "2026-08-07",
-    "horizon_date": "2026-10-06",
-    "dated_deadlines_visible": 8,
-    "dated_deadlines_on_shelf": 10,
+    "as_of": "2026-08-09",
+    "horizon_date": "2026-10-08",
+    "dated_deadlines_visible": 9,
+    "dated_deadlines_on_shelf": 26,
     "rolling_or_undated_visible": 29,
-    "rolling_or_undated_on_shelf": 37,
+    "rolling_or_undated_on_shelf": 85,
     "grant_writing_bandwidth": "One part-time grant writer, plus Meme Styles also writes grants"
    },
-   "sentence": "8 of the calls open to you carry a dated deadline between August 7, 2026 and October 6, 2026. Another 29 are rolling or carry no stated date. Your recorded writing capacity is: One part-time grant writer, plus Meme Styles also writes grants.",
+   "sentence": "9 of the calls open to you carry a dated deadline between August 9, 2026 and October 8, 2026. Another 29 are rolling or carry no stated date. Your recorded writing capacity is: One part-time grant writer, plus Meme Styles also writes grants.",
    "rows": [
     {
      "funder_name": "SHIELD-AYRES FOUNDATION",
@@ -524,6 +524,14 @@
      "deadline": "August 26, 2026",
      "source_url": "https://akrfoundation.org/guidelines/",
      "confidence": "verified"
+    },
+    {
+     "funder_name": "Texas Health and Human Services Commission (HHSC)",
+     "title": "Rural Texas Strong Program - Initiative 4 (HHS0017618)",
+     "close_date": "2026-08-26",
+     "deadline": "August 26, 2026",
+     "source_url": "https://resources.hhs.texas.gov/rfa",
+     "confidence": "reported"
     },
     {
      "funder_name": "THE JUNIOR LEAGUE OF AUSTIN INC",
@@ -574,7 +582,7 @@
      "confidence": "verified"
     }
    ],
-   "withheld_by_confidentiality_guard": 2,
+   "withheld_by_confidentiality_guard": 17,
    "withheld_by_do_not_duplicate": 0,
    "proven_by": [
     "almanac_match.open_opportunities_curated[].close_date",
@@ -585,24 +593,24 @@
    "notes": [
     "Deadline counts describe YOUR action list, so they are computed after the confidentiality guard. The shelf-level figure is carried alongside so the difference is visible rather than implied."
    ],
-   "detail": "8 of the calls open to you carry a dated deadline between August 7, 2026 and October 6, 2026. Another 29 are rolling or carry no stated date. Your recorded writing capacity is: One part-time grant writer, plus Meme Styles also writes grants."
+   "detail": "9 of the calls open to you carry a dated deadline between August 9, 2026 and October 8, 2026. Another 29 are rolling or carry no stated date. Your recorded writing capacity is: One part-time grant writer, plus Meme Styles also writes grants."
   },
   {
    "id": "R10",
    "headline": "Federal Eligibility Is Inferred Rather Than Published on Part of Your Tier",
    "trigger": "federal rows are open to you, you have screening criteria on file, and at least one open federal row carries eligibility_basis 'inferred from opportunity text'",
    "key_numbers": [
-    "39 federal opportunities open to you as of August 7, 2026",
-    "8 of them carry inferred rather than published eligibility",
+    "40 federal opportunities open to you as of August 9, 2026",
+    "7 of them carry inferred rather than published eligibility",
     "5 screening criteria on file"
    ],
    "verify_first": true,
    "fired": true,
    "numbers": {
     "federal_rows": 40,
-    "federal_rows_open_at_as_of": 39,
-    "eligibility_inferred_from_text_open": 8,
-    "eligibility_inferred_from_text_all_rows": 9,
+    "federal_rows_open_at_as_of": 40,
+    "eligibility_inferred_from_text_open": 7,
+    "eligibility_inferred_from_text_all_rows": 7,
     "federal_rows_recording_a_client_screen": 0,
     "federal_row_fields_present": [
      "agency",
@@ -631,7 +639,7 @@
     ],
     "client_verbatim_caution": "Also... we need to be careful with government grants that harm organization led by black women."
    },
-   "sentence": "39 federal opportunities are open to you as of August 7, 2026, and on 8 of them the eligibility line was inferred from the opportunity text rather than coded by the publisher, so whether you qualify is a reading of the notice and not a published fact. You gave us 5 screening criteria and one explicit caution, and the federal tier carries no field in which a screen against them could be recorded, so nothing on it has been checked against your criteria by anything but a person.",
+   "sentence": "40 federal opportunities are open to you as of August 9, 2026, and on 7 of them the eligibility line was inferred from the opportunity text rather than coded by the publisher, so whether you qualify is a reading of the notice and not a published fact. You gave us 5 screening criteria and one explicit caution, and the federal tier carries no field in which a screen against them could be recorded, so nothing on it has been checked against your criteria by anything but a person.",
    "proven_by": [
     "almanac_match.open_opportunities_federal[].close_date",
     "almanac_match.open_opportunities_federal[].eligibility_basis",
@@ -642,7 +650,7 @@
    "notes": [
     "Counts run over rows OPEN at the generation date. Counting over all 40 rows would import rows whose close date has already passed."
    ],
-   "detail": "39 federal opportunities are open to you as of August 7, 2026, and on 8 of them the eligibility line was inferred from the opportunity text rather than coded by the publisher, so whether you qualify is a reading of the notice and not a published fact. You gave us 5 screening criteria and one explicit caution, and the federal tier carries no field in which a screen against them could be recorded, so nothing on it has been checked against your criteria by anything but a person."
+   "detail": "40 federal opportunities are open to you as of August 9, 2026, and on 7 of them the eligibility line was inferred from the opportunity text rather than coded by the publisher, so whether you qualify is a reading of the notice and not a published fact. You gave us 5 screening criteria and one explicit caution, and the federal tier carries no field in which a screen against them could be recorded, so nothing on it has been checked against your criteria by anything but a person."
   }
  ],
  "rules_not_fired": [
@@ -654,12 +662,12 @@
    "verify_first": false,
    "fired": false,
    "numbers": {
-    "reported_visible": 7,
-    "visible_rows": 41,
-    "reported_share_of_visible_pct": 17.1,
-    "reported_before_confidentiality_guard": 12,
-    "reported_withheld_as_another_clients_find": 5,
-    "shelf_ready_now_read_from_almanac": 53,
+    "reported_visible": 8,
+    "visible_rows": 42,
+    "reported_share_of_visible_pct": 19.0,
+    "reported_before_confidentiality_guard": 63,
+    "reported_withheld_as_another_clients_find": 55,
+    "shelf_ready_now_read_from_almanac": 125,
     "threshold_pct": 20.0,
     "client_self_reported_figures": [
      {
@@ -676,7 +684,7 @@
      }
     ]
    },
-   "sentence": "7 of the 41 calls open to you are recorded as reported rather than verified, 17.1%, which is below the 20 percent at which this rule fires. Almost everything on your live shelf was checked against the funder's own page.",
+   "sentence": "8 of the 42 calls open to you are recorded as reported rather than verified, 19.0%, which is below the 20 percent at which this rule fires. Almost everything on your live shelf was checked against the funder's own page.",
    "rows": [
     {
      "funder_name": "4point0 Schools",
@@ -727,6 +735,14 @@
      "confidence": "reported"
     },
     {
+     "funder_name": "Texas Health and Human Services Commission (HHSC)",
+     "title": "Rural Texas Strong Program - Initiative 4 (HHS0017618)",
+     "close_date": "2026-08-26",
+     "deadline": "August 26, 2026",
+     "source_url": "https://resources.hhs.texas.gov/rfa",
+     "confidence": "reported"
+    },
+    {
      "funder_name": "The Powell Foundation",
      "title": "Powell Foundation Grants (Operating/Program Support)",
      "close_date": "",
@@ -735,7 +751,7 @@
      "confidence": "reported"
     }
    ],
-   "withheld_by_confidentiality_guard": 5,
+   "withheld_by_confidentiality_guard": 55,
    "proven_by": [
     "almanac_match.open_opportunities_curated[].confidence",
     "almanac_match.open_opportunities_curated[].found_for_this_client",
@@ -745,20 +761,20 @@
    "notes": [
     "Numerator and denominator are the same population: the calls open to you after both the close-date filter and the confidentiality guard. The published counts.ready_now is carried above and is the page headline, READ and never recounted, but it applies neither of those filters, so dividing by it would compare two different populations and would count rows that are not yours toward your own rate."
    ],
-   "detail": "7 of the 41 calls open to you are recorded as reported rather than verified, 17.1%, which is below the 20 percent at which this rule fires. Almost everything on your live shelf was checked against the funder's own page."
+   "detail": "8 of the 42 calls open to you are recorded as reported rather than verified, 19.0%, which is below the 20 percent at which this rule fires. Almost everything on your live shelf was checked against the funder's own page."
   }
  ],
  "counts": {
   "rules_evaluated": 10,
   "rules_fired": 9,
   "rules_quiet": 1,
-  "curated_rows_on_shared_shelf": 174,
-  "non_barred_rows": 52,
-  "non_barred_rows_withheld_by_confidentiality_guard": 10,
-  "live_rows_at_as_of": 51,
-  "live_rows_withheld_by_confidentiality_guard": 10,
-  "shared_shelf_prospect_rows_belonging_to_other_clients": 148,
+  "curated_rows_on_shared_shelf": 260,
+  "non_barred_rows": 125,
+  "non_barred_rows_withheld_by_confidentiality_guard": 83,
+  "live_rows_at_as_of": 125,
+  "live_rows_withheld_by_confidentiality_guard": 83,
+  "shared_shelf_prospect_rows_belonging_to_other_clients": 254,
   "live_rows_suppressed_as_already_in_pipeline": 1,
-  "rows_emitted": 22
+  "rows_emitted": 24
  }
 }

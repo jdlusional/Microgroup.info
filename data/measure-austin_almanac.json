@@ -1,7 +1,7 @@
 {
  "product": "almanac",
  "client_slug": "measure-austin",
- "generated_date": "2026-08-05",
+ "generated_date": "2026-08-09",
  "method": "Generated from the Almanac shelf, which is itself built from the IRS 990 corpus and a hand-curated opportunity register. Eligibility is decided by the shelf and read here, never recomputed. Prior funders joined on recipient EIN are exact; 990-PF Part XV name matches are probabilistic and labelled as such.",
  "tiers": {
   "tier_1_strong": "Confirmed prior funder, joined on recipient EIN in Schedule I.",
@@ -706,18 +706,6 @@
  ],
  "ready_now": [
   {
-   "id": "2c0eeab2941caf56",
-   "ein": "823285688",
-   "organization": "Internet Society Foundation",
-   "grant_name": "Common Good Cyber Fund (CGCF) 2026",
-   "url": "https://www.isocfoundation.org/grant-programme/common-good-cyber-fund/",
-   "focus_area": "Public-interest cybersecurity infrastructure, protecting civil society/journalists online",
-   "eligibility": "501(c)(3) or international equivalent; must register in Fluxx 24+ hours before deadline",
-   "amount": "300000",
-   "deadline": "August 4, 2026",
-   "notes": "Adjacent, not direct: best framed as support for Measure's data-security/data-stewardship practices rather than its core AI-ethics research. 2026 geographic priority favors global-majority orgs, a real competitive disadvantage for a US/Texas applicant."
-  },
-  {
    "id": "dfd05427b86cd6ab",
    "ein": "741938157",
    "organization": "SHIELD-AYRES FOUNDATION",
@@ -740,6 +728,18 @@
    "amount": "Not stated by the funder",
    "deadline": "August 26, 2026",
    "notes": "THE HEADLINE OPEN CALL IN THIS CHUNK, and the only one in chunk 1 with a live future deadline MEASURE could realistically meet. Cycle dates are stated on the funder's own guidelines page WITH EXPLICIT YEARS, so no year inference is involved: opens Tuesday 26 May 2026, closes Wednesday 26 August 2026 at noon (12pm) CST, decisions by 21 September 2026. As of 2026-08-02 that is 24 days of runway. IDENTITY CONFLICT INVESTIGATED AND RESOLVED, since this is the one line anyone will act on. The apparent problem was that EIN 742847652 files with the IRS as ALICE KLEBERG REYNOLDS MEYER FDN TR while the website at akrfoundation.org calls itself THE ALICE KLEBERG REYNOLDS FOUNDATION, with no Meyer."
+  },
+  {
+   "id": "5e404e5c076a51d5",
+   "ein": "",
+   "organization": "Texas Health and Human Services Commission (HHSC)",
+   "grant_name": "Rural Texas Strong Program - Initiative 4 (HHS0017618)",
+   "url": "https://resources.hhs.texas.gov/rfa",
+   "focus_area": "rural healthcare workforce development",
+   "eligibility": "Subtitled 'Next Generation of the Small Town Doctor and Team'; appears to be a rural healthcare workforce development program; specific eligibility criteria not extracted from listing page, would need full RFA document",
+   "amount": "Not stated by the funder",
+   "deadline": "August 26, 2026",
+   "notes": "Weak fit for MEASURE's B05 research/public policy focus. This is a direct workforce/service-delivery program (training the next generation of rural doctors), not a research or policy-analysis grant. Two other HHSC RFAs open on the same portal as of search date -- HHS0016961 HIV Care Services (deadline 2026-08-28) and HHS0015874 Deaf and Hard of Hearing Access Services Grant (deadline 2026-08-10) -- are direct clinical/accessibility service grants, also poor fits for a research/policy nonprofit. No HHSC research or evaluation RFA was found open as of search date."
   },
   {
    "id": "231c39132766b68f",
@@ -1066,18 +1066,6 @@
    "notes": "Status open; the submission forms are live now. The close date is deliberately left empty: these are rolling, undated request forms rather than a dated round, and no year-bearing deadline is published. (Operation Renovation, presented by Frost Bank, runs as a separately announced seasonal round and would carry its own dates if tracked separately.) Fit for Measure is weak but not barred: the geographic frame is San Antonio-centered within South and Central Texas, so Austin arguably falls inside the stated region, but every named vehicle is youth programming, event sponsorship, in-kind goods, or tickets rather than a research or evaluation grant, and Measure does community-led data and evaluation. Realistically this is an in-kind or event-sponsorship ask tied to a Measure fundraiser, not a program grant. This is the charitable arm of Spurs Sports and Entertainment (formerly Silver and Black Give Back), now branded Spurs Give under the Spurs Impact umbrella."
   },
   {
-   "id": "dd999858abd345c1",
-   "ein": "741356589",
-   "organization": "St. David's Foundation",
-   "grant_name": "Catalyzing Community-Led Change / We All Benefit 2.0: Building Economic Stability",
-   "url": "https://www.stdavidsfoundation.org/how-we-work/grantmaking/funding-opportunities/",
-   "focus_area": "Catalyzing Community-Led Change: communities with significant health needs shaping priorities/policies. We All Benefit 2.0: economic-stability services for marginalized communities.",
-   "eligibility": "Not published on the funding-opportunities page; a third program, Housing + Health: Capital, announced for an August 2026 open call, not yet open",
-   "amount": "Not stated by the funder",
-   "deadline": "Rolling or undated",
-   "notes": "Confirmed prior funder ($162,000, the largest single confirmed grant). $1.7B+ assets. Own framing is health-focused, so the natural pitch is a health-equity-data angle rather than a generic ask. States it is shifting its approach/culture including grantmaking practices -- process may be evolving."
-  },
-  {
    "id": "a000d5bd5338ff18",
    "ein": "273197768",
    "organization": "Stand Together Foundation",
@@ -1222,6 +1210,174 @@
    "notes": "Real, open, non-invitation-only pathway via LOI, but Texas competes in the general pool, not a priority geography. Worth confirming current fit with a program officer before investing LOI-writing time."
   },
   {
+   "id": "5bc98adbb18b8de6",
+   "ein": "760414232",
+   "organization": "TRG (The Resource Group, formerly Houston Regional HIV/AIDS Resource Group)",
+   "grant_name": "FY 26-27 HIA (HIV Intervention & Treatment) Services RFP",
+   "url": "https://www.houstonresourcegroup.org/rpfannouncements",
+   "focus_area": "HIV/AIDS prevention, intervention and treatment services (Ryan White pass-through funding)",
+   "eligibility": "TRG is the local administrative agency for six Texas DSHS Health Service Delivery Areas covering 51 counties of East/Southeast Texas (Ryan White Parts B/C/D, HOPWA); this RFP is for HIV Intervention & Treatment (HIA) services. Full proposals due Aug 14, 2026, but the Letter of Intent deadline (July 21, 2026) has already passed, which may bar new applicants from this specific cycle -- worth confirming with TRG directly.",
+   "amount": "Not stated by the funder",
+   "deadline": "August 14, 2026",
+   "notes": "Open to HIV/AIDS service provider nonprofits operating within TRG's 51-county Southeast Texas service area; not a general-purpose grant, sector-specific to HIV/AIDS services. New applicants likely needed to submit an LOI by July 21, 2026, which has passed as of this research date (2026-08-06), so practical eligibility for this specific cycle is uncertain."
+  },
+  {
+   "id": "779a7794334493c8",
+   "ein": "756003984",
+   "organization": "Hoblitzelle Foundation",
+   "grant_name": "Capital grant program (June-August 2026 cycle)",
+   "url": "https://hoblitzelle.org/how-to-apply",
+   "focus_area": "Capital projects only: building construction, renovation, equipment, vehicles, technology. Does NOT fund operations, programs, debt retirement, endowments, research, or scholarships.",
+   "eligibility": "Nonprofit with tax-exempt status, annual budget exceeding $250,000, external financial audit within last two years, one-year waiting period between submissions, typically no grants to same org more than once every 3-4 years. Recommends contacting the foundation before applying (info@hoblitzelle.org).",
+   "amount": "Not stated by the funder",
+   "deadline": "August 15, 2026",
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "6141c8cdc945c188",
+   "ein": "742867681",
+   "organization": "Greater Austin Performing Arts Center (The Long Center, administrator of City of Austin ACME cultural arts grants)",
+   "grant_name": "OPEN: FY27 Elevate and Thrive cultural arts grants (part of $23M+ ACME funding programs), applications open through August 18, 2026",
+   "url": "https://www.kut.org/life-arts/2026-07-08/austin-tx-arts-music-grants-applications-open-acme",
+   "focus_area": "Arts, culture, and music (city cultural-arts hotel-occupancy-tax funded grant programs: Elevate, Thrive, Nexus, Austin Live Music Fund, Heritage Preservation Grant, Creative Space Assistance Program)",
+   "eligibility": "Thrive requires being a 501(c)(3) arts nonprofit at time of application, with at least 5 years operating in the City of Austin/MSA and more than half of creative production within Austin City Council districts. Nexus (a related but separately-timed program, closed April 16 2026 for this cycle) offers $5,000-$10,000, 12-month awards to emerging/established artists and arts groups. Elevate supports creative/administrative/operational expenses for producing creative events, open July 7-Aug 18 2026. Apply via thelongcenter.submittable.com. Full eligibility varies by sub-program; contact applicationhelp@thelongcenter.org.",
+   "amount": "10000",
+   "deadline": "August 18, 2026",
+   "notes": "GENUINE OPEN CALL, currently live with a near-term deadline (Aug 18, 2026). Important structural note: Greater Austin Performing Arts Center (the Long Center) is not distributing its own private foundation money here -- it administers the City of Austin's ACME cultural funding programs (hotel-occupancy-tax funded, ~$23M FY27) under a City contract. This explains the unusually high recipient count (221 TX recipients/255 grants) for what looks like a performing-arts venue: it is effectively a fiscal/administrative pass-through for a public grant program. Eligibility is Austin-specific (must be based in / produce work in the Austin MSA), so only relevant to Austin-area TX nonprofits, and specifically arts/culture/music orgs -- not a general nonprofit grant."
+  },
+  {
+   "id": "d86cbbc451654e5d",
+   "ein": "237087830",
+   "organization": "Retina Research Foundation",
+   "grant_name": "RRF Pilot Study Grant (retina research)",
+   "url": "https://retinaresearchfnd.org/pilot-study-grants/grant-info/",
+   "focus_area": "Biomedical research - retina/ophthalmology",
+   "eligibility": "Applicant must hold MD and/or PhD, conduct retina research in the US at a university, medical school, or eye institute (for-profit/industry centers excluded), be a US citizen or permanent resident, and commit at least 3 years to the project. PI salary, travel, publication costs, and indirect costs are not fundable.",
+   "amount": "50000",
+   "deadline": "August 18, 2026",
+   "notes": "Genuine open annual grant cycle with a real deadline (Aug 18, 2026 for 2027 cycle), but this funds individual physician-scientist researchers at academic/medical institutions doing retina research specifically, not general 501(c)(3) operating or program grants. Only relevant to Texas medical schools/eye institutes with qualifying retina researchers, not a general nonprofit fit."
+  },
+  {
+   "id": "bb45006d0920000b",
+   "ein": "",
+   "organization": "Texas eGrants (Governor's Office / Public Safety Office grant portal)",
+   "grant_name": "no open call fitting maternal/perinatal health found; portal is dominated by law enforcement/criminal justice funding",
+   "url": "https://egrants.gov.texas.gov/fundingopp",
+   "focus_area": "public safety, criminal justice, victim services",
+   "eligibility": "Currently open opportunities on egrants.gov.texas.gov as of this search: ALERRT Travel Assistance FY2026 (law enforcement agencies only, deadline 8/31/2026, $2.9M total); County Essential Services Grant Program FY2026 (Texas counties only, invitation-based, deadline 8/31/2026); Crime Victim Notification Systems Program FY2027 (state/local government and educational institutions with law enforcement operations, deadline 8/31/2026). General Victim Assistance Grant Program FY2027 was listed with a 02/12/2026 deadline that has already passed. No health, maternal, perinatal, or general community-nonprofit program is currently posted.",
+   "amount": "Not stated by the funder",
+   "deadline": "August 31, 2026",
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "818708f94c94ae5b",
+   "ein": "231907729",
+   "organization": "JDRF International (rebranded Breakthrough T1D)",
+   "grant_name": "OPEN research RFPs (e.g., Accelerating Development of Combined CGM-Pump Devices, LOI due Sept 2, 2026) but restricted to Type 1 diabetes biomedical/device research organizations, not general nonprofits",
+   "url": "https://www.breakthrought1d.org/explore-research/funding-opportunities/",
+   "focus_area": "Type 1 diabetes research (technology, cell therapy, immunology, clinical trials)",
+   "eligibility": "JDRF (now branded Breakthrough T1D) accepts proposals from domestic and foreign nonprofit or public organizations -- universities, colleges, hospitals, laboratories, government units -- conducting Type 1 diabetes research; 97% of funding goes to nonprofit/academic institutions. Multiple standing RFPs rotate through the year via SmartSimple portal (grantcenter.jdrf.org redirects to breakthrought1d.org/explore-research/funding-opportunities). Currently open as of today: 'Accelerating the Development of Combined CGM-Pump Devices' (LOI due Sept 2, 2026); FY27 Training Awards (Postdoctoral/Advanced Postdoctoral Fellowships, Career Development Award) had a full-proposal deadline of July 2, 2026 (passed). Award amounts not specified on the funding-opportunities page; full Grant Handbook available.",
+   "amount": "Not stated by the funder",
+   "deadline": "September 2, 2026",
+   "notes": "Genuinely open, standing, recurring research grant program -- but NOT applicable to a general Texas 501(c)(3) nonprofit; eligible applicants are academic/medical/research institutions studying Type 1 diabetes (a TX medical school or research hospital, e.g., UT Southwestern or Baylor College of Medicine, could potentially qualify, but a community-service nonprofit would not)."
+  },
+  {
+   "id": "dfdc537294f5fcdd",
+   "ein": "",
+   "organization": "Dallas Mavericks Foundation (Mavs Foundation)",
+   "grant_name": "Mavs Foundation Grants (2026-27 cycle)",
+   "url": "https://mavsfoundation.smapply.us/",
+   "focus_area": "Youth, women, and family empowerment; operational support, basketball court refurbishment, Reading and Learning Centers (education/job training)",
+   "eligibility": "501(c)(3) public charity active at least 2 years, minimum annual budget threshold, programs operating within 75 miles of American Airlines Center in the Dallas/Fort Worth Metroplex, programming must benefit children, women, or families.",
+   "amount": "50000",
+   "deadline": "September 8, 2026",
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "87644118665d00dd",
+   "ein": "760029594",
+   "organization": "Houston Bar Foundation",
+   "grant_name": "OPEN: second annual Community Grants Program, deadline September 15, 2026, up to $10,000 per project",
+   "url": "https://blog.texasbar.com/2026/08/articles/news/houston-bar-foundation-opens-second-annual-community-grants-program/",
+   "focus_area": "Access to justice / legal aid / civic legal education",
+   "eligibility": "Project/program requests must (1) further at least one pillar of HBF's mission (legal representation for those in need, promoting understanding of the legal system, fostering administration of justice), (2) benefit people in the greater Houston area, and (3) be completed within two years of the award. Apply via hba.org/?pg=HBFCommunityGrantsProgram. Inaugural year (2025) awarded $100,000 across 15 projects covering domestic violence services, civic education, and law-student public-interest work.",
+   "amount": "10000",
+   "deadline": "September 15, 2026",
+   "notes": "GENUINE OPEN CALL, currently live with deadline September 15, 2026 (about 6 weeks out from today). Real, recurring competitive community grants program in its second year -- exactly the kind of live opportunity this sweep is meant to find. Applicable to Houston-area legal aid nonprofits and other orgs whose work touches access-to-justice/legal-system themes; not a fully general nonprofit fund (must further HBF's specific legal-mission pillars)."
+  },
+  {
+   "id": "4f5ac32a989d6082",
+   "ein": "",
+   "organization": "Equal Justice Works",
+   "grant_name": "Class of 2027 Design-Your-Own Fellowship (host organization application)",
+   "url": "https://www.equaljusticeworks.org/become-a-host-organization/design-your-fellowship/",
+   "focus_area": "Public interest legal aid fellowships (any area except international law or standard criminal defense)",
+   "eligibility": "Not a direct cash grant to the org; a host organization partners with a fellow candidate (3rd-year law student, recent grad, or experienced attorney) to jointly design and submit a two-year public-interest legal project application. Projects must serve individuals/communities in the US and its territories; any legal aid area except international law or standard criminal defense. Host org must provide employment, supervision, workspace, benefits and equipment for the 2-year term.",
+   "amount": "Not stated by the funder",
+   "deadline": "September 17, 2026",
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "554152c6f1ba016a",
+   "ein": "521469738",
+   "organization": "Equal Justice Works",
+   "grant_name": "Design-Your-Own Fellowship - Host Organization Application (2027 cohort)",
+   "url": "https://www.equaljusticeworks.org/become-a-host-organization/design-your-fellowship/",
+   "focus_area": "Public interest law - legal services, policy, community organizing, litigation",
+   "eligibility": "Host Organization must be a nonprofit legal-services organization (or otherwise able to provide legal supervision) in the United States, and must commit to covering health insurance, fringe benefits, and any salary costs above Equal Justice Works' maximum annual contribution of $66,500. Prospective Fellow (usually a law student/recent grad) and host org co-design the 2-year project and submit together; EJW does not pre-match candidates to hosts.",
+   "amount": "66500",
+   "deadline": "September 17, 2026",
+   "notes": "Genuine open, competitive, annually recurring application (this is the Design-Your-Own Fellowship, distinct from EJW's separately-run non-DYO Fellowship placements). The 2027-cohort host-organization/applicant window (2026-05-21 to 2026-09-17) is OPEN as of this research date (2026-08-06). A qualifying TX legal-aid nonprofit could serve as host and effectively receive up to $66,500/yr in salary funding for a 2-year attorney fellow. Note: per task instructions another agent may have already logged this EIN for a specific client; this entry is an independent confirmation and duplication is expected/harmless."
+  },
+  {
+   "id": "fa4829f8c2c7617a",
+   "ein": "742455161",
+   "organization": "St Joseph Services Corporation (CHI St. Joseph's Health / CommonSpirit Health, Bryan-Brazos Valley)",
+   "grant_name": "CommonSpirit Health Community Health Improvement Grants (2027 cycle)",
+   "url": "https://www.commonspirit.org/news-articles/chi-saint-joseph-health-opens-community-health-grant-applications",
+   "focus_area": "Community health improvement - mental health, substance abuse, chronic disease, access to care",
+   "eligibility": "Local 501(c)(3) nonprofit organizations serving CHI St. Joseph's Health's Brazos Valley, TX service area with community health improvement projects. Small grants up to $19,500; standard grants $20,000-$150,000. Focus areas include mental health, substance abuse, and economic factors affecting wellness, plus access to care, chronic disease management, and social determinants of health.",
+   "amount": "150000",
+   "deadline": "September 18, 2026",
+   "notes": "GENUINE OPEN CALL, CURRENTLY LIVE as of this research date (2026-08-06). This is the same CommonSpirit Health Community Health Improvement Grants program family as St Luke's Health System Corporation (item 7 in this batch, EIN 760536232, Greater Houston) -- both are CommonSpirit Texas ministry members running the identical national program with the same close date (Sept 18, 2026). EIN 742455161 confirmed via Candid, Charity Navigator, and CauseIQ as CHI St. Joseph Health, Bryan, TX. Strong fit for Brazos Valley health/human-services nonprofits."
+  },
+  {
+   "id": "101bc1cf89346750",
+   "ein": "760536232",
+   "organization": "St Luke's Health System Corporation (St. Luke's Health / CommonSpirit Health, Houston)",
+   "grant_name": "St. Luke's Health Community Health Improvement Grants (2027 cycle)",
+   "url": "https://www.commonspirit.org/news-articles/st-lukes-health-opens-community-health-grant-applications",
+   "focus_area": "Access to healthcare, heart disease/stroke, cancer, mental health, social drivers of health",
+   "eligibility": "Local 501(c)(3) nonprofit organizations dedicated to improving community health/health equity in the Greater Houston, East Texas, and Brazos Valley areas served by St. Luke's Health facilities. Grants over $20,000 require at least two collaborating partner organizations with distinct roles; partnerships encouraged but not required under $20,000. Proposals should align with St. Luke's Health's most recent Community Health Needs Assessment.",
+   "amount": "20000",
+   "deadline": "September 18, 2026",
+   "notes": "GENUINE OPEN CALL, CURRENTLY LIVE as of this research date (2026-08-06): application window is July 20-September 18, 2026, so it is open right now. EIN 760536232 confirmed as St Luke's Health System Corporation, The Woodlands/Houston TX, the CommonSpirit Health member operating under the St. Luke's Health brand -- confirmed via ProPublica, CauseIQ, and CommonSpirit's own site as the same corporate entity running this grant program (distinct from the separately-named 'St. Luke's Foundation' EIN 453811485, a different Houston-area entity, and also distinct from Saint Luke's Foundation in Kansas City -- name-collision risk flagged per prior batch note, resolved by EIN cross-check). Grantees notified January 2027; projects run April 2027-March 2028. Strong fit for Houston-area health/human-services nonprofits."
+  },
+  {
+   "id": "8505f7bfba1e338c",
+   "ein": "746015382",
+   "organization": "San Antonio Conservation Society",
+   "grant_name": "San Antonio Conservation Society Building Grants and Educational Grants",
+   "url": "https://www.saconservation.org/what-we-do/building-grants/",
+   "focus_area": "Historic preservation - building restoration and educational/preservation projects",
+   "eligibility": "Building Grants: for restoration/rehabilitation of residential or commercial historic structures at least 50 years old, must meet Secretary of the Interior's Standards for Rehabilitation. Educational Grants: for research, video production, publication printing, and document conservation projects. Individuals and organizations both eligible.",
+   "amount": "Not stated by the funder",
+   "deadline": "September 25, 2026",
+   "notes": "CONFIRMED currently open: 2026 Building Grant application cycle deadline is Friday, September 25, 2026 at 4:00pm, verified directly on the funder's own page at time of research. $3.4M awarded cumulatively 2000-2025. Strong genuine fit for a San Antonio-area historic preservation nonprofit or property owner; not useful outside that niche/geography."
+  },
+  {
+   "id": "bf0d352cea8f5b6d",
+   "ein": "520895622",
+   "organization": "Children's Defense Fund - CDF Freedom Schools Sponsor Site Program",
+   "grant_name": "2026-2027 CDF Freedom Schools sponsor site application - opens Aug 10 2026, closes Sept 28 2026",
+   "url": "https://www.childrensdefense.org/our-work/cdf-freedom-schools/sponsor-a-site/",
+   "focus_area": "K-12 summer/after-school literacy and character-building enrichment (CDF Freedom Schools model)",
+   "eligibility": "Community-based organizations, schools, or agencies that can host a summer/after-school K-12 enrichment program and commit staff to mandatory Ella Baker Child Policy Training Institute trainings (executive director, project director, site coordinator orientations). Fiduciary and programmatic requirements apply. Direct grant funding amounts not specified on the sponsor page - program appears to combine curriculum licensing/training support with some funding flow, not confirmed as a pure cash grant.",
+   "amount": "Not stated by the funder",
+   "deadline": "September 28, 2026",
+   "notes": "Genuine, real, dated open application cycle: release Aug 10 2026, deadline Sept 28 2026, informational session Aug 27 2026. CDF itself is primarily a grant RECIPIENT/advocacy organization overall (funded by foundations/corporations/individuals, no government funding), which explains why most searches found no general CDF grantmaking program - but the Freedom Schools sponsor-site program is a real, recurring, applicable opportunity for TX community organizations, distinct from a general operating grant. Whether direct cash funding flows to sponsor sites versus curriculum/training support only was not confirmed from the page and should be verified before citing an award amount to a client."
+  },
+  {
    "id": "7686a91669bac96d",
    "ein": "",
    "organization": "Fredrikson & Byron Foundation",
@@ -1231,7 +1387,19 @@
    "eligibility": "Legal-services or pro bono organization; primarily Minnesota, plus Iowa, North Dakota, Wisconsin",
    "amount": "Not stated by the funder",
    "deadline": "September 30, 2026",
-   "notes": "New candidate. Stated priority is a close, direct match to Standpoint's free statewide legal-advocacy model. Real, dated deadline, supported 121-plus organizations in a recent year; worth a written application for this cycle."
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "6be0868db3eb0992",
+   "ein": "756052623",
+   "organization": "First Presbyterian Church of Dallas Foundation",
+   "grant_name": "Open annual grant program (deadline Oct 1) but restricted to Presbyterian ministries and causes",
+   "url": "https://fpcdallas.org/the-foundation",
+   "focus_area": "Religious/faith-based (Presbyterian church ministries and causes)",
+   "eligibility": "Foundation's stated mission is to support the programs of First Presbyterian Church of Dallas and 'other Presbyterian ministries and causes.' Grant requests submitted by mail or email (foundation@fpcdallas.org) with a deadline of October 1 annually; Board takes final action the following February, with grants distributed quarterly the year after the request. In 2019, ~89% of unrestricted-fund grants went directly to First Presbyterian Church of Dallas itself, leaving a relatively small discretionary pool for outside Presbyterian causes.",
+   "amount": "Not stated by the funder",
+   "deadline": "October 1, 2026",
+   "notes": "Real, recurring, publicly-documented annual grant cycle with a fixed October 1 deadline -- technically open -- but eligibility is explicitly limited to Presbyterian ministries and causes, not general secular TX 501(c)(3) nonprofits. A faith-based TX nonprofit with a Presbyterian affiliation could fit; a general nonprofit almost certainly would not. Also note the bulk of unrestricted funding historically goes to the church's own programs, so outside-cause capacity is limited."
   },
   {
    "id": "76fadceab5226d0f",
@@ -1243,7 +1411,67 @@
    "eligibility": "Registered 501(c)(3); has an EIN; provides literacy services directly to students; located in the US; has not received a Literacy Opportunity Fund grant in the last 12 months; complete application",
    "amount": "6000",
    "deadline": "October 1, 2026",
-   "notes": "The strongest match here, and the only funder whose entire published eligibility test this applicant passes on the wording alone. Runs four rounds a year (Round 3 opens December 1, closes January 3 if Round 2 is missed). The one condition that can't be checked from outside is the 12-month lookback bar."
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "2c53ff9177f931f7",
+   "ein": "750808772",
+   "organization": "United Way of Abilene",
+   "grant_name": "Community Investment Fund - 2026-2027 grant cycle",
+   "url": "https://unitedwayabilene.org/program-funding/",
+   "focus_area": "education, health, financial stability",
+   "eligibility": "501(c)(3) status required (government programs may qualify with Board approval); must operate in Taylor County or surrounding areas; governing board of 9+ voting members meeting quarterly; current financial audit and IRS Form 990; non-discrimination policy compliance.",
+   "amount": "Not stated by the funder",
+   "deadline": "November 5, 2026",
+   "notes": "Genuine open competitive Community Investment Fund grant cycle with published dates: portal opens Sept 28 2026, submissions due Nov 5 2026 (noon), awards announced mid-Feb 2027, funding begins March 2027. Award amounts not published. Strong candidate for any qualifying Abilene-area nonprofit."
+  },
+  {
+   "id": "215aef9dd4ea9caf",
+   "ein": "050532415",
+   "organization": "Council for Life",
+   "grant_name": "Annual Grant Cycle for Central/North Texas life-affirming pregnancy-resource nonprofits",
+   "url": "https://councilforlife.org/grants/apply/",
+   "focus_area": "unplanned pregnancy support, adoption/foster care, life-affirming youth and family services",
+   "eligibility": "Must be a 501(c)(3) nonprofit agency sharing the mission of honoring the sanctity of life (pregnancy resource centers, adoption/foster care, maternity homes, youth mentoring, parenting/life skills education, post-abortion counseling, sexual risk avoidance). Faith-based framing (organization 'seeks to support life-affirming agencies that also share the Gospel of Jesus Christ' but states it 'may also support secular agencies that share our mission'). Requires CPA financial assessment, a site visit, and mandatory attendance (staff or board) at the Fall Forum. Typically 25-30 beneficiaries selected annually.",
+   "amount": "Not stated by the funder",
+   "deadline": "November 13, 2026",
+   "notes": "Confirmed genuine, currently-open, recurring annual TX-specific grant program: 2027 cycle deadline is Friday, Nov 13, 2026 (future deadline as of this Aug 2026 research date, so this is a live actionable opportunity). Real fit for Central/North Texas pregnancy-resource, adoption, and family-life nonprofits, including some secular organizations per their own stated policy. One of the strongest genuine open-opportunity finds in this batch."
+  },
+  {
+   "id": "022a5f9ca094c2aa",
+   "ein": "133393329",
+   "organization": "American Foundation for Suicide Prevention (AFSP)",
+   "grant_name": "AFSP Research Grants - 2026 cycle (multiple grant types, deadlines through Nov/Dec 2026)",
+   "url": "https://afsp.org/research-grant-information/",
+   "focus_area": "suicide prevention research (multiple tiers: Focus, Linked Standard, Distinguished Investigator, Standard, Early Career, Postdoctoral Fellowship, Pilot Innovation grants)",
+   "eligibility": "NOT ELIGIBLE FOR general TX 501(c)(3) nonprofit: open to individual academic investigators at research institutions across all academic disciplines studying suicide/suicide prevention; for-profits and federal/state government agencies excluded. Applied through the researcher/institution, not through a community-service nonprofit.",
+   "amount": "500000",
+   "deadline": "November 15, 2026",
+   "notes": "Genuine open, well-documented national research grant competition with a real 2026 cycle (most deadlines Nov 15 2026; Focus Grants LOI Aug 1, full application Dec 7 2026). Not a fit for a general TX service nonprofit - would only be relevant to a TX university/academic medical center researcher. AFSP also has TX regional chapters (North, Central, South, Southeast, West Texas) that run local walks/fundraising, not grantmaking - separate consideration if a chapter-level community grant program is ever identified."
+  },
+  {
+   "id": "6740f9cc16a9850c",
+   "ein": "756007565",
+   "organization": "Hillcrest Foundation",
+   "grant_name": "general grant program (rolling, three deadlines/year)",
+   "url": "https://www.instrumentl.com/grants/hillcrest-foundation-grant",
+   "focus_area": "Education, health, relief of poverty (capital/special-project focus, not general operating)",
+   "eligibility": "Texas-located qualified charitable organizations; purpose must be relief of poverty, or furtherance of education or health. Does NOT fund general operating support; funds special projects, construction/improvement of permanent buildings, capital campaigns, equipment and facilities. Three annual deadlines: Feb 28, Jul 31, Nov 30; next open deadline from today is Nov 30, 2026. Apply/inquire via tx.philanthropic@ustrust.com (Bank of America/US Trust as Texas administrator).",
+   "amount": "300000",
+   "deadline": "November 30, 2026",
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "8f564cfb80f2f6bd",
+   "ein": "750875853",
+   "organization": "Hutchinson County United Way Inc",
+   "grant_name": "Grant Application for Program Providers (annual, Hutchinson County TX)",
+   "url": "https://www.hutchinsoncountyunitedway.org/grant-application-program-providers",
+   "focus_area": "General community human-services (agency-funding model typical of local United Ways)",
+   "eligibility": "Applicant must be a 501(c)(3) agency serving residents of Hutchinson County, Texas. BUDGET and DEMOGRAPHIC forms required (request by email from julie@hcunitedway.org). Funding notifications after March 15 of the following year; funds distributed quarterly (Apr/Jul/Oct/Jan 15).",
+   "amount": "Not stated by the funder",
+   "deadline": "November 30, 2026",
+   "notes": "Genuine, real, recurring annual grant program with a clear window (Oct 1 - Nov 30 each year); as of today (Aug 6, 2026) the 2026 window has not yet opened but is confirmed to recur annually on this schedule. Strong fit for any Hutchinson County, TX nonprofit; geographically narrow otherwise."
   },
   {
    "id": "38651373b095447d",
@@ -1255,7 +1483,295 @@
    "eligibility": "501(c)(3)s, government entities, schools, faith-based organizations; (c)(4)/(c)(6)/(c)(19) excluded; must serve the same service area as the specific facility applied to; must hold a verified Spark Good account",
    "amount": "5000",
    "deadline": "November 30, 2026",
-   "notes": "The easiest yes on the list; low application cost, a local store relationship compounds. Caveat: the cycle dates come from a page labelled FY27, which does not itself confirm these are the windows in force for calendar 2026 -- verify before relying on the August 1 open date. Some third-party sources call this Local Community Grants, a name that does not appear on Walmart's own guidelines page."
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "46c55b243e1531ef",
+   "ein": "",
+   "organization": "W.P. & Bulah Luse Foundation",
+   "grant_name": "general grant program (Dec 1, 2026 deadline)",
+   "url": "https://www.insidephilanthropy.com/find-a-grant-places/texas-grants/wp-bulah-luse-foundation",
+   "focus_area": "Quality education, human services, health care for underserved populations",
+   "eligibility": "Accepts unsolicited applications from nonprofits; special consideration for organizations serving Dallas, TX and surrounding communities. Grants typically 1 year; 3-4 month decision timeline; grantees must skip two years before reapplying. Two annual deadlines: June 1 and December 1 (June 1, 2026 has passed; next deadline Dec 1, 2026). Contact tx.philanthropic@ustrust.com or 800-357-7094 (Bank of America Private Bank Texas philanthropic office).",
+   "amount": "Not stated by the funder",
+   "deadline": "December 1, 2026",
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "b4010fcfcc62eb18",
+   "ein": "131930701",
+   "organization": "Cystic Fibrosis Foundation",
+   "grant_name": "Research Grants -- Fall 2026 cycle",
+   "url": "https://www.cff.org/researchers/research-grants",
+   "focus_area": "Cystic fibrosis biomedical/clinical research",
+   "eligibility": "Research Grants fund investigators (typically at academic/research institutions) studying CF disease pathogenesis; proposals must be hypothesis-driven with preliminary data. Applicants may submit only one Research Grant application per year (spring deadline May 12, 2026 already passed; fall deadline December 12, 2026 is open). Separately, the CF Community/Impact Grants program (broader community-service grants) has been discontinued for 2026 with no application cycle held.",
+   "amount": "150000",
+   "deadline": "December 12, 2026",
+   "notes": "Fits research institutions and academic medical centers conducting CF research (e.g. a TX university or children's hospital research arm), not general human-service nonprofits. The broader CF Community Impact Grants (which might have fit a wider range of CF-serving nonprofits) is paused for 2026."
+  },
+  {
+   "id": "3987e8da53230a90",
+   "ein": "135563001",
+   "organization": "National Recreation and Park Association (NRPA)",
+   "grant_name": "NRPA x MLS GO Play Fund - open through Dec 31, 2026 (narrow eligibility); NRPA otherwise mainly curates third-party grant listings",
+   "url": "https://www.nrpa.org/our-work/Grant-Fundraising-Resources/",
+   "focus_area": "Youth soccer league operating cost support",
+   "eligibility": "MLS GO Play Fund requires the applicant to become an MLS GO League operator (park and recreation agency running a youth soccer league); not a general operating/program grant for arbitrary nonprofits.",
+   "amount": "100000",
+   "deadline": "December 31, 2026",
+   "notes": "NRPA's own grants page is mostly a curated directory of OTHER funders' programs (T-Mobile Hometown Grants, USDA Community Facilities, MLB-MLBPA Youth Development Foundation, etc.) rather than NRPA's own money; those should be evaluated as their own separate funders, not counted as an NRPA opportunity. The one NRPA-branded/co-sponsored program identified (MLS GO Play Fund) has a real 2026 deadline but narrow eligibility (must operate an MLS GO League). Limited general fit for a TX nonprofit unless it operates recreation/park programming specifically."
+  },
+  {
+   "id": "d14e0ee9ab38ce2d",
+   "ein": "263718342",
+   "organization": "Elks National Foundation Inc",
+   "grant_name": "Gratitude Grants and Impact Grants - open, but must be applied for by a local Elks Lodge, not the nonprofit directly",
+   "url": "https://www.elks.org/cip/grants/gratitudeGrants.cfm",
+   "focus_area": "Community charitable projects; essential needs assistance; sports programs (Gratitude Grants can extend to outside 501c3s)",
+   "eligibility": "Applicant of record must be a chartered Elks Lodge in good standing (met per-member giving goal for Gratitude Grants). Gratitude Grants ($3,000-$5,000) for cycle 2026-27 open April 1, 2026 and close January 20, 2027; funds must be spent by March 31, 2027. Impact Grants (up to $10,000, two-step Impact Intent then application) open April 1-Aug 15. A Lodge may then direct/donate Gratitude Grant funds toward an outside 501(c)(3).",
+   "amount": "10000",
+   "deadline": "January 20, 2027",
+   "notes": "This is the federated-membership pattern: the FEDERATION (Elks National Foundation) funds its own local LODGES, and only a Lodge can apply. A general TX nonprofit cannot apply to ENF directly; it would need an existing relationship with a local TX Elks Lodge willing to direct a Gratitude Grant its way. Recorded as open (real, dated, funded program) but access is indirect."
+  },
+  {
+   "id": "ff14d64582ea76fa",
+   "ein": "741257159",
+   "organization": "United Way Galveston County Mainland Inc",
+   "grant_name": "Community Impact Grant - FY2027 funding cycle",
+   "url": "https://www.uwgcm.org/funding-opportunities/",
+   "focus_area": "health, education, financial stability",
+   "eligibility": "501(c)(3) operating 3+ years, non-discriminatory service, Form 990/990-EZ filed within 18 months, management/fundraising costs below 25%, general liability insurance, CPA-audited or compiled financials, active local governing board meeting quarterly. Programs must run 2+ years with demonstrated success. Services must reach residents in specified Galveston County Mainland zip codes (77510, 77517, 77518, 77539, 77546, 77549, 77563, 77565, 77568, 77573, 77574, 77590, 77591, 77592).",
+   "amount": "Not stated by the funder",
+   "deadline": "March 31, 2027",
+   "notes": "Genuine open competitive Community Impact Grant program with published eligibility criteria, geography, and an online application portal (agency.e-cimpact.com). Applications for the 2027 funding year open Feb 11 and close Mar 31. Award amounts not specified on page. Good candidate for any qualifying Galveston County Mainland nonprofit."
+  },
+  {
+   "id": "57ea8be0c919ccff",
+   "ein": "521706646",
+   "organization": "AIDS United",
+   "grant_name": "Sector Transformation Initiative Portfolio (STP) - Level 3 Intensive TA + $15,000 micro-grant",
+   "url": "https://aidsunited.org/get-support/grants/",
+   "focus_area": "HIV/AIDS service organization capacity building and direct funding",
+   "eligibility": "HIV service organizations navigating funding/political challenges; Level 3 requires C-suite/Board engagement. No explicit TX exclusion found; AIDS United also separately runs the Southern HIV Impact Fund (up to $60,000, multi-state including TX) but its most recently confirmed cycle (pre-applications due 2024-07-22) is stale as of this research and current 2026 cycle status was not confirmed -- recorded as a program to re-check, not as a currently-open call.",
+   "amount": "15000",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine open grantmaker with a real, if narrow, mission fit (HIV/AIDS services). STP micro-grant ($15,000) appears open now (Level 1 resources available from Aug 1). Southern HIV Impact Fund is the larger opportunity ($60,000, explicitly includes TX) but current-cycle deadline could not be confirmed from available pages; flag for follow-up at southernfund.org before citing a specific deadline to a client."
+  },
+  {
+   "id": "ccc9cc1d70ac7a1d",
+   "ein": "522396428",
+   "organization": "Alzheimer's Disease Research Foundation (operates as Cure Alzheimer's Fund)",
+   "grant_name": "Letters of inquiry accepted on rolling basis for Alzheimer's research (scientists/institutions only)",
+   "url": "https://curealz.org/the-research/grant-process/",
+   "focus_area": "Alzheimer's disease biomedical research (individual investigator/research institution grants)",
+   "eligibility": "Most grants originate as referrals from already-funded investigators or CureAlz solicitations. Welcomes letters of inquiry from qualified scientists but does not consider unsolicited proposals; no set application timeline, rolling review.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "This is Cure Alzheimer's Fund (MA-based) doing business under this EIN's legal name. It funds individual scientist-led research projects at academic/research institutions, not general nonprofit operating or program grants. Not a fit for a general TX 501(c)(3) service nonprofit; only relevant if the client is itself a research institution employing qualifying Alzheimer's investigators. Functionally semi-closed to unsolicited applicants (referral/solicitation-driven)."
+  },
+  {
+   "id": "99d1af35e90cb53d",
+   "ein": "061008595",
+   "organization": "AmeriCares Foundation Inc",
+   "grant_name": "Medicine Program partnership + associated health grants ($10K-$100K range) for safety-net health providers",
+   "url": "https://www.americares.org/what-we-do/",
+   "focus_area": "Health/medical safety-net support, disaster resilience (e.g. backup generators, water filtration for clinics)",
+   "eligibility": "Organizations typically start by applying to become a Medicine Program partner (to access free medicines/supplies); grant opportunities follow from that relationship. Must demonstrate clear health outcomes for vulnerable populations, have infrastructure to receive/store/distribute medical aid, and willingness to collaborate. Best fit for free/charitable clinics, community health centers, and disaster-response health providers.",
+   "amount": "100000",
+   "deadline": "Rolling or undated",
+   "notes": "Real, broad partner-network program restricted to health/medical service providers (free clinics, community health centers) rather than general-purpose nonprofits. High historical TX grant volume (536 grants to 137 recipients) is consistent with a genuinely open, ongoing partner-application model rather than a closed relationship list. Not a fit for a non-health-focused general TX nonprofit."
+  },
+  {
+   "id": "4390bb9e2ba4dcd2",
+   "ein": "131632524",
+   "organization": "American Lung Association",
+   "grant_name": "2026-2027 Research Awards & Grants Funding Cycle (open call for research applications)",
+   "url": "https://www.lung.org/research/awards-and-grants-opportunities",
+   "focus_area": "Lung health and lung disease research",
+   "eligibility": "Independent investigators and mentored researchers in lung-health/lung-disease basic, translational, clinical, or behavioral research. Named awards include Lung Cancer Discovery Award ($100,000/yr), ALA/AAAAI Allergic Respiratory Diseases Award ($75,000/yr), Innovation Award ($75,000/yr up to 2 yrs), Indoor Air Research Award ($50,000-$100,000/yr up to 3 yrs). Roughly 20% of submitted applications funded over the last 5 years.",
+   "amount": "100000",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine, large, open, national competitive research-grant program actively accepting applications for the 2026-2027 cycle as of this research date. Strong fit for a TX medical/research institution or TX-affiliated nonprofit with a lung-health research program (e.g. a university medical center) -- not a fit for a generic direct-service TX 501(c)(3) without a research arm."
+  },
+  {
+   "id": "7e296d9a39a3fa01",
+   "ein": "741672466",
+   "organization": "Arts Council of Brazos Valley (The Arts Center of Brazos Valley)",
+   "grant_name": "CS/Navasota Program & Marketing Grants and Rural Grant Program",
+   "url": "https://www.acbv.org/grants/",
+   "focus_area": "Arts, culture, and heritage",
+   "eligibility": "Grants are currently open only to \"affiliate organizations\" of the Arts Center; a nonprofit must first apply for and be accepted as an affiliate member before it can apply for a grant. Mini-grants up to $1,000; matching rural grants up to $2,500 for arts/culture nonprofits in rural Brazos Valley counties.",
+   "amount": "2500",
+   "deadline": "Rolling or undated",
+   "notes": "Real, recurring regional grant program but gated behind an affiliate-membership step, and deadlines/amounts are only visible inside the affiliate portal (not published openly). Viable for a Brazos Valley arts/culture nonprofit willing to join as an affiliate first; not a direct open call for any Texas 501(c)(3)."
+  },
+  {
+   "id": "76d37bb4135e7704",
+   "ein": "742648803",
+   "organization": "Austin Parks Foundation",
+   "grant_name": "APF Community Impact Grants / Neighborhood Grants / Activation Grants",
+   "url": "https://austinparks.org/community-impact-grants/",
+   "focus_area": "Parks, green space, and public land improvement/activation",
+   "eligibility": "Grants fund park improvement projects and park programming/activation in the City of Austin park system; applicants are typically park-adopter groups, friends-of-park organizations, and community/neighborhood nonprofits working in Austin parks. Community Impact Grants ($5,000+) due April 1 and Sept 30 annually; Neighborhood Grants ($500-$4,999) reviewed monthly on rolling basis; Activation Grants (up to $2,000) accepted year-round; Impact Grant ($100,000) once per year. Staff pre-screening encouraged via grants@austinparks.org.",
+   "amount": "100000",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine, actively open, multi-tier competitive grant program with real recurring deadlines and clear amounts. Strong fit for any Austin-area nonprofit doing park stewardship, programming, or green-space work; not applicable outside Austin's park system."
+  },
+  {
+   "id": "b9ab859a9954a4e4",
+   "ein": "830691791",
+   "organization": "Bass Pro Shops & Cabela's Outdoor Fund",
+   "grant_name": "Local conservation/outdoor-access grants near Bass Pro/Cabela's/Tracker locations - rolling, up to $5,000",
+   "url": "https://about.basspro.com/community/support/",
+   "focus_area": "Conservation, outdoor recreation access, hunting/fishing heritage",
+   "eligibility": "Must be a U.S. municipality, public institution, or IRS-registered 501(c)(3)/other 501(c) entity, with project located near a Bass Pro Shops, Cabela's, or Tracker Boating Center location. Project must focus on conserving fish/wildlife habitat or introducing new audiences to outdoor recreation. Larger national-level grants are invitation-only.",
+   "amount": "5000",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine open, rolling, general-application local grant program (up to $5,000) for conservation/outdoor-access nonprofits near a Bass Pro/Cabela's/Tracker store - real fit for TX conservation-adjacent nonprofits located near a store. Not a fit for nonprofits unrelated to outdoors/conservation or far from a store location."
+  },
+  {
+   "id": "582a4e6a725a5da4",
+   "ein": "752335996",
+   "organization": "Black Tie Dinner Inc",
+   "grant_name": "Annual Beneficiary Application - North Texas LGBTQ+ nonprofits",
+   "url": "https://www.blacktie.org/beneficiaries/apply",
+   "focus_area": "LGBTQ+ community services",
+   "eligibility": "501(c)(3) organizations with federal tax-exempt status, located in and providing services to the North Texas area, serving the LGBTQ+ community. Up to 20 local beneficiaries selected annually by the Black Tie Dinner Board based on financial soundness, organizational stability, and quality/impact of LGBTQ+ community service. Selected beneficiaries must actively participate in Black Tie Dinner events throughout the year (liaison, orientation, weekend events, wrap party).",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine open annual application process (not purely invitation-only) -- BlackTie.org/beneficiaries opens a public call each year, though selection is competitive/curated by the board and comes with participation obligations beyond a typical grant. Good fit for North Texas LGBTQ+-serving 501(c)(3)s. The 45th Annual Dinner is 2026-11-14; beneficiary applications for that cycle would have opened earlier in 2026 -- confirm current-year window directly with blacktie.org."
+  },
+  {
+   "id": "4f0276be4b795043",
+   "ein": "135644916",
+   "organization": "Blood Cancer United (formerly The Leukemia & Lymphoma Society)",
+   "grant_name": "Academic Research Grant Programs (Career Development, Discovery Grants, Academic Clinical Trials)",
+   "url": "https://bloodcancerunited.org/academic-grant-programs",
+   "focus_area": "basic, translational, and clinical blood cancer research",
+   "eligibility": "NOT ELIGIBLE FOR general TX 501(c)(3) nonprofit: grants are awarded to individual academic researchers/postdoctoral investigators (e.g., Career Development Program requires under 3 years postdoctoral training) at research institutions studying blood cancer, applied for through the researcher/institution, not to community nonprofits generally.",
+   "amount": "6500000",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine open, well-funded ($124M in grants in 2025) research grant programs exist (Career Development Program, Discovery Grants, Academic Clinical Trials), but these fund individual PI-led research at academic medical centers/universities, not general nonprofit programming. Not a fit for a general Texas 501(c)(3) service nonprofit; would only be relevant to a TX academic medical research institution (e.g., MD Anderson, UT Southwestern) applying via a named investigator."
+  },
+  {
+   "id": "4b7784e47ca6dfd2",
+   "ein": "740754103",
+   "organization": "Bluebonnet Electric Cooperative Inc (via LCRA Community Grant / Community Development Partnership Program)",
+   "grant_name": "LCRA-Bluebonnet Community Grant Program",
+   "url": "https://www.bluebonnet.coop/grants-sponsorships",
+   "focus_area": "Community capital improvement projects",
+   "eligibility": "501(c)(3) nonprofits, volunteer fire departments, emergency responders, local governments, schools, libraries, civic groups, and museums located within LCRA's wholesale electric/water/transmission service territory (central Texas, overlapping Bluebonnet's service area). Grants over $5,000 require 20% matching funds; must wait 24 months and complete prior project before reapplying.",
+   "amount": "50000",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine open, recurring competitive grant program, run jointly with LCRA. Two annual cycles with deadlines January 31 and July 31 (bare recurring dates, no year stated on the page - do not assume current-year deadline without reconfirming). Real fit for a qualifying central-Texas nonprofit inside the service territory; NOT a fit for a Texas nonprofit outside that specific geography."
+  },
+  {
+   "id": "b355ef5b7c45f44d",
+   "ein": "261441650",
+   "organization": "Bob Woodruff Family Foundation Inc",
+   "grant_name": "Grants for Veteran-Serving Organizations - year-round open application",
+   "url": "https://bobwoodrufffoundation.org/our-partners/veteran-serving-organizations/grants-for-organizations/",
+   "focus_area": "Veteran rehabilitation and recovery, education and employment, quality of life",
+   "eligibility": "Must be a nonprofit providing direct services to military/veteran populations; minimum 70% program spend; must have filed IRS Form 990EZ/990 for past two fiscal years; audited/certified financial statement required; two years' gross receipts over $50,000. Applications accepted year-round via online portal, brief proposal first with feedback within ~2 months.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine open, rolling, unsolicited application process, not invitation-only. Best fit for TX veteran-service nonprofits meeting the financial thresholds (2 years of 990 filings, $50K+ gross receipts, audited financials). Real opportunity for the register."
+  },
+  {
+   "id": "8e306baf90d68980",
+   "ein": "742217350",
+   "organization": "Central Texas Food Bank",
+   "grant_name": "ReThink Hunger Grants for Partner Agencies",
+   "url": "https://www.centraltexasfoodbank.org/news/food-bank-awards-capacity-grants-partners",
+   "focus_area": "Hunger relief / food-pantry capacity building",
+   "eligibility": "Must already be (or become) a CTFB Partner Agency -- 501(c)(3) or faith-based org in CTFB's 21-county Central Texas service area, serving people facing hunger. Grant tier (Community/Silver/Gold/Platinum) is based on partnership score; higher tiers unlock larger ReThink Hunger Grant awards up to $10,000.",
+   "amount": "10000",
+   "deadline": "Rolling or undated",
+   "notes": "Real capacity-building grant program exists (ReThink Hunger Grants, up to $10,000) but restricted to organizations already inside CTFB's food-distribution partner network within a defined 21-county area -- not a general open call any TX nonprofit could enter without first becoming a hunger-relief partner agency. Fit only for food-pantry/hunger-relief orgs in Central TX willing to join the network first."
+  },
+  {
+   "id": "41c4d2e874970050",
+   "ein": "742786718",
+   "organization": "Chisholm Trail Communities Foundation (Georgetown Area Community Foundation)",
+   "grant_name": "Fast Pitch grant program - open unsolicited applications for Williamson County nonprofits",
+   "url": "https://chisholm-trail.org/create-a-fund/our-funds/",
+   "focus_area": "Community, youth, arts and culture, human services, disaster relief",
+   "eligibility": "Local Williamson County, TX nonprofits; Fast Pitch program requires a written application plus a video-pitch competition and public arts-showcase event as part of selection -- a genuinely unsolicited-request-accepting community foundation (unlike most family/private foundations in this batch).",
+   "amount": "784000",
+   "deadline": "Rolling or undated",
+   "notes": "Real open community-foundation grant program (formerly Georgetown Area Community Foundation, rebranded Chisholm Trail Communities Foundation) that explicitly accepts unsolicited funding requests via its Fast Pitch competition -- a strong fit for any Williamson County TX nonprofit. Confirm current-year Fast Pitch dates at gtacf.org / chisholm-trail.org."
+  },
+  {
+   "id": "47354515394a9243",
+   "ein": "311667995",
+   "organization": "Conquer Cancer, the ASCO Foundation",
+   "grant_name": "Conquer Cancer Grants & Awards Program (individual oncology researchers)",
+   "url": "https://www.conquer.org/cancer-research/grants-awards",
+   "focus_area": "Clinical and translational oncology research (Young Investigator Award, Career Development Award, etc.)",
+   "eligibility": "Applicants must be individual medical students, residents, fellows, scientists, or oncologists (US or international) conducting clinical/translational cancer research, and generally must be ASCO members or submit membership with the application. Applications only through the online Application Portal.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine large, active, recurring grants program ($215M+ since 1984, 10,500+ awards), but funds individual physician-researchers, not general nonprofit organizations. Only relevant to a Texas academic medical center/cancer center employing qualifying oncology researchers, not a general nonprofit fit."
+  },
+  {
+   "id": "2c69e6a42fc84fcc",
+   "ein": "463444371",
+   "organization": "Council on Regional Economic Expansion and Educational Development (CREEED / CREEED Foundation)",
+   "grant_name": "CREEED Grants Program (El Paso educational attainment initiatives)",
+   "url": "https://www.creeed.org/what-we-do/grants/",
+   "focus_area": "Educational attainment, college/career readiness, systemic education reform for El Paso students",
+   "eligibility": "Applicant must be a tax-exempt organization with an IRS determination letter dated within 5 years of the application; must submit organizational history, staff/board info, detailed budget, and project description with measurable goals via email application. No deadline or award-range stated on the public page - rolling/undated process.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "This is CREEED, the El Paso education reform nonprofit (major recent funder: Hunt Family Foundation $10M), not a truncated name for something else. It runs a genuine grants program with a documented application process (guidelines PDF, email submission), open to qualifying tax-exempt orgs, but narrowly scoped to El Paso-region education initiatives - a strong fit only for El Paso-area educational nonprofits, not general TX nonprofits statewide."
+  },
+  {
+   "id": "2903a84ae1c8618f",
+   "ein": "136193105",
+   "organization": "Crohn's & Colitis Foundation Inc",
+   "grant_name": "Crohn's & Colitis Foundation Research Grants & Fellowship Awards",
+   "url": "https://www.crohnscolitisfoundation.org/research/grants-fellowships",
+   "focus_area": "IBD (Crohn's disease and ulcerative colitis) research: career development, fellowship, senior research awards, IBD Ventures product development",
+   "eligibility": "Applicant institution must be a non-profit, charitable institution engaged in health care and/or health-related research (university, hospital, or research organization) within the United States; awards go to individual investigators employed there, not to general community nonprofits. LOI required first via proposalCENTRAL, then invited full application.",
+   "amount": "130000",
+   "deadline": "Rolling or undated",
+   "notes": "This is a genuine, large, open national competitive research grant program with multiple named award tracks (Senior Research Awards up to $130,000/yr, Career Development, Fellowship, Litwin IBD Pioneers, IBD Ventures), but it is restricted to research-active academic medical centers/hospitals/universities employing IBD investigators, not a fit for a general Texas community-service 501(c)(3). A Texas academic medical center or major research hospital could apply."
+  },
+  {
+   "id": "c12b1e356982e370",
+   "ein": "311356151",
+   "organization": "Dave Thomas Foundation for Adoption",
+   "grant_name": "Wendy's Wonderful Kids Program Grant - foster-care adoption recruiter funding",
+   "url": "https://www.davethomasfoundation.org/how-we-help/wendys-wonderful-kids/",
+   "focus_area": "Foster care adoption recruitment",
+   "eligibility": "Public and private adoption agencies (including TX agencies) may apply for a Wendy's Wonderful Kids grant to hire and train a dedicated adoption recruiter using DTFA's evidence-based, child-focused recruitment model, targeting youth most at risk of aging out of foster care. The Foundation also awards separate strategic national grants to agencies/organizations advancing its mission.",
+   "amount": "65000",
+   "deadline": "Rolling or undated",
+   "notes": "Well-established, actively operating national grant program funding adoption-agency recruiter positions up to $65,000/recruiter -- strong, credible fit for TX public or private adoption/foster-care agencies. Contact 1-800-ASK-DTFA or davethomasfoundation.org for current application cycle specifics (rolling vs. fixed deadline not confirmed in search; recommend direct follow-up before citing a hard date to a client)."
+  },
+  {
+   "id": "4c86c6325cf4b14c",
+   "ein": "822406494",
+   "organization": "Double Eagle Charities Inc",
+   "grant_name": "Double Eagle Charities Grant Application (Fort Worth / West Texas)",
+   "url": "https://www.doubleeaglecharities.com/grant-application",
+   "focus_area": "Five community-impact pillars (specific pillar names not published on the pages reviewed); Fort Worth/West Texas community uplift generally",
+   "eligibility": "Applicant must be a registered charity/nonprofit with tax-exempt documentation. Multi-step online application requires org background, statement of need, project goals/objectives, evaluation strategy, and budget summary. Award requested in tiers: $25k-$50k, $50k-$100k, $100k-$200k, or $200k+. No fixed deadline found (appears rolling); review takes \"a few weeks.\"",
+   "amount": "200000",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine, currently live online grant application form with real budget tiers and narrative requirements - a strong open-call hit for any Fort Worth or West Texas nonprofit. No published deadline suggests rolling/ongoing acceptance; worth direct confirmation of current cycle status before a client applies."
+  },
+  {
+   "id": "3dbec0ecf1f890b1",
+   "ein": "411990628",
+   "organization": "ECMC Foundation",
+   "grant_name": "Letter of Inquiry (rolling) - postsecondary education/career success for underserved populations",
+   "url": "https://www.ecmcfoundation.org/funding-approach/apply-for-funding",
+   "focus_area": "Postsecondary education access/completion for underserved populations; capacity building; postsecondary ecosystem transformation",
+   "eligibility": "U.S. 501(c)(3) or 509(a)(1)/(2)/(3) nonprofits, government entities, postsecondary institutions/systems, and their affiliated/supporting foundations. Open to all U.S. states including Puerto Rico and sovereign tribes. No support for capital campaigns, endowments, general operating expenses, personal scholarships, political activities, or non-U.S. projects.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "GENUINE OPEN CALL: rolling Letter of Inquiry process, no deadline, formal proposals by invitation following LOI review. Real fit for TX nonprofits/postsecondary-adjacent organizations working on career-focused higher-ed access for underserved populations."
   },
   {
    "id": "e166676452c904e6",
@@ -1267,7 +1783,103 @@
    "eligibility": "",
    "amount": "Not stated by the funder",
    "deadline": "Rolling or undated",
-   "notes": "Surfaced by Herald's watch-list monitoring pass, not covered on demo-almanac.html. Page reachable and unchanged as of the monitoring snapshot; no bot-protection issue found here unlike Fairbanks and Lilly's own pages."
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "079aae5e875f89dd",
+   "ein": "521231931",
+   "organization": "Enterprise Community Partners Inc",
+   "grant_name": "Enterprise grants for affordable housing nonprofits and municipalities (rolling)",
+   "url": "https://www.enterprisecommunity.org/",
+   "focus_area": "Affordable housing supply, disaster recovery housing, rural housing preservation, capacity building",
+   "eligibility": "Nonprofits and municipalities working on affordable housing supply, racial equity, resilience, and upward mobility. Multiple named TX-specific initiatives exist: the HEART Program (with TSAHC, Hurricane Harvey housing recovery for displaced families), the Rural Housing Preservation Academy (rural rental housing preservation), and Section 4 capacity-building grants (used by a TX nonprofit in Angelina/Nacogdoches/San Augustine counties).",
+   "amount": "500000",
+   "deadline": "Rolling or undated",
+   "notes": "GENUINE OPEN CALL: rolling-basis applications, $25K-$500K award range, and a demonstrated multi-year track record of TX-specific programs and partnerships (TSAHC HEART Program, East Texas Section 4 grants). Strong fit for TX affordable-housing and community-development nonprofits. Apply via enterprisecommunity.org; specific current sub-program guidelines should be checked directly on the site."
+  },
+  {
+   "id": "0a497aa14ccc21b0",
+   "ein": "731635264",
+   "organization": "Episcopal Relief & Development",
+   "grant_name": "US Disaster Program 90-day grants - open, but only Episcopal dioceses may apply on behalf of local churches",
+   "url": "https://www.episcopalrelief.org/what-we-do/us-disaster-program/",
+   "focus_area": "Post-disaster direct assistance to survivors (cash, gift cards, psycho-social support)",
+   "eligibility": "Only Episcopal dioceses may apply on behalf of affected churches/communities within their diocese; not open to independent 501(c)(3) applicants directly, though not limited to Episcopalians served. Typical grants: $15,000 (lower quartile) to $125,000 (upper quartile), median ~$35,000.",
+   "amount": "125000",
+   "deadline": "Rolling or undated",
+   "notes": "NOT directly open to a general TX nonprofit -- application must be made by an Episcopal diocese, not by the nonprofit itself. Could be relevant to a client that IS an Episcopal diocese or a church-affiliated relief ministry with diocesan sponsorship."
+  },
+  {
+   "id": "18ea20e013019cfb",
+   "ein": "823454789",
+   "organization": "Fort Worth Tourism Public Improvement District Corporation (FWTPID)",
+   "grant_name": "FWTPID Grant (administered by Arts Fort Worth) - open for FY27",
+   "url": "https://www.artsfortworth.org/fwtpid-grant",
+   "focus_area": "arts and cultural tourism marketing",
+   "eligibility": "501(c)(3) nonprofit in good standing with IRS/990 filings, whose PRIMARY MISSION is presenting/producing arts or cultural programming; programming must be culturally based and attract patrons from outside a 50-mile radius of Fort Worth; orgs with budgets under $1M must document a minimum of 30 hotel room nights generated (100 for larger orgs).",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Confirmed open for FY27 via Arts Fort Worth's grants portal (Culturalyst:Fort Worth). Eligibility is narrowed to arts/cultural nonprofits specifically, not any general Texas 501(c)(3) -- flagging this restriction clearly. Full guidelines PDF: FY26-Grant-Guidelines-FWTPID.pdf on artsfortworth.org. Contact grants@artsfortworth.org for exact deadline/award amounts."
+  },
+  {
+   "id": "89765f78ee670352",
+   "ein": "471559027",
+   "organization": "Foundation for Food and Agriculture Research (FFAR)",
+   "grant_name": "FFAR Open Funding Opportunities (Seeding Solutions, New Innovator, Growing Impact Award)",
+   "url": "https://foundationfar.org/grants-funding/applying-for-our-open-opportunities/",
+   "focus_area": "Food and agriculture research",
+   "eligibility": "U.S. food-and-agriculture research benefit required; international institutions eligible for many programs but must check specific RFA. Matching-funds requirement: FFAR must match every federal dollar with non-federal investment from awardee or a third party. Apply only via FFAR's online Grants Management System.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine open, rolling competitive grant program with multiple named RFAs (Seeding Solutions, New Innovator in Food & Agriculture Research Award, Growing Impact Award). Good fit for TX agricultural research institutions or ag-focused nonprofits (e.g. Texas A&M-affiliated entities) that can meet the matching-funds requirement -- less of a fit for a generic direct-service TX 501(c)(3) without a research angle."
+  },
+  {
+   "id": "2dd5c4b4cd7ab4b5",
+   "ein": "237087962",
+   "organization": "Greater Ennis United Way",
+   "grant_name": "Partner Agency application - open, rolling (no fixed deadline)",
+   "url": "https://www.ennisunitedway.org/our-partners",
+   "focus_area": "general human services (education, income, health per typical UW model)",
+   "eligibility": "Must address a clearly identified need in Greater Ennis area; serve Ennis, Ennis ISD, and zip codes 75119/75120 for at least 2 years; meet financial/budgetary standards, program effectiveness standards, have an active diverse Board, diversified funding sources, and agree to United Way affiliation requirements (signage/logo use, internal campaign participation).",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine open, rolling partner-agency application process; no stated deadline, contact-driven. Very narrow geography (single small TX city/ISD) limits fit to a Texas nonprofit already operating in or near Ennis. Contact: johna.ennisunitedway@gmail.com."
+  },
+  {
+   "id": "ab7aff03c9c9647a",
+   "ein": "133573852",
+   "organization": "Hispanic Federation Inc",
+   "grant_name": "Latino CORE Initiative (Community Organization Resource Expansion) - open, restricted to formal HF member agencies",
+   "url": "https://www.hispanicfederation.org/newsletter/expanding-grant-support-for-latino-nonprofits/",
+   "focus_area": "Infrastructure/capacity-building grants for Latino-serving nonprofits",
+   "eligibility": "Restricted to Hispanic Federation's 149 formal member agencies (a vetted subset of its 840+ nonprofit network), not the broader network at large. Two annual funding cycles (summer and fall). To apply for membership, contact Almirca Santiago at HF.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "NOT directly open to a general TX nonprofit -- requires first becoming one of HF's vetted formal member agencies (a separate, non-guaranteed application/vetting process), then applying within the Latino CORE cycles. A Latino-serving TX nonprofit interested in HF membership could pursue this as a two-step path; worth flagging for a client with the right mission fit."
+  },
+  {
+   "id": "84bca2fd4345fec7",
+   "ein": "741109662",
+   "organization": "Jewish Federation of San Antonio",
+   "grant_name": "Grant proposal process - open but narrow eligibility (furthering Jewish life/culture)",
+   "url": "https://www.jfsatx.org/planning-allocations",
+   "focus_area": "Jewish community life and culture -- human services, education, camperships",
+   "eligibility": "501(c)(3) organizations that further Jewish life and/or culture through their mission. Grants awarded via grant proposals, donor recommendations, and specific fund agreements from the annual campaign; funded agencies submit check-in reports twice yearly (fiscal year July-June).",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Real grant proposal process exists and is described as accepting applications from outside 501(c)(3) organizations, not purely invitation-only -- but eligibility is explicitly narrowed to organizations furthering Jewish life/culture, so NOT a fit for a general secular TX nonprofit. Could not confirm specific deadlines/cycle dates; recommend a future curator contact jfsatx.org directly for current-cycle details if a Jewish-affiliated TX client arises."
+  },
+  {
+   "id": "72d4a376b540b091",
+   "ein": "746040701",
+   "organization": "John G. and Marie Stella Kenedy Memorial Foundation",
+   "grant_name": "annual grant program, applications due October 15 for May review",
+   "url": "https://kenedy.org/grants/application-process/",
+   "focus_area": "Broad charitable, with strong preference for Catholic/sectarian institutions (schools, churches); remainder non-sectarian general charitable",
+   "eligibility": "501(c)(3) nonprofits (or Catholic Directory-listed entities for sectarian grants); must pass an online Eligibility Quiz; all grant funds must be used exclusively within Texas. Sectarian grants (Catholic schools/churches, ~90% of giving) capped at $50,000, non-sectarian capped at $25,000.",
+   "amount": "50000",
+   "deadline": "Rolling or undated",
+   "notes": "Any TX 501(c)(3) can apply via the Eligibility Quiz, though the large majority of dollars go to Catholic sectarian institutions; non-sectarian TX nonprofits are eligible for smaller awards up to $25,000. Deadline is annual October 15 (no year stated on page, treated as recurring); as of research date (2026-08-06) the window for the next May cycle is presumed open."
   },
   {
    "id": "34402a2ebfa2b9a4",
@@ -1279,7 +1891,91 @@
    "eligibility": "Charitable organizations whose request fits the published guidelines; priority to Indianapolis/Indiana; requests from outside Indianapolis involving human services or general operations are usually declined (does not apply here). Letters go by regular or overnight mail only -- the website contact form is not accepted.",
    "amount": "Not stated by the funder",
    "deadline": "Rolling or undated",
-   "notes": "The largest Indiana funder an Indianapolis nonprofit can name, with a deliberately narrow door. Genuinely open, not good odds: invitational language describes long odds and a curated pipeline, not a refusal to hear from anyone -- any charitable org whose request fits may send a two-page preliminary letter, and the Endowment answers every one in writing. Community Development area carries no invitational qualifier at all. Can fund only a small percentage of proposals received."
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "379def2861109ae1",
+   "ein": "741272389",
+   "organization": "Madison Alexander Cooper and Martha Roane Cooper Foundation (Cooper Foundation)",
+   "grant_name": "Cooper Foundation Grant Program (Waco, TX) - rolling letters of inquiry",
+   "url": "https://cooperfdn.org/grants/",
+   "focus_area": "Education, health, arts and culture, community building/social services, senior citizens; grant types include Project Support, Capital Project, Capacity Building, Challenge/Matching, Innovation",
+   "eligibility": "501(c)(3) organizations with programming and staff located in Waco, Texas only. No deadlines for grant inquiries; rolling letter of inquiry submitted online, then discussion with Cooper staff.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine open, rolling, general competitive grant program, not invitation-only. However tightly geo-restricted to organizations with programs/staff physically in Waco, TX, so only relevant for Waco-based clients, not general TX nonprofits statewide."
+  },
+  {
+   "id": "cdc051332c210a4b",
+   "ein": "752653742",
+   "organization": "Mary Kay Ash Charitable Foundation",
+   "grant_name": "Shelter Grant Program (domestic violence shelters) - annual cycle",
+   "url": "https://marykayashfoundation.org/what-we-do/domestic-violence/grant-information/",
+   "focus_area": "Domestic violence shelter support; women's cancer research (separate track)",
+   "eligibility": "Domestic violence shelters/programs; separate cycle exists for cancer research institutions (not general nonprofits). Historically opens Jan 1, closes Apr 30 each year (2024 cycle confirmed on this pattern); confirm current-year dates directly before applying.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "NOTE: this exact EIN was also researched in an earlier parallel batch as 'The Mary Kay Foundation' -- recorded independently here per instructions; coordinator dedup will reconcile. Genuine open grantmaker for domestic violence shelters -- real fit for TX nonprofits operating shelters. Cancer research track is for research institutions, not general nonprofits. Recurring Jan-Apr cycle should be captured as the recurrence pattern (per skill guidance) even though this year's exact dates were not independently reconfirmed on this pass."
+  },
+  {
+   "id": "8a5e00ba01e3aff8",
+   "ein": "474262060",
+   "organization": "Means Database Inc (rebranded Jan 2024 to FoodRecovery.org)",
+   "grant_name": "Open, ongoing sign-up to receive matched in-kind food donations (not a cash grant program)",
+   "url": "https://foodrecovery.org/how-it-works/",
+   "focus_area": "Food recovery / hunger relief -- in-kind surplus food donations matched via an online platform, not cash grants",
+   "eligibility": "Any charitable organization that can receive and distribute food (nonprofits, shelters, soup kitchens, food pantries, food banks, mutual aid groups) with 501(c)(3) or equivalent documentation can create a free account; most orgs verified within 24 hours. No deadline; rolling/continuous. Free for all users, nationwide including Texas.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "This is not a traditional foundation with a cash grant program; it is a logistics/matching nonprofit (FoodRecovery.org) that connects food donors to charitable recipients. Technically 'open' year-round to any qualifying TX nonprofit that distributes food, but the benefit is in-kind food, not money, and is only relevant to hunger-relief/food-distribution orgs, not general nonprofits. The large Schedule I 'grant' totals to TX recipients almost certainly reflect the fair-market-value of donated food logged as in-kind grants, not cash awards."
+  },
+  {
+   "id": "8361ad5504133598",
+   "ein": "",
+   "organization": "National Association for Community Mediation (NAFCM)",
+   "grant_name": "JAMS Foundation NAFCM Mini-Grant Program",
+   "url": "https://www.jamsadr.com/nafcm",
+   "focus_area": "community mediation program development and innovation",
+   "eligibility": "All community-based mediation programs and organizations are eligible to apply but must be NAFCM members to receive grant funding. All inquiries/proposals go to NAFCM first, which forwards top candidates to the JAMS Foundation for final approval. 2026 funding track theme: 'Mediating Family Conflict During Transition Points.' $15,000/year for up to two years; 4-5 applicants typically selected annually; recipients join a peer working-group learning community.",
+   "amount": "15000",
+   "deadline": "Rolling or undated",
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "e690c0b2348bb6f2",
+   "ein": "562273242",
+   "organization": "National Association of Free & Charitable Clinics (NAFC)",
+   "grant_name": "NAFC member grant opportunities (CVS Health, McKesson, Direct Relief/BD partnerships)",
+   "url": "https://nafcclinics.org/our-impact/funding/",
+   "focus_area": "Free/charitable clinic operational support, healthcare access",
+   "eligibility": "Restricted to organizations that are NAFC members in good standing: Free and Charitable Clinics, Charitable Pharmacies, and State Associations. Application portal at cybergrants.com/nafc/applications.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "NOT a general open call for TX nonprofits. NAFC is a pass-through re-granter that distributes corporate/foundation partner funds exclusively to its own dues-paying member free/charitable clinics and pharmacies. A TX nonprofit would first need to become an NAFC member AND be a free/charitable clinic to access any of these programs. Recorded so future research does not repeat this."
+  },
+  {
+   "id": "90e3fb1d35ef2f46",
+   "ein": "135562362",
+   "organization": "National Council of the United States, Society of St. Vincent de Paul",
+   "grant_name": "Friends of the Poor Grant Program - open, but restricted to SVdP Conferences",
+   "url": "https://members.ssvpusa.org/fundraising-development/fop-grants/",
+   "focus_area": "Direct aid to individuals in need: rent/utility/food/medical/transportation assistance",
+   "eligibility": "Only Society of St. Vincent de Paul Conferences/Councils in good standing (Aggregated Conference, Instituted District Council) may apply; must not have received a FOP grant in the prior 3 years. FY2025-26 pool totals $420,000 nationally.",
+   "amount": "5000",
+   "deadline": "Rolling or undated",
+   "notes": "Genuinely open and funded ($420,000 FY25-26 pool) but restricted entirely to SVdP's own affiliated Conferences -- a general TX 501(c)(3) that is not an SVdP Conference cannot apply. Only relevant if the client IS an SVdP Conference/Council."
+  },
+  {
+   "id": "6bc40f5109aaf567",
+   "ein": "455342842",
+   "organization": "New Braunfels Area Community Foundation",
+   "grant_name": "Community Grants and NB Women GO grants for area nonprofits",
+   "url": "https://nbcommunityfoundation.org/grants-scholarships/",
+   "focus_area": "Basic needs, health, education, family services, community development",
+   "eligibility": "Nonprofits serving the New Braunfels / Comal County, TX area; focus areas per a GrantWatch listing include basic needs, health, education, family services, and community development. Exact deadlines/eligibility criteria not published on the homepage -- see nbcommunityfoundation.org/grants-scholarships/ and /available-funds/ for current-cycle specifics.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine, active community foundation with over $20.1M granted historically to area nonprofits and a named women's giving-circle program (NB Women GO) that runs its own competitive application. Good fit for New Braunfels/Comal County TX nonprofits; details need direct follow-up on the foundation's grants-scholarships page for exact current-cycle dates and amounts before citing to a client."
   },
   {
    "id": "8421d53a02eb2632",
@@ -1291,7 +1987,79 @@
    "eligibility": "Deadlines quarterly: January 5, April 1, July 1, October 1",
    "amount": "10000",
    "deadline": "Rolling or undated",
-   "notes": "New candidate, strongest fit of the round-two search. One of Minnesota's six regional Initiative Foundations; clearest language match found (advocacy, legal named explicitly). 2024 example: Patrick & Aimee Butler Family Foundation routed $200,000 through Northland for DV/trafficking-serving nonprofits in NE Minnesota. Standpoint's statewide Action Line and Labor Trafficking Project reach this region; frame the ask around service to clients there. First contact grants@northlandfdn.org."
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "d95b0544a3c2f40c",
+   "ein": "010679073",
+   "organization": "Parker County Health Foundation",
+   "grant_name": "Parker County Health Foundation annual grant/partner allocation program",
+   "url": "https://www.parkercountyhealthfoundation.org/",
+   "focus_area": "Health and wellness services for underserved residents (nutrition, medication assistance, dental, palliative care)",
+   "eligibility": "Nonprofits apply online, then present their mission/request in person at the PCHF allocation meeting (seen as April 7, no year confirmed - bare recurring date, do not assume current year); board decides based on alignment with health/wellness mission for underserved Parker County, TX residents. Existing partners include Parker County Center of Hope, Manna Storehouse, Freedom House, Children's Advocacy Center of Parker County, and others.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine, real annual allocation program with an online application plus in-person board presentation, funded by the annual 'Boots & Bling' charity gala; 100% of funds stay in Parker County. Only a fit for a Parker County, TX-based (or Parker-County-serving) health/human-services nonprofit, not general statewide TX."
+  },
+  {
+   "id": "f4518cf24ce0206b",
+   "ein": "931140967",
+   "organization": "PetSmart Charities Inc",
+   "grant_name": "Improving Access to Veterinary Care grants / Disaster Response grants (rolling); Adoption Growth Grant (partners only, next window 9/8/2026-10/2/2026)",
+   "url": "https://petsmartcharities.org/pro/grants",
+   "focus_area": "animal welfare: adoption, veterinary care access, disaster response",
+   "eligibility": "Nonprofits, municipalities, and animal welfare organizations whose companion-animal programs support the human-animal bond; national program administered via SmartSimple grant portal. Adoption Growth Grant restricted to existing PetSmart Charities Adoption Partners. Disaster Response limited to federally/state-declared disaster areas.",
+   "amount": "75000",
+   "deadline": "Rolling or undated",
+   "notes": "Fits any TX animal-welfare nonprofit or municipal shelter, especially those already PetSmart Adoption Partners or providing veterinary access programs; broadly open, not TX-restricted or client-specific."
+  },
+  {
+   "id": "9cf414db0dffb65a",
+   "ein": "330845930",
+   "organization": "Petco Love",
+   "grant_name": "Petco Love Animal Welfare Organizations Grant",
+   "url": "https://petcolove.org/shelter-partners/grants/",
+   "focus_area": "Companion animal welfare - lifesaving, spay/neuter, adoption",
+   "eligibility": "501(c)(3) animal welfare organizations and municipal animal shelters in the United States; primary mission must relate to companion animal welfare (spay/neuter, adoption, diversion programs). Not open to individuals or non-US orgs. Some named cycles (Helping Heroes, Pet Cancer Research & Treatment) are invitation-only, but the general Animal Welfare Organizations grant and Love Stories campaign are submitted via open online application through the Petco Love Partner Portal.",
+   "amount": "100000",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine open, general competitive grant program for animal welfare nonprofits, applied for through an online portal (not solely invitation-only, though some named cycles are invite-only). Strong fit for any TX 501(c)(3) animal welfare/shelter organization."
+  },
+  {
+   "id": "8613b37e2b953380",
+   "ein": "742509544",
+   "organization": "Silver & Black Give Back (San Antonio Spurs nonprofit)",
+   "grant_name": "Operation Renovation Facility Grants / Team Up Challenge (South TX youth nonprofits)",
+   "url": "https://sanantonio.culturemap.com/charity-guide/children/silver-black-give-back/",
+   "focus_area": "Youth development through sports/service; facility improvements for youth-serving nonprofits",
+   "eligibility": "Youth-serving 501(c)(3) nonprofit organizations in South Texas. Operation Renovation facility grants (up to $250,000) require applicant to operate SBGB programs and hold a minimum 10-year lease/use agreement for the facility. Team Up Challenge (up to $250,000) funds community service project start-ups addressing a neighborhood need.",
+   "amount": "250000",
+   "deadline": "Rolling or undated",
+   "notes": "Confirmed match - this is the official nonprofit of San Antonio Spurs Sports & Entertainment (est. 1988), EIN matches exactly. Real, active, named grant programs (Facility Grants, Operation Renovation, Team Up Challenge) with substantial award sizes. Strong open-call fit for South Texas youth-serving nonprofits with facility needs."
+  },
+  {
+   "id": "d6153c28dd3c822e",
+   "ein": "201173824",
+   "organization": "St Baldrick's Foundation Inc",
+   "grant_name": "Childhood cancer research grants (Scholar, Fellow, Innovation Award, etc.) - competitive, LOI via ProposalCentral",
+   "url": "https://www.stbaldricks.org/grants",
+   "focus_area": "Pediatric/childhood cancer research",
+   "eligibility": "PIs must hold at least an MD, DO, or PhD; must be employed at an academic, medical, or nonprofit research institution within the US (not required to be a US citizen). Research must be hypothesis-driven childhood cancer research (lab, clinical, or epidemiological). Multiple grant tracks: Scholar, Fellow, Summer Fellow, Innovation Award, Genius Award, Cooperative/Consortium Research Grants, Infrastructure Grant, International Scholar, Supportive Care. LOI/applications submitted online via ProposalCentral.",
+   "amount": "100000",
+   "deadline": "Rolling or undated",
+   "notes": "Real, competitive, rigorously peer-reviewed open grant program, appropriate specifically for TX academic medical centers or nonprofit research institutions with qualified PI staff (e.g., MD Anderson, UT Southwestern, Baylor College of Medicine, Cook Children's) -- not a general-purpose community nonprofit grant. Specific 2026 deadline dates not confirmed from St. Baldrick's own page; a limited-submission notice from Boston University referenced a 2026 award cycle, indicating an active annual cycle exists."
+  },
+  {
+   "id": "b45df90065730ec1",
+   "ein": "756061186",
+   "organization": "TACA (The Arts Community Alliance, Dallas)",
+   "grant_name": "Catalyst Grants / Pop-Up Grants / New Works Fund for Dallas County arts nonprofits",
+   "url": "https://taca-arts.org/",
+   "focus_area": "Performing and visual arts - unrestricted general operating support and project grants",
+   "eligibility": "Nonprofit arts organizations in Dallas County. New Works Fund specifically supports work by artists of color, LGBTQ+ artists, and female artists. Exact application deadlines/criteria not published on the homepage -- contact info@taca-arts.org or 214.520.3930 for current cycle details.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "IMPORTANT IDENTITY NOTE: EIN 75-6061186 belongs to TACA, Inc. (\"The Arts Community Alliance,\" taca-arts.org, Dallas performing/visual arts funder established 1967) -- NOT \"The Autism Community in Action\" (tacanow.org), a same-initialism autism nonprofit that a naive search easily confuses this with. Confirmed via ProPublica/ CauseIQ that this EIN's registrant gives general operating grants to Dallas arts organizations. Real, open, recurring grant programs (Catalyst Grants awarded $650,000 to 50 orgs in 2026, biannual). Good fit for Dallas-area TX performing/visual arts 501(c)(3)s; narrow geographically to Dallas County."
   },
   {
    "id": "fba5594e65d894fd",
@@ -1303,7 +2071,43 @@
    "eligibility": "Letter of Inquiry portal open February through October (exact open/close day not stated by source; do not treat 02-01/10-31 as confirmed). Must be within about 15 miles of a TJX store, distribution center, or office (St. Paul qualifies)",
    "amount": "5000",
    "deadline": "Rolling or undated",
-   "notes": "New candidate. National corporate foundation (T.J. Maxx / Marshalls / HomeGoods / Sierra). Real fit-type uncertainty: program language frames this area as prevention programs, services, or shelters, and TJX's hyperlocal, store-proximity model more typically favors direct-service/shelter organizations over a statewide legal-advocacy and training model. Confirm directly that a non-shelter legal-services model qualifies before investing significant proposal effort."
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "04369cd9cca524b0",
+   "ein": "208211777",
+   "organization": "Texas SandFest",
+   "grant_name": "Texas SandFest Community Grant Program",
+   "url": "https://www.texassandfest.org/mission",
+   "focus_area": "Community-driven initiatives and local charitable causes (plus separate scholarship program for Port Aransas HS seniors)",
+   "eligibility": "501(c)(3) organizations in good standing, or qualifying community-driven initiatives directly benefiting the Port Aransas community. Priority given to Port Aransas-area nonprofits; organizations outside the immediate area may apply if their work aligns with SandFest's mission. Applications accepted exclusively through an online portal, one application per organization.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine open, recurring grant program funded by an annual sand-sculpture festival (contributed $460,000+ in 2025, ~$190,000 of that to community organizations beyond scholarships). 2026 cycle already closed at time of research; 2027 cycle opens July 2026 (source states this without a specific close date). Best fit is Coastal Bend TX nonprofits; a general TX nonprofit outside that region would need unusually strong mission alignment to be considered."
+  },
+  {
+   "id": "404c0bffbef6ca26",
+   "ein": "752128160",
+   "organization": "The Dallas Morning News Charities",
+   "grant_name": "Annual hunger/homelessness relief grants to North Texas agencies - apply in June",
+   "url": "https://dmncharities.com/agencies/",
+   "focus_area": "Hunger and homelessness relief, emergency assistance, rehabilitation programs",
+   "eligibility": "Organizations must supply shelter, food, clothing, or other basic assistance to the hungry and homeless in North Texas. Board evaluates quality of services, geographic/demographic coverage, board/volunteer involvement, and fiscal management. Administered with assistance from Communities Foundation of Texas.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine annual open call restricted to a narrow focus (hunger/homelessness services) in North Texas - not literally invitation-only, agencies apply each June, but selection is competitive/curated (currently ~15 funded partners). A general TX nonprofit outside hunger/homelessness services in North Texas would not be eligible. Call for application procedures: (214) 346-5546."
+  },
+  {
+   "id": "54af37490173fa25",
+   "ein": "830898036",
+   "organization": "The Kroger Co Zero Hunger Zero Waste Foundation",
+   "grant_name": "Zero Hunger Zero Waste Foundation Grants - food insecurity/food waste",
+   "url": "https://thekrogercozerohungerzerowastefoundation.com/",
+   "focus_area": "Food insecurity, food waste reduction, equitable food systems (transportation for food banks, mobile pantries, SNAP enrollment, breakfast-after-the-bell)",
+   "eligibility": "Tax-exempt 501(c)(3) nonprofits in good standing, verified via GuideStar Charity Check. Individuals, political campaigns, and religious orgs serving only their own members are ineligible. Applications may be submitted online anytime via communitygifts.com and are reviewed quarterly (rolling).",
+   "amount": "250000",
+   "deadline": "Rolling or undated",
+   "notes": "GENUINE OPEN CALL: rolling application, quarterly review cycle, no fixed deadline. Solid fit for TX food-security/hunger-relief nonprofits. Apply via Kroger's communitygifts.com portal."
   },
   {
    "id": "75ea8869145c4a84",
@@ -1315,7 +2119,55 @@
    "eligibility": "501(c)(3) legal-services organization serving low-income individuals in the U.S.",
    "amount": "Not stated by the funder",
    "deadline": "Rolling or undated",
-   "notes": "Run by the Thomson Reuters Foundation (TrustLaw), a separate entity from the Legal Corporate Giving Program that most likely issued Standpoint's confirmed grant and sponsorship. In-kind: subsidized CoCounsel access at $50/seat/month for eligible legal-aid nonprofits; the Incubator cohort (free CoCounsel plus training) is selective. Treat as a new, additional opportunity worth exploring, not tied to the existing relationship."
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "bd5b8da7bd471067",
+   "ein": "521052345",
+   "organization": "USAging",
+   "grant_name": "Strengthening Social Connection in Communities (SSCC) seed grants / Center of Excellence (COE) community care hub grants",
+   "url": "https://www.usaging.org/aia",
+   "focus_area": "Older-adult social connection, health/social care coordination infrastructure",
+   "eligibility": "SSCC: 12-month seed grants up to $35,000 for up to 10 organizations 'within the Aging Network' (likely Area Agencies on Aging, Title VI Native American aging programs, and community-based aging-services organizations). COE: grants supporting up to 20 'community care hubs' for health/social-care coordination infrastructure. Exact eligibility criteria for the current cycle could not be confirmed -- the specific SSCC program page returned an error on fetch.",
+   "amount": "35000",
+   "deadline": "Rolling or undated",
+   "notes": "USAging (formerly the National Association of Area Agencies on Aging, n4a) is primarily a MEMBERSHIP/ADVOCACY association whose bulk giving reflects federal Older Americans Act Title III pass-through funds flowing to State Units on Aging and local AAAs -- NOT a general open grant program. However, it does run genuine competitive SUB-GRANT programs (SSCC seed grants, COE community-care-hub grants) that appear open to organizations within the aging-services network beyond just AAAs themselves. Recording as 'open' with real named programs, but eligibility likely restricted to aging-services-focused nonprofits, not any general TX 501(c)(3). Recommend future curator verify current-cycle deadlines directly at usaging.org given one linked program page errored out during this research."
+  },
+  {
+   "id": "1aaa223a543808d5",
+   "ein": "742640723",
+   "organization": "United Way of Comal and Guadalupe Counties (formerly United Way of Comal County)",
+   "grant_name": "Health and Human Services Funding Application - annual cycle",
+   "url": "https://uwcgtx.org/funding-applications/",
+   "focus_area": "health and human services",
+   "eligibility": "Restricted to Health and Human Service 501(c)(3) nonprofits operating in Comal and Guadalupe Counties, TX. Application deadline stated as 'Thursday, February 15th' (year not stated on page - recurring annual deadline, do not treat as a specific dated close_date).",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Genuine open annual competitive grant cycle; org rebranded/expanded from United Way of Comal County to United Way of Comal and Guadalupe Counties (uwcgtx.org). Applications reportedly open December 1 and close February 15 (recurring dates, year not confirmed on primary source - close_date left null per no-guessed-year rule). Good candidate for a qualifying local nonprofit; award amounts not published."
+  },
+  {
+   "id": "a2fb0c3628648785",
+   "ein": "752794263",
+   "organization": "United Way of Hood County Inc",
+   "grant_name": "Community Impact Grant Application - open",
+   "url": "https://unitedwayhoodcounty.com/open-applications/",
+   "focus_area": "academic excellence, financial stability, holistic well-being, disaster resilience, nonprofit capacity building",
+   "eligibility": "Not-for-profit organizations located in or serving residents of Hood County, TX. A second, separate open application also exists for the Emergency Food and Shelter Program.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Confirmed open via own site's 'Open Applications' page with live JotForm application links (Community Impact Grant and Emergency Food and Shelter Program). No deadline or award-size stated on the page itself; contact office@unitedwayhoodcounty.com or (817) 579-5100 for specifics. Genuine open call, narrow county-level geography."
+  },
+  {
+   "id": "74e30ab79c68fae2",
+   "ein": "741543862",
+   "organization": "United Way of Laredo Inc",
+   "grant_name": "Agency Allocation funding - ongoing partner-agency process, thin public detail",
+   "url": "https://unitedwaylaredo.org/allocations/",
+   "focus_area": "health, education, financial stability",
+   "eligibility": "Funds approximately 20 local partner agencies; site describes a general apply-review-fund process (site visits precede funding) but does not publish deadlines, minimum/maximum award size, or detailed eligibility online.",
+   "amount": "Not stated by the funder",
+   "deadline": "Rolling or undated",
+   "notes": "Real, ongoing partner-agency allocation process confirmed via own site, but deadlines and award amounts are not published publicly; direct phone contact recommended (956-723-9113) to confirm current cycle timing before treating as actionable. Narrow local geography (Laredo/Webb County only)."
   },
   {
    "id": "acfdc727ea270305",
@@ -1327,7 +2179,7 @@
    "eligibility": "Community-rooted 501(c)(3) organizations; Texas is not one of WKKF's four priority places (Michigan, Mississippi, New Mexico, greater New Orleans)",
    "amount": "Not stated by the funder",
    "deadline": "Rolling or undated",
-   "notes": "New candidate. Explicitly prioritizes racial equity, early childhood, maternal/infant health for communities of color, strong preference for community-led, culturally relevant organizations -- a close philosophical match to the mutual-aid model. Rolling, no fixed deadline. Typical LOI response ~30 days, full proposal review (if invited) ~60 days."
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
   },
   {
    "id": "8c4e19d468948a06",
@@ -1339,16 +2191,77 @@
    "eligibility": "Community Giving cycles run February through October (exact open/close day not stated by source; do not treat 02-01/10-31 as confirmed). Whether Wells Fargo is currently open to a new statewide DV-legal grantee, vs. a renewal-only relationship, is unconfirmed",
    "amount": "Not stated by the funder",
    "deadline": "Rolling or undated",
-   "notes": "New candidate. Confirmed precedent of funding legal-aid intermediaries for eviction-prevention/housing-stability advocacy, including Mid-Minnesota Legal Aid -- a direct model match to Standpoint's housing-advocacy component (the Action Line and LAV project both handle housing cases for DV survivors). No fixed award range published for this specific lane."
+   "notes": "Eligibility for this specific opportunity has not yet been independently assessed for this organisation. Confirm the current cycle, deadline and eligibility on the funder's own site before applying."
+  },
+  {
+   "id": "5d361a1e4416b457",
+   "ein": "202370934",
+   "organization": "Wounded Warrior Project Inc",
+   "grant_name": "Community Partner Grants - rolling Letter of Interest then invited full application",
+   "url": "https://www.woundedwarriorproject.org/programs/community-partners",
+   "focus_area": "Veteran and military family support -- mental health, physical wellness, economic empowerment, engagement",
+   "eligibility": "Nonprofit organizations serving post-9/11 veterans, service members, caregivers, and families, aligned with WWP's four core program areas (engagement, mind, body, economic empowerment). Process starts with an unsolicited Letter of Interest; only some LOI submitters are then invited to submit a full application after vetting for mission fit.",
+   "amount": "100000",
+   "deadline": "Rolling or undated",
+   "notes": "Real open program with an unsolicited LOI entry point (not purely invitation-only), rolling basis, no fixed deadline found on WWP's own site. Best fit for TX veteran-service nonprofits specifically, not general-purpose nonprofits. Confidence moderate since WWP's own community-partners page did not itself spell out eligibility/cycle detail; corroborated via a secondary WWP newsroom/grants source."
   }
  ],
  "watch_list_not_yet_open": [
+  {
+   "id": "407487dc2fc48ea0",
+   "organization": "ACH Child and Family Services (dba Our Community Our Kids / OCOK)",
+   "grant_name": "no open competitive grant call found - OCOK Provider Network enrollment is procurement, not grantmaking",
+   "url": "https://ourcommunity-ourkids.org/about/",
+   "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
   {
    "id": "b62027c1ca363668",
    "organization": "ARIZONA COMMUNITY FOUNDATION",
    "grant_name": "Funder states \"There are no grants available at this time\"; Arizona-only service area regardless",
    "url": "https://www.azfoundation.org/nonprofits/grant-opportunities/",
    "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
+   "id": "2a8ab2c064b2a81b",
+   "organization": "AbbVie Foundation",
+   "grant_name": "no open unsolicited-application program; Health Equity Accelerator is a separate cohort program",
+   "url": "https://www.abbvie.com/science/independent-educational-grants/how-to-apply.html",
+   "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
+   "id": "b492e542732583ed",
+   "organization": "Advanced Robotics for Manufacturing (ARM) Institute",
+   "grant_name": "Technology Project Calls - consortium members only",
+   "url": "https://arminstitute.org/news/25-01-selections/",
+   "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
+   "id": "a3cbafad481df187",
+   "organization": "Alex's Lemonade Stand Foundation for Childhood Cancer (ALSF)",
+   "grant_name": "Real recurring competitive research grant programs (Young Investigator, Innovation, Crazy 8) but restricted to childhood cancer researchers at nonprofit research institutions, not general nonprofits; current cycle deadlines already passed",
+   "url": "https://www.alexslemonade.org/grant-programs/early-career-research-programs",
+   "why_watch": "Recorded closed on 2026-03-18. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
+   "id": "34f6cdc970c2e4d9",
+   "organization": "Alpha Chi Omega Foundation Inc",
+   "grant_name": "no formal open application - Community Grants via chapter/Ribbon Club nomination only",
+   "url": "https://www.alphachiomega.org/axo-foundation/scholarships-grants/community-grants/not-live-community-grant-application-process/",
+   "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
+   "id": "138144c82ed51e4d",
+   "organization": "American Diabetes Association",
+   "grant_name": "Research grant programs (Pathway to Stop Diabetes, Accelerator Awards) - individual investigator awards, not organizational",
+   "url": "https://professional.diabetes.org/research-grants/current-funding-opportunities",
+   "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
+   "id": "4b460941ffc4738c",
+   "organization": "American Medical Association (AMA Foundation)",
+   "grant_name": "AMA Community Health Impact Lab Micro Grants - 2026 cycle (deadline March 1, 2026)",
+   "url": "https://www.ama-assn.org/amaone/community-health-impact-lab-micro-grants",
+   "why_watch": "Recorded closed on 2026-03-01. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
   },
   {
    "id": "cfabb697cad89ba8",
@@ -1365,11 +2278,60 @@
    "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
   },
   {
+   "id": "5a5fefab9bfbde3d",
+   "organization": "Austin Community Foundation",
+   "grant_name": "Forever Austin Fund Grants",
+   "url": "https://www.austincf.org/grant/forever-austin-fund/",
+   "why_watch": "Recorded closed on 2026-03-06. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
+   "id": "436342b4b865fb4a",
+   "organization": "Austin Community Foundation (Hispanic Impact Fund, Women's Fund, Q2 Philanthropy Fund)",
+   "grant_name": "no open call found -- all named funds currently closed",
+   "url": "https://www.austincf.org/apply-for-a-grant/",
+   "why_watch": "Recorded closed on 2026-07-31. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
+   "id": "3aad3d170504ffcf",
+   "organization": "Austin Community Foundation - Forever Austin Fund",
+   "grant_name": "Forever Austin Fund -- Health and Humanities category, FY2026 cycle applications already closed (deadline 2026-03-06), awards announced 2026-07-01, annual recurring",
+   "url": "https://www.austincf.org/grant/forever-austin-fund/",
+   "why_watch": "Recorded closed on 2026-03-06. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
+   "id": "dd3f2611a633651e",
+   "organization": "Austin Community Foundation - Hispanic Impact Fund",
+   "grant_name": "Hispanic Impact Fund grant cycle -- $22,000-$55,500, FY2026 cycle just closed (deadline 2026-07-31), annual recurring",
+   "url": "https://www.austincf.org/nonprofits/grants/",
+   "why_watch": "Recorded closed on 2026-07-31. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
+   "id": "5ca837912bc1160b",
+   "organization": "Austin Community Foundation - Women's Fund",
+   "grant_name": "Women's Fund grant cycle -- $20,000-$60,000, FY2026 cycle just closed (deadline 2026-07-31), annual recurring",
+   "url": "https://www.austincf.org/nonprofits/grants/",
+   "why_watch": "Recorded closed on 2026-07-31. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
    "id": "d7ed5c497a455173",
    "organization": "Austin Community Foundation, Women's Fund / Forever Austin Fund",
    "grant_name": "Annual grant cycle",
    "url": "https://www.austincf.org/grant/forever-austin-fund/",
    "why_watch": "Recorded closed on 2026-01-27. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
+   "id": "fac2e4ba6e06ec3c",
+   "organization": "Brain & Behavior Research Foundation (formerly National Alliance for Research on Schizophrenia and Depression / NARSAD)",
+   "grant_name": "BBRF Young Investigator Grant (individual researcher award, not organizational)",
+   "url": "https://bbrfoundation.org/grants-prizes/bbrf-young-investigator-grants",
+   "why_watch": "Recorded closed on 2026-03-04. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
+   "id": "cda8ef0345933ece",
+   "organization": "Broadway Cares/Equity Fights AIDS Inc",
+   "grant_name": "National Grants Program - invitation only, previous grantees only",
+   "url": "https://broadwaycares.org/national-grants/",
+   "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
   },
   {
    "id": "62dd7219944c08cc",
@@ -1393,6 +2355,13 @@
    "why_watch": "Recorded closed on 2026-06-04. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
   },
   {
+   "id": "878f507d3f6fb4fb",
+   "organization": "Center for the Advancement of Science in Space Inc (CASIS / ISS National Lab)",
+   "grant_name": "NSF/CASIS Transport Phenomena Research funding opportunity - 2026 cycle CLOSED (deadlines already passed)",
+   "url": "https://issnationallab.org/opportunities/rfp2026-1/",
+   "why_watch": "Recorded closed on 2026-03-04. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
    "id": "ac8fdab8b70f1a43",
    "organization": "Charity Guild of Catholic Women of",
    "grant_name": "Annual grant application window 15 March to 15 June has closed",
@@ -1400,129 +2369,24 @@
    "why_watch": "Recorded closed on 2026-06-15. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
   },
   {
+   "id": "a2e11ab4c9838980",
+   "organization": "Charter School Growth Fund (Charter Fund Inc)",
+   "grant_name": "Seed Grant Program - 2026 cycle closed (opened Oct 1, closed Dec 4, 2025)",
+   "url": "https://chartergrowthfund.org/apply-for-funding/",
+   "why_watch": "Recorded closed on 2025-12-04. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
+  },
+  {
    "id": "4113edb81d0723f5",
    "organization": "Christus Health",
    "grant_name": "CHRISTUS Community Impact Fund - letter-of-intent window not currently open",
    "url": "https://www.christushealth.org/connect/fund/community-impact-fund",
    "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "ba1ca22f4267f638",
-   "organization": "Community Foundation of Brazoria County",
-   "grant_name": "Women Building Community grant window closed 15 July",
-   "url": "https://cfbr.org/",
-   "why_watch": "Recorded closed on 2026-07-15. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "a8bccc4e74bd8f97",
-   "organization": "DALLAS JEWISH COMMUNITY FOUNDATION",
-   "grant_name": "2026 Sylvan T. Baer cycle has closed, next opens Spring 2027; no unsolicited proposals otherwise",
-   "url": "https://djcf.org/baer/",
-   "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "5b81d710c3ddb1f5",
-   "organization": "DALLAS SOCIAL VENTURE PARTNERS",
-   "grant_name": "2026 Advisee application closed February 27; the annual cycle reopens in January",
-   "url": "https://svpdallas.org/what-we-do/social-impact-organization-capacity-building/apply-for-svpd-services/",
-   "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "bbfdeb8d194fb937",
-   "organization": "ELIZABETH TOON CHARITIES",
-   "grant_name": "Only entry point (June 1 to June 30 LOI) has closed and 2026 is invitation only; no door remains this cycle",
-   "url": "https://www.elizabethtooncharities.org/grant-application",
-   "why_watch": "Recorded closed on 2026-06-30. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "bf1f1cd08ee617f8",
-   "organization": "FOUNDATION FOR SOUTHEAST TEXAS INC",
-   "grant_name": "Annual community grant window (January to mid-February) has closed for 2026",
-   "url": "https://www.fsetx.org/community-grant-application",
-   "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "b816c4bb370a08a2",
-   "organization": "HISPANIC SCHOLARSHIP FUND",
-   "grant_name": "2026-2027 scholarship cycle ended 15 February 2026; next cycle expected January 2027",
-   "url": "https://www.hsf.net/scholarship",
-   "why_watch": "Recorded closed on 2026-02-15. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "cc2fb53011da5433",
-   "organization": "HOUSTON LIVESTOCK SHOW AND RODEO (Educational Fund)",
-   "grant_name": "LOI window for 2027 grant support ended 15 April 2026; expected to reopen around February 2027",
-   "url": "https://www.rodeohouston.com/scholarships-and-grants/grants/",
-   "why_watch": "Recorded closed on 2026-04-15. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "4e4e6e92943e9e6c",
-   "organization": "Harris County Hospital District",
-   "grant_name": "Children's Health Fund 2026-2027 application cycle is closed",
-   "url": "https://hchdfoundation.org/childrenshealthfund/",
-   "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "c69ab135f5f7f8a4",
-   "organization": "I LIVE HERE I GIVE HERE",
-   "grant_name": "Nonprofit Membership Program registration window is between cycles; not a grant call",
-   "url": "https://www.ilivehereigivehere.org/for-non-profits",
-   "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "755ff395a6a1c6c9",
-   "organization": "Impact Austin",
-   "grant_name": "Community/Education/Health & Well-Being Grants",
-   "url": "https://www.impactaustin.org/grantmaking",
-   "why_watch": "Recorded closed on 2026-02-05. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "822bb07a4d2de45d",
-   "organization": "Impact Austin",
-   "grant_name": "Primary Community Grant (reapply)",
-   "url": "https://www.impactaustin.org/grantmaking",
-   "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "0d5b2974c0e81e3e",
-   "organization": "Jewish Federation of Greater Houston",
-   "grant_name": "Local Impact Fund 2026 cycle, Letter of Inquiry deadline of 31 July 2026 has passed",
-   "url": "https://www.houstonjewish.org/grants/",
-   "why_watch": "Recorded closed on 2026-07-31. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "3e87638dd2cb7fd4",
-   "organization": "Joyce Foundation",
-   "grant_name": "Education & Economic Mobility (letter of inquiry)",
-   "url": "https://www.joycefdn.org/apply",
-   "why_watch": "Recorded closed on 2026-08-03. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "2cafc401345bbf4d",
-   "organization": "Laredo Area Community Foundation",
-   "grant_name": "LACF annual competitive grant cycle, five $5,000 awards",
-   "url": "https://laredofoundation.org/grants.html",
-   "why_watch": "Recorded closed on 2025-10-01. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "3c8e0bab8d2cd850",
-   "organization": "MATHEMATICAL ASSOCIATION OF AMERICA INC",
-   "grant_name": "MAA grant programmes (DMEG, NREUP, Tensor, Tensor SUMMA, Neff Outreach Fund); all 2026 cycles closed",
-   "url": "https://maa.org/resource/dmeg/",
-   "why_watch": "Recorded closed on 2026-02-10. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "0392a7bccbe50705",
-   "organization": "MIDWAY USA FOUNDATION INC",
-   "grant_name": "Team Grants, twice-yearly windows (15 April to 15 June, 15 October to 15 December); between cycles at time of check",
-   "url": "https://www.midwayusafoundation.org/teamgrants/",
-   "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
   }
  ],
  "counts": {
   "ranked_funders": 63,
-  "ready_now": 53,
+  "ready_now": 125,
   "watch_list": 25,
-  "watch_list_total": 47
+  "watch_list_total": 145
  }
 }
