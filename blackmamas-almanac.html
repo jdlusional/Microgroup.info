@@ -53,9 +53,9 @@ a{color:var(--ink)}
 .tag{font-family:var(--mono);font-size:14px;padding:.22rem .58rem;background:var(--paper);border:1px solid var(--rule);color:var(--ink)}
 .stat-tile{text-align:center;padding:1rem}
 .stat-tile .num{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--accent);line-height:1}
-.stat-tile .lbl{font-family:var(--mono);font-size:12.5px;color:var(--wash);text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem}
+.stat-tile .lbl{font-size:12.5px;color:var(--wash);letter-spacing:.02em;margin-top:.3rem;font-weight:600}
 .funder-mini-table{width:100%;min-width:480px;table-layout:fixed;border-collapse:collapse;font-size:15px;margin-top:.5rem;text-align:left}
-.funder-mini-table th{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--wash);text-align:left;padding:.35rem .5rem;border-bottom:1px solid var(--rule)}
+.funder-mini-table th{font-size:12.5px;letter-spacing:.02em;color:var(--wash);text-align:left;padding:.35rem .5rem;border-bottom:1px solid var(--rule);font-weight:600}
 .funder-mini-table td{padding:.45rem .5rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere;text-align:left}
 .funder-mini-table th:first-child,.funder-mini-table td:first-child{width:26%}
 .method-table th:first-child,.method-table td:first-child{font-weight:700}
@@ -102,7 +102,7 @@ a{color:var(--ink)}
 /* ---- Grant entries (F4F Q&A pattern, adapted) ---- */
 .entry{border-bottom:1px solid var(--rule-soft);padding:1.1rem 0}
 .entry .head{display:flex;flex-direction:column;gap:.12rem}
-.entry .org{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--wash)}
+.entry .org{font-size:12.5px;letter-spacing:.02em;color:var(--wash);font-weight:600}
 .entry .name a{color:var(--ink)}
 .entry .name a:hover{color:var(--wash);text-decoration:underline}
 .qa-grid{display:flex;flex-direction:column;gap:.5rem;margin-top:.55rem}
@@ -130,7 +130,7 @@ a{color:var(--ink)}
 .status-row{display:flex;align-items:center;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
 .status-select{font-family:var(--mono);font-size:.84rem;padding:.28rem .4rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink)}
 .status-select:disabled{color:var(--wash);cursor:not-allowed}
-.status-pill{font-family:var(--mono);font-size:.8rem;padding:.2rem .55rem;text-transform:uppercase;letter-spacing:.03em;border:1px solid var(--rule);color:var(--wash);background:var(--paper)}
+.status-pill{font-size:.8rem;padding:.2rem .55rem;letter-spacing:.02em;border:1px solid var(--rule);color:var(--wash);background:var(--paper);font-weight:600}
 .status-pill.st-researching{color:var(--accent);border-color:var(--accent)}
 .status-pill.st-in_progress,.status-pill.st-submitted{color:var(--warn);border-color:var(--warn)}
 .status-pill.st-awarded{color:var(--ok);border-color:var(--ok)}
