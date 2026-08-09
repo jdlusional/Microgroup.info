@@ -844,8 +844,8 @@ function renderNtee(){
     +(major?', which places you under '+major:'')+'. That single code is doing more work than it looks like it '
     +'is doing: the matching engine uses the NTEE major group to decide which funders fund organizations like '
     +'you, so a code that describes you loosely produces a shelf that fits you loosely. Changing it is not a '
-    +'form you can file on its own, but naming the mismatch changes how the rest of this page should be read.').join('\n'));
-  setText('or-ntee-note',splitFactValue(PROFILE.ntee_code_note||'').join('\n'));
+    +'form you can file on its own, but naming the mismatch changes how the rest of this page should be read.').join('\n\n'));
+  setText('or-ntee-note',splitFactValue(PROFILE.ntee_code_note||'').join('\n\n'));
 }
 function renderPriorFunders(){
   const tb=document.getElementById('or-priorfunders');
@@ -1020,7 +1020,7 @@ function factNode(f){
   const d=el('div','or-fact');
   const fl=el('span','f',fieldLabel(f.field));
   d.appendChild(fl);
-  const v=el('span','v',splitFactValue(f.value).join('\n'));
+  const v=el('span','v',splitFactValue(f.value).join('\n\n'));
   v.appendChild(confBadge(f.confidence));
   d.appendChild(v);
   if(f.note)d.appendChild(el('span','m',f.note));
@@ -1110,8 +1110,8 @@ function renderEligibility(){
     +'result and does not recompute it. That is a deliberate constraint rather than a shortcut: when a second '
     +'component was allowed to re-derive eligibility for itself, three parts of the same system returned three '
     +'different totals for this organization on the same day, and opportunities the shelf had excluded reached '
-    +'draft stage anyway. One decision, made once, read everywhere.').join('\n'));
-  setText('or-known-limitation',splitFactValue(ALMANAC.known_limitation||'').join('\n'));
+    +'draft stage anyway. One decision, made once, read everywhere.').join('\n\n'));
+  setText('or-known-limitation',splitFactValue(ALMANAC.known_limitation||'').join('\n\n'));
 }
 
 /* =================================================================
@@ -1171,7 +1171,7 @@ function renderRules(){
     if(r.detail)card.appendChild(el('p',null,String(r.detail)));
     const kn=r.key_numbers!=null?r.key_numbers:r.numbers;
     if(kn!=null){
-      const p=el('p','nums',Array.isArray(kn)?kn.map(String).join('\n'):String(kn));
+      const p=el('p','nums',Array.isArray(kn)?kn.map(String).join('\n\n'):String(kn));
       card.appendChild(p);
     }
     if(r.verify_first)card.appendChild(el('p','or-quiet','This rule rests at least partly on a name match '
@@ -1243,11 +1243,11 @@ const STATED_LIMITS=[
 ];
 function renderAppendix(){
   const enr=PROFILE.public_profile_enrichment;
-  setText('or-method-almanac',splitFactValue(ALMANAC.method||'').join('\n'));
-  setText('or-method-enrichment',splitFactValue(enr.method||'').join('\n'));
-  setText('or-financial-summary',splitFactValue(enr.financial_summary||'').join('\n'));
-  setText('or-budget-band',splitFactValue(enr.operating_budget_band||'').join('\n'));
-  setText('or-bipoc',splitFactValue(enr.is_black_bipoc_led||'').join('\n'));
+  setText('or-method-almanac',splitFactValue(ALMANAC.method||'').join('\n\n'));
+  setText('or-method-enrichment',splitFactValue(enr.method||'').join('\n\n'));
+  setText('or-financial-summary',splitFactValue(enr.financial_summary||'').join('\n\n'));
+  setText('or-budget-band',splitFactValue(enr.operating_budget_band||'').join('\n\n'));
+  setText('or-bipoc',splitFactValue(enr.is_black_bipoc_led||'').join('\n\n'));
 
   const lim=document.getElementById('or-limits');
   STATED_LIMITS.forEach(l=>{
