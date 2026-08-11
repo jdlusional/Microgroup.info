@@ -96,8 +96,11 @@ relevant to its own site rather than duplicating the other's detail.
     secrets set before it activates (`GOOGLE_DRIVE_SERVICE_ACCOUNT_EMAIL`,
     `GOOGLE_DRIVE_SERVICE_ACCOUNT_PRIVATE_KEY`, `GOOGLE_DRIVE_CLOWNDOG_FOLDER_ID`) — see the
     function's own top-of-file comment for setup steps; until then it degrades gracefully to
-    email-only. All pages unlisted (noindex, confirmed on every page) and confirmed ungated (no
-    Cloudflare Access application covers any `/clown-dog*` path, checked directly via the API).
+    email-only. All pages unlisted (noindex, confirmed on every page). **Access-gated 2026-08-11**
+    (owner order): Cloudflare Access app "Clown Dog Bikes (microgroup.info)" on
+    `microgroup.info/clown-dog*`, restricted to clowndogbikes@gmail.com (plus the standing
+    Owner/Allowed-Testers/Claude-Code-service-token policies every client app on this site
+    carries). Was previously confirmed ungated; that state no longer holds.
     Full planning trail on the Drive:
     `Portfolios\Websites\Microgroup.info\Clown Dog Bikes (files not website)\`.
   - **Custodian** (`jp-morgan.html`) — a different product than Almanac/Scribe/Concordance:
