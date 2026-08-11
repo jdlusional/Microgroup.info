@@ -54,6 +54,11 @@ a{color:var(--ink)}
 .scope-box p:last-child{margin-bottom:0}
 .scope-box .mandatory-note{font-weight:700}
 
+.sensitive-notice{background:var(--paper);border:1.5px solid var(--urgent);border-left:4px solid var(--urgent);padding:1.1rem 1.3rem;font-size:.94rem;margin:0 auto 1.6rem;max-width:900px}
+.sensitive-notice p{margin:0 0 .5rem}
+.sensitive-notice p:last-child{margin-bottom:0}
+.sensitive-notice .notice-label{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--urgent);font-weight:700;display:block;margin-bottom:.5rem}
+
 .form-section{border-top:1px solid var(--rule-soft);margin:2rem 0 1.4rem;padding-top:1.4rem}
 .form-section:first-child{border-top:none;margin-top:0;padding-top:0}
 .form-section h3{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink);margin:0 0 .3rem}
@@ -96,6 +101,12 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
 <div class="scope-box" id="scope">
   <p><strong>Why we're asking.</strong> A few of these questions came up while reviewing the current clowndogbikes.com site directly: a restocking-fee policy that never states a percentage, some marketing claims we couldn't independently verify, and basic access questions (the domain registrar, the current site's admin backend) that only you can answer.</p>
   <p class="mandatory-note">Most questions below are required. If a question genuinely doesn't apply, write "N/A" rather than leaving it blank. The restocking-fee question and the document upload are optional; the two "who has it" / "which system" follow-ups are only required when the answer that triggers them is selected.</p>
+</div>
+
+<div class="sensitive-notice">
+  <span class="notice-label">Please read before you submit</span>
+  <p><strong>Do not send passwords, account numbers, or other sensitive information through this form's text fields or by email.</strong> Email is not a secure channel, and anything typed into a text box here is not either.</p>
+  <p>If something sensitive needs to be shared with us (a login, a financial detail, anything you wouldn't want sitting in an inbox), put it in a document instead and upload that document in the <a href="#documents">Documents</a> section below. If you're not sure how to do that, say so in the form and we'll walk you through it.</p>
 </div>
 
 <div class="section" id="form">
@@ -158,6 +169,55 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
           <label class="radio-option"><input type="radio" name="admin_access" value="not_sure" required> <span>Not sure</span></label>
         </fieldset>
         <div class="field-hint">This determines whether product and order data can be exported directly for the rebuild, versus rebuilt from scratch.</div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Tools We Use</h3>
+      <p class="form-section-note">We regularly use a handful of outside tools to build and maintain sites like this one. For each, tell us how comfortable you'd be using it yourself if you ever needed to (checking on something, pulling a file, that kind of thing).</p>
+      <div class="form-field">
+        <fieldset>
+          <legend>Google Drive (where your files and documents live)</legend>
+          <label class="radio-option"><input type="radio" name="tool_gdrive" value="yes" required> <span>Yes, I'm comfortable using it on my own</span></label>
+          <label class="radio-option"><input type="radio" name="tool_gdrive" value="no" required> <span>No, I'd rather not</span></label>
+          <label class="radio-option"><input type="radio" name="tool_gdrive" value="yes_with_instructions" required> <span>Yes, but I'd want instructions</span></label>
+        </fieldset>
+      </div>
+      <div class="form-field">
+        <fieldset>
+          <legend>Cloudflare (where the site is hosted)</legend>
+          <label class="radio-option"><input type="radio" name="tool_cloudflare" value="yes" required> <span>Yes, I'm comfortable using it on my own</span></label>
+          <label class="radio-option"><input type="radio" name="tool_cloudflare" value="no" required> <span>No, I'd rather not</span></label>
+          <label class="radio-option"><input type="radio" name="tool_cloudflare" value="yes_with_instructions" required> <span>Yes, but I'd want instructions</span></label>
+        </fieldset>
+      </div>
+      <div class="form-field">
+        <fieldset>
+          <legend>GitHub (where the site's code lives)</legend>
+          <label class="radio-option"><input type="radio" name="tool_github" value="yes" required> <span>Yes, I'm comfortable using it on my own</span></label>
+          <label class="radio-option"><input type="radio" name="tool_github" value="no" required> <span>No, I'd rather not</span></label>
+          <label class="radio-option"><input type="radio" name="tool_github" value="yes_with_instructions" required> <span>Yes, but I'd want instructions</span></label>
+        </fieldset>
+      </div>
+      <div class="form-field">
+        <fieldset>
+          <legend>Google Analytics (site traffic and visitor data)</legend>
+          <label class="radio-option"><input type="radio" name="tool_analytics" value="yes" required> <span>Yes, I'm comfortable using it on my own</span></label>
+          <label class="radio-option"><input type="radio" name="tool_analytics" value="no" required> <span>No, I'd rather not</span></label>
+          <label class="radio-option"><input type="radio" name="tool_analytics" value="yes_with_instructions" required> <span>Yes, but I'd want instructions</span></label>
+        </fieldset>
+      </div>
+      <div class="form-field">
+        <fieldset>
+          <legend>Canva (for making your own graphics/promo images)</legend>
+          <label class="radio-option"><input type="radio" name="tool_canva" value="yes" required> <span>Yes, I'm comfortable using it on my own</span></label>
+          <label class="radio-option"><input type="radio" name="tool_canva" value="no" required> <span>No, I'd rather not</span></label>
+          <label class="radio-option"><input type="radio" name="tool_canva" value="yes_with_instructions" required> <span>Yes, but I'd want instructions</span></label>
+        </fieldset>
+      </div>
+      <div class="form-field">
+        <label for="s-tools-notes">Anything about these tools we should know <span style="text-transform:none;font-weight:400">(optional)</span></label>
+        <textarea id="s-tools-notes" name="tool_notes" rows="2" placeholder="e.g. which one you'd want a walkthrough on first, or write N/A"></textarea>
       </div>
     </div>
 
@@ -232,11 +292,20 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
     </div>
 
     <div class="form-section">
+      <h3>Ongoing Customization Requests</h3>
+      <p class="form-section-note">The questions above are about the initial rebuild. This one is for anything beyond that: a change you want now, or something you'd want down the road once the new site is live.</p>
+      <div class="form-field">
+        <label for="s-customization">Describe any customization requests for the site</label>
+        <textarea id="s-customization" name="customization_requests" rows="4" required placeholder="A new page, a layout change, a feature you'd like added, anything else. Write N/A if there's nothing right now. Do not include passwords or account details here; upload those as a document below instead."></textarea>
+      </div>
+    </div>
+
+    <div class="form-section" id="documents">
       <h3>Documents</h3>
       <div class="form-field">
         <label for="s-files">Upload files <span style="text-transform:none;font-weight:400">(optional)</span></label>
         <input type="file" id="s-files" name="files" multiple accept=".jpg,.jpeg,.png,.gif,.webp,.heic,.pdf,.doc,.docx,.csv,.xlsx">
-        <div class="field-hint">Inventory lists, photos, logo files, or any reference documents. These are saved directly to a shared folder for the rebuild. Images, PDF, DOC/DOCX, CSV, or XLSX, up to 25&nbsp;MB total.</div>
+        <div class="field-hint">Inventory lists, photos, logo files, reference documents, or anything sensitive you don't want to type into a text field or send by email (see the notice near the top of this page). These are saved directly to a shared folder for the rebuild. Images, PDF, DOC/DOCX, CSV, or XLSX, up to 25&nbsp;MB total.</div>
       </div>
     </div>
 
@@ -314,6 +383,7 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
     ['s-claims-context','homepage claims context'],
     ['s-photo-notes','photography notes'],
     ['s-inventory','current inventory'],
+    ['s-customization','customization requests'],
     ['s-wishlist','anything else']
   ];
 
@@ -322,6 +392,11 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
     ['registrar_access','registrar/DNS access'],
     ['domain_future',"the domain's future"],
     ['admin_access','current site admin access'],
+    ['tool_gdrive','Google Drive comfort level'],
+    ['tool_cloudflare','Cloudflare comfort level'],
+    ['tool_github','GitHub comfort level'],
+    ['tool_analytics','Google Analytics comfort level'],
+    ['tool_canva','Canva comfort level'],
     ['homepage_claims_decision','the homepage claims question'],
     ['shipping_pickup','shipping vs. pickup'],
     ['pos_system','point-of-sale system'],
@@ -400,6 +475,13 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
     fd.append('registrar_access',radioValue('registrar_access'));
     fd.append('registrar_access_other',(document.getElementById('s-registrar-other')||{}).value||'');
     fd.append('domain_future',radioValue('domain_future'));
+    fd.append('tool_gdrive',radioValue('tool_gdrive'));
+    fd.append('tool_cloudflare',radioValue('tool_cloudflare'));
+    fd.append('tool_github',radioValue('tool_github'));
+    fd.append('tool_analytics',radioValue('tool_analytics'));
+    fd.append('tool_canva',radioValue('tool_canva'));
+    fd.append('tool_notes',(document.getElementById('s-tools-notes')||{}).value||'');
+    fd.append('customization_requests',(document.getElementById('s-customization')||{}).value||'');
     fd.append('homepage_claims_decision',radioValue('homepage_claims_decision'));
     fd.append('homepage_claims_context',(document.getElementById('s-claims-context')||{}).value||'');
     fd.append('admin_access',radioValue('admin_access'));

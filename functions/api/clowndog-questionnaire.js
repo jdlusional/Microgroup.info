@@ -128,7 +128,7 @@ function arrayBufferToBase64(buf) {
   return btoa(binary);
 }
 
-// Required questions (11 total), field-name-verified 2026-08-05 against the
+// Required questions (17 total), field-name-verified 2026-08-11 against the
 // sibling HTML build at clown-dog-questionnaire.html (form id
 // "survey-form"). If that page's field `name` attributes are ever renamed,
 // realigning is a one-line edit to the `key` half of each pair below --
@@ -140,6 +140,16 @@ const FIELD_GROUPS = [
       ["registrar_access", "Domain registrar/DNS access"],
       ["domain_future", "Plans for the domain going forward"],
       ["admin_access", "Current site admin access"],
+    ],
+  },
+  {
+    label: "Tools you're comfortable using",
+    keys: [
+      ["tool_gdrive", "Google Drive"],
+      ["tool_cloudflare", "Cloudflare"],
+      ["tool_github", "GitHub"],
+      ["tool_analytics", "Google Analytics"],
+      ["tool_canva", "Canva"],
     ],
   },
   {
@@ -168,6 +178,10 @@ const FIELD_GROUPS = [
     keys: [["inventory_notes", "Current inventory to feature"]],
   },
   {
+    label: "Ongoing customization requests",
+    keys: [["customization_requests", "Customization requests beyond the initial rebuild"]],
+  },
+  {
     label: "Other",
     keys: [["wishlist", "Anything else"]],
   },
@@ -175,16 +189,18 @@ const FIELD_GROUPS = [
 
 // Optional / conditional fields. restocking_fee_pct is explicitly optional
 // on the page (the scope box says so, and its <input> carries no
-// `required`). registrar_access_other and pos_system_other are only shown
-// and required client-side when their triggering radio value is selected
-// (registrar_access === "know_who_has_it", pos_system === "other") --
-// enforced server-side in the conditional check below, but never added to
+// `required`). tool_notes is likewise explicitly optional (no `required` on
+// its <textarea>). registrar_access_other and pos_system_other are only
+// shown and required client-side when their triggering radio value is
+// selected (registrar_access === "know_who_has_it", pos_system === "other")
+// -- enforced server-side in the conditional check below, but never added to
 // the blanket FIELD_GROUPS required loop since an untriggered submission
 // legitimately leaves them blank.
 const CONDITIONAL_KEYS = [
   ["restocking_fee_pct", "Restocking fee (%)"],
   ["registrar_access_other", "Who currently has registrar/DNS access"],
   ["pos_system_other", "Other point-of-sale system"],
+  ["tool_notes", "Notes on the tools list"],
 ];
 
 // [radio field key, trigger value that requires the follow-up, follow-up
@@ -221,6 +237,31 @@ const VALUE_LABELS = {
     yes: "Yes, I can log into the current site's backend",
     no: "No, I don't have that login",
     not_sure: "Not sure",
+  },
+  tool_gdrive: {
+    yes: "Yes, comfortable using it on my own",
+    no: "No, I'd rather not",
+    yes_with_instructions: "Yes, but I'd want instructions",
+  },
+  tool_cloudflare: {
+    yes: "Yes, comfortable using it on my own",
+    no: "No, I'd rather not",
+    yes_with_instructions: "Yes, but I'd want instructions",
+  },
+  tool_github: {
+    yes: "Yes, comfortable using it on my own",
+    no: "No, I'd rather not",
+    yes_with_instructions: "Yes, but I'd want instructions",
+  },
+  tool_analytics: {
+    yes: "Yes, comfortable using it on my own",
+    no: "No, I'd rather not",
+    yes_with_instructions: "Yes, but I'd want instructions",
+  },
+  tool_canva: {
+    yes: "Yes, comfortable using it on my own",
+    no: "No, I'd rather not",
+    yes_with_instructions: "Yes, but I'd want instructions",
   },
   homepage_claims_decision: {
     keep_as_is: "Keep these claims as-is for now",
