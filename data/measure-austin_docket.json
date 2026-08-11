@@ -66,46 +66,7 @@
    "notes": "This is a donor-collaborative intermediary and fiscal sponsor. This is the highest-value watch item in this review for Measure specifically: the Economic Mobility and Opportunity Fund's stated criteria describe Measure almost exactly, a US 501(c)(3) with a budget at or under $2 million doing research and data work, and its award band of $100,000 to $300,000 in one-year general operating support would be transformative at Measure's scale. Measure could not have applied to the now-closed cycle but should watch for the next round and for any comparable call from the collaborative's other funds. Not eligible today only because no call is presently open \u2014 a timing bar, not a bar on Measure. The practical route in the meantime, as the fund itself describes, is direct contact and relationship-building with fund staff, since invitation is the normal path in."
   }
  ],
- "watch_list_not_yet_open": [
-  {
-   "id": "4113edb81d0723f5",
-   "organization": "Christus Health",
-   "grant_name": "CHRISTUS Community Impact Fund - letter-of-intent window not currently open",
-   "url": "https://www.christushealth.org/connect/fund/community-impact-fund",
-   "why_watch": "Recorded closed on an unstated date. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "bbfdeb8d194fb937",
-   "organization": "ELIZABETH TOON CHARITIES",
-   "grant_name": "Only entry point (June 1 to June 30 LOI) has closed and 2026 is invitation only; no door remains this cycle",
-   "url": "https://www.elizabethtooncharities.org/grant-application",
-   "why_watch": "Recorded closed on 2026-06-30. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "cc2fb53011da5433",
-   "organization": "HOUSTON LIVESTOCK SHOW AND RODEO (Educational Fund)",
-   "grant_name": "LOI window for 2027 grant support ended 15 April 2026; expected to reopen around February 2027",
-   "url": "https://www.rodeohouston.com/scholarships-and-grants/grants/",
-   "why_watch": "Recorded closed on 2026-04-15. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "0d5b2974c0e81e3e",
-   "organization": "Jewish Federation of Greater Houston",
-   "grant_name": "Local Impact Fund 2026 cycle, Letter of Inquiry deadline of 31 July 2026 has passed",
-   "url": "https://www.houstonjewish.org/grants/",
-   "why_watch": "Recorded closed on 2026-07-31. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  },
-  {
-   "id": "a3da0bbc5bb4a2d9",
-   "organization": "SHIELD-AYRES FOUNDATION",
-   "grant_name": "Letter of Inquiry, first-quarter board cycle",
-   "url": "https://www.shield-ayresfoundation.org/grant-making/apply/",
-   "why_watch": "Recorded closed on 2026-02-15. Kept because a closed cycle is the only signal a reopening can be predicted from, and no public source keeps it: Grants.gov archives its postings and foundations simply remove theirs."
-  }
- ],
  "counts": {
-  "ready_now": 5,
-  "watch_list": 5,
-  "watch_list_total": 5
+  "ready_now": 5
  }
 }

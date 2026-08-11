@@ -58,9 +58,6 @@ a{color:var(--ink)}
 .qa-value{font-size:.94rem;line-height:1.5}
 .qa-row.deadline .qa-value{font-weight:700;color:var(--accent)}
 
-.watch-item .org{display:block;margin-bottom:.3rem}
-.watch-item .why{font-size:.9rem;color:var(--wash);margin:.4rem 0 0}
-
 .limitation-note{margin-top:1.4rem;font-family:var(--serif);font-size:14px;color:var(--wash);background:var(--well);border:1px solid var(--rule);padding:.7rem 1rem;line-height:1.5}
 </style>
 </head>
@@ -71,11 +68,9 @@ a{color:var(--ink)}
   <div class="manifest-in">
     <span class="brand"><b>Docket</b> for Measure</span>
     <span class="stat"><strong id="dk-m-ready">&ndash;</strong> requests ready now</span>
-    <span class="stat"><strong id="dk-m-watch">&ndash;</strong> on the watch list</span>
     <span class="grow"></span>
     <nav>
       <a href="#dk-ready">Ready Now</a>
-      <a href="#dk-watch">Watch List</a>
       <a href="measure-enterprise.html">See Almanac &amp; Scribe &#8594;</a>
     </nav>
   </div>
@@ -102,14 +97,6 @@ a{color:var(--ink)}
   <div class="limitation-note" id="dk-limitation"></div>
 </section>
 
-<section class="section section-card" id="dk-watch">
-  <div class="section-head">
-    <span class="kicker">Not Yet Open</span>
-    <h2>Watch List</h2>
-    <p>Real, relevant requests that are currently closed or on a recurring cycle. Worth monitoring, not applying to yet.</p>
-  </div>
-  <div id="dk-watch-results"></div>
-</section>
 
 <footer>
   <span>Prepared by Jonathan Lin Davis</span>
@@ -135,7 +122,7 @@ function renderReady(items){
   const host=document.getElementById('dk-ready-results');
   document.getElementById('dk-ready-count').textContent=items.length;
   document.getElementById('dk-m-ready').textContent=items.length;
-  if(!items.length){host.innerHTML='<div class="empty">No requests currently ready to enter. Check the watch list below.</div>';return;}
+  if(!items.length){host.innerHTML='<div class="empty">No requests currently ready to enter.</div>';return;}
   host.innerHTML=items.map(it=>`
     <div class="match-card">
       <div class="mc-head">
@@ -155,18 +142,6 @@ function renderReady(items){
     </div>`).join('');
 }
 
-function renderWatch(items){
-  const host=document.getElementById('dk-watch-results');
-  document.getElementById('dk-m-watch').textContent=items.length;
-  if(!items.length){host.innerHTML='<div class="empty">Nothing on the watch list right now.</div>';return;}
-  host.innerHTML=items.map(it=>`
-    <div class="watch-item">
-      <span class="org">${esc(it.organization)} &mdash; ${esc(it.grant_name)}</span>
-      <p class="why">${esc(it.why_watch)}</p>
-      ${it.url?`<a href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.url)}</a>`:''}
-    </div>`).join('');
-}
-
 async function load(){
   let data;
   try{
@@ -179,7 +154,6 @@ async function load(){
     return;
   }
   renderReady(data.ready_now||[]);
-  renderWatch(data.watch_list_not_yet_open||[]);
   document.getElementById('dk-limitation').textContent=data.known_limitation||'';
 }
 load();
