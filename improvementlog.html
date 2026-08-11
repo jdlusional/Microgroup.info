@@ -54,7 +54,7 @@ details.prod>summary .count{margin-left:auto;font-size:12.5px;font-weight:600;co
 
 <div class="hero">
   <h1>Improvement Log &middot; Enterprise</h1>
-  <p>Each enterprise product (Almanac, Scribe, Concordance, Herald, Atlas, Dossier) improves continuously, and this page is the record from the user's side: what changed, when, and what it means for the organizations using it. Entries are curated. Internal engineering work that a user would never notice is left out, so what remains is the product getting better. The Public Data family (GIFT, Interlock, F4F) keeps its own log on <a href="https://jonathanlindavis.com/improvementlog.html" target="_blank" rel="noopener">jonathanlindavis.com</a>.</p>
+  <p>Each enterprise product (Almanac, Docket, Confluence, Scribe, Concordance, Herald, Atlas, Dossier) improves continuously, and this page is the record from the user's side: what changed, when, and what it means for the organizations using it. Entries are curated. Internal engineering work that a user would never notice is left out, so what remains is the product getting better. The Public Data family (GIFT, Interlock, F4F) keeps its own log on <a href="https://jonathanlindavis.com/improvementlog.html" target="_blank" rel="noopener">jonathanlindavis.com</a>.</p>
   <span class="cadence">Updated weekly</span>
 </div>
 
@@ -120,11 +120,13 @@ const LOG = [
 {"p": "Almanac", "d": "2026-08-08", "t": "A funding opportunity that had been incorrectly excluded from open results was corrected to appear as open."},
 {"p": "Almanac", "d": "2026-08-07", "t": "A client's recently submitted funding priorities were incorporated into its funder-match results."},
 {"p": "Almanac", "d": "2026-08-05", "t": "Two bugs that had been blocking a client's product page from building correctly were fixed."},
-{"p": "Scribe", "d": "2026-08-05", "t": "Two bugs that had been blocking a client's product page from building correctly were fixed."}
+{"p": "Scribe", "d": "2026-08-05", "t": "Two bugs that had been blocking a client's product page from building correctly were fixed."},
+{"p": "Docket", "d": "2026-08-11", "t": "Docket launched: Organization Project Requests, Letters of Inquiry and Requests for Proposals, now track separately from Almanac's traditional grant matches, each verified against the funder's or agency's own current page."},
+{"p": "Confluence", "d": "2026-08-11", "t": "Confluence launched: a curated shortlist of funding that connects your organization's mission to a named partner organization's work, where you are the eligible applicant, each candidate independently re-verified rather than left as a first-pass match."}
 ];
 /* ===IMPROVEMENTLOG-DATA-END=== */
 
-const ORDER = ["Almanac","Scribe","Concordance","Herald","Atlas","Dossier"];
+const ORDER = ["Almanac","Docket","Confluence","Scribe","Concordance","Herald","Atlas","Dossier"];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const host = document.getElementById("products");
 ORDER.forEach(name => {
