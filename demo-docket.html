@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Docket &mdash; Organization Project Requests Demo</title>
+<meta name="description" content="Docket is a live-researched database of open Letters of Inquiry and Requests for Proposals (Organization Project Requests). This demonstration page uses a fictional community organization to show what Docket produces: real, source-traceable requests, separate from Almanac's traditional grant matches." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/png" href="Assets/almanac-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=e3c0ecb772">
+<style>
+a{color:var(--ink)}
+
+.hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1.4rem;text-align:center}
+
+.section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
+.section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0 auto}
+.section-head h2{text-transform:uppercase;letter-spacing:.05em}
+.manifest-in{justify-content:center}
+.manifest .grow{display:none}
+.section-head-tags{margin-top:.6rem}
+.section-head-tags:empty{display:none}
+
+.section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem;padding:1.8rem 1.6rem}
+.section.section-card:last-of-type{margin-bottom:0}
+
+.match-card{padding:0}
+.mc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
+.mc-head .fname{flex:1 1 auto;min-width:0;white-space:nowrap;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;text-align:left}
+.mc-body{min-width:0;padding:.9rem 1.2rem}
+@media(max-width:640px){.mc-head{gap:.4rem}.mc-head .fname{min-width:0;flex-basis:100%;white-space:normal;overflow-wrap:anywhere}}
+.badge{font-family:var(--serif);font-size:12.5px;padding:.16rem .5rem;letter-spacing:.03em;text-transform:uppercase;font-weight:700}
+.badge-loi{background:var(--accent);color:#fff}
+.badge-rfp{background:var(--ok);color:#fff}
+
+.qa-grid{display:flex;flex-direction:column;gap:.5rem;margin-top:.55rem}
+.qa-row{display:grid;grid-template-columns:150px 1fr;gap:.6rem 1rem;align-items:baseline}
+@media(max-width:580px){.qa-row{grid-template-columns:1fr;gap:.1rem}}
+.qa-label{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);white-space:nowrap}
+.qa-value{font-size:.94rem;line-height:1.5}
+.qa-row.deadline .qa-value{font-weight:700;color:var(--accent)}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand"><b>Docket</b> demo</span>
+    <span class="grow"></span>
+    <nav>
+      <a href="#dk-ready">Ready Now</a>
+      <a href="demo.html">All demos &#8594;</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">Demonstration page &mdash; fictional organization, real sourced data</div>
+  <h1>Docket</h1>
+  <p>Docket carries Organization Project Requests &mdash; Letters of Inquiry and Requests for Proposals &mdash; separately from Almanac's traditional grant matches. This page shows what it produces for <b>Riverside Neighbors Collaborative</b>, a fictional Austin community organization, using real, currently-open funding requests.</p>
+  <div class="note">Riverside Neighbors Collaborative does not exist. The funders and requests below do: every row traces to a real, currently-checked source (the funder's own current page), the same standard Docket applies for a real client. Nothing here is estimated or invented.</div>
+</header>
+
+<section class="section section-card" id="dk-ready">
+  <div class="section-head">
+    <span class="kicker">Open Now</span>
+    <h2>Ready Now</h2>
+    <div class="section-head-tags"><span style="font-size:.8rem;letter-spacing:.02em;font-weight:600;color:var(--ok);border:1px solid var(--ok);padding:.14rem .45rem;vertical-align:middle">Real requests</span></div>
+  </div>
+  <div class="res-count"><b>2</b> requests shown</div>
+  <div id="dk-ready-results">
+    <div class="match-card">
+      <div class="mc-head">
+        <span class="fname">Shield-Ayres Foundation</span>
+        <span class="badge badge-loi">LOI</span>
+      </div>
+      <div class="mc-body">
+        <p style="margin:0 0 .6rem;font-weight:600">Letter of Inquiry, third-quarter board cycle</p>
+        <div class="qa-grid">
+          <div class="qa-row deadline"><span class="qa-label">Deadline</span><span class="qa-value">August 15, 2026</span></div>
+          <div class="qa-row"><span class="qa-label">Notes</span><span class="qa-value">Two fixed LOI deadlines a year (mid-February, mid-August); board meets roughly a month after each. This cycle's deadline sat 13 days out on the date it was checked &mdash; time-critical and actionable, not a rolling call to research later.</span></div>
+          <div class="qa-row"><span class="qa-label">Source</span><span class="qa-value"><a href="https://www.shield-ayresfoundation.org/grant-making/apply/" target="_blank" rel="noopener">shield-ayresfoundation.org/grant-making/apply</a></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="match-card">
+      <div class="mc-head">
+        <span class="fname">Borealis Philanthropy</span>
+        <span class="badge badge-loi">LOI</span>
+      </div>
+      <div class="mc-body">
+        <p style="margin:0 0 .6rem;font-weight:600">Just Futures Initiative, rolling grant opportunity for grassroots community-safety and democracy work</p>
+        <div class="qa-grid">
+          <div class="qa-row deadline"><span class="qa-label">Deadline</span><span class="qa-value">Rolling or undated</span></div>
+          <div class="qa-row"><span class="qa-label">Notes</span><span class="qa-value">Borealis is a philanthropic intermediary hosting donor-collaborative pooled funds that regrant &mdash; not a donor-advised fund sponsor. Confirmed as a genuine open LOI channel, not an invitation-only relationship.</span></div>
+          <div class="qa-row"><span class="qa-label">Source</span><span class="qa-value"><a href="https://borealisphilanthropy.org/news-and-views/just-futures-initiative-grant-opportunity/" target="_blank" rel="noopener">borealisphilanthropy.org/news-and-views/just-futures-initiative-grant-opportunity</a></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <span>Prepared by Jonathan Lin Davis</span>
+  <span class="footer-improvements-wrap"><a class="footer-improvements" href="improvementlog.html">Improvement log</a></span>
+  <p class="footer-custom-note"><a href="/#contact">Need something custom? Individualized builds outside this catalog are available on request &#8594;</a></p>
+</footer>
+
+</body>
+</html>
