@@ -1,0 +1,93 @@
+{
+ "organization": "Texas Empowerment Academy",
+ "ein": "742782958",
+ "website": "https://texasempowerment.org/",
+ "legal_filer_name": "Tri-angel Unlimited",
+ "legal_filer_name_note": "IRS filings and the DuckDB organizations spine carry this EIN under its legal filer name, Tri-angel Unlimited (care of Texas Empowerment Academy). The school's own site and all public-facing materials use Texas Empowerment Academy; that is the name used throughout this page.",
+ "mission": "We Are a Pre-K through 12 charter school, cultural hub, and community center serving Austin-area families. We Provide our students with a sound education in a nurturing environment conducive to academic excellence that promotes a sense of community and self-responsibility.",
+ "programs": [
+  "Pre-K through 12 charter school instruction",
+  "Cultural hub and community center serving Austin-area families",
+  "Empowerment system providing access to self-help opportunities for social, emotional, spiritual, and economic growth",
+  "Student support addressing social, mental, emotional, and academic needs together, not academics alone"
+ ],
+ "focus_areas": [
+  "Culturally relevant Pre-K-12 education",
+  "Character and leadership development (core values: Education, Character, Leadership)",
+  "Community empowerment through service, learning, and volunteerism (the three Cs of African existence: communalism, collectivism, cooperation)",
+  "Family and community stability support"
+ ],
+ "geography": {
+  "primary": "Austin, TX",
+  "secondary": ["Central Texas", "Texas"]
+ },
+ "ntee_code_filed": "S20",
+ "ntee_major_filed": "Community Improvement, Capacity Building",
+ "ntee_code_note": "BMF-filed code (S20/Community Improvement) does not read as a typical school filing code (most Pre-K-12 schools file under B/Education); Texas Empowerment Academy's own site frames itself explicitly as school AND cultural hub AND community center together, which likely explains the S-code filing. Funder peer-matching below is run against this filed code, not a re-assigned B-code, per this Drive's rule that filed codes are used as filed.",
+ "target_populations": [
+  "Pre-K through 12th grade students in East Austin",
+  "Primarily African-American students and families (per third-party school-profile aggregators; not independently verified against the school's own enrollment data)",
+  "Families seeking culturally relevant, community-centered education"
+ ],
+ "reported_scale": {
+  "note": "2023 Form 990 (most recent processed return, ProPublica Nonprofit Explorer API, EIN 742782958): total revenue $5,041,668; total expenses $6,597,148; total assets (EOY) $29,147,401. Third-party aggregators (GreatSchools, U.S. News) separately report approximately 413 students in grades 3-12 with a 17:1 student-teacher ratio; not independently re-verified against the school's own enrollment records and shown here as reported, not confirmed."
+ },
+ "confirmed_prior_funders": [
+  {
+   "funder": "United Way for Greater Austin",
+   "funder_ein": "741193439",
+   "amount": 160000,
+   "purpose": "2 grants, 2019-2020 (IRS Form 990 Schedule I, recipient EIN exact match)",
+   "source": "IRS Form 990 Schedule I, recipient_ein exact match.",
+   "note": null
+  },
+  {
+   "funder": "Charter Fund Inc",
+   "funder_ein": "050620063",
+   "amount": 138100,
+   "purpose": "1 grant, 2024 (IRS Form 990 Schedule I, recipient EIN exact match)",
+   "source": "IRS Form 990 Schedule I, recipient_ein exact match.",
+   "note": null
+  },
+  {
+   "funder": "Austin Community Foundation",
+   "funder_ein": "741934031",
+   "amount": 126250,
+   "purpose": "2 grants, 2023-2024 (IRS Form 990 Schedule I, recipient EIN exact match)",
+   "source": "IRS Form 990 Schedule I, recipient_ein exact match.",
+   "note": null
+  },
+  {
+   "funder": "Schwab Charitable Fund",
+   "funder_ein": "311640316",
+   "amount": 100000,
+   "purpose": "1 grant, 2022 (IRS Form 990 Schedule I, recipient EIN exact match)",
+   "source": "IRS Form 990 Schedule I, recipient_ein exact match.",
+   "note": "Schwab Charitable is a donor-advised-fund sponsor; the decision-maker behind this grant is the donor, not Schwab itself."
+  },
+  {
+   "funder": "The Notley Fund",
+   "funder_ein": "475295639",
+   "amount": 5000,
+   "purpose": "1 grant, 2020 (IRS Form 990 Schedule I, recipient EIN exact match)",
+   "source": "IRS Form 990 Schedule I, recipient_ein exact match.",
+   "note": null
+  }
+ ],
+ "confirmed_prior_funders_total": 529350,
+ "profile_built": "2026-08-11",
+ "profile_sources": [
+  "texasempowerment.org/about-us/ (fetched 2026-08-11)",
+  "ProPublica Nonprofit Explorer API, organizations/742782958.json (fetched 2026-08-11)",
+  "DuckDB organizations spine via almanac_match.py client_profile(), EIN 742782958 (2026-08-11)",
+  "IRS Form 990 Schedule I, national grant-history parse, via almanac_match.py (2026-08-11)"
+ ],
+ "display": {
+  "page_title": "Almanac for Texas Empowerment Academy",
+  "meta_description": "Almanac: Funder & Grant Match, prepared for Texas Empowerment Academy: a ranked funder match built from real IRS grant-history data, plus a database of currently-open grant opportunities.",
+  "brand_bar_text": "Almanac for Texas Empowerment Academy",
+  "hero_heading": "Almanac",
+  "hero_subtext": "Almanac is a funding-prospect tool built specifically for Texas Empowerment Academy (texasempowerment.org), combining real IRS grant-history data with a live-researched database of currently-open funding opportunities.",
+  "footer_credit": "Prepared for Texas Empowerment Academy by Jonathan Lin Davis of Micro Group\nBuilt from IRS Form 990 data and live web scraping\nAugust 2026"
+ }
+}

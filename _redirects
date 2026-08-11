@@ -16,3 +16,9 @@
 /measure-almanac.html  /measure-enterprise  301
 /measure-scribe        /measure-enterprise  301
 /measure-scribe.html   /measure-enterprise  301
+
+# Texas Empowerment Academy (TEA), built 2026-08-11. The owner asked for the hub at /TEA
+# (uppercase); Cloudflare Pages resolves paths case-sensitively, so /TEA needs its own explicit
+# rule to reach the actual lowercase asset tea.html -- the bare lowercase /tea already resolves
+# to tea.html via Pages' default clean-URL stripping, same as every other org hub page here.
+/TEA   /tea  301

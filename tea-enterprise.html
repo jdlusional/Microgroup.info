@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Almanac for Texas Empowerment Academy</title>
+<meta name="description" content="Almanac: Funder &amp; Grant Match, prepared for Texas Empowerment Academy: a ranked funder match built from real IRS grant-history data, plus a database of currently-open grant opportunities." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/png" href="Assets/almanac-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=e3c0ecb772">
+<style>
+a{color:var(--ink)}
+
+.hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1.4rem;text-align:center}
+
+.section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
+.section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0 auto}
+.section-head h2{text-transform:uppercase;letter-spacing:.05em}
+.section-lede p{color:var(--ink);font-size:15px;font-style:normal;font-weight:400;margin:0 0 .8rem}
+.manifest-in{justify-content:center}
+.manifest .grow{display:none}
+.section-head-tags{margin-top:.6rem}
+.section-head-tags:empty{display:none}
+
+/* ---- Section-level card + accordion (current Almanac convention, propagated 2026-07-27):
+   every top-level section is its own bordered card, collapsible the same way as the cards
+   nested inside it. The toggle sits on its own centered line above the kicker/title. Only
+   .fold-body collapses. ---- */
+.section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem}
+.section.section-card:last-of-type{margin-bottom:0}
+.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.mc-closed .fold-body{display:none}
+
+/* ---- Profile section ---- */
+.profile-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.5rem}
+@media(max-width:780px){.profile-grid{grid-template-columns:1fr}}
+.card{background:var(--well);border:1px solid var(--rule);padding:1.3rem 1.4rem;min-width:0;overflow-wrap:anywhere}
+.card h3{font-weight:700;font-family:var(--serif);font-size:25px;text-transform:uppercase;letter-spacing:.08em;color:var(--wash);margin:0 0 .6rem}
+.card p{margin:0 0 .8rem;font-size:15px}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center}
+.tag{font-family:var(--mono);font-size:14px;padding:.22rem .58rem;background:var(--paper);border:1px solid var(--rule);color:var(--ink);white-space:nowrap}
+.stat-tile{text-align:center;padding:1rem}
+.stat-tile .num{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--accent);line-height:1}
+.stat-tile .lbl{font-size:12.5px;color:var(--wash);letter-spacing:.02em;margin-top:.3rem;font-weight:600}
+.funder-mini-table{width:100%;min-width:480px;table-layout:fixed;border-collapse:collapse;font-size:15px;margin-top:.5rem;text-align:left}
+.funder-mini-table th{font-size:12.5px;letter-spacing:.02em;color:var(--wash);text-align:left;padding:.35rem .5rem;border-bottom:1px solid var(--rule);font-weight:600}
+.funder-mini-table td{padding:.45rem .5rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere;text-align:left}
+.funder-mini-table th:first-child,.funder-mini-table td:first-child{width:26%}
+.method-table th:first-child,.method-table td:first-child{font-weight:700}
+.funder-mini-table th:last-child,.funder-mini-table td:last-child{width:18%}
+.method-table th:last-child,.method-table td:last-child{width:auto}
+.funder-mini-table .amt{font-family:var(--mono);text-align:right;color:var(--wash);font-size:14px}
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin-top:.3rem}
+.impact-grid .stat-tile{padding:.7rem .5rem;background:var(--paper);border:1px solid var(--rule);min-width:0}
+.impact-grid .stat-tile .num{font-size:24px}
+.impact-grid .stat-tile .lbl{white-space:normal;line-height:1.3}
+.not-published{color:var(--wash);font-style:italic;font-weight:400}
+.cycle-note{font-family:var(--mono);font-size:.82rem;color:var(--wash);border-left:2px solid var(--rule);padding-left:.7rem;margin-top:.6rem}
+
+/* ---- Status/filter chip bar (shared pattern) ---- */
+.toolbar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-bottom:1.1rem}
+.chip-filter{display:flex;gap:.4rem;flex-wrap:wrap}
+.chip-btn{font-family:var(--mono);font-size:.84rem;padding:.32rem .65rem;border:1px solid var(--rule);background:var(--well);color:var(--wash);cursor:pointer}
+.chip-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* ---- Funder match cards ---- */
+.match-card{padding:0}
+.mc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
+.mc-head .fname{flex:1 1 auto;min-width:0;white-space:nowrap;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;text-align:left}
+.mc-body{min-width:0}
+.match-card>.mc-body{padding:.9rem 1.2rem}
+@media(max-width:640px){.mc-head{gap:.4rem}.mc-head .fname{min-width:0;flex-basis:100%;white-space:normal;overflow-wrap:anywhere}}
+.badge{font-family:var(--serif);font-size:12.5px;padding:.16rem .5rem;letter-spacing:.03em;text-transform:uppercase;font-weight:700}
+.badge-confirmed{background:var(--ok);color:#fff}
+.badge-new{background:var(--accent);color:#fff}
+
+/* ---- Card-level accordion: every card with a toggle starts CLOSED on load/refresh,
+   no first-card exception. Re-run on every render, including a search/filter re-render. ---- */
+.mc-toggle{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;margin-left:auto;cursor:pointer;white-space:nowrap}
+.mc-toggle:hover{background:var(--paper)}
+.mc-closed .mc-body{display:none}
+@media(max-width:640px){.mc-toggle{width:100%;margin-left:0;margin-top:.5rem;text-align:center}}
+
+/* ---- Nested sub-cards inside a compiled match card ---- */
+.mc-body .card{background:var(--paper);border:1px solid var(--rule);padding:1rem 1.1rem;margin-top:.9rem}
+.mc-body .card:first-child{margin-top:0}
+.mc-body .card h3{font-size:15px;letter-spacing:.05em;margin:0 0 .5rem}
+
+/* ---- Profile card head/toggle (accordion extension to the profile section) ---- */
+.card-head{position:relative;padding-right:9rem;margin-bottom:.6rem}
+.card-head h3{margin:0}
+.card-head .mc-toggle{position:absolute;right:0;top:0}
+@media(max-width:560px){.card-head{padding-right:0;padding-bottom:2.6rem}.card-head .mc-toggle{left:0;right:0;top:auto;bottom:0;width:100%;margin-left:0}}
+
+/* ---- Grant Q&A block (F4F Q&A pattern, adapted; rendered inside .mc-body as part of the
+   compiled match card). ---- */
+.qa-grid{display:flex;flex-direction:column;gap:.5rem;margin-top:.55rem}
+.qa-row{display:grid;grid-template-columns:150px 1fr;gap:.6rem 1rem;align-items:baseline}
+@media(max-width:580px){.qa-row{grid-template-columns:1fr;gap:.1rem}}
+.qa-label{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);white-space:nowrap}
+.qa-value{font-size:.94rem;line-height:1.5}
+.qa-row-featured .qa-value a{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--accent)}
+.qa-row-featured .qa-value a:hover{text-decoration:underline}
+.deadline-val.urgent{color:var(--urgent);font-weight:600}
+.deadline-val.soon{color:var(--warn);font-weight:500}
+
+.watch-list{margin-top:1.6rem}
+.watch-item{padding:.75rem 0;border-bottom:1px solid var(--rule-soft);display:grid;grid-template-columns:1fr 2fr;gap:1rem;min-width:0}
+@media(max-width:640px){.watch-item{grid-template-columns:1fr}}
+.watch-item .why{font-size:15px;color:var(--wash);line-height:1.5}
+
+.limitation-note{font-family:var(--mono);font-size:1.125rem;color:var(--wash);background:var(--well);border:1px dashed var(--rule);padding:.7rem .9rem;margin-top:1.2rem;line-height:1.5}
+
+/* ---- Status tracking (always on for this client build; no team-mode gate) ---- */
+.admin-toggle{font-family:var(--mono);font-size:.84rem;padding:.3rem .7rem;border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer}
+.admin-toggle.on{background:var(--ink);color:var(--paper)}
+.status-row{display:flex;align-items:center;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
+.status-select{font-family:var(--mono);font-size:.84rem;padding:.28rem .4rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink)}
+.status-select:disabled{color:var(--wash);cursor:not-allowed}
+.status-pill{font-size:.8rem;padding:.2rem .55rem;letter-spacing:.02em;border:1px solid var(--rule);color:var(--wash);background:var(--paper);font-weight:600}
+.status-pill.st-researching{color:var(--accent);border-color:var(--accent)}
+.status-pill.st-in_progress,.status-pill.st-submitted{color:var(--warn);border-color:var(--warn)}
+.status-pill.st-awarded{color:var(--ok);border-color:var(--ok)}
+.status-pill.st-declined{color:var(--urgent);border-color:var(--urgent)}
+.status-notes{width:100%;margin-top:.4rem;font-family:var(--serif);font-size:15px;padding:.45rem .55rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink);resize:vertical;min-height:2.4em}
+.status-notes:disabled{background:var(--well);color:var(--wash)}
+.status-saved{font-family:var(--mono);font-size:.8rem;color:var(--ok);opacity:0;transition:opacity .3s}
+.status-saved.show{opacity:1}
+
+
+body{overflow-x:hidden}
+/* .sbadge.moderate: its own 8%-alpha tint darkens the backdrop to rgb(224,214,197) over --well,
+   dropping #8a5218 to 4.42:1. #794713 clears AA on both the well and paper backdrops. */
+.sbadge.moderate{color:#794713}
+
+/* Wrap width: .section-head p was capped at 70/72ch -- it rendered 526px inside a 1140px
+   container (46%) while the cards/grid directly beneath it spanned the full width. The intro
+   paragraph should wrap to the width of the block below it, matching .limitation-note, which
+   is already full-width. The centered .hero lede and the 16em/15em/14em long-string wrap
+   guards on table amounts and deadlines are deliberate and stay capped. */
+.section-head p{max-width:none}
+
+.hero{text-align:left;padding:3.2rem 1.25rem 2.2rem;border-bottom:1px solid var(--rule)}
+.section{padding:2.6rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
+@media(max-width:640px){.hero{padding:2.2rem 1.25rem 1.6rem}.hero h1{font-size:30px}}
+
+/* ---- Center-align pass (propagated from the current Almanac convention, 2026-07-27):
+   everything centers, including multi-line prose, by inheritance from body -- labeled
+   key-value pairs, tabular data, and interactive form controls are the only exceptions,
+   kept left-aligned for readability/usability. ---- */
+body{text-align:center}
+.hero{text-align:center}
+.hero .note{text-align:center}
+.qa-row,.qa-label,.qa-value,
+.funder-mini-table,.funder-mini-table th,.funder-mini-table td,
+.toolbar,.chip-filter,.chip-btn,
+.status-row,.status-select,.status-notes,.admin-toggle{text-align:left}
+
+/* SUB-HEADING FOLDS, owner ruling 2026-08-03: every h3 inside a section is its own collapsible
+   block, closed on open, exactly like the section above it. The closed state reuses the page's
+   existing `.mc-closed .fold-body{display:none}` rule rather than introducing a second mechanism. */
+.subfold{margin:0 0 1.1rem}
+.subfold-head{display:flex;align-items:flex-start;gap:.75rem}
+.subfold-head h3{margin:0}
+.subfold-head .mc-toggle{margin-left:auto;flex:0 0 auto}
+@media(max-width:560px){
+  .subfold-head{flex-direction:column;align-items:stretch}
+  .subfold-head .mc-toggle{width:100%;margin-left:0}
+}
+#alm-footer-credit,#scr-footer-credit{white-space:pre-line}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand" id="alm-brand-text"><b>Almanac</b> for Texas Empowerment Academy</span>
+    <span class="stat"><strong id="alm-m-funders">–</strong> candidate funders researched</span>
+    <span class="stat"><strong id="alm-m-grants">–</strong> compiled matches (match + profile + open grant)</span>
+    <span class="grow"></span>
+    <button class="admin-toggle" id="alm-admin-toggle" type="button" title="Enter your key to mark status on funders and grants">Admin</button>
+    <nav>
+      <a href="#alm-profile">Profile</a>
+      <a href="#alm-compiled">Compiled Funder Matches</a>
+      <a href="#alm-method">How This Was Built</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">Prepared research tool, not a public product</div>
+  <h1 id="alm-hero-heading">Almanac</h1>
+  <p id="alm-hero-subtext">Almanac is a funding-prospect tool combining real IRS grant-history data with a live-researched database of currently-open funding opportunities.</p>
+  <div class="note">Every funder and grant listed here was verified against a real source (IRS Form 990 filings or the funder's own current website): nothing here is estimated or invented. Where something is uncertain, it's flagged explicitly rather than guessed at.</div>
+</header>
+
+<!-- PRIMARY ACCORDION, one per product, generated by merge_enterprise_page.py.
+     CLOSED ON OPEN, and so is every section inside it. Owner ruling 2026-08-03 made this the
+     convention for enterprise pages, REVERSING the no-tab-drops convention of 2026-07-29 for
+     this page type rather than taking an exemption under it. The old rule required the
+     ratification be named next to the element; this comment is that.
+     Only the products this client OWNS appear. TEXAS EMPOWERMENT ACADEMY holds Almanac only;
+     it does not hold Scribe, Concordance, Herald, Atlas or Dossier, so none of those are here. -->
+<section class="section section-card product-accordion" id="product-almanac">
+  <div class="fold">
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="product-almanac-body"></button>
+      <div class="section-head">
+        <span class="kicker">Product</span>
+        <h2>Almanac — funder and grant match</h2>
+      </div>
+    </div>
+    <div class="fold-body" id="product-almanac-body">
+<section class="section section-card" id="alm-how-to-read">
+  <div class="fold">
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="alm-how-to-read-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Read This First</span>
+        <h2>How to read this page</h2>
+      </div>
+    </div>
+    <div class="fold-body" id="alm-how-to-read-fold-body">
+    <div class="table-scroll"><table class="funder-mini-table method-table">
+      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>This organization</td>
+          <td>Texas Empowerment Academy is real.<br><br>Every fact on this page about Texas Empowerment Academy itself (mission, financials, confirmed funders) is sourced from Texas Empowerment Academy's own site (texasempowerment.org) or its public IRS Form 990 filings via ProPublica. Nothing about Texas Empowerment Academy is estimated or invented.</td>
+        </tr>
+        <tr>
+          <td>The funders and grants</td>
+          <td>Every funder and grant candidate below is real and traces to a public record: an IRS Form 990 filing, a published guideline, or the funder's own grant page.<br><br>An organization only appears in Compiled Funder Matches once a ranked match, an IRS funder profile, and a currently actionable grant opportunity all exist for it, joined by EIN &mdash; see How This Was Built for the exact gating rule and this cycle's date.</td>
+        </tr>
+        <tr>
+          <td>Next steps</td>
+          <td>Questions about this page? <a href="/#contact">Get in touch &#8594;</a></td>
+        </tr>
+      </tbody>
+    </table></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-card" id="alm-profile">
+  <div class="fold">
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="alm-profile-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">The organization</span>
+        <h2>Funding Profile</h2>
+      </div>
+    </div>
+    <div class="fold-body" id="alm-profile-fold-body">
+    <div class="section-lede">
+      <p>Texas Empowerment Academy's mission, focus areas, and confirmed funding history: the foundation the funder match and grants search are built on.</p>
+    </div>
+      <div class="profile-grid">
+        <div class="card">
+          <h3>Mission</h3>
+          <div class="mc-body">
+            <p id="alm-p-mission"></p>
+            <h3>Focus Areas</h3>
+            <div class="tag-row" id="alm-p-focus"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>At a glance</h3>
+          <div class="mc-body">
+            <div class="stat-tile">
+              <div class="num" id="alm-p-total">$0</div>
+              <div class="lbl">confirmed prior funding found</div>
+            </div>
+            <h3 style="margin-top:1rem">Geography</h3>
+            <p id="alm-p-geo" style="margin:0"></p>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1.2rem">
+        <div class="card-head">
+          <h3>Confirmed Prior Funders</h3>
+          <button class="mc-toggle" type="button" aria-controls="alm-p-funders-body"></button>
+        </div>
+        <div class="mc-body" id="alm-p-funders-body">
+          <div class="table-scroll"><table class="funder-mini-table">
+            <thead><tr><th>Funder</th><th>Purpose</th><th style="text-align:right">Amount</th></tr></thead>
+            <tbody id="alm-p-funders-table"></tbody>
+          </table></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-card" id="alm-compiled">
+  <div class="fold">
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="alm-compiled-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Who Could Fund This, Right Now</span>
+        <h2>Compiled Funder Matches</h2>
+        <div class="section-head-tags"><span style="font-size:.8rem;letter-spacing:.02em;font-weight:600;color:var(--ok);border:1px solid var(--ok);padding:.14rem .45rem;vertical-align:middle">Real funders</span> <span class="fold-count" data-count-from="compiled-count" data-count-label="organizations"></span></div>
+      </div>
+    </div>
+    <div class="fold-body" id="alm-compiled-fold-body">
+      <div class="toolbar">
+        <div class="chip-filter" id="alm-compiled-status-filter"></div>
+      </div>
+      <div class="res-count"><b id="alm-compiled-count">0</b> compiled matches shown</div>
+      <div id="alm-compiled-results"></div>
+
+      <div class="watch-list" id="alm-ruled-out" style="margin-top:1.6rem">
+        <div class="section-head" style="border-top:1px solid var(--rule);padding-top:.9rem;margin-bottom:1rem">
+          <h2 style="font-size:1.15rem">Checked and Ruled Out &mdash; Cycle 1</h2>
+          <p>8 of Texas Empowerment Academy's 55 ranked funder candidates had a currently-open call join by EIN this cycle. All 8 were checked directly against the funder's own page and ruled out; none compiled as a live match. Zero compiled matches this cycle is the honest result of that check, not a data gap.</p>
+        </div>
+        <div class="watch-item"><div class="org"><a href="https://cooperfdn.org/grants/" target="_blank" rel="noopener">Cooper Foundation</a></div><div class="why">Restricted to organizations with programming and staff located in Waco, TX only.</div></div>
+        <div class="watch-item"><div class="org"><a href="https://wacofoundation.org/community-impact/nonprofits/grantmaking" target="_blank" rel="noopener">Waco Foundation</a></div><div class="why">Restricted to McLennan County-based nonprofits.</div></div>
+        <div class="watch-item"><div class="org"><a href="https://unitedwaywaco.org/for-nonprofits/" target="_blank" rel="noopener">United Way of Waco-McLennan County</a></div><div class="why">Serves McLennan County; next application window not open until Fall 2026.</div></div>
+        <div class="watch-item"><div class="org"><a href="https://lubbockeda.org/about-leda/what-we-do/" target="_blank" rel="noopener">Market Lubbock Economic Development</a></div><div class="why">Restricted to commercial property revitalization in downtown/East Lubbock, TX.</div></div>
+        <div class="watch-item"><div class="org"><a href="https://www.texashealth.org/About-Texas-Health/Community-Affairs/Community-Giving/Giving-Guidelines" target="_blank" rel="noopener">Texas Health Harris Methodist Hospital</a></div><div class="why">Fort Worth-area hospital system community-giving program, not an education funder.</div></div>
+        <div class="watch-item"><div class="org"><a href="https://www.lisc.org/our-initiatives/small-business/our-work/grants-small-businesses/" target="_blank" rel="noopener">Local Initiatives Support Corporation (LISC)</a></div><div class="why">Grants target small businesses and entrepreneurs, not schools.</div></div>
+        <div class="watch-item"><div class="org"><a href="https://unidosus.org/about/affiliates/join/" target="_blank" rel="noopener">UnidosUS</a></div><div class="why">Affiliate-network application intake paused through 2025 pending a process redesign.</div></div>
+        <div class="watch-item"><div class="org"><a href="https://www.enterprisecommunity.org/" target="_blank" rel="noopener">Enterprise Community Partners</a></div><div class="why">Funds affordable housing, not education; holds real Texas programs worth a second look in a future cycle.</div></div>
+      </div>
+
+      <div class="watch-list">
+        <div class="section-head" style="border-top:1px solid var(--rule);padding-top:.9rem;margin-bottom:1rem">
+          <h2 style="font-size:1.15rem">Watch List &mdash; not yet open</h2>
+          <p>Real, relevant opportunities that are currently closed, paused, or not yet launched. Worth monitoring, not applying to yet.</p>
+        </div>
+        <div id="alm-watch-results"></div>
+      </div>
+
+      <div class="limitation-note" id="alm-grants-limitation"></div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD SECTION REMOVED 2026-08-07, owner order. Both products' "How this was built"
+     sections are consolidated onto tea-orientation.html so method is stated once for the
+     client rather than restated per product. The three hand-written prose blocks per product
+     were MIGRATED there verbatim before this deletion, not dropped. See
+     merge_enterprise_page.py, which now strips these sections on any future rebuild so a
+     regenerated shell cannot reintroduce them. -->
+<section class="section section-card" id="alm-method">
+  <div class="fold">
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="alm-method-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Method</span>
+        <h2>How this was built</h2>
+      </div>
+    </div>
+    <div class="fold-body" id="alm-method-fold-body">
+      <p style="max-width:70ch;margin:0 auto;text-align:center">Method, provenance and the stated limits of both tools now live in one place, on the orientation page, rather than being restated under each product.</p>
+      <p style="text-align:center;margin:.9rem 0 0"><a href="tea-orientation.html">Read the method and limits on the orientation page &#8594;</a></p>
+    </div>
+  </div>
+</section>
+    </div>
+  </div>
+</section>
+<footer>
+  <span id="alm-footer-credit">Prepared by Jonathan Lin Davis</span>
+  <span id="alm-footer-links"></span>
+  <span class="footer-improvements-wrap"><a class="footer-improvements" href="improvementlog.html">Improvement log</a></span>
+  <p class="footer-custom-note"><a href="/#contact">Need something custom? Individualized builds outside this catalog are available on request &#8594;</a></p>
+</footer>
+<script>
+/* ---------------------------------------------------------------
+   Self-contained page, hard-set to Texas Empowerment Academy. No ?org= parameter, no
+   fetch of data/*.json, no runtime data swapping. The data below IS
+   the page -- the same pattern as every other per-org instance.
+
+   ORG_SLUG stays because the grant-status API is keyed on it. That is
+   a real per-org value, not templating.
+
+   Source of record for the data below: data/tea_*.json.
+   Edit those, re-run the converter, and this page is rebuilt.
+   --------------------------------------------------------------- */
+const ORG_SLUG="tea";
+/* DATA IS FETCHED, NOT INLINED (converted 2026-08-03).
+   This page carried 99,792 bytes of hand-assembled data across five const blocks, 71% of the file.
+   PROFILE alone was 75,040 bytes and was byte-identical in content to data/measure-austin_profile.json (the source page this one was built from), showing
+   a file already sitting beside this page that the page never loaded.
+   Hand-editing a JavaScript literal inside a live client page is what made the rate card's quarterly
+   refresh unsustainable past a handful of clients. These now regenerate from the Almanac shelf via
+   measure/almanac_page_data.py, and the shelf is the ONLY place eligibility is decided.
+   FUNDER_PROFILES stays inline deliberately: it is small and not shelf-derived. */
+const ALMANAC_URL='data/tea_almanac.json';
+const PROFILE_URL='data/tea_profile.json';
+let PROFILE={}, FUNDERS_DATA={ranked_funders:[],method:''}, GRANTS={ready_now:[],watch_list_not_yet_open:[]};
+
+
+
+/* CYCLE 1 (2026-08-11): 8 of 55 ranked candidates had a currently-open call join by EIN.
+   All 8 were checked against the funder's own page and ruled out (see the Checked and Ruled
+   Out card in Compiled Funder Matches for reasons). FUNDER_PROFILES stays empty this cycle:
+   there is nothing to compile a snapshot for. Re-populate on the next cycle if a candidate
+   clears. */
+const FUNDER_PROFILES={};
+
+const STATUS_LABELS={not_started:"Not started",researching:"Researching",in_progress:"In progress",submitted:"Submitted",awarded:"Awarded",declined:"Declined"};
+const STATUS_ORDER=["not_started","researching","in_progress","submitted","awarded","declined"];
+
+const state={profile:null,funders:[],grants:null,matchQ:"",grantQ:"",statuses:{},adminKey:localStorage.getItem('grantStatusKey')||"",matchStatusFilter:null,grantStatusFilter:null};
+/* Notes fields are dense multi-sentence prose; split to one sentence per line (rather than
+   one dense paragraph) for readability. Sentence boundaries are detected before highlighting
+   so a matched search term never straddles the split. */
+function sentenceBreak(text,q){
+  if(!text)return '';
+  return text.split(/(?<=[.!?])\s+(?=[A-Z0-9])/).map(s=>highlight(s,q)).join('<br><br>');
+}
+/* Card-level accordion. Every card with a toggle starts CLOSED on load/refresh, no
+   first-card exception. Re-run on every render, including a search/filter re-render. */
+function wireAccordion(host,cardSelector){
+  const cards=host.querySelectorAll(cardSelector||'.match-card');
+  cards.forEach((card)=>{
+    const btn=card.querySelector('.mc-toggle');
+    if(!btn)return;
+    const setOpen=open=>{
+      card.classList.toggle('mc-closed',!open);
+      btn.setAttribute('aria-expanded',String(open));
+      btn.textContent=open?'Hide details':'Show details';
+    };
+    setOpen(false);
+    btn.addEventListener('click',()=>setOpen(card.classList.contains('mc-closed')));
+  });
+}
+
+function esc(s){return(s||"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function highlight(text,q){
+  if(!q||!text)return esc(text);
+  const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+  return esc(text).replace(re,'<mark>$1</mark>');
+}
+function money(n){const v=Number(n);return (v<0?'-$':'$')+Math.abs(v).toLocaleString();}
+const PUBLIC_CHARITY_FOUNDATION_CODES=new Set([10,11,12,13,14,15,16,17,18,21,22,23,24]);
+function fmtQualDistrib(n,foundationCode){
+  if(n!==null&&n!==undefined)return money(n);
+  if(PUBLIC_CHARITY_FOUNDATION_CODES.has(foundationCode))return '<span class="not-published">Not applicable (public charity, not a 990-PF filer)</span>';
+  return '<span class="not-published">not returned by the source</span>';
+}
+
+function statusOf(itemType,itemId){
+  return state.statuses[itemType+':'+itemId]||{status:'not_started',notes:''};
+}
+
+async function fetchStatuses(){
+  try{
+    const res=await fetch('/api/grant-status/list?org='+encodeURIComponent(ORG_SLUG),{cache:'no-store'});
+    if(!res.ok)throw new Error('status fetch failed');
+    const data=await res.json();
+    state.statuses=data.statuses||{};
+  }catch(e){
+    // Status tracking is additive -- if the backend isn't provisioned yet
+    // (see SETUP-grant-status.md) or the request fails, the rest of the
+    // page still works fully; every item just shows "Not started".
+    state.statuses={};
+    console.warn('Grant status unavailable:',e);
+  }
+}
+
+async function saveStatus(itemType,itemId,status,notes,savedEl){
+  if(!state.adminKey){
+    promptForKey();
+    if(!state.adminKey)return false;
+  }
+  try{
+    const res=await fetch('/api/grant-status/update',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-Admin-Key':state.adminKey},
+      body:JSON.stringify({org_slug:ORG_SLUG,item_type:itemType,item_id:itemId,status,notes}),
+    });
+    if(res.status===401){
+      alert('That key was not accepted. Try Admin again with the correct key.');
+      state.adminKey="";localStorage.removeItem('grantStatusKey');
+      setAdminUI();
+      return false;
+    }
+    if(!res.ok)throw new Error('save failed');
+    const saved=await res.json();
+    state.statuses[itemType+':'+itemId]={status:saved.status,notes:saved.notes,updated_at:saved.updated_at};
+    if(savedEl){savedEl.classList.add('show');setTimeout(()=>savedEl.classList.remove('show'),1500);}
+    return true;
+  }catch(e){
+    alert('Could not save status. Check your connection and try again.');
+    return false;
+  }
+}
+
+function promptForKey(){
+  const key=prompt('Enter your grant-status admin key (see SETUP-grant-status.md):');
+  if(key){
+    state.adminKey=key.trim();
+    localStorage.setItem('grantStatusKey',state.adminKey);
+  }
+  setAdminUI();
+}
+
+function setAdminUI(){
+  const btn=document.getElementById('alm-admin-toggle');
+  const isOn=!!state.adminKey;
+  btn.classList.toggle('on',isOn);
+  btn.textContent=isOn?'Admin ✓':'Admin';
+  document.querySelectorAll('.status-select,.status-notes').forEach(el=>{el.disabled=!isOn;});
+}
+
+function statusRowHTML(itemType,itemId){
+  const s=statusOf(itemType,itemId);
+  const options=STATUS_ORDER.map(k=>`<option value="${k}"${k===s.status?' selected':''}>${STATUS_LABELS[k]}</option>`).join('');
+  const isOn=!!state.adminKey;
+  return `
+    <div class="status-row" data-item-type="${itemType}" data-item-id="${esc(itemId)}">
+      <span class="status-pill st-${s.status}">${STATUS_LABELS[s.status]}</span>
+      <select class="status-select" ${isOn?'':'disabled'}>${options}</select>
+      <span class="status-saved">Saved</span>
+    </div>
+    <textarea class="status-notes" placeholder="Notes (contact made, next step, why declined...)" ${isOn?'':'disabled'}>${esc(s.notes)}</textarea>`;
+}
+
+function wireStatusControls(container){
+  container.querySelectorAll('.status-row').forEach(row=>{
+    const itemType=row.getAttribute('data-item-type');
+    const itemId=row.getAttribute('data-item-id');
+    const select=row.querySelector('.status-select');
+    const savedEl=row.querySelector('.status-saved');
+    const notesEl=row.nextElementSibling; // .status-notes immediately follows .status-row
+    select.addEventListener('change',async()=>{
+      const ok=await saveStatus(itemType,itemId,select.value,notesEl.value,savedEl);
+      if(!ok){const cur=statusOf(itemType,itemId);select.value=cur.status;}
+      else{
+        const pill=row.querySelector('.status-pill');
+        pill.className='status-pill st-'+select.value;
+        pill.textContent=STATUS_LABELS[select.value];
+      }
+    });
+    notesEl.addEventListener('blur',async()=>{
+      const cur=statusOf(itemType,itemId);
+      if(notesEl.value!==cur.notes)await saveStatus(itemType,itemId,select.value,notesEl.value,savedEl);
+    });
+  });
+}
+
+function buildStatusFilter(hostId,onChange,activeGetter){
+  const host=document.getElementById(hostId);
+  const options=[{key:null,label:'Any status'}].concat(STATUS_ORDER.map(k=>({key:k,label:STATUS_LABELS[k]})));
+  host.innerHTML=options.map(o=>`<button class="chip-btn${o.key===activeGetter()?' active':''}" data-status="${o.key||''}">${o.label}</button>`).join('');
+  host.querySelectorAll('.chip-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      onChange(btn.getAttribute('data-status')||null);
+      buildStatusFilter(hostId,onChange,activeGetter);
+    });
+  });
+}
+
+async function load(){
+  // Data is inlined above. The only thing still fetched is the grant-status
+  // list, which is live per-user state and degrades gracefully if unavailable.
+  await fetchStatuses();
+
+  /* Both files must load. A half-rendered Almanac showing funders with no opportunities, or
+     opportunities with no profile, is worse than an honest failure: it looks like a complete
+     shelf that happens to be empty. */
+  const [pRes,aRes]=await Promise.all([
+    fetch(PROFILE_URL,{cache:'no-store'}),
+    fetch(ALMANAC_URL,{cache:'no-store'}),
+  ]);
+  if(!pRes.ok)throw new Error('Could not load '+PROFILE_URL);
+  if(!aRes.ok)throw new Error('Could not load '+ALMANAC_URL);
+  PROFILE=await pRes.json();
+  const A=await aRes.json();
+  FUNDERS_DATA={method:A.method,tiers:A.tiers,ranked_funders:A.ranked_funders};
+  GRANTS={method:A.method,run_date:A.generated_date,
+          ready_now:A.ready_now,watch_list_not_yet_open:A.watch_list_not_yet_open};
+
+  state.profile=PROFILE;
+  state.funders=FUNDERS_DATA.ranked_funders;
+  state.matchesMethod=FUNDERS_DATA.method;
+  state.grants=GRANTS;
+
+  document.getElementById('alm-m-funders').textContent=state.funders.length;
+  document.getElementById('alm-m-grants').textContent=compileMatches().length;
+
+  applyDisplay();
+  renderProfile();
+  /* alm-method-scoring / alm-method-cycle / scr-method-status writes removed 2026-08-07
+     with the Method sections themselves. Leaving them would throw on a null element and kill
+     every line after, which is exactly how this page rendered blank toggles on 2026-08-03. */
+  buildStatusFilter('compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
+  setAdminUI();
+  applyCompiled();
+  renderWatchList();
+  wireAccordion(document.getElementById('alm-profile'),'.card');if(window.foldSubheads)window.foldSubheads();
+  wireAccordion(document.getElementById('product-almanac'),'.section-card');if(window.foldSubheads)window.foldSubheads();
+}
+
+/* ---- Org-specific display strings (title, hero, footer) ---- */
+/* Bold the tool name, per the "Almanac for [Org]" brand-bar convention.
+   Built from text nodes rather than innerHTML: brand_bar_text is org-supplied. */
+function setBrand(text){
+  const el=document.getElementById('alm-brand-text');
+  if(!el)return;
+  el.textContent='';
+  const m=text.match(/^(Almanac|Scribe)(\s+for\s+.+)$/);
+  if(m){
+    const b=document.createElement('b');
+    b.textContent=m[1];
+    el.appendChild(b);
+    el.appendChild(document.createTextNode(m[2]));
+  }else{
+    el.textContent=text;
+  }
+}
+function applyDisplay(){
+  const d=state.profile.display||{};
+  if(d.page_title){document.title=d.page_title;}
+  if(d.meta_description){
+    const m=document.querySelector('meta[name="description"]');
+    if(m)m.setAttribute('content',d.meta_description);
+  }
+  if(d.brand_bar_text)setBrand(d.brand_bar_text);
+  if(d.hero_heading)document.getElementById('alm-hero-heading').textContent=d.hero_heading;
+  if(d.hero_subtext)document.getElementById('alm-hero-subtext').textContent=d.hero_subtext;
+  if(d.footer_credit)document.getElementById('alm-footer-credit').textContent=d.footer_credit;
+  document.getElementById('alm-footer-links').innerHTML=
+    `<a href="data/${ORG_SLUG}_profile.json">profile</a> &middot; `+
+    `<a href="data/${ORG_SLUG}_funders.json">funders</a> &middot; `+
+    `<a href="data/${ORG_SLUG}_grants.json">grants</a>`;
+}
+
+/* ---- Profile ---- */
+function renderProfile(){
+  const p=state.profile;
+  document.getElementById('alm-p-mission').textContent=p.mission;
+  document.getElementById('alm-p-focus').innerHTML=p.focus_areas.map(f=>`<span class="tag">${esc(f)}</span>`).join('');
+  document.getElementById('alm-p-total').textContent=money(p.confirmed_prior_funders_total);
+  document.getElementById('alm-p-geo').innerHTML=`<strong>${esc(p.geography.primary)}</strong> (primary)<br>${p.geography.secondary.map(esc).join(', ')} (secondary)`;
+
+  document.getElementById('alm-p-funders-table').innerHTML=p.confirmed_prior_funders.map(f=>`
+    <tr>
+      <td><strong>${esc(f.funder)}</strong></td>
+      <td>${esc(f.purpose)}</td>
+      <td class="amt">${money(f.amount)}</td>
+    </tr>
+  `).join('');
+}
+
+/* GATING RULE (owner order, 2026-07-23): an organization only appears once a ranked match,
+   an IRS funder profile, and a currently actionable grant opportunity all exist for it --
+   joined here by EIN, not just displayed side by side in separate lists. compileMatches()
+   computes the join once; applyCompiled() searches/filters/renders the result. This first
+   cycle compiled 0 of Texas Empowerment Academy's 55 researched candidates; the rest either have no current
+   opening (see Watch List) or were checked and ruled out (see the method note above). */
+function compileMatches(){
+  return state.funders.map(f=>{
+    const profile=FUNDER_PROFILES[f.funder_ein];
+    const grant=state.grants.ready_now.find(g=>g.ein===f.funder_ein);
+    return Object.assign({},f,{profile:profile,grant:grant});
+  }).filter(f=>f.profile&&f.grant);
+}
+
+function applyCompiled(){
+  const q=state.matchQ.toLowerCase().trim();
+  let list=compileMatches().filter(f=>{
+    if(state.matchStatusFilter&&statusOf('funder',f.id).status!==state.matchStatusFilter)return false;
+    return true;
+  });
+  document.getElementById('alm-compiled-count').textContent=list.length;
+  document.getElementById('alm-m-grants').textContent=compileMatches().length;
+  document.getElementById('alm-grants-limitation').textContent=state.grants.known_limitation;
+
+  const host=document.getElementById('alm-compiled-results');
+  if(!list.length){
+    host.innerHTML='<div class="empty"><b>No matches</b> for this status filter.</div>';
+    return;
+  }
+  host.innerHTML=list.map(f=>{
+    const p=f.profile,g=f.grant;
+    const dlClass=deadlineClass(g.deadline);
+    const whyRowsHTML=[
+      ['Geography',esc(f.geography)],
+      ['Rationale',highlight(f.rationale,q)],
+    ].map(([label,value])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
+    const grantRows=[
+      ['Open Opportunity',`<a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a>`,true],
+      ['Focus Area',highlight(g.focus_area,q)],
+      ['Eligibility',highlight(g.eligibility,q)],
+      ['Amount',esc(g.amount)],
+      ['Deadline',`<span class="${dlClass}">${esc(g.deadline)}</span>`],
+      ['Notes',sentenceBreak(g.notes,q)],
+    ].map(([label,value,featured])=>`<div class="qa-row${featured?' qa-row-featured':''}"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
+    return `
+    <div class="match-card" id="${esc('funder-'+f.funder_ein)}">
+      <div class="mc-head">
+        <span class="fname">${highlight(f.funder_name,q)}</span>
+        ${f.is_confirmed_prior_funder?'<span class="badge badge-confirmed">Confirmed funder</span>':'<span class="badge badge-new">New candidate</span>'}
+        <button class="mc-toggle" type="button" aria-controls="${esc('funder-'+f.funder_ein)}-body"></button>
+      </div>
+      <div class="mc-body" id="${esc('funder-'+f.funder_ein)}-body">
+        <div class="card">
+          <h3>Why This Funder</h3>
+          <div class="qa-grid">${whyRowsHTML}</div>
+        </div>
+
+        <div class="card">
+          <h3>Funder Snapshot</h3>
+          <div class="impact-grid">
+            <div class="stat-tile"><div class="num">${money(p.assets)}</div><div class="lbl">Total assets (EOY)</div></div>
+            <div class="stat-tile"><div class="num">${money(p.revenue)}</div><div class="lbl">Total revenue</div></div>
+            <div class="stat-tile"><div class="num">${money(p.liabilities)}</div><div class="lbl">Total liabilities (EOY)</div></div>
+            <div class="stat-tile"><div class="num">${fmtQualDistrib(p.qualifying_distributions,p.foundation_code)}</div><div class="lbl">Qualifying distributions (grants paid, 990-PF only)</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Open Opportunity</h3>
+          <div class="qa-grid">${grantRows}</div>
+        </div>
+
+        ${statusRowHTML('funder',f.id)}
+      </div>
+    </div>
+  `;}).join('');
+  wireStatusControls(host);
+  wireAccordion(host);if(window.foldSubheads)window.foldSubheads();
+}
+
+/* ---- Deadline urgency ---- */
+function deadlineClass(s){
+  const m=(s||'').match(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/);
+  if(!m)return'';
+  const d=new Date(`${m[1]} ${m[2]}, ${m[3]}`);
+  if(isNaN(d))return'';
+  const days=(d-Date.now())/86400000;
+  if(days<0)return'';
+  if(days<=21)return'deadline-val urgent';
+  if(days<=60)return'deadline-val soon';
+  return'';
+}
+
+function renderWatchList(){
+  document.getElementById('alm-watch-results').innerHTML=state.grants.watch_list_not_yet_open.map(w=>`
+    <div class="watch-item">
+      <div class="org"><a href="${esc(w.url)}" target="_blank" rel="noopener">${esc(w.organization)}</a><br><span style="font-family:var(--mono);font-size:.78rem;color:var(--wash);font-weight:400">${esc(w.grant_name)}</span></div>
+      <div class="why">${esc(w.why_watch)}</div>
+    </div>
+  `).join('');
+}
+
+document.getElementById('alm-admin-toggle').addEventListener('click',()=>{
+  if(state.adminKey){
+    if(confirm('Log out of admin mode on this device?')){
+      state.adminKey="";localStorage.removeItem('grantStatusKey');setAdminUI();applyCompiled();
+    }
+  }else{
+    promptForKey();
+    applyCompiled();
+  }
+});
+
+load().catch(err=>{
+  document.getElementById('alm-compiled-results').innerHTML=`<div class="empty"><b>Couldn't load data</b> for org "${esc(ORG_SLUG)}" — the page's own inlined data failed to render.</div>`;
+  console.error(err);
+});
+</script>
+<script>
+/* Two jobs:
+   (1) A hash-anchor link scrolls its target into view.
+   (2) Mirror each list section's own counter into its heading chip, so the count is never
+       out of sync with what the section actually shows. */
+(function(){
+  function openTo(){
+    var h = window.location.hash;
+    if (!h || h.length < 2) return;
+    var t;
+    try { t = document.querySelector(h); } catch (e) { return; }
+    if (!t) return;
+    window.setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+  }
+  function counts(){
+    var done = true;
+    var chips = document.querySelectorAll('.fold-count');
+    for (var i = 0; i < chips.length; i++) {
+      var el = chips[i], n = null;
+      var from = el.getAttribute('data-count-from');
+      var sel = el.getAttribute('data-count-sel');
+      if (from) {
+        var src = document.getElementById(from);
+        if (src) n = parseInt(src.textContent, 10);
+      } else if (sel) {
+        n = document.querySelectorAll(sel).length;
+      }
+      if (n === null || isNaN(n) || n === 0) { done = false; continue; }
+      var txt = n + ' ' + el.getAttribute('data-count-label');
+      if (el.textContent !== txt) el.textContent = txt;   /* guard: writing unconditionally would
+                                                             retrigger the observer forever */
+    }
+    return done;
+  }
+  window.addEventListener('hashchange', openTo);
+  window.addEventListener('load', function(){ openTo(); counts(); });
+  document.addEventListener('DOMContentLoaded', function(){
+    openTo();
+    if (counts()) return;
+    var mo = new MutationObserver(function(){ if (counts()) mo.disconnect(); });
+    mo.observe(document.body, {childList:true, subtree:true, characterData:true});
+  });
+})();
+</script>
+<script>
+/* PRODUCT-LEVEL ACCORDIONS. Every product starts CLOSED on load, per the owner ruling of
+   2026-08-03 that made closed-on-open the convention for enterprise pages. This runs after both
+   product scripts so it wins on initial state regardless of their load order, and it is the only
+   thing that touches the product level, so nothing here can be double-wired. */
+(function(){
+  document.querySelectorAll('.product-accordion').forEach(function(sec){
+    var btn=sec.querySelector(':scope > .fold > .section-head-row > .mc-toggle');
+    if(!btn)return;
+    var setOpen=function(open){
+      sec.classList.toggle('mc-closed',!open);
+      btn.setAttribute('aria-expanded',String(open));
+      btn.textContent=open?'Hide details':'Show details';
+    };
+    setOpen(false);
+    btn.addEventListener('click',function(){setOpen(sec.classList.contains('mc-closed'));});
+  });
+
+  /* SUB-HEADING FOLDS. Every h3 inside a section body becomes its own collapsible block, closed
+     on load, and all of them are PEERS. See merge_enterprise_page.py's own comment for why this
+     runs in the DOM rather than as markup surgery: sub-headings are not always direct siblings. */
+  function foldSubheads(root){
+    var blocks=[];
+    (root||document).querySelectorAll('.fold-body h3').forEach(function(h){
+      if(h.closest('.subfold-head'))return;
+      var b=h.parentNode;
+      if(b && blocks.indexOf(b)<0)blocks.push(b);
+    });
+    blocks.forEach(function(block){
+      if(block.querySelector(':scope > .mc-toggle'))return;
+      if(/(^|\s)[\w-]*-head(\s|$)/.test(block.className||''))return;
+      var inherited='',w;
+      while((w=Array.prototype.filter.call(block.children,function(c){
+        return c.tagName!=='H3' && c.querySelector('h3');}) [0])){
+        if(w.className)inherited=w.className;
+        while(w.firstChild)block.insertBefore(w.firstChild,w);
+        w.parentNode.removeChild(w);
+      }
+      Array.prototype.filter.call(block.children,function(c){return c.tagName==='H3';})
+        .forEach(function(h){
+          if(h.closest('.subfold-head'))return;
+          var sibs=[],n=h.nextSibling;
+          while(n && !(n.nodeType===1 && n.tagName==='H3')){sibs.push(n);n=n.nextSibling;}
+          var wrap=document.createElement('div');wrap.className='subfold';
+          var head=document.createElement('div');head.className='subfold-head';
+          var body=document.createElement('div');body.className=(inherited?inherited+' ':'')+'fold-body';
+          var btn=document.createElement('button');btn.className='mc-toggle';btn.type='button';
+          h.parentNode.insertBefore(wrap,h);
+          head.appendChild(h);head.appendChild(btn);
+          sibs.forEach(function(s){body.appendChild(s);});
+          wrap.appendChild(head);wrap.appendChild(body);
+          var setOpen=function(open){
+            wrap.classList.toggle('mc-closed',!open);
+            btn.setAttribute('aria-expanded',String(open));
+            btn.textContent=open?'Hide':'Show';
+          };
+          setOpen(false);
+          btn.addEventListener('click',function(){setOpen(wrap.classList.contains('mc-closed'));});
+        });
+    });
+  }
+  foldSubheads(document);
+  window.foldSubheads=foldSubheads;
+})();
+</script>
+</body>
+</html>
