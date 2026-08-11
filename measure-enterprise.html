@@ -1132,7 +1132,7 @@ const CONF_CANDIDATES=[
  {tier:"dropped",funder:"National Academies -- Gulf Research Program",ein:"530196932",deadline:"No open organizational call",url:"https://www.nationalacademies.org/programs?status%5B0%5D=accepting",angle:"",note:"Only an individual fellowship and a university-nomination-only prize are currently live sitewide. Even when the Gulf Research Program's Community track is open, its climate/offshore-energy focus has no honest link to TEA's K-12 education mission."},
  {tier:"dropped",funder:"AccessLex Institute",ein:"",deadline:"",url:"",angle:"",note:"Every one of its four grant programs targets the bar-exam/law-school pipeline specifically, with no connection to a Pre-K-12 school or to Measure's actual focus areas beyond superficial “education” label-matching. Confirmed excluded; direct verification was blocked by the funder's own site (403), assessed via search snippets instead."},
 ];
-const CONF_TIER_LABEL={pursue:"Pursue",consider:"Consider",dropped:"Checked & Ruled Out"};
+const CONF_TIER_LABEL={pursue:"Pursue",consider:"Consider",dropped:"Checked &amp; Ruled Out"};
 const CONF_TIER_BADGE={pursue:"badge-confirmed",consider:"badge-new",dropped:""};
 function confEsc(s){return(s||"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function renderConfluence(){
