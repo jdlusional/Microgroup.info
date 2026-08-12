@@ -1,7 +1,7 @@
 {
  "product": "almanac",
  "client_slug": "measure-austin",
- "generated_date": "2026-08-11",
+ "generated_date": "2026-08-12",
  "method": "Generated from the Almanac shelf, which is itself built from the IRS 990 corpus and a hand-curated opportunity register. Eligibility is decided by the shelf and read here, never recomputed. Prior funders joined on recipient EIN are exact; 990-PF Part XV name matches are probabilistic and labelled as such.",
  "tiers": {
   "tier_1_strong": "Confirmed prior funder, joined on recipient EIN in Schedule I.",
