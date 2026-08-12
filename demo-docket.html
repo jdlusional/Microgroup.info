@@ -159,7 +159,7 @@ body{text-align:center}
         </tr>
         <tr>
           <td>Ruled out, shown anyway</td>
-          <td>Two candidates researched for this page turned out, on direct verification, to no longer be genuinely open: one had quietly paused to new applicants since an earlier check, one had closed outright with no reopening date. Both are shown below rather than dropped silently, because a request that only lives on a page is lost the moment that page changes. That is the same discipline applied to every research deliverable here.</td>
+          <td>Two candidates researched for this page turned out, on direct verification, to no longer be genuinely open: one had quietly paused to new applicants since an earlier check, one had closed outright with no reopening date. A further ten candidates checked while filling out the ready-now list turned out to be closed, not-yet-open, or a genuine mismatch (a K-12-only garden grant, an employee-only scholarship fund, a sunset foundation no longer accepting any applications). None of these are shown as cards below, since this page is about this fictional organization's fit, but every one of them is captured in the underlying opportunity register regardless. The two shown below are shown because they were the closest fits before they changed status, not dropped silently, because a request that only lives on a page is lost the moment that page changes. That is the same discipline applied to every research deliverable here.</td>
         </tr>
         <tr>
           <td>Next steps</td>
@@ -235,7 +235,7 @@ body{text-align:center}
     </div>
     <div class="fold-body" id="ready-fold-body">
     <div class="section-lede">
-      <p>4 requests checked and currently open, 2 checked and ruled out, shown transparently below rather than dropped silently.</p>
+      <p>5 requests checked and currently open, 2 checked and ruled out, shown transparently below rather than dropped silently.</p>
     </div>
       <div class="res-count"><b id="ready-count">0</b> requests shown</div>
       <div id="ready-results"></div>
@@ -272,7 +272,7 @@ body{text-align:center}
         </tr>
         <tr>
           <td>How candidates are found and checked</td>
-          <td>Candidates are found by searching for funders whose own published guidelines or program pages name community development, food security, youth and family stability, or immigrant/refugee support in a geography that plausibly includes this applicant, then checking each one directly against the funder's own current page rather than an aggregator (Instrumentl, Candid, GrantForward and similar restate and go stale; several determinations on this page contradicted what an aggregator would have shown).<br><br>Six candidates were checked for this page: four are genuinely open today and shown above, two were ruled out on direct verification (one paused to new applicants since an earlier check, one closed outright).<br><br>Every determination, including the two ruled-out ones, is captured permanently in the underlying opportunity register regardless of whether it ends up shown on any specific client's page, so the next search does not have to pay to find the same answer twice.</td>
+          <td>Candidates are found by searching for funders whose own published guidelines or program pages name community development, food security, youth and family stability, or immigrant/refugee support in a geography that plausibly includes this applicant, then checking each one directly against the funder's own current page rather than an aggregator (Instrumentl, Candid, GrantForward and similar restate and go stale; several determinations on this page contradicted what an aggregator would have shown).<br><br>Seventeen candidates were checked to build this page: five are genuinely open today and shown above, two were ruled out on direct verification after previously being open (one paused to new applicants since an earlier check, one closed outright), and ten more turned out closed, not-yet-open, or a genuine mismatch on first contact. Most annual-cycle funders checked in this pass had already closed for the year by the August check date; the five shown above are open specifically because they run on a rolling basis or fall inside a live seasonal window, not an annual one.<br><br>Every determination, including every closed and ruled-out one, is captured permanently in the underlying opportunity register regardless of whether it ends up shown on any specific client's page, so the next search does not have to pay to find the same answer twice.</td>
         </tr>
       </tbody>
     </table></div>
@@ -397,18 +397,33 @@ const REQUESTS=[
     deadline:"August 14, 2026, 8:00 a.m. CT through August 28, 2026, 11:59 p.m. CT.",
     amount:"Up to $25,000.",
     eligibility:"Community-based efforts serving immigrant and refugee communities in Austin, Travis County, and the City's Extraterritorial Jurisdiction. Organizations do not need to be large or professionally staffed to apply; the program intentionally supports community-rooted work.",
-    notes:"A relaunch of the FY26 cycle after the initial round was pulled for procedural issues (an unauthorized extension of the original May 8, 2026 deadline); open to both new and previous applicants. A municipal program, not a 501(c)(3) &mdash; no IRS profile applies. Riverside Neighbors Collaborative's New Neighbor Welcome program is a direct, named fit.",
+    notes:"A relaunch of the FY26 cycle after the initial round was pulled for procedural issues (an unauthorized extension of the original May 8, 2026 deadline); open to both new and previous applicants. A municipal program, not a 501(c)(3): no IRS profile applies. Riverside Neighbors Collaborative's New Neighbor Welcome program is a direct, named fit.",
+  },
+  {
+    id:"meadows-foundation-loi",
+    funder_name:"Meadows Foundation Incorporated",
+    ein:"756015322",
+    type:"LOI",
+    title:"Letter of Inquiry / online grant application, rolling",
+    url:"https://www.mfi.org/how-to-apply/",
+    deadline:"Rolling. Board of Directors meets 5 times a year (Jan, Apr, Jun, Sep, Nov); the funder recommends submitting 4-5 months before funds are needed.",
+    amount:"Not published as a fixed range on the funder's own page.",
+    eligibility:"501(c)(3) public charities or public entities serving the people of Texas (the organization itself need not be headquartered in Texas). One proposal per organization per 12-month period. Program areas include Human Services, alongside Education, Environment, Arts & Culture, Civic & Public Affairs, and Health.",
+    notes:"Human Services is described on the funder's own page as support for programs serving the most vulnerable Texans, with a stated emphasis on homelessness reduction in the Dallas area. Riverside Neighbors Collaborative's statewide eligibility clears cleanly; its Emergency Assistance Fund and Senior Wellness Checks programs are the closest fit to the funder's stated focus, though the funder's Dallas emphasis means this is a genuine but not a guaranteed match.",
   },
 ];
 
-/* PER-FUNDER IRS PROFILE for the three 501(c)(3)s above. Pulled live from ProPublica Nonprofit
+/* PER-FUNDER IRS PROFILE for the four 501(c)(3)s above. Pulled live from ProPublica Nonprofit
    Explorer's JSON API, fetched 2026-08-11. The City of Austin is a municipal program, not a
-   501(c)(3), so it carries no IRS profile by design. foundation_code 15 for all three means
-   public charity, not a 990-PF filer -- qualifying_distributions is correctly not applicable. */
+   501(c)(3), so it carries no IRS profile by design. foundation_code 15 (the first three) means
+   public charity, not a 990-PF filer -- qualifying_distributions is correctly not applicable.
+   Meadows Foundation carries foundation_code 4 (private operating foundation, a 990-PF filer),
+   so its qualifying_distributions figure is a real, published number. */
 const FUNDER_PROFILES={
   "421536915":{name:"Emeril Lagasse Foundation",city:"New Orleans",state:"LA",subsection_code:3,foundation_code:15,ntee_code:"T30",tax_year:2023,revenue:2987060,assets:5102438,liabilities:1263229,qualifying_distributions:null},
   "815086187":{name:"Blue Meridian Partners Inc",city:"New York",state:"NY",subsection_code:3,foundation_code:15,ntee_code:"P12",tax_year:2023,revenue:353322309,assets:2261435517,liabilities:6734147,qualifying_distributions:null},
   "954453134":{name:"Islamic Relief USA",city:"Alexandria",state:"VA",subsection_code:3,foundation_code:15,ntee_code:"Q123",tax_year:2023,revenue:165235589,assets:228581851,liabilities:5280117,qualifying_distributions:null},
+  "756015322":{name:"Meadows Foundation Incorporated",city:"Dallas",state:"TX",subsection_code:3,foundation_code:4,ntee_code:"T20",tax_year:2023,revenue:3668203,assets:694306466,liabilities:31204436,qualifying_distributions:32788117},
 };
 
 /* TWO CANDIDATES CHECKED AND RULED OUT, shown transparently rather than dropped. Both were
