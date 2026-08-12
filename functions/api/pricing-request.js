@@ -21,7 +21,7 @@
 //   PRICING_REQUEST_TO    (optional) recipient inbox; default below
 //   PRICING_REQUEST_FROM  (optional) verified sender; default uses Resend onboarding
 
-const DEFAULT_TO = "jdavis92105@gmail.com";
+const DEFAULT_TO = "jonathanlindavis@gmail.com";
 const DEFAULT_FROM = "MICRO Group Pricing <onboarding@resend.dev>";
 
 function json(obj, status = 200) {

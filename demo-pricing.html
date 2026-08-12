@@ -12,7 +12,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pricing — Almanac, Scribe &amp; Infrastructure</title>
-<meta name="description" content="Real subscription pricing for Almanac and Scribe, an optional infrastructure and updates plan, and a request-pricing form. Concordance and Herald are in development and not yet for sale." />
+<meta name="description" content="Real subscription pricing for Almanac, the required base product, plus Scribe and every other add-on product, purchasable additional research depth and application capacity, an optional infrastructure and updates plan, and a request-pricing form. Concordance and Herald are in development and not yet for sale." />
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
 <meta name="referrer" content="no-referrer" />
 <link rel="icon" type="image/svg+xml" href="Assets/micro-mark.svg">
@@ -41,6 +41,16 @@ a{color:var(--ink)}
 .price-card .pc-cadence{font-family:var(--mono);font-size:.82rem;color:var(--wash);margin-bottom:.8rem}
 .price-card p.pc-desc{font-size:.95rem;color:var(--ink);margin:0;flex:1}
 .price-card .pc-status{font-size:.78rem;letter-spacing:.02em;color:var(--urgent);font-weight:600;border:1px solid var(--urgent);padding:.3rem .6rem;display:inline-block;margin-top:1rem;align-self:center}
+.price-card .pc-requires{font-family:var(--mono);font-size:.76rem;letter-spacing:.02em;color:var(--accent);margin-top:.7rem}
+
+.addon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;margin-top:.5rem}
+.addon-card{border:1.5px solid var(--ink);border-left-width:5px;border-left-color:var(--accent);background:var(--well);padding:1.3rem 1.6rem;min-width:0;overflow-wrap:anywhere}
+.addon-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 .5rem}
+.addon-card .addon-rates{display:flex;flex-wrap:wrap;gap:1.2rem;margin:.6rem 0}
+.addon-card .addon-rate{font-family:var(--mono);font-size:.86rem;color:var(--ink)}
+.addon-card .addon-rate b{font-family:var(--serif);font-size:1.15rem;color:var(--accent)}
+.addon-card p{font-size:.95rem;line-height:1.55;margin:.6rem 0 0}
+.addon-card .addon-note{font-family:var(--mono);font-size:.8rem;color:var(--wash);border-top:1px dashed var(--rule);margin-top:.9rem;padding-top:.7rem}
 
 .infra-card{border:1.5px solid var(--ink);border-left-width:5px;background:var(--well);padding:1.3rem 1.6rem;margin-top:.5rem}
 .infra-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 .5rem}
@@ -77,8 +87,16 @@ a{color:var(--ink)}
 .referral-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem 1.3rem}
 .referral-grid .form-field{min-width:0}
 
+/* ---- Request Products accordion. Only this section folds; every other
+   section on this page keeps the standing no-tab-drops rule. ---- */
+.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.mc-toggle{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;cursor:pointer}
+.mc-toggle:hover{background:var(--well)}
+#request.mc-closed .fold-body{display:none}
+
 @media(max-width:640px){
   .price-card{padding:1rem 1.1rem}
+  .addon-card{padding:1rem 1.1rem}
   .form-field input[type="text"],.form-field input[type="email"],.form-field input[type="tel"],.form-field input[type="date"]{max-width:none}
 }
 </style>
@@ -92,8 +110,9 @@ a{color:var(--ink)}
     <span class="grow"></span>
     <nav>
       <a href="#products">Products</a>
+      <a href="#addons">Add-ons</a>
       <a href="#infrastructure">Infrastructure</a>
-      <a href="#request">Request pricing</a>
+      <a href="#request">Request products</a>
       <a href="demo-referrals">Referral program &#8594;</a>
       <a href="demo">All demos &#8594;</a>
     </nav>
@@ -103,11 +122,11 @@ a{color:var(--ink)}
 <header class="hero">
   <div class="badges">
     <span class="badge badge-real">Real pricing &middot; effective 2026-07-17</span>
-    <span class="badge badge-real">Guaranteed through July 31, 2026</span>
+    <span class="badge badge-real">Guaranteed through <span class="guarantee-date">August 31, 2026</span></span>
   </div>
   <h1>Pricing</h1>
-  <p>Standing annual rates for Almanac and Scribe, and an optional plan that keeps every product an organization has purchased on current infrastructure. This is the same rate card every organization sees; nothing here is negotiated in the abstract before a request comes in.</p>
-  <p class="note">Current prices are guaranteed through July 31, 2026: any request submitted and confirmed by that date locks in the rates shown here, regardless of any later change to this page.</p>
+  <p>Standing annual rates for Almanac, the required base product; Scribe and every other product, each an add-on that assumes an active Almanac subscription; purchasable additional research depth and application capacity; and an optional plan that keeps every product an organization has purchased on current infrastructure. This is the same rate card every organization sees; nothing here is negotiated in the abstract before a request comes in.</p>
+  <p class="note">Current prices are guaranteed through <span class="guarantee-date">August 31, 2026</span>: any request submitted and confirmed by that date locks in the rates shown here, regardless of any later change to this page. The guarantee date is mechanically extended to the end of the current calendar month each time a work session starts; it is never extended silently mid-month.</p>
   <p class="note">Unlike the product demo pages, this page describes Jonathan Lin Davis's actual current pricing, not a simulation against a fictional organization. Submitting the form below does not create a contract; it opens a conversation, and final terms are confirmed in writing.</p>
 </header>
 
@@ -120,50 +139,91 @@ a{color:var(--ink)}
     <div class="fold-body">
       <div class="section-lede">
         <p>Each product is priced and purchased on its own. There is no bundle discount: buying more than one product is the sum of what's listed below.</p>
+        <p><b>Almanac is the required base product.</b> Scribe and every other product on this page, in development or already for sale, is an add-on that assumes an active Almanac subscription. None of them are sold on their own.</p>
       </div>
       <div class="price-grid">
-        <div class="price-card">
-          <div class="pc-tag">Funder &amp; grant match &middot; Standard</div>
+        <div class="price-card" data-product="Almanac Standard" data-available="true">
+          <div class="pc-tag">Funder &amp; grant match &middot; Standard &middot; Base product</div>
           <h3>Almanac Standard</h3>
           <div class="pc-amount">$1,500 <span class="per">/ year</span></div>
           <div class="pc-cadence">Matches refreshed quarterly (4 / year)</div>
           <p class="pc-desc">Ranked funder and open-grant matches for one organization, every match sourced to the funder's own public filing or page.</p>
         </div>
-        <div class="price-card">
-          <div class="pc-tag">Funder &amp; grant match &middot; Pro</div>
+        <div class="price-card" data-product="Almanac Pro" data-available="true">
+          <div class="pc-tag">Funder &amp; grant match &middot; Pro &middot; Base product</div>
           <h3>Almanac Pro</h3>
           <div class="pc-amount">$3,000 <span class="per">/ year</span></div>
           <div class="pc-cadence">Matches refreshed monthly (12 / year)</div>
-          <p class="pc-desc">The same matching discipline as Standard, at monthly cadence, for organizations that want a more continuously updated funder pipeline.</p>
+          <p class="pc-desc">The same matching discipline as Standard, at monthly cadence, for organizations that want a more continuously updated funder pipeline. Each new organization's shelf is built individually at onboarding, so a monthly refresh checks status changes against a shelf already vetted for this organization specifically, not a generic feed.</p>
         </div>
-        <div class="price-card">
+        <div class="price-card" data-product="Scribe Standard" data-available="true">
           <div class="pc-tag">Grant drafter &middot; Standard</div>
           <h3>Scribe Standard</h3>
           <div class="pc-amount">$1,500 <span class="per">/ year</span></div>
           <div class="pc-cadence">1 grant application drafted per quarter (4 / year)</div>
           <p class="pc-desc">A complete, submission-ready draft each quarter, fact-checked against the organization's own public record, with an explicit list of what only the applicant can supply.</p>
+          <div class="pc-requires">Requires an active Almanac subscription</div>
         </div>
-        <div class="price-card">
+        <div class="price-card" data-product="Scribe Pro" data-available="true">
           <div class="pc-tag">Grant drafter &middot; Pro</div>
           <h3>Scribe Pro</h3>
           <div class="pc-amount">$3,000 <span class="per">/ year</span></div>
           <div class="pc-cadence">1 grant application drafted per month (12 / year)</div>
           <p class="pc-desc">The same drafting discipline as Standard, at monthly cadence, for organizations running a larger or more continuous pipeline of applications.</p>
+          <div class="pc-requires">Requires an active Almanac subscription</div>
         </div>
-        <div class="price-card unavailable">
+        <div class="price-card unavailable" data-product="Concordance" data-available="false">
           <div class="pc-tag">Trustees &amp; introductions</div>
           <h3>Concordance</h3>
           <p class="pc-desc">Maps the people who govern the foundations already funding this kind of work, and who on a board could make an introduction. Does not estimate anyone's wealth.</p>
+          <div class="pc-requires">Will require an active Almanac subscription</div>
           <span class="pc-status">In development &middot; not yet for sale</span>
         </div>
-        <div class="price-card unavailable">
+        <div class="price-card unavailable" data-product="Herald" data-available="false">
           <div class="pc-tag">Grant-cycle monitor</div>
           <h3>Herald</h3>
           <p class="pc-desc">Watches the funder pages behind an Almanac watch-list and reports when a cycle opens, a deadline posts, or guidelines change.</p>
+          <div class="pc-requires">Will require an active Almanac subscription</div>
           <span class="pc-status">In development &middot; not yet for sale</span>
         </div>
       </div>
-      <div class="example-line">Example: Almanac Standard + Scribe Pro + Infrastructure &amp; Updates = <b>$1,500 + $3,000 + $1,500 = $6,000 / year</b>. This is a straight sum shown for illustration, not a discounted bundle rate.</div>
+      <div class="example-line">Example: Almanac Standard (required base) + Scribe Pro (add-on) + Infrastructure &amp; Updates = <b>$1,500 + $3,000 + $1,500 = $6,000 / year</b>. This is a straight sum shown for illustration, not a discounted bundle rate.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="addons">
+  <div class="fold">
+    <div class="section-head">
+      <span class="kicker">Purchasable increments</span>
+      <h2>Additional capacity</h2>
+    </div>
+    <div class="fold-body">
+      <div class="section-lede">
+        <p>Both require an active subscription to the product they extend. Neither promises a fixed count: what each buys is described honestly below, because the underlying research and drafting effort does not scale on a fixed schedule.</p>
+      </div>
+      <div class="addon-grid">
+        <div class="addon-card" data-product="Additional Research Depth" data-available="true">
+          <div class="pc-tag">Almanac add-on</div>
+          <h3>Additional Research Depth</h3>
+          <div class="addon-rates">
+            <span class="addon-rate" data-cadence="Quarterly">Quarterly: <b>+$2,000</b> / year</span>
+            <span class="addon-rate" data-cadence="Monthly">Monthly: <b>+$6,000</b> / year</span>
+          </div>
+          <p>One additional dedicated research pass run at each refresh, roughly doubling the candidate funders checked against the organization's profile: broader geography and NTEE net, not the same shelf re-rendered. The result count is disclosed honestly each cycle, not guaranteed; some refreshes may find nothing further worth adding.</p>
+          <div class="addon-note">Capped at one Depth Pass per organization. Requestable directly; scheduled only after founder review, since delivery here scales with a person's research time, not with the price charged for it. Beyond one Depth Pass, this becomes a custom-scoped engagement, not a further fixed-price tier.</div>
+        </div>
+        <div class="addon-card" data-product="Additional Application" data-available="true">
+          <div class="pc-tag">Scribe add-on</div>
+          <h3>Additional Application</h3>
+          <div class="addon-rates">
+            <span class="addon-rate" data-cadence="Quarterly">Quarterly: <b>+$2,000</b> / year</span>
+            <span class="addon-rate" data-cadence="Monthly">Monthly: <b>+$6,000</b> / year</span>
+          </div>
+          <p>One extra completed, submission-ready draft on top of the base subscription's included cadence, at $500 per application, the same per-draft rate the base tiers are built on. Purchasable as a standing quarterly increment (one extra draft every quarter) or a standing monthly increment (one extra draft every month), and stackable.</p>
+          <div class="addon-note">Capped at 5 additional applications per month, combined across however the increments were purchased. If a billing period has no funder with a genuine, enterable open call to draft toward, that period's increment credits forward rather than forcing a draft against a poor match.</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -178,7 +238,7 @@ a{color:var(--ink)}
       <div class="section-lede">
         <p>One flat plan that covers every product an organization has purchased, not priced per product.</p>
       </div>
-      <div class="infra-card">
+      <div class="infra-card" data-product="Infrastructure & Updates" data-available="true">
         <h3><span class="pc-amount">$1,500</span> / year, flat</h3>
         <p>Covers regular updates and improvements to the infrastructure behind every product the organization has purchased, whether that's one product or all of them. It is optional, recommended, and billed once per organization rather than once per product.</p>
       </div>
@@ -188,13 +248,16 @@ a{color:var(--ink)}
 
 <div class="section" id="request">
   <div class="fold">
-    <div class="section-head">
-      <span class="kicker">Start here</span>
-      <h2>Request pricing</h2>
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="request-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Start here</span>
+        <h2>Request products</h2>
+      </div>
     </div>
-    <div class="fold-body">
+    <div class="fold-body" id="request-fold-body">
       <div class="section-lede">
-        <p>Tell us who you are and which products you're interested in. This opens a conversation; it is not a contract or a payment.</p>
+        <p>Pricing is already shown above. Tell us who you are and which products you're interested in, and this opens a conversation; it is not a contract or a payment.</p>
       </div>
 
       <form id="pricing-form" novalidate>
@@ -215,16 +278,8 @@ a{color:var(--ink)}
           <input type="tel" id="p-phone" name="phone">
         </div>
         <div class="form-field">
-          <label>Interested in</label>
-          <div class="checks">
-            <label><input type="checkbox" name="products" value="Almanac Standard"> Almanac Standard</label>
-            <label><input type="checkbox" name="products" value="Almanac Pro"> Almanac Pro</label>
-            <label><input type="checkbox" name="products" value="Scribe Standard"> Scribe Standard</label>
-            <label><input type="checkbox" name="products" value="Scribe Pro"> Scribe Pro</label>
-            <label><input type="checkbox" name="products" value="Infrastructure & Updates"> Infrastructure &amp; Updates</label>
-            <label><input type="checkbox" name="products" value="Concordance (interest only)"> Concordance (interest only)</label>
-            <label><input type="checkbox" name="products" value="Herald (interest only)"> Herald (interest only)</label>
-          </div>
+          <label>Interested in <span style="text-transform:none;font-weight:400">(generated from the currently available products above; Almanac is required for every add-on)</span></label>
+          <div class="checks" id="product-checks"></div>
         </div>
         <div class="form-field">
           <label for="p-message">Anything else we should know (optional)</label>
@@ -280,11 +335,57 @@ a{color:var(--ink)}
 </section>
 
 <footer><div class="wrap">
-  <p>Pricing by Jonathan Lin Davis &middot; effective 2026-07-17, guaranteed through July 31, 2026. Rates apply until revised here.</p>
+  <p>Pricing by Jonathan Lin Davis &middot; effective 2026-07-17, guaranteed through <span class="guarantee-date">August 31, 2026</span>. Rates apply until revised here.</p>
   <p><a href="demo-referrals">Refer an organization, earn 5% &#8594;</a> &middot; <a href="demo">All demos &#8594;</a></p>
   <p class="footer-improvements-wrap"><a class="footer-improvements" href="improvementlog.html">Improvement log</a></p>
   <p class="footer-custom-note"><a href="/#contact">Need something custom? Individualized builds outside this catalog are available on request &#8594;</a></p>
 </div></footer>
+
+<script>
+/* ---- Mechanized product checklist: generated from the pricing cards above, not
+   hand-duplicated. A card only appears here if data-available="true"; a card marked
+   unavailable (Concordance, Herald, until they're for sale) is skipped automatically.
+   Re-run nothing to keep this in sync -- it reads the DOM at load time, every time. ---- */
+(function(){
+  const host=document.getElementById('product-checks');
+  if(!host)return;
+  const options=[];
+
+  document.querySelectorAll('.price-grid .price-card[data-available="true"]').forEach(function(card){
+    options.push(card.getAttribute('data-product'));
+  });
+  document.querySelectorAll('.addon-grid .addon-card[data-available="true"]').forEach(function(card){
+    const base=card.getAttribute('data-product');
+    card.querySelectorAll('.addon-rate[data-cadence]').forEach(function(rate){
+      options.push(base+' — '+rate.getAttribute('data-cadence'));
+    });
+  });
+  document.querySelectorAll('.infra-card[data-available="true"]').forEach(function(card){
+    options.push(card.getAttribute('data-product'));
+  });
+
+  host.innerHTML=options.map(function(name){
+    const esc=name.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    return '<label><input type="checkbox" name="products" value="'+esc+'"> '+esc+'</label>';
+  }).join('');
+})();
+
+/* ---- Request Products accordion. Starts closed; only this section folds. ---- */
+(function(){
+  const section=document.getElementById('request');
+  const btn=section?section.querySelector('.mc-toggle'):null;
+  if(!section||!btn)return;
+  const setOpen=function(open){
+    section.classList.toggle('mc-closed',!open);
+    btn.setAttribute('aria-expanded',String(open));
+    btn.textContent=open?'Hide form':'Show form';
+  };
+  setOpen(false);
+  btn.addEventListener('click',function(){
+    setOpen(section.classList.contains('mc-closed'));
+  });
+})();
+</script>
 
 <script>
 (function(){
