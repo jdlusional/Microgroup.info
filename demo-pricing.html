@@ -34,9 +34,18 @@ a{color:var(--ink)}
 .method-box p{max-width:70ch;margin-left:auto;margin-right:auto}
 
 /* ---- Boxes: text inside is middle-aligned vertically as well as
-   horizontally, not just top-aligned within whatever height the box has. ---- */
-.example-line,.product-block-guarantee,.product-block-requires,.product-block-note,.infra-card{
-  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+   horizontally, not just top-aligned within whatever height the box has.
+   .infra-card only: its direct children (h3, p, p) are real block elements,
+   safe to arrange with flex. The other four are single runs of text with an
+   inline <b> or <a> mixed directly in, NOT separate block children --
+   flex-direction:column on a container like that wraps each text/inline run
+   as its own anonymous flex item and breaks the sentence across lines at the
+   inline tag, which is the bug this comment replaces. Plain text-align is
+   enough for these: none of them sit in a taller grid/flex row that would
+   ever give them extra height to center within, so there is nothing for
+   vertical centering to do. ---- */
+.example-line,.product-block-guarantee,.product-block-requires,.product-block-note{text-align:center}
+.infra-card{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
 
 /* ---- Pricing cards. Centered, not left-aligned, per owner order 2026-08-09
    superseding the 2026-07-24 left-align choice, applied to every card family
