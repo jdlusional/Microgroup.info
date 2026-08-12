@@ -91,7 +91,7 @@
     "brand_bar_text": "Almanac for Measure",
     "hero_heading": "Almanac",
     "hero_subtext": "Almanac is a funding-prospect tool built specifically for Measure (wemeasure.org), combining real IRS grant-history data with a live-researched database of currently-open funding opportunities.",
-    "footer_credit": "Prepared for Measure by Jonathan Lin Davis of Micro Group\nBuilt from IRS Form 990 data and live web scraping\nJuly 2026"
+    "footer_credit": "Prepared for Measure by Jonathan Lin Davis of MICRO Group, L.L.C.\nBuilt from IRS Form 990 data and live web scraping\nJuly 2026"
   },
   "public_profile_enrichment": {
     "as_of": "2026-07-10",

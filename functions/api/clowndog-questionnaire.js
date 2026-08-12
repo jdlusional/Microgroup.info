@@ -342,7 +342,7 @@ function buildHtml({ name, email, fields, fileNames, pageUrl, createdAt, driveNo
   return `<!doctype html><html><body style="margin:0;background:#f5f6f8;padding:24px">
     <div style="max-width:640px;margin:0 auto;background:#fff;border:1px solid #ccd2de;border-radius:6px;overflow:hidden">
       <div style="background:#1b3a6b;color:#fff;padding:16px 20px">
-        <div style="font:600 11px/1 monospace;letter-spacing:.12em;color:#e6c35a;text-transform:uppercase;margin-bottom:6px">MICRO Group &middot; Clown Dog Questionnaire</div>
+        <div style="font:600 11px/1 monospace;letter-spacing:.12em;color:#e6c35a;text-transform:uppercase;margin-bottom:6px">MICRO Group, L.L.C. &middot; Clown Dog Questionnaire</div>
         <div style="font:600 18px/1.2 Georgia,serif">New questionnaire response</div>
       </div>
       <div style="padding:16px 20px">

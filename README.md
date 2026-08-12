@@ -1,6 +1,6 @@
 # microgroup.info
 
-Enterprise/product site for MICRO Group, LLC — Jonathan Lin Davis's consulting business.
+Enterprise/product site for MICRO Group, L.L.C. — Jonathan Lin Davis's consulting business.
 Static HTML/CSS/JS, no build tools or bundlers, hosted on Cloudflare Pages (auto-deploys on
 push to `main`). Same conventions as the sibling jonathanlindavis.com repo (personal site):
 branch-preview workflow, working files kept outside the repo, no model names in
@@ -171,7 +171,7 @@ relevant to its own site rather than duplicating the other's detail.
     (`microgroup.info/acc*`) to `@austincc.edu` + owner. The hub's "back to
     jonathanlindavis.com" nav link and footer credit are absolute
     (`https://jonathanlindavis.com`), since ACC is Jonathan's client web work, not a
-    MICRO Group product, even though it's hosted here.
+    MICRO Group, L.L.C. product, even though it's hosted here.
 - **Public index** (`public-index.html`) — this site's own public-facing project index.
   KCT and ACC are deliberately absent from it (client web work, not part of the public
   product family) — confirmed empty of both 2026-07-23, matching jonathanlindavis.com's own

@@ -1,7 +1,7 @@
 // POST /api/contact
 // Receives a contact submission from the form on index.html or contact.html,
 // stores it in the D1 database bound as env.DB, and emails a copy
-// to the MICRO Group inbox through Resend.
+// to the MICRO Group, L.L.C. inbox through Resend.
 //
 // Field contract matches jonathanlindavis.com's own /api/contact (shared
 // site.js handler, ported 2026-07-22 for structural parity between the two
@@ -76,7 +76,7 @@ export async function onRequestPost(context) {
   // Email a copy through Resend. Failure here does not lose the record.
   try {
     if (env.RESEND_KEY && env.CONTACT_TO && env.CONTACT_FROM) {
-      const subject = `New MICRO Group inquiry from ${first_name} ${last_name}`;
+      const subject = `New MICRO Group, L.L.C. inquiry from ${first_name} ${last_name}`;
       const lines = [
         `Name: ${first_name} ${last_name}`,
         `Email: ${email}`,
