@@ -13,7 +13,7 @@
 //   SURVEY_FROM    (optional) verified sender; default uses Resend onboarding
 
 const DEFAULT_TO = "jdavis92105@gmail.com";
-const DEFAULT_FROM = "MICRO Group Organization Intake <onboarding@resend.dev>";
+const DEFAULT_FROM = "MICRO Group, L.L.C. Organization Intake <onboarding@resend.dev>";
 
 const ALLOWED_EXTENSIONS = [".pdf", ".doc", ".docx"];
 const MAX_TOTAL_BYTES = 25 * 1024 * 1024; // 25 MB, matches draft-request.js
@@ -149,7 +149,7 @@ function buildHtml({ name, title, org, email, fields, fileNames, pageUrl, create
   return `<!doctype html><html><body style="margin:0;background:#f5f6f8;padding:24px">
     <div style="max-width:640px;margin:0 auto;background:#fff;border:1px solid #ccd2de;border-radius:6px;overflow:hidden">
       <div style="background:#1b3a6b;color:#fff;padding:16px 20px">
-        <div style="font:600 11px/1 monospace;letter-spacing:.12em;color:#e6c35a;text-transform:uppercase;margin-bottom:6px">MICRO Group &middot; Organization Intake</div>
+        <div style="font:600 11px/1 monospace;letter-spacing:.12em;color:#e6c35a;text-transform:uppercase;margin-bottom:6px">MICRO Group, L.L.C. &middot; Organization Intake</div>
         <div style="font:600 18px/1.2 Georgia,serif">New survey response</div>
       </div>
       <div style="padding:16px 20px">

@@ -597,7 +597,7 @@ a{color:var(--ink)}
       if(res.ok){
         success=true;
         if(btn)btn.textContent='Request sent ✓';
-        setStatus("Request sent. MICRO Group will follow up at the email you provided.",false);
+        setStatus("Request sent. MICRO Group, L.L.C. will follow up at the email you provided.",false);
         form.reset();
       }else{
         const t=await res.json().catch(function(){return{};});
