@@ -12,7 +12,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Confluence — Joint Funding Demo</title>
-<meta name="description" content="Confluence finds funding that connects your organization's mission to a named partner organization's work, where you remain the eligible applicant. This demonstration page uses two fictional community organizations to show what Confluence produces: a small, hand-verified shortlist of real funders whose own stated priorities genuinely span both organizations' work." />
+<meta name="description" content="Confluence finds funding that connects your organization's mission to one or more named partner organizations' work, including consortiums, associations, and collaboratives, where you remain the eligible applicant. This demonstration page uses two fictional community organizations to show what Confluence produces: a small, hand-verified shortlist of real funders whose own stated priorities genuinely span every organization's work involved." />
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
 <meta name="referrer" content="no-referrer" />
 <link rel="icon" type="image/png" href="Assets/almanac-mark.png">
@@ -38,7 +38,7 @@ a{color:var(--ink)}
 .section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
 .mc-closed .fold-body{display:none}
 
-/* ---- Two-organization profile section ---- */
+/* ---- Multi-organization profile section (applicant + one or more named partners) ---- */
 .profile-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.2rem}
 @media(max-width:780px){.profile-pair{grid-template-columns:1fr}}
 .card{background:var(--well);border:1.5px solid var(--ink);padding:1.3rem 1.4rem;min-width:0;overflow-wrap:anywhere}
@@ -104,7 +104,7 @@ body{text-align:center}
     <span class="grow"></span>
     <nav>
       <a href="#how-to-read">Read This First</a>
-      <a href="#profile">The Two Organizations</a>
+      <a href="#profile">Applicant &amp; Partners</a>
       <a href="#candidates">Recommendations</a>
       <a href="#method">How This Was Built</a>
       <a href="demo-almanac.html">See Almanac &#8594;</a>
@@ -114,9 +114,9 @@ body{text-align:center}
 </div>
 
 <header class="hero">
-  <div class="eyebrow">Demonstration page &middot; both organizations shown are fictional</div>
+  <div class="eyebrow">Demonstration page &middot; every organization shown is fictional</div>
   <h1>Confluence</h1>
-  <p>Confluence finds funding that connects your organization's mission to a named partner organization's work, where you remain the eligible applicant. It is the angle Almanac's single-org matching does not surface on its own. This page runs Confluence against two made-up organizations so you can see the output before you commission your own.</p>
+  <p>Confluence finds funding that connects your organization's mission to one or more named partner organizations' work, including consortiums, associations, and collaboratives, where you remain the eligible applicant. It is the angle Almanac's single-org matching does not surface on its own. This page runs Confluence against two made-up organizations so you can see the output before you commission your own, one instance of a bridge Confluence supports for two or more organizations.</p>
 </header>
 
 <section class="section section-card" id="how-to-read">
@@ -133,20 +133,20 @@ body{text-align:center}
       <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
       <tbody>
         <tr>
-          <td>Both organizations</td>
-          <td>Sprout Circle Early Learning and Ascend Workforce Partners do not exist.<br><br>They are illustrative East Austin community organizations invented for this demo, and every figure attached to either was invented along with it.<br><br>Naming a real organization as the fictional applicant's partner would assert a relationship involving a real entity that doesn't exist, so both sides of the pair are fictional, not just one.</td>
+          <td>Every organization involved</td>
+          <td>Sprout Circle Early Learning and Ascend Workforce Partners do not exist.<br><br>They are illustrative East Austin community organizations invented for this demo, and every figure attached to either was invented along with it.<br><br>Naming a real organization as the fictional applicant's partner would assert a relationship involving a real entity that doesn't exist, so every side of the pairing is fictional, not just one. This demo illustrates the simplest case, a single named partner, but Confluence works the same way for two or more partners: a small consortium, a member association, or a larger collaborative.</td>
         </tr>
         <tr>
           <td>Who applies</td>
-          <td>Sprout Circle Early Learning is the eligible applicant on every candidate below. Ascend Workforce Partners is named as a formal service partner in the narrative, not a co-applicant on any submission. This mirrors how Confluence works for a real client: your organization applies, a named partner's mission is the bridge, not a joint application with two signatories.</td>
+          <td>Sprout Circle Early Learning is the eligible applicant on every candidate below. Ascend Workforce Partners is named as a formal service partner in the narrative, not a co-applicant on any submission. This mirrors how Confluence works for a real client, whether there is one named partner or several: your organization applies, one or more named partners' missions are the bridge, not a joint application with multiple signatories.</td>
         </tr>
         <tr>
           <td>The funders and requests</td>
-          <td>The funders are real.<br><br>Each one is an actual foundation with a live, currently open application route, and each carries a link to its own page.<br><br>Deadlines, eligibility, and program scope are quoted from the funder's own page, or marked as unconfirmed where the funder does not publish them.<br><br>What is illustrative is the match itself: the judgment that this funder's own stated mission genuinely spans both organizations' work, not a single one.</td>
+          <td>The funders are real.<br><br>Each one is an actual foundation with a live, currently open application route, and each carries a link to its own page.<br><br>Deadlines, eligibility, and program scope are quoted from the funder's own page, or marked as unconfirmed where the funder does not publish them.<br><br>What is illustrative is the match itself: the judgment that this funder's own stated mission genuinely spans every organization's work involved, not a single one.</td>
         </tr>
         <tr>
           <td>Tiers, not a flat list</td>
-          <td>Candidates are sorted Pursue, Consider, and Checked &amp; Ruled Out, the same three-tier structure used on the real, currently deployed Confluence add-on. A funder in Consider has a real but weaker or more conditional connection to both organizations than one in Pursue; a funder in Checked &amp; Ruled Out was found and verified, then excluded for a stated reason, shown rather than dropped silently.</td>
+          <td>Candidates are sorted Pursue, Consider, and Checked &amp; Ruled Out, the same three-tier structure used on the real, currently deployed Confluence add-on. A funder in Consider has a real but weaker or more conditional connection to the full set of organizations involved than one in Pursue; a funder in Checked &amp; Ruled Out was found and verified, then excluded for a stated reason, shown rather than dropped silently.</td>
         </tr>
         <tr>
           <td>Next steps</td>
@@ -163,14 +163,14 @@ body{text-align:center}
     <div class="section-head-row">
       <button class="mc-toggle" type="button" aria-controls="profile-fold-body"></button>
       <div class="section-head">
-        <span class="kicker">The Two Organizations</span>
-        <h2>Applicant &amp; Partner</h2>
-        <div class="section-head-tags"><span style="font-size:.8rem;letter-spacing:.02em;font-weight:600;color:var(--urgent);border:1px solid var(--urgent);padding:.14rem .45rem;vertical-align:middle">Both organizations fictional</span></div>
+        <span class="kicker">Applicant &amp; Partners</span>
+        <h2>Applicant &amp; Partner(s)</h2>
+        <div class="section-head-tags"><span style="font-size:.8rem;letter-spacing:.02em;font-weight:600;color:var(--urgent);border:1px solid var(--urgent);padding:.14rem .45rem;vertical-align:middle">Every organization fictional</span></div>
       </div>
     </div>
     <div class="fold-body" id="profile-fold-body">
     <div class="section-lede">
-      <p>Sprout Circle Early Learning and Ascend Workforce Partners are invented for this demo. Confluence reads a pair like this one and works out which real funders' own stated missions genuinely bridge both organizations' work. Everything about the two organizations below is made up; everything about the funders in the Recommendations section is not.</p>
+      <p>Sprout Circle Early Learning and Ascend Workforce Partners are invented for this demo. Confluence reads a group like this one, whether it is a single named partner, a small consortium, or a larger association or collaborative, and works out which real funders' own stated missions genuinely bridge every organization's work involved. Everything about the two organizations below is made up; everything about the funders in the Recommendations section is not.</p>
     </div>
       <div class="profile-pair">
         <div class="card">
@@ -238,7 +238,7 @@ body{text-align:center}
       <tbody>
         <tr>
           <td>How this differs from Almanac and Docket</td>
-          <td>Almanac ranks funders and open grants against a single organization's own profile. Docket does the same for Letters of Inquiry and Requests for Proposals. Confluence starts from a pair: it looks for the intersection between the applicant's eligibility and a named partner's mission, then checks whether a real funder's own stated priorities genuinely span both. It is a small, hand-curated shortlist rather than a ranked, recurring cycle: revisit it if either organization's work, or the partnership itself, changes.</td>
+          <td>Almanac ranks funders and open grants against a single organization's own profile. Docket does the same for Letters of Inquiry and Requests for Proposals. Confluence starts from a group of two or more: it looks for the intersection between the applicant's eligibility and one or more named partners' missions, whether that partner is a single organization, a consortium, a member association, or a larger collaborative, then checks whether a real funder's own stated priorities genuinely span every organization involved. It is a small, hand-curated shortlist rather than a ranked, recurring cycle: revisit it if any organization's work, or the partnership itself, changes.</td>
         </tr>
         <tr>
           <td>Where this comes from</td>
@@ -246,7 +246,7 @@ body{text-align:center}
         </tr>
         <tr>
           <td>What Confluence will not do</td>
-          <td>It does not stretch a funder's stated mission to manufacture a connection that isn't genuinely there; a weak or conditional fit is placed in Consider, not Pursue, and a candidate with no honest bridging angle at all is placed in Checked &amp; Ruled Out rather than forced into either live tier.<br><br>It does not name a real organization as the fictional applicant's partner. Both organizations on this page are invented for exactly that reason.</td>
+          <td>It does not stretch a funder's stated mission to manufacture a connection that isn't genuinely there; a weak or conditional fit is placed in Consider, not Pursue, and a candidate with no honest bridging angle at all is placed in Checked &amp; Ruled Out rather than forced into either live tier.<br><br>It does not name a real organization as the fictional applicant's partner, whether that partner is a single organization or a larger consortium, association, or collaborative. Every organization on this page is invented for exactly that reason.</td>
         </tr>
         <tr>
           <td>How candidates are found and checked</td>
@@ -259,7 +259,7 @@ body{text-align:center}
 </section>
 
 <footer><div class="wrap">
-  <p id="footer-credit">Confluence demo by Jonathan Lin Davis &middot; both organizations shown are fictional; the funders are real.</p>
+  <p id="footer-credit">Confluence demo by Jonathan Lin Davis &middot; every organization shown is fictional; the funders are real.</p>
   <p id="footer-links"><a href="demo-almanac.html">See Almanac, the single-org grant match &#8594;</a> &middot; <a href="/#contact">Request a review &#8594;</a></p>
   <p class="footer-improvements-wrap"><a class="footer-improvements" href="improvementlog.html">Improvement log</a></p>
   <p class="footer-custom-note"><a href="/#contact">Need something custom? Individualized builds outside this catalog are available on request &#8594;</a></p>
@@ -272,10 +272,13 @@ body{text-align:center}
    TWO KINDS OF DATA LIVE HERE, AND THEY ARE NOT THE SAME KIND:
 
    1. ORG_A and ORG_B describe Sprout Circle Early Learning and Ascend Workforce Partners, two
-      FICTIONAL East Austin community organizations invented for this demo. Every figure attached
-      to either is invented too. Neither is a real client, and naming a real organization as the
-      fictional applicant's partner would assert a relationship involving a real entity that
-      doesn't exist -- both sides of the pair are fictional for exactly that reason.
+      FICTIONAL East Austin community organizations invented for this demo -- the simplest case
+      of a Confluence pairing, a single named partner. The same mechanism works unchanged for two
+      or more partners named alongside the applicant: a small consortium, a member association, or
+      a larger collaborative. Every figure attached to either organization here is invented too.
+      Neither is a real client, and naming a real organization as the fictional applicant's
+      partner would assert a relationship involving a real entity that doesn't exist -- every
+      organization in the pairing is fictional for exactly that reason.
 
    2. CANDIDATES describes REAL foundations. Every entry carries a link to the funder's own page,
       and every deadline, eligibility note, and bridging rationale is grounded in that page or
