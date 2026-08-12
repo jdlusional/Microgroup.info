@@ -12,7 +12,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pricing — Almanac, Scribe, Docket &amp; Confluence</title>
-<meta name="description" content="Real subscription pricing for Almanac, the required base product, plus Scribe, Docket, and every other add-on product, purchasable additional research depth and application capacity, Confluence joint-funding engagements for two or more organizations, an optional infrastructure and updates plan, and a request-products form. Concordance and Herald are in development and not yet for sale." />
+<meta name="description" content="Real subscription pricing for Almanac, the required base product, plus Scribe, Docket, and every other add-on product, purchasable additional research depth and application capacity, Confluence joint-funding engagements for two or more organizations, an optional infrastructure and updates plan, and a request-products form. Concordance, Herald, Atlas, and Dossier are in development and not yet for sale." />
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
 <meta name="referrer" content="no-referrer" />
 <link rel="icon" type="image/svg+xml" href="Assets/micro-mark.svg">
@@ -32,7 +32,7 @@ a{color:var(--ink)}
    superseding the 2026-07-24 left-align choice, applied to every card family
    site-wide (this is the .pick-card convention's own source precedent). ---- */
 .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;margin-top:.5rem}
-.price-card{border:1px solid var(--rule);background:var(--well);padding:1.3rem 1.4rem;display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0;overflow-wrap:anywhere}
+.price-card{border:1px solid var(--rule);background:var(--well);padding:1.3rem 1.4rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-width:0;overflow-wrap:anywhere}
 .price-card.unavailable{opacity:.72}
 .price-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 .3rem}
 .price-card .pc-tag{font-size:.76rem;letter-spacing:.02em;color:var(--wash);font-weight:600;margin-bottom:.7rem}
@@ -43,8 +43,30 @@ a{color:var(--ink)}
 .price-card .pc-status{font-size:.78rem;letter-spacing:.02em;color:var(--urgent);font-weight:600;border:1px solid var(--urgent);padding:.3rem .6rem;display:inline-block;margin-top:1rem;align-self:center}
 .price-card .pc-requires{font-family:var(--mono);font-size:.76rem;letter-spacing:.02em;color:var(--accent);margin-top:.7rem}
 
+/* ---- Product blocks: one product per rectangle, Standard/Pro joined as a
+   two-column split inside it rather than two separate repeated cards. ---- */
+.product-blocks{display:flex;flex-direction:column;gap:1.1rem;margin-top:.5rem}
+.product-block{border:1.5px solid var(--ink);background:var(--well)}
+.product-block-head{padding:1.2rem 1.4rem .9rem;text-align:center;border-bottom:1px solid var(--rule)}
+.product-block-head .pc-tag{font-size:.76rem;letter-spacing:.02em;color:var(--wash);font-weight:600;margin-bottom:.4rem}
+.product-block-head h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 .5rem}
+.product-block-head .pc-desc{font-size:.95rem;color:var(--ink);margin:0 auto;max-width:70ch}
+.product-block-guarantee{font-size:.88rem;color:var(--ink);background:var(--paper);border:1px solid var(--ok);padding:.6rem .9rem;margin-top:.8rem;max-width:70ch;margin-left:auto;margin-right:auto}
+.product-block-guarantee b{color:var(--ok)}
+.product-block-tiers{display:grid;grid-template-columns:1fr 1fr;min-width:0}
+.product-tier{padding:1.2rem 1.4rem;text-align:center;min-width:0;overflow-wrap:anywhere;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.product-tier+.product-tier{border-left:1px solid var(--rule)}
+.pt-label{font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:.5rem}
+.product-block-requires{padding:.65rem 1.4rem;text-align:center;border-top:1px solid var(--rule);font-family:var(--mono);font-size:.78rem;color:var(--accent)}
+.in-dev-subhead{max-width:1120px;margin:2rem auto .9rem;padding:0;text-align:center;font-family:var(--serif);font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;color:var(--wash)}
+@media(max-width:640px){
+  .product-block-tiers{grid-template-columns:1fr}
+  .product-tier+.product-tier{border-left:none;border-top:1px solid var(--rule)}
+}
+
 .addon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;margin-top:.5rem}
-.addon-card{border:1.5px solid var(--ink);border-left-width:5px;border-left-color:var(--accent);background:var(--well);padding:1.3rem 1.6rem;min-width:0;overflow-wrap:anywhere}
+.addon-card{border:1.5px solid var(--ink);border-left-width:5px;border-left-color:var(--accent);background:var(--well);padding:1.3rem 1.6rem;min-width:0;overflow-wrap:anywhere;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.addon-card .addon-rates{justify-content:center}
 .addon-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 .5rem}
 .addon-card .addon-rates{display:flex;flex-wrap:wrap;gap:1.2rem;margin:.6rem 0}
 .addon-card .addon-rate{font-family:var(--mono);font-size:.86rem;color:var(--ink)}
@@ -89,10 +111,11 @@ a{color:var(--ink)}
 
 /* ---- Request Products accordion. Only this section folds; every other
    section on this page keeps the standing no-tab-drops rule. ---- */
-.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
 .mc-toggle{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;cursor:pointer}
 .mc-toggle:hover{background:var(--well)}
 #request.mc-closed .fold-body{display:none}
+.mc-toggle-cta{display:block;margin:1.2rem auto 0;font-family:var(--mono);font-size:1.02rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:var(--accent);border:2px solid var(--accent);padding:.9rem 2.4rem;box-shadow:0 4px 14px rgba(47,127,209,.35)}
+.mc-toggle-cta:hover{background:var(--ink);border-color:var(--ink);box-shadow:0 4px 14px rgba(27,58,107,.35)}
 
 @media(max-width:640px){
   .price-card{padding:1rem 1.1rem}
@@ -142,53 +165,73 @@ a{color:var(--ink)}
         <p>Each product is priced and purchased on its own. There is no bundle discount: buying more than one product is the sum of what's listed below.</p>
         <p><b>Almanac is the required base product.</b> Scribe and every other product on this page, in development or already for sale, is an add-on that assumes an active Almanac subscription. None of them are sold on their own.</p>
       </div>
+      <div class="product-blocks">
+        <div class="product-block">
+          <div class="product-block-head">
+            <div class="pc-tag">Funder &amp; grant match &middot; Base product</div>
+            <h3>Almanac</h3>
+            <p class="pc-desc">Ranked funder and open-grant matches for one organization, every match sourced to the funder's own public filing or page.</p>
+            <div class="product-block-guarantee"><b>Guaranteed:</b> a shelf of at least 100 genuinely available grant opportunities for every organization that signs, or a full refund.</div>
+          </div>
+          <div class="product-block-tiers">
+            <div class="product-tier" data-product="Almanac Standard" data-available="true">
+              <div class="pt-label">Standard</div>
+              <div class="pc-amount">$1,500 <span class="per">/ year</span></div>
+              <div class="pc-cadence">Matches refreshed quarterly (4 / year)</div>
+            </div>
+            <div class="product-tier" data-product="Almanac Pro" data-available="true">
+              <div class="pt-label">Pro</div>
+              <div class="pc-amount">$3,000 <span class="per">/ year</span></div>
+              <div class="pc-cadence">Matches refreshed monthly (12 / year). Each organization's shelf is built individually at onboarding, so a monthly refresh checks status changes against a shelf already vetted for this organization, not a generic feed.</div>
+            </div>
+          </div>
+        </div>
+        <div class="product-block">
+          <div class="product-block-head">
+            <div class="pc-tag">Grant drafter</div>
+            <h3>Scribe</h3>
+            <p class="pc-desc">A complete, submission-ready draft each cycle, fact-checked against the organization's own public record, with an explicit list of what only the applicant can supply.</p>
+          </div>
+          <div class="product-block-tiers">
+            <div class="product-tier" data-product="Scribe Standard" data-available="true">
+              <div class="pt-label">Standard</div>
+              <div class="pc-amount">$1,500 <span class="per">/ year</span></div>
+              <div class="pc-cadence">1 application drafted per quarter (4 / year)</div>
+            </div>
+            <div class="product-tier" data-product="Scribe Pro" data-available="true">
+              <div class="pt-label">Pro</div>
+              <div class="pc-amount">$3,000 <span class="per">/ year</span></div>
+              <div class="pc-cadence">1 application drafted per month (12 / year), for a larger or more continuous pipeline</div>
+            </div>
+          </div>
+          <div class="product-block-requires">Requires an active Almanac subscription</div>
+        </div>
+        <div class="product-block">
+          <div class="product-block-head">
+            <div class="pc-tag">Organization Project Requests</div>
+            <h3>Docket</h3>
+            <p class="pc-desc">Almanac's sibling for Letters of Inquiry and Requests for Proposals, tracked separately from traditional grants. Same sourcing standard: every request traces to the funder's or agency's own current page.</p>
+          </div>
+          <div class="product-block-tiers">
+            <div class="product-tier" data-product="Docket Standard" data-available="true">
+              <div class="pt-label">Standard</div>
+              <div class="pc-amount">$1,500 <span class="per">/ year</span></div>
+              <div class="pc-cadence">Shelf refreshed quarterly (4 / year)</div>
+            </div>
+            <div class="product-tier" data-product="Docket Pro" data-available="true">
+              <div class="pt-label">Pro</div>
+              <div class="pc-amount">$3,000 <span class="per">/ year</span></div>
+              <div class="pc-cadence">Shelf refreshed monthly (12 / year). LOI and RFP calls are a genuinely thinner slice of the funding landscape than traditional grants; this refreshes what exists more often, it does not promise there is more of it.</div>
+            </div>
+          </div>
+          <div class="product-block-requires">Requires an active Almanac subscription</div>
+        </div>
+      </div>
+      <div class="example-line">Example: Almanac Standard (required base) + Scribe Pro (add-on) + Infrastructure &amp; Updates = <b>$1,500 + $3,000 + $2,000 = $6,500 / year</b>. This is a straight sum shown for illustration, not a discounted bundle rate.</div>
+      <div class="example-line">Docket follows the same required-base rule as Scribe: <b>Almanac Standard + Docket Standard = $1,500 + $1,500 = $3,000 / year</b>, one organization, no bundle discount.</div>
+
+      <h3 class="in-dev-subhead">In Development</h3>
       <div class="price-grid">
-        <div class="price-card" data-product="Almanac Standard" data-available="true">
-          <div class="pc-tag">Funder &amp; grant match &middot; Standard &middot; Base product</div>
-          <h3>Almanac Standard</h3>
-          <div class="pc-amount">$1,500 <span class="per">/ year</span></div>
-          <div class="pc-cadence">Matches refreshed quarterly (4 / year)</div>
-          <p class="pc-desc">Ranked funder and open-grant matches for one organization, every match sourced to the funder's own public filing or page.</p>
-        </div>
-        <div class="price-card" data-product="Almanac Pro" data-available="true">
-          <div class="pc-tag">Funder &amp; grant match &middot; Pro &middot; Base product</div>
-          <h3>Almanac Pro</h3>
-          <div class="pc-amount">$3,000 <span class="per">/ year</span></div>
-          <div class="pc-cadence">Matches refreshed monthly (12 / year)</div>
-          <p class="pc-desc">The same matching discipline as Standard, at monthly cadence, for organizations that want a more continuously updated funder pipeline. Each new organization's shelf is built individually at onboarding, so a monthly refresh checks status changes against a shelf already vetted for this organization specifically, not a generic feed.</p>
-        </div>
-        <div class="price-card" data-product="Scribe Standard" data-available="true">
-          <div class="pc-tag">Grant drafter &middot; Standard</div>
-          <h3>Scribe Standard</h3>
-          <div class="pc-amount">$1,500 <span class="per">/ year</span></div>
-          <div class="pc-cadence">1 grant application drafted per quarter (4 / year)</div>
-          <p class="pc-desc">A complete, submission-ready draft each quarter, fact-checked against the organization's own public record, with an explicit list of what only the applicant can supply.</p>
-          <div class="pc-requires">Requires an active Almanac subscription</div>
-        </div>
-        <div class="price-card" data-product="Scribe Pro" data-available="true">
-          <div class="pc-tag">Grant drafter &middot; Pro</div>
-          <h3>Scribe Pro</h3>
-          <div class="pc-amount">$3,000 <span class="per">/ year</span></div>
-          <div class="pc-cadence">1 grant application drafted per month (12 / year)</div>
-          <p class="pc-desc">The same drafting discipline as Standard, at monthly cadence, for organizations running a larger or more continuous pipeline of applications.</p>
-          <div class="pc-requires">Requires an active Almanac subscription</div>
-        </div>
-        <div class="price-card" data-product="Docket Standard" data-available="true">
-          <div class="pc-tag">Organization Project Requests &middot; Standard</div>
-          <h3>Docket Standard</h3>
-          <div class="pc-amount">$1,500 <span class="per">/ year</span></div>
-          <div class="pc-cadence">Shelf refreshed quarterly (4 / year)</div>
-          <p class="pc-desc">Almanac's sibling for Letters of Inquiry and Requests for Proposals, tracked separately from traditional grants. Same sourcing standard: every request traces to the funder's or agency's own current page.</p>
-          <div class="pc-requires">Requires an active Almanac subscription</div>
-        </div>
-        <div class="price-card" data-product="Docket Pro" data-available="true">
-          <div class="pc-tag">Organization Project Requests &middot; Pro</div>
-          <h3>Docket Pro</h3>
-          <div class="pc-amount">$3,000 <span class="per">/ year</span></div>
-          <div class="pc-cadence">Shelf refreshed monthly (12 / year)</div>
-          <p class="pc-desc">The same LOI/RFP sourcing discipline as Standard, at monthly cadence. LOI and RFP calls are a genuinely thinner slice of the funding landscape than traditional grants; this refreshes what exists more often, it does not promise there is more of it.</p>
-          <div class="pc-requires">Requires an active Almanac subscription</div>
-        </div>
         <div class="price-card unavailable" data-product="Concordance" data-available="false">
           <div class="pc-tag">Trustees &amp; introductions</div>
           <h3>Concordance</h3>
@@ -203,9 +246,21 @@ a{color:var(--ink)}
           <div class="pc-requires">Will require an active Almanac subscription</div>
           <span class="pc-status">In development &middot; not yet for sale</span>
         </div>
+        <div class="price-card unavailable" data-product="Atlas" data-available="false">
+          <div class="pc-tag">Corporate foundation benchmark</div>
+          <h3>Atlas</h3>
+          <p class="pc-desc">Benchmarks a corporate foundation's giving against real aggregate statistics computed from Texas-registered 990-PF filings, not any single named peer.</p>
+          <div class="pc-requires">Will require an active Almanac subscription</div>
+          <span class="pc-status">In development &middot; not yet for sale</span>
+        </div>
+        <div class="price-card unavailable" data-product="Dossier" data-available="false">
+          <div class="pc-tag">990 reconciliation</div>
+          <h3>Dossier</h3>
+          <p class="pc-desc">Checks that a foundation's claimed giving matches its own filed 990-PF numbers, and cross-references a voluntary donation list against public filings.</p>
+          <div class="pc-requires">Will require an active Almanac subscription</div>
+          <span class="pc-status">In development &middot; not yet for sale</span>
+        </div>
       </div>
-      <div class="example-line">Example: Almanac Standard (required base) + Scribe Pro (add-on) + Infrastructure &amp; Updates = <b>$1,500 + $3,000 + $1,500 = $6,000 / year</b>. This is a straight sum shown for illustration, not a discounted bundle rate.</div>
-      <div class="example-line">Docket follows the same required-base rule as Scribe: <b>Almanac Standard + Docket Standard = $1,500 + $1,500 = $3,000 / year</b>, one organization, no bundle discount.</div>
     </div>
   </div>
 </div>
@@ -218,38 +273,36 @@ a{color:var(--ink)}
     </div>
     <div class="fold-body">
       <div class="section-lede">
-        <p>Each requires an active subscription to the product it extends. None promises a fixed count: what each buys is described honestly below, because the underlying research and drafting effort does not scale on a fixed schedule.</p>
+        <p>Almanac and Docket's add-on is priced proportionally to what an organization already pays: the increase in cost matches the increase in research depth requested, and any portion that turns out undeliverable is prorated back. Scribe's add-on is priced per application, with no cap and no complexity tiering. The two work differently because the two products are different: Almanac and Docket depend on what funders happen to have open in the world; Scribe produces a document Microgroup fully controls producing.</p>
       </div>
       <div class="addon-grid">
         <div class="addon-card" data-product="Almanac Additional Research Depth" data-available="true">
-          <div class="pc-tag">Almanac add-on</div>
+          <div class="pc-tag">Almanac add-on &middot; proportional</div>
           <h3>Almanac Additional Research Depth</h3>
           <div class="addon-rates">
-            <span class="addon-rate" data-cadence="Quarterly">Quarterly: <b>+$2,000</b> / year</span>
-            <span class="addon-rate" data-cadence="Monthly">Monthly: <b>+$6,000</b> / year</span>
+            <span class="addon-rate">Priced proportionally: <b>N&times; the depth costs N&times; your current annual rate</b></span>
           </div>
-          <p>One additional dedicated research pass run at each refresh, roughly doubling the candidate funders checked against the organization's profile: broader geography and NTEE net, not the same shelf re-rendered. The result count is disclosed honestly each cycle, not guaranteed; some refreshes may find nothing further worth adding.</p>
-          <div class="addon-note">Capped at one Depth Pass per organization. Requestable directly; scheduled only after founder review, since delivery here scales with a person's research time, not with the price charged for it. Beyond one Depth Pass, this becomes a custom-scoped engagement, not a further fixed-price tier.</div>
+          <p>Example: Almanac Standard at $1,500/yr requesting double depth (2&times;) pays an additional $1,500/yr, $3,000/yr total. Triple depth (3&times;) pays an additional $3,000/yr, $4,500/yr total. The same ratio applies from Pro's $3,000/yr base. Each multiple buys a proportionally deeper research pass: more candidate funders checked, broader geography and NTEE net, not the same shelf re-rendered.</p>
+          <div class="addon-note">If the shelf's actual growth falls short of the multiple purchased, because the funders genuinely available at that depth don't exist yet, not because the research wasn't done, the shortfall is prorated and refunded or credited forward at the organization's choice. No fixed cap on the multiple; scheduled only after founder review, since delivery here scales with a person's research time.</div>
         </div>
         <div class="addon-card" data-product="Docket Additional Research Depth" data-available="true">
-          <div class="pc-tag">Docket add-on</div>
+          <div class="pc-tag">Docket add-on &middot; proportional</div>
           <h3>Docket Additional Research Depth</h3>
           <div class="addon-rates">
-            <span class="addon-rate" data-cadence="Quarterly">Quarterly: <b>+$2,000</b> / year</span>
-            <span class="addon-rate" data-cadence="Monthly">Monthly: <b>+$6,000</b> / year</span>
+            <span class="addon-rate">Priced proportionally: <b>N&times; the depth costs N&times; your current annual rate</b></span>
           </div>
-          <p>The same additional research pass as Almanac's, run against Docket's LOI/RFP shelf instead: broader geography and funder-type net checked, not the same shelf re-rendered. LOI and RFP calls are structurally rarer than traditional grants, so a Depth Pass here is more likely to confirm there isn't more to find than to surface a large new batch, and that result is reported honestly either way.</p>
-          <div class="addon-note">Capped at one Depth Pass per organization. Requestable directly; scheduled only after founder review, same gating as Almanac's Depth Pass and for the same reason.</div>
+          <p>The same proportional pricing as Almanac's, against Docket's LOI/RFP shelf instead: broader geography and funder-type net checked, not the same shelf re-rendered. LOI and RFP calls are structurally rarer than traditional grants, so a Depth Pass here is more likely to confirm there isn't more to find than to surface a large new batch, and the proration below is where that reality gets accounted for rather than absorbed silently.</p>
+          <div class="addon-note">Same proration/refund/credit rule as Almanac's: any shortfall between the multiple purchased and what genuinely exists to find is prorated back. No fixed cap on the multiple; same founder-review scheduling gate.</div>
         </div>
         <div class="addon-card" data-product="Scribe Additional Application" data-available="true">
-          <div class="pc-tag">Scribe add-on</div>
+          <div class="pc-tag">Scribe add-on &middot; per application</div>
           <h3>Scribe Additional Application</h3>
           <div class="addon-rates">
-            <span class="addon-rate" data-cadence="Quarterly">Quarterly: <b>+$2,000</b> / year</span>
-            <span class="addon-rate" data-cadence="Monthly">Monthly: <b>+$6,000</b> / year</span>
+            <span class="addon-rate">Standard base: $375.00/app &middot; additional: <b>$562.50</b>/app</span>
+            <span class="addon-rate">Pro base: $250.00/app &middot; additional: <b>$375.00</b>/app</span>
           </div>
-          <p>One extra completed, submission-ready draft on top of the base subscription's included cadence, at $500 per application, the same per-draft rate the base tiers are built on. Purchasable as a standing quarterly increment (one extra draft every quarter) or a standing monthly increment (one extra draft every month), and stackable.</p>
-          <div class="addon-note">Capped at 5 additional applications per month, combined across however the increments were purchased. If a billing period has no funder with a genuine, enterable open call to draft toward, that period's increment credits forward rather than forcing a draft against a poor match.</div>
+          <p>Each base tier's per-application rate is its annual price divided by its included application count (Standard: $1,500 &divide; 4 = $375.00/app; Pro: $3,000 &divide; 12 = $250.00/app). Every additional application beyond the included count is priced at that same per-app rate plus 50%. No quarterly or monthly increment to buy into: purchase individual additional applications as needed, and there is no cap on how many an organization can buy.</p>
+          <div class="addon-note">No length or complexity tiering. A 50-page federal application costs the same as a 10-page one; the price is per completed application, not per page or per hour. If a billing period has no funder with a genuine, enterable open call to draft toward, that application credits forward rather than forcing a draft against a poor match.</div>
         </div>
       </div>
     </div>
@@ -264,15 +317,16 @@ a{color:var(--ink)}
     </div>
     <div class="fold-body">
       <div class="section-lede">
-        <p>Confluence finds funding whose own stated priorities genuinely span every organization in a group, whether that's a single named partner, a small consortium, or a larger association or collaborative. It is priced as a one-time engagement rather than an annual subscription, because that is what it actually is: a dedicated cross-organization research pass, not a recurring shelf.</p>
+        <p>Confluence finds funding whose own stated priorities genuinely span every organization in a group, whether that's a single named partner, a small consortium, or a larger association or collaborative.</p>
+        <p>Each organization's own Almanac cost depends on the product it chooses independently of the others: Standard at $1,500/yr or Pro at $3,000/yr, exactly the rates on the Products &amp; pricing table above. One organization can hold Standard while another holds Pro; nothing about Confluence requires them to match. Once every organization in the group has its own active Almanac subscription, Confluence itself is priced flat, on top of whatever each member already pays for Almanac.</p>
       </div>
       <div class="addon-grid">
-        <div class="addon-card" data-product="Confluence Engagement" data-available="true">
-          <div class="pc-tag">One-time &middot; up to 2 organizations</div>
-          <h3>Confluence Engagement</h3>
+        <div class="addon-card" data-product="Confluence" data-available="true">
+          <div class="pc-tag">Annual &middot; first pair of organizations</div>
+          <h3>Confluence</h3>
           <div class="addon-rates">
-            <span class="addon-rate">Base (2 orgs): <b>$1,500</b>, one-time</span>
-            <span class="addon-rate">Each additional org: <b>+$500</b>, one-time</span>
+            <span class="addon-rate">First pair (2 orgs): <b>$1,500</b> / year</span>
+            <span class="addon-rate">Each additional org: <b>+$500</b> / year</span>
           </div>
           <p>A dedicated cross-organization research pass, sorted Pursue, Consider, and Checked &amp; Ruled Out, the same structure already live for a real client. Priced below a fresh Almanac build because it reuses each member organization's already-verified Almanac research rather than researching from nothing.</p>
           <div class="addon-note">Requires every named organization in the group to hold its own active Almanac subscription before scheduling, not the lead organization only. This is not a formality: Confluence's cost basis depends on each member's Almanac research already being done and already paid for.</div>
@@ -285,10 +339,10 @@ a{color:var(--ink)}
             <span class="addon-rate" data-cadence="Monthly">Monthly: <b>+$3,000</b> / year</span>
           </div>
           <p>Re-runs the cross-organization check on a standing cadence instead of leaving the group's initial shortlist to go stale. Priced below Almanac's own Standard/Pro rates, since a refresh re-checks an existing bridge between organizations rather than rebuilding a shelf from nothing.</p>
-          <div class="addon-note">Requires an active Confluence Engagement already on file for the group.</div>
+          <div class="addon-note">Requires an active Confluence subscription already on file for the group.</div>
         </div>
       </div>
-      <div class="example-line">Two organizations, one drafting seat, one LOI/RFP seat: Org A holds Almanac + Scribe + Docket; Org B holds only Almanac. Org A's Scribe seat drafts the joint application; Org A's Docket seat sources any joint LOI/RFP opportunity. Org B needs nothing beyond its own Almanac subscription.</div>
+      <div class="example-line">Two organizations, independent Almanac tiers, one drafting seat, one LOI/RFP seat: Org A holds Almanac Pro ($3,000/yr) + Scribe + Docket; Org B holds only Almanac Standard ($1,500/yr). Org A's Scribe seat drafts the joint application; Org A's Docket seat sources any joint LOI/RFP opportunity. Org B needs nothing beyond its own Almanac subscription. Confluence itself adds <b>$1,500/yr</b> on top, regardless of which tier either organization chose.</div>
     </div>
   </div>
 </div>
@@ -304,8 +358,9 @@ a{color:var(--ink)}
         <p>One flat plan that covers every product an organization has purchased, not priced per product.</p>
       </div>
       <div class="infra-card" data-product="Infrastructure & Updates" data-available="true">
-        <h3><span class="pc-amount">$1,500</span> / year, flat</h3>
+        <h3><span class="pc-amount">$2,000</span> / year, flat</h3>
         <p>Covers regular updates and improvements to the infrastructure behind every product the organization has purchased, whether that's one product or all of them. It is optional, recommended, and billed once per organization rather than once per product.</p>
+        <p style="margin-top:.9rem"><a href="improvementlog.html">See what this actually covers: the improvement log &#8594;</a></p>
       </div>
     </div>
   </div>
@@ -313,13 +368,11 @@ a{color:var(--ink)}
 
 <div class="section" id="request">
   <div class="fold">
-    <div class="section-head-row">
-      <button class="mc-toggle" type="button" aria-controls="request-fold-body"></button>
-      <div class="section-head">
-        <span class="kicker">Start here</span>
-        <h2>Request products</h2>
-      </div>
+    <div class="section-head">
+      <span class="kicker">Start here</span>
+      <h2>Request products</h2>
     </div>
+    <button class="mc-toggle mc-toggle-cta" type="button" aria-controls="request-fold-body"></button>
     <div class="fold-body" id="request-fold-body">
       <div class="section-lede">
         <p>Pricing is already shown above. Tell us who you are and which products you're interested in, and this opens a conversation; it is not a contract or a payment.</p>
@@ -400,7 +453,7 @@ a{color:var(--ink)}
 </section>
 
 <footer><div class="wrap">
-  <p>Pricing by Jonathan Lin Davis &middot; effective 2026-07-17, guaranteed through <span class="guarantee-date">August 31, 2026</span>. Rates apply until revised here.</p>
+  <p>Pricing by Jonathan Lin Davis &middot; effective 2026-08-12, guaranteed through <span class="guarantee-date">August 31, 2026</span>. Rates apply until revised here.</p>
   <p><a href="demo-referrals">Refer an organization, earn 5% &#8594;</a> &middot; <a href="demo">All demos &#8594;</a></p>
   <p class="footer-improvements-wrap"><a class="footer-improvements" href="improvementlog.html">Improvement log</a></p>
   <p class="footer-custom-note"><a href="/#contact">Need something custom? Individualized builds outside this catalog are available on request &#8594;</a></p>
@@ -416,6 +469,9 @@ a{color:var(--ink)}
   if(!host)return;
   const options=[];
 
+  document.querySelectorAll('.product-blocks .product-tier[data-available="true"]').forEach(function(tier){
+    options.push(tier.getAttribute('data-product'));
+  });
   document.querySelectorAll('.price-grid .price-card[data-available="true"]').forEach(function(card){
     options.push(card.getAttribute('data-product'));
   });
