@@ -25,8 +25,18 @@ a{color:var(--ink)}
 
 .hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1rem;text-align:center}
 
-.section{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem}
-.section-head p{color:var(--wash);font-size:.94rem;max-width:72ch;margin:0}
+/* ---- Center/middle align everything on this page, not just the cards:
+   section heads, ledes, callouts, the method box, and the form. ---- */
+.section{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem;text-align:center}
+.section-head p{color:var(--wash);font-size:.94rem;max-width:72ch;margin:0 auto}
+.section-lede{max-width:72ch;margin-left:auto;margin-right:auto}
+.method-wrap{text-align:center}
+.method-box p{max-width:70ch;margin-left:auto;margin-right:auto}
+
+/* ---- Boxes: text inside is middle-aligned vertically as well as
+   horizontally, not just top-aligned within whatever height the box has. ---- */
+.example-line,.product-block-guarantee,.product-block-requires,.product-block-note,.infra-card{
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
 
 /* ---- Pricing cards. Centered, not left-aligned, per owner order 2026-08-09
    superseding the 2026-07-24 left-align choice, applied to every card family
@@ -84,19 +94,19 @@ a{color:var(--ink)}
 .example-line b{color:var(--ink)}
 
 /* ---- Form (mirrors the request-a-draft convention: form-field / hp-field / form-actions) ---- */
-.form-field{margin-bottom:1.3rem}
+.form-field{margin-bottom:1.3rem;text-align:center}
 .form-field label{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
 .form-field input[type="text"],.form-field input[type="email"],.form-field input[type="tel"],.form-field input[type="date"]{
-  width:100%;font-family:var(--serif);font-size:.95rem;padding:.6rem .8rem;border:1.5px solid var(--ink);
-  background:var(--well);color:var(--ink);outline:none;max-width:420px}
+  display:block;width:100%;font-family:var(--serif);font-size:.95rem;padding:.6rem .8rem;border:1.5px solid var(--ink);
+  background:var(--well);color:var(--ink);outline:none;max-width:420px;text-align:left;margin:0 auto}
 .form-field input:focus{outline:2px solid var(--ink);outline-offset:0}
-.form-field textarea{width:100%;font-family:var(--serif);font-size:.95rem;padding:.7rem .8rem;border:1.5px solid var(--ink);background:var(--well);color:var(--ink);resize:vertical;outline:none}
+.form-field textarea{display:block;width:100%;font-family:var(--serif);font-size:.95rem;padding:.7rem .8rem;border:1.5px solid var(--ink);background:var(--well);color:var(--ink);resize:vertical;outline:none;text-align:left;margin:0 auto}
 .field-hint{font-family:var(--mono);font-size:.84rem;color:var(--wash);margin-top:.35rem}
-.checks{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem}
+.checks{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 1.4rem}
 .checks label{display:flex;align-items:center;gap:.45rem;font-family:var(--serif);font-size:.95rem;text-transform:none;letter-spacing:0;color:var(--ink)}
 .checks input{width:auto}
 .hp-field{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
-.form-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
+.form-actions{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
 .form-status{font-family:var(--mono);font-size:.88rem;color:var(--ok)}
 .form-status.error{color:var(--urgent)}
 .btn{font-family:var(--mono);font-size:.86rem;letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);background:var(--paper);padding:.55rem 1.2rem;cursor:pointer;transition:all .15s ease}
@@ -448,9 +458,9 @@ a{color:var(--ink)}
   <div class="method-box">
     <div class="method-kicker">Method</div>
     <h2>How this page works, and what it cannot tell you</h2>
-    <p><b>Where these numbers come from.</b> This is the standing rate card Jonathan Lin Davis quotes to every organization: the same Almanac, Scribe, Docket, Confluence, and infrastructure prices shown here, not a number produced for a specific negotiation.</p>
-    <p><b>What this page will not do.</b> It does not process payment and it does not create a signed agreement. Submitting the request form starts a conversation; it commits nothing on either side.</p>
-    <p><b>What it cannot tell you.</b> Final terms, start dates, and any organization-specific detail are confirmed in writing after a request is reviewed. If a referral is involved, its terms are governed by the <a href="demo-referrals">referral program</a>, not by anything stated here.</p>
+    <p><b>Where these numbers come from.</b><br>This is the standing rate card Jonathan Lin Davis quotes to every organization: the same Almanac, Scribe, Docket, Confluence, and infrastructure prices shown here, not a number produced for a specific negotiation.</p>
+    <p><b>What this page will not do.</b><br>It does not process payment and it does not create a signed agreement. Submitting the request form starts a conversation; it commits nothing on either side.</p>
+    <p><b>What it cannot tell you.</b><br>Final terms, start dates, and any organization-specific detail are confirmed in writing after a request is reviewed. If a referral is involved, its terms are governed by the <a href="demo-referrals">referral program</a>, not by anything stated here.</p>
   </div>
 </section>
 
