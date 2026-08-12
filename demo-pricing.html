@@ -58,6 +58,8 @@ a{color:var(--ink)}
 .product-tier+.product-tier{border-left:1px solid var(--rule)}
 .pt-label{font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:.5rem}
 .product-block-requires{padding:.65rem 1.4rem;text-align:center;border-top:1px solid var(--rule);font-family:var(--mono);font-size:.78rem;color:var(--accent)}
+.product-block-note{padding:.7rem 1.4rem;text-align:center;border-top:1px solid var(--rule);font-size:.86rem;color:var(--wash);max-width:70ch;margin-left:auto;margin-right:auto}
+.product-block-note b{color:var(--accent)}
 .in-dev-subhead{max-width:1120px;margin:2rem auto .9rem;padding:0;text-align:center;font-family:var(--serif);font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;color:var(--wash)}
 @media(max-width:640px){
   .product-block-tiers{grid-template-columns:1fr}
@@ -66,9 +68,8 @@ a{color:var(--ink)}
 
 .addon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;margin-top:.5rem}
 .addon-card{border:1.5px solid var(--ink);border-left-width:5px;border-left-color:var(--accent);background:var(--well);padding:1.3rem 1.6rem;min-width:0;overflow-wrap:anywhere;display:flex;flex-direction:column;justify-content:center;text-align:center}
-.addon-card .addon-rates{justify-content:center}
 .addon-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 .5rem}
-.addon-card .addon-rates{display:flex;flex-wrap:wrap;gap:1.2rem;margin:.6rem 0}
+.addon-card .addon-rates{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;margin:.6rem 0}
 .addon-card .addon-rate{font-family:var(--mono);font-size:.86rem;color:var(--ink)}
 .addon-card .addon-rate b{font-family:var(--serif);font-size:1.15rem;color:var(--accent)}
 .addon-card p{font-size:.95rem;line-height:1.55;margin:.6rem 0 0}
@@ -145,11 +146,11 @@ a{color:var(--ink)}
 
 <header class="hero">
   <div class="badges">
-    <span class="badge badge-real">Real pricing &middot; effective 2026-07-17</span>
+    <span class="badge badge-real">Real pricing &middot; effective 2026-08-12</span>
     <span class="badge badge-real">Guaranteed through <span class="guarantee-date">August 31, 2026</span></span>
   </div>
   <h1>Pricing</h1>
-  <p>Standing annual rates for Almanac, the required base product; Scribe and Docket, each an add-on that assumes an active Almanac subscription; purchasable additional research depth and application capacity; Confluence, a one-time joint-funding engagement for two or more organizations; and an optional plan that keeps every product an organization has purchased on current infrastructure. This is the same rate card every organization sees; nothing here is negotiated in the abstract before a request comes in.</p>
+  <p>Standing annual rates for Almanac, the required base product; Scribe and Docket, each an add-on that assumes an active Almanac subscription; purchasable additional research depth and application capacity; Confluence, an annual joint-funding rate for two or more organizations; and an optional plan that keeps every product an organization has purchased on current infrastructure. This is the same rate card every organization sees; nothing here is negotiated in the abstract before a request comes in.</p>
   <p class="note">Current prices are guaranteed through <span class="guarantee-date">August 31, 2026</span>: any request submitted and confirmed by that date locks in the rates shown here, regardless of any later change to this page. The guarantee date is mechanically extended to the end of the current calendar month each time a work session starts; it is never extended silently mid-month.</p>
   <p class="note">Unlike the product demo pages, this page describes Jonathan Lin Davis's actual current pricing, not a simulation against a fictional organization. Submitting the form below does not create a contract; it opens a conversation, and final terms are confirmed in writing.</p>
 </header>
@@ -182,9 +183,10 @@ a{color:var(--ink)}
             <div class="product-tier" data-product="Almanac Pro" data-available="true">
               <div class="pt-label">Pro</div>
               <div class="pc-amount">$3,000 <span class="per">/ year</span></div>
-              <div class="pc-cadence">Matches refreshed monthly (12 / year). Each organization's shelf is built individually at onboarding, so a monthly refresh checks status changes against a shelf already vetted for this organization, not a generic feed.</div>
+              <div class="pc-cadence">Matches refreshed monthly (12 / year)</div>
             </div>
           </div>
+          <div class="product-block-note">Each organization's shelf is built individually at onboarding, so Pro's monthly refresh checks status changes against a shelf already vetted for that organization, not a generic feed.</div>
         </div>
         <div class="product-block">
           <div class="product-block-head">
@@ -221,10 +223,10 @@ a{color:var(--ink)}
             <div class="product-tier" data-product="Docket Pro" data-available="true">
               <div class="pt-label">Pro</div>
               <div class="pc-amount">$3,000 <span class="per">/ year</span></div>
-              <div class="pc-cadence">Shelf refreshed monthly (12 / year). LOI and RFP calls are a genuinely thinner slice of the funding landscape than traditional grants; this refreshes what exists more often, it does not promise there is more of it.</div>
+              <div class="pc-cadence">Shelf refreshed monthly (12 / year)</div>
             </div>
           </div>
-          <div class="product-block-requires">Requires an active Almanac subscription</div>
+          <div class="product-block-note"><b>Requires an active Almanac subscription.</b> LOI and RFP calls are a genuinely thinner slice of the funding landscape than traditional grants; Pro refreshes what exists more often, it does not promise there is more of it.</div>
         </div>
       </div>
       <div class="example-line">Example: Almanac Standard (required base) + Scribe Pro (add-on) + Infrastructure &amp; Updates = <b>$1,500 + $3,000 + $2,000 = $6,500 / year</b>. This is a straight sum shown for illustration, not a discounted bundle rate.</div>
