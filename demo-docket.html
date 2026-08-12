@@ -11,8 +11,8 @@
 </script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Docket &mdash; Organization Project Requests Demo</title>
-<meta name="description" content="Docket is a live-researched database of open Letters of Inquiry and Requests for Proposals (Organization Project Requests). This demonstration page uses a fictional community organization to show what Docket produces: real, source-traceable requests, separate from Almanac's traditional grant matches." />
+<title>Docket — Organization Project Requests Demo</title>
+<meta name="description" content="Docket is a live-researched database of open Letters of Inquiry and Requests for Proposals (Organization Project Requests), tracked separately from Almanac's traditional grant matches. This demonstration page uses a fictional community organization to show what Docket produces: real, source-traceable requests." />
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
 <meta name="referrer" content="no-referrer" />
 <link rel="icon" type="image/png" href="Assets/almanac-mark.png">
@@ -33,24 +33,81 @@ a{color:var(--ink)}
 .section-head-tags{margin-top:.6rem}
 .section-head-tags:empty{display:none}
 
-.section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem;padding:1.8rem 1.6rem}
+.section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem}
 .section.section-card:last-of-type{margin-bottom:0}
+.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.mc-closed .fold-body{display:none}
 
+/* ---- Profile section ---- */
+.profile-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.5rem}
+@media(max-width:780px){.profile-grid{grid-template-columns:1fr}}
+.card{background:var(--well);border:1.5px solid var(--ink);padding:1.3rem 1.4rem;min-width:0;overflow-wrap:anywhere}
+.card h3{font-weight:700;font-family:var(--serif);font-size:25px;text-transform:uppercase;letter-spacing:.08em;color:var(--wash);margin:0 0 .6rem}
+.card p{margin:0 0 .8rem;font-size:15px}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center}
+.tag{font-family:var(--mono);font-size:14px;padding:.22rem .58rem;background:var(--paper);border:1px solid var(--rule);color:var(--ink);white-space:nowrap}
+.stat-tile{text-align:center;padding:1rem}
+.stat-tile .num{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--accent);line-height:1}
+.stat-tile .lbl{font-size:12.5px;color:var(--wash);letter-spacing:.02em;margin-top:.3rem;font-weight:600}
+.funder-mini-table{width:100%;min-width:480px;table-layout:fixed;border-collapse:collapse;font-size:15px;margin-top:.5rem;text-align:left}
+.funder-mini-table th{font-size:12.5px;letter-spacing:.02em;color:var(--wash);text-align:left;padding:.35rem .5rem;border-bottom:1px solid var(--rule);font-weight:600}
+.funder-mini-table td{padding:.45rem .5rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;overflow-wrap:anywhere;text-align:left}
+.method-table th:first-child,.method-table td:first-child{font-weight:700}
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin-top:.3rem}
+.impact-grid .stat-tile{padding:.7rem .5rem;background:var(--paper);border:1px solid var(--rule);min-width:0}
+.impact-grid .stat-tile .num{font-size:24px}
+.impact-grid .stat-tile .lbl{white-space:normal;line-height:1.3}
+.not-published{color:var(--wash);font-style:italic;font-weight:400}
+.geo-highlight{font-weight:700;color:var(--accent)}
+
+/* ---- Ready Now request cards ---- */
 .match-card{padding:0}
 .mc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
 .mc-head .fname{flex:1 1 auto;min-width:0;white-space:nowrap;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;text-align:left}
-.mc-body{min-width:0;padding:.9rem 1.2rem}
+.mc-body{min-width:0}
+.match-card>.mc-body{padding:.9rem 1.2rem}
 @media(max-width:640px){.mc-head{gap:.4rem}.mc-head .fname{min-width:0;flex-basis:100%;white-space:normal;overflow-wrap:anywhere}}
 .badge{font-family:var(--serif);font-size:12.5px;padding:.16rem .5rem;letter-spacing:.03em;text-transform:uppercase;font-weight:700}
 .badge-loi{background:var(--accent);color:#fff}
 .badge-rfp{background:var(--ok);color:#fff}
+.badge-ruled-out{background:var(--well);color:var(--wash);border:1px solid var(--rule)}
+
+.mc-toggle{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;margin-left:auto;cursor:pointer;white-space:nowrap}
+.mc-toggle:hover{background:var(--paper)}
+.mc-closed .mc-body{display:none}
+@media(max-width:640px){.mc-toggle{width:100%;margin-left:0;margin-top:.5rem;text-align:center}}
+
+.mc-body .card{background:var(--paper);border:1px solid var(--rule);padding:1rem 1.1rem;margin-top:.9rem}
+.mc-body .card:first-child{margin-top:0}
+.mc-body .card h3{font-size:15px;letter-spacing:.05em;margin:0 0 .5rem}
+
+.card-head{position:relative;padding-right:9rem;margin-bottom:.6rem}
+.card-head h3{margin:0}
+.card-head .mc-toggle{position:absolute;right:0;top:0}
+@media(max-width:560px){.card-head{padding-right:0;padding-bottom:2.6rem}.card-head .mc-toggle{left:0;right:0;top:auto;bottom:0;width:100%;margin-left:0}}
 
 .qa-grid{display:flex;flex-direction:column;gap:.5rem;margin-top:.55rem}
 .qa-row{display:grid;grid-template-columns:150px 1fr;gap:.6rem 1rem;align-items:baseline}
 @media(max-width:580px){.qa-row{grid-template-columns:1fr;gap:.1rem}}
 .qa-label{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wash);white-space:nowrap}
 .qa-value{font-size:.94rem;line-height:1.5}
-.qa-row.deadline .qa-value{font-weight:700;color:var(--accent)}
+.qa-row-featured .qa-value a{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--accent)}
+.qa-row-featured .qa-value a:hover{text-decoration:underline}
+.deadline-val.urgent{color:var(--urgent);font-weight:600}
+.deadline-val.soon{color:var(--warn);font-weight:500}
+.deadline-val.closed{color:var(--wash);font-style:italic}
+
+.limitation-note{font-family:var(--mono);font-size:1.125rem;color:var(--wash);background:var(--well);border:1px dashed var(--rule);padding:.7rem .9rem;margin-top:1.2rem;line-height:1.5}
+
+body{overflow-x:hidden}
+.section-head p{max-width:none}
+.hero{padding:3.2rem 1.25rem 2.2rem;border-bottom:1px solid var(--rule)}
+.section{padding:2.6rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
+@media(max-width:640px){.hero{padding:2.2rem 1.25rem 1.6rem}.hero h1{font-size:30px}}
+body{text-align:center}
+.hero .note{text-align:center}
+.qa-row,.qa-label,.qa-value,
+.funder-mini-table,.funder-mini-table th,.funder-mini-table td{text-align:left}
 </style>
 </head>
 <body>
@@ -58,67 +115,464 @@ a{color:var(--ink)}
 
 <div class="manifest">
   <div class="manifest-in">
-    <span class="brand"><b>Docket</b> demo</span>
+    <span class="brand"><b>Docket</b> &middot; demo</span>
+    <span class="stat"><strong id="m-requests">…</strong> requests checked</span>
+    <span class="stat"><strong id="m-ready">…</strong> ready now</span>
     <span class="grow"></span>
     <nav>
-      <a href="#dk-ready">Ready Now</a>
-      <a href="demo.html">All demos &#8594;</a>
+      <a href="#how-to-read">Read This First</a>
+      <a href="#profile">Profile</a>
+      <a href="#ready">Ready Now</a>
+      <a href="#method">How This Was Built</a>
+      <a href="demo-almanac.html">See Almanac &#8594;</a>
+      <a href="demo">All demos &#8594;</a>
     </nav>
   </div>
 </div>
 
 <header class="hero">
-  <div class="eyebrow">Demonstration page &mdash; fictional organization, real sourced data</div>
+  <div class="eyebrow">Demonstration page &middot; the organization shown is fictional</div>
   <h1>Docket</h1>
-  <p>Docket carries Organization Project Requests &mdash; Letters of Inquiry and Requests for Proposals &mdash; separately from Almanac's traditional grant matches. This page shows what it produces for <b>Riverside Neighbors Collaborative</b>, a fictional Austin community organization, using real, currently-open funding requests.</p>
-  <div class="note">Riverside Neighbors Collaborative does not exist. The funders and requests below do: every row traces to a real, currently-checked source (the funder's own current page), the same standard Docket applies for a real client. Nothing here is estimated or invented.</div>
+  <p>Docket carries Organization Project Requests, meaning Letters of Inquiry and Requests for Proposals, separately from Almanac's traditional grant matches. This page runs Docket against a made-up organization so you can see the output before you commission your own.</p>
 </header>
 
-<section class="section section-card" id="dk-ready">
-  <div class="section-head">
-    <span class="kicker">Open Now</span>
-    <h2>Ready Now</h2>
-    <div class="section-head-tags"><span style="font-size:.8rem;letter-spacing:.02em;font-weight:600;color:var(--ok);border:1px solid var(--ok);padding:.14rem .45rem;vertical-align:middle">Real requests</span></div>
-  </div>
-  <div class="res-count"><b>2</b> requests shown</div>
-  <div id="dk-ready-results">
-    <div class="match-card">
-      <div class="mc-head">
-        <span class="fname">Shield-Ayres Foundation</span>
-        <span class="badge badge-loi">LOI</span>
-      </div>
-      <div class="mc-body">
-        <p style="margin:0 0 .6rem;font-weight:600">Letter of Inquiry, third-quarter board cycle</p>
-        <div class="qa-grid">
-          <div class="qa-row deadline"><span class="qa-label">Deadline</span><span class="qa-value">August 15, 2026</span></div>
-          <div class="qa-row"><span class="qa-label">Notes</span><span class="qa-value">Two fixed LOI deadlines a year (mid-February, mid-August); board meets roughly a month after each. This cycle's deadline sat 13 days out on the date it was checked &mdash; time-critical and actionable, not a rolling call to research later.</span></div>
-          <div class="qa-row"><span class="qa-label">Source</span><span class="qa-value"><a href="https://www.shield-ayresfoundation.org/grant-making/apply/" target="_blank" rel="noopener">shield-ayresfoundation.org/grant-making/apply</a></span></div>
-        </div>
+<section class="section section-card" id="how-to-read">
+  <div class="fold">
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="how-to-read-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Read This First</span>
+        <h2>How to read this page</h2>
       </div>
     </div>
-    <div class="match-card">
-      <div class="mc-head">
-        <span class="fname">Borealis Philanthropy</span>
-        <span class="badge badge-loi">LOI</span>
+    <div class="fold-body" id="how-to-read-fold-body">
+    <div class="table-scroll"><table class="funder-mini-table method-table">
+      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>This organization</td>
+          <td>Riverside Neighbors Collaborative does not exist.<br><br>It is an illustrative East Austin community organization invented for this demo, and every number attached to it was invented along with it.<br><br>No real client's data appears anywhere on this page.</td>
+        </tr>
+        <tr>
+          <td>The requests and funders</td>
+          <td>The requests and funders are real.<br><br>Each one is an actual foundation or program with a live Letter of Inquiry or Request for Proposal process, and each carries a link to its own page.<br><br>Amounts, windows, and eligibility rules are quoted from those pages, or marked as unconfirmed where the funder does not publish them.<br><br>Nothing about a real funder is estimated or invented here.<br><br>Docket carries Letters of Inquiry and Requests for Proposals only. Traditional grant opportunities are tracked separately in Almanac, not shown here.<br><br>What <em>is</em> illustrative is the match itself: the judgment that these requests suit this particular (made-up) organization.</td>
+        </tr>
+        <tr>
+          <td>Ruled out, shown anyway</td>
+          <td>Two candidates researched for this page turned out, on direct verification, to no longer be genuinely open: one had quietly paused to new applicants since an earlier check, one had closed outright with no reopening date. A further ten candidates checked while filling out the ready-now list turned out to be closed, not-yet-open, or a genuine mismatch (a K-12-only garden grant, an employee-only scholarship fund, a sunset foundation no longer accepting any applications). None of these are shown as cards below, since this page is about this fictional organization's fit, but every one of them is captured in the underlying opportunity register regardless. The two shown below are shown because they were the closest fits before they changed status, not dropped silently, because a request that only lives on a page is lost the moment that page changes. That is the same discipline applied to every research deliverable here.</td>
+        </tr>
+        <tr>
+          <td>Next steps</td>
+          <td>Looking for a traditional grant instead of an LOI or RFP? <a href="demo-almanac.html">See Almanac &#8594;</a><br><br>Want this run against your real organization? <a href="/#contact">Request a review &#8594;</a></td>
+        </tr>
+      </tbody>
+    </table></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-card" id="profile">
+  <div class="fold">
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="profile-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">The Organization</span>
+        <h2>Organization Profile</h2>
+        <div class="section-head-tags"><span style="font-size:.8rem;letter-spacing:.02em;font-weight:600;color:var(--urgent);border:1px solid var(--urgent);padding:.14rem .45rem;vertical-align:middle">Fictional org</span></div>
       </div>
-      <div class="mc-body">
-        <p style="margin:0 0 .6rem;font-weight:600">Just Futures Initiative, rolling grant opportunity for grassroots community-safety and democracy work</p>
-        <div class="qa-grid">
-          <div class="qa-row deadline"><span class="qa-label">Deadline</span><span class="qa-value">Rolling or undated</span></div>
-          <div class="qa-row"><span class="qa-label">Notes</span><span class="qa-value">Borealis is a philanthropic intermediary hosting donor-collaborative pooled funds that regrant &mdash; not a donor-advised fund sponsor. Confirmed as a genuine open LOI channel, not an invitation-only relationship.</span></div>
-          <div class="qa-row"><span class="qa-label">Source</span><span class="qa-value"><a href="https://borealisphilanthropy.org/news-and-views/just-futures-initiative-grant-opportunity/" target="_blank" rel="noopener">borealisphilanthropy.org/news-and-views/just-futures-initiative-grant-opportunity</a></span></div>
+    </div>
+    <div class="fold-body" id="profile-fold-body">
+    <div class="section-lede">
+      <p>The mission, programs, and figures below belong to Riverside Neighbors Collaborative, an organization invented for this demo. Docket reads a profile like this one and works out which open requests fit it. Everything in this section is made up; everything in the request sections below is not.</p>
+    </div>
+      <div class="profile-grid">
+        <div class="card">
+          <h3>Mission</h3>
+          <div class="mc-body">
+            <p id="p-mission"></p>
+            <h3>Programs</h3>
+            <div class="tag-row" id="p-focus"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>At a glance</h3>
+          <div class="mc-body">
+            <div class="stat-tile">
+              <div class="num" id="p-total">0</div>
+              <div class="lbl">requests checked for this profile</div>
+            </div>
+            <h3 style="margin-top:1rem">Geography</h3>
+            <p id="p-geo" style="margin:0"></p>
+            <h3 style="margin-top:1rem">Founded &amp; Governance <span style="color:var(--urgent)">(invented)</span></h3>
+            <p id="p-founded" style="margin:0"></p>
+            <h3 style="margin-top:1rem">Budget <span style="color:var(--urgent)">(invented)</span></h3>
+            <p id="p-financials" style="margin:0"></p>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1.2rem">
+        <div class="card-head">
+          <h3>Program Scale <span style="color:var(--urgent)">(invented figures)</span></h3>
+          <button class="mc-toggle" type="button" aria-controls="p-scale-body"></button>
+        </div>
+        <div class="mc-body" id="p-scale-body">
+          <div class="impact-grid" id="p-impact"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<section class="section section-card" id="ready">
+  <div class="fold">
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="ready-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Open Now</span>
+        <h2>Ready Now</h2>
+        <div class="section-head-tags"><span style="font-size:.8rem;letter-spacing:.02em;font-weight:600;color:var(--ok);border:1px solid var(--ok);padding:.14rem .45rem;vertical-align:middle">Real requests, independently re-verified</span></div>
+      </div>
+    </div>
+    <div class="fold-body" id="ready-fold-body">
+    <div class="section-lede">
+      <p>5 requests checked and currently open, 2 checked and ruled out, shown transparently below rather than dropped silently.</p>
+    </div>
+      <div class="res-count"><b id="ready-count">0</b> requests shown</div>
+      <div id="ready-results"></div>
+      <h3 style="margin:1.4rem 0 .6rem;text-align:center">Checked and Ruled Out</h3>
+      <div id="ruled-out-results"></div>
+    </div>
+  </div>
+</section>
 
-<footer>
-  <span>Prepared by Jonathan Lin Davis</span>
-  <span class="footer-improvements-wrap"><a class="footer-improvements" href="improvementlog.html">Improvement log</a></span>
+<section class="section section-card" id="method">
+  <div class="fold">
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="method-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Method</span>
+        <h2>How this was built</h2>
+      </div>
+    </div>
+    <div class="fold-body" id="method-fold-body">
+    <div class="table-scroll"><table class="funder-mini-table method-table">
+      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Where this comes from</td>
+          <td>Every funder and every request on this page is drawn from that funder's own public record: its IRS Form 990 filings, its published guidelines, and its own application page.<br><br>Each card carries a link back to the source it came from, so nothing here has to be taken on trust.<br><br>Where a funder does not publish a figure (an award range, a deadline), that gap is marked as unconfirmed rather than filled in.</td>
+        </tr>
+        <tr>
+          <td>What Docket will not do</td>
+          <td>It does not invent a fact about a funder.<br><br>An unpublished deadline is reported as unpublished, not replaced with a plausible-looking date.<br><br>A closed or paused process is recorded as closed, not left showing as open because it once was. Two of the six candidates researched for this page were exactly that case, caught by re-checking each funder's own current page rather than trusting an earlier pass.</td>
+        </tr>
+        <tr>
+          <td>What it cannot tell you</td>
+          <td>An open Letter of Inquiry route is not a promise of funding: an LOI is a first step, not an award, and most of what looks open on a funder's page is genuinely a long-odds door rather than a sure thing.<br><br>Funder priorities and application windows move, sometimes without notice; every row on this page was checked against the funder's own current page on 2026-08-11, a snapshot rather than a promise.<br><br>Confirm the current cycle, deadline, and eligibility on the funder's own site before applying.</td>
+        </tr>
+        <tr>
+          <td>How candidates are found and checked</td>
+          <td>Candidates are found by searching for funders whose own published guidelines or program pages name community development, food security, youth and family stability, or immigrant/refugee support in a geography that plausibly includes this applicant, then checking each one directly against the funder's own current page rather than an aggregator (Instrumentl, Candid, GrantForward and similar restate and go stale; several determinations on this page contradicted what an aggregator would have shown).<br><br>Seventeen candidates were checked to build this page: five are genuinely open today and shown above, two were ruled out on direct verification after previously being open (one paused to new applicants since an earlier check, one closed outright), and ten more turned out closed, not-yet-open, or a genuine mismatch on first contact. Most annual-cycle funders checked in this pass had already closed for the year by the August check date; the five shown above are open specifically because they run on a rolling basis or fall inside a live seasonal window, not an annual one.<br><br>Every determination, including every closed and ruled-out one, is captured permanently in the underlying opportunity register regardless of whether it ends up shown on any specific client's page, so the next search does not have to pay to find the same answer twice.</td>
+        </tr>
+      </tbody>
+    </table></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <p id="footer-credit">Docket demo by Jonathan Lin Davis &middot; the organization shown is fictional; the funders and requests are real.</p>
+  <p id="footer-links"><a href="demo-almanac.html">See Almanac, the grant match &#8594;</a> &middot; <a href="/#contact">Request a review &#8594;</a></p>
+  <p class="footer-improvements-wrap"><a class="footer-improvements" href="improvementlog.html">Improvement log</a></p>
   <p class="footer-custom-note"><a href="/#contact">Need something custom? Individualized builds outside this catalog are available on request &#8594;</a></p>
-</footer>
+</div></footer>
 
+<script>
+/* ---- Self-contained demonstration page. No ?org= parameter, no fetch of data/*.json.
+   The data below IS the page.
+
+   TWO KINDS OF DATA LIVE HERE, AND THEY ARE NOT THE SAME KIND:
+
+   1. PROFILE describes Riverside Neighbors Collaborative, a FICTIONAL East Austin community
+      organization invented for this demo. Its budget, headcount, and program figures are
+      invented too. It is not a real client and no real client's data appears on this page.
+
+   2. REQUESTS and FUNDER_PROFILES describe REAL foundations and REAL, currently open Letters
+      of Inquiry / Requests for Proposals. Every entry carries a link to the funder's own page,
+      and every amount, deadline, and eligibility rule is quoted from that page or marked
+      unconfirmed. No amount, deadline, or history is invented for any real institution.
+      Independently re-verified against each funder's own current page 2026-08-11. ---- */
+
+const PROFILE={
+  organization:"Riverside Neighbors Collaborative",
+  legal_name:"Riverside Neighbors Collaborative (fictional; no such organization exists)",
+  ein:null,
+  website:null,
+  founded:"Founded 2011 (invented). No EIN or website is listed, because this organization does not exist and inventing either could collide with a real nonprofit's.",
+  board_size:9,
+  mission:"Riverside Neighbors Collaborative connects East Austin families to the community kitchen, youth mentorship, and neighbor-to-neighbor support that keep a fast-changing neighborhood a place people can stay. One roof, several programs, built around the belief that a neighborhood's own residents are its strongest resource.",
+  programs:[
+    "Community Kitchen & Nutrition Education",
+    "Youth & Family Stability Network",
+    "New Neighbor Welcome (immigrant and refugee support)",
+    "Neighborhood Resource Navigation",
+    "Volunteer Tutoring",
+    "Senior Wellness Checks",
+    "Emergency Assistance Fund",
+    "Community Garden",
+  ],
+  geography:{
+    primary:"East Austin, Travis County, Texas",
+    secondary:["Programming concentrated along the Riverside and MLK corridors (invented)"],
+  },
+  financials_fy2025:{
+    fiscal_year_end:"June 30, 2025 (invented)",
+    total_revenue:1840000,
+    total_expenses:1690000,
+    net_assets:610000,
+    note:"Invented figures for a fictional organization, sized to give the request match a realistically mid-size community nonprofit budget to reason against.",
+  },
+  impact_fy2024:{
+    stats:[
+      {num:"1,860",lbl:"Meals served through the Community Kitchen"},
+      {num:"340",lbl:"Youth enrolled in mentorship and tutoring"},
+      {num:"210",lbl:"New-neighbor families welcomed and connected to services"},
+      {num:"95",lbl:"Seniors receiving regular wellness checks"},
+    ],
+  },
+  profile_built:"2026-08-11",
+  profile_sources:[
+    "The organization profile is invented. There is no source for it, because there is no organization.",
+    "The name was chosen for this demo; every funder and request in the Ready Now and Ruled Out sections is real and carries a link to its own source.",
+  ],
+};
+
+/* FOUR REAL, CURRENTLY OPEN LOI/RFP OPPORTUNITIES, each independently re-verified against the
+   funder's own current page 2026-08-11. All four are also captured in the shared opportunity
+   register, regardless of use on this specific demo. */
+const REQUESTS=[
+  {
+    id:"emeril-lagasse-community-grants",
+    funder_name:"Emeril Lagasse Foundation",
+    ein:"421536915",
+    type:"LOI",
+    title:"Community Grants, concept-paper route",
+    url:"https://www.emeril.org/community-grants/how-to-apply-for-a-community-grant/",
+    deadline:"Rolling. No stated deadline; concept papers reviewed on an ongoing basis.",
+    amount:"Not published on the funder's own page.",
+    eligibility:"Serves Greater New Orleans, Austin, Greater Ft. Lauderdale, the Gulf South, Greater Houston, Southern California, Las Vegas, Napa/Sonoma, Orlando, and Washington D.C. Austin is named explicitly. Focus: culinary, nutrition, and arts education with a focus on life skills development.",
+    notes:"Formally invitation-only, but the funder's own page states organizations without a prior funding relationship are encouraged to submit a concept paper (max 3 pages: org name, email, geographic service area, org background, 200-word project summary, statement of need, financial request). Riverside Neighbors Collaborative's Community Kitchen & Nutrition Education program is a genuine, direct fit for the stated focus area, not a stretch.",
+  },
+  {
+    id:"blue-meridian-interest-survey",
+    funder_name:"Blue Meridian Partners",
+    ein:"815086187",
+    type:"LOI",
+    title:"Interest Survey for grantseekers",
+    url:"https://www.bluemeridian.org/for-grantseekers/",
+    deadline:"Rolling. No deadline stated; applications reviewed continuously.",
+    amount:"Not published; Blue Meridian's own giving profile skews toward large, multi-year investments rather than typical foundation-grant sizes.",
+    eligibility:"A stand-alone nonprofit with a history of service to young people and families in poverty in the U.S. Financially viable, with a budget greater than $1,000,000. Must satisfy Blue Meridian's own six selection criteria, not detailed on the public page.",
+    notes:"Genuinely open, but long odds and low-touch by design: Blue Meridian states plainly it 'cannot respond individually to each submission' and will contact only organizations it determines align with its own grantmaking goals. Riverside Neighbors Collaborative's invented $1.84M budget clears the stated financial bar; its Youth & Family Stability Network is the program that would carry this submission.",
+  },
+  {
+    id:"irusa-domestic-grant-program",
+    funder_name:"Islamic Relief USA",
+    ein:"954453134",
+    type:"LOI",
+    title:"US Domestic Grant Program",
+    url:"https://irusa.org/us-programs-grant-applications/",
+    deadline:"Rolling. “An ongoing process with no fixed annual deadlines,” per the funder's own page.",
+    amount:"Not published on the funder's own page; annual cash budget under $3 million is strongly preferred.",
+    eligibility:"IRS-registered 501(c)(3) public charity in good standing, three years of active operation in the US, programming exclusively within the contiguous 48 states, not seeking funds for direct religious activities or services. No religious affiliation is required of the applicant.",
+    notes:"Four eligible categories: Food Security, Healthcare, Livelihood, and Community Development (the last explicitly includes nonprofit capacity building, youth programs, and senior services). Riverside Neighbors Collaborative's Community Kitchen, Youth & Family Stability Network, and Senior Wellness Checks programs all sit inside this category.",
+  },
+  {
+    id:"austin-equity-mini-grant-fy26",
+    funder_name:"City of Austin, Equity and Inclusion",
+    ein:"",
+    type:"RFP",
+    title:"Equity Mini Grant Fund, FY26 relaunch",
+    url:"https://www.austintexas.gov/equity-inclusion/grant-programs",
+    deadline:"August 14, 2026, 8:00 a.m. CT through August 28, 2026, 11:59 p.m. CT.",
+    amount:"Up to $25,000.",
+    eligibility:"Community-based efforts serving immigrant and refugee communities in Austin, Travis County, and the City's Extraterritorial Jurisdiction. Organizations do not need to be large or professionally staffed to apply; the program intentionally supports community-rooted work.",
+    notes:"A relaunch of the FY26 cycle after the initial round was pulled for procedural issues (an unauthorized extension of the original May 8, 2026 deadline); open to both new and previous applicants. A municipal program, not a 501(c)(3): no IRS profile applies. Riverside Neighbors Collaborative's New Neighbor Welcome program is a direct, named fit.",
+  },
+  {
+    id:"meadows-foundation-loi",
+    funder_name:"Meadows Foundation Incorporated",
+    ein:"756015322",
+    type:"LOI",
+    title:"Letter of Inquiry / online grant application, rolling",
+    url:"https://www.mfi.org/how-to-apply/",
+    deadline:"Rolling. Board of Directors meets 5 times a year (Jan, Apr, Jun, Sep, Nov); the funder recommends submitting 4-5 months before funds are needed.",
+    amount:"Not published as a fixed range on the funder's own page.",
+    eligibility:"501(c)(3) public charities or public entities serving the people of Texas (the organization itself need not be headquartered in Texas). One proposal per organization per 12-month period. Program areas include Human Services, alongside Education, Environment, Arts & Culture, Civic & Public Affairs, and Health.",
+    notes:"Human Services is described on the funder's own page as support for programs serving the most vulnerable Texans, with a stated emphasis on homelessness reduction in the Dallas area. Riverside Neighbors Collaborative's statewide eligibility clears cleanly; its Emergency Assistance Fund and Senior Wellness Checks programs are the closest fit to the funder's stated focus, though the funder's Dallas emphasis means this is a genuine but not a guaranteed match.",
+  },
+];
+
+/* PER-FUNDER IRS PROFILE for the four 501(c)(3)s above. Pulled live from ProPublica Nonprofit
+   Explorer's JSON API, fetched 2026-08-11. The City of Austin is a municipal program, not a
+   501(c)(3), so it carries no IRS profile by design. foundation_code 15 (the first three) means
+   public charity, not a 990-PF filer -- qualifying_distributions is correctly not applicable.
+   Meadows Foundation carries foundation_code 4 (private operating foundation, a 990-PF filer),
+   so its qualifying_distributions figure is a real, published number. */
+const FUNDER_PROFILES={
+  "421536915":{name:"Emeril Lagasse Foundation",city:"New Orleans",state:"LA",subsection_code:3,foundation_code:15,ntee_code:"T30",tax_year:2023,revenue:2987060,assets:5102438,liabilities:1263229,qualifying_distributions:null},
+  "815086187":{name:"Blue Meridian Partners Inc",city:"New York",state:"NY",subsection_code:3,foundation_code:15,ntee_code:"P12",tax_year:2023,revenue:353322309,assets:2261435517,liabilities:6734147,qualifying_distributions:null},
+  "954453134":{name:"Islamic Relief USA",city:"Alexandria",state:"VA",subsection_code:3,foundation_code:15,ntee_code:"Q123",tax_year:2023,revenue:165235589,assets:228581851,liabilities:5280117,qualifying_distributions:null},
+  "756015322":{name:"Meadows Foundation Incorporated",city:"Dallas",state:"TX",subsection_code:3,foundation_code:4,ntee_code:"T20",tax_year:2023,revenue:3668203,assets:694306466,liabilities:31204436,qualifying_distributions:32788117},
+};
+
+/* TWO CANDIDATES CHECKED AND RULED OUT, shown transparently rather than dropped. Both were
+   independently re-verified against the funder's own current page 2026-08-11 and found to have
+   changed status since an earlier pass. */
+const RULED_OUT=[
+  {
+    funder_name:"Shield-Ayres Foundation",
+    ein:"741938157",
+    title:"Letter of Inquiry, third-quarter board cycle",
+    url:"https://www.shield-ayresfoundation.org/grant-making/apply/",
+    reason:"The foundation's own page, re-checked 2026-08-11: “Only organizations that have previously received funding from the Shield-Ayres Foundation are eligible to submit” a Letter of Inquiry at this time. The process is paused to new applicants, contradicting the open status this row previously carried.",
+  },
+  {
+    funder_name:"Borealis Philanthropy",
+    ein:"464598642",
+    title:"Just Futures Initiative",
+    url:"https://borealisphilanthropy.org/news-and-views/just-futures-initiative-grant-opportunity/",
+    reason:"The funder's own page, re-checked 2026-08-11: the header now explicitly states [CLOSED], with no reopening date given. Was genuinely open as of an earlier determination.",
+  },
+];
+
+/* ==================== helpers ==================== */
+function esc(s){return(s||"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function money(n){return '$'+Number(n).toLocaleString();}
+
+function renderProfile(){
+  const p=PROFILE;
+  document.getElementById('p-mission').textContent=p.mission;
+  document.getElementById('p-focus').innerHTML=p.programs.map(f=>`<span class="tag">${esc(f)}</span>`).join('');
+  document.getElementById('p-total').textContent=REQUESTS.length+RULED_OUT.length;
+  document.getElementById('p-geo').innerHTML=`<span class="geo-highlight">${esc(p.geography.primary)}</span><br>${p.geography.secondary.map(esc).join(', ')}`;
+  document.getElementById('p-founded').innerHTML=`${esc(p.founded)}${p.board_size?' &middot; '+esc(String(p.board_size))+'-member board':''}`;
+  const fin=p.financials_fy2025;
+  document.getElementById('p-financials').innerHTML=`Revenue ${money(fin.total_revenue)} &middot; Expenses ${money(fin.total_expenses)} &middot; Net assets ${money(fin.net_assets)}<br><span style="font-size:.85em;color:var(--wash)">${esc(fin.note)}</span>`;
+  document.getElementById('p-impact').innerHTML=p.impact_fy2024.stats.map(s=>`
+    <div class="stat-tile"><div class="num">${esc(s.num)}</div><div class="lbl">${esc(s.lbl)}</div></div>
+  `).join('');
+}
+
+const PUBLIC_CHARITY_FOUNDATION_CODES=new Set([10,11,12,13,14,15,16,17,18,21,22,23,24]);
+function fmtQualDistrib(n,foundationCode){
+  if(n!==null&&n!==undefined)return money(n);
+  if(PUBLIC_CHARITY_FOUNDATION_CODES.has(foundationCode))return '<span class="not-published">Not applicable (public charity, not a 990-PF filer)</span>';
+  return '<span class="not-published">not returned by the source</span>';
+}
+
+function typeBadge(t){
+  return t==='RFP' ? '<span class="badge badge-rfp">RFP</span>' : '<span class="badge badge-loi">LOI</span>';
+}
+
+function renderReady(){
+  document.getElementById('ready-count').textContent=REQUESTS.length;
+  document.getElementById('m-requests').textContent=REQUESTS.length+RULED_OUT.length;
+  document.getElementById('m-ready').textContent=REQUESTS.length;
+
+  const host=document.getElementById('ready-results');
+  host.innerHTML=REQUESTS.map(r=>{
+    const p=FUNDER_PROFILES[r.ein];
+    const rows=[
+      ['Open Request',`<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a>`,true],
+      ['Deadline',esc(r.deadline)],
+      ['Amount',esc(r.amount)],
+      ['Eligibility',esc(r.eligibility)],
+      ['Notes',esc(r.notes)],
+    ].map(([label,value,featured])=>`<div class="qa-row${featured?' qa-row-featured':''}"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
+    const snapshot=p?`
+        <div class="card">
+          <h3>Funder Snapshot</h3>
+          <div class="impact-grid">
+            <div class="stat-tile"><div class="num">${money(p.assets)}</div><div class="lbl">Total assets (EOY)</div></div>
+            <div class="stat-tile"><div class="num">${money(p.revenue)}</div><div class="lbl">Total revenue</div></div>
+            <div class="stat-tile"><div class="num">${money(p.liabilities)}</div><div class="lbl">Total liabilities (EOY)</div></div>
+            <div class="stat-tile"><div class="num">${fmtQualDistrib(p.qualifying_distributions,p.foundation_code)}</div><div class="lbl">Qualifying distributions (grants paid, 990-PF only)</div></div>
+          </div>
+        </div>` : `
+        <div class="card">
+          <h3>Funder Snapshot</h3>
+          <p class="not-published">Municipal program, not a 501(c)(3) &mdash; no IRS profile applies.</p>
+        </div>`;
+    return `
+    <div class="match-card" id="${esc(r.id)}">
+      <div class="mc-head">
+        <span class="fname">${esc(r.funder_name)}</span>
+        ${typeBadge(r.type)}
+        <button class="mc-toggle" type="button" aria-controls="${esc(r.id)}-body"></button>
+      </div>
+      <div class="mc-body" id="${esc(r.id)}-body">
+        ${snapshot}
+        <div class="card">
+          <h3>Request Detail</h3>
+          <div class="qa-grid">${rows}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  wireAccordion(host);
+}
+
+function renderRuledOut(){
+  document.getElementById('ruled-out-results').innerHTML=RULED_OUT.map(r=>`
+    <div class="watch-item" style="padding:.75rem 0;border-bottom:1px solid var(--rule-soft);display:grid;grid-template-columns:1fr 2fr;gap:1rem;min-width:0;text-align:left">
+      <div class="org"><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.funder_name)}</a><br><span style="font-family:var(--mono);font-size:.78rem;color:var(--wash);font-weight:400">${esc(r.title)}</span></div>
+      <div class="why" style="font-size:15px;color:var(--wash);line-height:1.5">${esc(r.reason)}</div>
+    </div>
+  `).join('');
+}
+
+function wireAccordion(host,cardSelector){
+  const cards=host.querySelectorAll(cardSelector||'.match-card');
+  cards.forEach(card=>{
+    const btn=card.querySelector('.mc-toggle');
+    if(!btn)return;
+    const setOpen=open=>{
+      card.classList.toggle('mc-closed',!open);
+      btn.setAttribute('aria-expanded',String(open));
+      btn.textContent=open?'Hide details':'Show details';
+    };
+    setOpen(false);
+    btn.addEventListener('click',()=>setOpen(card.classList.contains('mc-closed')));
+  });
+}
+
+function load(){
+  renderProfile();
+  renderReady();
+  renderRuledOut();
+  wireAccordion(document.getElementById('profile'),'.card');
+  wireAccordion(document.body,'.section-card');
+}
+
+load();
+</script>
+
+<script>
+/* Mirror each list section's own counter into its heading chip; hash-anchor scroll. */
+(function(){
+  function openTo(){
+    var h = window.location.hash;
+    if (!h || h.length < 2) return;
+    var t;
+    try { t = document.querySelector(h); } catch (e) { return; }
+    if (!t) return;
+    window.setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+  }
+  window.addEventListener('hashchange', openTo);
+  window.addEventListener('load', openTo);
+  document.addEventListener('DOMContentLoaded', openTo);
+})();
+</script>
 </body>
 </html>

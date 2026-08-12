@@ -63,6 +63,8 @@ a{color:inherit;text-decoration:none}
    link-row + custom-build note under a product family's card grid -- centered,
    not left-aligned like ordinary body copy. */
 .foot-note{max-width:1000px;margin:0 auto;padding:0 1.5rem 3rem;color:var(--wash);font-size:.93rem;text-align:center}
+.picker-subhead{max-width:1120px;margin:2.4rem auto .9rem;padding:0 1.5rem;text-align:center;font-family:var(--serif);font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;color:var(--wash)}
+.picker-subhead:first-of-type{margin-top:0}
 footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:12px;letter-spacing:.02em;text-align:center}
 @media(max-width:900px){.picker{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.picker{grid-template-columns:1fr}.survey-callout{padding:1.2rem 1.1rem}}
@@ -90,6 +92,7 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
   <a class="sc-go" href="demo-survey.html">Complete the Organization Intake Survey &#8594;</a>
 </div>
 
+<h2 class="picker-subhead">Live Products</h2>
 <div class="picker">
   <a class="pick-card" href="demo-almanac.html">
     <div class="pc-kicker">Funder &amp; grant match</div>
@@ -112,34 +115,41 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
     <div class="pc-status">Live</div>
     <span class="pc-go">Open demo &#8594;</span>
   </a>
-  <a class="pick-card" href="demo-concordance.html">
+  <a class="pick-card" href="demo-confluence.html">
+    <div class="pc-kicker">Joint funding, two organizations</div>
+    <h2>Confluence</h2>
+    <p>Finds funding that connects your organization's mission to a named partner organization's work, where you are the eligible applicant. An angle Almanac's single-org matching doesn't surface on its own.</p>
+    <div class="pc-status">Live</div>
+    <span class="pc-go">Open demo &#8594;</span>
+  </a>
+</div>
+
+<h2 class="picker-subhead">In Development</h2>
+<div class="picker">
+  <div class="pick-card disabled">
     <div class="pc-kicker">Trustees &amp; introductions</div>
     <h2>Concordance</h2>
     <p>Names the people who govern the foundations that already fund this kind of work, shows the grants that prove it, and maps who on a board could make the introduction. It does not estimate anyone's wealth.</p>
     <div class="pc-status">In Development</div>
-    <span class="pc-go">Open demo &#8594;</span>
-  </a>
-  <a class="pick-card" href="demo-herald.html">
+  </div>
+  <div class="pick-card disabled">
     <div class="pc-kicker">Grant-cycle monitor</div>
     <h2>Herald</h2>
     <p>Watches the funder pages behind an Almanac watch-list and reports when a cycle opens, a deadline posts, or guidelines change, showing the actual diff, never an interpretation.</p>
     <div class="pc-status">In Development</div>
-    <span class="pc-go">Open demo &#8594;</span>
-  </a>
-  <a class="pick-card" href="demo-atlas.html">
+  </div>
+  <div class="pick-card disabled">
     <div class="pc-kicker">Corporate foundation benchmark</div>
     <h2>Atlas</h2>
     <p>Benchmarks a corporate foundation's giving against real aggregate statistics computed from Texas-registered 990-PF filings, not any single named peer.</p>
     <div class="pc-status">In Development</div>
-    <span class="pc-go">Open demo &#8594;</span>
-  </a>
-  <a class="pick-card" href="demo-dossier.html">
+  </div>
+  <div class="pick-card disabled">
     <div class="pc-kicker">990 reconciliation</div>
     <h2>Dossier</h2>
     <p>Checks that a foundation's claimed giving matches its own filed 990-PF numbers, and cross-references a voluntary donation list against public filings.</p>
     <div class="pc-status">In Development</div>
-    <span class="pc-go">Open demo &#8594;</span>
-  </a>
+  </div>
 </div>
 
 <div class="foot-note">
