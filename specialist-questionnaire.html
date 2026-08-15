@@ -293,10 +293,26 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
         <textarea id="s-publications" name="publications" rows="4" required></textarea>
         <p class="field-hint">Up to about six, most relevant first, in whatever citation style you use. Write "None" if you would rather we cite none.</p>
       </div>
+      <p class="form-section-note">Everything below is optional, and separated by kind so we can tell which file is which rather than guessing from filenames. 25 MB across all of them. Attaching a document does not replace filling in the fields above: we would rather you tell us the facts than have us transcribe your CV and get one wrong.</p>
       <div class="form-field">
-        <label for="s-files">Attach a CV, if you have one handy</label>
-        <input type="file" id="s-files" name="files" multiple accept=".pdf,.doc,.docx">
-        <p class="field-hint">Optional. PDF or Word, 25 MB total. A CV resolves most of the questions above faster than typing them out, but the fields still need filling because we do not want to transcribe your CV and get it wrong.</p>
+        <label for="s-file-cv">CV or resume</label>
+        <input type="file" id="s-file-cv" name="file_cv" multiple accept=".pdf,.doc,.docx,.rtf,.odt,.txt">
+        <p class="field-hint">PDF, Word, RTF, ODT, or plain text.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-file-bio">Written biography</label>
+        <input type="file" id="s-file-bio" name="file_bio" multiple accept=".pdf,.doc,.docx,.rtf,.odt,.txt">
+        <p class="field-hint">If you already have a bio you use elsewhere, send that rather than writing a new one. If yours comes in more than one length, send both and say which is which.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-file-photo">Photograph</label>
+        <input type="file" id="s-file-photo" name="file_photo" multiple accept=".jpg,.jpeg,.png,.webp,.heic">
+        <p class="field-hint">JPG, PNG, WebP, or HEIC. Only send one if you marked the photograph row in the consent section below as yes. A photograph you send is still governed by that answer, and we will not publish it on the strength of the upload alone.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-file-other">Anything else</label>
+        <input type="file" id="s-file-other" name="file_other" multiple accept=".pdf,.doc,.docx,.rtf,.odt,.txt,.jpg,.jpeg,.png,.webp,.csv,.xlsx">
+        <p class="field-hint">Publication lists, a capability statement, licence certificates, a portfolio, whatever is useful. Please do not send anything containing a government identification number, a bank detail, or a password. This form emails its contents, and email is not a secure channel.</p>
       </div>
     </div>
 
@@ -369,13 +385,6 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
             <span class="consent-choices">
               <label><input type="radio" name="consent_photo" value="yes"> Yes</label>
               <label><input type="radio" name="consent_photo" value="no"> No</label>
-            </span>
-          </div>
-          <div class="consent-row">
-            <span class="consent-label">Your contact email</span>
-            <span class="consent-choices">
-              <label><input type="radio" name="consent_email" value="yes"> Yes</label>
-              <label><input type="radio" name="consent_email" value="no"> No</label>
             </span>
           </div>
         </fieldset>
@@ -574,7 +583,7 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
 
   const CONSENT_GROUPS=['consent_name','consent_credentials','consent_affiliation',
     'consent_domain','consent_bio','consent_publications','consent_geography',
-    'consent_link','consent_photo','consent_email'];
+    'consent_link','consent_photo'];
 
   function radioValue(name){
     const checked=document.querySelector('input[name="'+name+'"]:checked');
@@ -624,11 +633,18 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
       return;
     }
 
-    const files=(document.getElementById('s-files')||{}).files||[];
+    // Four separate inputs, kept separate all the way to the email so the
+    // recipient knows which file is a CV and which is a photograph rather
+    // than inferring it from a filename.
+    const FILE_INPUTS=[['s-file-cv','file_cv'],['s-file-bio','file_bio'],
+                       ['s-file-photo','file_photo'],['s-file-other','file_other']];
     let totalBytes=0;
-    for(let i=0;i<files.length;i++){totalBytes+=files[i].size;}
+    for(let i=0;i<FILE_INPUTS.length;i++){
+      const list=(document.getElementById(FILE_INPUTS[i][0])||{}).files||[];
+      for(let j=0;j<list.length;j++){totalBytes+=list[j].size;}
+    }
     if(totalBytes>25*1024*1024){
-      setStatus('Attached files exceed the 25 MB total limit.',true);
+      setStatus('Attached files exceed the 25 MB total limit across all four upload boxes.',true);
       return;
     }
 
@@ -668,7 +684,11 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
     fd.append('panel_slug',new URLSearchParams(window.location.search).get('p')||'');
     fd.append('website',textVal('website'));
     fd.append('page_url',window.location.href);
-    for(let i=0;i<files.length;i++){fd.append('files',files[i]);}
+    for(let i=0;i<FILE_INPUTS.length;i++){
+      const key=FILE_INPUTS[i][1];
+      const list=(document.getElementById(FILE_INPUTS[i][0])||{}).files||[];
+      for(let j=0;j<list.length;j++){fd.append(key,list[j]);}
+    }
 
     const origLabel=btn?btn.textContent:'Send';
     let success=false;

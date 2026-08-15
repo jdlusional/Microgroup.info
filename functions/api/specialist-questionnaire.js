@@ -1,7 +1,7 @@
 // POST /api/specialist-questionnaire
 // Receives the specialist panel profile intake (specialist-questionnaire.html)
-// and emails it to the site owner via Resend, forwarding an attached CV as an
-// email attachment. Forked from survey.js, which is the closest existing
+// and emails it to the site owner via Resend, forwarding any uploaded CV,
+// biography, photograph or supporting document as labelled attachments. Forked from survey.js, which is the closest existing
 // pattern: same multipart FormData contract, same FIELD_GROUPS abstraction,
 // same helpers. Like that one, this stores nothing; the page's own footer says
 // so and that must stay true.
@@ -9,7 +9,7 @@
 // Two things here have no equivalent in survey.js and are the reason this is a
 // separate function rather than another branch of that one:
 //
-//   1. PER-FIELD PUBLICATION CONSENT. Ten independent yes/no answers about
+//   1. PER-FIELD PUBLICATION CONSENT. Nine independent yes/no answers about
 //      what may be published. The default is NO, and it is enforced here
 //      rather than trusted from the page: anything that is not the exact
 //      string "yes" is recorded as a no, including an empty string, a missing
@@ -29,7 +29,18 @@
 const DEFAULT_TO = "jdavis92105@gmail.com";
 const DEFAULT_FROM = "MICRO Group, L.L.C. Specialist Panel <onboarding@resend.dev>";
 
-const ALLOWED_EXTENSIONS = [".pdf", ".doc", ".docx"];
+// Uploads arrive under four separate keys rather than one "files" key, so the
+// email can say which attachment is a CV and which is a photograph instead of
+// leaving the reader to infer it from a filename. Each key carries its own
+// allow-list: a photograph slot that accepted .docx would defeat the point.
+const DOC_EXT = [".pdf", ".doc", ".docx", ".rtf", ".odt", ".txt"];
+const IMG_EXT = [".jpg", ".jpeg", ".png", ".webp", ".heic"];
+const FILE_FIELDS = [
+  { key: "file_cv", label: "CV or resume", allow: DOC_EXT },
+  { key: "file_bio", label: "Written biography", allow: DOC_EXT },
+  { key: "file_photo", label: "Photograph", allow: IMG_EXT },
+  { key: "file_other", label: "Other", allow: DOC_EXT.concat(IMG_EXT, [".csv", ".xlsx"]) },
+];
 const MAX_TOTAL_BYTES = 25 * 1024 * 1024; // 25 MB, matches survey.js
 
 function json(obj, status = 200) {
@@ -49,9 +60,9 @@ function clean(v) {
   return v === undefined || v === null ? "" : String(v).trim();
 }
 
-function hasAllowedExtension(filename) {
+function hasAllowedExtension(filename, allow) {
   const name = String(filename || "").toLowerCase();
-  return ALLOWED_EXTENSIONS.some((ext) => name.endsWith(ext));
+  return allow.some((ext) => name.endsWith(ext));
 }
 
 // Convert an ArrayBuffer to base64 without blowing the call stack on large
@@ -143,7 +154,7 @@ const REQUIRED_CHOICES = [
   ["attestation", "Accuracy confirmation"],
 ];
 
-// The ten per-field consent questions. Order matters only for the email.
+// The per-field consent questions. Order matters only for the email.
 const CONSENT_KEYS = [
   ["consent_name", "Name"],
   ["consent_credentials", "Degrees and credentials"],
@@ -154,7 +165,6 @@ const CONSENT_KEYS = [
   ["consent_geography", "Where they practice"],
   ["consent_link", "Link to professional profile"],
   ["consent_photo", "Photograph"],
-  ["consent_email", "Contact email"],
 ];
 
 // Render choice slugs as the words the person actually read on the page, so
@@ -356,15 +366,26 @@ export async function onRequestPost(context) {
   const slug = clean(form.get("panel_slug"));
   const pageUrl = clean(form.get("page_url"));
 
-  const files = form
-    .getAll("files")
-    .filter((f) => f && typeof f === "object" && "size" in f && "name" in f && f.size > 0);
-
-  for (const f of files) {
-    if (!hasAllowedExtension(f.name)) {
-      return json({ error: `Unsupported file type: ${f.name} (allowed: .pdf, .doc, .docx)` }, 400);
+  // Collect per field, validating each against its own allow-list and keeping
+  // the field label attached so the email can group them.
+  const collected = [];
+  for (const spec of FILE_FIELDS) {
+    const got = form
+      .getAll(spec.key)
+      .filter((f) => f && typeof f === "object" && "size" in f && "name" in f && f.size > 0);
+    for (const f of got) {
+      if (!hasAllowedExtension(f.name, spec.allow)) {
+        return json(
+          {
+            error: `Unsupported file type in "${spec.label}": ${f.name} (allowed there: ${spec.allow.join(", ")})`,
+          },
+          400
+        );
+      }
+      collected.push({ file: f, label: spec.label });
     }
   }
+  const files = collected.map((c) => c.file);
 
   const totalBytes = files.reduce((sum, f) => sum + f.size, 0);
   if (totalBytes > MAX_TOTAL_BYTES) {
@@ -378,11 +399,13 @@ export async function onRequestPost(context) {
   const createdAt = new Date().toISOString();
 
   const attachments = [];
-  for (const f of files) {
-    const buf = await f.arrayBuffer();
-    attachments.push({ filename: f.name, content: arrayBufferToBase64(buf) });
+  for (const c of collected) {
+    const buf = await c.file.arrayBuffer();
+    attachments.push({ filename: c.file.name, content: arrayBufferToBase64(buf) });
   }
-  const fileNames = files.map((f) => f.name);
+  // Label every attachment with the box it came from, so a file named
+  // "final2.pdf" is still identifiable as a CV rather than a bio.
+  const fileNames = collected.map((c) => `${c.label}: ${c.file.name}`);
 
   const to = env.PANEL_TO || DEFAULT_TO;
   const from = env.PANEL_FROM || DEFAULT_FROM;
