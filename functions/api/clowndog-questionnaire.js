@@ -63,9 +63,19 @@
 const DEFAULT_TO = "jdavis92105@gmail.com";
 const DEFAULT_FROM = "Clown Dog Questionnaire <onboarding@resend.dev>";
 
-const ALLOWED_EXTENSIONS = [
-  ".pdf", ".doc", ".docx", ".csv", ".xlsx",
-  ".jpg", ".jpeg", ".png", ".heic", ".heif", ".webp", ".gif",
+const DOC_EXT = [".pdf", ".doc", ".docx", ".csv", ".xlsx"];
+const IMG_EXT = [".jpg", ".jpeg", ".png", ".heic", ".heif", ".webp", ".gif"];
+
+// [key, section label, allowed extensions]. Field-name-verified against
+// clown-dog-questionnaire.html's FILE_INPUTS array (per-section upload
+// pattern, 2026-08-16, matching specialist-questionnaire.js's FILE_FIELDS
+// shape) -- if that page's input `name` attributes are ever renamed,
+// realigning is a one-line edit to the `key` half of each entry below.
+const FILE_FIELDS = [
+  ["file_access", "Domain & Access document", [...DOC_EXT, ...IMG_EXT]],
+  ["file_inventory", "Inventory document", [...DOC_EXT, ".jpg", ".jpeg", ".png"]],
+  ["file_photo", "Photo", IMG_EXT],
+  ["file_other", "Other file", [...DOC_EXT, ...IMG_EXT]],
 ];
 // Per-file and total limits both 25 MB: the page's own hint text and its
 // client-side check only ever mention a 25 MB *total* (no per-file cap), so
@@ -110,9 +120,9 @@ function clean(v) {
   return v === undefined || v === null ? "" : String(v).trim();
 }
 
-function hasAllowedExtension(filename) {
+function hasAllowedExtension(filename, allowed) {
   const name = String(filename || "").toLowerCase();
-  return ALLOWED_EXTENSIONS.some((ext) => name.endsWith(ext));
+  return allowed.some((ext) => name.endsWith(ext));
 }
 
 // Convert an ArrayBuffer to base64 without blowing the call stack on large
@@ -169,8 +179,8 @@ const FIELD_GROUPS = [
   {
     label: "Photography",
     keys: [
-      ["photography", "New photo shoot"],
-      ["photography_notes", "Scheduling availability or notes"],
+      ["photography", "Can send photos"],
+      ["photography_notes", "Notes on photos"],
     ],
   },
   {
@@ -280,9 +290,9 @@ const VALUE_LABELS = {
     none: "No POS system",
   },
   photography: {
-    yes_schedule: "Yes, let's schedule a new photo shoot",
-    not_now: "Not right now",
-    need_info: "Need more information first",
+    have_now: "Yes, sending some now",
+    send_soon: "Not right now, but soon",
+    need_more: "Not sure what's needed, wants more info",
   },
 };
 
@@ -290,7 +300,7 @@ function display(key, value) {
   return (VALUE_LABELS[key] && VALUE_LABELS[key][value]) || value;
 }
 
-function buildText({ name, email, fields, fileNames, pageUrl, createdAt, driveNote }) {
+function buildText({ name, email, fields, fileEntries, pageUrl, createdAt, driveNote }) {
   const lines = [`Contact: ${name}`, `Email: ${email}`];
   for (const group of FIELD_GROUPS) {
     const rows = group.keys
@@ -307,6 +317,7 @@ function buildText({ name, email, fields, fileNames, pageUrl, createdAt, driveNo
     lines.push("", "OPTIONAL AND FOLLOW-UP DETAILS");
     for (const [label, value] of conditionalRows) lines.push(`${label}: ${value}`);
   }
+  const fileNames = fileEntries.map((e) => `${e.label}: ${e.file.name}`);
   lines.push("", `Attachments: ${fileNames.length ? fileNames.join(", ") : "(none)"}`);
   lines.push(`Drive upload: ${driveNote || "(not attempted)"}`);
   lines.push(`Page: ${pageUrl || "(none)"}`);
@@ -314,7 +325,7 @@ function buildText({ name, email, fields, fileNames, pageUrl, createdAt, driveNo
   return lines.join("\n");
 }
 
-function buildHtml({ name, email, fields, fileNames, pageUrl, createdAt, driveNote }) {
+function buildHtml({ name, email, fields, fileEntries, pageUrl, createdAt, driveNote }) {
   const row = (label, value) => `<tr>
       <td style="padding:8px 12px;border-bottom:1px solid #e3e6ec;vertical-align:top;font:600 12px/1.4 monospace;color:#33507a;white-space:nowrap">${esc(label)}</td>
       <td style="padding:8px 12px;border-bottom:1px solid #e3e6ec;vertical-align:top;font:400 13px/1.5 Georgia,serif;color:#16233b;white-space:pre-wrap">${esc(value)}</td>
@@ -353,7 +364,7 @@ function buildHtml({ name, email, fields, fileNames, pageUrl, createdAt, driveNo
         <div style="font:600 11px/1 monospace;letter-spacing:.1em;color:#8a5218;text-transform:uppercase;margin:18px 0 6px">Submission</div>
         <table style="border-collapse:collapse;width:100%">${row(
           "Attachments",
-          fileNames.length ? fileNames.join(", ") : "(none)"
+          fileEntries.length ? fileEntries.map((e) => `${e.label}: ${e.file.name}`).join(", ") : "(none)"
         )}${row("Drive upload", driveNote || "(not attempted)")}${row(
     "Page",
     pageUrl || "(none)"
@@ -587,27 +598,32 @@ export async function onRequestPost(context) {
     }
   }
 
-  const files = form
-    .getAll("files")
-    .filter((f) => f && typeof f === "object" && "size" in f && "name" in f && f.size > 0);
-
-  for (const f of files) {
-    if (!hasAllowedExtension(f.name)) {
-      return json(
-        {
-          error: `Unsupported file type: ${f.name} (allowed: .pdf, .doc, .docx, .csv, .xlsx, .jpg, .jpeg, .png, .heic, .heif, .webp, .gif)`,
-        },
-        400
-      );
-    }
-    if (f.size > MAX_FILE_BYTES) {
-      return json({ error: `${f.name} exceeds the 25 MB per-file size limit.` }, 413);
+  // Collect files from every per-section field (2026-08-16 restructure, see
+  // FILE_FIELDS above), validating each against its own extension allow-list
+  // and tagging it with that section's human label so the recipient can tell
+  // what kind of file arrived without opening it.
+  const fileEntries = [];
+  for (const [key, label, allowed] of FILE_FIELDS) {
+    const sectionFiles = form
+      .getAll(key)
+      .filter((f) => f && typeof f === "object" && "size" in f && "name" in f && f.size > 0);
+    for (const f of sectionFiles) {
+      if (!hasAllowedExtension(f.name, allowed)) {
+        return json(
+          { error: `Unsupported file type in "${label}": ${f.name} (allowed: ${allowed.join(", ")})` },
+          400
+        );
+      }
+      if (f.size > MAX_FILE_BYTES) {
+        return json({ error: `${f.name} exceeds the 25 MB per-file size limit.` }, 413);
+      }
+      fileEntries.push({ file: f, label });
     }
   }
 
-  const totalBytes = files.reduce((sum, f) => sum + f.size, 0);
+  const totalBytes = fileEntries.reduce((sum, e) => sum + e.file.size, 0);
   if (totalBytes > MAX_TOTAL_BYTES) {
-    return json({ error: "Attachments exceed the 25 MB total size limit." }, 413);
+    return json({ error: "Attachments exceed the 25 MB total size limit across all uploads." }, 413);
   }
 
   if (!env.RESEND_KEY) {
@@ -618,21 +634,21 @@ export async function onRequestPost(context) {
 
   // Best-effort Drive upload happens first (its own try/catch, never
   // throws) so its status note can ride along in the email report; the
-  // email send below is unaffected by whatever this returns.
-  const driveNote = await tryDriveUpload(env, files);
+  // email send below is unaffected by whatever this returns. Drive doesn't
+  // need the section labels, just the raw files.
+  const driveNote = await tryDriveUpload(env, fileEntries.map((e) => e.file));
 
   const attachments = [];
-  for (const f of files) {
-    const buf = await f.arrayBuffer();
-    attachments.push({ filename: f.name, content: arrayBufferToBase64(buf) });
+  for (const entry of fileEntries) {
+    const buf = await entry.file.arrayBuffer();
+    attachments.push({ filename: entry.file.name, content: arrayBufferToBase64(buf) });
   }
-  const fileNames = files.map((f) => f.name);
 
   const to = env.CLOWNDOG_SURVEY_TO || DEFAULT_TO;
   const from = env.CLOWNDOG_SURVEY_FROM || DEFAULT_FROM;
   const subject = `Clown Dog questionnaire: ${name}`;
 
-  const emailFields = { name, email, fields, fileNames, pageUrl, createdAt, driveNote };
+  const emailFields = { name, email, fields, fileEntries, pageUrl, createdAt, driveNote };
 
   const payload = {
     from,
