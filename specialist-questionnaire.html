@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Specialist Panel Profile — MICRO Group, L.L.C.</title>
+<meta name="description" content="Profile intake for members of MICRO Group's specialist panel: credentials, domain, and per-field publication consent." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/svg+xml" href="Assets/micro-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=51367c5bd8">
+<style>
+a{color:var(--ink)}
+
+.hero{max-width:900px;margin:0 auto;padding:2.2rem 1.25rem 1rem}
+.hero p{color:var(--wash);margin-top:.6rem}
+
+.section{max-width:900px;margin:0 auto;padding:1.6rem 1.25rem}
+.section-head p{color:var(--wash);font-size:.94rem;margin:.4rem 0 0}
+
+/* Same full-width rule as demo-survey.html and clown-dog-questionnaire.html:
+   every field fills the same content column as everything else on the page,
+   no field-specific max-width cap. A 640px cap was tried 2026-07-28 and
+   reverted because fields ended up narrower than the scope-box above them. */
+.form-field input[type="text"],.form-field input[type="email"],.form-field input[type="url"],.form-field input[type="file"],.form-field textarea{
+  width:100%;font-family:var(--serif);font-size:.95rem;padding:.6rem .8rem;border:1.5px solid var(--ink);
+  background:var(--well);color:var(--ink);outline:none;box-sizing:border-box}
+.form-field textarea{padding:.7rem .8rem;resize:vertical}
+.form-field input:focus,.form-field textarea:focus{outline:2px solid var(--ink);outline-offset:0}
+.form-field label{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
+.form-field{margin-bottom:1.3rem}
+.field-hint{font-family:var(--mono);font-size:.82rem;color:var(--wash);margin-top:.35rem;line-height:1.5}
+.hp-field{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
+.form-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
+.form-status{font-family:var(--mono);font-size:.88rem;color:var(--ok)}
+.form-status.error{color:var(--urgent)}
+.btn{font-family:var(--mono);font-size:.86rem;letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);background:var(--paper);padding:.55rem 1.2rem;cursor:pointer;transition:all .15s ease}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent)}
+
+.scope-box{background:var(--well);border:1px solid var(--rule);border-left:4px solid var(--ink);padding:1.1rem 1.3rem;font-size:.94rem;margin:0 auto 1.6rem;max-width:900px}
+.scope-box p{margin:0 0 .6rem}
+.scope-box p:last-child{margin-bottom:0}
+.scope-box .mandatory-note{font-weight:700}
+
+.form-section{border-top:1px solid var(--rule-soft);margin:2rem 0 1.4rem;padding-top:1.4rem}
+.form-section:first-child{border-top:none;margin-top:0;padding-top:0}
+.form-section h3{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink);margin:0 0 .3rem}
+.form-section .form-section-note{font-size:.88rem;color:var(--wash);margin:0 0 1rem}
+
+/* Radio-button question groups, matching clown-dog-questionnaire.html so a
+   multiple-choice question reads as the same product family as a text one. */
+.form-field fieldset{border:none;margin:0;padding:0}
+.form-field legend{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.5rem;padding:0;width:100%}
+.radio-option{display:flex;align-items:flex-start;gap:.55rem;font-family:var(--serif);font-size:.95rem;padding:.4rem 0;cursor:pointer}
+.radio-option input[type="radio"]{margin-top:.25rem;flex:0 0 auto;accent-color:var(--ink);width:16px;height:16px;cursor:pointer}
+.radio-option span{flex:1 1 auto}
+.conditional-field{margin-top:.6rem;padding-left:1.5rem;border-left:2px solid var(--rule-soft);display:none}
+.conditional-field.show{display:block}
+
+/* Per-field publication consent. No precedent existed anywhere in this repo
+   (neither existing questionnaire contains a checkbox or a select), so this
+   is built as a compact repetition of the same radio-group shape the
+   tool_* questions on clown-dog-questionnaire.html already use. Every row
+   defaults to NOTHING selected and the server treats anything that is not an
+   explicit "yes" as a no, so silence can never become consent. */
+.consent-row{display:grid;grid-template-columns:1fr auto;gap:.75rem 1.2rem;align-items:center;padding:.5rem 0;border-bottom:1px solid var(--rule-soft)}
+.consent-row:last-child{border-bottom:none}
+.consent-label{font-family:var(--serif);font-size:.95rem}
+.consent-choices{display:flex;gap:1rem;white-space:nowrap}
+.consent-choices label{display:flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.82rem;cursor:pointer;color:var(--wash)}
+.consent-choices input[type="radio"]{accent-color:var(--ink);width:15px;height:15px;cursor:pointer}
+@media(max-width:560px){
+  .consent-row{grid-template-columns:1fr;gap:.35rem}
+  .consent-choices{justify-content:flex-start}
+}
+
+/* The read-only "what is publicly visible" appendix. Deliberately styled so
+   it can never be mistaken for a form field: no input chrome, a distinct
+   background, and an explicit label saying it is not part of the answers. */
+#appendix-wrap{display:none;max-width:900px;margin:0 auto;padding:0 1.25rem}
+#appendix-wrap.show{display:block}
+.appendix{background:var(--well);border:1px solid var(--rule);border-left:4px solid var(--accent);padding:1.1rem 1.3rem;margin:1.6rem 0}
+.appendix .notice-label{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700;display:block;margin-bottom:.5rem}
+.appendix h3{font-family:var(--serif);font-weight:700;font-size:1.1rem;margin:.2rem 0 .5rem}
+.appendix p{margin:0 0 .6rem;font-size:.94rem}
+.appx-item{border-top:1px solid var(--rule-soft);padding:.7rem 0}
+.appx-item:first-of-type{border-top:none}
+.appx-field{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--wash)}
+.appx-value{font-family:var(--serif);font-size:.95rem;margin:.2rem 0}
+.appx-src{font-family:var(--mono);font-size:.78rem;color:var(--wash);word-break:break-word}
+.appx-error{font-family:var(--mono);font-size:.85rem;color:var(--urgent)}
+footer{font-family:var(--mono);font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand"><b>MICRO Group, L.L.C.</b> Specialist Panel Profile</span>
+    <span class="grow"></span>
+    <nav>
+      <a href="#scope">What this is</a>
+      <a href="#form">The form</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">MICRO Group Specialist Panel</div>
+  <h1>Your Professional Profile</h1>
+  <p>You agreed to join MICRO Group's specialist panel. MICRO Group calls this role a specialist; the same role is also commonly called a consultant, and the two terms are used interchangeably on this form and in your agreement with the firm. This form collects the professional details the firm needs in order to describe you accurately, and it asks separately, field by field, what you are willing to have published.</p>
+</header>
+
+<div class="scope-box" id="scope">
+  <p><strong>Why this exists.</strong> When MICRO Group responds to a request for proposals, it is often required to name the people who would do the work and attach their credentials. Describing you from public sources alone produces errors. This form gets the facts from you instead.</p>
+  <p><strong>Nothing here is a commitment.</strong> Completing it does not sign you to anything, does not oblige you to accept any work, and does not entitle you to any. Those terms live in a separate memorandum you will see before anything is signed.</p>
+  <p><strong>Publication is separate from disclosure.</strong> Telling us something is not permission to publish it. The consent section at the end asks about each field on its own, and anything you leave blank there is treated as a no.</p>
+  <p class="mandatory-note">Most questions are required. If one genuinely does not apply, write "None" or "N/A" rather than leaving it blank, so we can tell the difference between "nothing to report" and "not answered yet."</p>
+</div>
+
+<div id="appendix-wrap">
+  <div class="appendix" id="appendix">
+    <span class="notice-label">Not part of your answers: what public sources already say about you</span>
+    <p>Before writing to you we looked you up in public sources, because a panel roster with a wrong credential on it is worse than no roster at all. Everything below is professional public record with its source shown. It is here so you can see exactly what we hold and correct it. <strong>It is not prefilled into the form above, and it is not an answer you are giving.</strong></p>
+    <p>This is worth reading rather than skipping. In at least one case a university's own page prints the wrong doctorate for one of our panelists, in the same paragraph where it later states the right one. If something here is wrong, the form is the place to say so, and you can also ask us to delete any of it.</p>
+    <div id="appendix-body"></div>
+  </div>
+</div>
+
+<div class="section" id="form">
+  <div class="section-head">
+    <h2>The Form</h2>
+    <p>Submitting this sends an email directly to Jonathan Lin Davis. It is not stored on this site.</p>
+  </div>
+
+  <form id="survey-form" novalidate>
+
+    <div class="form-section">
+      <h3>About You</h3>
+      <div class="form-field">
+        <label for="s-name">Your full legal name</label>
+        <input type="text" id="s-name" name="name" required>
+      </div>
+      <div class="form-field">
+        <label for="s-public-name">Name as it should appear publicly</label>
+        <input type="text" id="s-public-name" name="public_name" required>
+        <p class="field-hint">Including any post-nominals you actually use. Write the same thing again if it is identical to the line above.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-email">Email</label>
+        <input type="email" id="s-email" name="email" required>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Education and Credentials</h3>
+      <p class="form-section-note">This is the section that matters most. It is the part of a professional record that is almost never published anywhere, so it cannot be looked up, and it is what a funder asks for first.</p>
+      <div class="form-field">
+        <label for="s-terminal-degree">Highest degree, field, institution, and year</label>
+        <input type="text" id="s-terminal-degree" name="terminal_degree" required>
+        <p class="field-hint">For example: Ed.D., Special Education, Florida International University, 2016. Please give the exact degree abbreviation, since Ed.D. and Ph.D. are routinely confused in published bios.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-other-degrees">Other degrees</label>
+        <textarea id="s-other-degrees" name="other_degrees" rows="3" required></textarea>
+        <p class="field-hint">Each with field, institution, and year. Write "None" if this is your only degree.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-certifications">Certifications and professional credentials</label>
+        <textarea id="s-certifications" name="certifications" rows="3" required></textarea>
+        <p class="field-hint">Anything you would list on a capability statement. Write "None" if none.</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Licenses</h3>
+      <div class="form-field">
+        <label for="s-licenses">Professional licenses</label>
+        <textarea id="s-licenses" name="licenses" rows="3" required></textarea>
+        <p class="field-hint">Each with the issuing body, the license number, and the state or jurisdiction. Write "None" if you hold none.</p>
+      </div>
+      <div class="form-field">
+        <fieldset>
+          <legend>If you hold a license, is it currently active?</legend>
+          <label class="radio-option"><input type="radio" name="license_status" value="active"> <span>Yes, active and in good standing</span></label>
+          <label class="radio-option"><input type="radio" name="license_status" value="inactive"> <span>Inactive, or on a status that does not permit practice</span></label>
+          <label class="radio-option"><input type="radio" name="license_status" value="not_applicable"> <span>Not applicable, I hold no license</span></label>
+        </fieldset>
+        <p class="field-hint">Asked because an inactive status is entirely normal and carries no adverse inference, but it changes how you may be described to a funder. Someone on inactive status cannot be presented as providing services that require the license.</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Current Position</h3>
+      <p class="form-section-note">Short, because public sources already answer most of this. We mainly need you to confirm it and point us at the page that proves it.</p>
+      <div class="form-field">
+        <label for="s-employer">Current employer or your own practice</label>
+        <input type="text" id="s-employer" name="current_employer" required>
+      </div>
+      <div class="form-field">
+        <label for="s-title">Current title</label>
+        <input type="text" id="s-title" name="current_title" required>
+      </div>
+      <div class="form-field">
+        <label for="s-employer-url">A link to your employer's own page about you, if one exists</label>
+        <input type="url" id="s-employer-url" name="employer_page_url" placeholder="https://">
+        <p class="field-hint">A staff directory entry, faculty page, or firm bio. Optional, and genuinely useful: it is the one source a funder can check independently. Leave blank if there is not one.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-prior">Prior positions worth citing</label>
+        <textarea id="s-prior" name="prior_positions" rows="3" required></textarea>
+        <p class="field-hint">Only the ones you would want named on a proposal. Write "None" if you would rather we cite only your current role.</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Domain and Methods</h3>
+      <div class="form-field">
+        <label for="s-primary-domain">Primary domain of specialization</label>
+        <input type="text" id="s-primary-domain" name="primary_domain" required>
+      </div>
+      <div class="form-field">
+        <label for="s-secondary-domains">Secondary domains</label>
+        <textarea id="s-secondary-domains" name="secondary_domains" rows="2" required></textarea>
+        <p class="field-hint">Write "None" if you would rather be described narrowly.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-methods">Methods you actually use</label>
+        <textarea id="s-methods" name="methods" rows="3" required></textarea>
+        <p class="field-hint">Please be specific and conservative. If you use a named quasi-experimental design, name it. We would rather understate your methods than have a funder find a claim we cannot support.</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Sector Experience</h3>
+      <div class="form-field">
+        <label for="s-nonprofit">Nonprofit sector experience</label>
+        <textarea id="s-nonprofit" name="nonprofit_experience" rows="3" required></textarea>
+        <p class="field-hint">Including any board or officer service, with the organization and the years. Write "None" if none.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-government">Government or public sector experience</label>
+        <textarea id="s-government" name="government_experience" rows="3" required></textarea>
+        <p class="field-hint">Write "None" if none.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-geography">Where you practice</label>
+        <input type="text" id="s-geography" name="geography" required>
+        <p class="field-hint">A metro, a state, national, or wherever the work is. This is used to match you to opportunities with a geographic restriction.</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Screening</h3>
+      <p class="form-section-note">Two questions that are not about your capability. They exist because the answers change what MICRO Group is permitted to do, and finding out afterwards is much worse than asking now.</p>
+      <div class="form-field">
+        <fieldset>
+          <legend>Are you currently employed by a government body?</legend>
+          <label class="radio-option"><input type="radio" name="government_employee" value="no" required> <span>No</span></label>
+          <label class="radio-option"><input type="radio" name="government_employee" value="federal" required> <span>Yes, federal</span></label>
+          <label class="radio-option"><input type="radio" name="government_employee" value="state_local" required> <span>Yes, state, local, or a public institution</span></label>
+        </fieldset>
+        <div class="conditional-field" id="gov-detail-wrap">
+          <input type="text" id="s-gov-detail" name="government_employer_detail" placeholder="Which agency or body?">
+        </div>
+        <p class="field-hint">Government employment can restrict whether you may be named in a submission to a government body, and in some cases whether you may be paid for it at all. If the answer is yes, we will work out what is permissible before naming you anywhere, and the restriction is on us, not a mark against you.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-funders">Current or recent relationships with funders</label>
+        <textarea id="s-funders" name="funder_relationships" rows="3" required></textarea>
+        <p class="field-hint">Any foundation, agency, or grantmaker where you sit on a board, review applications, are employed, or have another interest a funder would want disclosed. Write "None" if none.</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Work and Documents</h3>
+      <div class="form-field">
+        <label for="s-publications">Selected publications or work product</label>
+        <textarea id="s-publications" name="publications" rows="4" required></textarea>
+        <p class="field-hint">Up to about six, most relevant first, in whatever citation style you use. Write "None" if you would rather we cite none.</p>
+      </div>
+      <p class="form-section-note">Everything below is optional, and separated by kind so we can tell which file is which rather than guessing from filenames. 25 MB across all of them. Attaching a document does not replace filling in the fields above: we would rather you tell us the facts than have us transcribe your CV and get one wrong.</p>
+      <div class="form-field">
+        <label for="s-file-cv">CV or resume</label>
+        <input type="file" id="s-file-cv" name="file_cv" multiple accept=".pdf,.doc,.docx,.rtf,.odt,.txt">
+        <p class="field-hint">PDF, Word, RTF, ODT, or plain text.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-file-bio">Written biography</label>
+        <input type="file" id="s-file-bio" name="file_bio" multiple accept=".pdf,.doc,.docx,.rtf,.odt,.txt">
+        <p class="field-hint">If you already have a bio you use elsewhere, send that rather than writing a new one. If yours comes in more than one length, send both and say which is which.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-file-photo">Photograph</label>
+        <input type="file" id="s-file-photo" name="file_photo" multiple accept=".jpg,.jpeg,.png,.webp,.heic">
+        <p class="field-hint">JPG, PNG, WebP, or HEIC. Only send one if you marked the photograph row in the consent section below as yes. A photograph you send is still governed by that answer, and we will not publish it on the strength of the upload alone.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-file-other">Anything else</label>
+        <input type="file" id="s-file-other" name="file_other" multiple accept=".pdf,.doc,.docx,.rtf,.odt,.txt,.jpg,.jpeg,.png,.webp,.csv,.xlsx">
+        <p class="field-hint">Publication lists, a capability statement, licence certificates, a portfolio, whatever is useful. Please do not send anything containing a government identification number, a bank detail, or a password. This form emails its contents, and email is not a secure channel.</p>
+      </div>
+    </div>
+
+    <div class="form-section" id="opportunity">
+      <h3>If You're Being Named for a Specific Opportunity</h3>
+      <p class="form-section-note">Everything in this section is optional and only applies if MICRO Group has asked you to be named as key personnel on a specific proposal. If that is not why you are filling this out, leave it blank and skip to Publication Consent below. This is the same commitment a Key Personnel Consent letter records, just collected here instead of on a separate document, and resubmitting it fresh for each new Opportunity is expected.</p>
+      <div class="form-field">
+        <label for="s-opp-title">Opportunity, title and issuer</label>
+        <input type="text" id="s-opp-title" name="opportunity_title">
+      </div>
+      <div class="form-field">
+        <label for="s-opp-deadline">Submission deadline</label>
+        <input type="text" id="s-opp-deadline" name="submission_deadline">
+      </div>
+      <div class="form-field">
+        <label for="s-opp-period">Anticipated project period</label>
+        <input type="text" id="s-opp-period" name="project_period">
+        <p class="field-hint">Start to end, however you'd naturally write it.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-opp-role">Your anticipated role</label>
+        <input type="text" id="s-opp-role" name="anticipated_role">
+      </div>
+      <div class="form-field">
+        <label for="s-opp-effort">Anticipated level of effort</label>
+        <input type="text" id="s-opp-effort" name="anticipated_effort">
+        <p class="field-hint">Hours, or a percentage of your time, whichever you'd naturally use.</p>
+      </div>
+      <div class="form-field">
+        <fieldset>
+          <legend>Consent to be named as key personnel for this Opportunity</legend>
+          <label class="radio-option"><input type="radio" name="key_personnel_consent" value="yes"> <span>Yes</span></label>
+          <label class="radio-option"><input type="radio" name="key_personnel_consent" value="no"> <span>No</span></label>
+        </fieldset>
+        <p class="field-hint">Confirms that the credentials MICRO Group will submit for you are accurate, that you are available for the anticipated project period, and that you intend to perform the role described if MICRO Group is awarded the Opportunity and you and MICRO Group execute an Engagement Agreement. This is not itself an Engagement Agreement and creates no obligation to perform work and no right to compensation.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-opp-conflicts">Conflicts to disclose for this Opportunity</label>
+        <textarea id="s-opp-conflicts" name="opportunity_conflicts" rows="2"></textarea>
+        <p class="field-hint">Write "None" if none.</p>
+      </div>
+    </div>
+
+    <div class="form-section" id="consent">
+      <h3>Publication Consent, Field by Field</h3>
+      <p class="form-section-note">MICRO Group may publish a panel roster and may include you in capability statements. This section decides what may appear. Each line is separate, the default is no, and anything you leave unanswered stays a no. You can change any of it later by telling us.</p>
+
+      <div class="form-field">
+        <fieldset>
+          <legend>May we publish the following?</legend>
+
+          <div class="consent-row">
+            <span class="consent-label">Your name</span>
+            <span class="consent-choices">
+              <label><input type="radio" name="consent_name" value="yes"> Yes</label>
+              <label><input type="radio" name="consent_name" value="no"> No</label>
+            </span>
+          </div>
+          <div class="consent-row">
+            <span class="consent-label">Your degrees and credentials</span>
+            <span class="consent-choices">
+              <label><input type="radio" name="consent_credentials" value="yes"> Yes</label>
+              <label><input type="radio" name="consent_credentials" value="no"> No</label>
+            </span>
+          </div>
+          <div class="consent-row">
+            <span class="consent-label">Your current employer and title</span>
+            <span class="consent-choices">
+              <label><input type="radio" name="consent_affiliation" value="yes"> Yes</label>
+              <label><input type="radio" name="consent_affiliation" value="no"> No</label>
+            </span>
+          </div>
+          <div class="consent-row">
+            <span class="consent-label">Your domain of specialization</span>
+            <span class="consent-choices">
+              <label><input type="radio" name="consent_domain" value="yes"> Yes</label>
+              <label><input type="radio" name="consent_domain" value="no"> No</label>
+            </span>
+          </div>
+          <div class="consent-row">
+            <span class="consent-label">A short professional biography</span>
+            <span class="consent-choices">
+              <label><input type="radio" name="consent_bio" value="yes"> Yes</label>
+              <label><input type="radio" name="consent_bio" value="no"> No</label>
+            </span>
+          </div>
+          <div class="consent-row">
+            <span class="consent-label">Your selected publications</span>
+            <span class="consent-choices">
+              <label><input type="radio" name="consent_publications" value="yes"> Yes</label>
+              <label><input type="radio" name="consent_publications" value="no"> No</label>
+            </span>
+          </div>
+          <div class="consent-row">
+            <span class="consent-label">Where you practice</span>
+            <span class="consent-choices">
+              <label><input type="radio" name="consent_geography" value="yes"> Yes</label>
+              <label><input type="radio" name="consent_geography" value="no"> No</label>
+            </span>
+          </div>
+          <div class="consent-row">
+            <span class="consent-label">A link to your professional profile or site</span>
+            <span class="consent-choices">
+              <label><input type="radio" name="consent_link" value="yes"> Yes</label>
+              <label><input type="radio" name="consent_link" value="no"> No</label>
+            </span>
+          </div>
+          <div class="consent-row">
+            <span class="consent-label">A photograph</span>
+            <span class="consent-choices">
+              <label><input type="radio" name="consent_photo" value="yes"> Yes</label>
+              <label><input type="radio" name="consent_photo" value="no"> No</label>
+            </span>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="form-field">
+        <fieldset>
+          <legend>Before anything is published with your name on it</legend>
+          <label class="radio-option"><input type="radio" name="review_before_publish" value="review_first" required> <span>Show me the exact wording first and wait for my approval</span></label>
+          <label class="radio-option"><input type="radio" name="review_before_publish" value="no_review_needed" required> <span>You may publish within what I consented to above without showing me first</span></label>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Anything Else</h3>
+      <div class="form-field">
+        <label for="s-corrections">Corrections to what public sources say about you</label>
+        <textarea id="s-corrections" name="corrections" rows="3" required></textarea>
+        <p class="field-hint">If you read the section above the form and something there is wrong, out of date, or you would rather we did not hold it at all, this is the place. Write "None" if there is nothing to correct.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-wishlist">Anything you want us to know</label>
+        <textarea id="s-wishlist" name="wishlist" rows="3" required></textarea>
+        <p class="field-hint">Including the kind of work you would want to be called for, and the kind you would not. Write "None" if nothing comes to mind.</p>
+      </div>
+      <div class="form-field">
+        <fieldset>
+          <legend>Accuracy</legend>
+          <label class="radio-option"><input type="radio" name="attestation" value="confirmed" required> <span>The information I have given here is accurate to the best of my knowledge, and MICRO Group may rely on it when describing me.</span></label>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="hp-field" aria-hidden="true">
+      <label for="website">Website</label>
+      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn solid" id="submit-btn">Send</button>
+      <span class="form-status" id="submit-status" role="status" aria-live="polite"></span>
+    </div>
+
+  </form>
+</div>
+
+<footer>
+  <p>MICRO Group specialist panel profile<br>
+  sent directly to Jonathan Lin Davis, not stored on this site<br>
+  <a href="/">microgroup.info &#8594;</a></p>  <!-- FOOTER-COPYRIGHT:START (synced from index.html .footer-legal by pattern-book/sync_footer_copyright.py; do not hand-edit) -->
+    <div class="footer-legal">© <span id="yr"></span> MICRO Group, L.L.C. All rights reserved. Austin, Texas.</div>
+    <script>(function(){var y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear();})();</script>
+    <!-- FOOTER-COPYRIGHT:END -->
+</footer>
+
+<script>
+(function(){
+  const form=document.getElementById('survey-form');
+  if(!form)return;
+
+  /* ---------------------------------------------------------------- appendix
+     Loader discipline copied from measure-orientation.html: no-store fetch,
+     .json() parsed inside its own try/catch (a server answering 200 with an
+     error page fails at parse, not at the request), a shape assertion before
+     render, and DOM built with textContent rather than innerHTML because
+     every string here is fetched data. That matters more on this page than
+     anywhere else on the site: these are real people's credentials, and the
+     file is keyed by a URL parameter.
+
+     CONTRACT for data/{slug}_appendix.json, written for whoever generates it:
+       { "name": "<display name>",
+         "retrieved": "<YYYY-MM-DD>",
+         "items": [ { "field": "<label>",
+                      "value": "<what the public record says>",
+                      "source": "<url>" }, ... ] }
+     A missing or malformed file renders a short apology, never a broken page,
+     and never blocks the form. */
+  function renderAppendix(data){
+    const body=document.getElementById('appendix-body');
+    const wrap=document.getElementById('appendix-wrap');
+    if(!body||!wrap)return;
+    body.textContent='';
+    if(!data||!Array.isArray(data.items)||!data.items.length){
+      const p=document.createElement('p');
+      p.className='appx-error';
+      p.textContent='We could not load the public-record summary for this link. Please fill in the form as normal, and tell us in the corrections box if you would like to see what we hold.';
+      body.appendChild(p);
+      wrap.classList.add('show');
+      return;
+    }
+    if(data.name){
+      const h=document.createElement('h3');
+      h.textContent=data.name;
+      body.appendChild(h);
+    }
+    data.items.forEach(function(it){
+      if(!it||!it.field)return;
+      const d=document.createElement('div');
+      d.className='appx-item';
+      const f=document.createElement('div');
+      f.className='appx-field';
+      f.textContent=it.field;
+      d.appendChild(f);
+      const v=document.createElement('div');
+      v.className='appx-value';
+      v.textContent=it.value||'(nothing found)';
+      d.appendChild(v);
+      if(it.source){
+        const s=document.createElement('div');
+        s.className='appx-src';
+        s.textContent='Source: '+it.source+(data.retrieved?('  Retrieved '+data.retrieved):'');
+        d.appendChild(s);
+      }
+      body.appendChild(d);
+    });
+    wrap.classList.add('show');
+  }
+
+  function loadAppendix(){
+    const params=new URLSearchParams(window.location.search);
+    const slug=params.get('p');
+    /* No slug means no appendix. The form is identical for everyone and works
+       perfectly well without it, so this is a silent no-op rather than an error. */
+    if(!slug)return;
+    if(!/^[a-z0-9-]{3,64}$/.test(slug))return;
+    fetch('data/'+slug+'_appendix.json',{cache:'no-store'}).then(function(res){
+      if(!res.ok)throw new Error('http '+res.status);
+      return res.text();
+    }).then(function(txt){
+      let data;
+      try{ data=JSON.parse(txt); }
+      catch(e){ throw new Error('parse'); }
+      renderAppendix(data);
+    }).catch(function(){
+      renderAppendix(null);
+    });
+  }
+  loadAppendix();
+
+  /* ------------------------------------------------------------- conditional
+     Same two subtleties as clown-dog-questionnaire.html: hiding clears the
+     value so a changed answer cannot leave contradictory data in the payload,
+     and the reset handler needs a timeout because reset fires before the
+     browser actually clears inputs. */
+  function wireConditional(radioName,triggerValues,wrapId){
+    const wrap=document.getElementById(wrapId);
+    if(!wrap)return;
+    const radios=document.querySelectorAll('input[name="'+radioName+'"]');
+    function sync(){
+      let show=false;
+      radios.forEach(function(r){if(r.checked&&triggerValues.indexOf(r.value)!==-1)show=true;});
+      wrap.classList.toggle('show',show);
+      if(!show){const inp=wrap.querySelector('input,textarea');if(inp)inp.value='';}
+    }
+    radios.forEach(function(r){r.addEventListener('change',sync);});
+    form.addEventListener('reset',function(){setTimeout(sync,0);});
+    sync();
+  }
+  wireConditional('government_employee',['federal','state_local'],'gov-detail-wrap');
+
+  // Required text/textarea fields, in page order, each with the human label
+  // used in the error message. One loop deliberately, so adding a question
+  // does not mean touching validation.
+  const REQUIRED_FIELDS=[
+    ['s-name','your full legal name'],
+    ['s-public-name','name as it should appear publicly'],
+    ['s-email','email'],
+    ['s-terminal-degree','highest degree'],
+    ['s-other-degrees','other degrees'],
+    ['s-certifications','certifications'],
+    ['s-licenses','professional licenses'],
+    ['s-employer','current employer'],
+    ['s-title','current title'],
+    ['s-prior','prior positions'],
+    ['s-primary-domain','primary domain'],
+    ['s-secondary-domains','secondary domains'],
+    ['s-methods','methods you use'],
+    ['s-nonprofit','nonprofit sector experience'],
+    ['s-government','government or public sector experience'],
+    ['s-geography','where you practice'],
+    ['s-funders','funder relationships'],
+    ['s-publications','selected publications'],
+    ['s-corrections','corrections'],
+    ['s-wishlist','anything you want us to know']
+  ];
+
+  // Required radio groups. The ten consent_* groups are deliberately NOT here:
+  // consent defaults to no and must never be forced into an answer.
+  const REQUIRED_RADIO_GROUPS=[
+    ['license_status','whether your license is active'],
+    ['government_employee','whether you are employed by a government body'],
+    ['review_before_publish','review before publishing'],
+    ['attestation','the accuracy confirmation']
+  ];
+
+  const CONSENT_GROUPS=['consent_name','consent_credentials','consent_affiliation',
+    'consent_domain','consent_bio','consent_publications','consent_geography',
+    'consent_link','consent_photo'];
+
+  function radioValue(name){
+    const checked=document.querySelector('input[name="'+name+'"]:checked');
+    return checked?checked.value:'';
+  }
+
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    const statusEl=document.getElementById('submit-status');
+    const btn=document.getElementById('submit-btn');
+    const setStatus=function(msg,isErr){
+      if(statusEl){statusEl.textContent=msg;statusEl.classList.toggle('error',!!isErr);}
+    };
+
+    for(let i=0;i<REQUIRED_FIELDS.length;i++){
+      const id=REQUIRED_FIELDS[i][0],label=REQUIRED_FIELDS[i][1];
+      const el=document.getElementById(id);
+      if(!el||!el.value.trim()){
+        setStatus('Please fill in "'+label+'" (write None if it doesn\'t apply), then send again.',true);
+        if(el)el.focus();
+        return;
+      }
+    }
+
+    for(let i=0;i<REQUIRED_RADIO_GROUPS.length;i++){
+      const name=REQUIRED_RADIO_GROUPS[i][0],label=REQUIRED_RADIO_GROUPS[i][1];
+      if(!radioValue(name)){
+        setStatus('Please choose an answer for "'+label+'", then send again.',true);
+        return;
+      }
+    }
+
+    const gov=radioValue('government_employee');
+    if(gov==='federal'||gov==='state_local'){
+      const el=document.getElementById('s-gov-detail');
+      if(!el||!el.value.trim()){
+        setStatus('Please name the agency or body that employs you, then send again.',true);
+        if(el)el.focus();
+        return;
+      }
+    }
+
+    const email=(document.getElementById('s-email')||{}).value||'';
+    const emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailRe.test(email)){
+      setStatus('Please enter a valid email.',true);
+      return;
+    }
+
+    // Four separate inputs, kept separate all the way to the email so the
+    // recipient knows which file is a CV and which is a photograph rather
+    // than inferring it from a filename.
+    const FILE_INPUTS=[['s-file-cv','file_cv'],['s-file-bio','file_bio'],
+                       ['s-file-photo','file_photo'],['s-file-other','file_other']];
+    let totalBytes=0;
+    for(let i=0;i<FILE_INPUTS.length;i++){
+      const list=(document.getElementById(FILE_INPUTS[i][0])||{}).files||[];
+      for(let j=0;j<list.length;j++){totalBytes+=list[j].size;}
+    }
+    if(totalBytes>25*1024*1024){
+      setStatus('Attached files exceed the 25 MB total limit across all four upload boxes.',true);
+      return;
+    }
+
+    const fd=new FormData();
+    const textVal=function(id){return (document.getElementById(id)||{}).value||'';};
+    fd.append('name',textVal('s-name'));
+    fd.append('public_name',textVal('s-public-name'));
+    fd.append('email',email);
+    fd.append('terminal_degree',textVal('s-terminal-degree'));
+    fd.append('other_degrees',textVal('s-other-degrees'));
+    fd.append('certifications',textVal('s-certifications'));
+    fd.append('licenses',textVal('s-licenses'));
+    fd.append('license_status',radioValue('license_status'));
+    fd.append('current_employer',textVal('s-employer'));
+    fd.append('current_title',textVal('s-title'));
+    fd.append('employer_page_url',textVal('s-employer-url'));
+    fd.append('prior_positions',textVal('s-prior'));
+    fd.append('primary_domain',textVal('s-primary-domain'));
+    fd.append('secondary_domains',textVal('s-secondary-domains'));
+    fd.append('methods',textVal('s-methods'));
+    fd.append('nonprofit_experience',textVal('s-nonprofit'));
+    fd.append('government_experience',textVal('s-government'));
+    fd.append('geography',textVal('s-geography'));
+    fd.append('government_employee',gov);
+    fd.append('government_employer_detail',textVal('s-gov-detail'));
+    fd.append('funder_relationships',textVal('s-funders'));
+    fd.append('publications',textVal('s-publications'));
+    // Exhibit B, optional: only present when the specialist is being named for
+    // a specific Opportunity. None of these are in REQUIRED_FIELDS/RADIO_GROUPS.
+    fd.append('opportunity_title',textVal('s-opp-title'));
+    fd.append('submission_deadline',textVal('s-opp-deadline'));
+    fd.append('project_period',textVal('s-opp-period'));
+    fd.append('anticipated_role',textVal('s-opp-role'));
+    fd.append('anticipated_effort',textVal('s-opp-effort'));
+    fd.append('key_personnel_consent',radioValue('key_personnel_consent'));
+    fd.append('opportunity_conflicts',textVal('s-opp-conflicts'));
+    fd.append('corrections',textVal('s-corrections'));
+    fd.append('wishlist',textVal('s-wishlist'));
+    fd.append('review_before_publish',radioValue('review_before_publish'));
+    fd.append('attestation',radioValue('attestation'));
+    // Consent: an unanswered row sends an empty string, which the server
+    // reads as a no. Silence is never treated as permission.
+    for(let i=0;i<CONSENT_GROUPS.length;i++){
+      fd.append(CONSENT_GROUPS[i],radioValue(CONSENT_GROUPS[i]));
+    }
+    fd.append('panel_slug',new URLSearchParams(window.location.search).get('p')||'');
+    fd.append('website',textVal('website'));
+    fd.append('page_url',window.location.href);
+    for(let i=0;i<FILE_INPUTS.length;i++){
+      const key=FILE_INPUTS[i][1];
+      const list=(document.getElementById(FILE_INPUTS[i][0])||{}).files||[];
+      for(let j=0;j<list.length;j++){fd.append(key,list[j]);}
+    }
+
+    const origLabel=btn?btn.textContent:'Send';
+    let success=false;
+    if(btn){btn.disabled=true;btn.textContent='Sending…';}
+    setStatus('',false);
+    try{
+      const res=await fetch('/api/specialist-questionnaire',{method:'POST',body:fd});
+      if(res.ok){
+        success=true;
+        if(btn)btn.textContent='Sent ✓';
+        setStatus("Sent. Thank you. We'll follow up at the email you provided.",false);
+        form.reset();
+      }else{
+        const t=await res.json().catch(function(){return{};});
+        setStatus((t&&t.error)?t.error:'Could not send. Please try again.',true);
+      }
+    }catch(err){
+      setStatus('Network error. Please try again.',true);
+    }finally{
+      if(!success&&btn){btn.disabled=false;btn.textContent=origLabel;}
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

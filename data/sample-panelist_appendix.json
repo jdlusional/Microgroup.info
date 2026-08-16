@@ -1,0 +1,32 @@
+{
+  "_README": "SAMPLE ONLY. Deliberately fictional, so the appendix mechanism can be reviewed on a preview deployment without publishing any real person's compiled record. Real per-person files are generated separately and only once the owner approves outreach; each is named data/{slug}_appendix.json where the slug carries a random suffix so the set is not enumerable. Contract: {name, retrieved, items:[{field, value, source}]}. Every item MUST carry a source URL. Never include a home address, personal phone, date of birth, or anything not professional public record.",
+  "name": "Sample Panelist (this is example data, not a real person)",
+  "retrieved": "2026-08-15",
+  "items": [
+    {
+      "field": "Current affiliation",
+      "value": "Associate Professor, Department of Example Studies, Example University",
+      "source": "https://example.edu/directory/sample-panelist"
+    },
+    {
+      "field": "Highest degree",
+      "value": "Ed.D., Example Studies, Example University, 2016. Note that one published bio prints this as a PhD, which appears to be an error on that page.",
+      "source": "https://example.edu/faculty/cv/sample-panelist.pdf"
+    },
+    {
+      "field": "Professional license",
+      "value": "Example State licence 000000, status Active, issued 2019",
+      "source": "https://licence.example.gov/lookup/000000"
+    },
+    {
+      "field": "Nonprofit board service",
+      "value": "Board Member, Example Foundation, tax years 2021 to 2024",
+      "source": "https://example.gov/990/filings/000000000"
+    },
+    {
+      "field": "Selected publication",
+      "value": "Panelist, S. (2024). An Example Study. Journal of Examples, 12(3), 45 to 67.",
+      "source": "https://doi.example.org/10.0000/example"
+    }
+  ]
+}
