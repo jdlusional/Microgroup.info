@@ -1,0 +1,25 @@
+/* switcher-shared.css -- the canonical picker-card switcher/hub pattern.
+   Centered, icon-free, per owner order 2026-08-09 (superseded the 2026-07-24 left-align
+   choice, "applied to every card family site-wide"). Stamped across every page in the
+   `switcher` group of pattern-book/roster.json by stamp_switcher_css.py -- do not
+   hand-duplicate these rules on a page that links this file.
+
+   Values resolve through --sw-* custom properties, each falling back to the page's own
+   --ink/--wash/--accent/--serif/--mono tokens, then to this site's default palette --
+   so a page keeps its own bespoke colors/fonts for free, and only needs to set a --sw-*
+   override when its token NAMES differ from that default set (see hro.html, which
+   renames --wash to --muted and its type tokens to --f-head/--f-label).
+
+   No .pc-icon rule exists here on purpose: the pattern carries no icon slot. A page that
+   needs one is not following this convention. */
+
+.picker{max-width:1120px;margin:0 auto;padding:2.8rem 1.5rem 4rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.8rem}
+.pick-card{display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--sw-card-bg,#fff);border:1.5px solid var(--sw-border,var(--ink,#1b3a6b));padding:2.2rem 1.8rem;transition:box-shadow .18s ease,transform .18s ease}
+.pick-card:hover{box-shadow:0 14px 32px rgba(27,58,107,.14);transform:translateY(-3px)}
+.pick-card.disabled{opacity:.6;cursor:default;pointer-events:none}
+.pick-card p{color:var(--sw-ink,var(--ink,#1b3a6b));font-size:.95rem;margin:0 0 1.1rem;flex:1}
+.pc-kicker{font-family:var(--sw-mono,var(--mono,'JetBrains Mono',monospace));font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sw-accent,var(--accent,#2f7fd1));font-weight:500;margin-bottom:.7rem}
+.pick-card h2{font-family:var(--sw-serif,var(--serif,'Spectral',serif));font-weight:700;font-size:1.55rem;color:var(--sw-ink,var(--ink,#1b3a6b));margin:0 0 .7rem}
+.pc-status{font-family:var(--sw-mono,var(--mono,'JetBrains Mono',monospace));font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;color:var(--sw-wash,var(--wash,#5a6b82));margin-bottom:.6rem}
+.pc-go{align-self:center;font-family:var(--sw-mono,var(--mono,'JetBrains Mono',monospace));font-size:.78rem;letter-spacing:.02em;font-weight:500;color:var(--sw-ink,var(--ink,#1b3a6b));border:1.5px solid var(--sw-border,var(--ink,#1b3a6b));padding:.55rem 1.2rem;transition:all .15s ease}
+.pick-card:hover:not(.disabled) .pc-go{background:var(--sw-ink,var(--ink,#1b3a6b));color:#fff}

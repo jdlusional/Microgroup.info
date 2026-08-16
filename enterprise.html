@@ -20,12 +20,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="tool-shared.css?v=e3c0ecb772">
+<link rel="stylesheet" href="switcher-shared.css">
 <style>
 :root{
   --ink:#1b3a6b; --wash:#5a6b82; --paper:#f4efe2; --well:#e8e2d4;
   --rule:#c8c2b5; --accent:#2f7fd1; --urgent:#8a2828;
   --serif:'Spectral',Georgia,'Times New Roman',serif;
   --mono:'JetBrains Mono','Courier New',monospace;
+  /* Override into switcher-shared.css's --sw-* tokens: this family keeps a
+     well-tinted card (not white), predating and surviving the 2026-08-09
+     owner order, which changed alignment/icon policy, not this. */
+  --sw-card-bg:var(--well);
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:var(--serif);color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -39,30 +44,17 @@ a{color:inherit;text-decoration:none}
 .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,5vw,3rem);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
 .hero p{color:var(--wash);font-size:1.04rem}
 .fict{display:inline-block;margin-top:1.2rem;font-size:.7rem;letter-spacing:.02em;color:var(--urgent);font-weight:600;border:1px solid var(--urgent);padding:.32rem .65rem}
-/* Card convention matched to demo-pricing.html's .price-card (2026-07-24 owner
-   order): eyebrow kicker, well-tinted card on a thin rule border, no icon art.
-   auto-fit replaces the fixed 3-column grid so the same rule works at any card
-   count. Centered, not left-aligned, per owner order 2026-08-09 superseding the
-   2026-07-24 left-align choice, applied to every card family site-wide. */
-.picker{max-width:1120px;margin:0 auto;padding:2.8rem 1.5rem 4rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem}
-.pick-card{display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--well);border:1px solid var(--rule);padding:1.3rem 1.4rem;min-width:0;overflow-wrap:anywhere;transition:transform .16s ease,box-shadow .16s ease}
-.pick-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(27,58,107,.12)}
-.pick-card.disabled{opacity:.72;cursor:default;pointer-events:none}
-.pick-card p{color:var(--ink);font-size:.95rem;margin:0;flex:1}
-.pc-kicker{font-size:.76rem;letter-spacing:.02em;color:var(--wash);font-weight:600;margin-bottom:.7rem}
-.pick-card h2{font-family:var(--serif);font-weight:700;font-size:25px;color:var(--ink);margin:0 0 .3rem}
-.pc-status{font-size:.78rem;letter-spacing:.02em;color:var(--wash);font-weight:600;margin-top:.8rem}
+/* This family's own kicker/status keep the body serif rather than
+   switcher-shared.css's default mono -- predates the shared stylesheet. */
+.pc-kicker,.pc-status{font-family:var(--serif)}
 .pc-status.paused{color:var(--urgent)}
 .pc-detail{font-family:var(--mono);font-size:.76rem;letter-spacing:.01em;color:var(--wash);margin-top:.35rem;line-height:1.4}
-.pc-go{align-self:center;font-family:var(--mono);font-size:.78rem;letter-spacing:.02em;font-weight:500;color:var(--accent);margin-top:.6rem}
-.pick-card:hover:not(.disabled) .pc-go{color:var(--ink);text-decoration:underline}
+.pc-go{color:var(--accent)}
 /* Foot-note convention (owner order, 2026-07-30): standing pattern for the
    link-row + custom-build note under a product family's card grid -- centered,
    not left-aligned like ordinary body copy. */
 .foot-note{max-width:1000px;margin:0 auto;padding:0 1.5rem 3rem;color:var(--wash);font-size:.93rem;text-align:center}
 footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:12px;letter-spacing:.02em;text-align:center}
-@media(max-width:900px){.picker{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.picker{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
