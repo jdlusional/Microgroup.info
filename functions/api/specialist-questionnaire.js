@@ -145,6 +145,22 @@ const OPTIONAL_KEYS = [
   ["government_employer_detail", "Government employer named"],
 ];
 
+// Exhibit B (Key Personnel Consent and Letter of Commitment), folded into this
+// same form 2026-08-15 rather than kept as a separate document: optional,
+// since most submissions are the standing profile with no specific Opportunity
+// yet. Reported only when at least one field is present. key_personnel_consent
+// is read literally ("yes"/"no"/"" for unanswered) and never defaulted either
+// direction -- unlike the publication CONSENT_KEYS gate, this isn't gating an
+// automated action, it's read by a person deciding whether to rely on it.
+const OPPORTUNITY_KEYS = [
+  ["opportunity_title", "Opportunity, title and issuer"],
+  ["submission_deadline", "Submission deadline"],
+  ["project_period", "Anticipated project period"],
+  ["anticipated_role", "Anticipated role"],
+  ["anticipated_effort", "Anticipated level of effort"],
+  ["opportunity_conflicts", "Conflicts to disclose for this Opportunity"],
+];
+
 // Required single-choice questions. Consent is deliberately absent from this
 // list; see the header note.
 const REQUIRED_CHOICES = [
@@ -219,6 +235,16 @@ function buildText(d) {
     lines.push("", "OPTIONAL AND FOLLOW-UP");
     for (const [l, v] of opt) lines.push(`${l}: ${v}`);
   }
+  const oppRows = OPPORTUNITY_KEYS.map(([k, l]) => [l, d.fields[k]]).filter(([, v]) => v);
+  if (oppRows.length || d.keyPersonnelConsent) {
+    lines.push("", "EXHIBIT B: THIS SPECIFIC OPPORTUNITY");
+    for (const [l, v] of oppRows) lines.push(`${l}: ${v}`);
+    lines.push(
+      `Consent to be named as key personnel: ${
+        d.keyPersonnelConsent === "yes" ? "YES" : d.keyPersonnelConsent === "no" ? "No" : "(not answered)"
+      }`
+    );
+  }
   lines.push("", "SINGLE-CHOICE ANSWERS");
   for (const [k, l] of REQUIRED_CHOICES) lines.push(`${l}: ${display(k, d.choices[k])}`);
 
@@ -258,6 +284,19 @@ function buildHtml(d) {
     OPTIONAL_KEYS.map(([k, l]) => [l, d.fields[k]]).filter(([, v]) => v).map(([l, v]) => row(l, v))
   );
 
+  const oppFieldRows = OPPORTUNITY_KEYS.map(([k, l]) => [l, d.fields[k]]).filter(([, v]) => v).map(([l, v]) => row(l, v));
+  const oppBlock = (oppFieldRows.length || d.keyPersonnelConsent)
+    ? block(
+        "Exhibit B: this specific Opportunity",
+        oppFieldRows.concat([
+          row(
+            "Consent to be named as key personnel",
+            d.keyPersonnelConsent === "yes" ? "YES" : d.keyPersonnelConsent === "no" ? "No" : "(not answered)"
+          ),
+        ])
+      )
+    : "";
+
   const choiceBlock = block(
     "Single-choice answers",
     REQUIRED_CHOICES.map(([k, l]) => row(l, display(k, d.choices[k])))
@@ -287,6 +326,7 @@ function buildHtml(d) {
         <table style="border-collapse:collapse;width:100%">${headerRows}</table>
         ${groupBlocks}
         ${optBlock}
+        ${oppBlock}
         ${choiceBlock}
         <div style="font:600 11px/1 monospace;letter-spacing:.1em;color:#8a5218;text-transform:uppercase;margin:18px 0 6px">Publication consent, ${granted} of ${CONSENT_KEYS.length} granted</div>
         <p style="font:400 12px/1.5 Georgia,serif;color:#5a6b82;margin:0 0 8px">Anything not an explicit yes is recorded as a no. Do not publish a field showing "no".</p>
@@ -332,6 +372,8 @@ export async function onRequestPost(context) {
     for (const [key] of group.keys) fields[key] = clean(form.get(key));
   }
   for (const [key] of OPTIONAL_KEYS) fields[key] = clean(form.get(key));
+  for (const [key] of OPPORTUNITY_KEYS) fields[key] = clean(form.get(key));
+  const keyPersonnelConsent = clean(form.get("key_personnel_consent"));
 
   // Every question above is required. The page enforces this too, but a
   // submission bypassing its JS must not silently produce a profile with
@@ -415,10 +457,11 @@ export async function onRequestPost(context) {
   const flags = [];
   if (gov === "federal") flags.push("FEDERAL EMPLOYEE");
   if (choices.license_status === "inactive") flags.push("LICENSE INACTIVE");
+  if (fields.opportunity_title) flags.push("OPPORTUNITY RESPONSE");
   const subject =
     `Panel profile: ${name}` + (flags.length ? ` [${flags.join(", ")}]` : "");
 
-  const d = { name, email, slug, fields, choices, consent, fileNames, pageUrl, createdAt };
+  const d = { name, email, slug, fields, choices, consent, keyPersonnelConsent, fileNames, pageUrl, createdAt };
 
   const payload = {
     from,

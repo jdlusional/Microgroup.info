@@ -316,6 +316,46 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
       </div>
     </div>
 
+    <div class="form-section" id="opportunity">
+      <h3>If You're Being Named for a Specific Opportunity</h3>
+      <p class="form-section-note">Everything in this section is optional and only applies if MICRO Group has asked you to be named as key personnel on a specific proposal. If that is not why you are filling this out, leave it blank and skip to Publication Consent below. This is the same commitment a Key Personnel Consent letter records, just collected here instead of on a separate document, and resubmitting it fresh for each new Opportunity is expected.</p>
+      <div class="form-field">
+        <label for="s-opp-title">Opportunity, title and issuer</label>
+        <input type="text" id="s-opp-title" name="opportunity_title">
+      </div>
+      <div class="form-field">
+        <label for="s-opp-deadline">Submission deadline</label>
+        <input type="text" id="s-opp-deadline" name="submission_deadline">
+      </div>
+      <div class="form-field">
+        <label for="s-opp-period">Anticipated project period</label>
+        <input type="text" id="s-opp-period" name="project_period">
+        <p class="field-hint">Start to end, however you'd naturally write it.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-opp-role">Your anticipated role</label>
+        <input type="text" id="s-opp-role" name="anticipated_role">
+      </div>
+      <div class="form-field">
+        <label for="s-opp-effort">Anticipated level of effort</label>
+        <input type="text" id="s-opp-effort" name="anticipated_effort">
+        <p class="field-hint">Hours, or a percentage of your time, whichever you'd naturally use.</p>
+      </div>
+      <div class="form-field">
+        <fieldset>
+          <legend>Consent to be named as key personnel for this Opportunity</legend>
+          <label class="radio-option"><input type="radio" name="key_personnel_consent" value="yes"> <span>Yes</span></label>
+          <label class="radio-option"><input type="radio" name="key_personnel_consent" value="no"> <span>No</span></label>
+        </fieldset>
+        <p class="field-hint">Confirms that the credentials MICRO Group will submit for you are accurate, that you are available for the anticipated project period, and that you intend to perform the role described if MICRO Group is awarded the Opportunity and you and MICRO Group execute an Engagement Agreement. This is not itself an Engagement Agreement and creates no obligation to perform work and no right to compensation.</p>
+      </div>
+      <div class="form-field">
+        <label for="s-opp-conflicts">Conflicts to disclose for this Opportunity</label>
+        <textarea id="s-opp-conflicts" name="opportunity_conflicts" rows="2"></textarea>
+        <p class="field-hint">Write "None" if none.</p>
+      </div>
+    </div>
+
     <div class="form-section" id="consent">
       <h3>Publication Consent, Field by Field</h3>
       <p class="form-section-note">MICRO Group may publish a panel roster and may include you in capability statements. This section decides what may appear. Each line is separate, the default is no, and anything you leave unanswered stays a no. You can change any of it later by telling us.</p>
@@ -672,6 +712,15 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
     fd.append('government_employer_detail',textVal('s-gov-detail'));
     fd.append('funder_relationships',textVal('s-funders'));
     fd.append('publications',textVal('s-publications'));
+    // Exhibit B, optional: only present when the specialist is being named for
+    // a specific Opportunity. None of these are in REQUIRED_FIELDS/RADIO_GROUPS.
+    fd.append('opportunity_title',textVal('s-opp-title'));
+    fd.append('submission_deadline',textVal('s-opp-deadline'));
+    fd.append('project_period',textVal('s-opp-period'));
+    fd.append('anticipated_role',textVal('s-opp-role'));
+    fd.append('anticipated_effort',textVal('s-opp-effort'));
+    fd.append('key_personnel_consent',radioValue('key_personnel_consent'));
+    fd.append('opportunity_conflicts',textVal('s-opp-conflicts'));
     fd.append('corrections',textVal('s-corrections'));
     fd.append('wishlist',textVal('s-wishlist'));
     fd.append('review_before_publish',radioValue('review_before_publish'));
