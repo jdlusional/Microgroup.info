@@ -100,13 +100,13 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
 
 <div class="scope-box" id="scope">
   <p><strong>Why we're asking.</strong> A few of these questions came up while reviewing the current clowndogbikes.com site directly: a restocking-fee policy that never states a percentage, some marketing claims we couldn't independently verify, and basic access questions (the domain registrar, the current site's admin backend) that only you can answer.</p>
-  <p class="mandatory-note">Most questions below are required. If a question genuinely doesn't apply, write "N/A" rather than leaving it blank. The restocking-fee question and the document upload are optional; the two "who has it" / "which system" follow-ups are only required when the answer that triggers them is selected.</p>
+  <p class="mandatory-note">Most questions below are required. If a question genuinely doesn't apply, write "N/A" rather than leaving it blank. The restocking-fee question and every file upload are optional; the two "who has it" / "which system" follow-ups are only required when the answer that triggers them is selected.</p>
 </div>
 
 <div class="sensitive-notice">
   <span class="notice-label">Please read before you submit</span>
   <p><strong>Do not send passwords, account numbers, or other sensitive information through this form's text fields or by email.</strong> Email is not a secure channel, and anything typed into a text box here is not either.</p>
-  <p>If something sensitive needs to be shared with us (a login, a financial detail, anything you wouldn't want sitting in an inbox), put it in a document instead and upload that document in the <a href="#documents">Documents</a> section below. If you're not sure how to do that, say so in the form and we'll walk you through it.</p>
+  <p>If something sensitive needs to be shared with us (a login, a financial detail, anything you wouldn't want sitting in an inbox), put it in a document instead and upload it under <a href="#access">Domain and Access</a> below. If you're not sure how to do that, say so in the form and we'll walk you through it.</p>
 </div>
 
 <div class="section" id="form">
@@ -138,7 +138,7 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
       </div>
     </div>
 
-    <div class="form-section">
+    <div class="form-section" id="access">
       <h3>Domain and Access</h3>
       <div class="form-field">
         <fieldset>
@@ -169,6 +169,11 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
           <label class="radio-option"><input type="radio" name="admin_access" value="not_sure" required> <span>Not sure</span></label>
         </fieldset>
         <div class="field-hint">This determines whether product and order data can be exported directly for the rebuild, versus rebuilt from scratch.</div>
+      </div>
+      <div class="form-field">
+        <label for="s-file-access">Documents <span style="text-transform:none;font-weight:400">(optional)</span></label>
+        <input type="file" id="s-file-access" name="file_access" multiple accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png,.heic,.heif,.webp">
+        <div class="field-hint">Anything sensitive related to domain or site access goes here instead of a text field — a screenshot of registrar/DNS settings, that kind of thing.</div>
       </div>
     </div>
 
@@ -271,15 +276,19 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
       <h3>Photography</h3>
       <div class="form-field">
         <fieldset>
-          <legend>Should we schedule a new photo shoot (storefront, staff, repairs in progress)?</legend>
-          <label class="radio-option"><input type="radio" name="photography" value="yes_schedule" required> <span>Yes, let's schedule a new photo shoot</span></label>
-          <label class="radio-option"><input type="radio" name="photography" value="not_now" required> <span>Not right now</span></label>
-          <label class="radio-option"><input type="radio" name="photography" value="need_info" required> <span>Need more information first</span></label>
+          <legend>Can you send us some photos (storefront, staff, repairs in progress)?</legend>
+          <label class="radio-option"><input type="radio" name="photography" value="have_now" required> <span>Yes, I can send some now — see the upload below</span></label>
+          <label class="radio-option"><input type="radio" name="photography" value="send_soon" required> <span>Not right now, but I'll send some soon</span></label>
+          <label class="radio-option"><input type="radio" name="photography" value="need_more" required> <span>Not sure what you need — tell me more</span></label>
         </fieldset>
       </div>
       <div class="form-field">
-        <label for="s-photo-notes">Scheduling availability or notes</label>
-        <textarea id="s-photo-notes" name="photography_notes" rows="2" required placeholder="Days/times that generally work, or anything else about the shoot. Write N/A if not applicable."></textarea>
+        <label for="s-photo-notes">Notes on what you're sending, or what you'd want photographed</label>
+        <textarea id="s-photo-notes" name="photography_notes" rows="2" required placeholder="Write N/A if not applicable."></textarea>
+      </div>
+      <div class="form-field">
+        <label for="s-file-photo">Photos <span style="text-transform:none;font-weight:400">(optional)</span></label>
+        <input type="file" id="s-file-photo" name="file_photo" multiple accept=".jpg,.jpeg,.png,.heic,.heif,.webp,.gif">
       </div>
     </div>
 
@@ -289,6 +298,10 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
         <label for="s-inventory">List what you currently have in stock that you want featured on the new site (brands, models, anything specific)</label>
         <textarea id="s-inventory" name="inventory_notes" rows="4" required></textarea>
       </div>
+      <div class="form-field">
+        <label for="s-file-inventory">Inventory documents <span style="text-transform:none;font-weight:400">(optional)</span></label>
+        <input type="file" id="s-file-inventory" name="file_inventory" multiple accept=".pdf,.doc,.docx,.csv,.xlsx,.jpg,.jpeg,.png">
+      </div>
     </div>
 
     <div class="form-section">
@@ -296,16 +309,7 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
       <p class="form-section-note">The questions above are about the initial rebuild. This one is for anything beyond that: a change you want now, or something you'd want down the road once the new site is live.</p>
       <div class="form-field">
         <label for="s-customization">Describe any customization requests for the site</label>
-        <textarea id="s-customization" name="customization_requests" rows="4" required placeholder="A new page, a layout change, a feature you'd like added, anything else. Write N/A if there's nothing right now. Do not include passwords or account details here; upload those as a document below instead."></textarea>
-      </div>
-    </div>
-
-    <div class="form-section" id="documents">
-      <h3>Documents</h3>
-      <div class="form-field">
-        <label for="s-files">Upload files <span style="text-transform:none;font-weight:400">(optional)</span></label>
-        <input type="file" id="s-files" name="files" multiple accept=".jpg,.jpeg,.png,.gif,.webp,.heic,.pdf,.doc,.docx,.csv,.xlsx">
-        <div class="field-hint">Inventory lists, photos, logo files, reference documents, or anything sensitive you don't want to type into a text field or send by email (see the notice near the top of this page). These are saved directly to a shared folder for the rebuild. Images, PDF, DOC/DOCX, CSV, or XLSX, up to 25&nbsp;MB total.</div>
+        <textarea id="s-customization" name="customization_requests" rows="4" required placeholder="A new page, a layout change, a feature you'd like added, anything else. Write N/A if there's nothing right now. Do not include passwords or account details here; upload those under Domain and Access instead."></textarea>
       </div>
     </div>
 
@@ -314,6 +318,11 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
       <div class="form-field">
         <label for="s-wishlist">Anything else we should know</label>
         <textarea id="s-wishlist" name="wishlist" rows="3" required></textarea>
+      </div>
+      <div class="form-field">
+        <label for="s-file-other">Other files <span style="text-transform:none;font-weight:400">(optional)</span></label>
+        <input type="file" id="s-file-other" name="file_other" multiple accept=".jpg,.jpeg,.png,.gif,.webp,.heic,.pdf,.doc,.docx,.csv,.xlsx">
+        <div class="field-hint">Logo files, reference documents, or anything else that doesn't fit one of the uploads above. Images, PDF, DOC/DOCX, CSV, or XLSX, 25&nbsp;MB total across every upload on this form.</div>
       </div>
     </div>
 
@@ -459,11 +468,20 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
       return;
     }
 
-    const files=(document.getElementById('s-files')||{}).files||[];
+    const FILE_INPUTS=[
+      ['s-file-access','file_access'],
+      ['s-file-inventory','file_inventory'],
+      ['s-file-photo','file_photo'],
+      ['s-file-other','file_other']
+    ];
     let totalBytes=0;
-    for(let i=0;i<files.length;i++){totalBytes+=files[i].size;}
+    for(let i=0;i<FILE_INPUTS.length;i++){
+      const el=document.getElementById(FILE_INPUTS[i][0]);
+      const fl=(el&&el.files)||[];
+      for(let j=0;j<fl.length;j++){totalBytes+=fl[j].size;}
+    }
     if(totalBytes>25*1024*1024){
-      setStatus('Attached files exceed the 25 MB total limit.',true);
+      setStatus('Attached files exceed the 25 MB total limit across all uploads.',true);
       return;
     }
 
@@ -493,7 +511,12 @@ footer{font-family:var(--mono);font-size:12px;text-align:center}
     fd.append('wishlist',(document.getElementById('s-wishlist')||{}).value||'');
     fd.append('website',(document.getElementById('website')||{}).value||'');
     fd.append('page_url',window.location.href);
-    for(let i=0;i<files.length;i++){fd.append('files',files[i]);}
+    for(let i=0;i<FILE_INPUTS.length;i++){
+      const el=document.getElementById(FILE_INPUTS[i][0]);
+      const key=FILE_INPUTS[i][1];
+      const fl=(el&&el.files)||[];
+      for(let j=0;j<fl.length;j++){fd.append(key,fl[j]);}
+    }
 
     const origLabel=btn?btn.textContent:'Send';
     let success=false;
