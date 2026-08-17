@@ -112,6 +112,21 @@ a{color:var(--ink)}
 .mc-toggle:hover{background:var(--paper)}
 .mc-closed .mc-body{display:none}
 @media(max-width:640px){.mc-toggle{width:100%;margin-left:0;margin-top:.5rem;text-align:center}}
+/* MOBILE FIX (2026-08-17): .section-head-row > .mc-toggle is absolutely positioned
+   (top:0;right:0, the OD-1/I11 desktop fix) so the generic width:100% rule above
+   stretched it directly over the kicker text instead of beside it -- confirmed by
+   direct DOM measurement on the live measure-enterprise page (same shared CSS), a
+   real overlap the invariant engine's overflow/padding checks do not test for.
+   Returns it to flex flow, ordered after the kicker+title block. The redundant
+   margin-top is dropped (the row's own gap already spaces it) and the card's
+   bottom padding drops to 0 ONLY while closed, so the toggle's own
+   row-gap-plus-height supplies the visual bottom margin instead of stacking on
+   top of it -- keeping I11's top/bottom symmetry intact instead of trading the
+   overlap for a lopsided card. */
+@media(max-width:640px){
+  .section-head-row > .mc-toggle{position:static;order:1;margin-top:0}
+  .section-card.mc-closed{padding-top:44px;padding-bottom:0}
+}
 
 /* ---- Nested sub-cards inside a compiled match card ---- */
 .mc-body .card{background:var(--paper);border:1px solid var(--rule);padding:1rem 1.1rem;margin-top:.9rem}
