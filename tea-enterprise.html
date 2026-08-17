@@ -66,6 +66,12 @@ a{color:var(--ink)}
 .impact-grid .stat-tile{padding:.7rem .5rem;background:var(--paper);border:1px solid var(--rule);min-width:0}
 .impact-grid .stat-tile .num{font-size:24px}
 .impact-grid .stat-tile .lbl{white-space:normal;line-height:1.3}
+/* Owner order 2026-08-17 (applied across enterprise pages): profile cards fully centered,
+   content vertically centered; funder snapshot tiles center+middle. */
+.profile-grid .card{display:flex;flex-direction:column;justify-content:center;text-align:center}
+.profile-grid .card .mc-body{display:flex;flex-direction:column;justify-content:center;flex:1}
+.profile-grid .tag-row{justify-content:center}
+.impact-grid .stat-tile{display:flex;flex-direction:column;justify-content:center;align-items:center}
 .not-published{color:var(--wash);font-style:italic;font-weight:400}
 .cycle-note{font-family:var(--mono);font-size:.82rem;color:var(--wash);border-left:2px solid var(--rule);padding-left:.7rem;margin-top:.6rem}
 
@@ -195,7 +201,7 @@ body{text-align:center}
     <nav>
       <a href="#alm-profile">Profile</a>
       <a href="#alm-compiled">Compiled Funder Matches</a>
-      <a href="#alm-method">How This Was Built</a>
+      <a href="tea-orientation.html">Orientation</a>
     </nav>
   </div>
 </div>
@@ -220,40 +226,10 @@ body{text-align:center}
       <button class="mc-toggle" type="button" aria-controls="product-almanac-body"></button>
       <div class="section-head">
         <span class="kicker">Product</span>
-        <h2>Almanac — funder and grant match</h2>
+        <h2>Almanac: funder and grant match</h2>
       </div>
     </div>
     <div class="fold-body" id="product-almanac-body">
-<section class="section section-card" id="alm-how-to-read">
-  <div class="fold">
-    <div class="section-head-row">
-      <button class="mc-toggle" type="button" aria-controls="alm-how-to-read-fold-body"></button>
-      <div class="section-head">
-        <span class="kicker">Read This First</span>
-        <h2>How to read this page</h2>
-      </div>
-    </div>
-    <div class="fold-body" id="alm-how-to-read-fold-body">
-    <div class="table-scroll"><table class="funder-mini-table method-table">
-      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>This organization</td>
-          <td>Texas Empowerment Academy is real.<br><br>Every fact on this page about Texas Empowerment Academy itself (mission, financials, confirmed funders) is sourced from Texas Empowerment Academy's own site (texasempowerment.org) or its public IRS Form 990 filings via ProPublica. Nothing about Texas Empowerment Academy is estimated or invented.</td>
-        </tr>
-        <tr>
-          <td>The funders and grants</td>
-          <td>Every funder and grant candidate below is real and traces to a public record: an IRS Form 990 filing, a published guideline, or the funder's own grant page.<br><br>Almanac carries traditional grant opportunities only. Letters of Inquiry and Requests for Proposals are tracked separately in Docket, a product not yet built for Texas Empowerment Academy.<br><br>An organization only appears in Compiled Funder Matches once a ranked match, an IRS funder profile, and a currently actionable grant opportunity all exist for it, joined by EIN. See How This Was Built for the exact gating rule and this cycle's date.</td>
-        </tr>
-        <tr>
-          <td>Next steps</td>
-          <td>Questions about this page? <a href="/#contact">Get in touch &#8594;</a></td>
-        </tr>
-      </tbody>
-    </table></div>
-    </div>
-  </div>
-</section>
 
 <section class="section section-card" id="alm-profile">
   <div class="fold">
@@ -324,7 +300,7 @@ body{text-align:center}
 
       <div class="watch-list" id="alm-ruled-out" style="margin-top:1.6rem">
         <div class="section-head" style="border-top:1px solid var(--rule);padding-top:.9rem;margin-bottom:1rem">
-          <h2 style="font-size:1.15rem">Checked and Ruled Out &mdash; Cycle 1</h2>
+          <h2 style="font-size:1.15rem">Checked and Ruled Out: Cycle 1</h2>
           <p>8 of Texas Empowerment Academy's 55 ranked funder candidates had a currently-open call join by EIN this cycle. All 8 were checked directly against the funder's own page and ruled out; none compiled as a live match. Zero compiled matches this cycle is the honest result of that check, not a data gap.</p>
         </div>
         <div class="watch-item"><div class="org"><a href="https://cooperfdn.org/grants/" target="_blank" rel="noopener">Cooper Foundation</a></div><div class="why">Restricted to organizations with programming and staff located in Waco, TX only.</div></div>
@@ -335,14 +311,6 @@ body{text-align:center}
         <div class="watch-item"><div class="org"><a href="https://www.lisc.org/our-initiatives/small-business/our-work/grants-small-businesses/" target="_blank" rel="noopener">Local Initiatives Support Corporation (LISC)</a></div><div class="why">Grants target small businesses and entrepreneurs, not schools.</div></div>
         <div class="watch-item"><div class="org"><a href="https://unidosus.org/about/affiliates/join/" target="_blank" rel="noopener">UnidosUS</a></div><div class="why">Affiliate-network application intake paused through 2025 pending a process redesign.</div></div>
         <div class="watch-item"><div class="org"><a href="https://www.enterprisecommunity.org/" target="_blank" rel="noopener">Enterprise Community Partners</a></div><div class="why">Funds affordable housing, not education; holds real Texas programs worth a second look in a future cycle.</div></div>
-      </div>
-
-      <div class="watch-list">
-        <div class="section-head" style="border-top:1px solid var(--rule);padding-top:.9rem;margin-bottom:1rem">
-          <h2 style="font-size:1.15rem">Watch List &mdash; not yet open</h2>
-          <p>Real, relevant opportunities that are currently closed, paused, or not yet launched. Worth monitoring, not applying to yet.</p>
-        </div>
-        <div id="alm-watch-results"></div>
       </div>
 
       <div class="limitation-note" id="alm-grants-limitation"></div>
@@ -356,21 +324,6 @@ body{text-align:center}
      were MIGRATED there verbatim before this deletion, not dropped. See
      merge_enterprise_page.py, which now strips these sections on any future rebuild so a
      regenerated shell cannot reintroduce them. -->
-<section class="section section-card" id="alm-method">
-  <div class="fold">
-    <div class="section-head-row">
-      <button class="mc-toggle" type="button" aria-controls="alm-method-fold-body"></button>
-      <div class="section-head">
-        <span class="kicker">Method</span>
-        <h2>How this was built</h2>
-      </div>
-    </div>
-    <div class="fold-body" id="alm-method-fold-body">
-      <p style="max-width:70ch;margin:0 auto;text-align:center">Method, provenance and the stated limits of both tools now live in one place, on the orientation page, rather than being restated under each product.</p>
-      <p style="text-align:center;margin:.9rem 0 0"><a href="tea-orientation.html">Read the method and limits on the orientation page &#8594;</a></p>
-    </div>
-  </div>
-</section>
     </div>
   </div>
 </section>
@@ -585,7 +538,7 @@ async function load(){
   PROFILE=await pRes.json();
   const A=await aRes.json();
   FUNDERS_DATA={method:A.method,tiers:A.tiers,ranked_funders:A.ranked_funders};
-  GRANTS={method:A.method,run_date:A.generated_date,
+  GRANTS={method:A.method,run_date:A.generated_date,known_limitation:A.known_limitation,
           ready_now:A.ready_now,watch_list_not_yet_open:A.watch_list_not_yet_open};
 
   state.profile=PROFILE;
@@ -601,10 +554,9 @@ async function load(){
   /* alm-method-scoring / alm-method-cycle / scr-method-status writes removed 2026-08-07
      with the Method sections themselves. Leaving them would throw on a null element and kill
      every line after, which is exactly how this page rendered blank toggles on 2026-08-03. */
-  buildStatusFilter('compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
+  buildStatusFilter('alm-compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
   setAdminUI();
   applyCompiled();
-  renderWatchList();
   wireAccordion(document.getElementById('alm-profile'),'.card');if(window.foldSubheads)window.foldSubheads();
   wireAccordion(document.getElementById('product-almanac'),'.section-card');if(window.foldSubheads)window.foldSubheads();
 }
@@ -753,14 +705,6 @@ function deadlineClass(s){
   return'';
 }
 
-function renderWatchList(){
-  document.getElementById('alm-watch-results').innerHTML=state.grants.watch_list_not_yet_open.map(w=>`
-    <div class="watch-item">
-      <div class="org"><a href="${esc(w.url)}" target="_blank" rel="noopener">${esc(w.organization)}</a><br><span style="font-family:var(--mono);font-size:.78rem;color:var(--wash);font-weight:400">${esc(w.grant_name)}</span></div>
-      <div class="why">${esc(w.why_watch)}</div>
-    </div>
-  `).join('');
-}
 
 document.getElementById('alm-admin-toggle').addEventListener('click',()=>{
   if(state.adminKey){
@@ -774,7 +718,7 @@ document.getElementById('alm-admin-toggle').addEventListener('click',()=>{
 });
 
 load().catch(err=>{
-  document.getElementById('alm-compiled-results').innerHTML=`<div class="empty"><b>Couldn't load data</b> for org "${esc(ORG_SLUG)}" — the page's own inlined data failed to render.</div>`;
+  document.getElementById('alm-compiled-results').innerHTML=`<div class="empty"><b>Couldn't load data</b> for org "${esc(ORG_SLUG)}" because a script error stopped this section from rendering.</div>`;
   console.error(err);
 });
 </script>
