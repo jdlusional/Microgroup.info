@@ -65,7 +65,16 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
    Owner ruling 2026-08-03 governs the initial state: closed on open. ---- */
 .section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem;padding:1.6rem 1.4rem}
 .section.section-card:last-of-type{margin-bottom:0}
-.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem;position:relative}
+/* OD-1 + I11 (ratified 2026-08-17): the toggle is right-aligned and OUT OF FLOW so the
+   eyebrow+title block centers vertically in a collapsed card; the engine measured every
+   head 18px low at 1280 while the toggle consumed flow height above it. */
+.section-head-row > .mc-toggle{position:absolute;top:0;right:0}
+/* I11 companion (2026-08-17): a closed card reserves no body-separation margin, so the
+   head sits at true vertical center; the 24px .section-head margin-bottom only matters
+   when the fold is open. */
+.mc-closed > .fold > .section-head-row > .section-head{margin-bottom:0}
+
 .section-head{text-align:center}
 .mc-closed .fold-body{display:none}
 .mc-toggle{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;cursor:pointer;white-space:nowrap}

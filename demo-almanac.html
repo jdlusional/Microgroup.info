@@ -43,7 +43,16 @@ a{color:var(--ink)}
    either side. Only .fold-body collapses. ---- */
 .section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem}
 .section.section-card:last-of-type{margin-bottom:0}
-.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem;position:relative}
+/* OD-1 + I11 (ratified 2026-08-17): the toggle is right-aligned and OUT OF FLOW so the
+   eyebrow+title block centers vertically in a collapsed card; the engine measured every
+   head 18px low at 1280 while the toggle consumed flow height above it. */
+.section-head-row > .mc-toggle{position:absolute;top:0;right:0}
+/* I11 companion (2026-08-17): a closed card reserves no body-separation margin, so the
+   head sits at true vertical center; the 24px .section-head margin-bottom only matters
+   when the fold is open. */
+.mc-closed > .fold > .section-head-row > .section-head{margin-bottom:0}
+
 .mc-closed .fold-body{display:none}
 
 /* ---- Profile section ---- */
@@ -53,7 +62,7 @@ a{color:var(--ink)}
 .card h3{font-weight:700;font-family:var(--serif);font-size:25px;text-transform:uppercase;letter-spacing:.08em;color:var(--wash);margin:0 0 .6rem}
 .card p{margin:0 0 .8rem;font-size:15px}
 .tag-row{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center}
-.tag{font-family:var(--mono);font-size:14px;padding:.22rem .58rem;background:var(--paper);border:1px solid var(--rule);color:var(--ink);white-space:nowrap}
+.tag{font-family:var(--mono);font-size:14px;padding:.22rem .58rem;background:var(--paper);border:1px solid var(--rule);color:var(--ink);white-space:normal}
 .stat-tile{text-align:center;padding:1rem}
 .stat-tile .num{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--accent);line-height:1}
 .stat-tile .lbl{font-size:12.5px;color:var(--wash);letter-spacing:.02em;margin-top:.3rem;font-weight:600}

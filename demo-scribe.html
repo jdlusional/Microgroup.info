@@ -40,15 +40,19 @@ a{color:var(--ink)}
 .manifest-in{justify-content:center}
 .manifest .grow{display:none}
 
-/* ---- Section-level card + accordion (current Almanac convention, propagated 2026-07-27):
-   every top-level section is its own bordered card, collapsible the same way as the cards
-   nested inside it on Almanac. Scribe has no card-level accordions of its own (the priority
-   card, shortlist, and draft viewer are each a single interactive unit, not a list of
-   collapsible entries), so only the section layer gets this treatment. The toggle sits on
-   its own centered line above the kicker/title. Only .fold-body collapses. ---- */
+/* Toggle convention (OD-1, 2026-08-17): right-aligned, out of flow, so the head centers. */
 .section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem}
 .section.section-card:last-of-type{margin-bottom:0}
-.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem;position:relative}
+/* OD-1 + I11 (ratified 2026-08-17): the toggle is right-aligned and OUT OF FLOW so the
+   eyebrow+title block centers vertically in a collapsed card; the engine measured every
+   head 18px low at 1280 while the toggle consumed flow height above it. */
+.section-head-row > .mc-toggle{position:absolute;top:0;right:0}
+/* I11 companion (2026-08-17): a closed card reserves no body-separation margin, so the
+   head sits at true vertical center; the 24px .section-head margin-bottom only matters
+   when the fold is open. */
+.mc-closed > .fold > .section-head-row > .section-head{margin-bottom:0}
+
 .mc-closed .fold-body{display:none}
 .mc-toggle{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;cursor:pointer;white-space:nowrap}
 .mc-toggle:hover{background:var(--paper)}
@@ -93,6 +97,8 @@ a{color:var(--ink)}
 
 /* ---- Ranked shortlist cards ---- */
 /* border/padding/title typography superseded by tool-shared.css's card-convergence block. */
+.draft-card.info-card{background:var(--well)}
+.draft-card.sample-card{background:var(--well)}
 .draft-card{padding:0}
 .dc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--rule-soft)}
 .dc-head .dc-name{flex:1 1 auto;min-width:0;font-family:var(--serif);font-size:25px;font-weight:700;line-height:1.28;overflow-wrap:anywhere}
@@ -592,9 +598,16 @@ function deadlineClass(s){
 }
 
 /* Wrap the three inline marker types in already-escaped section prose (web). */
+const FN_SEEN=new Set(); /* reset per draft render; backlink id goes to the FIRST
+  reference document-wide (per-section dedup still produced cross-section duplicates) */
 function wrapMarkers(escaped){
-  let out=escaped.replace(/\[\^(\d+)\]/g,(m,n)=>
-    `<sup class="fn-ref"><a href="#fn-${state.selected}-${n}" id="fnref-${state.selected}-${n}">${n}</a></sup>`);
+  const seenRefs=FN_SEEN;
+  let out=escaped.replace(/\[\^(\d+)\]/g,(m,n)=>{
+    /* Only the FIRST reference to footnote n carries the backlink id; repeated
+       references produced duplicate ids (caught by the invariant engine, I4). */
+    const idAttr=seenRefs.has(n)?'':` id="fnref-${state.selected}-${n}"`;
+    seenRefs.add(n);
+    return `<sup class="fn-ref"><a href="#fn-${state.selected}-${n}"${idAttr}>${n}</a></sup>`;});
   out=out.replace(/\[[^\]]+\]/g,m=>{
     let mm;
     if(mm=/^\[SUGGESTED:\s*([\s\S]*?)\]$/i.exec(m))
@@ -945,6 +958,7 @@ function selectDraft(idx,scroll){
 }
 
 function renderViewer(){
+  FN_SEEN.clear();
   const d=DRAFTS[state.selected];
   const host=document.getElementById('viewer-host');
   if(!d||!d.is_sample){host.innerHTML='<div class="viewer-empty">Select the included sample grant above to view its draft.</div>';return;}
