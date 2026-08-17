@@ -69,6 +69,8 @@ a{color:var(--ink)}
 /* Owner order 2026-08-17: Mission / Focus Areas / At a Glance / Geography fully centered,
    content vertically centered across the two columns; funder snapshot tiles center+middle. */
 .profile-grid .card{display:flex;flex-direction:column;justify-content:center;text-align:center}
+.profile-grid .card h3,.profile-grid .card .card-head h3{text-align:center}
+.profile-grid .card .card-head{justify-content:center}
 .profile-grid .card .mc-body{display:flex;flex-direction:column;justify-content:center;flex:1}
 .profile-grid .tag-row{justify-content:center}
 .impact-grid .stat-tile{display:flex;flex-direction:column;justify-content:center;align-items:center}
@@ -199,12 +201,17 @@ body{text-align:center}
      demo-scribe, which never adopted the Almanac host's body-level centering), keeping
      demo-scribe's own selective centering. ---- */
   #product-scribe{text-align:left}
+  /* Owner order 2026-08-17 round 3: the Draft Viewer, Request Your Draft, and What We
+     Still Need cards read centered (ledes, empty states, form); a BUILT draft document
+     rendered inside the viewer stays left-aligned for readability. */
+  #product-scribe #scr-viewer,#product-scribe #scr-needs,#product-scribe #scr-submit{text-align:center}
+  #product-scribe #scr-viewer-host .sec,#product-scribe #scr-viewer-host .sec-body,#product-scribe #scr-viewer-host .sources,#product-scribe #scr-viewer-host .footnotes{text-align:left}
   #product-scribe .reader-notice,#product-scribe #scr-submit .fold-body{text-align:center}
   #product-scribe .disclaimer{max-width:1180px;margin:1.2rem auto 0;padding:0 1.25rem}
   #product-scribe .disclaimer-in{background:var(--well);border:1.5px solid var(--warn);border-left-width:5px;padding:.85rem 1.1rem;display:flex;gap:.75rem;align-items:flex-start}
   #product-scribe .disclaimer-in .dl-tag{font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--warn);background:var(--paper);border:1px solid var(--warn);padding:.2rem .5rem;white-space:nowrap;margin-top:.1rem}
   #product-scribe .disclaimer-in p{margin:0;font-size:15px;line-height:1.5;color:var(--ink)}
-  #product-scribe .priority-card{background:var(--well);border:1.5px solid var(--ink);border-top:5px solid var(--accent);padding:0}
+  #product-scribe .priority-card{background:var(--well);border:1.5px solid var(--ink);border-top:5px solid var(--accent);padding:1.2rem 1.4rem}
   #product-scribe .priority-body{padding:1.2rem 1.6rem 1.6rem}
   #product-scribe .priority-top{display:flex;gap:1.4rem;align-items:flex-start;flex-wrap:wrap;padding:1.3rem 1.6rem;border-bottom:1px solid var(--rule-soft)}
   #product-scribe .priority-main{flex:1;min-width:260px}
@@ -622,7 +629,7 @@ body{text-align:center}
     </div>
     <div class="fold-body" id="scr-priority-fold-body">
     <div class="section-lede">
-      <p>The single highest-payoff open grant right now, scored on relevance, award size, urgency, and fit. Start here.</p>
+      <p>The single strongest open call for Measure right now. Start here.</p>
     </div>
       <div id="scr-priority-host"></div>
     </div>
@@ -633,16 +640,16 @@ body{text-align:center}
     <div class="section-head-row">
       <button class="mc-toggle" type="button" aria-controls="scr-shortlist-fold-body"></button>
       <div class="section-head">
-        <span class="kicker">Payoff-ranked</span>
-        <h2>Ranked Shortlist <span class="fold-count" data-count-from="draft-count" data-count-label="drafts"></span></h2>
+        <span class="kicker">Most aligned first</span>
+        <h2>Ranked Shortlist <span class="fold-count" data-count-from="draft-count" data-count-label="open calls"></span></h2>
       </div>
     </div>
     <div class="fold-body" id="scr-shortlist-fold-body">
     <div class="section-lede">
-      <p>Your five most-aligned open grants, sorted by payoff score. Request a full draft for any grant here; a built draft opens in the viewer below.</p>
+      <p>Your five most-aligned open calls, each linked to the funder's own live page and verified open on the date shown. Request a full draft for any of them; a built draft opens in the viewer below.</p>
     </div>
       <div id="scr-shortlist-host"></div>
-      <div class="res-count"><b id="scr-draft-count">0</b> drafts shown</div>
+      <div class="res-count"><b id="scr-draft-count">0</b> open calls shown</div>
     </div>
   </div>
 </section>
@@ -1464,14 +1471,6 @@ function pct(v){return Math.round(Number(v)*100);}
 function renderPriority(){
   const d=state.drafts[0];
   if(!d){document.getElementById('scr-priority-host').innerHTML='';return;}
-  const comps=d.payoff_components||{};
-  const bars=COMPONENT_ORDER.map(([k,lbl])=>{
-    const p=pct(comps[k]);
-    return `<div class="payoff-cell">
-      <div class="pc-top"><span class="pc-lbl">${lbl}</span><span class="pc-val">${p}</span></div>
-      <div class="payoff-bar"><div class="payoff-bar-fill" style="width:${p}%"></div></div>
-    </div>`;
-  }).join('');
   const dlc=deadlineClass(d.grant_deadline);
   const sa=d.strength_analysis||{};
   const scls=strengthClass(sa.overall);
@@ -1481,15 +1480,10 @@ function renderPriority(){
       <div class="priority-top">
         <div class="priority-main">
           <span class="priority-flag">Draft this now</span>
-          <h3 class="pg-name">${esc(d.grant_name)}</h3>
+          <h3 class="pg-name"><a href="${esc(d.grant_url)}" target="_blank" rel="noopener">${esc(d.grant_name)}</a></h3>
           <div class="pg-funder">${esc(d.funder)}${sbadge?' &middot; '+sbadge:''}</div>
         </div>
-        <div class="priority-score">
-          <div class="ps-num">${esc(String(d.payoff_score))}</div>
-          <div class="ps-lbl">payoff score</div>
-        </div>
       </div>
-      <div class="payoff-grid">${bars}</div>
       <p class="priority-rationale">${esc(d.priority_rationale)}</p>
       <div class="priority-meta">${[
         ['Amount',esc(d.grant_amount)],
@@ -1529,16 +1523,12 @@ function renderShortlist(){
     const viewBtn=isBuilt?`<button class="btn solid view-draft-btn" type="button" data-idx="${i}">View full draft &#8595;</button>`:'';
     return `<div class="draft-card ${isBuilt?'sample-card':'info-card'}${isBuilt&&i===state.selected?' selected':''}" id="${'draft-'+i}">
       <div class="dc-head">
-        <div class="dc-name">${sampleTag}${esc(d.grant_name)}${sbadge?' '+sbadge:''}</div>
+        <div class="dc-name">${sampleTag}<a href="${esc(d.grant_url)}" target="_blank" rel="noopener">${esc(d.grant_name)}</a>${sbadge?' '+sbadge:''}</div>
         <div class="dc-deadline ${dlc}">${esc(d.grant_deadline)}</div>
         <button class="mc-toggle" type="button" aria-controls="${'draft-'+i}-body"></button>
       </div>
       <div class="mc-body" id="${'draft-'+i}-body">
       <div class="dc-main">
-      <div class="dc-score">
-        <div class="dcs-num">${esc(String(d.payoff_score))}</div>
-        <div class="dcs-lbl">payoff</div>
-      </div>
       <div class="dc-body">
         <div class="dc-funder">${esc(d.funder)}</div>
         <div class="dc-rationale">${esc(d.priority_rationale)}</div>
