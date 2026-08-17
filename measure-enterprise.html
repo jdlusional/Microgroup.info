@@ -53,6 +53,7 @@ a{color:var(--ink)}
    never beside it. */
 .section-head .fold-count{display:block;margin:.45rem auto 0;width:fit-content}
 .section-head .section-head-tags{display:block;margin-top:.45rem}
+.fold-count:empty{display:none}
 
 .mc-closed .fold-body{display:none}
 
@@ -466,7 +467,7 @@ body{text-align:center}
       <p>Measure's mission, focus areas, and confirmed funding history: the foundation the funder match and grants search are built on.</p>
     </div>
       <div class="profile-grid">
-        <div class="card">
+        <div class="card no-subfold">
           <h3>Mission</h3>
           <div class="mc-body">
             <p id="alm-p-mission"></p>
@@ -474,7 +475,7 @@ body{text-align:center}
             <div class="tag-row" id="alm-p-focus"></div>
           </div>
         </div>
-        <div class="card">
+        <div class="card no-subfold">
           <h3>At a glance</h3>
           <div class="mc-body">
             <div class="stat-tile">
@@ -1035,7 +1036,9 @@ async function load(){
      every line after, which is exactly how this page rendered blank toggles on 2026-08-03. */
   setAdminUI();
   applyCompiled();
-  wireAccordion(document.getElementById('alm-profile'),'.card');if(window.foldSubheads)window.foldSubheads();
+  /* Owner order 2026-08-17: Mission / Focus Areas / At a Glance / Geography are plain
+     always-open cards, no Show/Hide affordances of any kind. */
+  wireAccordion(document.getElementById('alm-profile'),'.card:not(.no-subfold)');if(window.foldSubheads)window.foldSubheads();
   wireAccordion(document.getElementById('product-almanac'),'.section-card');if(window.foldSubheads)window.foldSubheads();
 }
 
@@ -1716,21 +1719,25 @@ function renderNeeds(){
   const built=state.drafts.find(d=>d&&d.built);
   const gaps=(built&&built.gaps_to_fill)||[];
   if(!gaps.length){
+    const NEED_ROWS=[
+      ['The opportunity itself','Funder name and a link to the grant, RFP, or LOI page, or the document attached if it is not public.'],
+      ['Deadlines','The submission deadline and any Letter of Intent or pre-application deadline that comes first.'],
+      ['The ask','The amount you want to request, or ask us to propose one from the funder’s own filed grant history.'],
+      ['The program','Which of Measure’s programs the application is for, with a short description in your own words.'],
+      ['Budget figures','The program budget for the period covered, and the organizational budget if the funder asks for it.'],
+      ['Outcomes to cite','Participation counts, evaluation results, or other figures you want the draft to use; nothing is invented.'],
+      ['Board and leadership','Roster or demographics, only where the funder’s application requires them.'],
+      ['Standard attachments','IRS determination letter, W-9, most recent Form 990 or audit, letters of support, as the funder requires.'],
+      ['A contact','Who at Measure answers follow-up questions while the draft is being built.'],
+    ];
     host.innerHTML=`
     <div class="fill-box">
       <h3>What to include with any draft request</h3>
       <div class="fb-sub">The standing list. Send what applies; a built draft then carries its own specific checklist here.</div>
-      <ul class="fill-list">
-        <li><strong>The opportunity itself.</strong> Funder name and a link to the grant, RFP, or LOI page, or the document attached if it is not public.</li>
-        <li><strong>Deadlines.</strong> The submission deadline and any Letter of Intent or pre-application deadline that comes first.</li>
-        <li><strong>The ask.</strong> The amount you want to request, or ask us to propose one from the funder's own filed grant history.</li>
-        <li><strong>The program.</strong> Which of Measure's programs the application is for, with a short description in your own words.</li>
-        <li><strong>Budget figures.</strong> The program budget for the period covered, and the organizational budget if the funder asks for it.</li>
-        <li><strong>Outcomes to cite.</strong> Participation counts, evaluation results, or other figures you want the draft to use; nothing is invented.</li>
-        <li><strong>Board and leadership.</strong> Roster or demographics, only where the funder's application requires them.</li>
-        <li><strong>Standard attachments.</strong> IRS determination letter, W-9, most recent Form 990 or audit, letters of support, as the funder requires.</li>
-        <li><strong>A contact.</strong> Who at Measure answers follow-up questions while the draft is being built.</li>
-      </ul>
+      <div class="table-scroll"><table class="funder-mini-table">
+        <thead><tr><th>Item</th><th>What to send</th></tr></thead>
+        <tbody>${NEED_ROWS.map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('')}</tbody>
+      </table></div>
     </div>`;
     return;
   }
@@ -2150,6 +2157,7 @@ load().catch(err=>{
     var blocks=[];
     (root||document).querySelectorAll('.fold-body h3').forEach(function(h){
       if(h.closest('.subfold-head'))return;
+      if(h.closest('.no-subfold'))return;
       var b=h.parentNode;
       if(b && blocks.indexOf(b)<0)blocks.push(b);
     });

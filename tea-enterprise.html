@@ -53,6 +53,7 @@ a{color:var(--ink)}
    never beside it. */
 .section-head .fold-count{display:block;margin:.45rem auto 0;width:fit-content}
 .section-head .section-head-tags{display:block;margin-top:.45rem}
+.fold-count:empty{display:none}
 
 .mc-closed .fold-body{display:none}
 
@@ -258,7 +259,7 @@ body{text-align:center}
       <p>Texas Empowerment Academy's mission, focus areas, and confirmed funding history: the foundation the funder match and grants search are built on.</p>
     </div>
       <div class="profile-grid">
-        <div class="card">
+        <div class="card no-subfold">
           <h3>Mission</h3>
           <div class="mc-body">
             <p id="alm-p-mission"></p>
@@ -266,7 +267,7 @@ body{text-align:center}
             <div class="tag-row" id="alm-p-focus"></div>
           </div>
         </div>
-        <div class="card">
+        <div class="card no-subfold">
           <h3>At a glance</h3>
           <div class="mc-body">
             <div class="stat-tile">
@@ -570,7 +571,9 @@ async function load(){
   buildStatusFilter('alm-compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
   setAdminUI();
   applyCompiled();
-  wireAccordion(document.getElementById('alm-profile'),'.card');if(window.foldSubheads)window.foldSubheads();
+  /* Owner order 2026-08-17: Mission / Focus Areas / At a Glance / Geography are plain
+     always-open cards, no Show/Hide affordances of any kind. */
+  wireAccordion(document.getElementById('alm-profile'),'.card:not(.no-subfold)');if(window.foldSubheads)window.foldSubheads();
   wireAccordion(document.getElementById('product-almanac'),'.section-card');if(window.foldSubheads)window.foldSubheads();
 }
 
@@ -804,6 +807,7 @@ load().catch(err=>{
     var blocks=[];
     (root||document).querySelectorAll('.fold-body h3').forEach(function(h){
       if(h.closest('.subfold-head'))return;
+      if(h.closest('.no-subfold'))return;
       var b=h.parentNode;
       if(b && blocks.indexOf(b)<0)blocks.push(b);
     });
