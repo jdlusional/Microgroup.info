@@ -41,6 +41,11 @@ a{color:inherit}
 .bar-in{max-width:900px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .bar-brand{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--ink)}
 .bar-note{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--wash)}
+.bar-left{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;min-width:0}
+.bar-link{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--accent);text-decoration:none;border:1px solid var(--rule);padding:.22rem .6rem}
+.bar-link:hover{background:var(--paper);text-decoration:underline}
+table.or-t a{color:var(--accent);text-decoration:underline}
+table.or-t a:hover{color:var(--ink)}
 .hero{max-width:900px;margin:0 auto;padding:3.2rem 1.5rem 1rem}
 .hero .kicker{font-size:13px;letter-spacing:.03em;color:var(--accent);font-weight:600}
 .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,5vw,40px);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
@@ -272,7 +277,10 @@ table.or-t tr:last-child td{border-bottom:none}
 
 <div class="bar">
   <div class="bar-in">
-    <span class="bar-brand" id="or-brand">Measure</span>
+    <span class="bar-left">
+      <span class="bar-brand" id="or-brand">Measure</span>
+      <a class="bar-link" href="measure-enterprise.html">Enterprise tools &#8594;</a>
+    </span>
     <span class="bar-note">Private project index &middot; not a public page</span>
   </div>
 </div>
@@ -867,7 +875,17 @@ function renderIdentity(){
   pairs.forEach(p=>{
     if(p[1]==null||p[1]==='')return;
     const th=el('th','or-t-narrow',p[0]);
-    tb.appendChild(row([th,el('td',null,String(p[1]))]));
+    let valCell;
+    const href=p[0]==='Website'?safeHref(p[1]):'';
+    if(href){
+      valCell=el('td');
+      const a=el('a',null,String(p[1]));
+      a.href=href;a.rel='noopener noreferrer';a.target='_blank';
+      valCell.appendChild(a);
+    }else{
+      valCell=el('td',null,String(p[1]));
+    }
+    tb.appendChild(row([th,valCell]));
   });
   if(scale.note){
     const wrap=document.getElementById('or-identity').closest('.or-tablewrap');
