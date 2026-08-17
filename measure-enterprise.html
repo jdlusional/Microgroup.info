@@ -66,6 +66,13 @@ a{color:var(--ink)}
 .impact-grid .stat-tile{padding:.7rem .5rem;background:var(--paper);border:1px solid var(--rule);min-width:0}
 .impact-grid .stat-tile .num{font-size:24px}
 .impact-grid .stat-tile .lbl{white-space:normal;line-height:1.3}
+/* Owner order 2026-08-17: Mission / Focus Areas / At a Glance / Geography fully centered,
+   content vertically centered across the two columns; funder snapshot tiles center+middle. */
+.profile-grid .card{display:flex;flex-direction:column;justify-content:center;text-align:center}
+.profile-grid .card .mc-body{display:flex;flex-direction:column;justify-content:center;flex:1}
+.profile-grid .tag-row{justify-content:center}
+.impact-grid .stat-tile{display:flex;flex-direction:column;justify-content:center;align-items:center}
+.no-open-call{margin:0;color:var(--wash);font-size:15px;text-align:left}
 .not-published{color:var(--wash);font-style:italic;font-weight:400}
 .cycle-note{font-family:var(--mono);font-size:.82rem;color:var(--wash);border-left:2px solid var(--rule);padding-left:.7rem;margin-top:.6rem}
 
@@ -217,11 +224,11 @@ body{text-align:center}
   #product-scribe .payoff-cell .pc-val{font-family:var(--mono);font-size:14px;color:var(--ink);font-weight:500}
   #product-scribe .payoff-bar{height:6px;background:var(--rule)}
   #product-scribe .payoff-bar-fill{height:100%;background:var(--accent)}
-  #product-scribe .priority-meta{display:grid;grid-template-columns:150px 1fr;gap:.4rem 1rem;margin-top:1.2rem;border-top:1px solid var(--rule-soft);padding-top:1rem}
+  #product-scribe .priority-meta{display:grid;grid-template-columns:110px 1fr;gap:.4rem .9rem;margin:1rem 0 .2rem;text-align:left;border-top:1px solid var(--rule);padding-top:.8rem}
   @media(max-width:560px){
   #product-scribe .priority-meta{grid-template-columns:1fr;gap:.1rem}
   }
-  #product-scribe .priority-meta .pm-lbl{font-size:.8rem;letter-spacing:.02em;color:var(--wash);font-weight:600}
+  #product-scribe .priority-meta .pm-lbl{font-size:12.5px;letter-spacing:.02em;color:var(--wash);font-weight:600;text-align:left}
   #product-scribe .priority-meta .pm-val{font-size:15px;line-height:1.45}
   #product-scribe .priority-cta{margin-top:1.3rem}
   #product-scribe .btn{font-family:var(--mono);font-size:.86rem;letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);background:var(--paper);padding:.55rem 1.2rem;cursor:pointer;transition:all .15s ease}
@@ -385,13 +392,13 @@ body{text-align:center}
   <div class="manifest-in">
     <span class="brand" id="alm-brand-text"><b>Almanac</b> for Measure</span>
     <span class="stat"><strong id="alm-m-funders">–</strong> candidate funders researched</span>
-    <span class="stat"><strong id="alm-m-grants">–</strong> compiled matches (match + profile + open grant)</span>
+    <span class="stat"><strong id="alm-m-grants">–</strong> most aligned funders (every open call included)</span>
     <span class="grow"></span>
     <button class="admin-toggle" id="alm-admin-toggle" type="button" title="Enter your key to mark status on funders and grants">Admin</button>
     <nav>
       <a href="#alm-profile">Profile</a>
       <a href="#alm-compiled">Compiled Funder Matches</a>
-      <a href="#alm-method">How This Was Built</a>
+      <a href="measure-orientation.html">Orientation</a>
       <a href="#product-confluence">See Confluence &#8594;</a>
       <a href="#product-scribe">See Scribe &#8594;</a>
     </nav>
@@ -422,36 +429,6 @@ body{text-align:center}
       </div>
     </div>
     <div class="fold-body" id="product-almanac-body">
-<section class="section section-card" id="alm-how-to-read">
-  <div class="fold">
-    <div class="section-head-row">
-      <button class="mc-toggle" type="button" aria-controls="alm-how-to-read-fold-body"></button>
-      <div class="section-head">
-        <span class="kicker">Read This First</span>
-        <h2>How to read this page</h2>
-      </div>
-    </div>
-    <div class="fold-body" id="alm-how-to-read-fold-body">
-    <div class="table-scroll"><table class="funder-mini-table method-table">
-      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>This organization</td>
-          <td>Measure is real.<br><br>Every fact on this page about Measure itself (mission, financials, confirmed funders) is sourced from Measure's own site (wemeasure.org) or its public IRS Form 990 filings via ProPublica. Nothing about Measure is estimated or invented.</td>
-        </tr>
-        <tr>
-          <td>The funders and grants</td>
-          <td>Every funder and grant candidate below is real and traces to a public record: an IRS Form 990 filing, a published guideline, or the funder's own grant page.<br><br>Almanac carries traditional grant opportunities only. Letters of Inquiry and Requests for Proposals are tracked separately in Docket, not shown here.<br><br>An organization only appears in Compiled Funder Matches once a ranked match, an IRS funder profile, and a currently actionable grant opportunity all exist for it, joined by EIN. See How This Was Built for the exact gating rule and this cycle's date.</td>
-        </tr>
-        <tr>
-          <td>Next steps</td>
-          <td>Want the drafted application to go with a match? <a href="#product-scribe">See Scribe &#8594;</a><br><br>Want funding that connects Measure to a partner organization? <a href="#product-confluence">See Confluence &#8594;</a><br><br>Looking for a Letter of Inquiry or Request for Proposal instead of a traditional grant? <a href="pilot-docket.html">See Docket &#8594;</a><br><br>Questions about this page? <a href="/#contact">Get in touch &#8594;</a></td>
-        </tr>
-      </tbody>
-    </table></div>
-    </div>
-  </div>
-</section>
 
 <section class="section section-card" id="alm-profile">
   <div class="fold">
@@ -517,16 +494,8 @@ body{text-align:center}
       <div class="toolbar">
         <div class="chip-filter" id="alm-compiled-status-filter"></div>
       </div>
-      <div class="res-count"><b id="alm-compiled-count">0</b> compiled matches shown</div>
+      <div class="res-count"><b id="alm-compiled-count">0</b> aligned funders shown</div>
       <div id="alm-compiled-results"></div>
-
-      <div class="watch-list">
-        <div class="section-head" style="border-top:1px solid var(--rule);padding-top:.9rem;margin-bottom:1rem">
-          <h2 style="font-size:1.15rem">Watch List: not yet open</h2>
-          <p>Real, relevant opportunities that are currently closed, paused, or not yet launched. Worth monitoring, not applying to yet.</p>
-        </div>
-        <div id="alm-watch-results"></div>
-      </div>
 
       <div class="limitation-note" id="alm-grants-limitation"></div>
     </div>
@@ -539,21 +508,6 @@ body{text-align:center}
      were MIGRATED there verbatim before this deletion, not dropped. See
      merge_enterprise_page.py, which now strips these sections on any future rebuild so a
      regenerated shell cannot reintroduce them. -->
-<section class="section section-card" id="alm-method">
-  <div class="fold">
-    <div class="section-head-row">
-      <button class="mc-toggle" type="button" aria-controls="alm-method-fold-body"></button>
-      <div class="section-head">
-        <span class="kicker">Method</span>
-        <h2>How this was built</h2>
-      </div>
-    </div>
-    <div class="fold-body" id="alm-method-fold-body">
-      <p style="max-width:70ch;margin:0 auto;text-align:center">Method, provenance and the stated limits of both tools now live in one place, on the orientation page, rather than being restated under each product.</p>
-      <p style="text-align:center;margin:.9rem 0 0"><a href="measure-orientation.html">Read the method and limits on the orientation page &#8594;</a></p>
-    </div>
-  </div>
-</section>
     </div>
   </div>
 </section>
@@ -657,36 +611,6 @@ body{text-align:center}
       </div>
     </div>
     <div class="fold-body" id="product-scribe-body">
-<section class="section section-card" id="scr-how-to-read">
-  <div class="fold">
-    <div class="section-head-row">
-      <button class="mc-toggle" type="button" aria-controls="scr-how-to-read-fold-body"></button>
-      <div class="section-head">
-        <span class="kicker">Read This First</span>
-        <h2>How to read this page</h2>
-      </div>
-    </div>
-    <div class="fold-body" id="scr-how-to-read-fold-body">
-    <div class="table-scroll"><table class="funder-mini-table method-table">
-      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>This organization</td>
-          <td>Measure is real.<br><br>Every fact on this page about Measure itself is sourced from Measure's own site (wemeasure.org) or its public IRS Form 990 filings via ProPublica.</td>
-        </tr>
-        <tr>
-          <td>The funder and grant</td>
-          <td>These are your five most-aligned open grants, pulled from your Almanac results.<br><br>Every amount, deadline, and eligibility rule is quoted from the funder's own page, or marked unconfirmed.</td>
-        </tr>
-        <tr>
-          <td>Next steps</td>
-          <td>Want the funder matches this draft was built from? <a href="measure-almanac.html">See Almanac &#8594;</a><br><br>Questions about this page? <a href="/#contact">Get in touch &#8594;</a></td>
-        </tr>
-      </tbody>
-    </table></div>
-    </div>
-  </div>
-</section>
 <section class="section section-card" id="scr-priority">
   <div class="fold">
     <div class="section-head-row">
@@ -715,7 +639,7 @@ body{text-align:center}
     </div>
     <div class="fold-body" id="scr-shortlist-fold-body">
     <div class="section-lede">
-      <p>Your five most-aligned open grants, sorted by payoff score. The sample opens in the draft viewer below; request a full draft for any grant here.</p>
+      <p>Your five most-aligned open grants, sorted by payoff score. Request a full draft for any grant here; a built draft opens in the viewer below.</p>
     </div>
       <div id="scr-shortlist-host"></div>
       <div class="res-count"><b id="scr-draft-count">0</b> drafts shown</div>
@@ -727,15 +651,15 @@ body{text-align:center}
     <div class="section-head-row">
       <button class="mc-toggle" type="button" aria-controls="scr-viewer-fold-body"></button>
       <div class="section-head">
-        <span class="kicker">Full draft: included sample</span>
+        <span class="kicker">Full draft</span>
         <h2>Draft Viewer</h2>
       </div>
     </div>
     <div class="fold-body" id="scr-viewer-fold-body">
     <div class="section-lede">
-      <p>The People-First AI Fund sample's complete draft: seven application sections, the checklist of what Measure still needs to supply, the fact-check note, and sources. Copy or download the whole thing.</p>
+      <p>A requested draft renders here in full once built: application sections, the checklist of what Measure still needs to supply, the fact-check note, and sources. Copy or download the whole thing.</p>
     </div>
-      <div id="scr-viewer-host"><div class="viewer-empty">Loading the sample draft…</div></div>
+      <div id="scr-viewer-host"><div class="viewer-empty">No draft built yet. Request a draft from the shortlist above: once Measure submits a request and the draft is built, it appears here.</div></div>
     </div>
   </div>
 </section>
@@ -750,7 +674,7 @@ body{text-align:center}
     </div>
     <div class="fold-body" id="scr-needs-fold-body">
     <div class="section-lede">
-      <p>Every draft carries a checklist of facts only Measure can confirm or supply. Here's the sample draft's list: the grant you request will carry its own version of this checklist.</p>
+      <p>Every built draft carries a checklist of facts only Measure can confirm or supply. The checklist for each requested draft appears here alongside it.</p>
     </div>
       <div id="scr-needs-host"></div>
     </div>
@@ -809,21 +733,6 @@ body{text-align:center}
      were MIGRATED there verbatim before this deletion, not dropped. See
      merge_enterprise_page.py, which now strips these sections on any future rebuild so a
      regenerated shell cannot reintroduce them. -->
-<section class="section section-card" id="scr-method">
-  <div class="fold">
-    <div class="section-head-row">
-      <button class="mc-toggle" type="button" aria-controls="scr-method-fold-body"></button>
-      <div class="section-head">
-        <span class="kicker">Method</span>
-        <h2>How this was built</h2>
-      </div>
-    </div>
-    <div class="fold-body" id="scr-method-fold-body">
-      <p style="max-width:70ch;margin:0 auto;text-align:center">Method, provenance and the stated limits of both tools now live in one place, on the orientation page, rather than being restated under each product.</p>
-      <p style="text-align:center;margin:.9rem 0 0"><a href="measure-orientation.html">Read the method and limits on the orientation page &#8594;</a></p>
-    </div>
-  </div>
-</section>
     </div>
   </div>
 </section>
@@ -896,6 +805,11 @@ const CYCLE={
    as "not returned by the source," never estimated. Kapor Foundation's revenue is negative
    as filed (investment losses for the tax year), reported exactly as filed, not reinterpreted. */
 const FUNDER_PROFILES={
+ "473863079":{name:"Child Poverty Action Lab",city:"Dallas",state:"TX",subsection_code:3,foundation_code:15,ntee_code:null,tax_year:2023,revenue:10676440,assets:20042790,liabilities:1121884,qualifying_distributions:null},
+ "752890371":{name:"The Dallas Foundation",city:"Dallas",state:"TX",subsection_code:3,foundation_code:15,ntee_code:"T31",tax_year:2023,revenue:100631947,assets:429083554,liabilities:30564167,qualifying_distributions:null},
+ "110303001":{name:"Fidelity Investments Charitable Gift Fund",city:"Boston",state:"MA",subsection_code:3,foundation_code:15,ntee_code:"S500",tax_year:2023,revenue:14732623803,assets:56657940564,liabilities:758552777,qualifying_distributions:null},
+ "562367666":{name:"Impact Austin Foundation",city:"Austin",state:"TX",subsection_code:3,foundation_code:15,ntee_code:"T30",tax_year:2023,revenue:546433,assets:674931,liabilities:96567,qualifying_distributions:null},
+ "742992877":{name:"Mission Capital",city:"Austin",state:"TX",subsection_code:3,foundation_code:15,ntee_code:"W70",tax_year:2023,revenue:2221293,assets:2409626,liabilities:131771,qualifying_distributions:null},
  "263241764":{name:"Laura and John Arnold Foundation",city:"Houston",state:"TX",subsection_code:3,foundation_code:4,ntee_code:"T20",tax_year:2023,revenue:687258876,assets:4309915225,liabilities:1,qualifying_distributions:null},
  "742847652":{name:"Alice Kleberg Reynolds Meyer Fdn Tr",city:"San Antonio",state:"TX",subsection_code:3,foundation_code:4,ntee_code:"T20Z",tax_year:2023,revenue:749830,assets:17884783,liabilities:1,qualifying_distributions:null},
  "825417593":{name:"Capacity Catalyst",city:"Austin",state:"TX",subsection_code:3,foundation_code:16,ntee_code:"B99",tax_year:2023,revenue:298161,assets:159400,liabilities:0,qualifying_distributions:null},
@@ -910,7 +824,7 @@ const FUNDER_PROFILES={
  "381359264":{name:"W.K. Kellogg Foundation",city:"Battle Creek",state:"MI",subsection_code:3,foundation_code:4,ntee_code:"T21",tax_year:2023,revenue:444036040,assets:454402214,liabilities:347708049,qualifying_distributions:19548288},
  "823285688":{name:"Internet Society Foundation",city:"Fredericksburg",state:"VA",subsection_code:3,foundation_code:21,ntee_code:"Q11",tax_year:2023,revenue:39756178,assets:87654990,liabilities:3032990,qualifying_distributions:null}
 };
-const FUNDER_PROFILE_SOURCE_NOTE="Every figure above comes from ProPublica Nonprofit Explorer's JSON API, which parses the IRS's own e-file data for each organization's most recent processed return; it is not an estimate and not from the funder's own website. Assets and liabilities are end-of-year balance-sheet figures; revenue is total revenue for the tax year shown. Qualifying distributions (roughly grants and charitable distributions paid) is reported only for 990-PF (private foundation) filers and only where ProPublica's summary endpoint returned a value. Fetched 2026-07-23; three entries (Arnold, Alice Kleberg Reynolds Meyer, Capacity Catalyst) fetched 2026-08-17 from the same source when the shelf regenerated. The two $1 liabilities figures are exactly what the source returned for those 990-PF filings, reported as filed, not reinterpreted.";
+const FUNDER_PROFILE_SOURCE_NOTE="Every figure above comes from ProPublica Nonprofit Explorer's JSON API, which parses the IRS's own e-file data for each organization's most recent processed return; it is not an estimate and not from the funder's own website. Assets and liabilities are end-of-year balance-sheet figures; revenue is total revenue for the tax year shown. Qualifying distributions (roughly grants and charitable distributions paid) is reported only for 990-PF (private foundation) filers and only where ProPublica's summary endpoint returned a value. Fetched 2026-07-23; eight entries fetched 2026-08-17 from the same source (Arnold, Alice Kleberg Reynolds Meyer, Capacity Catalyst when the shelf regenerated; Child Poverty Action Lab, The Dallas Foundation, Fidelity Charitable, Impact Austin, Mission Capital when the display widened to the ten most aligned). The two $1 liabilities figures are exactly what the source returned for those 990-PF filings, reported as filed, not reinterpreted.";
 
 const STATUS_LABELS={not_started:"Not started",researching:"Researching",in_progress:"In progress",submitted:"Submitted",awarded:"Awarded",declined:"Declined"};
 const STATUS_ORDER=["not_started","researching","in_progress","submitted","awarded","declined"];
@@ -1103,7 +1017,6 @@ async function load(){
   buildStatusFilter('alm-compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
   setAdminUI();
   applyCompiled();
-  renderWatchList();
   wireAccordion(document.getElementById('alm-profile'),'.card');if(window.foldSubheads)window.foldSubheads();
   wireAccordion(document.getElementById('product-almanac'),'.section-card');if(window.foldSubheads)window.foldSubheads();
 }
@@ -1159,18 +1072,21 @@ function renderProfile(){
   `).join('');
 }
 
-/* GATING RULE (owner order, 2026-07-23): an organization only appears once a ranked match,
-   an IRS funder profile, and a currently actionable grant opportunity all exist for it --
-   joined here by EIN, not just displayed side by side in separate lists. compileMatches()
-   computes the join once; applyCompiled() searches/filters/renders the result. This first
-   cycle compiled 10 of Measure's 34 researched candidates; the rest either have no current
-   opening (see Watch List) or were checked and ruled out (see the method note above). */
+/* DISPLAY RULE (owner order, 2026-08-17, superseding the 2026-07-23 three-way gate): show
+   the 10 most aligned options. Every funder with a currently-open call is always included
+   (they are the actionable core of "who could fund this right now"; a strict top-10-by-rank
+   would have hidden 4 of the current 5), and the remaining slots fill with the next most
+   aligned candidates by rank. Displayed in rank order. A funder without an open call renders
+   with a "no currently-open call" note in place of the Open Opportunity card. */
 function compileMatches(){
-  return state.funders.map(f=>{
+  const all=state.funders.map(f=>{
     const profile=FUNDER_PROFILES[f.funder_ein];
     const grant=state.grants.ready_now.find(g=>g.ein===f.funder_ein);
     return Object.assign({},f,{profile:profile,grant:grant});
-  }).filter(f=>f.profile&&f.grant);
+  });
+  const open=all.filter(f=>f.grant);
+  const fill=all.filter(f=>!f.grant).sort((a,b)=>a.rank-b.rank);
+  return open.concat(fill).slice(0,Math.max(10,open.length)).sort((a,b)=>a.rank-b.rank);
 }
 
 function applyCompiled(){
@@ -1190,19 +1106,19 @@ function applyCompiled(){
   }
   host.innerHTML=list.map(f=>{
     const p=f.profile,g=f.grant;
-    const dlClass=deadlineClass(g.deadline);
+    const dlClass=g?deadlineClass(g.deadline):'';
     const whyRowsHTML=[
       ['Geography',esc(f.geography)],
       ['Rationale',highlight(f.rationale,q)],
     ].map(([label,value])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
-    const grantRows=[
+    const grantRows=g?[
       ['Open Opportunity',`<a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a>`,true],
       ['Focus Area',highlight(g.focus_area,q)],
       ['Eligibility',highlight(g.eligibility,q)],
       ['Amount',esc(g.amount)],
       ['Deadline',`<span class="${dlClass}">${esc(g.deadline)}</span>`],
       ['Notes',sentenceBreak(g.notes,q)],
-    ].map(([label,value,featured])=>`<div class="qa-row${featured?' qa-row-featured':''}"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
+    ].filter(([label,value])=>value&&String(value).trim()).map(([label,value,featured])=>`<div class="qa-row${featured?' qa-row-featured':''}"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join(''):'';
     return `
     <div class="match-card" id="${esc('funder-'+f.funder_ein)}">
       <div class="mc-head">
@@ -1216,7 +1132,7 @@ function applyCompiled(){
           <div class="qa-grid">${whyRowsHTML}</div>
         </div>
 
-        <div class="card">
+        ${p?`<div class="card">
           <h3>Funder Snapshot</h3>
           <div class="impact-grid">
             <div class="stat-tile"><div class="num">${money(p.assets)}</div><div class="lbl">Total assets (EOY)</div></div>
@@ -1224,12 +1140,15 @@ function applyCompiled(){
             <div class="stat-tile"><div class="num">${money(p.liabilities)}</div><div class="lbl">Total liabilities (EOY)</div></div>
             <div class="stat-tile"><div class="num">${fmtQualDistrib(p.qualifying_distributions,p.foundation_code)}</div><div class="lbl">Qualifying distributions (grants paid, 990-PF only)</div></div>
           </div>
-        </div>
+        </div>`:''}
 
-        <div class="card">
+        ${g?`<div class="card">
           <h3>Open Opportunity</h3>
           <div class="qa-grid">${grantRows}</div>
-        </div>
+        </div>`:`<div class="card">
+          <h3>Open Opportunity</h3>
+          <p class="no-open-call">No currently-open call. This funder ranks in Measure's top alignment tier; it stays listed so the relationship can be worked before the next cycle opens.</p>
+        </div>`}
 
         ${statusRowHTML('funder',f.id)}
       </div>
@@ -1252,14 +1171,6 @@ function deadlineClass(s){
   return'';
 }
 
-function renderWatchList(){
-  document.getElementById('alm-watch-results').innerHTML=state.grants.watch_list_not_yet_open.map(w=>`
-    <div class="watch-item">
-      <div class="org"><a href="${esc(w.url)}" target="_blank" rel="noopener">${esc(w.organization)}</a><br><span style="font-family:var(--mono);font-size:.78rem;color:var(--wash);font-weight:400">${esc(w.grant_name)}</span></div>
-      <div class="why">${esc(w.why_watch)}</div>
-    </div>
-  `).join('');
-}
 
 document.getElementById('alm-admin-toggle').addEventListener('click',()=>{
   if(state.adminKey){
@@ -1580,13 +1491,13 @@ function renderPriority(){
       </div>
       <div class="payoff-grid">${bars}</div>
       <p class="priority-rationale">${esc(d.priority_rationale)}</p>
-      <div class="priority-meta">
-        <div class="pm-lbl">Amount</div><div class="pm-val">${esc(d.grant_amount)}</div>
-        <div class="pm-lbl">Deadline</div><div class="pm-val ${dlc?'deadline '+dlc:''}" style="${dlc==='urgent'?'color:var(--urgent);font-weight:600':dlc==='soon'?'color:var(--warn);font-weight:500':''}">${esc(d.grant_deadline)}</div>
-        <div class="pm-lbl">Eligibility</div><div class="pm-val">${esc(d.grant_eligibility)}</div>
-      </div>
+      <div class="priority-meta">${[
+        ['Amount',esc(d.grant_amount)],
+        ['Deadline',`<span class="${dlc?'deadline '+dlc:''}" style="${dlc==='urgent'?'color:var(--urgent);font-weight:600':dlc==='soon'?'color:var(--warn);font-weight:500':''}">${esc(d.grant_deadline)}</span>`],
+        ['Eligibility',esc(d.grant_eligibility)],
+      ].filter(([l,v])=>v&&v.replace(/<[^>]*>/g,'').trim()).map(([l,v])=>`<div class="pm-lbl">${l}</div><div class="pm-val">${v}</div>`).join('')}</div>
       <div class="priority-cta">
-        <button class="btn solid" type="button" id="scr-priority-open">View full draft &#8595;</button>
+        ${d.built?'<button class="btn solid" type="button" id="scr-priority-open">View full draft &#8595;</button>':''}
         <button class="btn" type="button" id="scr-priority-request">Request this draft</button>
       </div>
     </div>`;
@@ -1612,11 +1523,11 @@ function renderShortlist(){
     const dlc=deadlineClass(d.grant_deadline);
     const sa=d.strength_analysis||{};
     const sbadge=sa.overall?`<span class="sbadge ${strengthClass(sa.overall)}" title="Application strength">${esc(sa.overall)}</span>`:'';
-    const isSample=!!d.is_sample;
-    const sampleTag=isSample?'<span class="badge sample">Included sample</span> ':'';
-    const availNote=isSample?'':'<div class="dc-note">Full draft available on request.</div>';
-    const viewBtn=isSample?`<button class="btn solid view-draft-btn" type="button" data-idx="${i}">View full draft &#8595;</button>`:'';
-    return `<div class="draft-card ${isSample?'sample-card':'info-card'}${isSample&&i===state.selected?' selected':''}" id="${'draft-'+i}">
+    const isBuilt=!!d.built;
+    const sampleTag=isBuilt?'<span class="badge sample">Draft built</span> ':'';
+    const availNote=isBuilt?'':'<div class="dc-note">Full draft built on request.</div>';
+    const viewBtn=isBuilt?`<button class="btn solid view-draft-btn" type="button" data-idx="${i}">View full draft &#8595;</button>`:'';
+    return `<div class="draft-card ${isBuilt?'sample-card':'info-card'}${isBuilt&&i===state.selected?' selected':''}" id="${'draft-'+i}">
       <div class="dc-head">
         <div class="dc-name">${sampleTag}${esc(d.grant_name)}${sbadge?' '+sbadge:''}</div>
         <div class="dc-deadline ${dlc}">${esc(d.grant_deadline)}</div>
@@ -1655,11 +1566,12 @@ function renderShortlist(){
 }
 
 /* ---- Draft viewer ---- */
-/* Only the sample draft can ever be opened in the viewer — the other four
-   drafts have no sections/gaps/footnotes to render. */
+/* Owner order 2026-08-17: drafts are built only on request. Only a draft the owner has
+   marked built:true in the drafts JSON can open here; generator scaffolds (is_sample
+   included) stay closed, so the viewer is empty until a request has been fulfilled. */
 function selectDraft(idx,scroll){
   const d=state.drafts[idx];
-  if(!d||!d.is_sample)return;
+  if(!d||!d.built)return;
   state.selected=idx;
   renderShortlist();
   renderViewer();
@@ -1672,7 +1584,7 @@ function selectDraft(idx,scroll){
 function renderViewer(){
   const d=state.drafts[state.selected];
   const host=document.getElementById('scr-viewer-host');
-  if(!d||!d.is_sample){host.innerHTML='<div class="viewer-empty">Select the included sample grant above to view its draft.</div>';return;}
+  if(!d||!d.built){host.innerHTML='<div class="viewer-empty">No draft built yet. Request a draft from the shortlist above: once Measure submits a request and the draft is built, it appears here.</div>';return;}
   const dlc=deadlineClass(d.grant_deadline);
 
   const sections=(d.sections||[]).map((s,i)=>`
@@ -1773,17 +1685,17 @@ function renderViewer(){
 function renderNeeds(){
   const host=document.getElementById('scr-needs-host');
   if(!host)return;
-  const sample=state.drafts.find(d=>d&&d.is_sample)||state.drafts[0];
-  const gaps=(sample&&sample.gaps_to_fill)||[];
+  const built=state.drafts.find(d=>d&&d.built);
+  const gaps=(built&&built.gaps_to_fill)||[];
   if(!gaps.length){
-    host.innerHTML='<div class="empty">Gap checklist unavailable.</div>';
+    host.innerHTML='<div class="empty">No checklist yet. Each built draft carries its own list of facts only Measure can confirm or supply; it appears here alongside the draft.</div>';
     return;
   }
   const items=gaps.map((g,i)=>gapItemHtml(g,i,true)).join('');
   host.innerHTML=`
     <div class="fill-box">
       <h3>What Measure still needs to fill in</h3>
-      <div class="fb-sub">${gaps.length} items the People-First AI Fund sample flags; your requested draft will carry its own list for that grant</div>
+      <div class="fb-sub">${gaps.length} items this draft flags for Measure to confirm or supply</div>
       <ul class="fill-list">${items}</ul>
     </div>`;
 }
