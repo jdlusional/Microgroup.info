@@ -678,7 +678,7 @@ body{text-align:center}
     </div>
     <div class="fold-body" id="scr-needs-fold-body">
     <div class="section-lede">
-      <p>Every built draft carries a checklist of facts only Measure can confirm or supply. The checklist for each requested draft appears here alongside it.</p>
+      <p>What to send with a draft request so the draft can actually be built. Every built draft then carries its own specific checklist of facts only Measure can confirm or supply, which appears here alongside it.</p>
     </div>
       <div id="scr-needs-host"></div>
     </div>
@@ -1701,7 +1701,22 @@ function renderNeeds(){
   const built=state.drafts.find(d=>d&&d.built);
   const gaps=(built&&built.gaps_to_fill)||[];
   if(!gaps.length){
-    host.innerHTML='<div class="empty">No checklist yet. Each built draft carries its own list of facts only Measure can confirm or supply; it appears here alongside the draft.</div>';
+    host.innerHTML=`
+    <div class="fill-box">
+      <h3>What to include with any draft request</h3>
+      <div class="fb-sub">The standing list. Send what applies; a built draft then carries its own specific checklist here.</div>
+      <ul class="fill-list">
+        <li><strong>The opportunity itself.</strong> Funder name and a link to the grant, RFP, or LOI page, or the document attached if it is not public.</li>
+        <li><strong>Deadlines.</strong> The submission deadline and any Letter of Intent or pre-application deadline that comes first.</li>
+        <li><strong>The ask.</strong> The amount you want to request, or ask us to propose one from the funder's own filed grant history.</li>
+        <li><strong>The program.</strong> Which of Measure's programs the application is for, with a short description in your own words.</li>
+        <li><strong>Budget figures.</strong> The program budget for the period covered, and the organizational budget if the funder asks for it.</li>
+        <li><strong>Outcomes to cite.</strong> Participation counts, evaluation results, or other figures you want the draft to use; nothing is invented.</li>
+        <li><strong>Board and leadership.</strong> Roster or demographics, only where the funder's application requires them.</li>
+        <li><strong>Standard attachments.</strong> IRS determination letter, W-9, most recent Form 990 or audit, letters of support, as the funder requires.</li>
+        <li><strong>A contact.</strong> Who at Measure answers follow-up questions while the draft is being built.</li>
+      </ul>
+    </div>`;
     return;
   }
   const items=gaps.map((g,i)=>gapItemHtml(g,i,true)).join('');
