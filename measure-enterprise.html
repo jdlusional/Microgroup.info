@@ -498,9 +498,6 @@ body{text-align:center}
       </div>
     </div>
     <div class="fold-body" id="alm-compiled-fold-body">
-      <div class="toolbar">
-        <div class="chip-filter" id="alm-compiled-status-filter"></div>
-      </div>
       <div class="res-count"><b id="alm-compiled-count">0</b> aligned funders shown</div>
       <div id="alm-compiled-results"></div>
 
@@ -592,7 +589,7 @@ body{text-align:center}
     </div>
     <div class="fold-body" id="conf-findings-fold-body">
     <div class="section-lede">
-      <p>3 to pursue, 2 to consider for a future cycle, 3 checked and ruled out, shown transparently below rather than dropped silently.</p>
+      <p>3 to pursue and 2 to consider for a future cycle.</p>
     </div>
       <div id="conf-results"></div>
     </div>
@@ -629,7 +626,7 @@ body{text-align:center}
     </div>
     <div class="fold-body" id="scr-priority-fold-body">
     <div class="section-lede">
-      <p>The single strongest open call for Measure right now. Start here.</p>
+      <p>The single highest-payoff open call right now, scored on award size, urgency, and fit. Start here.</p>
     </div>
       <div id="scr-priority-host"></div>
     </div>
@@ -640,13 +637,13 @@ body{text-align:center}
     <div class="section-head-row">
       <button class="mc-toggle" type="button" aria-controls="scr-shortlist-fold-body"></button>
       <div class="section-head">
-        <span class="kicker">Most aligned first</span>
+        <span class="kicker">Payoff-ranked</span>
         <h2>Ranked Shortlist <span class="fold-count" data-count-from="draft-count" data-count-label="open calls"></span></h2>
       </div>
     </div>
     <div class="fold-body" id="scr-shortlist-fold-body">
     <div class="section-lede">
-      <p>Your five most-aligned open calls, each linked to the funder's own live page and verified open on the date shown. Request a full draft for any of them; a built draft opens in the viewer below.</p>
+      <p>Your five most-aligned open calls, sorted by payoff score (the average of award, urgency, and fit), each linked to the funder's own live page. Request a full draft for any of them; a built draft opens in the viewer below.</p>
     </div>
       <div id="scr-shortlist-host"></div>
       <div class="res-count"><b id="scr-draft-count">0</b> open calls shown</div>
@@ -664,9 +661,9 @@ body{text-align:center}
     </div>
     <div class="fold-body" id="scr-viewer-fold-body">
     <div class="section-lede">
-      <p>A requested draft renders here in full once built: application sections, the checklist of what Measure still needs to supply, the fact-check note, and sources. Copy or download the whole thing.</p>
+      <p>This is where a finished working draft lives. Drafts are written on request, not in advance: pick an open call from the shortlist above, or name any grant, RFP, or LOI of your own in Request Your Draft below. Once built, the draft renders here in full, application sections, the checklist of what Measure still needs to supply, the fact-check note, and sources, ready to copy or download.</p>
     </div>
-      <div id="scr-viewer-host"><div class="viewer-empty">No draft built yet. Request a draft from the shortlist above: once Measure submits a request and the draft is built, it appears here.</div></div>
+      <div id="scr-viewer-host"><div class="viewer-empty">Empty by design. A draft is written only after Measure asks for one: request an open call from the shortlist above, or send any grant, RFP, or LOI through the request form below. The built draft then appears here.</div></div>
     </div>
   </div>
 </section>
@@ -1021,7 +1018,6 @@ async function load(){
   /* alm-method-scoring / alm-method-cycle / scr-method-status writes removed 2026-08-07
      with the Method sections themselves. Leaving them would throw on a null element and kill
      every line after, which is exactly how this page rendered blank toggles on 2026-08-03. */
-  buildStatusFilter('alm-compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
   setAdminUI();
   applyCompiled();
   wireAccordion(document.getElementById('alm-profile'),'.card');if(window.foldSubheads)window.foldSubheads();
@@ -1262,7 +1258,7 @@ const CONF_TIER_BADGE={pursue:"badge-confirmed",consider:"badge-new",dropped:""}
 function confEsc(s){return(s||"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function renderConfluence(){
   const host=document.getElementById('conf-results');
-  const order=["pursue","consider","dropped"];
+  const order=["pursue","consider"];
   host.innerHTML=order.map(tier=>{
     const items=CONF_CANDIDATES.filter(c=>c.tier===tier);
     if(!items.length)return'';
@@ -1465,7 +1461,16 @@ function renderBudgetProse(text){
 }
 
 /* ---- Priority pick (drafts[0]) ---- */
-const COMPONENT_ORDER=[['relevance','Relevance'],['award','Award'],['urgency','Urgency'],['fit','Fit']];
+const COMPONENT_ORDER=[['award','Award'],['urgency','Urgency'],['fit','Fit']];
+/* Payoff = the average of award, urgency and fit (owner order 2026-08-17: relevance is
+   neither scored nor shown). Computed here from the components so the displayed number
+   can never disagree with the bars. */
+function payoffOf(d){
+  const c=d&&d.payoff_components||{};
+  const vals=COMPONENT_ORDER.map(([k])=>c[k]).filter(v=>typeof v==='number');
+  if(!vals.length)return null;
+  return Math.round(vals.reduce((a,b)=>a+b,0)/vals.length*10)/10;
+}
 function pct(v){return Math.round(Number(v)*100);}
 
 function renderPriority(){
@@ -1475,6 +1480,15 @@ function renderPriority(){
   const sa=d.strength_analysis||{};
   const scls=strengthClass(sa.overall);
   const sbadge=sa.overall?`<span class="sbadge ${scls}" title="Application strength">${esc(sa.overall)}</span>`:'';
+  const score=payoffOf(d);
+  const comps=d.payoff_components||{};
+  const bars=score===null?'':COMPONENT_ORDER.map(([k,lbl])=>{
+    const p=comps[k];
+    return `<div class="payoff-cell">
+      <div class="pc-top"><span class="pc-lbl">${lbl}</span><span class="pc-val">${p}</span></div>
+      <div class="payoff-bar"><div class="payoff-bar-fill" style="width:${p}%"></div></div>
+    </div>`;
+  }).join('');
   document.getElementById('scr-priority-host').innerHTML=`
     <div class="priority-card">
       <div class="priority-top">
@@ -1483,7 +1497,12 @@ function renderPriority(){
           <h3 class="pg-name"><a href="${esc(d.grant_url)}" target="_blank" rel="noopener">${esc(d.grant_name)}</a></h3>
           <div class="pg-funder">${esc(d.funder)}${sbadge?' &middot; '+sbadge:''}</div>
         </div>
+        ${score===null?'':`<div class="priority-score">
+          <div class="ps-num">${score}</div>
+          <div class="ps-lbl">payoff score</div>
+        </div>`}
       </div>
+      ${bars?`<div class="payoff-grid">${bars}</div>`:''}
       <p class="priority-rationale">${esc(d.priority_rationale)}</p>
       <div class="priority-meta">${[
         ['Amount',esc(d.grant_amount)],
@@ -1529,6 +1548,10 @@ function renderShortlist(){
       </div>
       <div class="mc-body" id="${'draft-'+i}-body">
       <div class="dc-main">
+      ${payoffOf(d)===null?'':`<div class="dc-score">
+        <div class="dcs-num">${payoffOf(d)}</div>
+        <div class="dcs-lbl">payoff</div>
+      </div>`}
       <div class="dc-body">
         <div class="dc-funder">${esc(d.funder)}</div>
         <div class="dc-rationale">${esc(d.priority_rationale)}</div>
@@ -1574,7 +1597,7 @@ function selectDraft(idx,scroll){
 function renderViewer(){
   const d=state.drafts[state.selected];
   const host=document.getElementById('scr-viewer-host');
-  if(!d||!d.built){host.innerHTML='<div class="viewer-empty">No draft built yet. Request a draft from the shortlist above: once Measure submits a request and the draft is built, it appears here.</div>';return;}
+  if(!d||!d.built){host.innerHTML='<div class="viewer-empty">Empty by design. A draft is written only after Measure asks for one: request an open call from the shortlist above, or send any grant, RFP, or LOI through the request form below. The built draft then appears here.</div>';return;}
   const dlc=deadlineClass(d.grant_deadline);
 
   const sections=(d.sections||[]).map((s,i)=>`
