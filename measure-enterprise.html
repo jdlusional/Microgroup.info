@@ -824,7 +824,23 @@ const CYCLE={
    (990-PF filers only) is null where ProPublica's summary endpoint returned no value; shown
    as "not returned by the source," never estimated. Kapor Foundation's revenue is negative
    as filed (investment losses for the tax year), reported exactly as filed, not reinterpreted. */
+/* ADVERSARIAL REVIEW OUTCOMES (owner-ordered, run 2026-08-17; two independent verifiers,
+   evidence quoted in the session record). Exclusions remove a funder from the compiled
+   display with the reason shown here; notes render on the card so the reader sees the
+   caveat, not just the match. */
+const FUNDER_REVIEW={
+ "742992877":{exclude:"Mission Capital ended operations after 25 years (its own board announcement, 2026); remaining programs absorbed into Central Texas Community Foundation."},
+ "473863079":{exclude:"Child Poverty Action Lab is an operating nonprofit, not a grantmaker: its own site describes data analysis and partnerships, lists no grant program, and it raises funds itself."},
+ "263241764":{display:"Arnold Ventures (Laura and John Arnold Foundation)",note:"Operates as Arnold Ventures since 2019 and accepts no unsolicited proposals. Two open RFPs (Strengthening Evidence; Building Evidence) are due September 11, 2026."},
+ "110303001":{note:"Donor-advised fund sponsor: grants follow donor recommendations and there is no application path. The route is donor cultivation, not an application; Fidelity Charitable is a confirmed prior conduit for Measure ($202,300)."},
+ "746013920":{note:"Substantially invitation-based grantmaking with a Greater Houston mandate; verified active (news through August 2026, roughly $2.5B assets)."},
+ "752890371":{note:"Active community foundation with competitive channels, but Dallas County-focused; geographic fit is the caveat, not viability."},
+ "825417593":{note:"Partnership-based in-kind research capacity, not cash grants; confirmed prior funder, verified active (FY2024 return filed November 2025)."},
+ "742847652":{note:"2026 grant application cycle is OPEN with a hard deadline of August 26, 2026 at noon CST; verified on the funder's own site 2026-08-17."},
+ "741193439":{note:"Backfilled after the review removed two funders: verified active Austin grantmaker; no currently-open competitive call on the date checked."},
+};
 const FUNDER_PROFILES={
+ "741193439":{name:"United Way for Greater Austin",city:"Austin",state:"TX",subsection_code:3,foundation_code:15,ntee_code:"T70Z",tax_year:2023,revenue:16769455,assets:20073682,liabilities:3834997,qualifying_distributions:null},
  "473863079":{name:"Child Poverty Action Lab",city:"Dallas",state:"TX",subsection_code:3,foundation_code:15,ntee_code:null,tax_year:2023,revenue:10676440,assets:20042790,liabilities:1121884,qualifying_distributions:null},
  "752890371":{name:"The Dallas Foundation",city:"Dallas",state:"TX",subsection_code:3,foundation_code:15,ntee_code:"T31",tax_year:2023,revenue:100631947,assets:429083554,liabilities:30564167,qualifying_distributions:null},
  "110303001":{name:"Fidelity Investments Charitable Gift Fund",city:"Boston",state:"MA",subsection_code:3,foundation_code:15,ntee_code:"S500",tax_year:2023,revenue:14732623803,assets:56657940564,liabilities:758552777,qualifying_distributions:null},
@@ -1133,7 +1149,7 @@ function renderProfile(){
    aligned candidates by rank. Displayed in rank order. A funder without an open call renders
    with a "no currently-open call" note in place of the Open Opportunity card. */
 function compileMatches(){
-  const all=state.funders.map(f=>{
+  const all=state.funders.filter(f=>!(FUNDER_REVIEW[f.funder_ein]&&FUNDER_REVIEW[f.funder_ein].exclude)).map(f=>{
     const profile=FUNDER_PROFILES[f.funder_ein];
     const grant=state.grants.ready_now.find(g=>g.ein===f.funder_ein);
     return Object.assign({},f,{profile:profile,grant:grant});
@@ -1161,9 +1177,11 @@ function applyCompiled(){
   host.innerHTML=list.map(f=>{
     const p=f.profile,g=f.grant;
     const dlClass=g?deadlineClass(g.deadline):'';
+    const review=FUNDER_REVIEW[f.funder_ein];
     const whyRowsHTML=[
       ['Geography',esc(f.geography)],
       ['Rationale',highlight(f.rationale,q)],
+      ['Review note',review&&review.note?esc(review.note):''],
     ].filter(([label,value])=>value&&String(value).replace(/<[^>]*>/g,'').trim()).map(([label,value])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
     const grantRows=g?[
       ['Open Opportunity',`<a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a>`,true],
@@ -1176,7 +1194,7 @@ function applyCompiled(){
     return `
     <div class="match-card" id="${esc('funder-'+f.funder_ein)}">
       <div class="mc-head">
-        <span class="fname">${highlight(titleCaseName(f.funder_name),q)}</span>
+        <span class="fname">${highlight((FUNDER_REVIEW[f.funder_ein]&&FUNDER_REVIEW[f.funder_ein].display)||titleCaseName(f.funder_name),q)}</span>
         ${f.is_confirmed_prior_funder?'<span class="badge badge-confirmed">Confirmed funder</span>':'<span class="badge badge-new">New candidate</span>'}
         <button class="mc-toggle" type="button" aria-controls="${esc('funder-'+f.funder_ein)}-body"></button>
       </div>
