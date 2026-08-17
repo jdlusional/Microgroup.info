@@ -1,6 +1,48 @@
 /kct-website  https://katelyncthompson.com/  301
 /kct-website.html  https://katelyncthompson.com/  301
 
+# ACC, Clown Dog Bikes, and KCT moved to jonathanlindavis.com (owner order, 2026-08-16).
+# ACC and Clown Dog Bikes are full page-cluster moves, same content at the new domain. KCT's
+# own hub page is retired -- its two entries folded directly into jonathanlindavis.com's
+# private-index.html tree -- so its old URL redirects straight to the live brand site instead,
+# same destination the old kct-website redirect above already used.
+/acc                            https://jonathanlindavis.com/acc.html                            301
+/acc.html                       https://jonathanlindavis.com/acc.html                            301
+/acc-admin                      https://jonathanlindavis.com/acc-admin.html                       301
+/acc-admin.html                 https://jonathanlindavis.com/acc-admin.html                       301
+/acc-job-board                  https://jonathanlindavis.com/acc-job-board.html                   301
+/acc-job-board.html             https://jonathanlindavis.com/acc-job-board.html                   301
+/acc-job-detail                 https://jonathanlindavis.com/acc-job-detail.html                  301
+/acc-job-detail.html            https://jonathanlindavis.com/acc-job-detail.html                  301
+/acc-job-detail-before           https://jonathanlindavis.com/acc-job-detail-before.html          301
+/acc-job-detail-before.html     https://jonathanlindavis.com/acc-job-detail-before.html           301
+/acc-job-detail-after           https://jonathanlindavis.com/acc-job-detail-after.html            301
+/acc-job-detail-after.html      https://jonathanlindavis.com/acc-job-detail-after.html            301
+/acc-post-job                   https://jonathanlindavis.com/acc-post-job.html                    301
+/acc-post-job.html              https://jonathanlindavis.com/acc-post-job.html                    301
+/clown-dog                      https://jonathanlindavis.com/clown-dog.html                       301
+/clown-dog.html                 https://jonathanlindavis.com/clown-dog.html                       301
+/clown-dog-questionnaire        https://jonathanlindavis.com/clown-dog-questionnaire.html         301
+/clown-dog-questionnaire.html   https://jonathanlindavis.com/clown-dog-questionnaire.html         301
+/clown-dog-website               https://jonathanlindavis.com/clown-dog-website.html              301
+/clown-dog-website.html          https://jonathanlindavis.com/clown-dog-website.html              301
+/clown-dog-website-accessibility  https://jonathanlindavis.com/clown-dog-website-accessibility.html  301
+/clown-dog-website-accessibility.html  https://jonathanlindavis.com/clown-dog-website-accessibility.html  301
+/clown-dog-website-contact       https://jonathanlindavis.com/clown-dog-website-contact.html      301
+/clown-dog-website-contact.html  https://jonathanlindavis.com/clown-dog-website-contact.html      301
+/clown-dog-website-policies      https://jonathanlindavis.com/clown-dog-website-policies.html     301
+/clown-dog-website-policies.html https://jonathanlindavis.com/clown-dog-website-policies.html     301
+/clown-dog-website-privacy       https://jonathanlindavis.com/clown-dog-website-privacy.html      301
+/clown-dog-website-privacy.html  https://jonathanlindavis.com/clown-dog-website-privacy.html      301
+/clown-dog-website-repair        https://jonathanlindavis.com/clown-dog-website-repair.html       301
+/clown-dog-website-repair.html   https://jonathanlindavis.com/clown-dog-website-repair.html       301
+/clown-dog-website-shop          https://jonathanlindavis.com/clown-dog-website-shop.html         301
+/clown-dog-website-shop.html     https://jonathanlindavis.com/clown-dog-website-shop.html         301
+/clown-dog-website-story         https://jonathanlindavis.com/clown-dog-website-story.html        301
+/clown-dog-website-story.html    https://jonathanlindavis.com/clown-dog-website-story.html        301
+/kct                             https://katelyncthompson.com/                                    301
+/kct.html                        https://katelyncthompson.com/                                    301
+
 # No private-index.html exists on this domain by design (owner order 2026-08-06):
 # the canonical private index lives on jonathanlindavis.com, this is a pointer to it
 # rather than a second index to keep in sync.
