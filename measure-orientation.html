@@ -74,6 +74,10 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
    head sits at true vertical center; the 24px .section-head margin-bottom only matters
    when the fold is open. */
 .mc-closed > .fold > .section-head-row > .section-head{margin-bottom:0}
+/* Owner order 2026-08-17: count badges render on their own line UNDER the heading,
+   never beside it. */
+.section-head .fold-count{display:block;margin:.45rem auto 0;width:fit-content}
+.section-head .section-head-tags{display:block;margin-top:.45rem}
 
 .section-head{text-align:center}
 .mc-closed .fold-body{display:none}
