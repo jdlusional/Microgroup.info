@@ -1060,6 +1060,20 @@ function splitFactValue(text){
     }
   }
   if(cur.trim())segments.push(cur.trim());
+  /* A segment that begins lowercase is a clause continuation, not a list item: the
+     semicolon that produced it was joining prose ("...no formal badge; it lists
+     names and photos..."), and rendering it as its own paragraph reads as a broken
+     sentence (owner screenshots 2026-08-17: the DEI-evidence fact and the
+     most-recent-990 fact both fragmented exactly this way). Rejoin it with the
+     semicolon restored. The sentence splitter above cannot produce a lowercase
+     opener, since it only cuts when the character after the period is [A-Z0-9], so
+     this touches semicolon splits alone. */
+  for(let k=segments.length-1;k>0;k--){
+    if(/^[a-z]/.test(segments[k])){
+      segments[k-1]=segments[k-1]+'; '+segments[k];
+      segments.splice(k,1);
+    }
+  }
   if(segments.length<=1)return [s];
   const noParens=s.replace(/\([^)]*\)/g,'');
   const hadSemicolon=/;\s/.test(noParens);
