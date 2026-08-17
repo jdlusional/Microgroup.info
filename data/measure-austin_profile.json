@@ -647,7 +647,7 @@
       },
       {
         "field": "need_statistics_cited",
-        "value": "Need-framing statistics Measure cites: '79% of Black-led organizations lack systems for collecting data' (Measure 2021 research, rationale for Ignite) and '1% — the combined philanthropic funding to Black communities' (attributed to the National Center for Responsive Philanthropy).",
+        "value": "Need-framing statistics Measure cites: '79% of Black-led organizations lack systems for collecting data' (Measure 2021 research, rationale for Ignite) and '1%; the combined philanthropic funding to Black communities' (attributed to the National Center for Responsive Philanthropy).",
         "source_url": "https://wemeasure.org/ignite",
         "confidence": "high",
         "note": "New citable Statement-of-Need anchors. The 1% figure is a third-party (NCRP) statistic, not a Measure outcome."
