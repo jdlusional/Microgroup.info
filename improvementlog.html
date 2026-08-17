@@ -99,15 +99,6 @@ const LOG = [
 {"p": "Herald", "d": "2026-07-16", "t": "Herald shipped as a grant-cycle monitor watching the grant pages Almanac already surfaced, honestly reporting which pages it could not check."},
 {"p": "Atlas", "d": "2026-07-18", "t": "The first version shipped: Atlas benchmarks a foundation's giving against real aggregate statistics computed from 353,820 Form 990-PF grant rows filed by 8,754 Texas-registered foundations."},
 {"p": "Dossier", "d": "2026-07-18", "t": "The first version shipped: Dossier reconciles a foundation's claimed giving against its own filed Form 990-PF numbers and cross-references its donation list against public filings."},
-{"p": "Docket", "d": "2026-08-11", "t": "The first version shipped: Docket tracks Letters of Inquiry and Requests for Proposals as their own opportunity type, separate from Almanac's traditional grant matches, each with deadline, amount, eligibility, and a link back to the funder's own page."},
-{"p": "Docket", "d": "2026-08-11", "t": "Rebuilt to the full Almanac/Scribe page structure: a fictional-org profile, funder snapshots on every candidate, and a Checked-and-Ruled-Out section showing candidates that were researched and passed over, not just the ones that made the cut."},
-{"p": "Docket", "d": "2026-08-11", "t": "The Watch List section was removed (planned as its own separate feature later, not part of this release)."},
-{"p": "Docket", "d": "2026-08-11", "t": "A fifth Ready Now candidate was added to bring the shortlist to five, matching the site's standard shortlist length."},
-{"p": "Docket", "d": "2026-08-12", "t": "Pricing published (Standard/Pro, at parity with Almanac), along with the multi-org account rule shared with Confluence: every organization needs its own Almanac, but only one organization in a group needs Docket."},
-{"p": "Docket", "d": "2026-08-15", "t": "Candidate data corrected against the funder register: eligibility and focus-area text fixed on two candidates; the Ready Now count was unaffected."},
-{"p": "Confluence", "d": "2026-08-11", "t": "The first version shipped: Confluence finds funding that bridges an applicant organization's mission with a named partner organization's work, tiered Pursue/Consider/Checked-and-Ruled-Out, the same shape already used in production on Measure's own Confluence add-on."},
-{"p": "Confluence", "d": "2026-08-11", "t": "Partner language broadened from strictly two organizations to two or more, so a consortium, association, or larger collaborative can be named as the partner, not only a single second organization."},
-{"p": "Confluence", "d": "2026-08-12", "t": "Pricing published: a one-time Engagement fee for up to two organizations plus a per-organization add-on, with an optional recurring Refresh add-on, and the same multi-org account rule shared with Docket."},
 {"p": "Almanac", "d": "2026-07-25", "t": "A reverse-discovery section was added to the funder-match demo, surfacing candidate funders beyond the compiled matches."},
 {"p": "Almanac", "d": "2026-07-25", "t": "The footer now offers a way to request a custom build outside the standard product catalog."},
 {"p": "Almanac", "d": "2026-07-27", "t": "Every section, including funder matches and profiles, was rebuilt into collapsible, bordered cards for clearer navigation."},
@@ -141,7 +132,11 @@ const LOG = [
 {"p": "Scribe", "d": "2026-08-09", "t": "Fixed a data-consistency issue that could let a match rationale note apply outside the organization it belonged to."},
 {"p": "Scribe", "d": "2026-08-07", "t": "New client organizations now receive a dedicated orientation page as part of onboarding."},
 {"p": "Scribe", "d": "2026-08-05", "t": "Fixed two bugs that had been preventing a client's enterprise page from building correctly."},
-{"p": "Atlas", "d": "2026-08-09", "t": "Card layouts, text wrapping, and header styling were made more consistent and readable across the site, including a fix to the homepage's introductory heading."}
+{"p": "Atlas", "d": "2026-08-09", "t": "Card layouts, text wrapping, and header styling were made more consistent and readable across the site, including a fix to the homepage's introductory heading."},
+{"p": "Almanac", "d": "2026-08-16", "t": "A blind spot in funder-evidence lookups was fixed so foundations that file Form 990-PF, not just Form 990 Schedule I, now show their true grant history instead of appearing to have none."},
+{"p": "Scribe", "d": "2026-08-16", "t": "A blind spot in funder-evidence lookups was fixed so foundations that file Form 990-PF, not just Form 990 Schedule I, now show their true grant history instead of appearing to have none."},
+{"p": "Almanac", "d": "2026-08-16", "t": "Caution flagging was expanded to catch more cases where a funding opportunity's fit with an organization's mission was never actually assessed, rather than silently treating the absence of a red flag as a clean bill of health."},
+{"p": "Scribe", "d": "2026-08-16", "t": "Caution flagging was expanded to catch more cases where a funding opportunity's fit with an organization's mission was never actually assessed, rather than silently treating the absence of a red flag as a clean bill of health."}
 ];
 /* ===IMPROVEMENTLOG-DATA-END=== */
 
