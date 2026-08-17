@@ -220,7 +220,7 @@ body{text-align:center}
       <button class="mc-toggle" type="button" aria-controls="product-almanac-body"></button>
       <div class="section-head">
         <span class="kicker">Product</span>
-        <h2>Almanac — funder and grant match</h2>
+        <h2>Almanac: funder and grant match</h2>
       </div>
     </div>
     <div class="fold-body" id="product-almanac-body">
@@ -324,7 +324,7 @@ body{text-align:center}
 
       <div class="watch-list" id="alm-ruled-out" style="margin-top:1.6rem">
         <div class="section-head" style="border-top:1px solid var(--rule);padding-top:.9rem;margin-bottom:1rem">
-          <h2 style="font-size:1.15rem">Checked and Ruled Out &mdash; Cycle 1</h2>
+          <h2 style="font-size:1.15rem">Checked and Ruled Out: Cycle 1</h2>
           <p>8 of Texas Empowerment Academy's 55 ranked funder candidates had a currently-open call join by EIN this cycle. All 8 were checked directly against the funder's own page and ruled out; none compiled as a live match. Zero compiled matches this cycle is the honest result of that check, not a data gap.</p>
         </div>
         <div class="watch-item"><div class="org"><a href="https://cooperfdn.org/grants/" target="_blank" rel="noopener">Cooper Foundation</a></div><div class="why">Restricted to organizations with programming and staff located in Waco, TX only.</div></div>
@@ -339,7 +339,7 @@ body{text-align:center}
 
       <div class="watch-list">
         <div class="section-head" style="border-top:1px solid var(--rule);padding-top:.9rem;margin-bottom:1rem">
-          <h2 style="font-size:1.15rem">Watch List &mdash; not yet open</h2>
+          <h2 style="font-size:1.15rem">Watch List: not yet open</h2>
           <p>Real, relevant opportunities that are currently closed, paused, or not yet launched. Worth monitoring, not applying to yet.</p>
         </div>
         <div id="alm-watch-results"></div>
@@ -585,7 +585,7 @@ async function load(){
   PROFILE=await pRes.json();
   const A=await aRes.json();
   FUNDERS_DATA={method:A.method,tiers:A.tiers,ranked_funders:A.ranked_funders};
-  GRANTS={method:A.method,run_date:A.generated_date,
+  GRANTS={method:A.method,run_date:A.generated_date,known_limitation:A.known_limitation,
           ready_now:A.ready_now,watch_list_not_yet_open:A.watch_list_not_yet_open};
 
   state.profile=PROFILE;
@@ -601,7 +601,7 @@ async function load(){
   /* alm-method-scoring / alm-method-cycle / scr-method-status writes removed 2026-08-07
      with the Method sections themselves. Leaving them would throw on a null element and kill
      every line after, which is exactly how this page rendered blank toggles on 2026-08-03. */
-  buildStatusFilter('compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
+  buildStatusFilter('alm-compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
   setAdminUI();
   applyCompiled();
   renderWatchList();
@@ -774,7 +774,7 @@ document.getElementById('alm-admin-toggle').addEventListener('click',()=>{
 });
 
 load().catch(err=>{
-  document.getElementById('alm-compiled-results').innerHTML=`<div class="empty"><b>Couldn't load data</b> for org "${esc(ORG_SLUG)}" — the page's own inlined data failed to render.</div>`;
+  document.getElementById('alm-compiled-results').innerHTML=`<div class="empty"><b>Couldn't load data</b> for org "${esc(ORG_SLUG)}" because a script error stopped this section from rendering.</div>`;
   console.error(err);
 });
 </script>
