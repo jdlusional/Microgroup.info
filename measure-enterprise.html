@@ -952,6 +952,39 @@ function setAdminUI(){
   document.querySelectorAll('.status-select,.status-notes').forEach(el=>{el.disabled=!isOn;});
 }
 
+/* Ported 2026-08-17 from gift-enterprise-portal.html (commit c9e7ddb lineage): the
+   register carries funder names as-filed (mixed ALL-CAPS and lowercase); compiled
+   cards render them in the house title case per owner order. */
+const NAME_ACRONYMS = new Set(["LLC","INC","CORP","CO","LTD","USA","ATX","TX","NGO","NAACP","AARP","PBS",
+  "NPR","PTA","YMCA","YWCA","CEO","CFO","CPA","HR","IT","AI","US","UK","UN","VFW","AFL","CIO","ISD","GED",
+  "STEM","NASA","FBI","CIA","IRS","EPA","FDA","USDA","DOD","VA","AA","NA","PF","EIN","TX2","JD","MD","PHD"]);
+const NAME_MINOR_WORDS = new Set(["a","an","and","as","at","but","by","for","in","nor","of","on","or","per","the","to","vs","via"]);
+const NAME_NOT_ACRONYMS = new Set(["ST","MS","MR","MRS","DR"]);
+// Enterprise-portal-only fix, found via tier-3 data (2026-08-16): the original regex
+// (/[A-Za-z']+/g) treats "&" as a separator, so "TEXAS A&M FOUNDATION" split into "A"
+// and "M" as two separate words, and standalone "A" then matched NAME_MINOR_WORDS's
+// article "a" (since it isn't the first word), rendering "Texas a&M Foundation". No
+// existing top-100 entry has an unspaced "&" in its name, so this never surfaced before
+// Texas A&M Foundation and AT&T Foundation appeared in gift_funders_tier3.json. Matching
+// "letters&letters" as one token first (before the general word-splitter) and always
+// uppercasing it whole is a narrow, tested fix: verified it leaves "Procter & Gamble"
+// (spaced ampersand, two real words) and "Meals for a Change" (genuine article "a")
+// untouched, while fixing "A&M"/"AT&T"/"H&R"-style glued tokens.
+const titleCaseName = s => {
+  if(!s) return s;
+  let i = -1;
+  return s.replace(/[A-Za-z]+&[A-Za-z]+|[A-Za-z']+/g, w => {
+    i++;
+    if(w.includes("&")) return w.toUpperCase();
+    const upper = w.toUpperCase();
+    if(NAME_ACRONYMS.has(upper)) return upper;
+    if(!NAME_NOT_ACRONYMS.has(upper) && w.length<=5 && !/[AEIOU]/i.test(w)) return upper;
+    const lower = w.toLowerCase();
+    if(i>0 && NAME_MINOR_WORDS.has(lower)) return lower;
+    return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+  });
+};
+
 function statusRowHTML(itemType,itemId){
   const s=statusOf(itemType,itemId);
   const options=STATUS_ORDER.map(k=>`<option value="${k}"${k===s.status?' selected':''}>${STATUS_LABELS[k]}</option>`).join('');
@@ -1143,7 +1176,7 @@ function applyCompiled(){
     return `
     <div class="match-card" id="${esc('funder-'+f.funder_ein)}">
       <div class="mc-head">
-        <span class="fname">${highlight(f.funder_name,q)}</span>
+        <span class="fname">${highlight(titleCaseName(f.funder_name),q)}</span>
         ${f.is_confirmed_prior_funder?'<span class="badge badge-confirmed">Confirmed funder</span>':'<span class="badge badge-new">New candidate</span>'}
         <button class="mc-toggle" type="button" aria-controls="${esc('funder-'+f.funder_ein)}-body"></button>
       </div>
