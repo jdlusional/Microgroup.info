@@ -230,6 +230,15 @@ body{text-align:center}
      demo-scribe, which never adopted the Almanac host's body-level centering), keeping
      demo-scribe's own selective centering. ---- */
   #product-scribe{text-align:left}
+  /* The document-left-align rule above is too broad on its own: it also un-centers the
+     shared section-head-row kicker+title header that every card on this page uses (Almanac
+     and Confluence never opt out, so their kickers stay centered; Scribe's own internal
+     cards silently lost it as a side effect). Owner screenshot 2026-08-17 showed "Product",
+     "Draft this now" and "Payoff-ranked" sitting flush-left under their own centered-width
+     title instead of centered above it. Restored explicitly, matching this file's own
+     existing pattern of scoped centering exceptions below (viewer/needs/submit,
+     priority-score, reader-notice). */
+  #product-scribe .section-head{text-align:center}
   #product-scribe .viewer-empty{padding:1.4rem 1.2rem;color:var(--wash);font-size:15px;line-height:1.55;text-align:center}
   #product-scribe .draft-card.info-card{background:var(--well)}
   /* Owner order 2026-08-17 round 3: the Draft Viewer, Request Your Draft, and What We
