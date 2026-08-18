@@ -215,6 +215,14 @@ body{text-align:center}
   .subfold-head .mc-toggle{width:100%;margin-left:0}
 }
 #alm-footer-credit,#scr-footer-credit{white-space:pre-line}
+
+/* ---- Motion (css-pass pilot, 2026-08-17). This page's own .status-saved transition is
+   live today; ported verbatim from measure-orientation.html's own convention rather than
+   left as a family-wide gap. ---- */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;scroll-behavior:auto !important}
+}
 </style>
 </head>
 <body>
