@@ -421,6 +421,15 @@ body{text-align:center}
   #product-scribe .fn-ref{font-size:max(.8em,12.5px)}
   #product-scribe .reader-notice .rn-sug, #product-scribe .reader-notice .rn-conf, #product-scribe .reader-notice .rn-miss, #product-scribe .reader-notice .rn-evi{font-size:max(.82em,12.5px)}
   #product-scribe .ph, #product-scribe .sug, #product-scribe .conf, #product-scribe .miss{font-size:max(.86em,12.5px)}
+
+/* ---- Motion (css-pass pilot, 2026-08-17). This page's own .status-saved, #product-scribe
+   .btn, and .copied-flag transitions are live today, unlike measure-orientation.html's
+   originally-defensive guard for a transition that did not exist yet there. Ported verbatim
+   from that page's own convention rather than left as a family-wide gap. ---- */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;scroll-behavior:auto !important}
+}
 </style>
 </head>
 <body>
