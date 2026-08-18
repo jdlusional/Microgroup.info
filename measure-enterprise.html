@@ -448,7 +448,7 @@ body{text-align:center}
   <div class="manifest-in">
     <span class="brand" id="alm-brand-text"><b>Almanac</b> for Measure</span>
     <span class="stat"><strong id="alm-m-funders">–</strong> candidate funders researched</span>
-    <span class="stat"><strong id="alm-m-grants">–</strong> most aligned funders (every open call included)</span>
+    <span class="stat"><strong id="alm-m-grants">–</strong> open calls right now (grants + RFPs/LOIs, no more than 3 from a prior funder)</span>
     <span class="grow"></span>
     <button class="admin-toggle" id="alm-admin-toggle" type="button" title="Enter your key to mark status on funders and grants">Admin</button>
     <nav>
@@ -821,7 +821,13 @@ const ORG_SLUG="measure-austin";
    CYCLE and FUNDER_PROFILES stay inline deliberately: both are small and neither is shelf-derived. */
 const ALMANAC_URL='data/measure-austin_almanac.json';
 const PROFILE_URL='data/measure-austin_profile.json';
+/* Docket (RFP/LOI product), added 2026-08-18 so the compiled open-calls list can combine both
+   products Measure holds, per owner order. Fetched alongside Almanac/Profile in load() below;
+   degrades to an empty ready_now list rather than throwing if the file is ever missing, since
+   Docket is a genuine second product, not a required dependency of Almanac's own rendering. */
+const DOCKET_URL='data/measure-austin_docket.json';
 let PROFILE={}, FUNDERS_DATA={ranked_funders:[],method:''}, GRANTS={ready_now:[],watch_list_not_yet_open:[]};
+let DOCKET={ready_now:[]};
 
 
 /* Cycle metadata (Almanac Standard/Pro tiering, 2026-07-23): Measure is on Almanac
@@ -871,6 +877,10 @@ const FUNDER_REVIEW={
  "825417593":{note:"Partnership-based in-kind research capacity, not cash grants; confirmed prior funder, verified active (FY2024 return filed November 2025)."},
  "742847652":{note:"2026 grant application cycle is OPEN with a hard deadline of August 26, 2026 at noon CST; verified on the funder's own site 2026-08-17."},
  "741193439":{note:"Backfilled after the review removed two funders: verified active Austin grantmaker; no currently-open competitive call on the date checked."},
+ "752052592":{exclude:"Mary I. Gourley Scholarship Foundation's own site: awards go to INDIVIDUAL non-traditional students at six named partner colleges, applied for through each school's own financial aid office -- not a grant an organization like Measure can apply for."},
+ "440567264":{exclude:"NCAA's Graduate Student Research Grant / Innovations in Research and Practice programs fund INDIVIDUAL enrolled graduate students at member institutions, paid to the student's own institution -- not an organizational grant Measure can apply for; the 2026 window also closed 2026-05-01 with the next opening TBD."},
+ "454533237":{exclude:"San Antonio Livestock Exposition's scholarships go to INDIVIDUAL Texas students (via 4-H, FFA, or college financial aid offices), not to organizations -- not a grant Measure can apply for."},
+ "364802935":{exclude:"Project Lead The Way's school grant program is restricted to \"traditional public schools, public charter schools, private nonprofit schools\" as the applying entity -- Measure is a research/policy nonprofit, not a school, so this eligibility requirement is not met."},
 };
 const FUNDER_PROFILES={
  "741193439":{name:"United Way for Greater Austin",city:"Austin",state:"TX",subsection_code:3,foundation_code:15,ntee_code:"T70Z",tax_year:2023,revenue:16769455,assets:20073682,liabilities:3834997,qualifying_distributions:null},
@@ -1088,12 +1098,15 @@ async function load(){
   // gracefully if unavailable.
   await fetchStatuses();
 
-  /* Both files must load. A half-rendered Almanac showing funders with no opportunities, or
-     opportunities with no profile, is worse than an honest failure: it looks like a complete
-     shelf that happens to be empty. */
-  const [pRes,aRes]=await Promise.all([
+  /* Profile and Almanac must both load. A half-rendered Almanac showing funders with no
+     opportunities, or opportunities with no profile, is worse than an honest failure: it looks
+     like a complete shelf that happens to be empty. Docket is fetched alongside them but is
+     allowed to come back empty/missing (see the catch below) -- it's a genuine second product
+     Measure holds, not a hard dependency of Almanac rendering. */
+  const [pRes,aRes,dRes]=await Promise.all([
     fetch(PROFILE_URL,{cache:'no-store'}),
     fetch(ALMANAC_URL,{cache:'no-store'}),
+    fetch(DOCKET_URL,{cache:'no-store'}).catch(()=>null),
   ]);
   if(!pRes.ok)throw new Error('Could not load '+PROFILE_URL);
   if(!aRes.ok)throw new Error('Could not load '+ALMANAC_URL);
@@ -1102,14 +1115,16 @@ async function load(){
   FUNDERS_DATA={method:A.method,tiers:A.tiers,ranked_funders:A.ranked_funders};
   GRANTS={method:A.method,run_date:A.generated_date,known_limitation:A.known_limitation,
           ready_now:A.ready_now,watch_list_not_yet_open:A.watch_list_not_yet_open};
+  DOCKET=(dRes&&dRes.ok)?await dRes.json():{ready_now:[]};
 
   state.profile=PROFILE;
   state.funders=FUNDERS_DATA.ranked_funders;
   state.matchesMethod=FUNDERS_DATA.method;
   state.grants=GRANTS;
+  state.docket=DOCKET;
 
   document.getElementById('alm-m-funders').textContent=state.funders.length;
-  document.getElementById('alm-m-grants').textContent=compileMatches().length;
+  document.getElementById('alm-m-grants').textContent=compileOpenCalls().reduce((n,f)=>n+f.grants.length,0);
 
   applyDisplay();
   renderProfile();
@@ -1175,31 +1190,82 @@ function renderProfile(){
   `).join('');
 }
 
-/* DISPLAY RULE (owner order, 2026-08-17, superseding the 2026-07-23 three-way gate): show
-   the 10 most aligned options. Every funder with a currently-open call is always included
-   (they are the actionable core of "who could fund this right now"; a strict top-10-by-rank
-   would have hidden 4 of the current 5), and the remaining slots fill with the next most
-   aligned candidates by rank. Displayed in rank order. A funder without an open call renders
-   with a "no currently-open call" note in place of the Open Opportunity card. */
-function compileMatches(){
-  const all=state.funders.filter(f=>!(FUNDER_REVIEW[f.funder_ein]&&FUNDER_REVIEW[f.funder_ein].exclude)).map(f=>{
-    const profile=FUNDER_PROFILES[f.funder_ein];
-    const grant=state.grants.ready_now.find(g=>g.ein===f.funder_ein);
-    return Object.assign({},f,{profile:profile,grant:grant});
+/* DISPLAY RULE (owner order, 2026-08-18, superseding the 2026-08-17 pad-to-10 rule): show ONLY
+   real, currently-open calls -- no fill/padding of any kind. A funder with no open call simply
+   does not appear; there is no "no currently-open call" placeholder card anymore.
+
+   Combines BOTH products Measure holds: Almanac (state.grants.ready_now, grants) and Docket
+   (state.docket.ready_now, RFPs/LOIs) -- Measure held only Almanac+Scribe when this page was
+   first built; Docket was added 2026-08-18. Every open-call row is matched back to Measure's own
+   ranked/aligned funder list by EIN so it can render with the existing funder-card template
+   (Why This Funder, Funder Snapshot, Open Opportunity) -- an open call whose funder ISN'T on
+   Measure's own alignment shelf is out of scope for this list (that's the general opportunity
+   register, not Measure's curated shelf).
+
+   CAP: no more than 3 of the shown list may be sourced from a CONFIRMED prior funder
+   (is_confirmed_prior_funder===true) -- owner order 2026-08-18, to keep the list weighted toward
+   new/prospective funders rather than repeatedly surfacing Measure's own existing relationships.
+   Prior-funder entries are also the only ones required to carry a verified "no one-time-only
+   funding restriction" check (see each FUNDER_REVIEW note) before they're allowed to count.
+   Non-prior entries fill first; prior-funder entries are added only up to the cap, and the whole
+   list is capped at 10 total. THIS IS THE STANDARD PATTERN for any client enterprise page holding
+   more than one open-calls product going forward, not a one-off for Measure -- copy this function
+   and its two constants when building the next such page. */
+const OPEN_CALLS_MAX_TOTAL=10;
+const OPEN_CALLS_MAX_PRIOR_FUNDER=3;
+function compileOpenCalls(){
+  const excluded=ein=>FUNDER_REVIEW[ein]&&FUNDER_REVIEW[ein].exclude;
+  const byEin={};
+  state.funders.forEach(f=>{if(!excluded(f.funder_ein))byEin[f.funder_ein]=f;});
+
+  const combined=[]
+    .concat((state.grants.ready_now||[]).map(g=>({g:g,product:'Almanac (grant)'})))
+    .concat((state.docket.ready_now||[]).map(g=>({g:g,product:'Docket (RFP/LOI)'})));
+
+  // Flat list first, one row per open call (a funder with 2 open RFPs -- e.g. Arnold Ventures'
+  // Strengthening Evidence + Building Evidence -- produces 2 rows here). The 10-total / 3-prior
+  // caps below operate at THIS granularity, matching "no more than 3 [open calls] from a prior
+  // funder," not at the funder-card level.
+  const flat=[];
+  const seen=new Set();  // dedupe: the same open-call id can only appear once even if it somehow
+                          // showed up in both products' ready_now (shouldn't happen, but a list
+                          // this is spliced from two independent files deserves the guard).
+  combined.forEach(({g,product})=>{
+    const f=byEin[g.ein];
+    if(!f||seen.has(g.id))return;
+    seen.add(g.id);
+    flat.push({f:f,grant:g,product:product});
   });
-  const open=all.filter(f=>f.grant);
-  const fill=all.filter(f=>!f.grant).sort((a,b)=>a.rank-b.rank);
-  return open.concat(fill).slice(0,Math.max(10,open.length)).sort((a,b)=>a.rank-b.rank);
+
+  const nonPrior=flat.filter(r=>!r.f.is_confirmed_prior_funder).sort((a,b)=>a.f.rank-b.f.rank);
+  const prior=flat.filter(r=>r.f.is_confirmed_prior_funder).sort((a,b)=>a.f.rank-b.f.rank)
+    .slice(0,OPEN_CALLS_MAX_PRIOR_FUNDER);
+  const capped=nonPrior.concat(prior).slice(0,OPEN_CALLS_MAX_TOTAL).sort((a,b)=>a.f.rank-b.f.rank);
+
+  // GROUP BY FUNDER for render: two open calls from the same funder (Arnold Ventures' two RFPs
+  // above) become ONE card with a `grants` array of 2, not two cards sharing the same DOM id
+  // (`#funder-<ein>`) -- caught by style_invariants' I4 duplicate-id gate on the first version
+  // of this function, which rendered one card per open-call row instead of per funder.
+  const order=[],byId={};
+  capped.forEach(({f,grant,product})=>{
+    if(!byId[f.funder_ein]){
+      byId[f.funder_ein]=Object.assign({},f,{profile:FUNDER_PROFILES[f.funder_ein],grants:[]});
+      order.push(byId[f.funder_ein]);
+    }
+    byId[f.funder_ein].grants.push(Object.assign({},grant,{product:product}));
+  });
+  return order;
 }
 
 function applyCompiled(){
   const q=state.matchQ.toLowerCase().trim();
-  let list=compileMatches().filter(f=>{
+  let list=compileOpenCalls().filter(f=>{
     if(state.matchStatusFilter&&statusOf('funder',f.id).status!==state.matchStatusFilter)return false;
     return true;
   });
+  const openCallCount=list.reduce((n,f)=>n+f.grants.length,0);
   document.getElementById('alm-compiled-count').textContent=list.length;
-  document.getElementById('alm-m-grants').textContent=compileMatches().length;
+  document.getElementById('alm-m-grants').textContent=openCallCount;
   document.getElementById('alm-grants-limitation').textContent=state.grants.known_limitation;
 
   const host=document.getElementById('alm-compiled-results');
@@ -1208,22 +1274,32 @@ function applyCompiled(){
     return;
   }
   host.innerHTML=list.map(f=>{
-    const p=f.profile,g=f.grant;
-    const dlClass=g?deadlineClass(g.deadline):'';
+    const p=f.profile;
     const review=FUNDER_REVIEW[f.funder_ein];
     const whyRowsHTML=[
       ['Geography',esc(f.geography)],
       ['Rationale',highlight(f.rationale,q)],
       ['Review note',review&&review.note?esc(review.note):''],
     ].filter(([label,value])=>value&&String(value).replace(/<[^>]*>/g,'').trim()).map(([label,value])=>`<div class="qa-row"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
-    const grantRows=g?[
-      ['Open Opportunity',`<a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a>`,true],
-      ['Focus Area',highlight(g.focus_area,q)],
-      ['Eligibility',highlight(g.eligibility,q)],
-      ['Amount',esc(g.amount)],
-      ['Deadline',`<span class="${dlClass}">${esc(g.deadline)}</span>`],
-      ['Notes',sentenceBreak(g.notes,q)],
-    ].filter(([label,value])=>value&&String(value).trim()).map(([label,value,featured])=>`<div class="qa-row${featured?' qa-row-featured':''}"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join(''):'';
+    // ONE CARD PER OPEN CALL, since a funder (e.g. Arnold Ventures) can carry more than one --
+    // grouped under the SAME funder card by the caller, never as separate funder-<ein> cards
+    // (that duplicate-id shape is exactly what style_invariants' I4 gate caught during the
+    // 2026-08-18 open-calls rebuild).
+    const grantCardsHTML=f.grants.map((g,i)=>{
+      const dlClass=deadlineClass(g.deadline);
+      const grantRows=[
+        ['Open Opportunity',`<a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a>`,true],
+        ['Focus Area',highlight(g.focus_area,q)],
+        ['Eligibility',highlight(g.eligibility,q)],
+        ['Amount',esc(g.amount)],
+        ['Deadline',`<span class="${dlClass}">${esc(g.deadline)}</span>`],
+        ['Notes',sentenceBreak(g.notes,q)],
+      ].filter(([label,value])=>value&&String(value).trim()).map(([label,value,featured])=>`<div class="qa-row${featured?' qa-row-featured':''}"><div class="qa-label">${label}</div><div class="qa-value">${value}</div></div>`).join('');
+      return `<div class="card">
+          <h3>${f.grants.length>1?'Open Opportunity '+(i+1)+' of '+f.grants.length:'Open Opportunity'} <span class="badge badge-new" style="font-weight:400">${esc(g.product||'')}</span></h3>
+          <div class="qa-grid">${grantRows}</div>
+        </div>`;
+    }).join('');
     return `
     <div class="match-card" id="${esc('funder-'+f.funder_ein)}">
       <div class="mc-head">
@@ -1247,13 +1323,7 @@ function applyCompiled(){
           </div>
         </div>`:''}
 
-        ${g?`<div class="card">
-          <h3>Open Opportunity</h3>
-          <div class="qa-grid">${grantRows}</div>
-        </div>`:`<div class="card">
-          <h3>Open Opportunity</h3>
-          <p class="no-open-call">No currently-open call. This funder ranks in Measure's top alignment tier; it stays listed so the relationship can be worked before the next cycle opens.</p>
-        </div>`}
+        ${grantCardsHTML}
 
         ${statusRowHTML('funder',f.id)}
       </div>
