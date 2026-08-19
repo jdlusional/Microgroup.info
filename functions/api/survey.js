@@ -105,9 +105,11 @@ const FIELD_GROUPS = [
   },
 ];
 
-function buildText({ name, title, org, email, fields, fileNames, pageUrl, createdAt }) {
+function buildText({ name, title, org, email, fields, fileNames, pageUrl, createdAt, orgSlug, stored }) {
   const lines = [
     `Organization: ${org}`,
+    `Org slug: ${orgSlug || "(none, generic survey)"}`,
+    `Stored to database: ${stored ? "yes" : "NO, email only"}`,
     `Contact: ${name}${title ? " (" + title + ")" : ""}`,
     `Email: ${email}`,
   ];
@@ -245,11 +247,47 @@ export async function onRequestPost(context) {
   }
   const fileNames = files.map((f) => f.name);
 
+  // Enterprise Suite intake, owner Decision 6 (2026-08-19): D1 AND email, both. The record is
+  // what a build step can consume; the email is what makes a submission actually noticed.
+  //
+  // DELIBERATELY THE OPPOSITE FAILURE POLICY FROM contact.js, which returns 500 when its D1
+  // write fails. Here a failed write degrades to email-only and the submission still succeeds,
+  // per the owner's amendment: email is the real notification channel, and a LOST submission is
+  // worse than an unstored one. It also means the table not existing yet is a non-event rather
+  // than an outage, which is what makes it safe to ship this ahead of the DDL being applied.
+  //
+  // org_slug is injected as a hidden field by build_questionnaire.py. It is absent for
+  // demo-survey.html, which posts to this same endpoint, so a missing slug is normal and stored
+  // as null rather than rejected.
+  const orgSlug = clean(form.get("org_slug")) || null;
+  let stored = false;
+  if (env.DB) {
+    try {
+      await env.DB.prepare(
+        `INSERT INTO questionnaire_submissions
+          (org_slug, org_name, contact_name, contact_title, email, ein, answers,
+           file_names, page_url, created_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+      )
+        .bind(orgSlug, org, name, title || null, email, fields.ein || null,
+              JSON.stringify(fields), JSON.stringify(fileNames), pageUrl || null, createdAt)
+        .run();
+      stored = true;
+    } catch (e) {
+      // Swallowed on purpose. Never fail the submission over storage.
+      console.log("questionnaire_submissions insert failed, continuing to email:", e && e.message);
+    }
+  }
+
   const to = env.SURVEY_TO || DEFAULT_TO;
   const from = env.SURVEY_FROM || DEFAULT_FROM;
-  const subject = `Organization intake: ${org}`;
+  // The slug rides in the subject so a submission is attributable straight from the inbox, which
+  // is the minimum fix the plan's Stage 6 names and is still worth having when the write failed.
+  const subject = orgSlug
+    ? `Organization intake: ${org} [${orgSlug}]`
+    : `Organization intake: ${org}`;
 
-  const emailFields = { name, title, org, email, fields, fileNames, pageUrl, createdAt };
+  const emailFields = { name, title, org, email, fields, fileNames, pageUrl, createdAt, orgSlug, stored };
 
   const payload = {
     from,
@@ -280,7 +318,7 @@ export async function onRequestPost(context) {
     return json({ error: "Mail service rejected the send.", detail: detail.slice(0, 300) }, 502);
   }
 
-  return json({ ok: true });
+  return json({ ok: true, stored });
 }
 
 // Anything other than POST
