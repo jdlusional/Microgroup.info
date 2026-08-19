@@ -237,7 +237,7 @@ content:
 | Standpoint (microgroup.info) | `/standpoint*` | Owner only |
 | TEA (microgroup.info) | `/tea*` | Owner only |
 
-*9 application(s), read live from the Cloudflare Access API on 2026-08-18. Anything not listed here has no Access application on this domain and is served publicly, including any path that only 301s away.*
+*9 application(s), read live from the Cloudflare Access API on 2026-08-19. Anything not listed here has no Access application on this domain and is served publicly, including any path that only 301s away.*
 <!-- ES-GENERATED:END [access-table] -->
 
 **Important, load-bearing:** this repo has no clean-URL middleware, so an exact-path Access
