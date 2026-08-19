@@ -245,9 +245,21 @@ app domain (e.g. `/kct-oppo` with no wildcard) will NOT cover the `.html` varian
 same URL — a real gap hit and fixed 2026-07-23. Any new exact-path gate on this domain
 should use a wildcard (`/path*`) instead, or add the middleware first.
 
-A separate, pre-existing wildcard app (`*.microgroup-info.pages.dev`, "Microgroup Previews")
-blanket-gates every preview deployment regardless of which of the above apps would apply in
-production — expected, not a bug, and not a substitute for the per-path production gates.
+**Preview deployments are UNGATED, by design.** `*.microgroup-info.pages.dev` has no Access
+application and is not supposed to have one: previews are protected by being unlisted, not by a
+gate. An unauthenticated 200 on a preview URL is the expected behaviour, not an exposure.
+
+CORRECTED 2026-08-19. This paragraph previously claimed "a separate, pre-existing wildcard app
+(`*.microgroup-info.pages.dev`, 'Microgroup Previews') blanket-gates every preview deployment".
+No such application exists: a full listing of all 23 Access applications in the account that day
+returned no `pages.dev` entry of any kind. The claim was actively harmful rather than merely
+stale, because measuring a preview URL against it looks exactly like a gate that has been deleted
+or misconfigured, and this session reported a client-data exposure on that basis before the owner
+corrected it. Measured the same day: three Microgroup preview URLs served real client content
+unauthenticated, while `microgroup.info/measure-enterprise` correctly returned 302.
+
+The per-path PRODUCTION gates above are the real ones, and the mandatory post-deploy Access
+verification applies to those, not to the preview surface.
 
 ## Pattern-book governance
 
