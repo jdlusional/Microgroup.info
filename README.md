@@ -57,8 +57,12 @@ relevant to its own site rather than duplicating the other's detail.
   - **Black Mamas Village** (`blackmamas.html` hub + `blackmamas-almanac.html` +
     `blackmamas-scribe.html`) — Almanac + Scribe for Black Mamas Village, an Austin TX
     peer-support/mutual-aid nonprofit for Black mothers. Same inlined-data model as
-    Standpoint. **Access-gated** (`microgroup.info/blackmamas*`) — Standpoint, by contrast,
-    is genuinely ungated.
+    Standpoint. **Access-gated** (`microgroup.info/blackmamas*`).
+    CORRECTED 2026-08-18: this sentence used to end "Standpoint, by contrast, is genuinely
+    ungated." That was false and had been for some time. Standpoint carries its own
+    `microgroup.info/standpoint*` application and returns a 302 to the Access login wall.
+    Verified against the live Access API, which is now also the source of the gating table
+    below rather than a hand-maintained copy that could drift this way again.
   - **HRI** (`hri-almanac.html` + `hri-scribe.html`) — Almanac + Scribe Pro for Human Rights
     Initiative of North Texas (hrionline.org), a 90-day in-kind donation, first-pass build:
     candidate funders sourced from the Texas-only Schedule I extract (not yet the national
@@ -96,11 +100,16 @@ relevant to its own site rather than duplicating the other's detail.
     secrets set before it activates (`GOOGLE_DRIVE_SERVICE_ACCOUNT_EMAIL`,
     `GOOGLE_DRIVE_SERVICE_ACCOUNT_PRIVATE_KEY`, `GOOGLE_DRIVE_CLOWNDOG_FOLDER_ID`) — see the
     function's own top-of-file comment for setup steps; until then it degrades gracefully to
-    email-only. All pages unlisted (noindex, confirmed on every page). **Access-gated 2026-08-11**
-    (owner order): Cloudflare Access app "Clown Dog Bikes (microgroup.info)" on
-    `microgroup.info/clown-dog*`, restricted to clowndogbikes@gmail.com (plus the standing
-    Owner/Allowed-Testers/Claude-Code-service-token policies every client app on this site
-    carries). Was previously confirmed ungated; that state no longer holds.
+    email-only. All pages unlisted (noindex, confirmed on every page).
+    **ACCESS APP DELETED FROM THIS DOMAIN 2026-08-18** (owner direction). The pages moved to
+    jonathanlindavis.com on 2026-08-16 and only 301s remain here, but the old
+    `microgroup.info/clown-dog*` application was left behind and was intercepting those
+    redirects: an old link returned a 302 to the Access login wall instead of resolving. Same
+    failure this README already documents for `/kct-oppo`. Verified after deletion:
+    `microgroup.info/clown-dog` now returns 301 to jonathanlindavis.com, and the real gate on
+    `jonathanlindavis.com/clown-dog*` is untouched and still returns 302. The deleted app's full
+    configuration is archived at
+    `..\jonathanlindavis-pipelines\enterprise\access_app_archive\` for reversibility.
     Full planning trail on the Drive:
     `Portfolios\Websites\Microgroup.info\Clown Dog Bikes (files not website)\`.
   - **Custodian** (`jp-morgan.html`) — a different product than Almanac/Scribe/Concordance:
@@ -167,11 +176,21 @@ relevant to its own site rather than duplicating the other's detail.
     first, or use a wildcard domain (`/path*`) instead of an exact path.
   - **ACC** (`acc.html` hub + `acc-job-board.html`, `acc-job-detail.html`,
     `acc-post-job.html`, `acc-admin.html`) — Nonprofit Austin (NPA) job board prototype,
-    four connected views linked from the `acc.html` hub. **Access-gated**
-    (`microgroup.info/acc*`) to `@austincc.edu` + owner. The hub's "back to
+    four connected views linked from the `acc.html` hub. The hub's "back to
     jonathanlindavis.com" nav link and footer credit are absolute
     (`https://jonathanlindavis.com`), since ACC is Jonathan's client web work, not a
-    MICRO Group, L.L.C. product, even though it's hosted here.
+    MICRO Group, L.L.C. product.
+    **NO LONGER HOSTED OR GATED HERE.** The pages moved to jonathanlindavis.com on 2026-08-16
+    and only 301s remain on this domain; the gate that matters is
+    `jonathanlindavis.com/acc*`, still restricted to `@austincc.edu` plus owner. The old
+    `microgroup.info/acc*` application was **deleted 2026-08-18** (owner direction) because it
+    was intercepting those redirects and sending `@austincc.edu` staff to a login wall instead
+    of through to the live pages. Verified after deletion: `microgroup.info/acc` and
+    `/acc.html` both return 301, and the jonathanlindavis.com gate still returns 302. Archived
+    at `..\jonathanlindavis-pipelines\enterprise\access_app_archive\`.
+    An earlier automated pass in this same programme removed ACC from the gating table on the
+    reasoning that it had moved, which made the table LESS accurate because the application was
+    still live at that moment. That is part of why the table below is now derived from the API.
 - **Public index** (`public-index.html`) — this site's own public-facing project index.
   KCT and ACC are deliberately absent from it (client web work, not part of the public
   product family) — confirmed empty of both 2026-07-23, matching jonathanlindavis.com's own
@@ -200,22 +219,47 @@ policies already used on jonathanlindavis.com's equivalents (Allowed Testers, Ow
 Claude Code Access, plus each org's own staff policy) rather than duplicating policy
 content:
 
+<!-- ES-GENERATED:BEGIN [access-table]
+     Generated from the live Cloudflare Access API by
+     jonathanlindavis-pipelines/enterprise/build_access_table.py.
+     DO NOT HAND-EDIT between these markers. This table drifted on five separate facts while
+     it was hand-maintained, including claiming an app existed that did not and claiming a
+     gated client page was ungated. Re-run the generator instead. -->
 | App | Path | Staff policy |
 |---|---|---|
-| MEASURE | `/measure*` | Measure Staff & Directors |
-| Standpoint | *(none — genuinely ungated)* | — |
-| Black Mamas Village | `/blackmamas*` | Black Mamas Village Staff & Directors |
-| ACC | `/acc*` | ACC NPA Staff (`@austincc.edu`) |
-| KCT Oppo | `/kct-oppo*` | Katelyn Thompson |
+| Black Mamas Village (microgroup.info) | `/blackmamas*` | Black Mamas Village Staff & Directors |
+| Enterprise (microgroup.info) | `/enterprise*` | Owner only |
+| HRI (microgroup.info) | `/hri*` | HRI Staff & Board |
+| KCT (microgroup.info) | `/kct` | Katelyn Thompson |  <!-- exact path, no wildcard -->
+| MEASURE (microgroup.info) | `/measure*` | Measure Staff & Directors |
+| Docket Pilot (microgroup.info) | `/pilot*` | Pilot Access (Measure, named individual) |
+| Specialist Panel Questionnaire (microgroup.info) | `/specialist-questionnaire*` | Specialists |
+| Standpoint (microgroup.info) | `/standpoint*` | Owner only |
+| TEA (microgroup.info) | `/tea*` | Owner only |
+
+*9 application(s), read live from the Cloudflare Access API on 2026-08-19. Anything not listed here has no Access application on this domain and is served publicly, including any path that only 301s away.*
+<!-- ES-GENERATED:END [access-table] -->
 
 **Important, load-bearing:** this repo has no clean-URL middleware, so an exact-path Access
 app domain (e.g. `/kct-oppo` with no wildcard) will NOT cover the `.html` variant of that
 same URL — a real gap hit and fixed 2026-07-23. Any new exact-path gate on this domain
 should use a wildcard (`/path*`) instead, or add the middleware first.
 
-A separate, pre-existing wildcard app (`*.microgroup-info.pages.dev`, "Microgroup Previews")
-blanket-gates every preview deployment regardless of which of the above apps would apply in
-production — expected, not a bug, and not a substitute for the per-path production gates.
+**Preview deployments are UNGATED, by design.** `*.microgroup-info.pages.dev` has no Access
+application and is not supposed to have one: previews are protected by being unlisted, not by a
+gate. An unauthenticated 200 on a preview URL is the expected behaviour, not an exposure.
+
+CORRECTED 2026-08-19. This paragraph previously claimed "a separate, pre-existing wildcard app
+(`*.microgroup-info.pages.dev`, 'Microgroup Previews') blanket-gates every preview deployment".
+No such application exists: a full listing of all 23 Access applications in the account that day
+returned no `pages.dev` entry of any kind. The claim was actively harmful rather than merely
+stale, because measuring a preview URL against it looks exactly like a gate that has been deleted
+or misconfigured, and this session reported a client-data exposure on that basis before the owner
+corrected it. Measured the same day: three Microgroup preview URLs served real client content
+unauthenticated, while `microgroup.info/measure-enterprise` correctly returned 302.
+
+The per-path PRODUCTION gates above are the real ones, and the mandatory post-deploy Access
+verification applies to those, not to the preview surface.
 
 ## Pattern-book governance
 

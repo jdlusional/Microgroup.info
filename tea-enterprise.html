@@ -223,6 +223,45 @@ body{text-align:center}
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;
     transition-duration:.01ms !important;scroll-behavior:auto !important}
 }
+/* ES-GENERATED:BEGIN [card-band-css]
+   RESERVED, CURRENTLY EMPTY. Paired with the card-band markup region in the body; both are
+   filled together by build_enterprise_page.py at Step 5, TEA first.
+   The band's CSS lives here, in this page's own inline style block, rather than in a shared
+   stylesheet, because both shared stylesheets are freeze tripwires: all three frozen clients'
+   switcher hubs link switcher-shared.css and all six frozen product pages link tool-shared.css
+   with a cache stamp, so editing either fires the cache-buster invariant on every frozen page
+   and the restamping is itself a write to a frozen page. The cost is accepted and managed: N
+   organizations means N copies of these rules, so the generator owns this region on every page
+   it writes and a census asserts all copies stay byte-identical (Section 5.5).
+   NOTE THE SYNTAX. This pair is a CSS comment, not an HTML comment, because an HTML comment
+   cannot delimit a region inside a style element. Same marker module, two syntaxes (Section
+   5.6). */
+  /* Card band. Generated with its markup by enterprise/build_enterprise_page.py, so every class
+     here has a rule by construction (I1). Own namespace: not .section-card, whose anatomy
+     invariant this markup would fail, and not .pick-card, which lives in a stylesheet the frozen
+     clients link. */
+  .esb-band{max-width:1180px;margin:0 auto;padding:0 1.25rem 2.4rem}
+  .esb-band-head{font-family:var(--serif);font-weight:700;font-size:1.05rem;text-transform:uppercase;
+    letter-spacing:.05em;color:var(--wash);margin:0 0 .9rem;text-align:center}
+  .esb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+  /* min-width:0 on the child is what keeps a long unbroken product name from forcing
+     horizontal overflow at 375 (I17). */
+  .esb-card{min-width:0;background:var(--well);border:1px solid var(--rule);padding:1.1rem 1.2rem;
+    display:flex;flex-direction:column;gap:.45rem}
+  .esb-card.esb-muted{opacity:.6}
+  .esb-kicker{font-family:var(--serif);font-weight:600;font-size:12.5px;letter-spacing:.02em;
+    color:var(--wash)}
+  .esb-title{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink);margin:0;
+    display:flex;align-items:center;gap:.4rem}
+  .esb-lock{flex:0 0 auto;color:var(--wash)}
+  .esb-desc{font-size:.92rem;color:var(--ink);margin:0}
+  .esb-status{font-family:var(--serif);font-weight:600;font-size:12.5px;letter-spacing:.02em;
+    color:var(--wash);margin-top:auto}
+  .esb-prereq{font-family:var(--mono);font-size:.78rem;color:var(--wash);line-height:1.5}
+  .esb-cta{font-family:var(--mono);font-size:.8rem;letter-spacing:.02em;color:var(--accent);
+    text-decoration:none;align-self:flex-start}
+  .esb-cta:hover{text-decoration:underline}
+/* ES-GENERATED:END [card-band-css] */
 </style>
 </head>
 <body>
@@ -335,6 +374,14 @@ body{text-align:center}
       <div class="res-count"><b id="alm-compiled-count">0</b> compiled matches shown</div>
       <div id="alm-compiled-results"></div>
 
+      <!-- ES-PRESERVE:BEGIN [alm-ruled-out]
+           NO GENERATOR MAY WRITE INSIDE THIS REGION. Eight named funders, each with a
+           hand-written per-funder reason for exclusion, produced by a human checking each
+           funder's own page during Cycle 1. There is no data file behind any of it and no
+           regeneration can reproduce it. It is also the honest evidence for this page's
+           zero-compiled-matches result, which is a real finding rather than a data gap, so
+           losing it would make the page read as broken rather than as accurate. Placed
+           2026-08-18, Enterprise Page Build Architecture plan Section 9 Step 3, Decision 2. -->
       <div class="watch-list" id="alm-ruled-out" style="margin-top:1.6rem">
         <div class="section-head" style="border-top:1px solid var(--rule);padding-top:.9rem;margin-bottom:1rem">
           <h2 style="font-size:1.15rem">Checked and Ruled Out: Cycle 1</h2>
@@ -349,6 +396,7 @@ body{text-align:center}
         <div class="watch-item"><div class="org"><a href="https://unidosus.org/about/affiliates/join/" target="_blank" rel="noopener">UnidosUS</a></div><div class="why">Affiliate-network application intake paused through 2025 pending a process redesign.</div></div>
         <div class="watch-item"><div class="org"><a href="https://www.enterprisecommunity.org/" target="_blank" rel="noopener">Enterprise Community Partners</a></div><div class="why">Funds affordable housing, not education; holds real Texas programs worth a second look in a future cycle.</div></div>
       </div>
+      <!-- ES-PRESERVE:END [alm-ruled-out] -->
 
       <div class="limitation-note" id="alm-grants-limitation"></div>
     </div>
@@ -358,12 +406,82 @@ body{text-align:center}
 <!-- METHOD SECTION REMOVED 2026-08-07, owner order. Both products' "How this was built"
      sections are consolidated onto tea-orientation.html so method is stated once for the
      client rather than restated per product. The three hand-written prose blocks per product
-     were MIGRATED there verbatim before this deletion, not dropped. See
-     merge_enterprise_page.py, which now strips these sections on any future rebuild so a
-     regenerated shell cannot reintroduce them. -->
+     were MIGRATED there verbatim before this deletion, not dropped.
+     CORRECTED 2026-08-18: this comment used to claim merge_enterprise_page.py "now strips these
+     sections on any future rebuild so a regenerated shell cannot reintroduce them". That was
+     false, and doubly so on this page. That script's drop_method_section() is dead code, called
+     from nowhere; the removal here was done by deleting the script lines that wrote into these
+     sections along with the markup; and this page was never generator output in the first place,
+     having been hand-adapted from measure-enterprise.html's Almanac accordion on 2026-08-11. As
+     of the ratified Enterprise Page Build Architecture plan (2026-08-18) it is a hand-owned
+     artifact and is never regenerated whole. -->
     </div>
   </div>
 </section>
+<!-- ES-GENERATED:BEGIN [card-band]
+     RESERVED, CURRENTLY EMPTY. This is where build_enterprise_page.py splices the
+     locked/expired/in-development card band (ratified Phase 4 Section 4.5).
+     TEA IS WHERE THE BAND SHIPS FIRST, at Step 5, unlike Measure's identically-named region
+     which is gated behind Wave 6. TEA is the better first target on measured grounds: three
+     section cards against Measure's twelve, Owner-only gated, no executed client contract, and
+     absent from the monthly refresh job's org list so its data does not shift underneath a
+     comparison. That last point rests on an absence one commit from changing, so any comparison
+     run here pins TEA's data files explicitly rather than assuming they are static.
+     Two differences on the first candidate are predictable now and are not breakage: the
+     hand-written ruled-out block above (see its own ES-PRESERVE region), and this page's title,
+     which does not match the shape the old generator hardcoded. -->
+<div class="esb-band">
+  <h2 class="esb-band-head">Not in this plan</h2>
+  <div class="esb-grid">
+  <div class="esb-card esb-muted" id="esb-card-scribe" data-esb-product="scribe" data-esb-state="LOCKED">
+    <div class="esb-kicker">Grant drafter</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Scribe</h3>
+    <p class="esb-desc">Works from an Almanac match to produce a near-submission draft, fact-checked against the organization's own public information, with an explicit list of what only the applicant can supply. Requires an active Almanac subscription.</p>
+    <div class="esb-status">Not yet available</div>
+    <a class="esb-cta" href="/#contact">Ask about adding Scribe &#8594;</a>
+  </div>
+  <div class="esb-card esb-muted" id="esb-card-docket" data-esb-product="docket" data-esb-state="LOCKED">
+    <div class="esb-kicker">Organization Project Requests</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Docket</h3>
+    <p class="esb-desc">Almanac's sibling for Letters of Inquiry and Requests for Proposals, tracked separately from traditional grants. Same sourcing standard: every request traces to the funder's or agency's own current page. Requires an active Almanac subscription.</p>
+    <div class="esb-status">Not yet available</div>
+    <a class="esb-cta" href="/#contact">Ask about adding Docket &#8594;</a>
+  </div>
+  <div class="esb-card esb-muted" id="esb-card-confluence" data-esb-product="confluence" data-esb-state="LOCKED">
+    <div class="esb-kicker">Joint funding, two or more organizations</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Confluence</h3>
+    <p class="esb-desc">Finds funding that connects your organization's mission to one or more named partner organizations' work, including consortiums, associations, and collaboratives, where you remain the eligible applicant. An angle Almanac's single-org matching doesn't surface on its own. Every organization in the group needs its own Almanac subscription; only one needs Scribe, and only one needs Docket.</p>
+    <div class="esb-status">Not yet available</div>
+    <a class="esb-cta" href="/#contact">Ask about adding Confluence &#8594;</a>
+  </div>
+  <div class="esb-card esb-muted" id="esb-card-concordance" data-esb-product="concordance" data-esb-state="IN_DEVELOPMENT">
+    <div class="esb-kicker">Trustees &amp; introductions</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Concordance</h3>
+    <p class="esb-desc">Names the people who govern the foundations that already fund this kind of work, shows the grants that prove it, and maps who on a board could make the introduction. It does not estimate anyone's wealth.</p>
+    <div class="esb-status">In development</div>
+  </div>
+  <div class="esb-card esb-muted" id="esb-card-herald" data-esb-product="herald" data-esb-state="IN_DEVELOPMENT">
+    <div class="esb-kicker">Grant-cycle monitor</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Herald</h3>
+    <p class="esb-desc">Watches the funder pages behind an Almanac watch-list and reports when a cycle opens, a deadline posts, or guidelines change, showing the actual diff, never an interpretation.</p>
+    <div class="esb-status">In development</div>
+  </div>
+  <div class="esb-card esb-muted" id="esb-card-atlas" data-esb-product="atlas" data-esb-state="IN_DEVELOPMENT">
+    <div class="esb-kicker">Corporate foundation benchmark</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Atlas</h3>
+    <p class="esb-desc">Benchmarks a corporate foundation's giving against real aggregate statistics computed from Texas-registered 990-PF filings, not any single named peer.</p>
+    <div class="esb-status">In development</div>
+  </div>
+  <div class="esb-card esb-muted" id="esb-card-dossier" data-esb-product="dossier" data-esb-state="IN_DEVELOPMENT">
+    <div class="esb-kicker">990 reconciliation</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Dossier</h3>
+    <p class="esb-desc">Checks that a foundation's claimed giving matches its own filed 990-PF numbers, and cross-references a voluntary donation list against public filings.</p>
+    <div class="esb-status">In development</div>
+  </div>
+  </div>
+</div>
+<!-- ES-GENERATED:END [card-band] -->
+
 <footer>
   <span id="alm-footer-credit">Prepared by Jonathan Lin Davis</span>
   <span id="alm-footer-links"></span>
