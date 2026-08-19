@@ -452,6 +452,31 @@ body{text-align:center}
    NOTE THE SYNTAX. This pair is a CSS comment, not an HTML comment, because an HTML comment
    cannot delimit a region inside a style element. Same marker module, two syntaxes, and
    conflating them is a bug rather than a naming inconvenience (Section 5.6). */
+  /* Card band. Generated with its markup by enterprise/build_enterprise_page.py, so every class
+     here has a rule by construction (I1). Own namespace: not .section-card, whose anatomy
+     invariant this markup would fail, and not .pick-card, which lives in a stylesheet the frozen
+     clients link. */
+  .esb-band{max-width:1180px;margin:0 auto;padding:0 1.25rem 2.4rem}
+  .esb-band-head{font-family:var(--serif);font-weight:700;font-size:1.05rem;text-transform:uppercase;
+    letter-spacing:.05em;color:var(--wash);margin:0 0 .9rem;text-align:center}
+  .esb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+  /* min-width:0 on the child is what keeps a long unbroken product name from forcing
+     horizontal overflow at 375 (I17). */
+  .esb-card{min-width:0;background:var(--well);border:1px solid var(--rule);padding:1.1rem 1.2rem;
+    display:flex;flex-direction:column;gap:.45rem}
+  .esb-card.esb-muted{opacity:.6}
+  .esb-kicker{font-family:var(--serif);font-weight:600;font-size:12.5px;letter-spacing:.02em;
+    color:var(--wash)}
+  .esb-title{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink);margin:0;
+    display:flex;align-items:center;gap:.4rem}
+  .esb-lock{flex:0 0 auto;color:var(--wash)}
+  .esb-desc{font-size:.92rem;color:var(--ink);margin:0}
+  .esb-status{font-family:var(--serif);font-weight:600;font-size:12.5px;letter-spacing:.02em;
+    color:var(--wash);margin-top:auto}
+  .esb-prereq{font-family:var(--mono);font-size:.78rem;color:var(--wash);line-height:1.5}
+  .esb-cta{font-family:var(--mono);font-size:.8rem;letter-spacing:.02em;color:var(--accent);
+    text-decoration:none;align-self:flex-start}
+  .esb-cta:hover{text-decoration:underline}
 /* ES-GENERATED:END [card-band-css] */
 </style>
 </head>
@@ -843,6 +868,47 @@ body{text-align:center}
      Page Build Architecture plan, Section 4.2). TEA and cold-start pages are where the band
      ships first. A generator run that fills this region on Measure before that gate is a defect,
      not a feature, and this sentence is here so that is unambiguous at the point of edit. -->
+<div class="esb-band">
+  <h2 class="esb-band-head">Also included</h2>
+  <div class="esb-grid">
+  <div class="esb-card" id="esb-card-docket" data-esb-product="docket" data-esb-state="OWNED" data-esb-link="1">
+    <div class="esb-kicker">Organization Project Requests</div>
+    <h3 class="esb-title">Docket</h3>
+    <p class="esb-desc">Almanac's sibling for Letters of Inquiry and Requests for Proposals, tracked separately from traditional grants. Same sourcing standard: every request traces to the funder's or agency's own current page. Requires an active Almanac subscription.</p>
+    <div class="esb-status">Included</div>
+    <a class="esb-cta" href="pilot-docket.html">Open Docket &#8594;</a>
+  </div>
+  </div>
+</div>
+<div class="esb-band">
+  <h2 class="esb-band-head">Not in this plan</h2>
+  <div class="esb-grid">
+  <div class="esb-card esb-muted" id="esb-card-concordance" data-esb-product="concordance" data-esb-state="IN_DEVELOPMENT">
+    <div class="esb-kicker">Trustees &amp; introductions</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Concordance</h3>
+    <p class="esb-desc">Names the people who govern the foundations that already fund this kind of work, shows the grants that prove it, and maps who on a board could make the introduction. It does not estimate anyone's wealth.</p>
+    <div class="esb-status">In development</div>
+  </div>
+  <div class="esb-card esb-muted" id="esb-card-herald" data-esb-product="herald" data-esb-state="IN_DEVELOPMENT">
+    <div class="esb-kicker">Grant-cycle monitor</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Herald</h3>
+    <p class="esb-desc">Watches the funder pages behind an Almanac watch-list and reports when a cycle opens, a deadline posts, or guidelines change, showing the actual diff, never an interpretation.</p>
+    <div class="esb-status">In development</div>
+  </div>
+  <div class="esb-card esb-muted" id="esb-card-atlas" data-esb-product="atlas" data-esb-state="IN_DEVELOPMENT">
+    <div class="esb-kicker">Corporate foundation benchmark</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Atlas</h3>
+    <p class="esb-desc">Benchmarks a corporate foundation's giving against real aggregate statistics computed from Texas-registered 990-PF filings, not any single named peer.</p>
+    <div class="esb-status">In development</div>
+  </div>
+  <div class="esb-card esb-muted" id="esb-card-dossier" data-esb-product="dossier" data-esb-state="IN_DEVELOPMENT">
+    <div class="esb-kicker">990 reconciliation</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Dossier</h3>
+    <p class="esb-desc">Checks that a foundation's claimed giving matches its own filed 990-PF numbers, and cross-references a voluntary donation list against public filings.</p>
+    <div class="esb-status">In development</div>
+  </div>
+  </div>
+</div>
 <!-- ES-GENERATED:END [card-band] -->
 
 <footer>
