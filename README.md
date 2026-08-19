@@ -205,8 +205,8 @@ content:
 | MEASURE | `/measure*` | Measure Staff & Directors |
 | Standpoint | *(none — genuinely ungated)* | — |
 | Black Mamas Village | `/blackmamas*` | Black Mamas Village Staff & Directors |
-| ACC | `/acc*` | ACC NPA Staff (`@austincc.edu`) |
-| KCT Oppo | `/kct-oppo*` | Katelyn Thompson |
+| TEA | `/tea*` | Owner only (initial build/test round) |
+| Clown Dog Bikes | `/clown-dog*` | clowndogbikes@gmail.com |
 
 **Important, load-bearing:** this repo has no clean-URL middleware, so an exact-path Access
 app domain (e.g. `/kct-oppo` with no wildcard) will NOT cover the `.html` variant of that
