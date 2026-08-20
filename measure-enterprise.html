@@ -489,7 +489,7 @@ body{text-align:center}
   <div class="manifest-in">
     <span class="brand" id="alm-brand-text"><b>Almanac</b> for Measure</span>
     <span class="stat"><strong id="alm-m-funders">–</strong> candidate funders researched</span>
-    <span class="stat"><strong id="alm-m-grants">–</strong> open calls right now (grants + RFPs/LOIs, no more than 3 from a prior funder)</span>
+    <span class="stat" id="alm-m-grants">–</span>
     <span class="grow"></span>
     <button class="admin-toggle" id="alm-admin-toggle" type="button" title="Enter your key to mark status on funders and grants">Admin</button>
     <nav>
@@ -589,6 +589,11 @@ body{text-align:center}
     </div>
     <div class="fold-body" id="alm-compiled-fold-body">
       <div class="res-count"><b id="alm-compiled-count">0</b> aligned funders shown</div>
+      <!-- D23 (Card Band Restructure change 6, 2026-08-20): the cap clause moved out of the
+           header, which now states a population figure unrelated to what this list caps at. This
+           and Docket's own copy below describe the SAME shared cap over the Almanac+Docket
+           union (change 5), not two separate caps. -->
+      <div style="font-family:var(--mono);font-size:.8rem;color:var(--wash);margin:-0.4rem 0 .8rem">Shown here and in Docket combined: up to 10 open calls, no more than 3 from a confirmed prior funder.</div>
       <div id="alm-compiled-results"></div>
 
       <div class="limitation-note" id="alm-grants-limitation"></div>
@@ -643,6 +648,7 @@ body{text-align:center}
           </div>
           <div class="fold-body" id="dk-ready-fold-body">
             <div class="res-count"><b id="dk-ready-count">0</b> requests shown</div>
+            <div style="font-family:var(--mono);font-size:.8rem;color:var(--wash);margin:-0.4rem 0 .8rem">Shown here and in Almanac combined: up to 10 open calls, no more than 3 from a confirmed prior funder.</div>
             <div id="dk-ready-results"></div>
 
             <div class="limitation-note" id="dk-limitation"></div>
@@ -1257,6 +1263,25 @@ function buildStatusFilter(hostId,onChange,activeGetter){
   });
 }
 
+// D22 (Card Band Restructure change 6, 2026-08-20): the pool_totals sentence, its own scope word
+// and as-of date so it can never be mistaken for a count of what the list below shows -- reasoned
+// by analogy from Elasticsearch's "relation" field, which never lets a total travel without a
+// machine-readable statement of what kind of number it is.
+const ALM_MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+function proseDateISO(iso){
+  const m=(iso||'').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if(!m)return iso||'';
+  return parseInt(m[3],10)+' '+ALM_MONTHS[parseInt(m[2],10)-1]+' '+m[1];
+}
+function writeHeaderPoolStat(){
+  const el=document.getElementById('alm-m-grants');
+  if(!el)return;
+  const pt=state.poolTotals;
+  if(!pt){el.textContent='pool total unavailable';return;}
+  el.innerHTML='<strong>'+esc(String(pt.count))+'</strong> open grants, RFPs and LOIs tracked as of '
+    +esc(proseDateISO(pt.as_of))+'.';
+}
+
 async function load(){
   // Profile and almanac data are fetched from data/measure-austin_*.json (see the
   // loader below); the grant-status list is live per-user state and degrades
@@ -1287,12 +1312,16 @@ async function load(){
   state.matchesMethod=FUNDERS_DATA.method;
   state.grants=GRANTS;
   state.docket=DOCKET;
+  state.poolTotals=A.pool_totals||null;
 
   document.getElementById('alm-m-funders').textContent=state.funders.length;
-  // Combined total across both surfaces, preserving this write's pre-Docket-accordion behavior.
-  // Repointing this header stat is change 6 (Stage 6), not this stage -- see D24.
-  {const _c=compileOpenCalls();document.getElementById('alm-m-grants').textContent=
-    _c.almanac.reduce((n,f)=>n+f.grants.length,0)+_c.docket.reduce((n,f)=>n+f.grants.length,0);}
+  // D22/D24 (Card Band Restructure change 6, 2026-08-20): the header states the TOTAL population
+  // (change 6's pool_totals, an independent register-wide figure) -- a different node with a
+  // different provenance from the open-calls LIST count (#alm-compiled-count / Docket's own
+  // #dk-ready-count), and neither may write the other. This write happens exactly once, here, and
+  // is never touched again -- applyCompiled() no longer overwrites it from the admin-filtered
+  // list (D24's own named defect).
+  writeHeaderPoolStat();
 
   applyDisplay();
   renderProfile();
@@ -1536,9 +1565,9 @@ function applyCompiled(){
     if(state.matchStatusFilter&&statusOf('funder',f.id).status!==state.matchStatusFilter)return false;
     return true;
   });
-  const openCallCount=list.reduce((n,f)=>n+f.grants.length,0);
+  // D24: the header stat (#alm-m-grants) is written exactly once, in load(), from pool_totals --
+  // never from this admin-filterable list. This is the named defect the plan's own D24 fixes.
   document.getElementById('alm-compiled-count').textContent=list.length;
-  document.getElementById('alm-m-grants').textContent=openCallCount;
   document.getElementById('alm-grants-limitation').textContent=state.grants.known_limitation;
 
   const host=document.getElementById('alm-compiled-results');
