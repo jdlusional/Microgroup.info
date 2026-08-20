@@ -152,6 +152,7 @@ footer p{max-width:none;margin:.4rem 0}
 .footer-custom-note{display:block;margin-top:.4rem;font-family:var(--mono);font-size:12px;color:var(--wash)}
 .footer-custom-note a{color:var(--wash);text-decoration:underline}
 .footer-custom-note a:hover{color:var(--ink)}
+.footer-about-micro{display:block;max-width:640px;margin:.6rem auto 0;line-height:1.5;color:var(--wash)}
 
 /* =====================================================================
    PRINT, added 2026-08-08. Owner-approved shared change, verified across all
