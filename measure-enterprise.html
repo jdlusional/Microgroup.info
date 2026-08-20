@@ -909,28 +909,16 @@ body{text-align:center}
 
 
 <!-- ES-GENERATED:BEGIN [card-band]
-     RESERVED, DELIBERATELY EMPTY, AND MUST STAY EMPTY ON THIS PAGE UNTIL WAVE 6.
-     This is where build_enterprise_page.py will splice the locked/expired/in-development card
-     band (ratified Phase 4 Section 4.5). It is marked now, empty, so the generator never has to
-     guess a location inside a hand-owned page, and so a reader can see where the band lands.
-     DO NOT FILL BEFORE WAVE 6. Ratified Phase 4 Section 9.2 and Decision 9: moving Measure from
-     three visible product sections to eight visible cards is a real visible change to a page a
-     real client uses, and it does not proceed without the Wave 6 cutover procedure (Enterprise
-     Page Build Architecture plan, Section 4.2). TEA and cold-start pages are where the band
-     ships first. A generator run that fills this region on Measure before that gate is a defect,
-     not a feature, and this sentence is here so that is unambiguous at the point of edit. -->
-<div class="esb-band">
-  <h2 class="esb-band-head">Also included</h2>
-  <div class="esb-grid">
-  <div class="esb-card" id="esb-card-docket" data-esb-product="docket" data-esb-state="OWNED" data-esb-link="1">
-    <div class="esb-kicker">Organization Project Requests</div>
-    <h3 class="esb-title">Docket</h3>
-    <p class="esb-desc">Almanac's sibling for Letters of Inquiry and Requests for Proposals, tracked separately from traditional grants. Same sourcing standard: every request traces to the funder's or agency's own current page. Requires an active Almanac subscription.</p>
-    <div class="esb-status">Included</div>
-    <a class="esb-cta" href="pilot-docket.html">Open Docket &#8594;</a>
-  </div>
-  </div>
-</div>
+     CORRECTED 2026-08-20 (Card Band Restructure, Stage 5): Wave 6 closed (ratified Phase 4
+     Section 9.2 / Decision 9; Card Band Restructure Super Plan Section 2.2 states it explicitly),
+     which is what released this whole restructuring, so the "MUST STAY EMPTY UNTIL WAVE 6"
+     instruction that used to sit here is stale and has been removed. build_enterprise_page.py may
+     still splice the locked/expired/in-development card band here (Phase 4 Section 4.5); that
+     part of this region's ownership is unchanged. The single-card "Also included" band that used
+     to represent Docket before it had its own product accordion is deleted in this same commit
+     (Change 7, Stage 5) -- its one card pointed at pilot-docket.html, the page this stage removes,
+     and Change 7's own C6 visible-delta list already named this band's disappearance as expected.
+     The "Not in this plan" band below is unaffected: unrelated products, not part of this plan. -->
 <div class="esb-band">
   <h2 class="esb-band-head">Not in this plan</h2>
   <div class="esb-grid">
