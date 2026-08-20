@@ -1446,9 +1446,15 @@ function compileOpenCalls(){
   // displace a rank-12 Almanac row, contradicting the ranking the product is built on (D17). When
   // only one product is active the survivor takes the whole allowance with no branch (D16),
   // because this is still one cap operating on one combined list, same as it always was.
-  const nonPrior=flat.filter(r=>!r.f.is_confirmed_prior_funder).sort((a,b)=>a.f.rank-b.f.rank);
+  // D41 prototype fix (Stage 7, 2026-08-20): prior-funder slots are reserved BEFORE non-prior is
+  // capped. The prior branch here is a small side-effect-free lookup, so the previous
+  // nonPrior-then-prior concat order let non-prior volume alone (10+ qualifying rows, no ranking
+  // involved) push every confirmed prior funder out of the final 10 -- reproduced against real
+  // MEASURE AUSTIN data plus 10 synthetic federal-agency entries, see the D41 prototype report.
   const prior=flat.filter(r=>r.f.is_confirmed_prior_funder).sort((a,b)=>a.f.rank-b.f.rank)
     .slice(0,OPEN_CALLS_MAX_PRIOR_FUNDER);
+  const nonPrior=flat.filter(r=>!r.f.is_confirmed_prior_funder).sort((a,b)=>a.f.rank-b.f.rank)
+    .slice(0,OPEN_CALLS_MAX_TOTAL-prior.length);
   const capped=nonPrior.concat(prior).slice(0,OPEN_CALLS_MAX_TOTAL).sort((a,b)=>a.f.rank-b.f.rank);
 
   // PARTITION BY PRODUCT, THEN GROUP EACH PARTITION INDEPENDENTLY BY FUNDER (change 4, D11-D13).
