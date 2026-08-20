@@ -59,6 +59,15 @@
 /measure-scribe        /measure-enterprise  301
 /measure-scribe.html   /measure-enterprise  301
 
+# Docket's pilot page retired (Card Band Restructure, Stage 5, Change 7, 2026-08-20). Docket now
+# lives as its own product accordion on /measure-enterprise instead of a standalone always-open
+# page; data/measure-austin_docket.json survives untouched and is still written by
+# refresh_enterprise_monthly.py, only the HTML page is removed. Same precedent as the
+# measure-almanac/measure-scribe redirects above: the .html file is DELETED rather than left in
+# place, since Cloudflare Pages serves a static asset in preference to a redirect rule.
+/pilot-docket       /measure-enterprise  301
+/pilot-docket.html  /measure-enterprise  301
+
 # Texas Empowerment Academy (TEA), built 2026-08-11. The owner asked for the hub at /TEA
 # (uppercase); Cloudflare Pages resolves paths case-sensitively, so /TEA needs its own explicit
 # rule to reach the actual lowercase asset tea.html -- the bare lowercase /tea already resolves
