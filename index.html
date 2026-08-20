@@ -277,6 +277,12 @@ html.stack-page .chess::before{
     linear-gradient(45deg,rgba(27,58,47,.03) 25%,transparent 25%,transparent 75%,rgba(27,58,47,.03) 75%),
     linear-gradient(45deg,rgba(27,58,47,.03) 25%,transparent 25%,transparent 75%,rgba(27,58,47,.03) 75%);
 }
+
+/* Honeypot, hidden. contact.js treats any value in company_website as a bot and
+   silently discards the submission, so this field being VISIBLE meant real visitors
+   could fill it and have their enquiry dropped without notice. Confirmed live on both
+   homepages 2026-08-20; rule copied from demo-survey.html, which was already correct. */
+.hp-field{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
 </style>
 </head>
 <body>
