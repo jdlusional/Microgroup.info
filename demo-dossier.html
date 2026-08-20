@@ -108,7 +108,7 @@ code{overflow-wrap:anywhere}
   <h1>Dossier</h1>
   <p>Dossier checks that a corporate foundation's own numbers add up: it reconciles what a foundation claims to give against what it actually filed, and cross-references a voluntary donation list against public 990 filings. This page runs Dossier against the same made-up foundation Atlas uses, so you can see how the two work together.</p>
   <div class="note">
-    <p><strong>How to read this page.</strong> Thornbury Materials Foundation does not exist &mdash; the identical invented foundation used on the Atlas demo. Every claimed figure, filed figure, and donation-list row below is invented for this demo.</p>
+    <p><strong>How to read this page.</strong> Thornbury Materials Foundation does not exist. It is the identical invented foundation used on the Atlas demo. Every claimed figure, filed figure, and donation-list row below is invented for this demo.</p>
     <p>Unlike Almanac and Scribe's pattern (a fictional org checked against real funders), <strong>the reconciliation method and the 990 data structure are real; the foundation and every figure attached to it are invented.</strong> There is no real named foundation anywhere on this page.</p>
     <p>Atlas ranks this foundation's giving against its peers. Dossier checks that the same foundation's own numbers add up.</p>
     <p><a href="demo-atlas.html" class="cross-link">See Atlas &#8594;</a></p>
@@ -124,7 +124,7 @@ code{overflow-wrap:anywhere}
     </div>
     <div class="fold-body">
     <div class="section-lede">
-      <p>Grants-paid total and count only &mdash; never payout ratio or asset-based benchmarking, since the corpus join needed for those does not resolve for this family of foundations (see Atlas's Method section). "Filed/Computed" sums the invented Part XV-style grant rows built for this foundation; it is not pulled from any real filing.</p>
+      <p>Grants-paid total and count only, never payout ratio or asset-based benchmarking, since the corpus join needed for those does not resolve for this family of foundations (see Atlas's Method section). "Filed/Computed" sums the invented Part XV-style grant rows built for this foundation; it is not pulled from any real filing.</p>
     </div>
       <div class="invented-caveat">
         <b>Every row in this table is invented.</b> "Filed/Computed" normally means a value copied or derived from a real submitted filing. Here, because Thornbury Materials Foundation does not exist, the summed rows are figures built for this demo, not pulled from any real 990-PF. This caveat exists specifically so this table, the product's core selling point, never blurs the fictional/real line.
@@ -146,7 +146,7 @@ code{overflow-wrap:anywhere}
     <div class="fold-body">
     <div class="tier2-lede">For companies without a filing foundation of their own: a CSR or ESG team supplies a donation list, and Dossier matches each line against public 990 and 990-PF filings by organization name.</div>
     <div class="section-lede">
-      <p><code>recipient_ein</code> is confirmed blank in 100 percent of 278,608 rows in the real grants-paid corpus, so an EIN-keyed join is not available from that dataset. Matching here is by organization name only, fuzzy, not exact &mdash; every row below discloses the false-positive and false-negative risk that carries.</p>
+      <p><code>recipient_ein</code> is confirmed blank in 100 percent of 278,608 rows in the real grants-paid corpus, so an EIN-keyed join is not available from that dataset. Matching here is by organization name only, fuzzy, not exact, so every row below discloses the false-positive and false-negative risk that carries.</p>
     </div>
       <div class="table-scroll"><table class="recon-table">
         <thead><tr><th>Donation-list entry</th><th class="amt">Claimed</th><th>Matched filing</th><th>Status</th><th>Notes</th></tr></thead>
@@ -161,8 +161,8 @@ code{overflow-wrap:anywhere}
     <div class="method-kicker">Method</div>
     <h2>How this was built, and what it cannot tell you</h2>
     <p><b>Where this comes from.</b> Tier 1 sums Part XV grant rows from <code>tx_990pf_grants_paid.csv</code> for one filer_ein and tax_year. Tier 2 matches a voluntary donation list against public 990 and 990-PF filings by organization name, since the source corpus carries no recipient-side EIN.</p>
-    <p><b>What Dossier will not do.</b> It never invents a claimed total when none is supplied. It never treats a name match as certain &mdash; every Tier 2 row carries a name-confidence note. It never computes a payout ratio or asset benchmark unless the filer's core financial fields are confirmed present in the corpus, which they are not for this family of foundations today.</p>
-    <p><b>What it cannot tell you.</b> Whether an unmatched name reflects a real absence from IRS records or an unresolved name variant. Some real foundations file no Part XV detail at all, or sit outside the smaller Statistics-of-Income sample used for asset-based fields &mdash; both stated in general terms here since the demo entity is fictional.</p>
+    <p><b>What Dossier will not do.</b> It never invents a claimed total when none is supplied. It never treats a name match as certain, since every Tier 2 row carries a name-confidence note. It never computes a payout ratio or asset benchmark unless the filer's core financial fields are confirmed present in the corpus, which they are not for this family of foundations today.</p>
+    <p><b>What it cannot tell you.</b> Whether an unmatched name reflects a real absence from IRS records or an unresolved name variant. Some real foundations file no Part XV detail at all, or sit outside the smaller Statistics-of-Income sample used for asset-based fields, both stated in general terms here since the demo entity is fictional.</p>
   </div>
 </section>
 

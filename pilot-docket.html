@@ -135,7 +135,7 @@ function renderReady(items){
           <div class="qa-row deadline"><span class="qa-label">Deadline</span><span class="qa-value">${esc(it.deadline)}</span></div>
           <div class="qa-row"><span class="qa-label">Amount</span><span class="qa-value">${esc(it.amount)}</span></div>
           ${it.eligibility?`<div class="qa-row"><span class="qa-label">Eligibility</span><span class="qa-value">${esc(it.eligibility)}</span></div>`:''}
-          <div class="qa-row"><span class="qa-label">Notes</span><span class="qa-value">${esc(it.notes)}</span></div>
+          ${it.notes?`<div class="qa-row"><span class="qa-label">Notes</span><span class="qa-value">${esc(it.notes)}</span></div>`:''}
           ${it.url?`<div class="qa-row"><span class="qa-label">Source</span><span class="qa-value"><a href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.url)}</a></span></div>`:''}
         </div>
       </div>

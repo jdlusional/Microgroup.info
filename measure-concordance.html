@@ -3626,7 +3626,7 @@ const C = {
  ]
 };
 const TIER_COPY = {"strong": "Funds this work, in this state", "moderate": "Funds this work", "emerging": "Some overlap; verify before approaching"};
-const CONF_COPY = {"high": "high-confidence name match", "medium": "name match — verify identity", "low": "common name — verify identity before acting"};
+const CONF_COPY = {"high": "high-confidence name match", "medium": "name match, verify identity", "low": "common name, verify identity before acting"};
 const APACK_COPY = {"heading": "What you can still do", "accepts_quoted": "This foundation accepts applications. The first move is the procedure quoted above, followed exactly as filed for TY{yr}.", "accepts_bare": "This foundation accepts unsolicited applications, as filed for TY{yr}. The filing quotes no procedure details, so confirm the current process with the foundation before submitting anything.", "does_not_accept": "Unsolicited applications are not accepted, as filed for TY{yr}. A cold application is not a realistic route here. The realistic route is to become visible among the organizations this foundation already funds.", "not_stated": "The TY{yr} filing does not state an application policy. Ask the foundation directly before preparing a proposal.", "no_data": "No application-policy data is on file for this foundation. Ask the foundation directly before preparing a proposal.", "local_intro": "Grants to {city} recipients on the TY{yr} Form 990-PF: ", "local_more_one": ", and 1 more", "local_more": ", and {n} more", "local_none": "The TY{yr} Form 990-PF lists no grants to {city} recipients. This foundation's filed giving happens elsewhere.", "local_note": "These are filed facts about the funder, useful when you write to it. They are not contacts, and a grant to another {city} organization is not that organization's endorsement or willingness to help you.", "size_many": "Typical grant for the matched cause: median {median}, range {min} to {max}. Computed from {n} filed grants on the TY{yr} Form 990-PF that match this cause area.", "size_one": "One filed grant on the TY{yr} Form 990-PF matches this cause area: {amt}.", "size_none": "No filed grants on the TY{yr} Form 990-PF match this cause area under their as-filed names."};
 
 function esc(s){const d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML;}
@@ -3659,14 +3659,14 @@ function money(n){return n?'$'+Number(n).toLocaleString('en-US'):'';}
   const rows = [];
   C.matches.forEach(function(m){
     m.access_direct.forEach(function(p){
-      rows.push('<div class="path"><b>'+esc(p.person)+'</b> sits on both boards &mdash; '
+      rows.push('<div class="path"><b>'+esc(p.person)+'</b> sits on both boards, '
         + esc(m.foundation)+(p.foundation_title?' ('+esc(p.foundation_title)+')':'')
         + (p.client_title?' and this board ('+esc(p.client_title)+')':'')
         + ' <span class="conf '+esc(p.name_confidence)+'">'+esc(CONF_COPY[p.name_confidence]||p.name_confidence)+'</span></div>');
     });
     m.access_shared.forEach(function(p){
       rows.push('<div class="path"><b>'+esc(p.via_person)+'</b> shares a board with <b>'
-        + esc(p.trustee)+'</b> of '+esc(m.foundation)+' &mdash; via '
+        + esc(p.trustee)+'</b> of '+esc(m.foundation)+', via '
         + esc(p.via_orgs.join(', '))
         + ' <span class="conf '+esc(p.name_confidence)+'">'+esc(CONF_COPY[p.name_confidence]||p.name_confidence)+'</span></div>');
     });
@@ -3674,7 +3674,7 @@ function money(n){return n?'$'+Number(n).toLocaleString('en-US'):'';}
   if (rows.length){ host.innerHTML = rows.join(''); return; }
   host.innerHTML = '<div class="finding"><b>Checked, and none found.</b> None of the '
     + esc(C.client_board.length)
-    + ' directors above, as filed, sits on any of these foundations\' boards or shares a third board with any of their trustees. That is a finding about the filed record, checked name by name &mdash; not an error and not a gap in the data. Practically, it means a warm boardroom introduction to these funders does not exist on paper today: plan approaches to the foundations on this page as cold or staff-brokered outreach. If a real-world relationship exists, it lives in knowledge this public data cannot hold, and the board itself is the only place to ask.</div>';
+    + ' directors above, as filed, sits on any of these foundations\' boards or shares a third board with any of their trustees. That is a finding about the filed record, checked name by name, not an error and not a gap in the data. Practically, it means a warm boardroom introduction to these funders does not exist on paper today: plan approaches to the foundations on this page as cold or staff-brokered outreach. If a real-world relationship exists, it lives in knowledge this public data cannot hold, and the board itself is the only place to ask.</div>';
 })();
 
 /* Part XV application-status chip. Three filed states plus an explicit no-data state;
@@ -3789,7 +3789,7 @@ function apackHtml(m){
       +   apackHtml(m)
       +   '<div class="lbl">The grants that justify this match</div>'
       +   ev
-      +   '<div class="lbl">Who governs it &mdash; as listed on the TY'+esc(m.tax_year)+' filing</div>'
+      +   '<div class="lbl">Who governs it, as listed on the TY'+esc(m.tax_year)+' filing</div>'
       +   '<div class="people">'+people+'</div>'
       + '</div></div>';
   }).join('');

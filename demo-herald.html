@@ -257,7 +257,7 @@ function esc(s){const d=document.createElement('div');d.textContent=s==null?'':S
   const cells = [
     [C.targets, 'funder pages on the watch-list'],
     [reachable, 'reachable and snapshotted'],
-    [(c.couldnt_check||0), 'behind bot protection right now — reported, not guessed'],
+    [(c.couldnt_check||0), 'behind bot protection right now, reported rather than guessed'],
     [(c.changed||0), 'real changes detected so far'],
   ];
   document.getElementById('stats').innerHTML = cells.map(
