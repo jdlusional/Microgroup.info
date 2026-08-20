@@ -40,7 +40,9 @@ a{color:var(--ink)}
    .fold-body collapses. ---- */
 .section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem}
 .section.section-card:last-of-type{margin-bottom:0}
-.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem;position:relative}
+.section-head-row > .mc-toggle{position:absolute;top:0;right:0}
+.section-head-row > .section-head{margin-bottom:0}
 .mc-closed .fold-body{display:none}
 
 /* ---- Profile section ---- */

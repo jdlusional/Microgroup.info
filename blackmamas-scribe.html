@@ -45,7 +45,12 @@ a{color:var(--ink)}
    on its own centered line above the kicker/title. Only .fold-body collapses. ---- */
 .section.section-card{background:var(--paper);border:1.5px solid var(--ink);margin:0 auto 1.6rem}
 .section.section-card:last-of-type{margin-bottom:0}
-.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.section-head-row{display:flex;flex-direction:column;align-items:center;gap:.9rem;position:relative}
+.section-head-row > .mc-toggle{position:absolute;top:0;right:0}
+.section-head-row > .section-head{margin-bottom:0}
+.viewer-empty{padding:1.4rem 1.2rem;color:var(--wash);font-size:15px;line-height:1.55;text-align:center}
+.sample-card{background:var(--well)}
+.info-card{background:var(--well)}
 .mc-closed .fold-body{display:none}
 .mc-toggle{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;cursor:pointer;white-space:nowrap}
 .mc-toggle:hover{background:var(--paper)}
@@ -590,9 +595,17 @@ function deadlineClass(s){
 }
 
 /* Wrap the three inline marker types in already-escaped section prose (web). */
+const FN_SEEN=new Set(); /* reset per draft render in renderViewer; the backlink id goes to
+  the FIRST reference only. Document-wide rather than per-section, because per-section dedup
+  still produced cross-section duplicates. Ported from demo-scribe.html 2026-08-19. */
 function wrapMarkers(escaped){
-  let out=escaped.replace(/\[\^(\d+)\]/g,(m,n)=>
-    `<sup class="fn-ref"><a href="#fn-${state.selected}-${n}" id="fnref-${state.selected}-${n}">${n}</a></sup>`);
+  const seenRefs=FN_SEEN;
+  let out=escaped.replace(/\[\^(\d+)\]/g,(m,n)=>{
+    /* Only the FIRST reference to footnote n carries the backlink id; repeated
+       references produced duplicate ids (caught by the invariant engine, I4). */
+    const idAttr=seenRefs.has(n)?'':` id="fnref-${state.selected}-${n}"`;
+    seenRefs.add(n);
+    return `<sup class="fn-ref"><a href="#fn-${state.selected}-${n}"${idAttr}>${n}</a></sup>`;});
   out=out.replace(/\[[^\]]+\]/g,m=>{
     let mm;
     if(mm=/^\[SUGGESTED:\s*([\s\S]*?)\]$/i.exec(m))
@@ -978,6 +991,7 @@ function selectDraft(idx,scroll){
 }
 
 function renderViewer(){
+  FN_SEEN.clear();
   const d=DRAFTS[state.selected];
   const host=document.getElementById('viewer-host');
   if(!d||!d.is_sample){host.innerHTML='<div class="viewer-empty">Select the included sample grant above to view its draft.</div>';return;}
