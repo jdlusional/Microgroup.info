@@ -19,9 +19,9 @@
  "scores": "relevance_score is null on every row. No computed relevance or fit score exists until the Phase 2 Section 5.4 fit_score formula ships (Wave B). sector_focus_pct is the share of a prospect's giving in this client's NTEE band, a computed statistic, not a relevance score.",
  "review_summary": {
   "review_required_total": 6,
-  "approved": 0,
+  "approved": 6,
   "rejected": 0,
-  "held": 6,
+  "held": 0,
   "unreviewed": 0,
   "rejected_funders": []
  },
@@ -343,9 +343,9 @@
    "funder_ein": "364336415",
    "funder_name": "Michael & Susan Dell Foundation",
    "geography": "",
-   "is_confirmed_prior_funder": false,
+   "is_confirmed_prior_funder": true,
    "rank": 18,
-   "provenance": "prior_funder_named_review_required",
+   "provenance": "prior_funder_named_confirmed",
    "tier": null,
    "relevance_score": null,
    "score_basis": "none: provenance bucket only; no fit score exists before the Phase 2 Section 5.4 formula ships",
@@ -353,22 +353,22 @@
    "peers_funded_in_state": null,
    "review_required": true,
    "review_disposition": {
-    "status": "held",
-    "reason": "Awaiting the owner's identity review (Phase 2 Decision 9); held at ship time by the slice 2 build so the page renders a placeholder, not a match.",
+    "status": "approved",
+    "reason": "Owner confirmed 2026-08-20, walked one at a time in session: the 990-PF Part XV recipient string is Measure Austin (EIN 822372196); approve as a confirmed prior funder.",
     "reviewed_on": "2026-08-20",
-    "reviewed_by": "slice 2 build agent (pending owner review)"
+    "reviewed_by": "Jonathan Lin Davis, owner, via Claude Code session 2026-08-20"
    },
-   "display": "placeholder",
-   "rationale": "Prior funder by NAME MATCH in 990-PF Part XV, which carries no recipient EIN, so the identity is probabilistic and must be confirmed before the funder is contacted. 2 grants recorded."
+   "display": "match",
+   "rationale": "Prior funder by NAME MATCH in 990-PF Part XV, which carries no recipient EIN, so the identity is probabilistic and must be confirmed before the funder is contacted. 2 grants recorded. Identity confirmed by recorded review on 2026-08-20."
   },
   {
    "id": "746013920",
    "funder_ein": "746013920",
    "funder_name": "HOUSTON ENDOWMENT INC",
    "geography": "",
-   "is_confirmed_prior_funder": false,
+   "is_confirmed_prior_funder": true,
    "rank": 19,
-   "provenance": "prior_funder_named_review_required",
+   "provenance": "prior_funder_named_confirmed",
    "tier": null,
    "relevance_score": null,
    "score_basis": "none: provenance bucket only; no fit score exists before the Phase 2 Section 5.4 formula ships",
@@ -376,22 +376,22 @@
    "peers_funded_in_state": null,
    "review_required": true,
    "review_disposition": {
-    "status": "held",
-    "reason": "Awaiting the owner's identity review (Phase 2 Decision 9); held at ship time by the slice 2 build so the page renders a placeholder, not a match.",
+    "status": "approved",
+    "reason": "Owner confirmed 2026-08-20, walked one at a time in session: the 990-PF Part XV recipient string is Measure Austin (EIN 822372196); approve as a confirmed prior funder. Weaker string ('Measure' alone); the pipeline's name_aliases() docstring already records this 2024 $150,000 grant as Measure's.",
     "reviewed_on": "2026-08-20",
-    "reviewed_by": "slice 2 build agent (pending owner review)"
+    "reviewed_by": "Jonathan Lin Davis, owner, via Claude Code session 2026-08-20"
    },
-   "display": "placeholder",
-   "rationale": "Prior funder by NAME MATCH in 990-PF Part XV, which carries no recipient EIN, so the identity is probabilistic and must be confirmed before the funder is contacted. 1 grants recorded."
+   "display": "match",
+   "rationale": "Prior funder by NAME MATCH in 990-PF Part XV, which carries no recipient EIN, so the identity is probabilistic and must be confirmed before the funder is contacted. 1 grants recorded. Identity confirmed by recorded review on 2026-08-20."
   },
   {
    "id": "263241764",
    "funder_ein": "263241764",
    "funder_name": "LAURA AND JOHN ARNOLD FOUNDATION",
    "geography": "",
-   "is_confirmed_prior_funder": false,
+   "is_confirmed_prior_funder": true,
    "rank": 20,
-   "provenance": "prior_funder_named_review_required",
+   "provenance": "prior_funder_named_confirmed",
    "tier": null,
    "relevance_score": null,
    "score_basis": "none: provenance bucket only; no fit score exists before the Phase 2 Section 5.4 formula ships",
@@ -399,22 +399,22 @@
    "peers_funded_in_state": null,
    "review_required": true,
    "review_disposition": {
-    "status": "held",
-    "reason": "Awaiting the owner's identity review (Phase 2 Decision 9); held at ship time by the slice 2 build so the page renders a placeholder, not a match.",
+    "status": "approved",
+    "reason": "Owner confirmed 2026-08-20, walked one at a time in session: the 990-PF Part XV recipient string is Measure Austin (EIN 822372196); approve as a confirmed prior funder.",
     "reviewed_on": "2026-08-20",
-    "reviewed_by": "slice 2 build agent (pending owner review)"
+    "reviewed_by": "Jonathan Lin Davis, owner, via Claude Code session 2026-08-20"
    },
-   "display": "placeholder",
-   "rationale": "Prior funder by NAME MATCH in 990-PF Part XV, which carries no recipient EIN, so the identity is probabilistic and must be confirmed before the funder is contacted. 1 grants recorded."
+   "display": "match",
+   "rationale": "Prior funder by NAME MATCH in 990-PF Part XV, which carries no recipient EIN, so the identity is probabilistic and must be confirmed before the funder is contacted. 1 grants recorded. Identity confirmed by recorded review on 2026-08-20."
   },
   {
    "id": "741938157",
    "funder_ein": "741938157",
    "funder_name": "SHIELD-AYRES FOUNDATION",
    "geography": "",
-   "is_confirmed_prior_funder": false,
+   "is_confirmed_prior_funder": true,
    "rank": 21,
-   "provenance": "prior_funder_named_review_required",
+   "provenance": "prior_funder_named_confirmed",
    "tier": null,
    "relevance_score": null,
    "score_basis": "none: provenance bucket only; no fit score exists before the Phase 2 Section 5.4 formula ships",
@@ -422,22 +422,22 @@
    "peers_funded_in_state": null,
    "review_required": true,
    "review_disposition": {
-    "status": "held",
-    "reason": "Awaiting the owner's identity review (Phase 2 Decision 9); held at ship time by the slice 2 build so the page renders a placeholder, not a match.",
+    "status": "approved",
+    "reason": "Owner confirmed 2026-08-20, walked one at a time in session: the 990-PF Part XV recipient string is Measure Austin (EIN 822372196); approve as a confirmed prior funder.",
     "reviewed_on": "2026-08-20",
-    "reviewed_by": "slice 2 build agent (pending owner review)"
+    "reviewed_by": "Jonathan Lin Davis, owner, via Claude Code session 2026-08-20"
    },
-   "display": "placeholder",
-   "rationale": "Prior funder by NAME MATCH in 990-PF Part XV, which carries no recipient EIN, so the identity is probabilistic and must be confirmed before the funder is contacted. 4 grants recorded."
+   "display": "match",
+   "rationale": "Prior funder by NAME MATCH in 990-PF Part XV, which carries no recipient EIN, so the identity is probabilistic and must be confirmed before the funder is contacted. 4 grants recorded. Identity confirmed by recorded review on 2026-08-20."
   },
   {
    "id": "411978256",
    "funder_ein": "411978256",
    "funder_name": "THE DONNA J MACMILLAN AND CARGILL",
    "geography": "",
-   "is_confirmed_prior_funder": false,
+   "is_confirmed_prior_funder": true,
    "rank": 22,
-   "provenance": "prior_funder_named_review_required",
+   "provenance": "prior_funder_named_confirmed",
    "tier": null,
    "relevance_score": null,
    "score_basis": "none: provenance bucket only; no fit score exists before the Phase 2 Section 5.4 formula ships",
@@ -445,22 +445,22 @@
    "peers_funded_in_state": null,
    "review_required": true,
    "review_disposition": {
-    "status": "held",
-    "reason": "Awaiting the owner's identity review (Phase 2 Decision 9); held at ship time by the slice 2 build so the page renders a placeholder, not a match.",
+    "status": "approved",
+    "reason": "Owner confirmed 2026-08-20, walked one at a time in session: the 990-PF Part XV recipient string is Measure Austin (EIN 822372196); approve as a confirmed prior funder.",
     "reviewed_on": "2026-08-20",
-    "reviewed_by": "slice 2 build agent (pending owner review)"
+    "reviewed_by": "Jonathan Lin Davis, owner, via Claude Code session 2026-08-20"
    },
-   "display": "placeholder",
-   "rationale": "Prior funder by NAME MATCH in 990-PF Part XV, which carries no recipient EIN, so the identity is probabilistic and must be confirmed before the funder is contacted. 1 grants recorded."
+   "display": "match",
+   "rationale": "Prior funder by NAME MATCH in 990-PF Part XV, which carries no recipient EIN, so the identity is probabilistic and must be confirmed before the funder is contacted. 1 grants recorded. Identity confirmed by recorded review on 2026-08-20."
   },
   {
    "id": "742847652",
    "funder_ein": "742847652",
    "funder_name": "THE ALICE KLEBERG REYNOLDS MEYER",
    "geography": "",
-   "is_confirmed_prior_funder": false,
+   "is_confirmed_prior_funder": true,
    "rank": 23,
-   "provenance": "prior_funder_named_review_required",
+   "provenance": "prior_funder_named_confirmed",
    "tier": null,
    "relevance_score": null,
    "score_basis": "none: provenance bucket only; no fit score exists before the Phase 2 Section 5.4 formula ships",
@@ -468,13 +468,13 @@
    "peers_funded_in_state": null,
    "review_required": true,
    "review_disposition": {
-    "status": "held",
-    "reason": "Awaiting the owner's identity review (Phase 2 Decision 9); held at ship time by the slice 2 build so the page renders a placeholder, not a match.",
+    "status": "approved",
+    "reason": "Owner confirmed 2026-08-20, walked one at a time in session: the 990-PF Part XV recipient string is Measure Austin (EIN 822372196); approve as a confirmed prior funder.",
     "reviewed_on": "2026-08-20",
-    "reviewed_by": "slice 2 build agent (pending owner review)"
+    "reviewed_by": "Jonathan Lin Davis, owner, via Claude Code session 2026-08-20"
    },
-   "display": "placeholder",
-   "rationale": "Prior funder by NAME MATCH in 990-PF Part XV, which carries no recipient EIN, so the identity is probabilistic and must be confirmed before the funder is contacted. 1 grants recorded."
+   "display": "match",
+   "rationale": "Prior funder by NAME MATCH in 990-PF Part XV, which carries no recipient EIN, so the identity is probabilistic and must be confirmed before the funder is contacted. 1 grants recorded. Identity confirmed by recorded review on 2026-08-20."
   },
   {
    "id": "136094489",
