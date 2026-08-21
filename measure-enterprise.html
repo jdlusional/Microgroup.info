@@ -1475,7 +1475,7 @@ function compileOpenCalls(){
 }
 
 // P13 (Card Band Restructure, 2026-08-20): the LOI/RFP badge comes from the shelf's resolved
-// `type` field, never a title-text regex -- pilot-docket.html's typeBadge() did the latter, which
+// `type` field, never a title-text regex -- the since-retired pilot-docket.html's typeBadge() did the latter, which
 // Phase 1 Section 4.3 ratified against by name. Almanac rows never carry type loi/rfp, so this is
 // a no-op there and the pre-existing product-text badge is unchanged.
 function typeBadgeHTML(g){
@@ -1506,8 +1506,9 @@ function renderFunderCard(f,q,idPrefix){
   const grantCardsHTML=f.grants.map((g,i)=>{
     const dlClass=deadlineClass(g.deadline);
     // P11: every label/value pair here is conditional -- .filter() below drops any pair with no
-    // value, matching the enterprise page's own existing convention, unlike pilot-docket.html
-    // which emitted Deadline and Amount unconditionally and could produce a labelled empty value.
+    // value, matching the enterprise page's own existing convention, unlike the since-retired
+    // pilot-docket.html, which emitted Deadline and Amount unconditionally and could produce a
+    // labelled empty value.
     const grantRows=[
       ['Open Opportunity',`<a href="${esc(g.url)}" target="_blank" rel="noopener">${highlight(g.grant_name,q)}</a>`,true],
       ['Focus Area',highlight(g.focus_area,q)],
