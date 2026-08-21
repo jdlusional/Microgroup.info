@@ -597,7 +597,7 @@ body{text-align:center}
            header, which now states a population figure unrelated to what this list caps at. This
            and Docket's own copy below describe the SAME shared cap over the Almanac+Docket
            union (change 5), not two separate caps. -->
-      <div style="font-family:var(--mono);font-size:.8rem;color:var(--wash);margin:-0.4rem 0 .8rem">Shown here and in Docket combined: up to 10 open calls, no more than 3 from a confirmed prior funder.</div>
+      <div style="font-family:var(--mono);font-size:.8rem;color:var(--wash);margin:-0.4rem 0 .8rem" data-cap-caption="Docket">Shown here and in Docket combined: up to 10 open calls, no more than 3 from a confirmed prior funder.</div>
       <div id="alm-compiled-results"></div>
 
       <div class="limitation-note" id="alm-grants-limitation"></div>
@@ -653,7 +653,7 @@ body{text-align:center}
           <div class="fold-body" id="dk-ready-fold-body">
             <div class="res-count"><b id="dk-ready-count">0</b> requests shown</div>
             <div class="res-count" id="dk-held-line" hidden><b id="dk-held-count">0</b> held for review</div>
-            <div style="font-family:var(--mono);font-size:.8rem;color:var(--wash);margin:-0.4rem 0 .8rem">Shown here and in Almanac combined: up to 10 open calls, no more than 3 from a confirmed prior funder.</div>
+            <div style="font-family:var(--mono);font-size:.8rem;color:var(--wash);margin:-0.4rem 0 .8rem" data-cap-caption="Almanac">Shown here and in Almanac combined: up to 10 open calls, no more than 3 from a confirmed prior funder.</div>
             <div id="dk-ready-results"></div>
 
             <div class="limitation-note" id="dk-limitation"></div>
@@ -1406,10 +1406,34 @@ function renderProfile(){
    Non-prior entries fill first; prior-funder entries are added only up to the cap, and the whole
    list is capped at 10 total. THIS IS THE STANDARD PATTERN for any client enterprise page holding
    more than one open-calls product going forward, not a one-off for Measure -- copy this function
-   and its two constants when building the next such page. */
+   and its two constants when building the next such page.
+
+   PER-CLIENT OVERRIDE (owner order 2026-08-20, amending the 2026-08-18 cap for one client): the
+   standard stays 10 total / 3 prior, but Measure runs 12 total / 5 prior. The override lives in
+   enterprise/org_registry.json (open_calls_caps on the organisation row), travels in the almanac
+   JSON as open_calls_caps, and is read here by openCallsCaps(); the two constants below are the
+   DEFAULTS every page without a registry override gets. The cap captions on both count lines are
+   filled from the same value so the page never states a cap it does not apply. Why: once the six
+   990-PF name matches were approved as prior funders, the 3-prior-row cap dropped Arnold
+   Ventures' second RFP track and the Alice Kleberg Reynolds Meyer grant (deadline August 26) from
+   a list holding only six real rows; the cap was written when the list was padded to ten. */
 const OPEN_CALLS_MAX_TOTAL=10;
 const OPEN_CALLS_MAX_PRIOR_FUNDER=3;
+function openCallsCaps(){
+  const c=state.grants&&state.grants.open_calls_caps;
+  const total=(c&&Number.isInteger(c.total)&&c.total>0)?c.total:OPEN_CALLS_MAX_TOTAL;
+  const prior=(c&&Number.isInteger(c.prior)&&c.prior>=0)?Math.min(c.prior,total):OPEN_CALLS_MAX_PRIOR_FUNDER;
+  return {total:total,prior:prior,isDefault:!(c&&Number.isInteger(c.total))};
+}
+function writeCapCaptions(caps){
+  document.querySelectorAll('[data-cap-caption]').forEach(el=>{
+    const other=el.getAttribute('data-cap-caption');
+    el.textContent='Shown here and in '+other+' combined: up to '+caps.total+' open calls, no more than '+caps.prior+' from a confirmed prior funder.';
+  });
+}
 function compileOpenCalls(){
+  const caps=openCallsCaps();
+  writeCapCaptions(caps);
   const excluded=ein=>FUNDER_REVIEW[ein]&&FUNDER_REVIEW[ein].exclude;
   const byEin={};
   state.funders.forEach(f=>{if(!excluded(f.funder_ein))byEin[f.funder_ein]=f;});
@@ -1445,10 +1469,10 @@ function compileOpenCalls(){
   // involved) push every confirmed prior funder out of the final 10 -- reproduced against real
   // MEASURE AUSTIN data plus 10 synthetic federal-agency entries, see the D41 prototype report.
   const prior=flat.filter(r=>r.f.is_confirmed_prior_funder).sort((a,b)=>a.f.rank-b.f.rank)
-    .slice(0,OPEN_CALLS_MAX_PRIOR_FUNDER);
+    .slice(0,caps.prior);
   const nonPrior=flat.filter(r=>!r.f.is_confirmed_prior_funder).sort((a,b)=>a.f.rank-b.f.rank)
-    .slice(0,OPEN_CALLS_MAX_TOTAL-prior.length);
-  const capped=nonPrior.concat(prior).slice(0,OPEN_CALLS_MAX_TOTAL).sort((a,b)=>a.f.rank-b.f.rank);
+    .slice(0,caps.total-prior.length);
+  const capped=nonPrior.concat(prior).slice(0,caps.total).sort((a,b)=>a.f.rank-b.f.rank);
 
   // PARTITION BY PRODUCT, THEN GROUP EACH PARTITION INDEPENDENTLY BY FUNDER (change 4, D11-D13).
   // The split is presentational and happens AFTER selection, not before it -- the cap above still

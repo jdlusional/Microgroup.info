@@ -6218,5 +6218,12 @@
   "count": 563,
   "definition": "Open register rows (cash grants, RFPs and LOIs; excludes federal contracts, unclassified 'other' rows, rows whose award form is not yet classified, and 990-mined funder profiles that are not open calls) whose close date has not yet passed, as of the date below. Independent of what any one client's own shelf shows.",
   "as_of": "2026-08-21"
+ },
+ "open_calls_caps": {
+  "total": 12,
+  "prior": 5,
+  "default": false,
+  "slug": "measure-austin",
+  "reason": "Owner order 2026-08-20, amending the 2026-08-18 cap for this client only: once the six 990-PF name matches were approved as prior funders, the standard 3-prior-row cap dropped Arnold Ventures second RFP track and the Alice Kleberg Reynolds Meyer grant (deadline August 26) from a compiled list holding six real rows. Standard stays 10 total / 3 prior for every other client."
  }
 }
