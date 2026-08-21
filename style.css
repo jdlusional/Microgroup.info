@@ -348,6 +348,10 @@ html.mandatory-snap .panel,html.mandatory-snap .footer-panel{scroll-snap-align:s
 .footer-address p{color:#c9d1e8;font-size:1rem;line-height:1.7}
 .footer-credit{font-size:.92rem;color:#aab3cc;margin-bottom:10px;max-width:60ch}
 .footer-legal{font-size:.84rem;color:#7e87a3}
+.footer-legal-links{font-size:.84rem;color:#7e87a3;margin-bottom:6px}
+.footer-legal-links a{color:#aab3cc;text-decoration:none}
+.footer-legal-links a:hover{text-decoration:underline}
+.footer-legal-links span{margin:0 .4em}
 
 /* ---------- responsive ---------- */
 @media(max-width:900px){
