@@ -135,6 +135,9 @@ a{color:var(--ink)}
 
 /* ---- Nested sub-cards inside a compiled match card ---- */
 .mc-body .card{background:var(--paper);border:1px solid var(--rule);padding:1rem 1.1rem;margin-top:.9rem}
+/* A funder carrying more than one open call (Arnold Ventures' two RFP tracks, 2026-08-20) gets one
+   line above its opportunity cards so two cards never read as two funders or as a duplicate. */
+.multi-call-note{font-family:var(--mono);font-size:.82rem;color:var(--wash);margin:.9rem 0 0;line-height:1.5}
 .mc-body .card:first-child{margin-top:0}
 .mc-body .card h3{font-size:15px;letter-spacing:.05em;margin:0 0 .5rem}
 
@@ -1029,7 +1032,7 @@ const CYCLE={
 const FUNDER_REVIEW={
  "742992877":{exclude:"Mission Capital ended operations after 25 years (its own board announcement, 2026); remaining programs absorbed into Central Texas Community Foundation."},
  "473863079":{exclude:"Child Poverty Action Lab is an operating nonprofit, not a grantmaker: its own site describes data analysis and partnerships, lists no grant program, and it raises funds itself."},
- "263241764":{display:"Arnold Ventures (Laura and John Arnold Foundation)",note:"Operates as Arnold Ventures since 2019 and accepts no unsolicited proposals. Two open RFPs (Strengthening Evidence; Building Evidence) are due September 11, 2026."},
+ "263241764":{display:"Arnold Ventures (Laura and John Arnold Foundation)",note:"Operates as Arnold Ventures since 2019 and accepts no unsolicited proposals. Its Evidence and Evaluation programme runs two tracks of one RFP cycle, Strengthening Evidence (randomized controlled trials across domestic social policy) and Building Evidence (quasi-experimental studies of existing policies in seven named areas), both with a letter of interest due September 11, 2026. They are listed below as two open calls because each has its own RFP and its own portal entry; apply under the track that matches the study you would run. Verified on the funder's own pages 2026-08-20."},
  "110303001":{note:"Donor-advised fund sponsor: grants follow donor recommendations and there is no application path. The route is donor cultivation, not an application; Fidelity Charitable is a confirmed prior conduit for Measure ($202,300)."},
  "746013920":{note:"Substantially invitation-based grantmaking with a Greater Houston mandate; verified active (news through August 2026, roughly $2.5B assets)."},
  "752890371":{note:"Active community foundation with competitive channels, but Dallas County-focused; geographic fit is the caveat, not viability."},
@@ -1545,6 +1548,7 @@ function renderFunderCard(f,q,idPrefix){
         </div>
       </div>`:''}
 
+      ${f.grants.length>1&&review&&review.note?`<p class="multi-call-note">${f.grants.length} open calls from this one funder; the review note under Why This Funder says how they relate.</p>`:''}
       ${grantCardsHTML}
 
       ${statusRowHTML('funder',f.id)}
