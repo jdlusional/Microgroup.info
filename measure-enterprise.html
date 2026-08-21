@@ -1297,7 +1297,10 @@ async function load(){
   const A=await aRes.json();
   FUNDERS_DATA={method:A.method,tiers:A.tiers,ranked_funders:A.ranked_funders};
   GRANTS={method:A.method,run_date:A.generated_date,known_limitation:A.known_limitation,
-          ready_now:A.ready_now,watch_list_not_yet_open:A.watch_list_not_yet_open};
+          ready_now:A.ready_now,watch_list_not_yet_open:A.watch_list_not_yet_open,
+          // Per-client compiled open-calls caps (owner order 2026-08-20): carried from the almanac
+          // JSON so openCallsCaps() sees the registry override; absent means the standard 10 / 3.
+          open_calls_caps:A.open_calls_caps||null};
   DOCKET=(dRes&&dRes.ok)?await dRes.json():{ready_now:[]};
 
   state.profile=PROFILE;
