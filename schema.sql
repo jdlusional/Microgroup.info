@@ -41,6 +41,11 @@ ALTER TABLE contacts ADD COLUMN message TEXT;
 -- questionnaire generator now injects the build's own slug as a hidden field.
 -- It is nullable because demo-survey.html posts to this same endpoint with no
 -- slug, and rejecting those would break a live public form to serve a new one.
+-- APPLIED 2026-08-20 (owner-authorised, Enterprise Suite gap reconciliation): the two
+-- statements below were executed against the live microgroup database with
+-- `wrangler d1 execute microgroup --remote`, then verified with a sqlite_master query
+-- (table + index present) and PRAGMA table_info (all eleven columns). The ALTER TABLE
+-- lines above were deliberately NOT re-run; their columns already exist.
 CREATE TABLE IF NOT EXISTS questionnaire_submissions (
   id          INTEGER PRIMARY KEY AUTOINCREMENT,
   org_slug    TEXT,
