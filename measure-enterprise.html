@@ -592,11 +592,12 @@ body{text-align:center}
     </div>
     <div class="fold-body" id="alm-compiled-fold-body">
       <div class="res-count"><b id="alm-compiled-count">0</b> aligned funders shown</div>
+      <div class="res-count" id="alm-held-line" hidden><b id="alm-held-count">0</b> held for review</div>
       <!-- D23 (Card Band Restructure change 6, 2026-08-20): the cap clause moved out of the
            header, which now states a population figure unrelated to what this list caps at. This
            and Docket's own copy below describe the SAME shared cap over the Almanac+Docket
            union (change 5), not two separate caps. -->
-      <div style="font-family:var(--mono);font-size:.8rem;color:var(--wash);margin:-0.4rem 0 .8rem">Shown here and in Docket combined: up to 10 open calls, no more than 3 from a confirmed prior funder.</div>
+      <div style="font-family:var(--mono);font-size:.8rem;color:var(--wash);margin:-0.4rem 0 .8rem" data-cap-caption="Docket">Shown here and in Docket combined: up to 10 open calls, no more than 3 from a confirmed prior funder.</div>
       <div id="alm-compiled-results"></div>
 
       <div class="limitation-note" id="alm-grants-limitation"></div>
@@ -651,7 +652,8 @@ body{text-align:center}
           </div>
           <div class="fold-body" id="dk-ready-fold-body">
             <div class="res-count"><b id="dk-ready-count">0</b> requests shown</div>
-            <div style="font-family:var(--mono);font-size:.8rem;color:var(--wash);margin:-0.4rem 0 .8rem">Shown here and in Almanac combined: up to 10 open calls, no more than 3 from a confirmed prior funder.</div>
+            <div class="res-count" id="dk-held-line" hidden><b id="dk-held-count">0</b> held for review</div>
+            <div style="font-family:var(--mono);font-size:.8rem;color:var(--wash);margin:-0.4rem 0 .8rem" data-cap-caption="Almanac">Shown here and in Almanac combined: up to 10 open calls, no more than 3 from a confirmed prior funder.</div>
             <div id="dk-ready-results"></div>
 
             <div class="limitation-note" id="dk-limitation"></div>
@@ -1295,7 +1297,10 @@ async function load(){
   const A=await aRes.json();
   FUNDERS_DATA={method:A.method,tiers:A.tiers,ranked_funders:A.ranked_funders};
   GRANTS={method:A.method,run_date:A.generated_date,known_limitation:A.known_limitation,
-          ready_now:A.ready_now,watch_list_not_yet_open:A.watch_list_not_yet_open};
+          ready_now:A.ready_now,watch_list_not_yet_open:A.watch_list_not_yet_open,
+          // Per-client compiled open-calls caps (owner order 2026-08-20): carried from the almanac
+          // JSON so openCallsCaps() sees the registry override; absent means the standard 10 / 3.
+          open_calls_caps:A.open_calls_caps||null};
   DOCKET=(dRes&&dRes.ok)?await dRes.json():{ready_now:[]};
 
   state.profile=PROFILE;
@@ -1404,10 +1409,34 @@ function renderProfile(){
    Non-prior entries fill first; prior-funder entries are added only up to the cap, and the whole
    list is capped at 10 total. THIS IS THE STANDARD PATTERN for any client enterprise page holding
    more than one open-calls product going forward, not a one-off for Measure -- copy this function
-   and its two constants when building the next such page. */
+   and its two constants when building the next such page.
+
+   PER-CLIENT OVERRIDE (owner order 2026-08-20, amending the 2026-08-18 cap for one client): the
+   standard stays 10 total / 3 prior, but Measure runs 12 total / 5 prior. The override lives in
+   enterprise/org_registry.json (open_calls_caps on the organisation row), travels in the almanac
+   JSON as open_calls_caps, and is read here by openCallsCaps(); the two constants below are the
+   DEFAULTS every page without a registry override gets. The cap captions on both count lines are
+   filled from the same value so the page never states a cap it does not apply. Why: once the six
+   990-PF name matches were approved as prior funders, the 3-prior-row cap dropped Arnold
+   Ventures' second RFP track and the Alice Kleberg Reynolds Meyer grant (deadline August 26) from
+   a list holding only six real rows; the cap was written when the list was padded to ten. */
 const OPEN_CALLS_MAX_TOTAL=10;
 const OPEN_CALLS_MAX_PRIOR_FUNDER=3;
+function openCallsCaps(){
+  const c=state.grants&&state.grants.open_calls_caps;
+  const total=(c&&Number.isInteger(c.total)&&c.total>0)?c.total:OPEN_CALLS_MAX_TOTAL;
+  const prior=(c&&Number.isInteger(c.prior)&&c.prior>=0)?Math.min(c.prior,total):OPEN_CALLS_MAX_PRIOR_FUNDER;
+  return {total:total,prior:prior,isDefault:!(c&&Number.isInteger(c.total))};
+}
+function writeCapCaptions(caps){
+  document.querySelectorAll('[data-cap-caption]').forEach(el=>{
+    const other=el.getAttribute('data-cap-caption');
+    el.textContent='Shown here and in '+other+' combined: up to '+caps.total+' open calls, no more than '+caps.prior+' from a confirmed prior funder.';
+  });
+}
 function compileOpenCalls(){
+  const caps=openCallsCaps();
+  writeCapCaptions(caps);
   const excluded=ein=>FUNDER_REVIEW[ein]&&FUNDER_REVIEW[ein].exclude;
   const byEin={};
   state.funders.forEach(f=>{if(!excluded(f.funder_ein))byEin[f.funder_ein]=f;});
@@ -1443,10 +1472,10 @@ function compileOpenCalls(){
   // involved) push every confirmed prior funder out of the final 10 -- reproduced against real
   // MEASURE AUSTIN data plus 10 synthetic federal-agency entries, see the D41 prototype report.
   const prior=flat.filter(r=>r.f.is_confirmed_prior_funder).sort((a,b)=>a.f.rank-b.f.rank)
-    .slice(0,OPEN_CALLS_MAX_PRIOR_FUNDER);
+    .slice(0,caps.prior);
   const nonPrior=flat.filter(r=>!r.f.is_confirmed_prior_funder).sort((a,b)=>a.f.rank-b.f.rank)
-    .slice(0,OPEN_CALLS_MAX_TOTAL-prior.length);
-  const capped=nonPrior.concat(prior).slice(0,OPEN_CALLS_MAX_TOTAL).sort((a,b)=>a.f.rank-b.f.rank);
+    .slice(0,caps.total-prior.length);
+  const capped=nonPrior.concat(prior).slice(0,caps.total).sort((a,b)=>a.f.rank-b.f.rank);
 
   // PARTITION BY PRODUCT, THEN GROUP EACH PARTITION INDEPENDENTLY BY FUNDER (change 4, D11-D13).
   // The split is presentational and happens AFTER selection, not before it -- the cap above still
@@ -1471,10 +1500,57 @@ function compileOpenCalls(){
     });
     return order;
   }
+  // THE REVIEW-REQUIRED GATE (Phase 2 Section 5.7, Decision 2 and Decision 9, pulled into Wave A by
+  // owner ratification 2026-08-20; slice 2). A ranked funder whose data row carries
+  // display==='placeholder' is a 990-PF Part XV NAME MATCH with no recorded identity disposition
+  // (nonprofit-data/opportunity_register/review_dispositions.csv, written only through the dispose
+  // CLI). Its open calls COMPETE FOR AND OCCUPY the slot their rank earns inside the same ten-row
+  // cap (ratification answer 6, advisor A3: Card Band V4 counts rendered rows, so a placeholder is
+  // a row), but they are rendered as ANONYMOUS "Under review" cards, never as matches: no funder
+  // name, link, deadline, snapshot or EIN reaches the DOM, and the id is index-based. D41's
+  // prior-first ordering above is untouched -- a placeholder funder is non-prior until approved.
+  function groupHeld(rows,idPrefix){
+    // one anonymous card per held funder, carrying only the COUNT of its held open calls
+    const order=[],byEin={};
+    rows.forEach(({f})=>{
+      if(!byEin[f.funder_ein]){byEin[f.funder_ein]={count:0};order.push(byEin[f.funder_ein]);}
+      byEin[f.funder_ein].count+=1;
+    });
+    return order.map((h,i)=>({cardId:idPrefix+(i+1),count:h.count,held:true}));
+  }
+  const isHeld=r=>r.f.display==='placeholder';
+  const almRows=capped.filter(r=>r.product==='Almanac (grant)');
+  const dkRows=capped.filter(r=>r.product==='Docket (RFP/LOI)');
   return {
-    almanac:groupByFunder(capped.filter(r=>r.product==='Almanac (grant)'),'funder-'),
-    docket:groupByFunder(capped.filter(r=>r.product==='Docket (RFP/LOI)'),'dk-funder-'),
+    almanac:groupByFunder(almRows.filter(r=>!isHeld(r)),'funder-'),
+    docket:groupByFunder(dkRows.filter(r=>!isHeld(r)),'dk-funder-'),
+    heldAlmanac:groupHeld(almRows.filter(isHeld),'held-almanac-'),
+    heldDocket:groupHeld(dkRows.filter(isHeld),'held-docket-'),
   };
+}
+
+// The anonymous placeholder card (Decision 2, "suppress with a visible placeholder"; ratification
+// answer 3, anonymous: no name, link, deadline or EIN in the DOM; fixed-text body). Same
+// .match-card / .mc-head / .mc-body anatomy as renderFunderCard() so the accordion, the content
+// inset (I15) and the aria-controls resolution (the toggle points at a real body id) all hold;
+// reuses the existing badge-new class; emits no .qa-row pair, so I16 has nothing to measure.
+function renderHeldCard(h){
+  const calls=h.count===1?'1 open call from this funder is held':h.count+' open calls from this funder are held';
+  return `
+  <div class="match-card" id="${esc(h.cardId)}">
+    <div class="mc-head">
+      <span class="fname">Under review</span>
+      <span class="badge badge-new">Held</span>
+      <button class="mc-toggle" type="button" aria-controls="${esc(h.cardId)}-body"></button>
+    </div>
+    <div class="mc-body" id="${esc(h.cardId)}-body">
+      <div class="card">
+        <h3>Why This Is Held</h3>
+        <p>A possible prior-funder relationship, found by name match in IRS Form 990-PF filings, is awaiting identity confirmation. ${calls} and not shown as matches until a disposition is recorded.</p>
+      </div>
+    </div>
+  </div>
+`;
 }
 
 // P13 (Card Band Restructure, 2026-08-20): the LOI/RFP badge comes from the shelf's resolved
@@ -1570,15 +1646,22 @@ function applyCompiled(){
   document.getElementById('alm-grants-limitation').textContent=state.grants.known_limitation;
 
   const host=document.getElementById('alm-compiled-results');
-  if(!list.length){
+  // Held placeholders (slice 2): rendered AFTER the match cards, counted on their own line, never
+  // in "aligned funders shown" (a placeholder is not an aligned funder). The held line renders
+  // only when the count is above zero.
+  const held=compiled.heldAlmanac||[];
+  const heldLine=document.getElementById('alm-held-line');
+  const heldCount=document.getElementById('alm-held-count');
+  if(heldLine&&heldCount){heldCount.textContent=held.length;heldLine.hidden=!held.length;}
+  if(!list.length&&!held.length){
     host.innerHTML='<div class="empty"><b>No matches</b> for this status filter.</div>';
   }else{
-    host.innerHTML=list.map(f=>renderFunderCard(f,q,'funder-')).join('');
+    host.innerHTML=list.map(f=>renderFunderCard(f,q,'funder-')).join('')+held.map(renderHeldCard).join('');
     wireStatusControls(host);
     wireAccordion(host);if(window.foldSubheads)window.foldSubheads();
   }
 
-  renderDocketCompiled(compiled.docket,q);
+  renderDocketCompiled(compiled.docket,q,compiled.heldDocket||[]);
 }
 
 // P8: every Docket DOM write is null-guarded, without exception. The page has one sequential
@@ -1586,18 +1669,28 @@ function applyCompiled(){
 // when a single throw on this path killed every render call after it. #product-docket is
 // hand-owned markup that may not exist on every enterprise page -- only Measure holds Docket
 // today -- so this function must never be what turns a missing section into a dead page.
-function renderDocketCompiled(list,q){
+function renderDocketCompiled(list,q,held){
+  held=held||[];
   const countEl=document.getElementById('dk-ready-count');
   const host=document.getElementById('dk-ready-results');
   const limEl=document.getElementById('dk-limitation');
   if(!countEl||!host||!limEl)return;
+  // "N requests shown" counts MATCH rows only; a held placeholder is not a shown request. Its
+  // own count line below (advisor A4) says how many requests are held, so the client sees
+  // "0 requests shown" beside "2 held for review" rather than an unexplained empty state.
   countEl.textContent=list.reduce((n,f)=>n+f.grants.length,0);
   limEl.textContent=(state.docket&&state.docket.known_limitation)||'';
-  if(!list.length){
+  const heldLine=document.getElementById('dk-held-line');
+  const heldCount=document.getElementById('dk-held-count');
+  const heldRequests=held.reduce((n,h)=>n+h.count,0);
+  if(heldLine&&heldCount){heldCount.textContent=heldRequests;heldLine.hidden=!heldRequests;}
+  if(!list.length&&!held.length){
     host.innerHTML='<div class="empty"><b>No open requests</b> right now.</div>';
     return;
   }
-  host.innerHTML=list.map(f=>renderFunderCard(f,q,'dk-funder-')).join('');
+  // Slice 2 / advisor A4: when the match list is empty but rows are held, the empty-state
+  // sentence is suppressed and the placeholder renders in its place.
+  host.innerHTML=list.map(f=>renderFunderCard(f,q,'dk-funder-')).join('')+held.map(renderHeldCard).join('');
   wireStatusControls(host);
   wireAccordion(host);if(window.foldSubheads)window.foldSubheads();
 }
