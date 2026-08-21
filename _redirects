@@ -73,3 +73,16 @@
 # rule to reach the actual lowercase asset tea.html -- the bare lowercase /tea already resolves
 # to tea.html via Pages' default clean-URL stripping, same as every other org hub page here.
 /TEA   /tea  301
+
+# improvementlog.html retired 2026-08-21 (System Change Log Restructure, decision 1): the
+# merged, org-agnostic change log now lives solely on jonathanlindavis.com. Same precedent as
+# measure-almanac/measure-scribe/pilot-docket above: the .html file is DELETED rather than left
+# in place, since Cloudflare Pages serves a static asset in preference to a redirect rule. This
+# is a cross-domain redirect, unlike this file's other entries which mostly point within this
+# same file set -- Measure's OWN org-specific change log (measure-change-log.html) stays local
+# to this domain and is not part of this redirect.
+/improvementlog        https://jonathanlindavis.com/system-change-log  301
+/improvementlog.html   https://jonathanlindavis.com/system-change-log  301
+/Improvementlog        https://jonathanlindavis.com/system-change-log  301
+/IMPROVEMENTLOG        https://jonathanlindavis.com/system-change-log  301
+/improvement-log       https://jonathanlindavis.com/system-change-log  301

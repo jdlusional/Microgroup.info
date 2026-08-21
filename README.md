@@ -149,13 +149,28 @@ relevant to its own site rather than duplicating the other's detail.
     `demo-referrals.html` documents the program those fields feed: a one-time 5% bonus on a
     referred org's first-year Almanac/Scribe price. Both link `tool-shared.css` and are
     governed by the pattern book (see "Pattern-book governance" below).
-- **Improvement Log** (`improvementlog.html`) — the enterprise half of the client-centered
-  product improvement log, one sentence per improvement, day-grouped, "Updated weekly,"
-  covering Almanac/Scribe/Concordance/Herald. Cross-links jonathanlindavis.com's copy (Public
-  Data family). Canonical entries in the shared
-  `..\jonathanlindavis-pipelines\improvementlog\client_entries.json`; the Saturday
-  `weekly_update.py` job resolves each product's target page/repo via a `DOMAIN` map and
-  splices only that domain's entries into each page's sentinel-marked data block. Robots-disallowed.
+- **System Change Log** — **RESTRUCTURED 2026-08-21, supersedes the entry below.**
+  `improvementlog.html` is DELETED (Cloudflare Pages prefers a static asset over a
+  redirect rule, same precedent as the measure-almanac/pilot-docket retirements above);
+  `_redirects` sends every old `/improvementlog*` URL cross-domain to
+  `jonathanlindavis.com/system-change-log`, the new merged, org-agnostic change log
+  covering every product across both former families. This repo's own change-log surface
+  now is **`measure-change-log.html`** — Measure's org-specific change log, the pilot
+  instance of a per-org pattern, grouped by product (Almanac/Scribe/Docket/Confluence)
+  with a visible Hand-change/Shelf-digest label per entry. Canonical entries in the
+  pipelines repo's `improvementlog\measure_change_log_entries.json`, physically separate
+  from `client_entries.json` (which is now org-agnostic ONLY). Fed by two writers: the
+  Saturday `weekly_update.py` job's Lane B (hand-change entries) and the monthly
+  `refresh_enterprise_monthly.py` job's shelf-digest step (real computed funder counts via
+  `diff_page_data.py`, always previewed on a branch). `measure.html`'s switcher and
+  `measure-enterprise.html`'s own nav both link directly here. Robots-disallowed. Full
+  detail: `Portfolios\Performance\Microgroup\Product Strategy\System Change Log Context
+  File.md`.
+  <br>*Prior (2026-07-23, historical): `improvementlog.html` was the enterprise half of a
+  domain-split client-centered improvement log, covering Almanac/Scribe/Concordance/Herald
+  and cross-linking jonathanlindavis.com's Public Data copy; the Saturday `weekly_update.py`
+  job resolved each product's target page/repo via a `DOMAIN` map and spliced only that
+  domain's entries into each page. Kept here for history; superseded above.*
 - **Website Products** (KCT, ACC) — client web work, deliberately kept outside the product
   family above (see the disclaimer on jonathanlindavis.com's `/private-index`). Moved here
   2026-07-23 from jonathanlindavis.com.

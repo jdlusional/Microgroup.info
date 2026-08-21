@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Measure Change Log</title>
+<meta name="description" content="Measure's own change log: hand-changed account edits and the monthly Almanac/Docket shelf-refresh digest, dated and labeled by kind. Unlisted and gated." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/svg+xml" href="Assets/micro-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=9a8055aac9">
+<style>
+/* DESIGN TOKENS COME FROM tool-shared.css. DO NOT REDECLARE THEM HERE (see
+   measure-orientation.html's 2026-08-07 correction note for why). */
+a{color:var(--ink)}
+.bar{background:var(--well);border-bottom:2px solid var(--ink)}
+.bar-in{max-width:900px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.bar-brand{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--ink)}
+.bar-note{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--wash)}
+.hero{max-width:900px;margin:0 auto;padding:2.2rem 1.25rem 1.2rem}
+.hero p{color:var(--wash);max-width:75ch}
+.hero .cadence{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--wash);border:1px solid var(--rule);display:inline-block;padding:.25rem .6rem;margin-top:.6rem}
+.section{max-width:900px;margin:0 auto;padding:0 1.25rem 2.4rem}
+details.prod{border:1.5px solid var(--ink);background:var(--well);margin:0 0 .8rem}
+details.prod>summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:.7rem;padding:.85rem 1.1rem;font-family:var(--serif);font-weight:700;font-size:22px}
+details.prod>summary::-webkit-details-marker{display:none}
+details.prod>summary::before{content:"+";font-family:var(--mono);font-weight:700;color:var(--wash)}
+details.prod[open]>summary::before{content:"\2013"}
+details.prod>summary .count{margin-left:auto;font-family:var(--mono);font-size:12.5px;font-weight:400;color:var(--wash);text-transform:uppercase;letter-spacing:.05em}
+.prod-body{padding:.2rem 1.2rem 1rem;border-top:1px solid var(--rule-soft)}
+.log-date{font-family:var(--mono);font-size:13px;letter-spacing:.05em;color:var(--wash);margin:1rem 0 .3rem}
+.prod-body ul{margin:.2rem 0 .4rem 1.1rem;padding:0}
+.prod-body li{margin:.35rem 0;font-size:15px;line-height:1.55;overflow-wrap:anywhere}
+/* Sub-label per entry kind (owner decision, System Change Log Restructure Section 5
+   item 3): "hand-change" (a one-off account edit) vs "shelf-digest" (a monthly
+   Almanac/Docket shelf-refresh summary) answer different questions for the reader, so
+   both stay visibly labeled rather than reading as one undifferentiated feed. */
+.entry-kind{display:inline-block;font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;padding:.05rem .4rem;margin-right:.5rem;border:1px solid var(--rule);color:var(--wash);vertical-align:1px}
+.entry-kind.kind-shelf-digest{color:var(--accent);border-color:var(--accent)}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="bar">
+  <div class="bar-in">
+    <span class="bar-brand">Measure Change Log</span>
+    <span class="bar-note">hand changes + monthly shelf digest &middot; updated continuously</span>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>Measure Change Log</h1>
+  <p>Measure's own dated record, grouped by product (Almanac, Scribe, Docket, Confluence). Two kinds of entry, each labeled: <span class="entry-kind">Hand change</span> is a one-off edit to Measure's own account (a profile correction, a configuration change); <span class="entry-kind kind-shelf-digest">Shelf digest</span> is a one-sentence monthly summary of that month's Almanac or Docket shelf refresh, never itemized per funder. The org-agnostic engineering record for every product, across every organization, is kept separately on jonathanlindavis.com's <a href="https://jonathanlindavis.com/system-change-log" target="_blank" rel="noopener">System Change Log</a>.</p>
+  <span class="cadence">Updated continuously</span>
+</div>
+
+<div class="section" id="products"></div>
+
+<footer><div class="wrap">
+  <p>Prepared for Measure by Jonathan Lin Davis of MICRO Group, L.L.C. Entries are added from Measure's own actual account history; nothing here is projected or promised.</p>
+</div></footer>
+
+<script>
+/* ===IMPROVEMENTLOG-DATA-START=== */
+const LOG = [
+{"p": "Almanac", "d": "2026-07-29", "t": "Corrected Measure's legal-name citation on its profile to match its current Texas Secretary of State filing.", "kind": "hand-change"},
+{"p": "Almanac", "d": "2026-08-07", "t": "Measure's funding-priorities survey response was incorporated into its funder-match data.", "kind": "hand-change"}
+];
+/* ===IMPROVEMENTLOG-DATA-END=== */
+
+const ORDER = ["Almanac","Scribe","Docket","Confluence"];
+const KIND_LABEL = {"hand-change": "Hand change", "shelf-digest": "Shelf digest"};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const host = document.getElementById("products");
+ORDER.forEach(name => {
+  const entries = LOG.filter(e => e.p === name);
+  if (!entries.length) return;
+  const byDate = {};
+  entries.forEach(e => { (byDate[e.d] = byDate[e.d] || []).push(e); });
+  const dates = Object.keys(byDate).sort().reverse();
+  const det = document.createElement("details");
+  det.className = "prod";
+  det.innerHTML = `<summary>${esc(name)}<span class="count">${entries.length} entries</span></summary>` +
+    `<div class="prod-body">` +
+    dates.map(d => `<div class="log-date">${esc(d)}</div><ul>` +
+      byDate[d].map(e => {
+        const kindClass = "entry-kind" + (e.kind === "shelf-digest" ? " kind-shelf-digest" : "");
+        const kindLabel = KIND_LABEL[e.kind] || e.kind;
+        return `<li><span class="${kindClass}">${esc(kindLabel)}</span>${esc(e.t)}</li>`;
+      }).join("") + `</ul>`).join("") +
+    `</div>`;
+  host.appendChild(det);
+});
+</script>
+</body>
+</html>
