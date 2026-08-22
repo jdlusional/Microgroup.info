@@ -34,18 +34,19 @@
 // this tradeoff plainly if asked; do not let a "no content in email" claim
 // stand unqualified when a file-carrying submission arrives.
 //
-// REVIEW PAGE, NOT BUILT: this form is covered by an existing Cloudflare
-// Access application scoped to microgroup.info/specialist-questionnaire*,
-// whose policy also allows the twelve named specialist candidates
-// themselves (queried live from the Access API 2026-08-22, id
-// 26d9dff6-bd8d-496a-8e5c-248c8501528d), not just the owner. A review page
-// living under that same path prefix would let every candidate read every
-// other candidate's submission. Microgroup.info also has no jonathanlindavis.
-// com-style /private* wildcard owner-only gate (_redirects says so
-// explicitly: "No private-index.html exists on this domain by design").
-// Per the conversion brief, this is reported rather than solved by
-// inventing new Access-app machinery. The notification below therefore
-// points at the D1 table by name, not at a URL that does not exist yet.
+// REVIEW PAGE: built 2026-08-22, owner-authorized structured choice ("Build
+// a new MG-side owner-only Access app"). This form is covered by an
+// existing Cloudflare Access application scoped to
+// microgroup.info/specialist-questionnaire*, whose policy also allows the
+// twelve named specialist candidates themselves (id
+// 26d9dff6-bd8d-496a-8e5c-248c8501528d), not just the owner, so the review
+// page could not safely live under that same path prefix. It lives instead
+// at microgroup.info/private-specialist-submissions.html, gated by a
+// dedicated, brand NEW Access application scoped exactly to
+// microgroup.info/private-specialist-submissions* (id
+// 2253dfd5-4047-45c0-a268-c99ecc322213), policies Owner plus the existing
+// Claude Code service-token reader only, no specialist candidates. The
+// notification below links there directly.
 //
 // Config (Cloudflare Pages -> Settings -> Variables and Secrets):
 //   RESEND_KEY   (required for the notification email; best-effort, see
@@ -319,11 +320,8 @@ function buildNotificationText(id, createdAt) {
     `Submission #${id}, ${createdAt}.`,
     "This notification carries no submission content.",
     "",
-    "Review: the specialist_submissions table, Microgroup.info D1 database.",
-    "A dedicated owner-gated review page does not exist yet (see the",
-    "2026-08-22 conversion log for why: this form's own Access wildcard",
-    "also covers the invited specialist candidates, so a review page cannot",
-    "safely live under that same path prefix without further Access-app work).",
+    "Review: https://microgroup.info/private-specialist-submissions.html",
+    "(owner-only, Cloudflare Access gated, no specialist candidates on that policy).",
   ].join("\n");
 }
 
@@ -337,7 +335,7 @@ function buildNotificationHtml(id, createdAt) {
       <div style="padding:16px 20px;font-size:13px;color:#16233b;line-height:1.6">
         <p style="margin:0 0 10px">Submission #${esc(id)}, ${esc(createdAt)}.</p>
         <p style="margin:0 0 10px">This notification carries no submission content.</p>
-        <p style="margin:0">Review the <code>specialist_submissions</code> table, Microgroup.info D1 database. A dedicated owner-gated review page does not exist yet.</p>
+        <p style="margin:0">Review at <a href="https://microgroup.info/private-specialist-submissions.html">private-specialist-submissions.html</a> (owner-only, Access gated).</p>
       </div>
     </div>
   </body></html>`;

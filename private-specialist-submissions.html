@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J4XGXZ4CN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4J4XGXZ4CN');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Specialist Panel Submissions (private)</title>
+<meta name="description" content="Owner-only review of Specialist Panel questionnaire submissions." />
+<meta property="og:type" content="website">
+<meta property="og:title" content="Specialist Panel Submissions (private)">
+<meta property="og:url" content="https://microgroup.info/private-specialist-submissions.html">
+<meta property="og:site_name" content="MICRO Group, L.L.C.">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/svg+xml" href="Assets/micro-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="switcher-shared.css">
+<style>
+:root{
+  --ink:#1b3a6b; --wash:#5a6b82; --paper:#f4efe2; --well:#e8e2d4;
+  --rule:#c8c2b5; --accent:#2f7fd1; --ok:#286644; --warn:#8a5218;
+  --serif:'Spectral',Georgia,'Times New Roman',serif;
+  --mono:'JetBrains Mono','Courier New',monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:920px;margin:0 auto;padding:2rem 1.25rem 4rem}
+h1{font-size:1.9rem;margin:.2rem 0 .3rem}
+.sub{color:var(--wash);margin:0 0 1.4rem;max-width:none}
+.note{font-size:.86rem;color:var(--wash);background:#fff;border:1px dashed var(--rule);padding:.7rem .9rem;margin:0 0 1.6rem;line-height:1.55}
+
+.stats{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.6rem}
+.stat{flex:1 1 8.5rem;min-width:8.5rem;background:var(--well);border:1px solid var(--rule);padding:.6rem .75rem}
+.stat .n{font-family:var(--mono);font-size:1.35rem;font-weight:700;line-height:1.1;display:block}
+.stat .k{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--wash)}
+
+.loading,.empty{padding:2.5rem 0;font-family:var(--mono);font-size:.85rem;color:var(--wash);text-align:center}
+
+.card{background:var(--well);border:1px solid var(--rule);padding:1rem 1.15rem;margin:0 0 .9rem}
+.card summary{cursor:pointer;list-style:none}
+.card summary::-webkit-details-marker{display:none}
+.card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap}
+.card .who{font-size:1.1rem;font-weight:700;overflow-wrap:anywhere}
+.card .who .email{font-weight:400;color:var(--wash);font-size:.92rem}
+.card .meta{font-family:var(--mono);font-size:.72rem;color:var(--wash);text-transform:uppercase;letter-spacing:.03em;margin-top:.25rem}
+.card .excerpt{font-size:.92rem;color:var(--wash);margin-top:.3rem;overflow-wrap:anywhere}
+.card .id-badge{font-family:var(--mono);font-size:.68rem;color:var(--wash);border:1px solid var(--rule);padding:.15rem .5rem;white-space:nowrap}
+.card .files{font-family:var(--mono);font-size:.72rem;color:var(--wash);margin-top:.4rem}
+.card .files b{color:var(--ink);font-weight:600}
+
+.detail{border-top:1px solid var(--rule);margin-top:.8rem;padding-top:.8rem}
+.rows{display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1.4rem;font-size:.9rem;margin-bottom:.7rem}
+.rows .f{min-width:0}
+.rows .f b{display:block;font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;color:var(--wash);margin-bottom:.15rem;font-weight:500}
+.rows .f.wide{grid-column:1 / -1;white-space:pre-wrap}
+.rows .f .empty-val{color:var(--wash);font-style:italic}
+
+.consent-grid{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
+.consent-chip{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.03em;padding:.15rem .5rem;border:1px solid var(--rule)}
+.consent-chip.yes{color:var(--ok);border-color:var(--ok)}
+.consent-chip.no{color:var(--wash)}
+
+@media(max-width:600px){.wrap{padding:1.25rem .9rem 3rem}h1{font-size:1.5rem}.stat{flex:1 1 100%}.rows{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Specialist Panel Submissions</h1>
+  <p class="sub">Owner-only review of the Specialist Panel questionnaire's D1-primary submissions. Not indexed, not linked from anywhere on the public site.</p>
+  <p class="note">This table has no reviewed/disposition column yet (not part of the 2026-08-22 D1 conversion's scope), so every row below is, in effect, unreviewed. Every row also carries an uploaded-file summary only, never the file bytes themselves: attachments still transit a separate best-effort notification email, per the conversion log, and are not stored in D1 or shown here.</p>
+
+  <div class="stats" id="stats"></div>
+  <div id="list" class="loading">Loading&hellip;</div>
+</div>
+
+<script>
+const esc = s => String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const val = (s, cls) => s ? esc(s) : `<span class="${cls||'empty-val'}">&mdash;</span>`;
+
+const CONSENT_KEYS = [
+  ["consent_name", "Name"],
+  ["consent_credentials", "Degrees and credentials"],
+  ["consent_affiliation", "Employer and title"],
+  ["consent_domain", "Domain of specialization"],
+  ["consent_bio", "Professional biography"],
+  ["consent_publications", "Selected publications"],
+  ["consent_geography", "Where they practice"],
+  ["consent_link", "Link to professional profile"],
+  ["consent_photo", "Photograph"],
+];
+
+function fmtBytes(n){
+  if(!n && n !== 0) return "";
+  if(n < 1024) return n + " B";
+  if(n < 1024*1024) return (n/1024).toFixed(1) + " KB";
+  return (n/(1024*1024)).toFixed(1) + " MB";
+}
+
+function fileSummary(fileMetaRaw){
+  if(!fileMetaRaw) return "";
+  let list;
+  try { list = JSON.parse(fileMetaRaw); } catch(e) { return ""; }
+  if(!Array.isArray(list) || !list.length) return "";
+  return list.map(f => `${esc(f.label)} (${esc(f.filename)}, ${fmtBytes(f.size)})`).join(", ");
+}
+
+async function load(){
+  const listEl = document.getElementById("list");
+  let rows = [];
+  try {
+    const res = await fetch("/private-specialist-submissions-data");
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.error || "Load failed");
+    rows = data.rows || [];
+  } catch(e){
+    listEl.className = "empty";
+    listEl.textContent = "Could not load submissions: " + e.message;
+    return;
+  }
+  drawStats(rows);
+  draw(rows);
+}
+
+function drawStats(rows){
+  const total = rows.length;
+  const withFiles = rows.filter(r => { try { const fm = JSON.parse(r.file_meta||"null"); return Array.isArray(fm) && fm.length; } catch(e){ return false; } }).length;
+  const stats = [
+    ["TOTAL", total],
+    ["WITH ATTACHMENTS", withFiles],
+    ["UNREVIEWED", total],
+  ];
+  document.getElementById("stats").innerHTML = stats.map(([k,n])=>
+    `<div class="stat"><span class="n">${n}</span><span class="k">${k}</span></div>`
+  ).join("");
+}
+
+function draw(rows){
+  const listEl = document.getElementById("list");
+  if(rows.length === 0){
+    listEl.className = "empty";
+    listEl.textContent = "No submissions yet.";
+    return;
+  }
+  listEl.className = "";
+  listEl.innerHTML = rows.map(cardHtml).join("");
+}
+
+function cardHtml(r){
+  let p = {};
+  try { p = JSON.parse(r.payload || "{}"); } catch(e) { p = {}; }
+  const fields = p.fields || {};
+  const choices = p.choices || {};
+  const consent = p.consent || {};
+  const files = fileSummary(r.file_meta);
+  const excerptBits = [fields.primary_domain, fields.current_title, fields.current_employer].filter(Boolean);
+
+  return `
+  <details class="card">
+    <summary>
+      <div class="top">
+        <div>
+          <div class="who">${esc(p.name || "(no name)")} <span class="email">&lt;${esc(p.email || "")}&gt;</span></div>
+          <div class="meta">${esc(r.submitted_at)}</div>
+          ${excerptBits.length ? `<div class="excerpt">${esc(excerptBits.join(" &middot; "))}</div>` : ""}
+          ${files ? `<div class="files"><b>Attachments:</b> ${files}</div>` : ""}
+        </div>
+        <span class="id-badge">#${esc(r.id)}</span>
+      </div>
+    </summary>
+    <div class="detail">
+      <div class="rows">
+        <div class="f"><b>Terminal degree</b>${val(fields.terminal_degree)}</div>
+        <div class="f"><b>Other degrees</b>${val(fields.other_degrees)}</div>
+        <div class="f"><b>Certifications</b>${val(fields.certifications)}</div>
+        <div class="f"><b>Licenses</b>${val(fields.licenses)}</div>
+        <div class="f"><b>License status</b>${val(choices.license_status)}</div>
+        <div class="f"><b>Current employer</b>${val(fields.current_employer)}</div>
+        <div class="f"><b>Current title</b>${val(fields.current_title)}</div>
+        <div class="f"><b>Prior positions</b>${val(fields.prior_positions)}</div>
+        <div class="f"><b>Primary domain</b>${val(fields.primary_domain)}</div>
+        <div class="f"><b>Secondary domains</b>${val(fields.secondary_domains)}</div>
+        <div class="f"><b>Methods</b>${val(fields.methods)}</div>
+        <div class="f"><b>Nonprofit experience</b>${val(fields.nonprofit_experience)}</div>
+        <div class="f"><b>Government experience</b>${val(fields.government_experience)}</div>
+        <div class="f"><b>Employed by a government body</b>${val(choices.government_employee)}</div>
+        <div class="f"><b>Government employer named</b>${val(fields.government_employer_detail)}</div>
+        <div class="f"><b>Geography</b>${val(fields.geography)}</div>
+        <div class="f"><b>Funder relationships</b>${val(fields.funder_relationships)}</div>
+        <div class="f wide"><b>Selected publications</b>${val(fields.publications)}</div>
+        <div class="f"><b>Employer page URL</b>${val(fields.employer_page_url)}</div>
+        <div class="f"><b>Review before publishing</b>${val(choices.review_before_publish)}</div>
+        <div class="f"><b>Accuracy confirmation</b>${val(choices.attestation)}</div>
+        <div class="f wide"><b>Corrections to the public record</b>${val(fields.corrections)}</div>
+        <div class="f wide"><b>Anything else</b>${val(fields.wishlist)}</div>
+        <div class="f"><b>Link slug</b>${val(p.slug)}</div>
+        <div class="f"><b>Page URL</b>${val(p.pageUrl)}</div>
+      </div>
+      ${fields.opportunity_title || p.keyPersonnelConsent ? `
+      <div class="rows">
+        <div class="f wide"><b>Exhibit B: this specific opportunity</b>${val(fields.opportunity_title)}</div>
+        <div class="f"><b>Submission deadline</b>${val(fields.submission_deadline)}</div>
+        <div class="f"><b>Anticipated project period</b>${val(fields.project_period)}</div>
+        <div class="f"><b>Anticipated role</b>${val(fields.anticipated_role)}</div>
+        <div class="f"><b>Anticipated level of effort</b>${val(fields.anticipated_effort)}</div>
+        <div class="f wide"><b>Conflicts to disclose</b>${val(fields.opportunity_conflicts)}</div>
+        <div class="f"><b>Consent to be named as key personnel</b>${val(p.keyPersonnelConsent)}</div>
+      </div>` : ""}
+      <div><b style="display:block;font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;color:var(--wash);margin-bottom:.3rem">Publication consent</b>
+        <div class="consent-grid">
+          ${CONSENT_KEYS.map(([k,l]) => `<span class="consent-chip ${consent[k]?'yes':'no'}">${esc(l)}: ${consent[k]?'yes':'no'}</span>`).join("")}
+        </div>
+      </div>
+    </div>
+  </details>`;
+}
+
+load();
+</script>
+</body>
+</html>
