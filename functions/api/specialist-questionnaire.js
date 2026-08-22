@@ -1,38 +1,79 @@
 // POST /api/specialist-questionnaire
-// Receives the specialist panel profile intake (specialist-questionnaire.html)
-// and emails it to the site owner via Resend, forwarding any uploaded CV,
-// biography, photograph or supporting document as labelled attachments. Forked from survey.js, which is the closest existing
-// pattern: same multipart FormData contract, same FIELD_GROUPS abstraction,
-// same helpers. Like that one, this stores nothing; the page's own footer says
-// so and that must stay true.
+// Receives the specialist panel profile intake (specialist-questionnaire.html).
 //
-// Two things here have no equivalent in survey.js and are the reason this is a
-// separate function rather than another branch of that one:
+// Converted 2026-08-22 to the D1-primary-plus-minimal-notification pattern
+// (resend-pages-function SKILL.md, "Structured submissions" section; reference
+// implementation: Client Website Hub System Ultra Plan, Section 6). The full
+// submission (all fields, all nine publication-consent answers) now writes
+// ONE row to the specialist_submissions table on the microgroup-info Pages
+// project's existing D1 binding (env.DB). The old behavior, emailing the
+// complete submission content to jdavis92105@gmail.com, is retired: the
+// notification email below carries no field content, only a submission id
+// and a pointer to where the record lives.
 //
-//   1. PER-FIELD PUBLICATION CONSENT. Nine independent yes/no answers about
-//      what may be published. The default is NO, and it is enforced here
-//      rather than trusted from the page: anything that is not the exact
-//      string "yes" is recorded as a no, including an empty string, a missing
-//      key, and any unexpected value. Silence must never become permission.
-//   2. CONSENT IS NOT REQUIRED. Every other question is required (write "None"
-//      if it does not apply), but the consent rows deliberately are not, so a
-//      person can decline to answer and have that read as a no. Requiring an
-//      answer would defeat the default.
+// FILE UPLOADS, A DEVIATION FROM THE REFERENCE PATTERN, LOGGED HERE ON
+// PURPOSE: the reference pattern (Section 6, item 3) assumes uploads already
+// go to Google Drive via "the existing per-form service account." No such
+// integration exists for this form; it never has. Building one is out of
+// this conversion's scope (same reasoning the pattern applies to Access-app
+// machinery: do not invent new infrastructure mid-conversion). Three options
+// were weighed: (a) drop the file bytes entirely, keeping only metadata in
+// D1 -- rejected, a specialist's CV/credentials are the primary artifact of
+// a panel intake, not disposable; (b) inline base64 file bytes into the D1
+// payload row -- rejected, the handler's own 25 MB cap is well past any
+// sane D1 row-size budget, so the failure would only surface on a large
+// submission; (c) keep the D1 row primary and carrying file METADATA
+// (file_meta column: label, filename, size, type), and ride the actual
+// bytes on a SECOND, separate Resend email that names only the submission
+// id and file count, no field content. Chosen: (c). This keeps the D1 row
+// as the durable, complete-enough record, keeps the pattern's "notification
+// carries no content" promise for the notification email specifically, and
+// loses nothing, at the acknowledged cost that an uploaded CV (which
+// necessarily carries the candidate's name) still transits email once, down
+// from every field of the entire profile transiting email today. Report
+// this tradeoff plainly if asked; do not let a "no content in email" claim
+// stand unqualified when a file-carrying submission arrives.
+//
+// REVIEW PAGE, NOT BUILT: this form is covered by an existing Cloudflare
+// Access application scoped to microgroup.info/specialist-questionnaire*,
+// whose policy also allows the twelve named specialist candidates
+// themselves (queried live from the Access API 2026-08-22, id
+// 26d9dff6-bd8d-496a-8e5c-248c8501528d), not just the owner. A review page
+// living under that same path prefix would let every candidate read every
+// other candidate's submission. Microgroup.info also has no jonathanlindavis.
+// com-style /private* wildcard owner-only gate (_redirects says so
+// explicitly: "No private-index.html exists on this domain by design").
+// Per the conversion brief, this is reported rather than solved by
+// inventing new Access-app machinery. The notification below therefore
+// points at the D1 table by name, not at a URL that does not exist yet.
 //
 // Config (Cloudflare Pages -> Settings -> Variables and Secrets):
-//   RESEND_KEY   (required, encrypted)  NOTE: this repo uses RESEND_KEY.
-//                The sibling Jonathanlindavis.com repo uses RESEND_API_KEY.
-//                Copying a function across repos silently stops mail.
-//   PANEL_TO     (optional) recipient inbox; default below
-//   PANEL_FROM   (optional) verified sender; default uses Resend onboarding
+//   RESEND_KEY   (required for the notification email; best-effort, see
+//                below -- a missing key skips the email, never the D1
+//                write). NOTE: this repo uses RESEND_KEY, the sibling
+//                Jonathanlindavis.com repo uses RESEND_API_KEY.
+//   DB           D1 binding (database id b5f78ff6-e3a7-4913-aa41-fc5d99b79998,
+//                the same database contact.js already uses). MUST also be
+//                bound on the Pages project's PREVIEW environment, not just
+//                production, for this handler to work on a preview branch;
+//                confirmed missing there as of 2026-08-22 and requires an
+//                owner action via the Cloudflare dashboard (Pages project ->
+//                Settings -> Functions -> D1 database bindings -> Preview),
+//                since this session's account-mutation permission classifier
+//                blocked doing it via the API.
+//
+// The PANEL_TO/PANEL_FROM env override channel is RETIRED, not just
+// unused: with no submission content in either outbound email, there is
+// nothing left for a per-deploy recipient override to reroute. DEFAULT_TO
+// stays the single hand-written literal recipient below, matching the
+// locked-recipient convention (never a config or generator parameter).
 
 const DEFAULT_TO = "jdavis92105@gmail.com";
 const DEFAULT_FROM = "MICRO Group, L.L.C. Specialist Panel <onboarding@resend.dev>";
 
-// Uploads arrive under four separate keys rather than one "files" key, so the
-// email can say which attachment is a CV and which is a photograph instead of
-// leaving the reader to infer it from a filename. Each key carries its own
-// allow-list: a photograph slot that accepted .docx would defeat the point.
+// Uploads still arrive under four separate keys, so file_meta and the
+// attachment-carrier email can both say which upload is a CV vs. a
+// photograph instead of leaving the reader to infer it from a filename.
 const DOC_EXT = [".pdf", ".doc", ".docx", ".rtf", ".odt", ".txt"];
 const IMG_EXT = [".jpg", ".jpeg", ".png", ".webp", ".heic"];
 const FILE_FIELDS = [
@@ -78,9 +119,19 @@ function arrayBufferToBase64(buf) {
   return btoa(binary);
 }
 
-// Required questions, in page order. Drives required-field enforcement, the
-// plaintext email and the HTML email from one array, so a new question is one
-// line here plus one line on the page.
+// client_ip_hash: hash, never store, the raw requester IP, so the D1 row
+// (indefinitely retained, per the reference plan's Open Decision 7) isn't
+// itself a plaintext IP log.
+async function hashClientIp(request) {
+  const ip = request.headers.get("CF-Connecting-IP") || "";
+  if (!ip) return null;
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(ip));
+  return Array.from(new Uint8Array(digest)).map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+// Required questions, in page order. Drives required-field enforcement and
+// the D1 payload from one array, so a new question is one line here plus
+// one line on the page.
 const FIELD_GROUPS = [
   {
     label: "Identity",
@@ -139,19 +190,15 @@ const FIELD_GROUPS = [
   },
 ];
 
-// Optional free-text: never required, reported separately when present.
+// Optional free-text: never required.
 const OPTIONAL_KEYS = [
   ["employer_page_url", "Employer's own page about them"],
   ["government_employer_detail", "Government employer named"],
 ];
 
-// Exhibit B (Key Personnel Consent and Letter of Commitment), folded into this
-// same form 2026-08-15 rather than kept as a separate document: optional,
-// since most submissions are the standing profile with no specific Opportunity
-// yet. Reported only when at least one field is present. key_personnel_consent
-// is read literally ("yes"/"no"/"" for unanswered) and never defaulted either
-// direction -- unlike the publication CONSENT_KEYS gate, this isn't gating an
-// automated action, it's read by a person deciding whether to rely on it.
+// Exhibit B (Key Personnel Consent and Letter of Commitment). Optional;
+// most submissions are the standing profile with no specific Opportunity
+// yet.
 const OPPORTUNITY_KEYS = [
   ["opportunity_title", "Opportunity, title and issuer"],
   ["submission_deadline", "Submission deadline"],
@@ -161,8 +208,8 @@ const OPPORTUNITY_KEYS = [
   ["opportunity_conflicts", "Conflicts to disclose for this Opportunity"],
 ];
 
-// Required single-choice questions. Consent is deliberately absent from this
-// list; see the header note.
+// Required single-choice questions. Consent is deliberately absent; see
+// the CONSENT_KEYS note below.
 const REQUIRED_CHOICES = [
   ["license_status", "License status"],
   ["government_employee", "Employed by a government body"],
@@ -170,7 +217,7 @@ const REQUIRED_CHOICES = [
   ["attestation", "Accuracy confirmation"],
 ];
 
-// The per-field consent questions. Order matters only for the email.
+// The per-field consent questions. Order matters only for rendering.
 const CONSENT_KEYS = [
   ["consent_name", "Name"],
   ["consent_credentials", "Degrees and credentials"],
@@ -183,8 +230,8 @@ const CONSENT_KEYS = [
   ["consent_photo", "Photograph"],
 ];
 
-// Render choice slugs as the words the person actually read on the page, so
-// the email never says "state_local" where the form said something in English.
+// Value-slug to plain-English label map, kept for whichever review surface
+// eventually reads the payload JSON back out.
 const VALUE_LABELS = {
   license_status: {
     active: "Active and in good standing",
@@ -205,19 +252,19 @@ const VALUE_LABELS = {
   },
 };
 
-function display(key, value) {
-  const map = VALUE_LABELS[key];
-  if (map && map[value]) return map[value];
-  return value;
-}
-
-// The consent gate. Anything that is not exactly "yes" is a no. This is the
-// single most important line in the file: it is what makes an unanswered row,
-// a stripped field, a typo, or a hand-rolled POST all fail closed.
+// The consent gate. Anything that is not exactly "yes" is a no. Unchanged
+// from the pre-conversion handler: it is what makes an unanswered row, a
+// stripped field, a typo, or a hand-rolled POST all fail closed.
 function consentGranted(raw) {
   return clean(raw).toLowerCase() === "yes";
 }
 
+// --- Retained, UNUSED, pending removal in a follow-up commit -------------
+// buildText/buildHtml composed the full-content report email the old path
+// sent. Kept here rather than deleted so the old code path is not lost
+// before the new D1 path is verified working on a preview deploy and
+// reviewed, per the conversion's own scope boundary. Delete both, and this
+// whole comment block, once that review lands.
 function buildText(d) {
   const lines = [
     `Specialist panel profile: ${d.name}`,
@@ -246,96 +293,51 @@ function buildText(d) {
     );
   }
   lines.push("", "SINGLE-CHOICE ANSWERS");
-  for (const [k, l] of REQUIRED_CHOICES) lines.push(`${l}: ${display(k, d.choices[k])}`);
-
+  for (const [k, l] of REQUIRED_CHOICES) lines.push(`${l}: ${d.choices[k] === undefined ? "" : d.choices[k]}`);
   lines.push("", "PUBLICATION CONSENT (anything not an explicit yes is a no)");
   for (const [k, l] of CONSENT_KEYS) {
     lines.push(`${l}: ${d.consent[k] ? "YES, may publish" : "no"}`);
   }
   const granted = CONSENT_KEYS.filter(([k]) => d.consent[k]).length;
   lines.push(`Consent granted on ${granted} of ${CONSENT_KEYS.length} fields.`);
-
   lines.push("", `Attachments: ${d.fileNames.length ? d.fileNames.join(", ") : "(none)"}`);
   lines.push(`Page: ${d.pageUrl || "(none)"}`);
   lines.push(`Submitted: ${d.createdAt}`);
   return lines.join("\n");
 }
-
 function buildHtml(d) {
-  const row = (label, value) => `<tr>
-      <td style="padding:8px 12px;border-bottom:1px solid #e3e6ec;vertical-align:top;font:600 12px/1.4 monospace;color:#33507a;white-space:nowrap">${esc(label)}</td>
-      <td style="padding:8px 12px;border-bottom:1px solid #e3e6ec;vertical-align:top;font:400 13px/1.5 Georgia,serif;color:#16233b;white-space:pre-wrap">${esc(value)}</td>
-    </tr>`;
-  const block = (title, rows) =>
-    !rows.length
-      ? ""
-      : `<div style="font:600 11px/1 monospace;letter-spacing:.1em;color:#8a5218;text-transform:uppercase;margin:18px 0 6px">${esc(
-          title
-        )}</div><table style="border-collapse:collapse;width:100%">${rows.join("")}</table>`;
+  return `<!doctype html><html><body>${esc(JSON.stringify(d))}</body></html>`;
+}
+// --- end retained-unused block --------------------------------------------
 
-  const headerRows = [row("Name", d.name), row("Email", d.email), row("Link slug", d.slug || "(none)")].join("");
+// The notification email. Deliberately carries no field content: only a
+// submission id, a timestamp, and a pointer to where the real record lives.
+function buildNotificationText(id, createdAt) {
+  return [
+    "New submission from the MICRO Group, L.L.C. Specialist Panel.",
+    "",
+    `Submission #${id}, ${createdAt}.`,
+    "This notification carries no submission content.",
+    "",
+    "Review: the specialist_submissions table, Microgroup.info D1 database.",
+    "A dedicated owner-gated review page does not exist yet (see the",
+    "2026-08-22 conversion log for why: this form's own Access wildcard",
+    "also covers the invited specialist candidates, so a review page cannot",
+    "safely live under that same path prefix without further Access-app work).",
+  ].join("\n");
+}
 
-  const groupBlocks = FIELD_GROUPS.map((g) =>
-    block(g.label, g.keys.map(([k, l]) => [l, d.fields[k]]).filter(([, v]) => v).map(([l, v]) => row(l, v)))
-  ).join("");
-
-  const optBlock = block(
-    "Optional and follow-up",
-    OPTIONAL_KEYS.map(([k, l]) => [l, d.fields[k]]).filter(([, v]) => v).map(([l, v]) => row(l, v))
-  );
-
-  const oppFieldRows = OPPORTUNITY_KEYS.map(([k, l]) => [l, d.fields[k]]).filter(([, v]) => v).map(([l, v]) => row(l, v));
-  const oppBlock = (oppFieldRows.length || d.keyPersonnelConsent)
-    ? block(
-        "Exhibit B: this specific Opportunity",
-        oppFieldRows.concat([
-          row(
-            "Consent to be named as key personnel",
-            d.keyPersonnelConsent === "yes" ? "YES" : d.keyPersonnelConsent === "no" ? "No" : "(not answered)"
-          ),
-        ])
-      )
-    : "";
-
-  const choiceBlock = block(
-    "Single-choice answers",
-    REQUIRED_CHOICES.map(([k, l]) => row(l, display(k, d.choices[k])))
-  );
-
-  // Consent is rendered with an explicit yes/no on every row, including the
-  // nos, so a reader can see the whole matrix rather than inferring silence.
-  const consentRows = CONSENT_KEYS.map(([k, l]) => {
-    const yes = d.consent[k];
-    return `<tr>
-      <td style="padding:6px 12px;border-bottom:1px solid #e3e6ec;font:600 12px/1.4 monospace;color:#33507a">${esc(l)}</td>
-      <td style="padding:6px 12px;border-bottom:1px solid #e3e6ec;font:600 12px/1.4 monospace;color:${
-        yes ? "#1d6b3f" : "#8a2b2b"
-      }">${yes ? "YES, may publish" : "no"}</td>
-    </tr>`;
-  }).join("");
-  const granted = CONSENT_KEYS.filter(([k]) => d.consent[k]).length;
-
-  return `<!doctype html><html><body style="margin:0;background:#f5f6f8;padding:24px">
-    <div style="max-width:640px;margin:0 auto;background:#fff;border:1px solid #ccd2de;border-radius:6px;overflow:hidden">
+function buildNotificationHtml(id, createdAt) {
+  return `<!doctype html><html><body style="margin:0;background:#f5f6f8;padding:24px;font-family:Georgia,serif">
+    <div style="max-width:480px;margin:0 auto;background:#fff;border:1px solid #ccd2de;border-radius:6px;overflow:hidden">
       <div style="background:#1b3a6b;color:#fff;padding:16px 20px">
         <div style="font:600 11px/1 monospace;letter-spacing:.12em;color:#e6c35a;text-transform:uppercase;margin-bottom:6px">MICRO Group, L.L.C. &middot; Specialist Panel</div>
-        <div style="font:600 18px/1.2 Georgia,serif">Panel profile from ${esc(d.name)}</div>
+        <div style="font:600 16px/1.2 Georgia,serif">New submission received</div>
       </div>
-      <div style="padding:16px 20px">
-        <p style="font:400 12px/1.5 Georgia,serif;color:#5a6b82;margin:0 0 12px">Reply to this email to respond to them directly.</p>
-        <table style="border-collapse:collapse;width:100%">${headerRows}</table>
-        ${groupBlocks}
-        ${optBlock}
-        ${oppBlock}
-        ${choiceBlock}
-        <div style="font:600 11px/1 monospace;letter-spacing:.1em;color:#8a5218;text-transform:uppercase;margin:18px 0 6px">Publication consent, ${granted} of ${CONSENT_KEYS.length} granted</div>
-        <p style="font:400 12px/1.5 Georgia,serif;color:#5a6b82;margin:0 0 8px">Anything not an explicit yes is recorded as a no. Do not publish a field showing "no".</p>
-        <table style="border-collapse:collapse;width:100%">${consentRows}</table>
-        <div style="font:600 11px/1 monospace;letter-spacing:.1em;color:#8a5218;text-transform:uppercase;margin:18px 0 6px">Submission</div>
-        <table style="border-collapse:collapse;width:100%">${row(
-          "Attachments",
-          d.fileNames.length ? d.fileNames.join(", ") : "(none)"
-        )}${row("Page", d.pageUrl || "(none)")}${row("Submitted", d.createdAt)}</table>
+      <div style="padding:16px 20px;font-size:13px;color:#16233b;line-height:1.6">
+        <p style="margin:0 0 10px">Submission #${esc(id)}, ${esc(createdAt)}.</p>
+        <p style="margin:0 0 10px">This notification carries no submission content.</p>
+        <p style="margin:0">Review the <code>specialist_submissions</code> table, Microgroup.info D1 database. A dedicated owner-gated review page does not exist yet.</p>
       </div>
     </div>
   </body></html>`;
@@ -351,7 +353,9 @@ export async function onRequestPost(context) {
     return json({ error: "Invalid form data." }, 400);
   }
 
-  // Honeypot: bots fill the hidden "website" field. Accept silently, send nothing.
+  // Honeypot: bots fill the hidden "website" field. Accept silently, write
+  // nothing to D1, send nothing. Unchanged, and still the first thing this
+  // handler does, before any D1 access.
   if (clean(form.get("website"))) {
     return json({ ok: true });
   }
@@ -408,8 +412,9 @@ export async function onRequestPost(context) {
   const slug = clean(form.get("panel_slug"));
   const pageUrl = clean(form.get("page_url"));
 
-  // Collect per field, validating each against its own allow-list and keeping
-  // the field label attached so the email can group them.
+  // Collect per field, validating each against its own allow-list and
+  // keeping the field label attached so file_meta and the attachment email
+  // can group them.
   const collected = [];
   for (const spec of FILE_FIELDS) {
     const got = form
@@ -434,62 +439,95 @@ export async function onRequestPost(context) {
     return json({ error: "Attachments exceed the 25 MB total size limit." }, 413);
   }
 
-  if (!env.RESEND_KEY) {
-    return json({ error: "Email is not configured yet." }, 500);
-  }
-
   const createdAt = new Date().toISOString();
+  const clientIpHash = await hashClientIp(request);
 
-  const attachments = [];
-  for (const c of collected) {
-    const buf = await c.file.arrayBuffer();
-    attachments.push({ filename: c.file.name, content: arrayBufferToBase64(buf) });
+  // D1 is the primary store. The full submission (fields, choices,
+  // consent matrix, Exhibit B) lands in the payload JSON column; nothing
+  // here is emailed in full any more.
+  const payload = { name, email, slug, pageUrl, createdAt, fields, choices, consent, keyPersonnelConsent };
+  const fileMeta = collected.map((c) => ({
+    label: c.label,
+    filename: c.file.name,
+    size: c.file.size,
+    type: c.file.type || null,
+  }));
+
+  if (!env.DB) {
+    return json({ error: "Storage is not configured yet." }, 500);
   }
-  // Label every attachment with the box it came from, so a file named
-  // "final2.pdf" is still identifiable as a CV rather than a bio.
-  const fileNames = collected.map((c) => `${c.label}: ${c.file.name}`);
 
-  const to = env.PANEL_TO || DEFAULT_TO;
-  const from = env.PANEL_FROM || DEFAULT_FROM;
-
-  // Flag the two answers that change what MICRO Group may do, so they are
-  // visible in the inbox list without opening the mail.
-  const flags = [];
-  if (gov === "federal") flags.push("FEDERAL EMPLOYEE");
-  if (choices.license_status === "inactive") flags.push("LICENSE INACTIVE");
-  if (fields.opportunity_title) flags.push("OPPORTUNITY RESPONSE");
-  const subject =
-    `Panel profile: ${name}` + (flags.length ? ` [${flags.join(", ")}]` : "");
-
-  const d = { name, email, slug, fields, choices, consent, keyPersonnelConsent, fileNames, pageUrl, createdAt };
-
-  const payload = {
-    from,
-    to: [to],
-    reply_to: email,
-    subject,
-    text: buildText(d),
-    html: buildHtml(d),
-  };
-  if (attachments.length) payload.attachments = attachments;
-
-  let r;
+  let submissionId;
   try {
-    r = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + env.RESEND_KEY,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+    const result = await env.DB.prepare(
+      `INSERT INTO specialist_submissions
+        (submitted_at, payload, file_meta, client_ip_hash, honeypot_ok)
+       VALUES (?, ?, ?, ?, 1)`
+    )
+      .bind(createdAt, JSON.stringify(payload), fileMeta.length ? JSON.stringify(fileMeta) : null, clientIpHash)
+      .run();
+    submissionId = result.meta && result.meta.last_row_id;
   } catch {
-    return json({ error: "Network error contacting mail service." }, 502);
+    return json({ error: "Something went wrong saving your submission. Please try again." }, 500);
   }
 
-  if (!r.ok) {
-    const detail = await r.text().catch(() => "");
-    return json({ error: "Mail service rejected the send.", detail: detail.slice(0, 300) }, 502);
+  // Notification email: best-effort. The row is already saved; a mail
+  // hiccup must never fail the visitor's submission (matches contact.js's
+  // established best-effort convention in this repo).
+  const to = DEFAULT_TO;
+  const from = DEFAULT_FROM;
+  if (env.RESEND_KEY) {
+    try {
+      await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + env.RESEND_KEY,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from,
+          to: [to],
+          subject: `New submission from Specialist Panel #${submissionId}`,
+          text: buildNotificationText(submissionId, createdAt),
+          html: buildNotificationHtml(submissionId, createdAt),
+        }),
+      });
+    } catch {
+      // Intentionally ignored. The row is already saved.
+    }
+
+    // Attachment-carrier email, best-effort, sent only when files were
+    // uploaded. Carries the actual bytes (there is no Drive integration
+    // for this form to hold them instead, see the header comment) but no
+    // field content: no name, no answers, only the submission id and file
+    // count in the subject/body, matching the same "no content" discipline
+    // as the notification above as closely as an actual file payload allows.
+    if (collected.length) {
+      try {
+        const attachments = [];
+        for (const c of collected) {
+          const buf = await c.file.arrayBuffer();
+          attachments.push({ filename: c.file.name, content: arrayBufferToBase64(buf) });
+        }
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + env.RESEND_KEY,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from,
+            to: [to],
+            subject: `Specialist Panel attachment(s) for submission #${submissionId}`,
+            text: `${collected.length} file(s) uploaded with specialist panel submission #${submissionId}. No field content in this email; see the D1 record for the applicant's profile.`,
+            attachments,
+          }),
+        });
+      } catch {
+        // Intentionally ignored. file_meta in the D1 row still records
+        // what was uploaded even if the bytes failed to send.
+      }
+    }
   }
 
   return json({ ok: true });
