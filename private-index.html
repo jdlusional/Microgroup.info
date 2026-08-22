@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Private Index — Jonathan Lin Davis</title>
+<meta name="description" content="Private master index of every project on this site. Owner only." />
+<meta property="og:type" content="website">
+<meta property="og:title" content="Private Index — Jonathan Lin Davis">
+<meta property="og:description" content="Private master index of every project on this site. Owner only.">
+<meta property="og:url" content="https://jonathanlindavis.com/private-index.html">
+<meta property="og:image" content="https://jonathanlindavis.com/Assets/og-image.png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Jonathan Lin Davis: the business of thinking for a living.">
+<meta property="og:site_name" content="Jonathan Lin Davis">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Private Index — Jonathan Lin Davis">
+<meta name="twitter:description" content="Private master index of every project on this site. Owner only.">
+<meta name="twitter:image" content="https://jonathanlindavis.com/Assets/og-image.png">
+
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/svg+xml" href="Assets/micro-mark.svg">
+<style>
+:root{
+  --paper:#eef0f2; --ink:#20242b; --line:#ccd0d6; --muted:#626b78;
+  --accent:#b5652d; --accent-soft:#e7d3c2;
+  --preview:#3d6fb4; --preview-soft:#e4ecf7;
+  --mg:#2f7fd1; --ext:#8a5218;
+  --agnostic:#6b5b95;
+  --mono:ui-monospace,"Cascadia Mono","Segoe UI Mono","SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--mono);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--ink);text-decoration:none}
+a:hover{color:var(--accent);text-decoration:underline}
+
+.wrap{max-width:820px;margin:0 auto;padding:3rem 1.5rem 4rem}
+.switcher{display:flex;justify-content:flex-end;gap:.4rem;margin-bottom:1.4rem}
+.switcher .tab{font-size:.84rem;letter-spacing:.08em;text-transform:uppercase;padding:.34rem .8rem;border:1px solid var(--line);background:#fff;color:var(--muted)}
+.switcher .tab:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+.switcher .tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.path{font-size:.88rem;color:var(--muted);letter-spacing:.01em;margin-bottom:1.6rem}
+.path .seg{color:var(--muted)}
+.path .cur{color:var(--accent);font-weight:600}
+
+.kicker{font-size:.84rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+h1{font-size:1.9rem;font-weight:600;margin:0 0 .9rem;letter-spacing:-.01em}
+.intro{color:var(--muted);font-size:.92rem;max-width:none;margin:0 0 2.4rem}
+
+.section-label{font-size:.84rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:.5rem;margin:0 0 1rem}
+
+/* Quick links and Dev Previews items (2026-07-24) take the same three domain colors as
+   the category tree below: orange (jonathanlindavis.com) is the default since it's this
+   site's own accent, blue for microgroup.info (by href, same as the tree's old badge logic
+   -- it can't drift since it's read straight off the link), purple for the one link that's
+   genuinely site-agnostic (spans both domains) rather than belonging to either. No more
+   "-> microgroup.info" suffix text: the border/text color already says which domain. */
+.quick{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:2.8rem}
+.quick a{font-size:.88rem;padding:.4rem .75rem;border:1px solid var(--accent);background:#fff;color:var(--accent)}
+.quick a:hover{background:var(--accent);color:#fff;text-decoration:none}
+.quick a[href*="microgroup.info"],.quick a[href*="microgroup-info.pages.dev"]{border-color:var(--mg);color:var(--mg)}
+.quick a[href*="microgroup.info"]:hover,.quick a[href*="microgroup-info.pages.dev"]:hover{background:var(--mg);color:#fff}
+.quick a.agnostic{border-color:var(--agnostic);color:var(--agnostic)}
+.quick a.agnostic:hover{background:var(--agnostic);color:#fff}
+
+.disclaimer{font-size:.88rem;color:var(--muted);background:#fff;border:1px dashed var(--line);padding:.7rem .9rem;margin-bottom:1.8rem;line-height:1.55}
+
+.preview-panel{border:1.5px solid var(--preview);background:var(--preview-soft);border-radius:8px;padding:1rem 1.2rem 1.2rem;margin:0 0 2.8rem}
+.preview-panel .preview-head{font-size:.84rem;letter-spacing:.1em;text-transform:uppercase;color:var(--preview);font-weight:600;margin-bottom:.5rem}
+.preview-panel .preview-note{font-size:.86rem;color:var(--muted);line-height:1.55;margin-bottom:.9rem}
+.preview-panel .quick{margin-bottom:0}
+/* Empty-state for the previews list (2026-08-03). An empty panel reads as "this feature is
+   broken"; saying so explicitly reads as "nothing is open", which is the actual state. */
+/* flex:1 1 100% + min-width:0 per the standing overflow rule: a flex child defaults to
+   min-width:auto and will not shrink below its longest unbreakable token, which is how a
+   sentence in a flex row pushes a page into horizontal scroll on a narrow screen. */
+.preview-empty{flex:1 1 100%;min-width:0;font-size:.86rem;color:var(--muted);font-style:italic;line-height:1.55}
+.preview-panel .quick a{background:#fff}
+/* The 2026-08-08 full-width/overflow-wrap forcing on these links is REMOVED (2026-08-17): it
+   was written for a version of this panel where the link's own visible text WAS the long
+   generated sentence. The 2026-08-15 lean redesign moved that prose into .preview-fields
+   (which already carries its own overflow-wrap:anywhere, line below), so the link text is
+   short "site: branch-name" again -- this rule had gone stale and was forcing every short
+   link into its own isolated full-width box instead of the compact wrapped pills .quick
+   renders everywhere else on this page. Found visually: two full-width orange boxes for a
+   two-page branch, disconnected-looking next to the plain-text description below them. */
+
+/* Color key (2026-07-24): the same three domain colors used on quick links, Dev Previews
+   items, tier-tags, and the tree's own domain-group headers below, named once in one place
+   rather than left for the reader to infer from context. */
+.key-legend{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.2rem}
+.key-chip{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;padding:.35rem .8rem}
+.key-chip.agnostic{background:var(--agnostic)}
+.key-chip.mg{background:var(--mg)}
+.key-chip.jld{background:var(--accent)}
+/* mg/jld chips are also links (2026-07-24): keep the white-on-color pill look on
+   hover instead of the page's default a:hover (accent color + underline). */
+.key-chip:hover{color:#fff;text-decoration:none;opacity:.85}
+
+.tree{font-size:.92rem}
+/* Domain grouping (2026-07-24): every link in the tree lives on exactly one of these two
+   domains, so the domain is now stated ONCE per group instead of once per row -- the badge
+   that used to render on every node (generated from its own href) became pure repetition
+   once rows were sorted this way, and is gone. */
+.domain-group{margin:0 0 3.4rem}
+.domain-group:last-child{margin-bottom:0}
+.domain-head{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--ink);padding:.35rem .8rem;margin-bottom:1.4rem}
+.domain-group.agnostic .domain-head{background:var(--agnostic)}
+.domain-group.mg .domain-head{background:var(--mg)}
+.domain-group.jld .domain-head{background:var(--accent)}
+/* Flag text picks up its group's color (2026-07-24) so it visually matches the domain
+   header it sits under, instead of every row using the same accent orange regardless of
+   which group it's actually in. */
+.domain-group.agnostic .flag{color:var(--agnostic)}
+.domain-group.mg .flag{color:var(--mg)}
+.domain-group.jld .flag{color:var(--accent)}
+
+/* Collapsible tree (2026-08-15, Private Index Lean Redesign): domain groups and cats become
+   <details>/<summary>, closed by default, so the page opens short. CSS-drawn triangle marker,
+   no font glyph dependency, so there is no tofu risk on Windows the way a text glyph in
+   var(--mono) would carry. */
+.tree details{margin:0}
+.tree summary{cursor:pointer;list-style:none;overflow-wrap:anywhere}
+.tree summary::-webkit-details-marker{display:none}
+.tree summary::before{
+  content:'';
+  display:inline-block;
+  width:0;height:0;
+  border-top:.4em solid transparent;
+  border-bottom:.4em solid transparent;
+  border-left:.5em solid var(--muted);
+  margin-right:.6rem;
+  vertical-align:middle;
+  transition:transform .15s ease;
+}
+.tree details[open]>summary::before{transform:rotate(90deg)}
+
+/* Bigger touch targets (2026-08-15, owner report: the marker past the top level was too
+   small to reliably tap). The whole <summary> row is always the real click target, not just
+   the triangle glyph, but with no vertical padding the effective tap height was just the
+   text's line-height. Real padding here also does double duty for the spacing request below:
+   more room reads as more breathing room AND a bigger, easier-to-hit row at the same time. */
+.tree summary{padding:.4rem 0}
+.tree li>details>summary{padding:.4rem 0}
+
+/* domain-head moves from div to summary. This is the one real flex container this change
+   introduces at the tree's top level, so min-width:0 belongs here, on the container and its
+   children, per the standing overflow rule: a flex child defaults to min-width:auto and will
+   not shrink below its longest unbreakable token. */
+details.domain-group>summary.domain-head{display:inline-flex;align-items:center;min-width:0}
+details.domain-group>summary.domain-head>*{min-width:0}
+
+/* collapsed-state dead-space fix: without this, domain-head's existing margin-bottom:1.1rem
+   is empty space under every closed header, undercutting the goal of a short closed page. */
+details.domain-group:not([open])>summary.domain-head{margin-bottom:0}
+details.cat-group:not([open])>summary.cat{margin-bottom:0}
+.tree details.cat-group{margin:0 0 .3rem}
+
+.cat{color:var(--ink);font-weight:600;margin:2.2rem 0 .6rem}
+/* .cat no longer sits as a direct child of .domain-group now that it lives inside
+   details.cat-group, so the old ".domain-group>.cat:first-child" selector would silently
+   stop matching; this is its replacement. */
+.domain-group>details.cat-group:first-of-type>.cat{margin-top:0}
+/* Cost-tier tags on the Products family headings. Free & Public keeps its own green fill
+   regardless of group -- that's a cost-tier signal, not a domain one. Every OTHER tag
+   (paid, meta, or the plain unmodified tag) instead matches its own domain-group's color
+   on a white background (2026-07-24) -- previously every non-free tag rendered in the same
+   accent orange no matter which group it sat under, so Enterprise's "Paid" tag (blue group)
+   was showing orange. */
+.cat .tier-tag{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding:.14rem .55rem;margin-left:.55rem;border-radius:999px;white-space:nowrap;background:#fff}
+.tier-tag.tier-free{color:#fff;background:#2c6e49;border:1px solid #2c6e49}
+.domain-group.agnostic .tier-tag:not(.tier-free){color:var(--agnostic);border:1px solid var(--agnostic)}
+.domain-group.mg .tier-tag:not(.tier-free){color:var(--mg);border:1px solid var(--mg)}
+.domain-group.jld .tier-tag:not(.tier-free){color:var(--accent);border:1px solid var(--accent)}
+/* 2026-08-15: found by direct Playwright testing, not assumed safe. white-space:nowrap
+   (needed so short tags like "Paid" or "Access-gated" don't break mid-word) overflows the
+   viewport at 320px for the one unusually long tag, Websites' "client web work, outside the
+   product family" -- a phrase, not a short label. Relaxing to normal wrapping only below
+   560px keeps every short tag's single-line look everywhere it currently has room. */
+@media(max-width:560px){.cat .tier-tag{display:inline-block;margin-left:0;margin-top:.25rem;white-space:normal;max-width:100%}}
+
+/* Real nested lists (2026-07-24), replacing hand-typed box-drawing connectors: every
+   branch/elbow/continuation line is now derived from actual DOM nesting via ::before/::after,
+   so it renders correctly by construction and can't drift out of sync the way a hand-counted
+   nbsp/unicode sequence repeatedly did (a real bug this page shipped with twice). */
+.tree ul{list-style:none;margin:0;padding-left:1.3rem}
+.tree li{position:relative;padding:.45rem 0 .45rem 1rem}
+/* --line (#ccd0d6) is nearly invisible against --paper (#eef0f2) -- fine for the hairline
+   borders it's used for elsewhere, but the tree connectors need to actually be seen, so
+   they use --muted instead (2026-07-24 contrast fix). */
+.tree li::before{content:'';position:absolute;top:0;left:0;bottom:50%;width:.85rem;border-left:1px solid var(--muted);border-bottom:1px solid var(--muted)}
+.tree li::after{content:'';position:absolute;top:50%;left:0;bottom:0;border-left:1px solid var(--muted)}
+.tree li:last-child::after{content:none}
+.tree .label{color:var(--ink)}
+.tree .label.inert{color:var(--muted)}
+.tree .flag{color:var(--accent);font-size:.84rem;letter-spacing:.03em;text-transform:uppercase;margin-left:.5rem}
+/* .cat and any layer-3 summary stay in normal inline flow, not flex. overflow-wrap:anywhere
+   here and on .tree summary above is enough to stop a long token forcing horizontal scroll
+   in a non-flex context, so min-width:0 is not needed on these (2026-08-15). Path-hint rule
+   removed entirely per the same pass: the link's own href already carries the filename. */
+.tree .label,.tree .flag{overflow-wrap:anywhere}
+
+/* Dev Previews bullet fields (2026-08-15): generated by build_dev_previews.py's
+   render_desc_html() into a <ul> per branch, replacing the old single dash-appended
+   sentence. Not a flex container, so overflow-wrap:anywhere on the <li> is the correct and
+   sufficient fix for long generated text at narrow widths. */
+.preview-fields{margin:.35rem 0 0;padding:0;list-style:none;font-size:.86rem;color:var(--muted)}
+.preview-fields li{margin:.15rem 0;overflow-wrap:anywhere}
+.preview-fields b{color:var(--ink);font-weight:600}
+
+footer{max-width:820px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--line);color:var(--muted);font-size:.84rem}
+
+@media(max-width:560px){
+  .tree ul{padding-left:.95rem}
+  .tree li{padding-left:.8rem}
+}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="wrap">
+
+  <div class="switcher">
+    <a href="public-index.html" class="tab">Public</a>
+    <a href="private-index.html" class="tab active">Private</a>
+  </div>
+
+  <div class="path"><span class="seg">jonathanlindavis.com</span><span class="seg">/</span><span class="cur">private-index</span></div>
+
+  <div class="kicker">Private &middot; owner only</div>
+  <h1>Private Index</h1>
+  <p class="intro">Quick links up top, then the tree below: collapsed by default, grouped the way I think about them.</p>
+
+  <div class="preview-panel">
+    <div class="preview-head">Dev previews: temporary, pruned after each merge</div>
+    <div class="preview-note">Generated from live branches, not hand-written. An entry disappears once its branch merges to main and is deleted. Access-gated on both domains, so Claude needs the Access service token to fetch a preview directly.</div>
+    <div class="quick">
+    <!-- DEV-PREVIEWS:START (generated by pattern-book/build_dev_previews.py from live remote branches; do not hand-edit) -->
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/blackmamas-almanac" target="_blank" rel="noopener">jonathanlindavis.com: <code>blackmamas-almanac</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/blackmamas-scribe" target="_blank" rel="noopener">jonathanlindavis.com: <code>blackmamas-scribe</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/demo-almanac" target="_blank" rel="noopener">jonathanlindavis.com: <code>demo-almanac</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/demo-atlas" target="_blank" rel="noopener">jonathanlindavis.com: <code>demo-atlas</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/demo-concordance" target="_blank" rel="noopener">jonathanlindavis.com: <code>demo-concordance</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/demo-confluence" target="_blank" rel="noopener">jonathanlindavis.com: <code>demo-confluence</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/demo-docket" target="_blank" rel="noopener">jonathanlindavis.com: <code>demo-docket</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/demo-dossier" target="_blank" rel="noopener">jonathanlindavis.com: <code>demo-dossier</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/demo-herald" target="_blank" rel="noopener">jonathanlindavis.com: <code>demo-herald</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/demo-pricing" target="_blank" rel="noopener">jonathanlindavis.com: <code>demo-pricing</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/demo-referrals" target="_blank" rel="noopener">jonathanlindavis.com: <code>demo-referrals</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/demo-scribe" target="_blank" rel="noopener">jonathanlindavis.com: <code>demo-scribe</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/hri-almanac" target="_blank" rel="noopener">jonathanlindavis.com: <code>hri-almanac</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/hri-scribe" target="_blank" rel="noopener">jonathanlindavis.com: <code>hri-scribe</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/improvementlog" target="_blank" rel="noopener">jonathanlindavis.com: <code>improvementlog</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/jp-morgan" target="_blank" rel="noopener">jonathanlindavis.com: <code>jp-morgan</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/measure-change-log" target="_blank" rel="noopener">jonathanlindavis.com: <code>measure-change-log</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/measure-concordance" target="_blank" rel="noopener">jonathanlindavis.com: <code>measure-concordance</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/measure-enterprise" target="_blank" rel="noopener">jonathanlindavis.com: <code>measure-enterprise</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/measure" target="_blank" rel="noopener">jonathanlindavis.com: <code>measure</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/standpoint-almanac" target="_blank" rel="noopener">jonathanlindavis.com: <code>standpoint-almanac</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/standpoint-scribe" target="_blank" rel="noopener">jonathanlindavis.com: <code>standpoint-scribe</code></a>
+      <a href="https://changelog-restructure.jonathanlindavis.pages.dev/tea-enterprise" target="_blank" rel="noopener">jonathanlindavis.com: <code>tea-enterprise</code></a>
+       <em>(plus 2 non-page files)</em>
+      <ul class="preview-fields"><li><b>Change:</b> Renames and restructures the Improvement Log system into a two-tier Change Log: a merged, org-agnostic system-change-log.html on jonathanlindavis.com (124 migrated entries, zero org-identifying content, verified by grep), plus Measure's own measure-change-log.html for hand-change and monthly shelf-digest entries (physically separate storage, measure_change_log_entries.json, no shared filter with the generic log). Also repurposes improvementlog-switcher.html into a future multi-org index, adds a pick-card to measure.html and a direct link on measure-enterprise.html, retires microgroup.info/improvementlog.html with a redirect, repoints the sitewide .footer-improvements pill across both repos, and wires diff_page_data.py's real funder-count diff into the monthly shelf refresh for synthesized digest entries. UPDATED 2026-08-21: measure.html now also folds in the separate measure-gift-card-preview branch's GIFT Enterprise pick-card (Public data / Live, links to https://jonathanlindavis.com/gift-enterprise-portal), per owner decision that this branch becomes the one branch carrying the complete measure.html. The hub now has 4 cards in order: Enterprise, Orientation, GIFT Enterprise, Change Log.</li><li><b>Reason:</b> Owner-ratified super plan (2026-08-21_super-plan_system-change-log-restructure.md): close a data-layer leak vector the plan's own adversarial judging pass found (client-specific entries were one filter-bug away from rendering on the generic log), and give Measure a concise, synthesized change log distinct from the org-agnostic system-wide one, per the owner's own worked example. The GIFT card fold-in (owner decision, 2026-08-21) resolves this entry's own previously-noted open item: rather than merge order needing an owner call, the owner decided the fold happens here so changelog-restructure ends up as the single branch with the correct final measure.html.</li><li><b>Status:</b> Awaiting owner review. Branch exists on both Microgroup.info and Jonathanlindavis.com. Per-commit-source classification completed for all 11 roster products, not just Measure's four. measure.html reconciliation with measure-gift-card-preview is DONE (commit 14b153d on Microgroup.info): 4 pick-cards confirmed (no dupes, correct hrefs), style_invariants --check --page=measure.html clean (0 gating, 0 warn, 0 unassessable). measure-gift-card-preview itself is left unmerged as a historical record of the standalone change.</li></ul>
+      <a href="https://measure-gift-card-preview.jonathanlindavis.pages.dev/measure" target="_blank" rel="noopener">jonathanlindavis.com: <code>measure</code></a>
+      <ul class="preview-fields"><li><b>Change:</b> measure.html (Measure's switcher hub): adds a 4th pick-card, GIFT Enterprise (Public data / Live, links to https://jonathanlindavis.com/gift-enterprise-portal), matching enterprise/build_switcher.py's DEFAULT_CARDS copy verbatim. Also adds .pick-card{min-width:0} to the page's inline style for grid-overflow safety with a third card.</li><li><b>Reason:</b> Owner request: retrofit Measure's own switcher hub (built before the Enterprise Suite generator existed) with the GIFT Enterprise cross-sell card the generator now applies to every newly onboarded organization (confirmed live and firing: enterprise/cold_start.py's render_all() calls build_switcher.build_switcher_html() with its 4-card DEFAULT_CARDS, and tea.html already carries all 4).</li><li><b>Status:</b> Awaiting owner review. style_invariants gate clean (0 gating, 0 warn, 0 unassessable) on measure.html.</li></ul>
+      <a href="https://privacy-security-preview.jonathanlindavis.pages.dev/contact" target="_blank" rel="noopener">jonathanlindavis.com: <code>contact</code></a>
+      <a href="https://privacy-security-preview.jonathanlindavis.pages.dev/index" target="_blank" rel="noopener">jonathanlindavis.com: <code>index</code></a>
+      <a href="https://privacy-security-preview.jonathanlindavis.pages.dev/privacy" target="_blank" rel="noopener">jonathanlindavis.com: <code>privacy</code></a>
+      <a href="https://privacy-security-preview.jonathanlindavis.pages.dev/public-index" target="_blank" rel="noopener">jonathanlindavis.com: <code>public-index</code></a>
+      <a href="https://privacy-security-preview.jonathanlindavis.pages.dev/security" target="_blank" rel="noopener">jonathanlindavis.com: <code>security</code></a>
+       <em>(plus 2 non-page files)</em>
+      <ul class="preview-fields"><li><b>Change:</b> New formal Privacy Policy and Security Policy pages. jonathanlindavis.com: security.html is new; privacy.html gets a basic improvement (cross-link to security.html, effective date bumped 2026-08-13 -&gt; 2026-08-21) and both are wired into index.html/public-index.html footers (privacy.html previously existed but was linked from no navigation). microgroup.info: privacy.html and security.html are both entirely new (neither existed before), wired into index.html/public-index.html/contact.html footers and sitemap.xml.</li><li><b>Reason:</b> Owner request: formal Privacy and Security policies for both live sites, grounded in each site's real data-collection and hosting practices (Cloudflare D1, Resend, Cloudflare Access gating, Enterprise Suite client onboarding) rather than generic template boilerplate.</li><li><b>Status:</b> Awaiting owner review. No legal-compliance-framework claims (CCPA/GDPR/COPPA/etc.) asserted; Security pages explicitly disclaim any security certification. Tracked as its own item, separate from the concurrent Change Log restructuring work.</li></ul>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/blackmamas-almanac" target="_blank" rel="noopener">microgroup.info: <code>blackmamas-almanac</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/blackmamas-scribe" target="_blank" rel="noopener">microgroup.info: <code>blackmamas-scribe</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/demo-almanac" target="_blank" rel="noopener">microgroup.info: <code>demo-almanac</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/demo-atlas" target="_blank" rel="noopener">microgroup.info: <code>demo-atlas</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/demo-concordance" target="_blank" rel="noopener">microgroup.info: <code>demo-concordance</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/demo-confluence" target="_blank" rel="noopener">microgroup.info: <code>demo-confluence</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/demo-docket" target="_blank" rel="noopener">microgroup.info: <code>demo-docket</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/demo-dossier" target="_blank" rel="noopener">microgroup.info: <code>demo-dossier</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/demo-herald" target="_blank" rel="noopener">microgroup.info: <code>demo-herald</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/demo-pricing" target="_blank" rel="noopener">microgroup.info: <code>demo-pricing</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/demo-referrals" target="_blank" rel="noopener">microgroup.info: <code>demo-referrals</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/demo-scribe" target="_blank" rel="noopener">microgroup.info: <code>demo-scribe</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/hri-almanac" target="_blank" rel="noopener">microgroup.info: <code>hri-almanac</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/hri-scribe" target="_blank" rel="noopener">microgroup.info: <code>hri-scribe</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/improvementlog" target="_blank" rel="noopener">microgroup.info: <code>improvementlog</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/jp-morgan" target="_blank" rel="noopener">microgroup.info: <code>jp-morgan</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/measure-change-log" target="_blank" rel="noopener">microgroup.info: <code>measure-change-log</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/measure-concordance" target="_blank" rel="noopener">microgroup.info: <code>measure-concordance</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/measure-enterprise" target="_blank" rel="noopener">microgroup.info: <code>measure-enterprise</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/measure" target="_blank" rel="noopener">microgroup.info: <code>measure</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/standpoint-almanac" target="_blank" rel="noopener">microgroup.info: <code>standpoint-almanac</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/standpoint-scribe" target="_blank" rel="noopener">microgroup.info: <code>standpoint-scribe</code></a>
+      <a href="https://changelog-restructure.microgroup-info.pages.dev/tea-enterprise" target="_blank" rel="noopener">microgroup.info: <code>tea-enterprise</code></a>
+       <em>(plus 2 non-page files)</em>
+      <ul class="preview-fields"><li><b>Change:</b> Renames and restructures the Improvement Log system into a two-tier Change Log: a merged, org-agnostic system-change-log.html on jonathanlindavis.com (124 migrated entries, zero org-identifying content, verified by grep), plus Measure's own measure-change-log.html for hand-change and monthly shelf-digest entries (physically separate storage, measure_change_log_entries.json, no shared filter with the generic log). Also repurposes improvementlog-switcher.html into a future multi-org index, adds a pick-card to measure.html and a direct link on measure-enterprise.html, retires microgroup.info/improvementlog.html with a redirect, repoints the sitewide .footer-improvements pill across both repos, and wires diff_page_data.py's real funder-count diff into the monthly shelf refresh for synthesized digest entries. UPDATED 2026-08-21: measure.html now also folds in the separate measure-gift-card-preview branch's GIFT Enterprise pick-card (Public data / Live, links to https://jonathanlindavis.com/gift-enterprise-portal), per owner decision that this branch becomes the one branch carrying the complete measure.html. The hub now has 4 cards in order: Enterprise, Orientation, GIFT Enterprise, Change Log.</li><li><b>Reason:</b> Owner-ratified super plan (2026-08-21_super-plan_system-change-log-restructure.md): close a data-layer leak vector the plan's own adversarial judging pass found (client-specific entries were one filter-bug away from rendering on the generic log), and give Measure a concise, synthesized change log distinct from the org-agnostic system-wide one, per the owner's own worked example. The GIFT card fold-in (owner decision, 2026-08-21) resolves this entry's own previously-noted open item: rather than merge order needing an owner call, the owner decided the fold happens here so changelog-restructure ends up as the single branch with the correct final measure.html.</li><li><b>Status:</b> Awaiting owner review. Branch exists on both Microgroup.info and Jonathanlindavis.com. Per-commit-source classification completed for all 11 roster products, not just Measure's four. measure.html reconciliation with measure-gift-card-preview is DONE (commit 14b153d on Microgroup.info): 4 pick-cards confirmed (no dupes, correct hrefs), style_invariants --check --page=measure.html clean (0 gating, 0 warn, 0 unassessable). measure-gift-card-preview itself is left unmerged as a historical record of the standalone change.</li></ul>
+      <a href="https://measure-gift-card-preview.microgroup-info.pages.dev/measure" target="_blank" rel="noopener">microgroup.info: <code>measure</code></a>
+      <ul class="preview-fields"><li><b>Change:</b> measure.html (Measure's switcher hub): adds a 4th pick-card, GIFT Enterprise (Public data / Live, links to https://jonathanlindavis.com/gift-enterprise-portal), matching enterprise/build_switcher.py's DEFAULT_CARDS copy verbatim. Also adds .pick-card{min-width:0} to the page's inline style for grid-overflow safety with a third card.</li><li><b>Reason:</b> Owner request: retrofit Measure's own switcher hub (built before the Enterprise Suite generator existed) with the GIFT Enterprise cross-sell card the generator now applies to every newly onboarded organization (confirmed live and firing: enterprise/cold_start.py's render_all() calls build_switcher.build_switcher_html() with its 4-card DEFAULT_CARDS, and tea.html already carries all 4).</li><li><b>Status:</b> Awaiting owner review. style_invariants gate clean (0 gating, 0 warn, 0 unassessable) on measure.html.</li></ul>
+      <a href="https://privacy-security-preview.microgroup-info.pages.dev/contact" target="_blank" rel="noopener">microgroup.info: <code>contact</code></a>
+      <a href="https://privacy-security-preview.microgroup-info.pages.dev/index" target="_blank" rel="noopener">microgroup.info: <code>index</code></a>
+      <a href="https://privacy-security-preview.microgroup-info.pages.dev/privacy" target="_blank" rel="noopener">microgroup.info: <code>privacy</code></a>
+      <a href="https://privacy-security-preview.microgroup-info.pages.dev/public-index" target="_blank" rel="noopener">microgroup.info: <code>public-index</code></a>
+      <a href="https://privacy-security-preview.microgroup-info.pages.dev/security" target="_blank" rel="noopener">microgroup.info: <code>security</code></a>
+       <em>(plus 2 non-page files)</em>
+      <ul class="preview-fields"><li><b>Change:</b> New formal Privacy Policy and Security Policy pages. jonathanlindavis.com: security.html is new; privacy.html gets a basic improvement (cross-link to security.html, effective date bumped 2026-08-13 -&gt; 2026-08-21) and both are wired into index.html/public-index.html footers (privacy.html previously existed but was linked from no navigation). microgroup.info: privacy.html and security.html are both entirely new (neither existed before), wired into index.html/public-index.html/contact.html footers and sitemap.xml.</li><li><b>Reason:</b> Owner request: formal Privacy and Security policies for both live sites, grounded in each site's real data-collection and hosting practices (Cloudflare D1, Resend, Cloudflare Access gating, Enterprise Suite client onboarding) rather than generic template boilerplate.</li><li><b>Status:</b> Awaiting owner review. No legal-compliance-framework claims (CCPA/GDPR/COPPA/etc.) asserted; Security pages explicitly disclaim any security certification. Tracked as its own item, separate from the concurrent Change Log restructuring work.</li></ul>
+    <!-- DEV-PREVIEWS:END -->
+    </div>
+  </div>
+
+  <div class="key-legend">
+    <span class="key-chip agnostic">Site-agnostic</span>
+    <a class="key-chip mg" href="https://microgroup.info" target="_blank" rel="noopener">microgroup.info</a>
+    <a class="key-chip jld" href="index.html">jonathanlindavis.com</a>
+  </div>
+
+  <div class="section-label">Quick links</div>
+  <div class="quick">
+    <a href="acc.html">ACC</a>
+    <a href="open-data-gift.html">GIFT</a>
+    <a href="open-data-f4f.html">F4F</a>
+    <a href="open-data-interlock.html">Interlock</a>
+    <a href="l4y.html">L4Y</a>
+    <a href="https://katelyncthompson.com/" target="_blank" rel="noopener">KCT</a>
+    <a href="hro.html">HRO</a>
+    <a href="https://microgroup.info/measure.html" target="_blank" rel="noopener">Measure</a>
+    <a class="agnostic" href="improvementlog-switcher.html">Change logs</a>
+  </div>
+
+  <div class="disclaimer">GIFT and Interlock share the same underlying 990-filings data repository.</div>
+
+  <div class="section-label" style="display:flex;justify-content:space-between;align-items:center">
+    By category
+    <button type="button" class="tree-toggle-all" style="font:inherit;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid var(--line);padding:.25rem .6rem;cursor:pointer">Expand all</button>
+  </div>
+  <div class="tree">
+
+    <details class="domain-group agnostic">
+      <summary class="domain-head">Site-agnostic</summary>
+
+      <details class="cat-group">
+        <summary class="cat">Design conventions <span class="tier-tag">documents both domains</span></summary>
+      <ul>
+        <li>
+          <details>
+            <summary><a class="label" href="conventions.html">Conventions hub</a><span class="flag">generated</span></summary>
+          <ul>
+            <li>
+              <details>
+                <summary><a class="label" href="conventions-products.html">Products</a><span class="flag">generated, source of truth (demo/enterprise)</span></summary>
+              <ul>
+                <li><a class="label" href="conventions-almanac.html">Almanac</a></li>
+                <li><a class="label" href="conventions-scribe.html">Scribe</a></li>
+                <li><a class="label" href="conventions-concordance.html">Concordance</a></li>
+                <li><a class="label" href="conventions-herald.html">Herald</a></li>
+                <li><a class="label" href="conventions-atlas.html">Atlas</a></li>
+                <li><a class="label" href="conventions-dossier.html">Dossier</a></li>
+                <li><a class="label" href="conventions-improvementlog.html">Change Log</a><span class="flag">spans the System Change Log + Measure's own change log</span></li>
+              </ul>
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary><a class="label" href="conventions-open-data.html">Open Data</a><span class="flag">generated, Public Data family (GIFT exemplar)</span></summary>
+              <ul>
+                <li><a class="label" href="conventions-gift.html">GIFT</a></li>
+                <li><a class="label" href="conventions-interlock.html">Interlock</a><span class="flag">thin, shares GIFT's specimen</span></li>
+                <li><a class="label" href="conventions-f4f.html">F4F</a><span class="flag">thin, shares GIFT's specimen</span></li>
+              </ul>
+              </details>
+            </li>
+            <li><a class="label" href="conventions-switcher.html">Switcher</a><span class="flag">source of truth: enterprise/measure/standpoint hubs</span></li>
+            <li><a class="label" href="conventions-index.html">Index</a><span class="flag">governs switcher chrome, this page + public-index.html</span></li>
+            <li><a class="label" href="conventions-homepage.html">Homepage</a><span class="flag">governs product-card chrome, both homepages</span></li>
+          </ul>
+          </details>
+        </li>
+      </ul>
+      </details>
+
+      <details class="cat-group">
+        <summary class="cat">Writing conventions <span class="tier-tag">Access gate pending</span></summary>
+      <ul>
+        <li>
+          <details>
+            <summary><a class="label" href="writing-convention.html">Writing Convention</a><span class="flag">read-only Drive reference, not source of truth</span></summary>
+          <ul>
+            <li><a class="label" href="writing-convention-general.html">General</a><span class="flag">base layer, applies by default</span></li>
+            <li><a class="label" href="writing-convention-grant.html">Grant</a><span class="flag">overlay: grant prose, Scribe/Almanac output</span></li>
+            <li><a class="label" href="writing-convention-policy.html">Policy</a><span class="flag">overlay: non-HRO policy analysis</span></li>
+            <li><a class="label" href="writing-convention-legal.html">Legal</a><span class="flag">overlay: owner's own matters, craft rules only</span></li>
+          </ul>
+          </details>
+        </li>
+      </ul>
+      </details>
+
+      <details class="cat-group">
+        <summary class="cat">Meta <span class="tier-tag">site navigation, not a product</span></summary>
+      <ul>
+        <li><a class="label" href="indexes.html">Indexes</a></li>
+      </ul>
+      </details>
+    </details>
+
+    <details class="domain-group mg">
+      <summary class="domain-head">microgroup.info</summary>
+
+      <details class="cat-group">
+        <summary class="cat">Products: Enterprise <span class="tier-tag">Paid, institution-specific</span></summary>
+      <ul>
+        <li>
+          <details>
+            <summary><a class="label" href="https://microgroup.info/enterprise.html" target="_blank" rel="noopener">Enterprise</a></summary>
+          <ul>
+            <li>
+              <details>
+                <summary><a class="label" href="https://microgroup.info/standpoint.html" target="_blank" rel="noopener">Standpoint (MN)</a><span class="flag">demo</span></summary>
+              <ul>
+                <li><a class="label" href="https://microgroup.info/standpoint-almanac.html" target="_blank" rel="noopener">Almanac</a><span class="flag">Access-gated</span></li>
+                <li><a class="label" href="https://microgroup.info/standpoint-scribe.html" target="_blank" rel="noopener">Scribe</a><span class="flag">Access-gated</span></li>
+              </ul>
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary><a class="label" href="https://microgroup.info/measure.html" target="_blank" rel="noopener">Measure</a><span class="flag">demo</span></summary>
+              <ul>
+                <li><a class="label" href="https://microgroup.info/measure-enterprise.html" target="_blank" rel="noopener">Enterprise (Almanac + Scribe)</a><span class="flag">Access-gated</span></li>
+                <li><a class="label" href="https://microgroup.info/measure-orientation.html" target="_blank" rel="noopener">Orientation</a><span class="flag">Access-gated</span></li>
+              </ul>
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary><a class="label" href="https://microgroup.info/blackmamas.html" target="_blank" rel="noopener">Black Mamas Village (TX)</a><span class="flag">demo</span></summary>
+              <ul>
+                <li><a class="label" href="https://microgroup.info/blackmamas-almanac.html" target="_blank" rel="noopener">Almanac</a><span class="flag">Access-gated</span></li>
+                <li><a class="label" href="https://microgroup.info/blackmamas-scribe.html" target="_blank" rel="noopener">Scribe</a><span class="flag">Access-gated</span></li>
+              </ul>
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary><a class="label" href="https://microgroup.info/hri.html" target="_blank" rel="noopener">HRI</a><span class="flag">demo</span></summary>
+              <ul>
+                <li><a class="label" href="https://microgroup.info/hri-almanac.html" target="_blank" rel="noopener">Almanac</a><span class="flag">Access-gated</span></li>
+                <li><a class="label" href="https://microgroup.info/hri-scribe.html" target="_blank" rel="noopener">Scribe</a><span class="flag">Access-gated</span></li>
+              </ul>
+              </details>
+            </li>
+            <li><a class="label" href="https://microgroup.info/jp-morgan.html" target="_blank" rel="noopener">Custodian: JP Morgan pilot</a><span class="flag">prototype, no charge</span></li>
+          </ul>
+          </details>
+        </li>
+      </ul>
+      </details>
+
+      <details class="cat-group">
+        <summary class="cat">Products: Demo <span class="tier-tag">Paid, fictional-org walkthroughs</span></summary>
+      <ul>
+        <li>
+          <details>
+            <summary><a class="label" href="https://microgroup.info/demo.html" target="_blank" rel="noopener">Demo</a></summary>
+          <ul>
+            <li><a class="label" href="https://microgroup.info/demo-almanac.html" target="_blank" rel="noopener">Almanac</a></li>
+            <li><a class="label" href="https://microgroup.info/demo-scribe.html" target="_blank" rel="noopener">Scribe</a></li>
+            <li><a class="label" href="https://microgroup.info/demo-concordance.html" target="_blank" rel="noopener">Concordance</a></li>
+            <li><a class="label" href="https://microgroup.info/demo-herald.html" target="_blank" rel="noopener">Herald</a></li>
+            <li><a class="label" href="https://microgroup.info/demo-atlas.html" target="_blank" rel="noopener">Atlas</a></li>
+            <li><a class="label" href="https://microgroup.info/demo-dossier.html" target="_blank" rel="noopener">Dossier</a></li>
+            <li><a class="label" href="https://microgroup.info/demo-pricing.html" target="_blank" rel="noopener">Pricing</a><span class="flag">real pricing</span></li>
+            <li><a class="label" href="https://microgroup.info/demo-referrals.html" target="_blank" rel="noopener">Referral Program</a><span class="flag">real program</span></li>
+            <li><a class="label" href="https://microgroup.info/demo-survey.html" target="_blank" rel="noopener">Organization Intake</a></li>
+            <li><a class="label" href="https://jonathanlindavis.com/system-change-log" target="_blank" rel="noopener">System Change Log</a><span class="flag">merged 2026-08-21, now org-agnostic across both domains</span></li>
+          </ul>
+          </details>
+        </li>
+      </ul>
+      </details>
+
+      <details class="cat-group">
+        <summary class="cat">Websites <span class="tier-tag">client web work, outside the product family</span></summary>
+      <!-- Home page only per website build, owner order 2026-08-06: these are client
+           site builds with many content sub-pages (nav, footer-only pages, intake
+           forms); the private index is a personal shortcut, not a sitemap, so only
+           the entry point is listed. Full page lists still live in each site's own
+           navigation/sitemap, not duplicated here. -->
+      <ul>
+        <li><a class="label" href="https://katelyncthompson.com/" target="_blank" rel="noopener">KCT &mdash; Brand Site</a><span class="flag">Live, own domain</span></li>
+        <li><span class="label inert">KCT &mdash; Opposition Research</span><span class="flag">in development</span></li>
+        <li><a class="label" href="acc.html">ACC</a><span class="flag">Access-gated</span></li>
+        <li><a class="label" href="clown-dog.html">Clown Dog Bikes</a><span class="flag">5-page demo live, Shopify still in planning</span></li>
+      </ul>
+      </details>
+
+      <details class="cat-group">
+        <summary class="cat">Microgroup.info Website <span class="tier-tag">the agency's own site, not a product</span></summary>
+      <ul>
+        <li><a class="label" href="https://microgroup.info/" target="_blank" rel="noopener">Home</a></li>
+        <li><a class="label" href="https://microgroup.info/public-index.html" target="_blank" rel="noopener">Public Index</a></li>
+        <li><a class="label" href="https://microgroup.info/contact.html" target="_blank" rel="noopener">Contact</a></li>
+        <li><a class="label" href="https://microgroup.info/privacy.html" target="_blank" rel="noopener">Privacy</a></li>
+        <li><a class="label" href="https://microgroup.info/security.html" target="_blank" rel="noopener">Security</a></li>
+      </ul>
+      </details>
+    </details>
+
+    <details class="domain-group jld">
+      <summary class="domain-head">jonathanlindavis.com</summary>
+
+      <details class="cat-group">
+        <summary class="cat">Products: Open Data <span class="tier-tag tier-free">Free &amp; Public</span></summary>
+      <ul>
+        <li>
+          <details>
+            <summary><a class="label" href="open-data.html">Open Data</a></summary>
+          <ul>
+            <li><a class="label" href="open-data-gift.html">GIFT</a></li>
+            <li><a class="label" href="open-data-interlock.html">Interlock</a></li>
+            <li><a class="label" href="open-data-f4f.html">F4F</a></li>
+            <li><a class="label" href="system-change-log.html">System Change Log</a><span class="flag">merged 2026-08-21, all products, org-agnostic</span></li>
+          </ul>
+          </details>
+        </li>
+      </ul>
+      </details>
+
+      <details class="cat-group">
+        <summary class="cat">Websites <span class="tier-tag">client web work &middot; outside the product family</span></summary>
+      <!-- Home page only per website build, owner order 2026-08-06 (see the matching
+           Microgroup.info Websites entry above): client site builds have many content
+           sub-pages, and the private index is a personal shortcut, not a sitemap, so
+           only the entry point is listed. -->
+      <ul>
+        <li><a class="label" href="quickcyclesatx.html">Quick Cycles ATX</a><span class="flag">hub &middot; 7-page preview build, Access-gated, client review pending</span></li>
+        <li><a class="label" href="clarity-edit.html">Clarity Edit</a><span class="flag">hub &middot; site live, 12 open items awaiting Favour's answers, questionnaire live</span></li>
+      </ul>
+      </details>
+
+      <details class="cat-group">
+        <summary class="cat">Private Applications</summary>
+      <ul>
+        <li><a class="label" href="l4y.html">L4Y</a><span class="flag">LOI/RFP tracker, Access-gated</span></li>
+        <li><a class="label" href="private-tasker.html">Tasker</a><span class="flag">automation dashboard</span></li>
+        <li><a class="label" href="private-analytics.html">Traffic</a><span class="flag">Cloudflare + Analytics</span></li>
+        <li><a class="label" href="private-gift-leads.html">GIFT Leads</a><span class="flag">Check-your-org submissions</span></li>
+        <li><a class="label" href="private-workouttracker.html">Workout Tracker</a></li>
+        <li><a class="label" href="private-news.html">News</a><span class="flag">pilot, manual runs</span></li>
+        <li><a class="label" href="cv.html">CV</a><span class="flag">unlisted, HRO role active</span></li>
+        <li><a class="label" href="cv1.html">CV (past-tense HRO role)</a><span class="flag">unlisted</span></li>
+        <li><a class="label" href="applications-2036.html">Texas 2036 Interview Prep</a><span class="flag">owner-only</span></li>
+        <li><a class="label" href="airbnb/index.html">Airbnb 1218 Holly, evidence record</a><span class="flag">unlisted, no Access gate</span></li>
+        <li><a class="label" href="airbnb-counsel/index.html">Airbnb 1218 Holly, case summary for prospective counsel</a><span class="flag">unlisted, no Access gate</span></li>
+      </ul>
+      </details>
+
+      <details class="cat-group">
+        <summary class="cat">Legal matters <span class="tier-tag">Access-gated</span></summary>
+      <ul>
+        <li><a class="label" href="7601litigation/index.html">7601 Albany HVAC/AC litigation</a></li>
+        <li><a class="label" href="code/index.html">Code Enforcement (Austin)</a></li>
+      </ul>
+      </details>
+
+      <details class="cat-group">
+        <summary class="cat">Organizational Architecture</summary>
+      <ul>
+        <li>
+          <details>
+            <summary><a class="label" href="hro.html">HRO</a></summary>
+          <ul>
+            <li><a class="label" href="hro-houserules.html">House Rules</a></li>
+            <li><a class="label" href="hro-policy-issues-briefs.html">Policy Issues</a></li>
+            <li><a class="label" href="hro-contract-policing.html">Contract Policing</a></li>
+            <li><a class="label" href="hro-contract-policing-data.html">Contract Policing: Budget Data</a><span class="flag">companion tool</span></li>
+            <li><a class="label" href="hro-publication-possibilities.html">Publication Possibilities</a></li>
+            <li><span class="label inert">Committee Meetings</span><span class="flag">in development</span></li>
+          </ul>
+          </details>
+        </li>
+      </ul>
+      </details>
+
+      <details class="cat-group">
+        <summary class="cat">MEASURE <span class="tier-tag">Access-gated</span></summary>
+      <ul>
+        <li><a class="label" href="measure-proposal.html">Proposal</a><span class="flag">board summary, gated to @wemeasure.org + owner</span></li>
+      </ul>
+      </details>
+    </details>
+
+  </div>
+
+</div>
+
+<footer>
+  Private index &middot; not linked from site navigation, only from <a href="public-index.html">the public index</a>
+</footer>
+<script>
+document.querySelector('.tree-toggle-all').addEventListener('click', e => {
+  const all = document.querySelectorAll('.tree details');
+  const anyClosed = [...all].some(d => !d.open);
+  all.forEach(d => d.open = anyClosed);
+  e.target.textContent = anyClosed ? 'Collapse all' : 'Expand all';
+});
+
+// Closing any accordion level resets everything nested inside it back to closed
+// (2026-08-15, owner report: reopening a group should never come back already
+// half-expanded from a previous visit to that same branch). <details> does not do
+// this natively -- a child's open state is independent of its parent's -- so each
+// level is reset explicitly on its own close, not just the top domain-group level,
+// for the same reason at every depth.
+document.querySelectorAll('.tree details').forEach(d => {
+  d.addEventListener('toggle', () => {
+    if (!d.open) {
+      d.querySelectorAll('details').forEach(child => { child.open = false; });
+    }
+  });
+});
+</script>
+</body>
+</html>
