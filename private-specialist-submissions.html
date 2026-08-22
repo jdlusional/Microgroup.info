@@ -171,7 +171,7 @@ function cardHtml(r){
         <div>
           <div class="who">${esc(p.name || "(no name)")} <span class="email">&lt;${esc(p.email || "")}&gt;</span></div>
           <div class="meta">${esc(r.submitted_at)}</div>
-          ${excerptBits.length ? `<div class="excerpt">${esc(excerptBits.join(" &middot; "))}</div>` : ""}
+          ${excerptBits.length ? `<div class="excerpt">${excerptBits.map(esc).join(" &middot; ")}</div>` : ""}
           ${files ? `<div class="files"><b>Attachments:</b> ${files}</div>` : ""}
         </div>
         <span class="id-badge">#${esc(r.id)}</span>
