@@ -24,22 +24,34 @@
 /clown-dog.html                 https://jonathanlindavis.com/clown-dog.html                       301
 /clown-dog-questionnaire        https://jonathanlindavis.com/clown-dog-questionnaire.html         301
 /clown-dog-questionnaire.html   https://jonathanlindavis.com/clown-dog-questionnaire.html         301
-/clown-dog-website               https://jonathanlindavis.com/clown-dog-website.html              301
-/clown-dog-website.html          https://jonathanlindavis.com/clown-dog-website.html              301
-/clown-dog-website-accessibility  https://jonathanlindavis.com/clown-dog-website-accessibility.html  301
-/clown-dog-website-accessibility.html  https://jonathanlindavis.com/clown-dog-website-accessibility.html  301
-/clown-dog-website-contact       https://jonathanlindavis.com/clown-dog-website-contact.html      301
-/clown-dog-website-contact.html  https://jonathanlindavis.com/clown-dog-website-contact.html      301
-/clown-dog-website-policies      https://jonathanlindavis.com/clown-dog-website-policies.html     301
-/clown-dog-website-policies.html https://jonathanlindavis.com/clown-dog-website-policies.html     301
-/clown-dog-website-privacy       https://jonathanlindavis.com/clown-dog-website-privacy.html      301
-/clown-dog-website-privacy.html  https://jonathanlindavis.com/clown-dog-website-privacy.html      301
-/clown-dog-website-repair        https://jonathanlindavis.com/clown-dog-website-repair.html       301
-/clown-dog-website-repair.html   https://jonathanlindavis.com/clown-dog-website-repair.html       301
-/clown-dog-website-shop          https://jonathanlindavis.com/clown-dog-website-shop.html         301
-/clown-dog-website-shop.html     https://jonathanlindavis.com/clown-dog-website-shop.html         301
-/clown-dog-website-story         https://jonathanlindavis.com/clown-dog-website-story.html        301
-/clown-dog-website-story.html    https://jonathanlindavis.com/clown-dog-website-story.html        301
+# Clown Dog Bikes site pages: live at the client's own domain since 2026-08-22 (own-domain-serve
+# cutover). Previously 301'd to jonathanlindavis.com/clown-dog-website-*.html; the hub and
+# questionnaire above still live on jonathanlindavis.com and keep their rules.
+/clown-dog-website               https://www.clowndogbikes.com/                                   301
+/clown-dog-website.html          https://www.clowndogbikes.com/                                   301
+/clown-dog-website-accessibility  https://www.clowndogbikes.com/clown-dog-website-accessibility   301
+/clown-dog-website-accessibility.html  https://www.clowndogbikes.com/clown-dog-website-accessibility  301
+/clown-dog-website-contact       https://www.clowndogbikes.com/clown-dog-website-contact         301
+/clown-dog-website-contact.html  https://www.clowndogbikes.com/clown-dog-website-contact         301
+/clown-dog-website-policies      https://www.clowndogbikes.com/clown-dog-website-policies        301
+/clown-dog-website-policies.html https://www.clowndogbikes.com/clown-dog-website-policies        301
+/clown-dog-website-privacy       https://www.clowndogbikes.com/clown-dog-website-privacy         301
+/clown-dog-website-privacy.html  https://www.clowndogbikes.com/clown-dog-website-privacy         301
+/clown-dog-website-repair        https://www.clowndogbikes.com/clown-dog-website-repair          301
+/clown-dog-website-repair.html   https://www.clowndogbikes.com/clown-dog-website-repair          301
+/clown-dog-website-shop          https://www.clowndogbikes.com/clown-dog-website-shop            301
+/clown-dog-website-shop.html     https://www.clowndogbikes.com/clown-dog-website-shop            301
+/clown-dog-website-story         https://www.clowndogbikes.com/clown-dog-website-story           301
+/clown-dog-website-story.html    https://www.clowndogbikes.com/clown-dog-website-story           301
+# Clarity Edit: hub and questionnaire live on jonathanlindavis.com; the site itself at its own
+# domain since 2026-08-22. Without these, Pages' SPA fallback served the MG homepage at these
+# paths (a 200 of the wrong site), found 2026-08-22.
+/clarity-edit                    https://jonathanlindavis.com/clarity-edit.html                    301
+/clarity-edit.html               https://jonathanlindavis.com/clarity-edit.html                    301
+/clarity-edit-questionnaire      https://jonathanlindavis.com/clarity-edit-questionnaire.html      301
+/clarity-edit-questionnaire.html https://jonathanlindavis.com/clarity-edit-questionnaire.html      301
+/clarity-edit-website            https://clarityedit.com.ng/                                       301
+/clarity-edit-website.html       https://clarityedit.com.ng/                                       301
 /kct                             https://katelyncthompson.com/                                    301
 /kct.html                        https://katelyncthompson.com/                                    301
 
