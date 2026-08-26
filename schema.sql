@@ -44,8 +44,26 @@ ALTER TABLE contacts ADD COLUMN message TEXT;
 -- APPLIED 2026-08-20 (owner-authorised, Enterprise Suite gap reconciliation): the two
 -- statements below were executed against the live microgroup database with
 -- `wrangler d1 execute microgroup --remote`, then verified with a sqlite_master query
--- (table + index present) and PRAGMA table_info (all eleven columns). The ALTER TABLE
--- lines above were deliberately NOT re-run; their columns already exist.
+-- (table + index present) and PRAGMA table_info (all eleven columns).
+--
+-- CORRECTION 2026-08-25: the sentence that used to close this note claimed the ALTER
+-- TABLE lines above were deliberately NOT re-run because their columns already existed.
+-- That was WRONG, and it cost 58 days of destroyed submissions. Those columns existed in
+-- the newsletter-signups database, NOT in microgroup, which is the database env.DB
+-- actually binds to. The 2026-08-20 migration was real but was applied to the wrong
+-- target, which is why re-reading this file kept confirming a fix that had never landed.
+--
+-- Measured 2026-08-25: microgroup.contacts held 10 columns with organization and message
+-- both absent, while the deployed INSERT in functions/api/contact.js names 9 columns
+-- including both. Every submission threw and the handler returned HTTP 500 to the
+-- visitor. Three rows, newest 2026-06-28.
+--
+-- Both ALTER statements were executed against microgroup on 2026-08-25 and verified three
+-- ways rather than by re-reading this file, which is what produced the wrong note in the
+-- first place: live PRAGMA showed 12 columns with all 9 INSERT columns present; a real
+-- POST to https://microgroup.info/api/contact returned HTTP 200 with an ok body where it
+-- had returned 500; and the live row count moved from 3 to 4. That test row is titled
+-- CLAUDE-CODE SELFTEST and is safe to delete.
 CREATE TABLE IF NOT EXISTS questionnaire_submissions (
   id          INTEGER PRIMARY KEY AUTOINCREMENT,
   org_slug    TEXT,
