@@ -12,7 +12,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Black Mamas Village — Jonathan Lin Davis</title>
-<meta name="description" content="Black Mamas Village project index: funder &amp; grant match tool and grant-application drafter. Unlisted; shared with Black Mamas Village directly." />
+<meta name="description" content="Black Mamas Village project index: Almanac funder and grant match, and Scribe grant-application drafting, on a 30-day Pro trial running September 3 to October 2, 2026. Unlisted; shared with Black Mamas Village directly." />
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
 <meta name="referrer" content="no-referrer" />
 <link rel="icon" type="image/svg+xml" href="Assets/micro-mark.svg">
@@ -39,6 +39,32 @@ a{color:inherit;text-decoration:none}
 .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,5vw,3rem);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
 .hero p{color:var(--wash);font-size:1.04rem}
 .pc-kicker,.pc-status{font-family:var(--serif);font-weight:600}
+/* min-width:0 on grid children: the default min-width:auto on a CSS Grid item can push a card
+   wider than its column and cause horizontal overflow once long labels appear in a narrow
+   auto-fit column. Matches the same guard on measure.html. */
+.pick-card{min-width:0}
+
+/* ---- Trial band and scope band (2026-08-26). Both are plain bordered blocks built from the
+   same tokens as the rest of the page, so they read as one system with the .pick-card grid
+   above rather than as separate furniture. Every class below carries its own styling; none is
+   a bare JS or semantic hook. ---- */
+.tband{max-width:900px;margin:1.6rem auto 0;padding:0 1.5rem}
+.tband-in{border:1.5px solid var(--ink);background:var(--well);padding:1.2rem 1.4rem;text-align:center}
+.tband-kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.tband-dates{font-family:var(--serif);font-weight:700;font-size:clamp(1.05rem,2.6vw,1.3rem);color:var(--ink);margin:.5rem 0 .6rem;line-height:1.3}
+.tband-note{color:var(--wash);font-size:.94rem;max-width:66ch;margin:0 auto}
+.tband-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:1.1rem;text-align:left}
+.tband-item{min-width:0;border:1px solid var(--rule);background:var(--paper);padding:.85rem 1rem}
+.tband-item h3{font-family:var(--serif);font-weight:700;font-size:1rem;color:var(--ink);margin:0 0 .35rem}
+.tband-item p{color:var(--wash);font-size:.9rem;margin:0}
+.sband{max-width:900px;margin:1.6rem auto 0;padding:0 1.5rem}
+.sband-in{border:1px solid var(--rule);background:var(--paper);padding:1.2rem 1.4rem}
+.sband-in h2{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink);margin:0 0 .5rem;text-align:center}
+.sband-in p{color:var(--wash);font-size:.94rem;margin:0 auto .7rem;max-width:70ch}
+.sband-in p:last-child{margin-bottom:0}
+.sband-in a{color:var(--accent);text-decoration:underline}
+.sband-list{color:var(--wash);font-size:.92rem;margin:0 auto .7rem;padding-left:1.2rem;max-width:70ch}
+.sband-list li{margin-bottom:.3rem}
 footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:12px;letter-spacing:.02em;text-align:center}
 </style>
 </head>
@@ -55,28 +81,66 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
 <header class="hero">
   <div class="kicker">Prepared research &amp; tools, not a public product</div>
   <h1>Black Mamas Village</h1>
-  <p>A running index of tools built for Black Mamas Village: <strong>Almanac</strong> for funder and grant matching, and <strong>Scribe</strong> for drafting grant applications. This page is unlisted and shared with Black Mamas Village directly.</p>
+  <p>The index of tools built for Black Mamas Village: <strong>Almanac</strong> for funder and grant matching, and <strong>Scribe</strong> for drafting grant applications. Both are set up for a 30-day trial at the Pro tier. This page is unlisted and shared with Black Mamas Village directly.</p>
 </header>
+
+<div class="tband">
+  <div class="tband-in">
+    <div class="tband-kicker">30-day Pro trial</div>
+    <div class="tband-dates">The trial begins Wednesday, September 3, 2026 and runs through Thursday, October 2, 2026.</div>
+    <p class="tband-note">Both dates are stated here so anyone reading this page knows exactly when the trial period starts and when it lapses. Nothing on these pages shuts itself off on October 2, and no access is cut automatically. What happens after that date is a conversation between Black Mamas Village and MICRO Group, not something the software decides.</p>
+    <div class="tband-grid">
+      <div class="tband-item">
+        <h3>Almanac Pro</h3>
+        <p>Funder matches and open opportunities refreshed monthly, twelve times a year, against a prospect shelf built for this organization specifically. The Standard tier refreshes quarterly instead.</p>
+      </div>
+      <div class="tband-item">
+        <h3>Scribe Pro</h3>
+        <p>One application drafted per month, twelve a year, for a continuous pipeline. The Standard tier drafts one per quarter. Scribe runs on top of Almanac and needs an active Almanac subscription.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="picker">
   <a class="pick-card" href="blackmamas-almanac.html">
     <div class="pc-kicker">Funder &amp; Grant Match</div>
     <h2>Almanac</h2>
-    <p>A ranked funder match built from Black Mamas Village's real funding history and prospect research, plus a database of currently-open grant opportunities.</p>
-    <div class="pc-status">Live</div>
+    <p>A ranked funder match built from Black Mamas Village's confirmed funding history and researched prospects, plus the current state of each opportunity's application window.</p>
+    <div class="pc-status">Ready for the trial</div>
     <span class="pc-go">Open Tool &#8594;</span>
   </a>
   <a class="pick-card" href="blackmamas-scribe.html">
     <div class="pc-kicker">Grant Drafter</div>
     <h2>Scribe</h2>
-    <p>Payoff-ranked open grants with near-submission-ready application drafts, grounded in successful proposals and best practices.</p>
-    <div class="pc-status">Live</div>
+    <p>Payoff-ranked opportunities with near-submission-ready application drafts, each fact traced to a public source and each gap marked rather than filled with a guess.</p>
+    <div class="pc-status">Ready for the trial</div>
     <span class="pc-go">Open Tool &#8594;</span>
   </a>
 </div>
 
+<div class="sband">
+  <div class="sband-in">
+    <h2>What these pages were built from, and what is still missing</h2>
+    <p>Everything on both tools was built from publicly available information only: Black Mamas Village's own website, its public IRS Form 990 and 990-EZ filings, and each funder's own current website. No internal documents were used, requested, or assumed, and no figure was estimated to fill a hole.</p>
+    <p>That covers most of what a funder match and a first draft need, but not all of it. The following can only come from Black Mamas Village, and each one is currently marked as pending rather than guessed at:</p>
+    <ul class="sband-list">
+      <li>Board roster, size, and composition. Several funders score or gate on this directly.</li>
+      <li>The current-year operating budget and program budgets. The public record stops at the most recent filed Form 990.</li>
+      <li>Program-level outcome data: how many people each program serves, and what changes for them.</li>
+      <li>Paid staff count and volunteer count.</li>
+      <li>Prior grant applications and funder reports, so a new draft does not contradict what a funder was already told.</li>
+      <li>Gifts and grants that do not appear in the public filings, including individual, corporate, and in-kind support.</li>
+      <li>Standard application attachments: the IRS determination letter, bylaws, a conflict-of-interest policy, and the fiscal year end date.</li>
+      <li>Any application already in flight, so nothing gets filed twice.</li>
+    </ul>
+    <p>Each tool carries this same list against the specific place the information is needed. See <a href="blackmamas-almanac.html">Almanac</a> and <a href="blackmamas-scribe.html">Scribe</a>.</p>
+  </div>
+</div>
+
 <footer>
-  Prepared for Black Mamas Village by Jonathan Lin Davis of Micro Group<br>
+  Prepared for Black Mamas Village by Jonathan Lin Davis of MICRO Group<br>
+  Trial period: September 3, 2026 through October 2, 2026<br>
   This page is unlisted and shared directly
   <!-- FOOTER-COPYRIGHT:START (synced from index.html .footer-legal by pattern-book/sync_footer_copyright.py; do not hand-edit) -->
     <div class="footer-legal">© <span id="yr"></span> MICRO Group, LLC. All rights reserved. Austin, Texas.</div>
