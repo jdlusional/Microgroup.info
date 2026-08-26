@@ -296,6 +296,29 @@ body{overflow-x:hidden}
 
 /* Footer fully center-aligned (owner request, 2026-07-27). */
 footer{text-align:center}
+
+  /* ---- Card band (2026-08-26). Same rules as the enterprise card-band convention, carried
+     here by hand. The ES-GENERATED markers are deliberately NOT copied: this page is not wired
+     to the band generator, and carrying the markers would claim a generator owns a region that
+     nothing writes. Own namespace: not .section-card, whose anatomy invariant this markup would
+     fail, and not .pick-card, which lives in a stylesheet the frozen clients link. ---- */
+  .esb-band{max-width:1180px;margin:0 auto;padding:0 1.25rem 2.4rem}
+  .esb-band-head{font-family:var(--serif);font-weight:700;font-size:1.05rem;text-transform:uppercase;
+    letter-spacing:.05em;color:var(--wash);margin:0 0 .9rem;text-align:center}
+  .esb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+  /* min-width:0 on the child is what keeps a long unbroken product name from forcing
+     horizontal overflow at 375 (I17). */
+  .esb-card{min-width:0;background:var(--well);border:1px solid var(--rule);padding:1.1rem 1.2rem;
+    display:flex;flex-direction:column;gap:.45rem}
+  .esb-card.esb-muted{opacity:.6}
+  .esb-kicker{font-family:var(--serif);font-weight:600;font-size:12.5px;letter-spacing:.02em;
+    color:var(--wash)}
+  .esb-title{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink);margin:0;
+    display:flex;align-items:center;gap:.4rem}
+  .esb-lock{flex:0 0 auto;color:var(--wash)}
+  .esb-desc{font-size:.92rem;color:var(--ink);margin:0}
+  .esb-status{font-family:var(--serif);font-weight:600;font-size:12.5px;letter-spacing:.02em;
+    color:var(--wash);margin-top:auto}
 </style>
 </head>
 <body>
@@ -308,6 +331,7 @@ footer{text-align:center}
     <span class="stat">generated <strong id="m-date">…</strong></span>
     <span class="grow"></span>
     <nav>
+      <a href="#trial">Trial</a>
       <a href="#how-to-read">How to Read</a>
       <a href="#priority">Priority Pick</a>
       <a href="#calendar">Deadline Calendar</a>
@@ -320,10 +344,11 @@ footer{text-align:center}
 </div>
 
 <header class="hero">
-  <div class="eyebrow">Optional companion to your Almanac results · draft for review, not yet deployed</div>
+  <div class="eyebrow">Companion to your Almanac results · 30-day Pro trial, not a public product</div>
   <h1>Scribe</h1>
-  <p>These are Black Mamas Village's five most-aligned funding opportunities, pulled from its Almanac results. Below, the <strong>AFP Greater Austin BIPOC Opportunity Fund</strong> draft is shown in full: a <strong>sample</strong> of what Scribe produces, grounded in Black Mamas Village's own public mission and program information, fact-checked, and honest about what still needs to be filled in. It is the sample because it is the only one on this list that can be filed today, closing <strong>July 31, 2026</strong>.</p>
-  <p class="note">If Black Mamas Village also gets Scribe, you get one full draft written to this same standard, for the grant of your choice from this list, or any other open grant you locate. <a href="#shortlist">Request yours below.</a></p>
+  <p>These are Black Mamas Village's five most-aligned funding opportunities, pulled from its Almanac results. Below, the <strong>AFP Greater Austin BIPOC Opportunity Fund</strong> draft is shown in full: a <strong>sample</strong> of what Scribe produces, grounded in Black Mamas Village's own public mission and program information, fact-checked, and honest about what still needs to be filled in.</p>
+  <p class="note">One thing to know before reading further. That AFP cycle closed on July 31, 2026, so the sample is a complete draft against a window that has since passed rather than one you can file this week. It is kept as the sample because it is the only full draft on this page and it shows the standard every draft is written to, and because the analysis behind it is built on AFP's own published scoring rubric, which does not change between cycles. Nothing else on this shortlist has an open deadline right now either, which is itself the most useful finding here and is spelled out opportunity by opportunity in the <a href="#calendar">deadline calendar</a>.</p>
+  <p class="note">During the trial you get one full draft written to this same standard, for the grant of your choice from this list or any other open grant you locate. <a href="#shortlist">Request yours below.</a></p>
 </header>
 
 <div class="disclaimer" role="note" aria-label="Disclaimer">
@@ -332,6 +357,44 @@ footer{text-align:center}
     <p id="disclaimer-text">Loading…</p>
   </div>
 </div>
+
+<section class="section section-card" id="trial">
+  <div class="fold">
+    <div class="section-head-row">
+      <button class="mc-toggle" type="button" aria-controls="trial-fold-body"></button>
+      <div class="section-head">
+        <span class="kicker">Trial terms</span>
+        <h2>Your 30-day Scribe Pro trial</h2>
+      </div>
+    </div>
+    <div class="fold-body" id="trial-fold-body">
+    <div class="section-lede">
+      <p>The trial begins Wednesday, September 3, 2026 and runs through Thursday, October 2, 2026. Both dates are printed here so the window is visible to anyone reading this page rather than counted from a signup date nobody can see.</p>
+    </div>
+    <div class="table-scroll"><table class="funder-mini-table method-table">
+      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>The window</td>
+          <td>Starts September 3, 2026. Ends October 2, 2026.<br><br>Thirty days, counted inclusively.</td>
+        </tr>
+        <tr>
+          <td>What happens on October 2</td>
+          <td>Nothing automatic. This page does not expire, lock, or wipe itself, and no draft is withdrawn by a timer.<br><br>October 2, 2026 is simply the date the trial period ends. Whether Scribe continues past it is a decision for Black Mamas Village and MICRO Group to make together, and it is worth putting that conversation on the calendar before the date rather than after it.</td>
+        </tr>
+        <tr>
+          <td>What Pro adds on Scribe</td>
+          <td>One application drafted per month, twelve a year, sized for a continuous pipeline. The Standard tier drafts one per quarter, four a year.<br><br>Scribe reads Almanac's output, so it runs on top of an active Almanac subscription rather than on its own.</td>
+        </tr>
+        <tr>
+          <td>What the trial realistically covers</td>
+          <td>One full draft, to the standard of the sample below, against an opportunity of Black Mamas Village's choosing.<br><br>Worth setting expectations honestly on timing: as of today none of the five shortlisted opportunities has an open deadline, so the most useful use of the trial window is likely a draft aimed at the next AFP or Black Fund cycle, or at an open opportunity Black Mamas Village already knows about that this research did not surface. <a href="blackmamas-almanac.html">See Almanac &#8594;</a></td>
+        </tr>
+      </tbody>
+    </table></div>
+    </div>
+  </div>
+</section>
 
 <section class="section section-card" id="how-to-read">
   <div class="fold">
@@ -352,7 +415,7 @@ footer{text-align:center}
         </tr>
         <tr>
           <td>The funder and grant</td>
-          <td>The funder and grant are real: the AFP Greater Austin BIPOC Opportunity Fund, closing July 31, 2026, awarding $10,000 cash plus two AFP memberships and two tickets to the AFP Greater Austin One Day Conference.<br><br>Every amount, deadline, and eligibility rule in the draft below is quoted from AFP Greater Austin's own page and its own published scoring rubric, or marked unconfirmed.<br><br>One caveat carries through the whole draft: AFP's live application is a Google Form behind a sign-in and could not be read directly in this research, so the seven sections below are structured against AFP's own published scoring rubric, the funder's real scoring instrument, rather than against the form's actual questions. Re-map them onto the live form before filing.</td>
+          <td>The funder and grant are real: the AFP Greater Austin BIPOC Opportunity Fund, awarding $10,000 cash plus two AFP memberships and two tickets to the AFP Greater Austin One Day Conference.<br><br>Its 2026 cycle is closed. The deadline was July 31, 2026 and it has passed, which was re-checked against AFP's own page on August 26, 2026; AFP has not yet posted a next cycle. The draft below is kept as the worked sample anyway, because it is the only complete draft on this page and because its analysis rests on AFP's own published scoring rubric rather than on one cycle's dates.<br><br>Every amount, deadline, and eligibility rule in the draft below is quoted from AFP Greater Austin's own page and its own published scoring rubric, or marked unconfirmed.<br><br>One caveat carries through the whole draft: AFP's live application is a Google Form behind a sign-in and could not be read directly in this research, so the seven sections below are structured against AFP's own published scoring rubric, the funder's real scoring instrument, rather than against the form's actual questions. Re-map them onto the live form before filing.</td>
         </tr>
         <tr>
           <td>Next steps</td>
@@ -376,6 +439,7 @@ footer{text-align:center}
     <div class="fold-body" id="priority-fold-body">
     <div class="section-lede">
       <p>The single highest-payoff opportunity right now, assessed on relevance, award fit, urgency, and confirmed-funder status. Start here.</p>
+      <p>Worth saying plainly, as of August 26, 2026: none of the five opportunities on this shortlist has an open deadline today. The pick below is the one to prepare for and to make contact about, not one to file this week. The most valuable thing on this page is therefore a phone call, not a submission, and the rationale below says which call and why.</p>
     </div>
       <div id="priority-host"></div>
     </div>
@@ -449,7 +513,37 @@ footer{text-align:center}
     <div class="fold-body" id="needs-fold-body">
     <div class="section-lede">
       <p>Every draft carries a checklist of facts only Black Mamas Village can confirm or supply. Here's the sample draft's list; the grant you request will carry its own version of this checklist.</p>
+      <p>These drafts were written from public information only: Black Mamas Village's own website, its public IRS Form 990 and 990-EZ filings, and each funder's own current site. No internal document was used, requested, or assumed. Where a draft needs something that only exists inside the organization, it is marked in place rather than filled with a plausible-looking number, which is what the three inline markers below are for.</p>
     </div>
+    <div class="table-scroll"><table class="funder-mini-table method-table">
+      <thead><tr><th>What is missing</th><th>Which part of a draft it blocks</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Program outcome data</td>
+          <td>The impact and evaluation sections. How many people each program serves, how often, and what measurably changes for them.<br><br>This is the single most common place a draft would otherwise need an invented figure, and it is the reason those sections currently carry markers rather than numbers.</td>
+        </tr>
+        <tr>
+          <td>Current-year and program budgets</td>
+          <td>The budget narrative and the amount requested. The public filings give totals for a closed fiscal year, not the program lines a funder asks to see.</td>
+        </tr>
+        <tr>
+          <td>Board roster and composition</td>
+          <td>Eligibility statements and the governance section. AFP's BIPOC criteria score board composition directly, and the public record does not name the board.</td>
+        </tr>
+        <tr>
+          <td>Prior applications and funder reports</td>
+          <td>Consistency. A new draft should not contradict what a funder was already told, and should reuse language that has already worked.</td>
+        </tr>
+        <tr>
+          <td>Staffing and organizational capacity</td>
+          <td>The capacity and implementation sections, and any project timeline a funder wants staffed.</td>
+        </tr>
+        <tr>
+          <td>Attachments and administrative facts</td>
+          <td>IRS determination letter, bylaws, conflict-of-interest policy, W-9, fiscal year end date, and any audit or financial review. Most applications require these regardless of how strong the narrative is.</td>
+        </tr>
+      </tbody>
+    </table></div>
       <div id="needs-host"></div>
     </div>
   </div>
@@ -539,8 +633,48 @@ footer{text-align:center}
   </div>
 </section>
 
+<!-- Card band, hand-owned. The enterprise card-band convention applied to this page: only the
+     products this organization holds get a product section above; everything else in the catalog
+     is named here rather than left unmentioned, so the trial's boundary is visible instead of
+     implied. Black Mamas Village holds Almanac and Scribe at Pro for this trial. -->
+<div class="esb-band">
+  <h2 class="esb-band-head">Not in this trial</h2>
+  <div class="esb-grid">
+  <div class="esb-card esb-muted" id="esb-card-docket" data-esb-product="docket" data-esb-state="AVAILABLE">
+    <div class="esb-kicker">Letters of Inquiry &amp; RFPs</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Docket</h3>
+    <p class="esb-desc">Almanac's sibling for Letters of Inquiry and Requests for Proposals, tracked separately from traditional grants because they behave differently. Same sourcing standard: every request traces to the funder's or agency's own current page.</p>
+    <div class="esb-status">Available, not included in this trial</div>
+  </div>
+  <div class="esb-card esb-muted" id="esb-card-concordance" data-esb-product="concordance" data-esb-state="IN_DEVELOPMENT">
+    <div class="esb-kicker">Trustees &amp; introductions</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Concordance</h3>
+    <p class="esb-desc">Names the people who govern the foundations that already fund this kind of work, shows the grants that prove it, and maps who on a board could make the introduction. It does not estimate anyone's wealth.</p>
+    <div class="esb-status">In development</div>
+  </div>
+  <div class="esb-card esb-muted" id="esb-card-herald" data-esb-product="herald" data-esb-state="IN_DEVELOPMENT">
+    <div class="esb-kicker">Grant-cycle monitor</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Herald</h3>
+    <p class="esb-desc">Watches the funder pages behind an Almanac watch list and reports when a cycle opens, a deadline posts, or guidelines change, showing the actual diff, never an interpretation. The lapsed AFP window on this page is the case it exists to catch.</p>
+    <div class="esb-status">In development</div>
+  </div>
+  <div class="esb-card esb-muted" id="esb-card-atlas" data-esb-product="atlas" data-esb-state="IN_DEVELOPMENT">
+    <div class="esb-kicker">Corporate foundation benchmark</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Atlas</h3>
+    <p class="esb-desc">Benchmarks a corporate foundation's giving against real aggregate statistics computed from Texas-registered 990-PF filings, not any single named peer.</p>
+    <div class="esb-status">In development</div>
+  </div>
+  <div class="esb-card esb-muted" id="esb-card-dossier" data-esb-product="dossier" data-esb-state="IN_DEVELOPMENT">
+    <div class="esb-kicker">990 reconciliation</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Dossier</h3>
+    <p class="esb-desc">Checks that a foundation's claimed giving matches its own filed 990-PF numbers, and cross-references a voluntary donation list against public filings.</p>
+    <div class="esb-status">In development</div>
+  </div>
+  </div>
+</div>
+
 <footer>
-  <span id="footer-credit">Prepared for Black Mamas Village by Jonathan Lin Davis · Draft for review, not yet deployed</span>
+  <span id="footer-credit">Prepared for Black Mamas Village by Jonathan Lin Davis of MICRO Group · 30-day Pro trial, September 3 through October 2, 2026</span>
   <span id="footer-links"><a href="https://www.blackmamasvillage-atx.org/" target="_blank" rel="noopener">blackmamasvillage-atx.org</a></span>
   <span class="footer-improvements-wrap"><a class="footer-improvements" href="https://jonathanlindavis.com/system-change-log" target="_blank" rel="noopener">System change log</a></span>
   <p class="footer-custom-note"><a href="/#contact">Need something custom? Individualized builds outside this catalog are available on request &#8594;</a></p>
@@ -551,7 +685,7 @@ footer{text-align:center}
    parameter, no per-org runtime data swapping. The data below IS the page. ---- */
 
 const DISCLAIMER="This is an AI-generated starting draft, not a final application. It was produced with a combination of Claude Code, Python, CSS, and other programming tools: a drafting pass grounded in Black Mamas Village's own public mission and program information plus general grant-writing best practices, then a separate fact-checking pass against blackmamasvillage-atx.org, ProPublica Nonprofit Explorer, and the funder's own published materials. An inline [SUGGESTED: value] marks an AI-drafted plausible value to confirm or replace; an inline [CONFIRM: item] marks a fact only Black Mamas Village can supply that cannot be responsibly estimated; an inline [MISSING: item] marks information not currently possessed that must be produced or sourced. Source footnotes [^N] map each fact to a traceable source in that draft's footnotes list (rendered on the web page; stripped from the Word export). Confirm the funder's current cycle, deadline, and eligibility directly on its own website before applying. Note: AFP's live application is a Google Form behind a sign-in and could not be read directly in this research. The sample draft's seven sections are structured against AFP's own published scoring rubric, which is the funder's real scoring instrument, but they are not the form's actual questions. Re-map them onto the live form before filing.";
-const METHOD="Payoff assessed manually (not by an automated scoring pipeline) across Black Mamas Village's Almanac funder matches and the deadline calendar researched directly on each funder's own current site, weighing relevance, award size, urgency, and realistic fit given the organization's current stage. The funder calendar was researched 2026-07-12; the AFP sample draft and its funder facts were re-verified against AFP's own site and its published scoring rubric on 2026-07-14, which is when AFP replaced the Black Fund as the sample (the Black Fund has no open cycle to file against). Draft sections are adapted per grant; Black Mamas Village-specific facts are sourced from blackmamasvillage-atx.org and ProPublica Nonprofit Explorer and are flagged [CONFIRM]/[MISSING] wherever they are not independently confirmed.";
+const METHOD="Payoff assessed manually (not by an automated scoring pipeline) across Black Mamas Village's Almanac funder matches and the deadline calendar researched directly on each funder's own current site, weighing relevance, award size, urgency, and realistic fit given the organization's current stage. The funder calendar was researched 2026-07-12; the AFP sample draft and its funder facts were re-verified against AFP's own site and its published scoring rubric on 2026-07-14, which is when AFP replaced the Black Fund as the sample (the Black Fund has no open cycle to file against). Deadlines and open/closed statuses were re-checked against each funder's own page on 2026-08-26, at which point AFP's 2026 cycle was found to have closed on 2026-07-31 with no next cycle posted; AFP's urgency component was re-scored to near zero and the Black Fund moved to the top of the shortlist. Only the time-sensitive fields were re-checked in that pass. The underlying relevance, award and fit assessments, and the draft text itself, still date from July 2026 and were not silently re-dated. Draft sections are adapted per grant; Black Mamas Village-specific facts are sourced from blackmamasvillage-atx.org and ProPublica Nonprofit Explorer and are flagged [CONFIRM]/[MISSING] wherever they are not independently confirmed.";
 const GENERATED_DATE="2026-07-14";
 
 const state={selected:0};
@@ -684,8 +818,8 @@ function renderBudgetProse(text){
    drafts below. Additive to the Standpoint template (which has no calendar
    section) since the task brief calls out the deadline calendar by name. */
 const CALENDAR=[
-  {funder:"AFP Greater Austin (Association of Fundraising Professionals)",opportunity:"BIPOC Opportunity Fund (Scribe sample target)",deadline:"July 31, 2026, 11:59pm",status:"urgent",note:"The only confirmed, currently-open deadline found. $10,000 cash plus about $1,900 in AFP membership and conference value; low lift to apply. Funds a fundraising capacity-building project completable in 9 months, not program or operating costs. Budget note, corrected 2026-07-14 against AFP's own scoring rubric: the under-$500,000 preference is a scored criterion, not an eligibility gate, and an organization above it that shows limited fundraising infrastructure still scores 3 of 4, so the FY2025 revenue figure ($560,326) costs at most one point of twenty-four.",url:"https://www.afpaustin.org/bipoc-opportunity-fund"},
-  {funder:"The Black Fund of Central Texas",opportunity:"Annual community grant cycle",deadline:"Next cycle timing not published; 2025 to 2026 cycle already awarded",status:"monitor",note:"Confirmed funder. Strongest overall fit (Black-led focus, no budget or age floor). Call the fund directly to learn the next cycle's open date rather than waiting for a public announcement.",url:"https://theblackfundcentraltx.org/apply-for-grant/"},
+  {funder:"AFP Greater Austin (Association of Fundraising Professionals)",opportunity:"BIPOC Opportunity Fund (Scribe sample target)",deadline:"Closed for 2026; the deadline was July 31, 2026 and next cycle timing is not posted",status:"closed",note:"Status changed from urgent to closed on August 26, 2026: the July 31, 2026 deadline has passed. Re-checked that day, AFP's own page still shows \"Applications close: July 31, 2026\" and posts no 2027 cycle, so the next window is genuinely unknown rather than merely unpublished here. The fit is unchanged and remains good: $10,000 cash plus about $1,900 in AFP membership and conference value, low lift to apply, funding a fundraising capacity-building project completable in 9 months rather than program or operating costs. Budget note, from the 2026-07-14 read of AFP's own scoring rubric and still accurate: the under-$500,000 preference is a scored criterion, not an eligibility gate, and an organization above it that shows limited fundraising infrastructure still scores 3 of 4, so the FY2025 revenue figure ($560,326) costs at most one point of twenty-four. Ask AFP Greater Austin directly when the next cycle opens.",url:"https://www.afpaustin.org/bipoc-opportunity-fund"},
+  {funder:"The Black Fund of Central Texas",opportunity:"Annual community grant cycle",deadline:"Possibly open now, YEAR UNCONFIRMED: the fund's own page reads \"Applications open August 3 and close September 10\" without printing a year. Checked August 26, 2026",status:"urgent",note:"Confirmed funder and the strongest overall fit (Black-led focus, no budget or age floor). Status raised from monitor to urgent on August 26, 2026: the fund's application page now shows an August 3 to September 10 timeline with a live Apply Now portal, where the July pass found no published next cycle. The page prints no year beside those dates, so this is NOT confirmed to be an open window and is flagged rather than asserted. If it is current, September 10, 2026 falls one week into the trial period. Confirm the date directly with the fund before doing anything else on this page. Eligibility as published: 501(c)(3) or 170(b)(1)(A)(vi), fiscally sponsored projects or government units, operating in Travis, Bastrop, Burnet, Caldwell, Hays or Williamson county, no budget or years-of-operation floor. Note the published exclusion for 2025-cycle grantees; Black Mamas Village's award was the 2023 inaugural cycle, so it appears unaffected, but confirm that too.",url:"https://theblackfundcentraltx.org/apply-for-grant/"},
   {funder:"Austin Community Foundation, Forever Austin Fund",opportunity:"Annual grant cycle",deadline:"This cycle's LOI closed January 27, 2026; next cycle representative estimate January 2027",status:"closed",note:"Requires 2 full years of operation and a $50,000-plus budget; Black Mamas Village will clear both well before the next cycle.",url:"https://www.austincf.org/grant/forever-austin-fund/"},
   {funder:"Impact Austin",opportunity:"Primary Community Grant (reapply)",deadline:"Not applicable near-term; representative estimate around the 2028 cycle",status:"monitor",note:"Already a confirmed funder ($80,000, 2025). A roughly two-year reapplication cooldown is reported but not independently confirmed at a single primary source; verify directly.",url:"https://www.impactaustin.org/grantmaking"},
   {funder:"Episcopal Health Foundation",opportunity:"Grant Opportunities, Cycle 2 2026",deadline:"LOI closed July 10, 2026; next LOI window not published",status:"closed",note:"Names Maternal Health as an explicit priority. Average grant size (about $250,000) is large relative to current budget; a smaller, targeted ask would likely be needed.",url:"https://www.episcopalhealth.org/grantmaking/"},
@@ -728,11 +862,11 @@ const DRAFTS=[
     grant_name:"BIPOC Opportunity Fund",
     funder:"AFP Greater Austin (Association of Fundraising Professionals)",
     is_sample:true,
-    payoff_score:82,
-    payoff_components:{relevance:0.75,award:0.4,urgency:1.0,fit:0.8},
-    priority_rationale:"The only researched opportunity Black Mamas Village can actually act on today: a confirmed, currently open deadline of July 31, 2026. Every other funder on this shortlist is closed, unopened, or in a reapplication cooldown. Re-scored to 82 on 2026-07-14, up from 70, after reading AFP's own published scoring rubric. The budget-threshold concern raised in the first research pass is real but much smaller than it looked: budget is one scored criterion out of six on a 24-point rubric, not an eligibility gate, and an organization over $500,000 still earns 3 of 4 points on it when it demonstrates limited fundraising infrastructure and genuine need. The worst case costs this application a single point and leaves a ceiling of 23 out of 24, still inside AFP's own Highly Competitive band.",
+    payoff_score:52,
+    payoff_components:{relevance:0.75,award:0.4,urgency:0.05,fit:0.8},
+    priority_rationale:"RE-SCORED ON AUGUST 26, 2026, down from 82. Nothing about the fit changed; the cycle closed. This was the one opportunity with an open deadline when the drafts were written, closing July 31, 2026, and urgency alone carried it to the top of the list. That date has passed. Re-checked August 26, 2026: AFP's own page still displays \"Applications close: July 31, 2026\" and has not posted a 2027 cycle, so the next window is unknown rather than simply unannounced here. Urgency is therefore scored at effectively zero, which drops the payoff score from 82 to 52 and moves this opportunity below the Black Fund and the Episcopal Health window on the shortlist. Everything else stands. Relevance, award value, and fit are unchanged, and the full draft below remains the worked sample: the analysis of AFP's own published 24-point rubric is cycle-independent, and the budget-threshold finding from the July pass still holds, that budget is one scored criterion rather than an eligibility gate, and an organization over $500,000 still earns 3 of 4 points on it when it shows limited fundraising infrastructure and genuine need, leaving a ceiling of 23 out of 24 inside AFP's own Highly Competitive band. Treat this draft as ready to re-aim at the next AFP cycle, not as a filing that was missed by inaction: it was researched three weeks before the deadline and the decision not to file was never put to Black Mamas Village.",
     grant_amount:"$10,000 cash plus 2 AFP annual memberships and 2 tickets to the AFP Greater Austin One Day Conference on October 9, 2026 (about $11,900 total value). Two organizations are selected.",
-    grant_deadline:"July 31, 2026, 11:59pm",
+    grant_deadline:"Closed for the 2026 cycle. The deadline was July 31, 2026, 11:59pm; next cycle not yet posted",
     grant_url:"https://www.afpaustin.org/bipoc-opportunity-fund",
     grant_eligibility:"Three pass/fail gates: a registered 501(c)(3), serving the Greater Austin area, and BIPOC-led (meeting at least 2 of 3 tests: 50% or more of the board identifies as BIPOC; the executive director or 50% or more of senior leadership identifies as BIPOC; the mission and/or programs primarily serve BIPOC communities). The proposed project must be completable within 9 months. Preference, scored rather than required, goes to organizations with annual operating budgets of $500,000 or less.",
     grant_focus_area:"Fundraising capacity building, NOT program or general operating support. AFP's own named eligible project types: annual fund planning, staff training, grant writing, feasibility studies, development audits, and fundraising technology.",
@@ -829,9 +963,10 @@ const DRAFTS=[
     is_sample:false,
     payoff_score:78,
     payoff_components:{relevance:0.9,award:0.45,urgency:0.3,fit:0.95},
-    priority_rationale:"The best fit on paper and the strongest relationship: explicitly focused on Black-led organizations rather than narrowly on health, Central-Texas place-based, publishing no minimum-budget or years-of-operation floor, and Black Mamas Village is already a confirmed grantee ($5,000, 2023 inaugural cycle). What it is not is actionable. The 2025 to 2026 cycle has already been awarded and the next cycle's timing is not published, so there is nothing to file against today, which is why it is no longer the sample draft. Worth a direct call to the fund now to learn when the next round opens. Note that the fund publishes no rule against repeat grantees: the prior award reads as renewal-style history, not a bar.",
+    priority_rationale:"Now the top of the list, as of August 26, 2026, because the AFP cycle above it closed rather than because anything here improved. The best fit on paper and the strongest relationship: explicitly focused on Black-led organizations rather than narrowly on health, Central-Texas place-based, publishing no minimum-budget or years-of-operation floor, and Black Mamas Village is already a confirmed grantee ($5,000, 2023 inaugural cycle). NEW AND TIME-SENSITIVE, FOUND ON AUGUST 26, 2026, AND NOT YET CONFIRMED. The fund's own application page now shows a timeline reading \"Applications open August 3 and close September 10\" with a live Apply Now portal, where the July research pass found no published next cycle. The page does not print a year anywhere near those dates, so whether this is a currently open window cannot be established from the page itself and is deliberately not asserted here. If it is the current cycle, applications close September 10, 2026, which falls one week into the trial period and makes this the most urgent item on the page by a wide margin. Confirming that one date with the fund is the single highest-value action available right now, ahead of any drafting, and it takes one phone call or email. Do not treat the window as open on the strength of this page alone. Note that the fund publishes no rule against repeat grantees: the prior award reads as renewal-style history, not a bar.",
     grant_amount:"2025 to 2026 cycle distributed $275,000 across 24 organizations, about $11,458 average",
-    grant_deadline:"Next cycle timing not published; the 2025 to 2026 cycle has already been awarded",
+    grant_deadline:"UNCONFIRMED YEAR, VERIFY BEFORE RELYING ON THIS. The fund's own application page states, without printing a year, \"Applications open August 3 and close September 10\", and its Apply Now portal link is live. Checked August 26, 2026",
+    grant_eligibility:"From the fund's own application page, checked August 26, 2026: organizations tax-exempt under Section 501(c)(3) or 170(b)(1)(A)(vi), fiscally sponsored projects, and government units may apply. The organization must operate in the six-county Central Texas region of Travis, Bastrop, Burnet, Caldwell, Hays, or Williamson. No minimum budget and no minimum years of operation are stated. Programs are expected to align with the fund's own strategies. One exclusion to check: organizations that received a grant in the 2025 cycle, other than Committee Choice Award winners, may not apply in the immediately following cycle. Black Mamas Village's confirmed award from this fund was in the 2023 inaugural cycle rather than 2025, so on the published wording that exclusion appears not to apply, but confirm it with the fund rather than relying on this reading.",
     grant_url:"https://theblackfundcentraltx.org/apply-for-grant/",
   },
   {
@@ -876,6 +1011,15 @@ const DRAFTS=[
 const COMPONENT_ORDER=[['relevance','Relevance'],['award','Award'],['urgency','Urgency'],['fit','Fit']];
 function pct(v){return Math.round(Number(v)*100);}
 
+/* Payoff-descending order is what the shortlist and the Priority Pick both read, and it used to
+   be maintained by hand as the array's own literal order. That broke on 2026-08-26, when the AFP
+   cycle closed and its re-scored entry stayed pinned at position zero while no longer being the
+   highest-payoff opportunity. Sorting here makes the order follow the scores instead of a
+   hand-kept convention, so a future re-score cannot silently leave a closed cycle presented as
+   the thing to do next. Stable within equal scores, and is_sample is found by flag rather than
+   index, so the worked sample is unaffected by where it lands. */
+DRAFTS.sort((a,b)=>(b.payoff_score||0)-(a.payoff_score||0));
+
 function renderPriority(){
   const d=DRAFTS[0];
   if(!d){document.getElementById('priority-host').innerHTML='';return;}
@@ -909,7 +1053,7 @@ function renderPriority(){
       <div class="priority-meta">
         <div class="pm-lbl">Amount</div><div class="pm-val">${esc(d.grant_amount)}</div>
         <div class="pm-lbl">Deadline</div><div class="pm-val" style="${dlc==='urgent'?'color:var(--urgent);font-weight:600':dlc==='soon'?'color:var(--warn);font-weight:500':dlc==='closed'?'color:var(--wash);font-style:italic':''}">${esc(d.grant_deadline)}</div>
-        <div class="pm-lbl">Eligibility</div><div class="pm-val">${esc(d.grant_eligibility)}</div>
+        ${d.grant_eligibility?`<div class="pm-lbl">Eligibility</div><div class="pm-val">${esc(d.grant_eligibility)}</div>`:``}
       </div>
       <div class="priority-cta">
         <button class="btn solid" type="button" id="priority-open">View full draft &#8595;</button>
