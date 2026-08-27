@@ -246,20 +246,28 @@ body{text-align:center}
   .esb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
   /* min-width:0 on the child is what keeps a long unbroken product name from forcing
      horizontal overflow at 375 (I17). */
+  /* CARD TEXT IS FULLY CENTERED, and the card declares that itself (convention, owner order
+     2026-08-26). It previously LOOKED centered only by inheriting `body{text-align:center}` from
+     the host page, which is accidental: the same card on a page without that blunt body rule would
+     render entirely left-aligned. Declaring it here makes the band self-contained and portable.
+     The two rules below that had to change are the ones `text-align` cannot reach, which is
+     exactly why the defect was visible on a live client page while every other line looked right:
+     a flex container centers its children with justify-content, not text-align, and a flex ITEM
+     positions itself with align-self. */
   .esb-card{min-width:0;background:var(--well);border:1px solid var(--rule);padding:1.1rem 1.2rem;
-    display:flex;flex-direction:column;gap:.45rem}
+    display:flex;flex-direction:column;gap:.45rem;text-align:center}
   .esb-card.esb-muted{opacity:.6}
   .esb-kicker{font-family:var(--serif);font-weight:600;font-size:12.5px;letter-spacing:.02em;
     color:var(--wash)}
   .esb-title{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink);margin:0;
-    display:flex;align-items:center;gap:.4rem}
+    display:flex;align-items:center;justify-content:center;gap:.4rem}
   .esb-lock{flex:0 0 auto;color:var(--wash)}
   .esb-desc{font-size:.92rem;color:var(--ink);margin:0}
   .esb-status{font-family:var(--serif);font-weight:600;font-size:12.5px;letter-spacing:.02em;
     color:var(--wash);margin-top:auto}
   .esb-prereq{font-family:var(--mono);font-size:.78rem;color:var(--wash);line-height:1.5}
   .esb-cta{font-family:var(--mono);font-size:.8rem;letter-spacing:.02em;color:var(--accent);
-    text-decoration:none;align-self:flex-start}
+    text-decoration:none;align-self:center}
   .esb-cta:hover{text-decoration:underline}
 /* ES-GENERATED:END [card-band-css] */
 </style>
@@ -453,30 +461,6 @@ body{text-align:center}
     <p class="esb-desc">Finds funding that connects your organization's mission to one or more named partner organizations' work, including consortiums, associations, and collaboratives, where you remain the eligible applicant. An angle Almanac's single-org matching doesn't surface on its own. Every organization in the group needs its own Almanac subscription; only one needs Scribe, and only one needs Docket.</p>
     <div class="esb-status">Not yet available</div>
     <a class="esb-cta" href="/#contact">Ask about adding Confluence &#8594;</a>
-  </div>
-  <div class="esb-card esb-muted" id="esb-card-concordance" data-esb-product="concordance" data-esb-state="IN_DEVELOPMENT">
-    <div class="esb-kicker">Trustees &amp; introductions</div>
-    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Concordance</h3>
-    <p class="esb-desc">Names the people who govern the foundations that already fund this kind of work, shows the grants that prove it, and maps who on a board could make the introduction. It does not estimate anyone's wealth.</p>
-    <div class="esb-status">In development</div>
-  </div>
-  <div class="esb-card esb-muted" id="esb-card-herald" data-esb-product="herald" data-esb-state="IN_DEVELOPMENT">
-    <div class="esb-kicker">Grant-cycle monitor</div>
-    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Herald</h3>
-    <p class="esb-desc">Watches the funder pages behind an Almanac watch-list and reports when a cycle opens, a deadline posts, or guidelines change, showing the actual diff, never an interpretation.</p>
-    <div class="esb-status">In development</div>
-  </div>
-  <div class="esb-card esb-muted" id="esb-card-atlas" data-esb-product="atlas" data-esb-state="IN_DEVELOPMENT">
-    <div class="esb-kicker">Corporate foundation benchmark</div>
-    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Atlas</h3>
-    <p class="esb-desc">Benchmarks a corporate foundation's giving against real aggregate statistics computed from Texas-registered 990-PF filings, not any single named peer.</p>
-    <div class="esb-status">In development</div>
-  </div>
-  <div class="esb-card esb-muted" id="esb-card-dossier" data-esb-product="dossier" data-esb-state="IN_DEVELOPMENT">
-    <div class="esb-kicker">990 reconciliation</div>
-    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Dossier</h3>
-    <p class="esb-desc">Checks that a foundation's claimed giving matches its own filed 990-PF numbers, and cross-references a voluntary donation list against public filings.</p>
-    <div class="esb-status">In development</div>
   </div>
   </div>
 </div>
