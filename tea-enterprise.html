@@ -278,8 +278,8 @@ body{text-align:center}
 <div class="manifest">
   <div class="manifest-in">
     <span class="brand" id="alm-brand-text"><b>Almanac</b> for Texas Empowerment Academy</span>
-    <span class="stat"><strong id="alm-m-funders">–</strong> candidate funders researched</span>
-    <span class="stat"><strong id="alm-m-grants">–</strong> compiled matches (match + profile + open grant)</span>
+    <span class="stat" id="alm-m-funders"><strong>–</strong> candidate funders researched</span>
+    <span class="stat" id="alm-m-grants"><strong>–</strong> compiled matches (match + profile + open grant)</span>
     <span class="grow"></span>
     <button class="admin-toggle" id="alm-admin-toggle" type="button" title="Enter your key to mark status on funders and grants">Admin</button>
     <nav>
@@ -660,6 +660,22 @@ function buildStatusFilter(hostId,onChange,activeGetter){
   });
 }
 
+// S-OD-8 (2026-08-27): one manifest stat shape, Measure's. The writer owns the whole node,
+// number and label together, so no later textContent write can silently strip the label. Written
+// exactly once, from load(), the same write-once discipline Measure's D24 established. TEA states
+// no as-of date because tea_almanac.json carries no pool_totals; see the S-OD-8 spec, Section 5.
+// The static label inside each span is a pre-JS fallback these writes overwrite whole.
+function writeHeaderMatchesStat(){
+  const el=document.getElementById('alm-m-grants');
+  if(!el)return;
+  el.innerHTML='<strong>'+esc(String(compileMatches().length))+'</strong> compiled matches (match + profile + open grant)';
+}
+function writeHeaderFundersStat(){
+  const el=document.getElementById('alm-m-funders');
+  if(!el)return;
+  el.innerHTML='<strong>'+esc(String(state.funders.length))+'</strong> candidate funders researched';
+}
+
 async function load(){
   // Data is inlined above. The only thing still fetched is the grant-status
   // list, which is live per-user state and degrades gracefully if unavailable.
@@ -685,8 +701,8 @@ async function load(){
   state.matchesMethod=FUNDERS_DATA.method;
   state.grants=GRANTS;
 
-  document.getElementById('alm-m-funders').textContent=state.funders.length;
-  document.getElementById('alm-m-grants').textContent=compileMatches().length;
+  writeHeaderFundersStat();
+  writeHeaderMatchesStat();
 
   applyDisplay();
   renderProfile();
@@ -773,8 +789,11 @@ function applyCompiled(){
     if(state.matchStatusFilter&&statusOf('funder',f.id).status!==state.matchStatusFilter)return false;
     return true;
   });
+  // S-OD-8: the header stat (#alm-m-grants) is written exactly once, in load(), and never from
+  // this admin-filterable list. Same rule Measure's D24 states at its own applyCompiled(). Under
+  // the one-shape markup the id is on the whole span, so a textContent write here would destroy
+  // the <strong> and the label and leave a bare number in the client's header.
   document.getElementById('alm-compiled-count').textContent=list.length;
-  document.getElementById('alm-m-grants').textContent=compileMatches().length;
   document.getElementById('alm-grants-limitation').textContent=state.grants.known_limitation;
 
   const host=document.getElementById('alm-compiled-results');

@@ -472,8 +472,8 @@ body{text-align:center}
 <div class="manifest">
   <div class="manifest-in">
     <span class="brand"><b>Enterprise tools</b> for Black Mamas Village</span>
-    <span class="stat"><strong id="alm-m-funders">…</strong> funders (confirmed + candidate)</span>
-    <span class="stat"><strong id="alm-m-grants">…</strong> open opportunities</span>
+    <span class="stat" id="alm-m-funders"><strong>…</strong> funders (confirmed + candidate)</span>
+    <span class="stat" id="alm-m-grants"><strong>…</strong> open opportunities</span>
     <span class="grow"></span>
     <button class="admin-toggle" id="alm-admin-toggle" type="button" title="Enter your key to mark status on funders and grants">Admin</button>
     <nav>
@@ -1451,10 +1451,26 @@ function wireAccordion(host,cardSelector){
   });
 }
 
+// S-OD-8 (2026-08-27): one manifest stat shape, Measure's. The writer owns the whole node,
+// number and label together. BMV states no as-of date because its inline GRANTS object carries a
+// per-client run_date and status_recheck_date, not the register-wide as-of that Measure's
+// pool_totals states; see the S-OD-8 spec, Section 5. The static label inside each span is a
+// pre-JS fallback these writes overwrite whole.
+function writeHeaderOppsStat(){
+  const el=document.getElementById('alm-m-grants');
+  if(!el)return;
+  el.innerHTML='<strong>'+esc(String(GRANTS.ready_now.length))+'</strong> open opportunities';
+}
+function writeHeaderFundersStat(){
+  const el=document.getElementById('alm-m-funders');
+  if(!el)return;
+  el.innerHTML='<strong>'+esc(String(RANKED_FUNDERS.length))+'</strong> funders (confirmed + candidate)';
+}
+
 async function load(){
   await fetchStatuses();
-  document.getElementById('alm-m-funders').textContent=RANKED_FUNDERS.length;
-  document.getElementById('alm-m-grants').textContent=GRANTS.ready_now.length;
+  writeHeaderFundersStat();
+  writeHeaderOppsStat();
 
   renderProfile();
   buildStatusFilter('alm-match-status-filter',v=>{state.matchStatusFilter=v;applyMatches();},()=>state.matchStatusFilter);

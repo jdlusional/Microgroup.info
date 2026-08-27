@@ -499,8 +499,8 @@ body{text-align:center}
 <div class="manifest">
   <div class="manifest-in">
     <span class="brand" id="alm-brand-text"><b>Almanac</b> for Measure</span>
-    <span class="stat"><strong id="alm-m-funders">–</strong> candidate funders researched</span>
-    <span class="stat" id="alm-m-grants">–</span>
+    <span class="stat" id="alm-m-funders"><strong>–</strong> candidate funders researched</span>
+    <span class="stat" id="alm-m-grants"><strong>–</strong> open grants, RFPs and LOIs tracked</span>
     <span class="grow"></span>
     <button class="admin-toggle" id="alm-admin-toggle" type="button" title="Enter your key to mark status on funders and grants">Admin</button>
     <nav>
@@ -1219,6 +1219,16 @@ function writeHeaderPoolStat(){
   el.innerHTML='<strong>'+esc(String(pt.count))+'</strong> open grants, RFPs and LOIs tracked as of '
     +esc(proseDateISO(pt.as_of))+'.';
 }
+// S-OD-8 (2026-08-27): the funders stat takes the same shape as the pool stat above, so this
+// page's own manifest stops carrying two different shapes side by side. No as-of date: the funders
+// count is a count of what this client's shelf holds, not a register-wide snapshot. The static
+// label inside the span is a pre-JS fallback this write overwrites whole; verify_page asserts the
+// two label strings agree, which is what keeps the duplication from drifting.
+function writeHeaderFundersStat(){
+  const el=document.getElementById('alm-m-funders');
+  if(!el)return;
+  el.innerHTML='<strong>'+esc(String(state.funders.length))+'</strong> candidate funders researched';
+}
 
 async function load(){
   // Profile and almanac data are fetched from data/measure-austin_*.json (see the
@@ -1255,7 +1265,7 @@ async function load(){
   state.docket=DOCKET;
   state.poolTotals=A.pool_totals||null;
 
-  document.getElementById('alm-m-funders').textContent=state.funders.length;
+  writeHeaderFundersStat();
   // D22/D24 (Card Band Restructure change 6, 2026-08-20): the header states the TOTAL population
   // (change 6's pool_totals, an independent register-wide figure) -- a different node with a
   // different provenance from the open-calls LIST count (#alm-compiled-count / Docket's own
