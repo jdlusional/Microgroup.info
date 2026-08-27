@@ -83,10 +83,10 @@
   "IRS Form 990 Schedule I, national grant-history parse, via almanac_match.py (2026-08-11)"
  ],
  "display": {
-  "page_title": "Almanac for Texas Empowerment Academy",
+  "page_title": "Texas Empowerment Academy: Almanac",
   "meta_description": "Almanac: Funder & Grant Match, prepared for Texas Empowerment Academy: a ranked funder match built from real IRS grant-history data, plus a database of currently-open grant opportunities.",
   "brand_bar_text": "Almanac for Texas Empowerment Academy",
-  "hero_heading": "Almanac",
+  "hero_heading": "Texas Empowerment Academy",
   "hero_subtext": "Almanac is a funding-prospect tool built specifically for Texas Empowerment Academy (texasempowerment.org), combining real IRS grant-history data with a live-researched database of currently-open funding opportunities.",
   "footer_credit": "Prepared for Texas Empowerment Academy by Jonathan Lin Davis of MICRO Group, L.L.C.\nBuilt from IRS Form 990 data and live web scraping\nAugust 2026"
  }
