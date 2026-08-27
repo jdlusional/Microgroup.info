@@ -1778,6 +1778,15 @@ load().catch(err=>{
    the same call already made for CYCLE/FUNDER_PROFILES above: it is not shelf-derived and
    re-running the Almanac pipeline would not regenerate it. Source: "Measure-TEA Joint Funding
    Opportunities (2026-08-11).md", Portfolios\Performance\Microgroup\Clients\Measure\. */
+/* ES-PRESERVE:BEGIN [measure-conf-candidates]
+           NO GENERATOR MAY WRITE INSIDE THIS REGION. Eight hand-curated Confluence candidates, 5,000 characters, for a PAYING client. The
+     [product-confluence] region at L677 to L761 preserves the MARKUP this data fills; without this
+     second region the data itself sat outside every preserved span and inside the generator's
+     writable surface, so a regeneration honouring that marker would have kept the container and
+     rewritten the contents. Same defect the enterprise structure model's adversarial judge issued
+     instant kill IK-1 over, and the same one R-3 closed on Black Mamas Village on 2026-08-27.
+     The pairing between this constant and the markup region is declared in page_structure.json
+     (S-OD-13, Stage 1); this marker is the immediate protection, not the whole answer. */
 const CONF_CANDIDATES=[
  {tier:"pursue",funder:"The Meadows Foundation",ein:"756015322",deadline:"Rolling, board review 5x/year (Jan/Apr/Jun/Sep/Nov)",url:"https://www.mfi.org/how-to-apply/",angle:"Explicit funder preference for \"quantitatively measurable outcomes with potential to scale impact\" is a near-perfect structural match for Measure's own evaluation methodology. Concrete angle: Measure proposes a rigorous outcomes evaluation of TEA's \"three Cs\" (communalism, collectivism, cooperation) empowerment model -- academic achievement, retention, family/community engagement in East Austin -- framed under the foundation's Education and Civic & Public Affairs priorities, with the resulting framework positioned as reusable across other culturally-relevant charter schools in Texas.",note:"Reverses an earlier read that found no clear angle here -- re-reading the funder's own current program language surfaced a real one."},
  {tier:"pursue",funder:"Notley Impact",ein:"853304316",deadline:"Rolling, no stated cycle",url:"https://www.notley.com/nonprofit-funding",angle:"A real, pre-existing dual connection, not a constructed one: Notley Impact is already one of Measure's own compiled funder matches, and a related Notley-family entity, The Notley Fund, gave TEA a $5,000 grant in 2020. Lead outreach with that existing relationship rather than a generic equity pitch.",note:"Confirm which of at least three related Notley EINs is the correct filer for this specific intake form before submitting -- not resolved on the funder's own page."},
@@ -1788,6 +1797,7 @@ const CONF_CANDIDATES=[
  {tier:"dropped",funder:"National Academies -- Gulf Research Program",ein:"530196932",deadline:"No open organizational call",url:"https://www.nationalacademies.org/programs?status%5B0%5D=accepting",angle:"",note:"Only an individual fellowship and a university-nomination-only prize are currently live sitewide. Even when the Gulf Research Program's Community track is open, its climate/offshore-energy focus has no honest link to TEA's K-12 education mission."},
  {tier:"dropped",funder:"AccessLex Institute",ein:"",deadline:"",url:"",angle:"",note:"Every one of its four grant programs targets the bar-exam/law-school pipeline specifically, with no connection to a Pre-K-12 school or to Measure's actual focus areas beyond superficial “education” label-matching. Confirmed excluded; direct verification was blocked by the funder's own site (403), assessed via search snippets instead."},
 ];
+/* ES-PRESERVE:END [measure-conf-candidates] */
 const CONF_TIER_LABEL={pursue:"Pursue",consider:"Consider",dropped:"Checked &amp; Ruled Out"};
 const CONF_TIER_BADGE={pursue:"badge-confirmed",consider:"badge-new",dropped:""};
 function confEsc(s){return(s||"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
