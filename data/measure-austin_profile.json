@@ -86,10 +86,10 @@
     "A national parse of IRS Form 990 Schedule I grant records (run 2026-07-06)."
   ],
   "display": {
-    "page_title": "Almanac for Measure",
+    "page_title": "Measure: Almanac and Scribe",
     "meta_description": "Almanac: Funder & Grant Match, prepared for Measure: a ranked funder match built from real IRS grant-history data, plus a database of currently-open grant opportunities.",
     "brand_bar_text": "Almanac for Measure",
-    "hero_heading": "Almanac",
+    "hero_heading": "Measure",
     "hero_subtext": "Almanac is a funding-prospect tool built specifically for Measure (wemeasure.org), combining real IRS grant-history data with a live-researched database of currently-open funding opportunities.",
     "footer_credit": "Prepared for Measure by Jonathan Lin Davis of MICRO Group, L.L.C.\nBuilt from IRS Form 990 data and live web scraping\nJuly 2026"
   },

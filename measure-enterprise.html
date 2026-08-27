@@ -444,6 +444,21 @@ body{text-align:center}
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;
     transition-duration:.01ms !important;scroll-behavior:auto !important}
 }
+  /* ---- Page-level pilot note (S-OD-15, ratified 2026-08-27). Built from tool-shared.css's own
+     tokens so it reads as one system rather than as separate furniture. Own namespace, because
+     .section-card carries an anatomy invariant this markup would fail and this block is
+     deliberately not a fold. Every class here has a rule; none is a bare hook. The rules live in
+     this page's inline style block and never in tool-shared.css, which is a freeze tripwire.
+     Shape and values are BMV's .bmv-trial block verbatim; only the namespace differs, so the two
+     stay visually identical until the structure model can unify them into one declared region. */
+  .msr-pilot{max-width:1180px;margin:0 auto;padding:0 1.25rem 1.6rem}
+  .msr-pilot-in{border:1.5px solid var(--ink);background:var(--well);padding:1.2rem 1.4rem;text-align:center}
+  .msr-pilot-kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--accent);font-weight:700}
+  .msr-pilot-dates{font-family:var(--serif);font-weight:700;font-size:clamp(1.05rem,2.6vw,1.3rem);
+    color:var(--ink);margin:.5rem 0 .6rem;line-height:1.3}
+  .msr-pilot-note{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0 auto}
+
 /* ES-GENERATED:BEGIN [card-band-css]
    RESERVED, DELIBERATELY EMPTY, same Wave 6 gate as the card-band markup region below.
    The band's CSS is generated into each page's own inline style block rather than into a shared
@@ -499,8 +514,8 @@ body{text-align:center}
 <div class="manifest">
   <div class="manifest-in">
     <span class="brand" id="alm-brand-text"><b>Almanac</b> for Measure</span>
-    <span class="stat"><strong id="alm-m-funders">–</strong> candidate funders researched</span>
-    <span class="stat" id="alm-m-grants">–</span>
+    <span class="stat" id="alm-m-funders"><strong>–</strong> candidate funders researched</span>
+    <span class="stat" id="alm-m-grants"><strong>–</strong> open grants, RFPs and LOIs tracked</span>
     <span class="grow"></span>
     <button class="admin-toggle" id="alm-admin-toggle" type="button" title="Enter your key to mark status on funders and grants">Admin</button>
     <nav>
@@ -516,10 +531,32 @@ body{text-align:center}
 
 <header class="hero">
   <div class="eyebrow">Prepared research tool, not a public product</div>
-  <h1 id="alm-hero-heading">Almanac</h1>
+  <h1 id="alm-hero-heading">Measure</h1>
   <p id="alm-hero-subtext">Almanac is a funding-prospect tool combining real IRS grant-history data with a live-researched database of currently-open funding opportunities.</p>
   <div class="note">Every funder and grant listed here was verified against a real source (IRS Form 990 filings or the funder's own current website): nothing here is estimated or invented. Where something is uncertain, it's flagged explicitly rather than guessed at.</div>
 </header>
+
+<!-- PILOT NOTE, page level. Ruling S-OD-15, 2026-08-27, under the ratified trial convention of
+     2026-08-26: a trial is not a different build and must not become a fourth page shape, and the
+     only difference is that the page NOTES it and STATES the beginning and end date. This block is
+     that note, and nothing else on this page is shaped by the pilot.
+     SCOPED DELIBERATELY. Black Mamas Village's equivalent band covers its whole plan, because both
+     products it holds are on trial. Measure's pilot covers Docket only, while Almanac, Scribe and
+     Confluence are not time-boxed, so a bare "you are on a trial" note would be false here. The
+     copy leads with the scope for that reason.
+     PLACED HERE, AND NOT IN THE HERO, THE FOOTER CREDIT OR THE META DESCRIPTION, ON PURPOSE.
+     applyDisplay() below overwrites #alm-hero-heading, #alm-hero-subtext, #alm-footer-credit,
+     document.title and the meta description from data/measure-austin_profile.json's display block,
+     every one of which is populated. Trial copy in any of those four places would be erased on
+     load. Nothing in this page's script reads or writes this block.
+     Present tense on purpose: as of this build the pilot is running. -->
+<div class="msr-pilot" id="msr-pilot-band">
+  <div class="msr-pilot-in">
+    <div class="msr-pilot-kicker">Docket pilot</div>
+    <p class="msr-pilot-dates">Docket is on a time-boxed pilot that began August 17, 2026 and runs through September 16, 2026.</p>
+    <p class="msr-pilot-note">The pilot covers Docket only. Almanac and Scribe are standing subscriptions and Confluence is a one-time engagement; none of the three is on a pilot, and these dates do not touch them. Both dates are stated here so the window is visible to anyone reading this page rather than counted from a start date nobody can see. Nothing on this page shuts itself off on September 16 and no access is cut automatically; what happens to Docket after that date is a conversation between Measure and MICRO Group, not something the software decides.</p>
+  </div>
+</div>
 
 <!-- PRIMARY ACCORDION, one per product, generated by merge_enterprise_page.py.
      CLOSED ON OPEN, and so is every section inside it. Owner ruling 2026-08-03 made this the
@@ -600,6 +637,9 @@ body{text-align:center}
       </div>
     </div>
     <div class="fold-body" id="alm-compiled-fold-body">
+      <div class="toolbar">
+        <div class="chip-filter" id="alm-compiled-status-filter"></div>
+      </div>
       <div class="res-count"><b id="alm-compiled-count">0</b> aligned funders shown</div>
       <div class="res-count" id="alm-held-line" hidden><b id="alm-held-count">0</b> held for review</div>
       <!-- D23 (Card Band Restructure change 6, 2026-08-20): the cap clause moved out of the
@@ -691,7 +731,12 @@ body{text-align:center}
      This marker is the ratified Phase 1 Section 6.2 obligation, finally built: "a do not touch
      between these comments convention so a future regeneration cannot silently clobber
      Confluence's hand-coded section while it remains hand-coded". Placed 2026-08-18 under the
-     Enterprise Page Build Architecture plan, Section 9 Step 3, ratified Decision 2. -->
+     Enterprise Page Build Architecture plan, Section 9 Step 3, ratified Decision 2.
+     AMENDED 2026-08-27 (owner ruling S-OD-4): the Read This First section that used to
+     open this region moved to measure-orientation.html's appendix, and its two Check B
+     literals moved with it. What this region now protects is the accordion wrapper, the
+     inline candidate dataset, the local render function, section#conf-findings and the
+     orientation-page signpost added the same day. -->
 <section class="section section-card product-accordion" id="product-confluence">
   <div class="fold">
     <div class="section-head-row">
@@ -702,49 +747,15 @@ body{text-align:center}
       </div>
     </div>
     <div class="fold-body" id="product-confluence-body">
-<section class="section section-card" id="conf-how-to-read">
-  <div class="fold">
-    <div class="section-head-row">
-      <button class="mc-toggle" type="button" aria-controls="conf-how-to-read-fold-body"></button>
-      <div class="section-head">
-        <span class="kicker">Read This First</span>
-        <h2>What this is, and why it exists</h2>
-      </div>
-    </div>
-    <div class="fold-body" id="conf-how-to-read-fold-body">
-    <div class="table-scroll"><table class="funder-mini-table method-table">
-      <thead><tr><th>Topic</th><th>What it means</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>Where this came from</td>
-          <td>On August 11, 2026, Meme Styles (Measure's President) shared that three projects in Measure's pipeline (Huston-Tillotson University, the City of Austin Homelessness Strategy Office, and Texas Empowerment Academy) had all been postponed for funding shortages. TEA specifically lost approximately $300,000 in anticipated funding. Rather than let the relationship and prior work go to waste, Meme asked directly: could Almanac identify funding where Measure and TEA could collaborate on a joint project, mutually beneficial to both, naming K-12 education research specifically. Confluence is the direct answer to that question, built the same day.</td>
-        </tr>
-        <tr>
-          <td>What this is</td>
-          <td>A small, hand-verified shortlist of real, currently open (or recently closed, marked as such) funding opportunities where the funder's own stated mission connects to <em>both</em> Measure's evaluation/data-justice work <em>and</em> TEA's culturally relevant K-12 education work in East Austin, and where Measure itself, not TEA, is the eligible applicant. Every candidate below was checked directly against the funder's own current page, not an aggregator, the same sourcing standard as the rest of this page.</td>
-        </tr>
-        <tr>
-          <td>How it differs from Almanac above</td>
-          <td>Almanac ranks funders and open grants against Measure's own profile alone. Confluence specifically looks for the intersection between Measure's eligibility and one or more named partner organizations' missions (TEA, in this case), an angle Almanac's single-org matching doesn't surface on its own; the same mechanism works unchanged for a consortium, association, or larger collaborative named alongside Measure. It is a one-time curated add-on, not a recurring cycle: revisit it if the TEA collaboration's funding picture changes, rather than expecting it to refresh automatically.</td>
-        </tr>
-        <tr>
-          <td>What each organization needs</td>
-          <td>Every organization named in a Confluence engagement needs its own active Almanac subscription, not the lead applicant only, since Confluence reuses each member's already-verified Almanac research rather than researching from scratch. Only one organization in a group needs Scribe, to draft joint applications, and only one needs Docket, to source joint Letters of Inquiry or Requests for Proposals.<br><br><b>This specific engagement is grandfathered against that rule (owner decision, 2026-08-12).</b> It was built the same day as Meme's request, as a one-time pilot ahead of any standing Confluence pricing or eligibility rule, and it predates the rule rather than violating it. Measure holds Almanac. TEA does not currently hold an Almanac subscription of its own; <code>tea-enterprise.html</code> exists as a prospective build, not yet a billed engagement. The rule applies in full to every Confluence engagement built from here forward.</td>
-        </tr>
-        <tr>
-          <td>Method</td>
-          <td>Built from a corpus of 704 funder-eligibility determinations already hand-verified specifically for Measure and sitting in the underlying pipeline data, filtered for candidates thematically adjacent to TEA's mission, then independently re-checked against each funder's own current page for this pass. Full write-up, including two candidates dropped for stale information and one genuine data discrepancy flagged rather than resolved: see the source note at the bottom of this section.</td>
-        </tr>
-        <tr>
-          <td>Next steps</td>
-          <td>The nearest deadline below is time-sensitive. Questions about any candidate? <a href="/#contact">Get in touch &#8594;</a></td>
-        </tr>
-      </tbody>
-    </table></div>
-    </div>
-  </div>
-</section>
-
+<!-- SIGNPOST, S-OD-4 Option B, 2026-08-27. The Read This First framing for Confluence moved
+     to measure-orientation.html under the ruling. The CONTENT lives there only; this is a
+     pointer, not a copy, so "only" is not violated. It exists because the relocation put that
+     framing three interactions away from this section, behind a heading the page itself
+     introduces with "Nothing here is required to read the seven sections above", and the
+     framing names this client's President, a funding shortfall at a named partner and a
+     pricing decision that grandfathers this engagement. A reader who never learns it exists
+     is the cost the ruling did not price. -->
+<p class="note" style="max-width:70ch;margin:0 auto 1.1rem">Where this engagement came from, how it differs from Almanac, and why its pricing is an exception are on <a href="measure-orientation.html#or-s8">the orientation page</a>.</p>
 <section class="section section-card" id="conf-findings">
   <div class="fold">
     <div class="section-head-row">
@@ -1255,6 +1266,16 @@ function writeHeaderPoolStat(){
   el.innerHTML='<strong>'+esc(String(pt.count))+'</strong> open grants, RFPs and LOIs tracked as of '
     +esc(proseDateISO(pt.as_of))+'.';
 }
+// S-OD-8 (2026-08-27): the funders stat takes the same shape as the pool stat above, so this
+// page's own manifest stops carrying two different shapes side by side. No as-of date: the funders
+// count is a count of what this client's shelf holds, not a register-wide snapshot. The static
+// label inside the span is a pre-JS fallback this write overwrites whole; verify_page asserts the
+// two label strings agree, which is what keeps the duplication from drifting.
+function writeHeaderFundersStat(){
+  const el=document.getElementById('alm-m-funders');
+  if(!el)return;
+  el.innerHTML='<strong>'+esc(String(state.funders.length))+'</strong> candidate funders researched';
+}
 
 async function load(){
   // Profile and almanac data are fetched from data/measure-austin_*.json (see the
@@ -1291,7 +1312,7 @@ async function load(){
   state.docket=DOCKET;
   state.poolTotals=A.pool_totals||null;
 
-  document.getElementById('alm-m-funders').textContent=state.funders.length;
+  writeHeaderFundersStat();
   // D22/D24 (Card Band Restructure change 6, 2026-08-20): the header states the TOTAL population
   // (change 6's pool_totals, an independent register-wide figure) -- a different node with a
   // different provenance from the open-calls LIST count (#alm-compiled-count / Docket's own
@@ -1305,6 +1326,7 @@ async function load(){
   /* alm-method-scoring / alm-method-cycle / scr-method-status writes removed 2026-08-07
      with the Method sections themselves. Leaving them would throw on a null element and kill
      every line after, which is exactly how this page rendered blank toggles on 2026-08-03. */
+  buildStatusFilter('alm-compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
   setAdminUI();
   applyCompiled();
   /* Owner order 2026-08-17: Mission / Focus Areas / At a Glance / Geography are plain
