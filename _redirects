@@ -86,6 +86,21 @@
 # to tea.html via Pages' default clean-URL stripping, same as every other org hub page here.
 /TEA   /tea  301
 
+# Black Mamas Village product pages consolidated onto /blackmamas-enterprise (2026-08-26), exactly
+# the consolidation /measure-enterprise made on 2026-08-03. Almanac and Scribe now sit in one
+# primary accordion each on a single page; the /blackmamas switcher stays and now carries the
+# standard four cards. THE CLIENT HOLDS A LIVE LINK TO THE OLD ALMANAC AND SCRIBE URLS, so a dead
+# path here is a real cost, not a tidiness question. Both source files are DELETED rather than left
+# in place, same reason as every retirement above: Cloudflare Pages serves a static asset in
+# preference to a redirect rule, so leaving the .html files would make both redirects silently dead
+# while looking correct in this file. Deleting alone is equally wrong in the other direction:
+# Pages keeps serving a deleted file for up to seven days and a zone purge does not close it, so
+# only these rules actually retire the URLs.
+/blackmamas-almanac       /blackmamas-enterprise  301
+/blackmamas-almanac.html  /blackmamas-enterprise  301
+/blackmamas-scribe        /blackmamas-enterprise  301
+/blackmamas-scribe.html   /blackmamas-enterprise  301
+
 # improvementlog.html retired 2026-08-21 (System Change Log Restructure, decision 1): the
 # merged, org-agnostic change log now lives solely on jonathanlindavis.com. Same precedent as
 # measure-almanac/measure-scribe/pilot-docket above: the .html file is DELETED rather than left
