@@ -600,6 +600,9 @@ body{text-align:center}
       </div>
     </div>
     <div class="fold-body" id="alm-compiled-fold-body">
+      <div class="toolbar">
+        <div class="chip-filter" id="alm-compiled-status-filter"></div>
+      </div>
       <div class="res-count"><b id="alm-compiled-count">0</b> aligned funders shown</div>
       <div class="res-count" id="alm-held-line" hidden><b id="alm-held-count">0</b> held for review</div>
       <!-- D23 (Card Band Restructure change 6, 2026-08-20): the cap clause moved out of the
@@ -1266,6 +1269,7 @@ async function load(){
   /* alm-method-scoring / alm-method-cycle / scr-method-status writes removed 2026-08-07
      with the Method sections themselves. Leaving them would throw on a null element and kill
      every line after, which is exactly how this page rendered blank toggles on 2026-08-03. */
+  buildStatusFilter('alm-compiled-status-filter',v=>{state.matchStatusFilter=v;applyCompiled();},()=>state.matchStatusFilter);
   setAdminUI();
   applyCompiled();
   /* Owner order 2026-08-17: Mission / Focus Areas / At a Glance / Geography are plain
