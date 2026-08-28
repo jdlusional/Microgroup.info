@@ -677,7 +677,7 @@ table.or-t tr:last-child td{border-bottom:none}
          shortfall and an owner decision of 2026-08-12. A regeneration cannot reproduce any of it.
          Its Check B entries moved with it and are keyed to THIS page in check_b_literals.json;
          check_live_drift.py's orientation pass is what makes that key run. -->
-    <h3>Confluence</h3>
+    <h3 id="conf-orientation">Confluence</h3>
     <div class="or-method-sub">
       <h4>Where This Comes From</h4>
       <div class="or-box">
@@ -1601,6 +1601,43 @@ load().catch(e=>showLoadError('The page loaded its data but failed while renderi
   }
   foldSubheads(document);
   window.foldSubheads=foldSubheads;
+
+  /* DEEP LINK OPENER (owner ruling 2026-08-27, S-OD-4 Option C). Every .section-card and every
+     generated .subfold is CLOSED at load, so a link into this page from elsewhere landed the
+     reader on a collapsed section and left them to find the thing themselves. Measured before
+     this: reaching the relocated Confluence framing from measure-enterprise.html took three
+     interactions, one to navigate and two to expand.
+
+     It CLICKS each toggle rather than setting .mc-closed itself. Every fold's open state lives in
+     its own closure's setOpen(), which also writes aria-expanded and the button label, and the two
+     fold kinds use different labels ("Hide section" and "Hide"). Reimplementing that here would
+     duplicate state that is already owned elsewhere and would drift the moment either label
+     changes. Clicking reuses the real writer.
+
+     GENERAL, not special-cased to one id, so any future deep link into this page works. It must
+     run AFTER foldSubheads(document) above, because the .subfold wrappers it walks do not exist
+     until that call creates them. */
+  function openToHashTarget(){
+    var id=(window.location.hash||'').slice(1);
+    if(!id)return;
+    var el=document.getElementById(id);
+    if(!el)return;
+    var chain=[],node=el,guard=0;
+    while(node && node!==document.body && guard++<200){
+      if(node.classList && node.classList.contains('mc-closed'))chain.push(node);
+      node=node.parentNode;
+    }
+    /* Outermost first: a parent opening after its child is harmless, but this order means the
+       element is already laid out by the time we scroll to it. */
+    chain.reverse().forEach(function(c){
+      var btn=c.querySelector(':scope > .fold > .section-head-row > .mc-toggle')
+            ||c.querySelector(':scope > .subfold-head > .mc-toggle');
+      if(btn)btn.click();
+    });
+    if(el.scrollIntoView)el.scrollIntoView({block:'start'});
+  }
+  openToHashTarget();
+  window.addEventListener('hashchange',openToHashTarget);
 })();
 </script>
 </body>
