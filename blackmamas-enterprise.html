@@ -976,7 +976,6 @@ body{text-align:center}
           <span class="form-status" id="scr-submit-status"></span>
         </div>
       </form>
-      <div class="field-hint" style="margin-top:.6rem">Draft for review: this form is not wired to a live backend yet.</div>
     </div>
   </div>
 </section>
@@ -2237,7 +2236,7 @@ function initRequestForm(){
         setStatus('Could not send your request'+(t?': '+t.slice(0,160):'.')+' Please try again.',true);
       }
     }catch(err){
-      setStatus('Network error: this draft page is not wired to a live backend yet.',true);
+      setStatus('Could not reach the server. Please try again, or email your request to jonathan@microgroup.info with the grant name.',true);
     }finally{
       if(!success&&btn){btn.disabled=false;btn.textContent=origLabel;}
     }
