@@ -85,6 +85,14 @@
 # rule to reach the actual lowercase asset tea.html -- the bare lowercase /tea already resolves
 # to tea.html via Pages' default clean-URL stripping, same as every other org hub page here.
 /TEA   /tea  301
+# Added 2026-08-28 (P4-D10): the same rule has to be repeated per PATH, not just for the hub.
+# Case-sensitivity is not inherited, so /TEA reaching /tea did nothing for the three child pages;
+# /TEA-questionnaire and its siblings were returning 404 to anyone who typed the hub's own casing
+# and kept it. Targets verified present as tea-questionnaire.html, tea-orientation.html and
+# tea-enterprise.html before adding these.
+/TEA-questionnaire  /tea-questionnaire  301
+/TEA-orientation    /tea-orientation    301
+/TEA-enterprise     /tea-enterprise     301
 
 # Black Mamas Village product pages consolidated onto /blackmamas-enterprise (2026-08-26), exactly
 # the consolidation /measure-enterprise made on 2026-08-03. Almanac and Scribe now sit in one
