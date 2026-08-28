@@ -142,7 +142,7 @@ relevant to its own site rather than duplicating the other's detail.
     demos**, linked from `demo.html` and every product demo's nav. `demo-pricing.html` is
     the standing rate card: Almanac $1,500/yr; Scribe Standard $1,500/yr (1 grant/quarter)
     or Pro $3,000/yr (1 grant/month); Concordance and Herald listed as in-development, not
-    for sale; an optional Infrastructure & Updates add-on at $1,500/yr flat covering every
+    for sale; an optional Infrastructure & Updates add-on at $2,000/yr flat covering every
     product an org has purchased; no bundle discount. Its request-pricing form posts to
     `functions/api/pricing-request.js` (Resend, hard-fail — no D1 backing it, so a mail
     failure surfaces to the visitor) and carries an optional "Referred by" sub-section.
