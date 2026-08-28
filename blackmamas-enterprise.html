@@ -28,6 +28,21 @@ a{color:var(--ink)}
 .section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
 .section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0 auto}
 .section-head h2{text-transform:uppercase;letter-spacing:.05em}
+/* ADDED 2026-08-27 (owner ruling, session-lens pass), copied verbatim from
+   demo-almanac.html:55-57 and :59, which measure-enterprise.html and tea-enterprise.html
+   also carry. This page was built 2026-08-26 and shipped WITHOUT them, so it has been
+   violating the 2026-08-17 owner order quoted below since it went live. Surfaced by I19
+   on its first assessable run after the almanac exemplar was re-pinned the same day.
+   BOTH rules are required and the ORDER MATTERS. tool-shared.css:42 already declares
+   .fold-count:empty{display:none} for every page linking the shared layer, and adding
+   the block rule alone was tried first and MEASURED: it out-specifies the shared rule
+   from a later stylesheet, so the empty Deadline Calendar count stopped being hidden and
+   rendered as an 18px empty bordered chip. Re-declaring :empty AFTER the block rule wins
+   it back. That is why the exemplar and both other client pages carry the pair. */
+/* Owner order 2026-08-17: count badges render on their own line UNDER the heading,
+   never beside it. */
+.section-head .fold-count{display:block;margin:.45rem auto 0;width:fit-content}
+.fold-count:empty{display:none}
 .section-lede p{color:var(--ink);font-size:15px;font-style:normal;font-weight:400;margin:0 0 .8rem}
 .manifest-in{justify-content:center}
 .manifest .grow{display:none}
