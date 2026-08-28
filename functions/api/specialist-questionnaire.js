@@ -70,7 +70,7 @@
 // locked-recipient convention (never a config or generator parameter).
 
 const DEFAULT_TO = "jdavis92105@gmail.com";
-const DEFAULT_FROM = "MICRO Group, L.L.C. Specialist Panel <onboarding@resend.dev>";
+const DEFAULT_FROM = "MICRO Group, L.L.C. Specialist Panel <notifications@microgroup.info>";
 
 // Uploads still arrive under four separate keys, so file_meta and the
 // attachment-carrier email can both say which upload is a CV vs. a

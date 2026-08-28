@@ -11,7 +11,7 @@
 //                                                 Resend-account email out of the box)
 
 const DEFAULT_TO = "jdavis92105@gmail.com";
-const DEFAULT_FROM = "MEASURE Grant Drafter <onboarding@resend.dev>";
+const DEFAULT_FROM = "MEASURE Grant Drafter <notifications@microgroup.info>";
 
 const ALLOWED_EXTENSIONS = [".pdf", ".doc", ".docx"];
 const MAX_TOTAL_BYTES = 25 * 1024 * 1024; // 25 MB

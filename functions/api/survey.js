@@ -10,10 +10,10 @@
 // Config (Cloudflare Pages -> Settings -> Variables and Secrets):
 //   RESEND_KEY     (required, encrypted)
 //   SURVEY_TO      (optional) recipient inbox; default below
-//   SURVEY_FROM    (optional) verified sender; default uses Resend onboarding
+//   SURVEY_FROM    (optional) overrides the default verified sender below
 
 const DEFAULT_TO = "jdavis92105@gmail.com";
-const DEFAULT_FROM = "MICRO Group, L.L.C. Organization Intake <onboarding@resend.dev>";
+const DEFAULT_FROM = "MICRO Group, L.L.C. Organization Intake <notifications@microgroup.info>";
 
 const ALLOWED_EXTENSIONS = [".pdf", ".doc", ".docx"];
 const MAX_TOTAL_BYTES = 25 * 1024 * 1024; // 25 MB, matches draft-request.js

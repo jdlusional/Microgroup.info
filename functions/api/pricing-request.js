@@ -19,10 +19,10 @@
 // Config (Cloudflare Pages -> Settings -> Variables and Secrets):
 //   RESEND_KEY        (required, encrypted)
 //   PRICING_REQUEST_TO    (optional) recipient inbox; default below
-//   PRICING_REQUEST_FROM  (optional) verified sender; default uses Resend onboarding
+//   PRICING_REQUEST_FROM  (optional) overrides the default verified sender below
 
 const DEFAULT_TO = "jonathanlindavis@gmail.com";
-const DEFAULT_FROM = "MICRO Group, L.L.C. Pricing <onboarding@resend.dev>";
+const DEFAULT_FROM = "MICRO Group, L.L.C. Pricing <notifications@microgroup.info>";
 
 function json(obj, status = 200) {
   return new Response(JSON.stringify(obj), {
