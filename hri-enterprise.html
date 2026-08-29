@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08J22J0DXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08J22J0DXL');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HRI: Enterprise Tools</title>
+<meta name="description" content="The MICRO Group tool catalogue for HRI. Unlisted and gated." />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/svg+xml" href="Assets/micro-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tool-shared.css?v=9a8055aac9">
+<style>
+a{color:var(--ink)}
+.hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1.4rem;text-align:center}
+.hero .note{max-width:70ch;margin:.9rem auto 0;font-size:.92rem;color:var(--wash)}
+  /* Trial band. Hand-owned and deliberately outside the generated regions. Mirrors
+     blackmamas-enterprise.html's .bmv-trial rules so the two trial pages read identically, under
+     a per-client namespace matching the existing convention. Every class here has a rule, which
+     is what I1 checks. */
+  .hri-trial{max-width:1180px;margin:0 auto;padding:0 1.25rem 1.6rem}
+  .hri-trial-in{border:1.5px solid var(--ink);background:var(--well);padding:1.2rem 1.4rem;text-align:center}
+  .hri-trial-kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--accent);font-weight:700}
+  .hri-trial-dates{font-family:var(--serif);font-weight:700;font-size:clamp(1.05rem,2.6vw,1.3rem);
+    color:var(--ink);margin:.5rem 0 .6rem;line-height:1.3}
+  .hri-trial-note{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0 auto}
+/* ES-GENERATED:BEGIN [card-band-css] */
+  /* Card band. Generated with its markup by enterprise/build_enterprise_page.py, so every class
+     here has a rule by construction (I1). Own namespace: not .section-card, whose anatomy
+     invariant this markup would fail, and not .pick-card, which lives in a stylesheet the frozen
+     clients link. */
+  .esb-band{max-width:1180px;margin:0 auto;padding:0 1.25rem 2.4rem}
+  .esb-band-head{font-family:var(--serif);font-weight:700;font-size:1.05rem;text-transform:uppercase;
+    letter-spacing:.05em;color:var(--wash);margin:0 0 .9rem;text-align:center}
+  .esb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+  /* min-width:0 on the child is what keeps a long unbroken product name from forcing
+     horizontal overflow at 375 (I17). */
+  /* CARD TEXT IS FULLY CENTERED, and the card declares that itself (convention, owner order
+     2026-08-26). It previously LOOKED centered only by inheriting `body{text-align:center}` from
+     the host page, which is accidental: the same card on a page without that blunt body rule would
+     render entirely left-aligned. Declaring it here makes the band self-contained and portable.
+     The two rules below that had to change are the ones `text-align` cannot reach, which is
+     exactly why the defect was visible on a live client page while every other line looked right:
+     a flex container centers its children with justify-content, not text-align, and a flex ITEM
+     positions itself with align-self. */
+  .esb-card{min-width:0;background:var(--well);border:1px solid var(--rule);padding:1.1rem 1.2rem;
+    display:flex;flex-direction:column;gap:.45rem;text-align:center}
+  .esb-card.esb-muted{opacity:.6}
+  .esb-kicker{font-family:var(--serif);font-weight:600;font-size:12.5px;letter-spacing:.02em;
+    color:var(--wash)}
+  .esb-title{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink);margin:0;
+    display:flex;align-items:center;justify-content:center;gap:.4rem}
+  .esb-lock{flex:0 0 auto;color:var(--wash)}
+  .esb-desc{font-size:.92rem;color:var(--ink);margin:0}
+  .esb-status{font-family:var(--serif);font-weight:600;font-size:12.5px;letter-spacing:.02em;
+    color:var(--wash);margin-top:auto}
+  .esb-prereq{font-family:var(--mono);font-size:.78rem;color:var(--wash);line-height:1.5}
+  .esb-cta{font-family:var(--mono);font-size:.8rem;letter-spacing:.02em;color:var(--accent);
+    text-decoration:none;align-self:center}
+  .esb-cta:hover{text-decoration:underline}
+/* ES-GENERATED:END [card-band-css] */
+footer{max-width:1180px;margin:0 auto;padding:1.5rem 1.25rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:12px;letter-spacing:.02em;text-align:center}
+</style>
+</head>
+<body>
+<!-- writing-convention: general -->
+
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand"><b>MICRO Group, L.L.C.</b> for HRI</span>
+    <span class="grow"></span>
+    <nav>
+      <a href="hri-orientation">Orientation</a>
+      <a href="hri-questionnaire">Questionnaire</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">Prepared research tools, not a public product</div>
+  <h1>HRI</h1>
+  <p>Everything MICRO Group builds, and what HRI currently has access to.</p>
+  <div class="note">Almanac and Scribe are active for the trial window shown below. Every other
+  tool is shown so the catalogue is legible in full rather than partially, and each card states
+  plainly what it does and what it would require. Start with the <a href="hri-questionnaire">questionnaire</a>, which asks for
+  the information no public filing carries.</div>
+</header>
+
+<!-- TRIAL NOTE, page level. Hand-owned, deliberately OUTSIDE the ES-GENERATED regions: the
+     generator owns the card band and its CSS, and nothing else here. Follows the ratified trial
+     convention of 2026-08-26, which is deliberately narrow. A trial is not a different build and
+     must not become a fourth page shape; the only difference is that the page NOTES it is a trial
+     and STATES the window. This copy was approved by the owner on 2026-08-29 before compose.
+     THE KICKER CARRIES NO TIER, ON PURPOSE. Black Mamas Village holds both products at Pro, so its
+     kicker reads "30-day Pro trial". HRI holds Almanac at STANDARD and Scribe at PRO, so a copied
+     kicker would state a tier this client does not hold on one of its two products. The tiers are
+     named separately in the note below instead. -->
+<div class="hri-trial" id="hri-trial-band">
+  <div class="hri-trial-in">
+    <div class="hri-trial-kicker">90-day trial</div>
+    <p class="hri-trial-dates">The trial begins September 3, 2026 and runs through December 1, 2026.</p>
+    <p class="hri-trial-note">Both dates are stated here so the window is visible to anyone reading this page rather than counted from a signup date nobody can see. Human Rights Initiative of North Texas holds Almanac at Standard and Scribe at Pro for this trial, with Infrastructure and Updates included for its full length, covering updates and improvements to the systems behind both products at no additional cost. Nothing on this page shuts itself off on December 1 and no access is cut automatically; what happens after that date is a conversation between Human Rights Initiative of North Texas and MICRO Group, L.L.C., not something the software decides.</p>
+  </div>
+</div>
+
+<!-- ES-GENERATED:BEGIN [card-band] -->
+<div class="esb-band">
+  <h2 class="esb-band-head">Also included</h2>
+  <div class="esb-grid">
+  <div class="esb-card" id="esb-card-almanac" data-esb-product="almanac" data-esb-state="OWNED" data-esb-link="1">
+    <div class="esb-kicker">Funder &amp; grant match</div>
+    <h3 class="esb-title">Almanac</h3>
+    <p class="esb-desc">Finds the funders and open grants that fit an organization, ranks them, and shows the public source behind every one.</p>
+    <div class="esb-status">Included</div>
+    <a class="esb-cta" href="hri-almanac.html">Open Almanac &#8594;</a>
+  </div>
+  <div class="esb-card" id="esb-card-scribe" data-esb-product="scribe" data-esb-state="OWNED" data-esb-link="1">
+    <div class="esb-kicker">Grant drafter</div>
+    <h3 class="esb-title">Scribe</h3>
+    <p class="esb-desc">Works from an Almanac match to produce a near-submission draft, fact-checked against the organization's own public information, with an explicit list of what only the applicant can supply. Requires an active Almanac subscription.</p>
+    <div class="esb-status">Included</div>
+    <a class="esb-cta" href="hri-scribe.html">Open Scribe &#8594;</a>
+  </div>
+  </div>
+</div>
+<div class="esb-band">
+  <h2 class="esb-band-head">Not in this plan</h2>
+  <div class="esb-grid">
+  <div class="esb-card esb-muted" id="esb-card-docket" data-esb-product="docket" data-esb-state="LOCKED">
+    <div class="esb-kicker">Organization Project Requests</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Docket</h3>
+    <p class="esb-desc">Almanac's sibling for Letters of Inquiry and Requests for Proposals, tracked separately from traditional grants. Same sourcing standard: every request traces to the funder's or agency's own current page. Requires an active Almanac subscription.</p>
+    <div class="esb-status">Not yet available</div>
+    <a class="esb-cta" href="/#contact">Ask about adding Docket &#8594;</a>
+  </div>
+  <div class="esb-card esb-muted" id="esb-card-confluence" data-esb-product="confluence" data-esb-state="LOCKED">
+    <div class="esb-kicker">Joint funding, two or more organizations</div>
+    <h3 class="esb-title"><svg class="esb-lock" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 1 1 7 0v2h.5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h.5Zm1.5 0h4V5a2 2 0 1 0-4 0v2Z" fill="currentColor"/></svg>Confluence</h3>
+    <p class="esb-desc">Finds funding that connects your organization's mission to one or more named partner organizations' work, including consortiums, associations, and collaboratives, where you remain the eligible applicant. An angle Almanac's single-org matching doesn't surface on its own. Every organization in the group needs its own Almanac subscription; only one needs Scribe, and only one needs Docket.</p>
+    <div class="esb-status">Not yet available</div>
+    <a class="esb-cta" href="/#contact">Ask about adding Confluence &#8594;</a>
+  </div>
+  </div>
+</div>
+<!-- ES-GENERATED:END [card-band] -->
+
+<footer>
+  <span>Prepared for HRI by Jonathan Lin Davis of MICRO Group, L.L.C.</span>
+  <p class="footer-custom-note"><a href="/#contact">Need something custom? Individualized builds outside this catalog are available on request &#8594;</a></p>
+</footer>
+</body>
+</html>
