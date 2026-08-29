@@ -248,11 +248,11 @@ content:
 | KCT (microgroup.info) | `/kct` | Katelyn Thompson |  <!-- exact path, no wildcard -->
 | MEASURE (microgroup.info) | `/measure*` | Measure Staff & Directors |
 | Docket Pilot (microgroup.info) | `/pilot*` | Pilot Access (Measure, named individual) |
-| Specialist Panel Questionnaire (microgroup.info) | `/specialist-questionnaire*` | Specialists |
+| Specialist Panel Submissions Review (microgroup.info) | `/private-specialist-submissions*` | Owner only |
 | Standpoint (microgroup.info) | `/standpoint*` | Owner only |
 | TEA (microgroup.info) | `/tea*` | Owner only |
 
-*9 application(s), read live from the Cloudflare Access API on 2026-08-20. Anything not listed here has no Access application on this domain and is served publicly, including any path that only 301s away.*
+*9 application(s), read live from the Cloudflare Access API on 2026-08-29. Anything not listed here has no Access application on this domain and is served publicly, including any path that only 301s away.*
 <!-- ES-GENERATED:END [access-table] -->
 
 **Important, load-bearing:** this repo has no clean-URL middleware, so an exact-path Access
