@@ -301,7 +301,6 @@ footer{text-align:center}
 <div class="manifest">
   <div class="manifest-in">
     <span class="brand"><b>Scribe Pro</b> for Human Rights Initiative of North Texas</span>
-    <span class="stat"><strong id="m-drafts">…</strong> ranked drafts</span>
     <span class="stat">generated <strong id="m-date">…</strong></span>
     <span class="grow"></span>
     <nav>
@@ -682,68 +681,11 @@ function renderPriority(){
   if(reqBtn)reqBtn.addEventListener('click',()=>requestDraft(0));
 }
 
-/* ---- Ranked shortlist ---- */
-function renderShortlist(){
-  if(!document.getElementById('shortlist-host'))return;
-  const list=DRAFTS;
-  document.getElementById('draft-count').textContent=list.length;
-  const host=document.getElementById('shortlist-host');
-  if(!list.length){
-    host.innerHTML='<div class="empty"><b>No drafts available.</b></div>';
-    return;
-  }
-  host.innerHTML=list.map((d,i)=>{
-    const dlc=deadlineClass(d.grant_deadline);
-    const sa=d.strength_analysis||{};
-    const sbadge=sa.overall?`<span class="sbadge ${strengthClass(sa.overall)}" title="Application strength">${esc(sa.overall)}</span>`:'';
-    const isSample=!!d.is_sample;
-    const sampleTag=isSample?'<span class="badge sample">Included sample</span> ':'';
-    const availNote=isSample?'':'<div class="dc-note">Full draft available on request.</div>';
-    const viewBtn=isSample?`<button class="btn solid view-draft-btn" type="button" data-idx="${i}">View full draft &#8595;</button>`:'';
-    return `<div class="draft-card ${isSample?'sample-card':'info-card'}${isSample&&i===state.selected?' selected':''}" id="${'draft-'+i}">
-      <div class="dc-head">
-        <div class="dc-name">${sampleTag}${esc(d.grant_name)}${sbadge?' '+sbadge:''}</div>
-        <div class="dc-deadline ${dlc}">${esc(d.grant_deadline)}</div>
-        <button class="mc-toggle" type="button" aria-controls="${'draft-'+i}-body"></button>
-      </div>
-      <div class="mc-body" id="${'draft-'+i}-body">
-      <div class="dc-main">
-      <div class="dc-score">
-        <div class="dcs-num">${esc(String(d.payoff_score))}</div>
-        <div class="dcs-lbl">payoff</div>
-      </div>
-      <div class="dc-body">
-        <div class="dc-funder">${esc(d.funder)}</div>
-        <div class="dc-rationale">${esc(d.priority_rationale)}</div>
-        ${availNote}
-        <div class="dc-actions">${viewBtn}<button class="btn request-btn" type="button" data-idx="${i}">Request this draft</button></div>
-      </div>
-      </div>
-      </div>
-    </div>`;
-  }).join('');
-
-  host.querySelectorAll('.view-draft-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const idx=Number(btn.getAttribute('data-idx'));
-      selectDraft(idx,true);
-    });
-  });
-  host.querySelectorAll('.request-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const idx=Number(btn.getAttribute('data-idx'));
-      requestDraft(idx);
-    });
-  });
-  wireAccordion(host,'.draft-card',':scope > .dc-head > .mc-toggle');
-}
-
 /* ---- Draft viewer ---- */
 function selectDraft(idx,scroll){
   const d=DRAFTS[idx];
   if(!d||!d.is_sample)return;
   state.selected=idx;
-  renderShortlist();
   renderViewer();
   if(scroll){
     const el=document.getElementById('viewer');
@@ -1122,14 +1064,12 @@ function downloadDraft(d){
 
 /* ---- Load (inline data, no fetch) ---- */
 function load(){
-  document.getElementById('m-drafts').textContent=DRAFTS.length;
   document.getElementById('m-date').textContent=GENERATED_DATE;
   document.getElementById('disclaimer-text').innerHTML=sentenceBreak(DISCLAIMER);
   document.getElementById('method-status').textContent=METHOD;
 
   renderCalendar();
   renderPriority();
-  renderShortlist();
   renderViewer();
   renderNeeds();
   wireAccordion(document.body);
