@@ -1,0 +1,21 @@
+# Line-ending policy for the governed index pages. Added 2026-08-31 by R0 of the index
+# pattern-book super plan.
+#
+# WHY THIS EXISTS. Before this file, the two governed index pages in this repo carried
+# OPPOSITE working-tree endings: public-index.html was CRLF throughout and
+# private-index.html was LF throughout. With core.autocrlf=true and no .gitattributes, a
+# generator writing LF and a git operation restoring CRLF made the byte count of a governed
+# page oscillate by exactly one byte per line with no content change at all, which made every
+# byte measurement of these files unreproducible and made --check drift detection unreliable.
+#
+# WHY LF RATHER THAN CRLF. It is what the repository already stores. Every one of these blobs
+# is LF with zero carriage returns at HEAD and at origin/main, because autocrlf=true normalizes
+# on the way in. It is also what the generators already emit: build_dev_previews.py and
+# build_quick_links.py both open with newline="", and build_pattern_book.py declares a
+# "Fixed LF policy (Ultra Plan 1.3)" at its own writer. Declaring CRLF would put this file at
+# war with every generator run, which is the oscillation it exists to end.
+#
+# A generator writing into any file matched here MUST open with newline="" so it emits LF.
+# Do not write "preserve whatever ending the file already had": what a generator finds depends
+# on whether git or another generator wrote last, which is the instability itself.
+*-index.html text eol=lf
