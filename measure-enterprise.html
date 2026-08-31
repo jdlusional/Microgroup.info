@@ -802,38 +802,43 @@ body{text-align:center}
       </div>
     </div>
     <div class="fold-body" id="product-scribe-body">
-<section class="section section-card" id="scr-priority">
+<!-- PRIORITY PICK and RANKED SHORTLIST REMOVED 2026-08-31, Enterprise Suite Phase 1 Section 5
+     ("Scribe: structural intake, no displayed grant identity", ratified 2026-08-18).
+
+     WHAT WAS HERE AND WHY IT WENT. Two sections rendered live opportunity data: a single
+     highest-payoff "Priority Pick" and a five-row ranked shortlist, each row carrying a grant name,
+     funder, EIN, URL and amount read from data/measure-austin_drafts.json. Section 5's ratified
+     spec is that Scribe renders NO live opportunity data of any kind; the 2026-08-20 Enterprise
+     Suite gap reconciliation classified the contradiction CONTRADICTED and the owner scheduled the
+     redesign as its own bounded build rather than stripping it that night.
+
+     NOT A JUDGEMENT CALL ABOUT DELIVERED WORK. All five drafts in that file carry built:false, so
+     everything rendered here was unnamed-opportunity SUGGESTION rather than a delivered product.
+     Nothing a client paid for was removed.
+
+     THE DRAFTS FILE IS STILL FETCHED and still feeds the Draft Viewer below, which renders a draft
+     only once it carries built:true. Removing the fetch would break the viewer, which is the half
+     of Scribe that Section 5 keeps.
+
+     Scribe's intake is now structural: the organisation describes categories and criteria (focus
+     area, opportunity type, award band, deadline window) WITHOUT naming a live opportunity, and
+     Scribe never resolves that description against any shelf at request time. That one-way boundary
+     is deliberate per Section 5, since an organisation may want to apply to something outside every
+     list this product could show it. -->
+<section class="section section-card" id="scr-scope">
   <div class="fold">
     <div class="section-head-row">
-      <button class="mc-toggle" type="button" aria-controls="scr-priority-fold-body"></button>
+      <button class="mc-toggle" type="button" aria-controls="scr-scope-fold-body"></button>
       <div class="section-head">
-        <span class="kicker">Draft this now</span>
-        <h2>Priority Pick</h2>
+        <span class="kicker">How Scribe works</span>
+        <h2>Describe what you are looking for</h2>
       </div>
     </div>
-    <div class="fold-body" id="scr-priority-fold-body">
+    <div class="fold-body" id="scr-scope-fold-body">
     <div class="section-lede">
-      <p>The single highest-payoff open call right now, scored on award size, urgency, and fit. Start here.</p>
+      <p>Scribe does not show you a list of open calls and it does not pick one for you. You describe the shape of what you want, a focus area, the kind of opportunity, an award band and a deadline window, and Scribe drafts against that description. You can also name a specific grant, RFP or letter of inquiry of your own in the message field; nothing here limits you to opportunities we happen to track.</p>
+      <p>Every request is recorded with a status you can ask about at any time: submitted, in progress, draft delivered, or closed.</p>
     </div>
-      <div id="scr-priority-host"></div>
-    </div>
-  </div>
-</section>
-<section class="section section-card" id="scr-shortlist">
-  <div class="fold">
-    <div class="section-head-row">
-      <button class="mc-toggle" type="button" aria-controls="scr-shortlist-fold-body"></button>
-      <div class="section-head">
-        <span class="kicker">Payoff-ranked</span>
-        <h2>Ranked Shortlist <span class="fold-count" data-count-from="scr-draft-count" data-count-label="open calls"></span></h2>
-      </div>
-    </div>
-    <div class="fold-body" id="scr-shortlist-fold-body">
-    <div class="section-lede">
-      <p>Your five most-aligned open calls, sorted by payoff score (the average of award, urgency, and fit), each linked to the funder's own live page. Request a full draft for any of them; a built draft opens in the viewer below.</p>
-    </div>
-      <div id="scr-shortlist-host"></div>
-      <div class="res-count"><b id="scr-draft-count">0</b> open calls shown</div>
     </div>
   </div>
 </section>
@@ -848,9 +853,9 @@ body{text-align:center}
     </div>
     <div class="fold-body" id="scr-viewer-fold-body">
     <div class="section-lede">
-      <p>This is where a finished working draft lives. Drafts are written on request, not in advance: pick an open call from the shortlist above, or name any grant, RFP, or LOI of your own in Request Your Draft below. Once built, the draft renders here in full, application sections, the checklist of what Measure still needs to supply, the fact-check note, and sources, ready to copy or download.</p>
+      <p>This is where a finished working draft lives. Drafts are written on request, not in advance: describe what you are looking for in Request Your Draft below, or name a specific grant, RFP, or LOI of your own there. Once built, the draft renders here in full, application sections, the checklist of what Measure still needs to supply, the fact-check note, and sources, ready to copy or download.</p>
     </div>
-      <div id="scr-viewer-host"><div class="viewer-empty">Empty by design. A draft is written only after Measure asks for one: request an open call from the shortlist above, or send any grant, RFP, or LOI through the request form below. The built draft then appears here.</div></div>
+      <div id="scr-viewer-host"><div class="viewer-empty">Empty by design. A draft is written only after Measure asks for one: describe what you are looking for in the request form below, or name a specific grant, RFP, or LOI there. The built draft then appears here.</div></div>
     </div>
   </div>
 </section>
@@ -882,20 +887,84 @@ body{text-align:center}
     </div>
     <div class="fold-body" id="scr-submit-fold-body">
     <div class="section-lede">
-      <p id="scr-requesting-label" class="requesting-label">(select a grant above)</p>
+      <p id="scr-requesting-label" class="requesting-label">Describe the shape of what you want. Nothing here has to name a specific open call.</p>
     </div>
 
-      <a class="btn needs-back" href="#scr-needs">&#8593; See what we still need for this grant</a>
+      <a class="btn needs-back" href="#scr-needs">&#8593; See what we still need for a draft</a>
 
       <form id="scr-request-form" novalidate>
-        <input type="hidden" id="scr-req-grant-id" name="grant_id" value="">
-        <input type="hidden" id="scr-req-grant-name" name="grant_name" value="">
-        <input type="hidden" id="scr-req-funder" name="funder" value="">
-        <input type="hidden" id="scr-req-grant-url" name="grant_url" value="">
+        <!-- Structural intake, Phase 1 Section 5. The four legacy grant-identity fields
+             (grant_id, grant_name, funder, grant_url) are GONE from this form: nothing populated
+             them once the shortlist was removed, and Section 5 forbids resolving a grant_id from a
+             list the organisation was never shown. The endpoint still ACCEPTS them so an older
+             cached copy of this page cannot start failing mid-session, but this page never sends
+             them. -->
+        <input type="hidden" id="scr-req-client-id" name="client_id" value="measure-austin">
 
         <div class="form-field">
-          <label for="scr-message">Tell us what Scribe still needs from you for this grant</label>
-          <textarea id="scr-message" name="message" rows="6" placeholder="Budget figures, staffing details, program metrics, board info: anything from the checklist above, or context specific to this grant."></textarea>
+          <label for="scr-focus-area">Focus area</label>
+          <!-- SHARED VOCABULARY, Phase 1 Section 8 decision 7 (ratified 2026-08-18, accepted as
+               recommended): these suggestions come from the opportunity register's own
+               program_area values so a submission can be reconciled against the register at upload
+               time. A datalist rather than a select, deliberately: the register holds 2,360
+               distinct program_area values and its vocabulary is open, so a closed dropdown would
+               reject a real answer the day the register grows. -->
+          <input list="scr-focus-options" id="scr-focus-area" name="focus_area" autocomplete="off" placeholder="Education Research, Health Sciences, Arts, Public Policy and Government...">
+          <datalist id="scr-focus-options">
+            <option value="Education Research"></option>
+            <option value="Health Sciences"></option>
+            <option value="Public Policy and Government"></option>
+            <option value="Social Science"></option>
+            <option value="Nonprofit Governance"></option>
+            <option value="STEM and Engineering"></option>
+            <option value="Arts"></option>
+            <option value="Humanities"></option>
+            <option value="Law"></option>
+            <option value="AI and Tech Policy"></option>
+            <option value="Business"></option>
+            <option value="Open Field"></option>
+          </datalist>
+          <div class="field-hint">Type anything. The suggestions are the categories we already track, not a limit.</div>
+        </div>
+
+        <div class="form-field">
+          <label for="scr-opportunity-type">Kind of opportunity</label>
+          <select id="scr-opportunity-type" name="opportunity_type">
+            <option value="">No preference</option>
+            <option value="foundation_grant">Foundation grant</option>
+            <option value="federal_grant">Federal grant</option>
+            <option value="state_local_grant">State or local grant</option>
+            <option value="corporate_giving">Corporate giving</option>
+            <option value="rfp">Request for proposals</option>
+            <option value="loi">Letter of inquiry</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="scr-award-band">Award band</label>
+          <select id="scr-award-band" name="award_band">
+            <option value="">No preference</option>
+            <option value="under-25k">Under $25,000</option>
+            <option value="25k-100k">$25,000 to $100,000</option>
+            <option value="100k-500k">$100,000 to $500,000</option>
+            <option value="500k-plus">$500,000 and above</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="scr-deadline-window">Deadline window</label>
+          <select id="scr-deadline-window" name="deadline_window">
+            <option value="">No preference</option>
+            <option value="next-30-days">Within 30 days</option>
+            <option value="next-90-days">Within 90 days</option>
+            <option value="next-6-months">Within 6 months</option>
+            <option value="rolling">Rolling or no fixed deadline</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="scr-message">Anything else Scribe should know</label>
+          <textarea id="scr-message" name="message" rows="6" placeholder="A specific grant, RFP or letter of inquiry you already have in mind, or budget figures, staffing details, program metrics and board info from the checklist above."></textarea>
         </div>
 
         <div class="form-field">
@@ -2148,7 +2217,8 @@ function selectDraft(idx,scroll){
   const d=state.drafts[idx];
   if(!d||!d.built)return;
   state.selected=idx;
-  renderShortlist();
+  /* renderShortlist() call removed 2026-08-31: its host node no longer exists and the call would
+     throw before renderViewer() ran, so selecting a built draft would silently fail. */
   renderViewer();
   if(scroll){
     const el=document.getElementById('scr-viewer');
@@ -2159,7 +2229,7 @@ function selectDraft(idx,scroll){
 function renderViewer(){
   const d=state.drafts[state.selected];
   const host=document.getElementById('scr-viewer-host');
-  if(!d||!d.built){host.innerHTML='<div class="viewer-empty">Empty by design. A draft is written only after Measure asks for one: request an open call from the shortlist above, or send any grant, RFP, or LOI through the request form below. The built draft then appears here.</div>';return;}
+  if(!d||!d.built){host.innerHTML='<div class="viewer-empty">Empty by design. A draft is written only after Measure asks for one: describe what you are looking for in the request form below, or name a specific grant, RFP, or LOI there. The built draft then appears here.</div>';return;}
   const dlc=deadlineClass(d.grant_deadline);
 
   const sections=(d.sections||[]).map((s,i)=>`
@@ -2332,9 +2402,18 @@ function initRequestForm(){
     const btn=document.getElementById('scr-submit-btn');
     const setStatus=(msg,isErr)=>{if(statusEl){statusEl.textContent=msg;statusEl.classList.toggle('error',!!isErr);}};
 
-    const grantName=(document.getElementById('scr-req-grant-name')||{}).value||'';
-    if(!grantName.trim()){
-      setStatus('Please choose a grant above before sending your request.',true);
+    /* Structural intake guard, Phase 1 Section 5. This used to require a grant_name from the
+       removed shortlist; left as it was it would have rejected EVERY submission, because the
+       element it read no longer exists. A request now needs only to say something about what is
+       wanted: any one structural field, or a written message. The same rule is enforced server
+       side in functions/api/draft-request.js, so a client with JavaScript disabled gets the same
+       answer rather than a silent accept. */
+    const val=id=>((document.getElementById(id)||{}).value||'').trim();
+    const focusArea=val('scr-focus-area'), oppType=val('scr-opportunity-type');
+    const awardBand=val('scr-award-band'), deadlineWindow=val('scr-deadline-window');
+    const messageVal=val('scr-message');
+    if(!focusArea&&!oppType&&!awardBand&&!deadlineWindow&&!messageVal){
+      setStatus('Tell us at least one thing: a focus area, a kind of opportunity, an award band, a deadline window, or a note.',true);
       return;
     }
 
@@ -2354,11 +2433,14 @@ function initRequestForm(){
     }
 
     const fd=new FormData();
-    fd.append('grant_id',(document.getElementById('scr-req-grant-id')||{}).value||'');
-    fd.append('grant_name',grantName);
-    fd.append('funder',(document.getElementById('scr-req-funder')||{}).value||'');
-    fd.append('grant_url',(document.getElementById('scr-req-grant-url')||{}).value||'');
-    fd.append('message',(document.getElementById('scr-message')||{}).value||'');
+    /* Structural fields only. No grant_id is resolved from any list, per Section 5's one-way
+       boundary: Scribe never reads the selection functions at request time. */
+    fd.append('client_id',(document.getElementById('scr-req-client-id')||{}).value||'measure-austin');
+    fd.append('focus_area',focusArea);
+    fd.append('opportunity_type',oppType);
+    fd.append('award_band',awardBand);
+    fd.append('deadline_window',deadlineWindow);
+    fd.append('message',messageVal);
     fd.append('website',(document.getElementById('scr-website')||{}).value||'');
     fd.append('page_url',window.location.href);
     fd.append('org',(state.profile&&state.profile.organization)||'Measure');
@@ -2597,8 +2679,12 @@ async function load(){
   document.getElementById('scr-footer-links').innerHTML=
     `<a href="${DRAFTS_URL}">drafts.json</a> &middot; <a href="${PROFILE_URL}">profile.json</a>`;
 
-  renderPriority();
-  renderShortlist();
+  /* renderPriority() and renderShortlist() are NOT called, Phase 1 Section 5. Their host nodes
+     (#scr-priority-host, #scr-shortlist-host, #scr-draft-count) were removed with the two sections
+     that displayed live opportunity data. Calling either now would throw on a null host and take
+     renderViewer() and renderNeeds() down with it, which is why this is a deletion rather than a
+     left-in-place no-op. The functions themselves are retained below, unreferenced, so the removed
+     rendering is recoverable if the ratified spec is ever revisited. */
   renderViewer();
   renderNeeds();
   wireAccordion(document.getElementById('product-scribe'));if(window.foldSubheads)window.foldSubheads();
@@ -2607,7 +2693,12 @@ async function load(){
 initRequestForm();
 
 load().catch(err=>{
-  document.getElementById('scr-shortlist-host').innerHTML=`<div class="empty"><b>Couldn't load draft data</b>: make sure ${esc(DRAFTS_URL)} exists.</div>`;
+  /* Retargeted 2026-08-31 from #scr-shortlist-host, which was removed with the shortlist. Writing
+     to a node that no longer exists would have thrown INSIDE the catch, turning a handled failure
+     into a silent one, which is the worse of the two failures and the exact shape this handler
+     exists to prevent. The viewer host is the surviving surface a reader actually looks at. */
+  const host=document.getElementById('scr-viewer-host');
+  if(host)host.innerHTML=`<div class="viewer-empty"><b>Couldn't load draft data.</b> Your request form below still works and still records a request; only the draft viewer is affected. Check that ${esc(DRAFTS_URL)} exists.</div>`;
   console.error(err);
 });
 
