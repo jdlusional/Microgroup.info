@@ -150,6 +150,7 @@ a{color:var(--ink)}
 .qa-row-featured .qa-value a:hover{text-decoration:underline}
 .deadline-val.urgent{color:var(--urgent);font-weight:600}
 .deadline-val.soon{color:var(--warn);font-weight:500}
+.deadline-val.closed{color:var(--wash);font-style:italic}
 
 .watch-list{margin-top:1.6rem}
 .watch-item{padding:.75rem 0;border-bottom:1px solid var(--rule-soft);display:grid;grid-template-columns:1fr 2fr;gap:1rem;min-width:0}
@@ -854,12 +855,25 @@ function applyCompiled(){
 
 /* ---- Deadline urgency ---- */
 function deadlineClass(s){
-  const m=(s||'').match(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/);
-  if(!m)return'';
-  const d=new Date(`${m[1]} ${m[2]}, ${m[3]}`);
-  if(isNaN(d))return'';
-  const days=(d-Date.now())/86400000;
-  if(days<0)return'';
+  /* A passed deadline used to return '' here, the same value returned for "no date found" and
+     "far future", so an expired call rendered as an ordinary healthy row. Measured 2026-08-31:
+     12 rows on this client's live ready_now list had already closed, the oldest by 17 days.
+     hri-almanac, standpoint-almanac, demo-almanac and blackmamas-enterprise all already return
+     'closed' here; only this page and measure-enterprise did not. */
+  const ds=[...String(s||'').matchAll(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/g)]
+    .map(m=>new Date(`${m[1]} ${m[2]}, ${m[3]}`))
+    .filter(d=>!isNaN(d))
+    .sort((a,b)=>a-b);
+  if(!ds.length)return'';
+  /* Everything below compares against MIDNIGHT TODAY, never the current instant. A bare date
+     parses to 00:00, so measuring from Date.now() makes a call due TODAY read as already past
+     from one minute after midnight: it would be marked closed, and before that it fell through
+     to no styling at all rather than the urgent flag it deserves. */
+  const midnight=new Date();midnight.setHours(0,0,0,0);
+  /* Closure reads the LAST date, never the first. A row may list several windows, and closing
+     it on the earliest would tell a client an opportunity is gone while it is still open. */
+  if(ds[ds.length-1]<midnight)return'deadline-val closed';
+  const days=(ds.find(d=>d>=midnight)-midnight)/86400000;
   if(days<=21)return'deadline-val urgent';
   if(days<=60)return'deadline-val soon';
   return'';
