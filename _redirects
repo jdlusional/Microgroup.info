@@ -121,3 +121,23 @@
 /Improvementlog        https://jonathanlindavis.com/system-change-log  301
 /IMPROVEMENTLOG        https://jonathanlindavis.com/system-change-log  301
 /improvement-log       https://jonathanlindavis.com/system-change-log  301
+
+# Four legal-matter paths, added 2026-08-31. Before this, every form of these four returned
+# 200 with the 40,077-byte MICRO homepage, byte-identical to a nonsense-path control, i.e. the
+# SPA fallback. The matters live on jonathanlindavis.com; the repoint happened there and no
+# redirect was ever added here. Bare, trailing-slash AND splat forms are all covered because
+# private-index.html links the index.html forms, and Pages _redirects matches a path rather
+# than prefix-matching, so a bare rule alone would leave the index's own links broken.
+# /airbnb-counsel shares /airbnb's destination by owner ruling 2026-08-31.
+/airbnb            https://jonathanlindavis.com/private/legal-airbnb-hq/         301
+/airbnb/           https://jonathanlindavis.com/private/legal-airbnb-hq/         301
+/airbnb/*          https://jonathanlindavis.com/private/legal-airbnb-hq/         301
+/airbnb-counsel    https://jonathanlindavis.com/private/legal-airbnb-hq/         301
+/airbnb-counsel/   https://jonathanlindavis.com/private/legal-airbnb-hq/         301
+/airbnb-counsel/*  https://jonathanlindavis.com/private/legal-airbnb-hq/         301
+/7601litigation    https://jonathanlindavis.com/private/legal-7601/              301
+/7601litigation/   https://jonathanlindavis.com/private/legal-7601/              301
+/7601litigation/*  https://jonathanlindavis.com/private/legal-7601/              301
+/code              https://jonathanlindavis.com/private/legal-code-enforcement/  301
+/code/             https://jonathanlindavis.com/private/legal-code-enforcement/  301
+/code/*            https://jonathanlindavis.com/private/legal-code-enforcement/  301
