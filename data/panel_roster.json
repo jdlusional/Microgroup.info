@@ -1,0 +1,5 @@
+{
+  "_README": "The live Specialist Panel roster consumed by specialist-panel.html. It is EMPTY on purpose. A person is added here only after that person has submitted the intake questionnaire and answered yes on the publication control for each field listed, and after the owner has approved the entry. Default on every field is no, and the renderer treats anything other than a literal boolean true as no. Contract: {generated, specialists:[{slug, consent_recorded, fields:{<field>:{value, publish}}}]}. Recognized fields: display_name (required, an entry without a consented display_name is not rendered at all), title, affiliation, disciplines, credentials, licenses, location, summary. Never add a home address, personal phone, date of birth, or age: those are not collected, not stored, and not displayable. A field the renderer does not know about is ignored rather than printed, so adding a question to the questionnaire cannot leak a new field onto the page on its own.",
+  "generated": "2026-08-31",
+  "specialists": []
+}

@@ -1,0 +1,43 @@
+{
+  "_README": "SAMPLE ONLY, and deliberately fictional, so the consent-gated roster mechanism can be reviewed on a preview deployment without publishing any real person's record. Loaded only when specialist-panel.html is opened with ?sample=1. Same precedent and same reason as data/sample-panelist_appendix.json. Every person below is invented. The second entry exists to show a partial consent, where the name is released and most fields are not, and the third exists to show that an entry with no consented display name renders nothing at all.",
+  "generated": "2026-08-31",
+  "specialists": [
+    {
+      "slug": "sample-full",
+      "consent_recorded": "2026-08-31",
+      "fields": {
+        "display_name": {"value": "Sample Specialist One (example data, not a real person)", "publish": true},
+        "title": {"value": "Director of Example Operations", "publish": true},
+        "affiliation": {"value": "Example Services, Inc.", "publish": true},
+        "disciplines": {"value": "Operations, Integration", "publish": true},
+        "credentials": {"value": "M.P.A., Example University, 2015", "publish": true},
+        "licenses": {"value": "Example State certification 000000, status Active", "publish": true},
+        "location": {"value": "Austin, Texas", "publish": true},
+        "summary": {"value": "Fifteen years of public-sector operations work, with an emphasis on procurement and contract administration.", "publish": true}
+      }
+    },
+    {
+      "slug": "sample-partial",
+      "consent_recorded": "2026-08-31",
+      "fields": {
+        "display_name": {"value": "Sample Specialist Two (example data, not a real person)", "publish": true},
+        "title": {"value": "Principal Researcher", "publish": false},
+        "affiliation": {"value": "Example Institute", "publish": false},
+        "disciplines": {"value": "Research", "publish": true},
+        "credentials": {"value": "Ph.D., Example Studies, 2011", "publish": false},
+        "licenses": {"value": "", "publish": false},
+        "location": {"value": "Dallas, Texas", "publish": false},
+        "summary": {"value": "Withheld by the specialist.", "publish": false}
+      }
+    },
+    {
+      "slug": "sample-no-name-consent",
+      "consent_recorded": "2026-08-31",
+      "fields": {
+        "display_name": {"value": "Sample Specialist Three (example data, not a real person)", "publish": false},
+        "title": {"value": "Chief Example Officer", "publish": true},
+        "affiliation": {"value": "Example Holdings", "publish": true}
+      }
+    }
+  ]
+}
