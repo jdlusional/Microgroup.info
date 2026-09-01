@@ -328,6 +328,7 @@ body{text-align:center}
   #product-scribe .vh-meta .vhm strong{color:var(--ink);font-weight:500}
   #product-scribe .vh-meta .vhm.urgent strong{color:var(--urgent)}
   #product-scribe .vh-meta .vhm.soon strong{color:var(--warn)}
+  #product-scribe .vh-meta .vhm.closed strong{color:var(--wash);font-style:italic}
   #product-scribe .vh-note{font-family:var(--mono);font-size:.84rem;color:var(--wash);background:var(--well);border:1px dashed var(--rule);padding:.55rem .8rem;margin-top:.9rem;line-height:1.5}
   #product-scribe .vw-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.4rem}
   #product-scribe .copied-flag{font-family:var(--mono);font-size:.84rem;color:var(--ok);align-self:center;opacity:0;transition:opacity .25s}
@@ -1973,12 +1974,27 @@ function wireAccordion(host,cardSelector,toggleSelector){
   });
 }
 function deadlineClass(s){
-  const m=(s||'').match(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/);
-  if(!m)return'';
-  const d=new Date(`${m[1]} ${m[2]}, ${m[3]}`);
-  if(isNaN(d))return'';
-  const days=(d-Date.now())/86400000;
-  if(days<0)return'';
+  /* SECOND HALF OF THE 2026-08-31 EXPIRED-DEADLINE FIX. The Almanac grant list above was fixed
+     first, since it was the measured client-facing defect (7 expired rows on this page, 12 on
+     TEA's). This definition serves the SCRIBE DRAFT deadlines and carried the identical bug: a
+     passed deadline returned the empty string, the same value returned for "no date found", so an
+     expired draft deadline rendered as ordinary body text. The `.dc-deadline.closed` rule has
+     existed in this file's own stylesheet the whole time with nothing able to produce it.
+     Returns BARE class names, unlike the Almanac definition above which returns them already
+     prefixed. That difference is pre-existing and deliberate: these three call sites each supply
+     their own prefix (dc-deadline, vhm, deadline). */
+  const ds=[...String(s||'').matchAll(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/g)]
+    .map(m=>new Date(`${m[1]} ${m[2]}, ${m[3]}`))
+    .filter(d=>!isNaN(d))
+    .sort((a,b)=>a-b);
+  if(!ds.length)return'';
+  /* Midnight today, never Date.now(): a bare date parses to 00:00, so measuring from the current
+     instant marks a draft due TODAY as closed from one minute past midnight. */
+  const midnight=new Date();midnight.setHours(0,0,0,0);
+  /* Closure reads the LAST date, so a string naming several windows is not closed while one of
+     them is still open. */
+  if(ds[ds.length-1]<midnight)return'closed';
+  const days=(ds.find(d=>d>=midnight)-midnight)/86400000;
   if(days<=21)return'urgent';
   if(days<=60)return'soon';
   return'';
@@ -2137,7 +2153,7 @@ function renderPriority(){
       <p class="priority-rationale">${esc(d.priority_rationale)}</p>
       <div class="priority-meta">${[
         ['Amount',esc(d.grant_amount)],
-        ['Deadline',`<span class="${dlc?'deadline '+dlc:''}" style="${dlc==='urgent'?'color:var(--urgent);font-weight:600':dlc==='soon'?'color:var(--warn);font-weight:500':''}">${esc(d.grant_deadline)}</span>`],
+        ['Deadline',`<span class="${dlc?'deadline '+dlc:''}" style="${dlc==='urgent'?'color:var(--urgent);font-weight:600':dlc==='soon'?'color:var(--warn);font-weight:500':dlc==='closed'?'color:var(--wash);font-style:italic':''}">${esc(d.grant_deadline)}</span>`],
         ['Eligibility',esc(d.grant_eligibility)],
       ].filter(([l,v])=>v&&v.replace(/<[^>]*>/g,'').trim()).map(([l,v])=>`<div class="pm-lbl">${l}</div><div class="pm-val">${v}</div>`).join('')}</div>
       <div class="priority-cta">
