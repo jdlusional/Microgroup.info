@@ -647,8 +647,14 @@ body{text-align:center}
       <!-- D23 (Card Band Restructure change 6, 2026-08-20): the cap clause moved out of the
            header, which now states a population figure unrelated to what this list caps at. This
            and Docket's own copy below describe the SAME shared cap over the Almanac+Docket
-           union (change 5), not two separate caps. -->
-      <div style="font-family:var(--mono);font-size:.8rem;color:var(--wash);margin:-0.4rem 0 .8rem" data-cap-caption="Docket">Shown here and in Docket combined: up to 10 open calls, no more than 3 from a confirmed prior funder.</div>
+           union (change 5), not two separate caps.
+           S-OD-19 (2026-08-31): the numbers below are MEASURE'S REGISTRY OVERRIDE, 12 total /
+           5 prior (enterprise/org_registry.json open_calls_caps, owner order 2026-08-20), NOT
+           the estate default of 10 / 3. writeCapCaptions() rewrites this node from the almanac
+           JSON on load, so the static text is what a reader sees before hydration, with JS off,
+           and on the load().catch path; it was left at the default and therefore stated a cap
+           this page does not apply. Do not "correct" it back to 10 / 3 in a defaults sweep. -->
+      <div style="font-family:var(--mono);font-size:.8rem;color:var(--wash);margin:-0.4rem 0 .8rem" data-cap-caption="Docket">Shown here and in Docket combined: up to 12 open calls, no more than 5 from a confirmed prior funder.</div>
       <div id="alm-compiled-results"></div>
 
       <div class="limitation-note" id="alm-grants-limitation"></div>
@@ -704,7 +710,9 @@ body{text-align:center}
           <div class="fold-body" id="dk-ready-fold-body">
             <div class="res-count"><b id="dk-ready-count">0</b> requests shown</div>
             <div class="res-count" id="dk-held-line" hidden><b id="dk-held-count">0</b> held for review</div>
-            <div style="font-family:var(--mono);font-size:.8rem;color:var(--wash);margin:-0.4rem 0 .8rem" data-cap-caption="Almanac">Shown here and in Almanac combined: up to 10 open calls, no more than 3 from a confirmed prior funder.</div>
+            <!-- S-OD-19 (2026-08-31): 12 / 5 is Measure's registry override, not the 10 / 3
+                 estate default. Same note as the Almanac-side caption above. -->
+            <div style="font-family:var(--mono);font-size:.8rem;color:var(--wash);margin:-0.4rem 0 .8rem" data-cap-caption="Almanac">Shown here and in Almanac combined: up to 12 open calls, no more than 5 from a confirmed prior funder.</div>
             <div id="dk-ready-results"></div>
 
             <div class="limitation-note" id="dk-limitation"></div>
