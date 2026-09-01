@@ -178,6 +178,13 @@ table.or-t tr:last-child td{border-bottom:none}
 .or-src{font-size:13px;font-style:italic;color:var(--wash)}
 .or-msg{border:1px solid var(--urgent);border-left:3px solid var(--urgent);background:var(--well);padding:1rem 1.1rem;margin:0 0 1.2rem;font-size:15px}
 .or-msg .or-kicker{color:var(--urgent)}
+/* STALENESS SURFACE (2026-08-31). Amber rather than red: a passed date on a page whose
+   generation date is printed beside it is a known limit of a point-in-time file, not a
+   page failure, and .or-msg's red is reserved for a page that did not load. */
+.or-stale{border:1px solid var(--warn);border-left:3px solid var(--warn);background:var(--well);padding:1rem 1.1rem;margin:0 0 1.2rem;font-size:15px}
+.or-stale .or-kicker{color:var(--warn)}
+.or-stale p{margin:0}
+.or-rule .stale{font-size:14px;color:var(--warn);font-style:italic;margin:.6rem 0 0}
 .or-noscript{border:1px solid var(--rule);background:var(--well);padding:1rem 1.1rem;margin:1rem 0;font-size:15px}
 .or-quiet{color:var(--wash);font-size:15px}
 /* ---- Mobile. This page is plain flow: no hard-snap, no 100vh, so no --vh fix
@@ -307,6 +314,12 @@ table.or-t tr:last-child td{border-bottom:none}
   <h1 id="or-hero-h1">Getting Started With Measure&rsquo;s Tools</h1>
   <p id="or-hero-sub">This page explains what the tools are, what the public record already says about the organization, and what the organization is eligible to apply for right now. The front half is written for the organization. The appendix at the end carries the method, the provenance and the limits.</p>
   <p class="or-src">Shelf generated <span id="or-generated">&hellip;</span> &middot; public-record enrichment as of <span id="or-asof">&hellip;</span></p>
+  <!-- STALENESS NOTICE, added 2026-08-31. Empty and hidden in markup; filled by renderStaleness()
+       only when a call this page counted has actually closed since the file was generated. It sits
+       in the header, OUTSIDE every .section-card, because every section on this page is collapsed
+       on load: a notice placed inside one is invisible until the reader opens that section, which
+       is the one thing a staleness warning cannot afford to be. -->
+  <div class="or-stale" id="or-stale" hidden></div>
   <!-- MOVED INTO THE HEADER 2026-08-09, owner order: this TOC previously sat below the header,
        separated from it only by a horizontal rule, and read as a stray hyperlinked block rather
        than part of the page's own orientation chrome. -->
@@ -1297,6 +1310,77 @@ function renderRulesMissing(reason){
     +'id, headline, trigger and key_numbers.'));
   host.appendChild(box);
 }
+/* =================================================================
+   DEADLINE DECAY. Added 2026-08-31, closing the expiry half of Standing Item 21.
+
+   THE GENERATOR IS NOT AT FAULT AND A GENERATOR GATE CANNOT FIX THIS. Every deadline
+   rule filters close_date >= its own as-of date, and that filter was correct when it
+   ran: on 2026-08-09 a call closing 2026-08-26 was still open. The row expired
+   afterwards, inside a static file that nothing regenerates. Only render time knows
+   what today is, so only render time can say what has since closed.
+
+   THIS IS NOT THE SISTER PAGES' deadlineClass(). measure-enterprise.html and
+   tea-enterprise.html style a rendered deadline field. This page renders no deadline
+   field at all: renderRules() reads headline, trigger, detail and key_numbers, and the
+   contract note above says `rows` is audit trail and is deliberately not read. A
+   per-row style hook would have nothing to attach to here. What IS exposed is rule
+   prose in the present tense ("7 open calls belong to funders that have already given
+   to you") whose truth decays, so the decay is surfaced as its own computed sentence
+   instead.
+
+   WHAT IT MAY AND MAY NOT SAY. It emits COUNTS ONLY: no funder name, no title, no date
+   read off a row, nothing that would reopen the row-level disclosure the 2026-08-08
+   owner order closed. It ANNOTATES a count with what has expired since; it does not
+   re-derive, re-filter or adjust any figure, and section five's read-don't-recompute
+   rule is untouched. The register-authored title prose inside a row is never rewritten
+   here, and is never rendered here either.
+
+   NO DATE IS EVER PARSED. close_date is ISO (YYYY-MM-DD) and is compared LEXICALLY
+   against a locally-built today. new Date('2026-08-26') parses as UTC midnight, which
+   in Austin is the previous evening, so a parsed comparison against a local today would
+   report a call closing TODAY as already closed. A string compare on YYYY-MM-DD sorts
+   identically to the dates themselves, is exact, and has no timezone at all. The
+   comparison is strictly less-than, so a call closing today counts as open, which is
+   the same correction the enterprise pages had to make against Date.now().
+   ================================================================= */
+function todayISO(){
+  const d=new Date(),p=n=>String(n).padStart(2,'0');
+  return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());
+}
+function decayOfRows(rows,today){
+  const out={dated:0,closed:0};
+  if(!Array.isArray(rows))return out;
+  rows.forEach(r=>{
+    const cd=(r&&typeof r==='object')?String(r.close_date==null?'':r.close_date).trim():'';
+    /* A row with no close_date is rolling or undated, not expired. Treating a blank as
+       passed would close every rolling call on the page. */
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(cd))return;
+    out.dated++;
+    if(cd<today)out.closed++;
+  });
+  return out;
+}
+/* Fired only when something has ACTUALLY closed, never on an age threshold: a freshly
+   regenerated file silences it with no constant to keep tuned, and a stale file with
+   nothing expired in it raises no alarm it cannot justify. Counts RULES, not rows,
+   because two rules here can count the same call and a summed row figure would report
+   one closed deadline twice. */
+function renderStaleness(affectedRules){
+  const box=document.getElementById('or-stale');
+  if(!box)return;
+  if(!affectedRules){box.hidden=true;return;}
+  const shelf=(ALMANAC&&ALMANAC.generated_date)||'a date not recorded in the file';
+  const rulesGen=(ORIENTATION&&ORIENTATION.generated_date)||'a date not recorded in the file';
+  box.textContent='';
+  box.appendChild(el('span','or-kicker','Some dates on this page have passed'));
+  box.appendChild(el('p',null,'This page reads generated files and does not refresh itself. The '
+    +'eligibility shelf was generated '+shelf+' and the rule set '+rulesGen+'. Since then, dated '
+    +'calls counted by '+affectedRules+' of the findings in section seven have closed; each of those '
+    +'findings states how many, next to the finding itself. Every count on this page, including the '
+    +'open-call figure in section five, was true on its own generation date and is not recomputed '
+    +'here. Confirm any deadline on the funder’s own site before acting on it.'));
+  box.hidden=false;
+}
 function renderRules(){
   const host=document.getElementById('or-rules');
   let rules=(ORIENTATION&&Array.isArray(ORIENTATION.rules))?ORIENTATION.rules:null;
@@ -1308,6 +1392,9 @@ function renderRules(){
   if(!rules.length){renderRulesMissing('The file loaded and contained no rules, which means no rule fired '
     +'against your data in this run.');return;}
   host.textContent='';
+  const today=todayISO();
+  const genDate=(ORIENTATION&&ORIENTATION.generated_date)||'';
+  let affectedRules=0;
   rules.forEach(r=>{
     if(!r||typeof r!=='object')return;
     const card=el('div','or-rule');
@@ -1320,10 +1407,23 @@ function renderRules(){
       const p=el('p','nums',Array.isArray(kn)?kn.map(String).join('\n\n'):String(kn));
       card.appendChild(p);
     }
+    /* Decay note. Placed after the numbers it qualifies and before the verification caveat,
+       so the reader meets the figure, then what has happened to it since. Emitted only when
+       something has closed: a rule whose dated calls are all still open gets nothing, which
+       is what keeps this a finding rather than a blanket disclaimer. */
+    const dk=decayOfRows(r.rows,today);
+    if(dk.closed>0){
+      card.appendChild(el('p','stale',dk.closed+' of the '+dk.dated+' dated call'
+        +(dk.dated===1?'':'s')+' this finding counted '+(dk.closed===1?'has':'have')+' closed since'
+        +(genDate?' '+genDate:' this rule set was generated')+'. The figures above are as of that '
+        +'date and are not recomputed here.'));
+      affectedRules++;
+    }
     if(r.verify_first)card.appendChild(el('p','or-quiet','This rule rests at least partly on a name match '
       +'rather than a verified EIN. Confirm the identity before acting on it.'));
     host.appendChild(card);
   });
+  renderStaleness(affectedRules);
   /* The generator puts ONLY fired rules in `rules` and carries the evaluated total in
      counts, so this line states both. It used to read rules.length + ' rules fired',
      which was true only as long as nothing quiet was ever shipped, and a quiet rule
