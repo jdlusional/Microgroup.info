@@ -64,7 +64,7 @@ relevant to its own site rather than duplicating the other's detail.
     Verified against the live Access API, which is now also the source of the gating table
     below rather than a hand-maintained copy that could drift this way again.
   - **HRI** (`hri-almanac.html` + `hri-scribe.html`) — Almanac + Scribe Pro for Human Rights
-    Initiative of North Texas (hrionline.org), a 90-day in-kind donation, first-pass build:
+    Initiative of North Texas (hrionline.org), a 90-day trial, first-pass build:
     candidate funders sourced from the Texas-only Schedule I extract (not yet the national
     extract), no confirmed-prior-funder list, no sample draft yet. Marked "Draft for review,
     not yet deployed" on both pages — not Access-gated, not linked from any hub or index,
