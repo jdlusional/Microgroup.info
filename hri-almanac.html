@@ -223,7 +223,7 @@ body{text-align:center}
         </tr>
         <tr>
           <td>The funders and grants</td>
-          <td>The candidate funders below are real organizations, and each traces to a real, dated grant record in the national Schedule I grants-paid dataset.<br><br>This is a first pipeline pass, not yet a multi-round hand-verified search like Almanac's more mature client builds.<br><br>No confirmed-prior-funder list is shown yet, and open-grant-opportunity research (live deadlines, application portals) has not been run for HRI -- see How This Was Built for exactly what's confirmed and what isn't.</td>
+          <td>The candidate funders below are real organizations, and each traces to a real, dated grant record in the national Schedule I grants-paid dataset.<br><br>This is a first pipeline pass, not yet a multi-round hand-verified search like Almanac's more mature client builds.<br><br>HRI's 22 confirmed prior funders are listed separately above, joined on HRI's own recipient EIN in IRS Form 990 Schedule I; those are relationships on record, not candidates. Open-grant-opportunity research (live deadlines, application portals) has not been run for HRI, so see How This Was Built for exactly what's confirmed and what isn't.</td>
         </tr>
         <tr>
           <td>Next steps</td>
@@ -364,7 +364,7 @@ body{text-align:center}
         </tr>
         <tr>
           <td>What it cannot tell you</td>
-          <td>This is a first-pass Almanac build for HRI, not yet a multi-round hand-verified search like Almanac's more mature client pages.<br><br>No confirmed-prior-funder list is shown: this pass did not independently verify HRI's actual current funding relationships (that would need a direct HRI 990 Schedule I read or an owner-supplied funder list), so nothing is asserted here that isn't backed by a source.<br><br>Open-grant-opportunity research (live deadlines, application portals, eligibility detail per funder) has not been run for HRI yet -- this pass covered org-profile confirmation and the Schedule I candidate-funder search only.</td>
+          <td>This is a first-pass Almanac build for HRI, not yet a multi-round hand-verified search like Almanac's more mature client pages.<br><br>HRI's 22 confirmed prior funders are now listed, joined on HRI's recipient EIN in IRS Form 990 Schedule I, 2015 to 2024, $2,069,737 in total. Those joins are exact rather than probabilistic name matches and none required an identity review. Read the Purpose column before treating 22 as the number of funders HRI can approach: 9 are donor-advised fund sponsors ($473,790 combined) where the gift originates with an individual donor, 2 are universities, 1 is a peer organization passing through subaward funds and 1 is a fellowship host, which leaves 9 that can be solicited directly.<br><br>Open-grant-opportunity research (live deadlines, application portals, eligibility detail per funder) has not been run for HRI yet -- this pass covered org-profile confirmation and the Schedule I candidate-funder search only.</td>
         </tr>
         <tr>
           <td>How candidates are found and ranked</td>
@@ -430,9 +430,30 @@ const PROFILE={
     note:"Source: IRS Form 990 via ProPublica Nonprofit Explorer API (fetched 2026-07-21). Program/admin expense split not sourced this pass.",
   },
   confirmed_prior_funders:[
-    {funder:"None on record",purpose:"This first pipeline pass did not independently verify HRI's actual current funding relationships. Every funder in the ranked matches below is a candidate, matched on mission and geography alone -- none is asserted to have given this organization anything.",amount:"n/a"},
+    {funder:"Communities Foundation of Texas",purpose:"Directly solicitable grantmaker. The longest and largest relationship on record, 19 grants 2015 to 2024.",amount:"$488,764"},
+    {funder:"The Dallas Foundation",purpose:"Directly solicitable grantmaker. 3 grants 2015 to 2021.",amount:"$423,078"},
+    {funder:"Texas Women's Foundation",purpose:"Directly solicitable grantmaker. 4 grants 2018 to 2020.",amount:"$319,550"},
+    {funder:"Fidelity Investments Charitable Gift Fund",purpose:"Donor-advised fund sponsor, not itself solicitable: the gift originates with an individual donor. 8 grants 2016 to 2023.",amount:"$202,284"},
+    {funder:"Network for Good",purpose:"Donor-advised fund sponsor, not itself solicitable: the gift originates with an individual donor. 6 grants 2017 to 2022.",amount:"$131,865"},
+    {funder:"Equal Justice Works",purpose:"Fellowship host. Funds a placed fellow rather than the organization directly. 2 grants 2019 to 2020.",amount:"$105,000"},
+    {funder:"Texas Bar Foundation",purpose:"Directly solicitable grantmaker. 4 grants 2020 to 2024.",amount:"$75,000"},
+    {funder:"Vera Institute of Justice",purpose:"Peer organization passing through subaward funds, not a grantmaker. 1 grant 2021.",amount:"$52,742"},
+    {funder:"United Way of Metropolitan Dallas",purpose:"Directly solicitable grantmaker. 2 grants 2019 to 2020.",amount:"$50,000"},
+    {funder:"T. Rowe Price Program for Charitable Giving",purpose:"Donor-advised fund sponsor, not itself solicitable: the gift originates with an individual donor. 3 grants 2020 to 2022.",amount:"$45,000"},
+    {funder:"Donor Advised Charitable Giving",purpose:"Donor-advised fund sponsor, not itself solicitable: the gift originates with an individual donor. 4 grants 2018 to 2023.",amount:"$33,865"},
+    {funder:"American Online Giving Foundation",purpose:"Donor-advised fund sponsor, not itself solicitable: the gift originates with an individual donor. 3 grants 2020 to 2022.",amount:"$30,477"},
+    {funder:"Greater Kansas City Community Foundation",purpose:"Directly solicitable grantmaker, out of state. 3 grants 2017 to 2019.",amount:"$26,400"},
+    {funder:"Thompson &amp; Knight Foundation",purpose:"Directly solicitable grantmaker, the charitable arm of a Dallas law firm. 2 grants 2020 to 2021.",amount:"$25,000"},
+    {funder:"Raymond James Charitable Endowment Fund",purpose:"Donor-advised fund sponsor, not itself solicitable: the gift originates with an individual donor. 2 grants 2019 to 2024.",amount:"$11,000"},
+    {funder:"Northwestern University",purpose:"University. Most likely a clinic or program subaward rather than a grant program. 1 grant 2023.",amount:"$10,000"},
+    {funder:"DonateWell",purpose:"Donor-advised fund sponsor, not itself solicitable: the gift originates with an individual donor. 1 grant 2018.",amount:"$8,199"},
+    {funder:"Borealis Philanthropy",purpose:"Directly solicitable grantmaker, out of state. 1 grant 2018.",amount:"$7,500"},
+    {funder:"Franklin W. Olin College of Engineering",purpose:"University. Most likely a program subaward. 1 grant 2018.",amount:"$7,413"},
+    {funder:"Vanguard Charitable Endowment Program",purpose:"Donor-advised fund sponsor, not itself solicitable: the gift originates with an individual donor. 1 grant 2020.",amount:"$5,600"},
+    {funder:"Ernst &amp; Young Foundation",purpose:"Directly solicitable grantmaker, corporate foundation. 1 grant 2018.",amount:"$5,500"},
+    {funder:"The Independent Charitable Gift Fund",purpose:"Donor-advised fund sponsor, not itself solicitable: the gift originates with an individual donor. 1 grant 2024.",amount:"$5,500"},
   ],
-  confirmed_prior_funders_count:0,
+  confirmed_prior_funders_count:22,
   profile_built:"2026-07-21",
   profile_sources:[
     "hrionline.org (fetched 2026-07-21)",
@@ -440,7 +461,7 @@ const PROFILE={
   ],
 };
 
-const FUNDERS_METHOD="This is a first-pass Almanac build for HRI, not yet a multi-round hand-verified search like Almanac's more mature client pages. No confirmed-prior-funder list is shown: this pass did not independently verify HRI's actual current funding relationships (that would need a direct HRI 990 Schedule I read or owner-supplied funder list), so nothing is asserted here that isn't backed by a source. The candidate funders below come from one run of Almanac's v2 pipeline (NTEE/geography-weighted, scored token/phrase purpose matching against the national Schedule I grants-paid dataset), scoped to the currently available Texas-only Schedule I extract -- the national extract has not yet been added to this Drive's data repository (a known, tracked limitation, Standing Items item 16), so this candidate list under-represents out-of-state immigration/human-rights funders that likely also fund HRI's work. Every candidate below traces to a real, dated grant record in that dataset; nothing is estimated.";
+const FUNDERS_METHOD="This page shows two separate things, derived two different ways, and they should not be read as one list. The CONFIRMED PRIOR FUNDERS are HRI's own giving history: 22 organizations joined on HRI's recipient EIN in IRS Form 990 Schedule I, 2015 to 2024, $2,069,737 in total. Those joins are exact rather than name matches, and none required an identity review. Read the Purpose column before treating 22 as the number of funders HRI can approach: 9 of the 22 are donor-advised fund sponsors ($473,790 combined) where the gift originates with an individual donor and the sponsor cannot be solicited, 2 are universities, 1 is a peer organization passing through subaward funds and 1 is a fellowship host, which leaves 9 that can be approached directly. Only 7 of the 22 record a grant in 2023 or 2024, and 5 of those 7 are sponsors or a university, so Communities Foundation of Texas and Texas Bar Foundation are the two demonstrably active institutional grantmakers in the set. The CANDIDATE FUNDERS below are a different exercise and no relationship is asserted for any of them: one run of Almanac's v2 pipeline (NTEE/geography-weighted, scored token and phrase purpose matching against the Schedule I grants-paid dataset), scoped to the currently available Texas-only extract because the national extract has not yet been added to this Drive's data repository (a known, tracked limitation, Standing Items item 16). That scoping under-represents out-of-state immigration and human-rights funders that likely also fund HRI's work. Every candidate traces to a real, dated grant record; nothing is estimated.";
 
 const RANKED_FUNDERS=[
   {funder_name:"The Jensen Project Inc",funder_ein:"84-3529599",is_confirmed_prior_funder:false,tier:"tier_1_strong",geography:"National (Texas grants confirmed in this dataset)",rationale:"Strongest candidate in this analysis (score 7.9). Four matching grants in the TX Schedule I extract totaling $783,937, funding shelter/assistance for domestic-violence and sexual-abuse victims, economic-empowerment and housing programs for adult female human-trafficking survivors, and a residential restoration program for trafficking survivors -- a close, direct match to HRI's trafficking-survivor and abuse-survivor client populations. Also independently surfaced as a strong candidate for a separate Minnesota legal-advocacy organization on the same trafficking-survivor thematic fit, a real cross-validation signal. GrantTank (the Jensen Project's primary vehicle) was invitation-only for the 2026 cycle per that org's own research pass -- verify current application status directly before pitching cold."},
