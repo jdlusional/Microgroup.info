@@ -29,6 +29,19 @@ a{color:var(--accent)}
 
 .section{padding:2.6rem 0;border-bottom:1px solid var(--rule-soft)}
 .section-head p{color:var(--wash);font-size:.98rem;margin:0;max-width:none}
+/* ADDED 2026-09-03, same defect and same fix as blackmamas-enterprise.html 2026-08-27:
+   this page carries the .fold-count markup and the JS that fills it but shipped with
+   NEITHER rule, so its count badge rendered BESIDE the heading, violating the owner order
+   of 2026-08-17 quoted below. Surfaced by the class sweep after I19 became assessable on
+   the re-blessed almanac exemplar. BOTH rules are required and the ORDER MATTERS:
+   tool-shared.css already declares .fold-count:empty{display:none}, and the block rule
+   out-specifies it from a later stylesheet, so re-declaring :empty AFTER it wins back the
+   hiding of an empty chip. Measured on the 2026-08-27 page: block alone left an 18px
+   empty bordered chip. */
+/* Owner order 2026-08-17: count badges render on their own line UNDER the heading,
+   never beside it. */
+.section-head .fold-count{display:block;margin:.45rem auto 0;width:fit-content}
+.fold-count:empty{display:none}
 
 .note{background:var(--well);border-left:3px solid var(--wash);padding:1rem 1.2rem;font-size:.93rem;color:var(--ink);margin:1.2rem 0}
 .note.warn{border-left-color:var(--urgent)}
