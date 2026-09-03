@@ -243,6 +243,7 @@ content:
 | App | Path | Staff policy |
 |---|---|---|
 | Black Mamas Village (microgroup.info) | `/blackmamas*` | Black Mamas Village Staff & Directors |
+| Black Mamas Village Enterprise (owner only, pre-formalization) | `/blackmamas-enterprise*` | Owner only |
 | Enterprise (microgroup.info) | `/enterprise*` | Owner only |
 | HRI (microgroup.info) | `/hri*` | HRI Staff & Board |
 | KCT (microgroup.info) | `/kct` | Katelyn Thompson |  <!-- exact path, no wildcard -->
@@ -252,7 +253,7 @@ content:
 | Standpoint (microgroup.info) | `/standpoint*` | Owner only |
 | TEA (microgroup.info) | `/tea*` | Owner only |
 
-*9 application(s), read live from the Cloudflare Access API on 2026-08-29. Anything not listed here has no Access application on this domain and is served publicly, including any path that only 301s away.*
+*10 application(s), read live from the Cloudflare Access API on 2026-09-03. Anything not listed here has no Access application on this domain and is served publicly, including any path that only 301s away.*
 <!-- ES-GENERATED:END [access-table] -->
 
 **Important, load-bearing:** this repo has no clean-URL middleware, so an exact-path Access
