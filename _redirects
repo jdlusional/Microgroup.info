@@ -55,9 +55,11 @@
 /kct                             https://katelyncthompson.com/                                    301
 /kct.html                        https://katelyncthompson.com/                                    301
 
-# No private-index.html exists on this domain by design (owner order 2026-08-06):
-# the canonical private index lives on jonathanlindavis.com, this is a pointer to it
-# rather than a second index to keep in sync.
+# SUPERSEDED 2026-08-30: the 2026-08-06 order below said no private-index.html exists on this
+# domain. One DOES exist, 597 lines, six commits, most recently 2026-08-30, so by this file's
+# own repeated rule that Pages serves a static asset in preference to a redirect rule, the two
+# rules beneath cannot fire. They are kept only so the paths still resolve if the file is ever
+# removed. The page is Access-gated, not redirected, and IS reachable when signed in.
 /private-index         https://jonathanlindavis.com/private-index.html  301
 /private-index.html    https://jonathanlindavis.com/private-index.html  301
 
