@@ -127,8 +127,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; margin: 0 0 var(--s2); font-weight: 600; }
-h1 { font-size: var(--t-4xl); letter-spacing: -.015em; }
+h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; margin: 0 0 var(--s2); font-weight: 600; text-align: center; }
+h1 { font-size: var(--t-4xl); letter-spacing: -.015em; text-align: center; }
 h2 { font-size: var(--t-3xl); letter-spacing: -.01em; }
 h3 { font-size: var(--t-2xl); }
 h4 { font-size: var(--t-lg); }
@@ -143,8 +143,8 @@ img, svg { max-width: 100%; }
 main { display: block; }
 .panel { padding: var(--s6) 0; border-bottom: 1px solid var(--rule); }
 .panel:last-of-type { border-bottom: 0; }
-.shead { margin-bottom: var(--s5); }
-.shead .intro { color: var(--wash); max-width: var(--measure); }
+.shead { margin-bottom: var(--s5); text-align: center; }
+.shead .intro { color: var(--wash); max-width: var(--measure); margin-left: auto; margin-right: auto; }
 .site-header {
   position: sticky; top: 0; z-index: 40;
   background: var(--a-paper-92);
@@ -157,8 +157,8 @@ main { display: block; }
 .nav-links { display: flex; gap: var(--s4); list-style: none; margin: 0; padding: 0; }
 .nav-links a { color: var(--ink); text-decoration: none; font-size: var(--t-md); font-weight: 500; }
 .nav-links a:hover { color: var(--accent-text); text-decoration: underline; }
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--s4); }
-.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--s4); }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--s4); }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: var(--s4); }  /* 420px so four proof items break 2 and 2 at 1180px rather than 3 and 1 with one orphaned. */
 .grid-3 > *, .grid-2 > *, .nav > *, .cta-row > * { min-width: 0; }
 body { overflow-x: hidden; }
 
@@ -172,7 +172,7 @@ html.stack-page .nav-name { font-family: var(--f-sans); font-size: var(--t-2xl);
 html.stack-page .nav-name-sub { font-weight: 400; }
 
 /* Hero lockup */
-html.stack-page .hero-lockup { margin: 0 0 var(--s4); }
+html.stack-page .hero-lockup { margin: 0 0 var(--s4); text-align: center; }
 html.stack-page .lockup-frame { position: relative; border: 1px solid var(--plate-rule); padding: 44px 52px 30px; text-align: center; display: inline-block; }
 html.stack-page .lockup-mark { position: absolute; top: -33px; left: 50%; transform: translateX(-50%); background: var(--paper); padding: 0 16px; }
 html.stack-page .lockup-word { font-family: var(--f-serif); font-size: var(--t-hero); font-weight: 400; letter-spacing: -.01em; line-height: 1; color: var(--plate-ink); white-space: nowrap; }
@@ -182,17 +182,17 @@ html.stack-page .lockup-tag { font-family: var(--f-mono); font-size: var(--t-mic
 html.stack-page .lockup-tag u { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 
 /* Hero */
-html.stack-page .lede { font-size: var(--t-lg); color: var(--ink); max-width: var(--measure); }
-html.stack-page .roles { display: flex; flex-wrap: wrap; gap: var(--s2); margin: var(--s3) 0 var(--s4); }
+html.stack-page .lede { font-size: var(--t-lg); color: var(--ink); max-width: var(--measure); margin-left: auto; margin-right: auto; text-align: center; }
+html.stack-page .roles { display: flex; flex-wrap: wrap; gap: var(--s2); margin: var(--s3) 0 var(--s4); justify-content: center; }
 html.stack-page .roles span { font-family: var(--f-mono); font-size: var(--t-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--wash); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); }
 
 /* Reader-subject block */
-html.stack-page .problem { background: var(--well); border-left: 3px solid var(--accent); padding: var(--s4); max-width: var(--measure); }
-html.stack-page .problem p { margin: 0; font-size: var(--t-lg); }
+html.stack-page .problem { background: var(--well); border-top: 3px solid var(--accent); padding: var(--s4); max-width: var(--measure); margin-left: auto; margin-right: auto; }
+html.stack-page .problem p { margin: 0; font-size: var(--t-lg); text-align: center; }
 
 /* Cards. Gutter is --s4 and card horizontal padding is --s3, so the gap is 1.556
    times the padding and the grouping cue is spatial rather than chromatic. */
-html.stack-page .pcard { background: var(--well); border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s3); }
+html.stack-page .pcard { background: var(--well); border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s3); text-align: center; }
 html.stack-page .pcard-title { font-size: var(--t-xl); font-weight: 600; margin: 0 0 var(--s1); }
 html.stack-page .pcard-desc { font-size: var(--t-md); color: var(--ink); margin: 0; max-width: var(--measure); }
 html.stack-page .pcard-price { font-size: var(--t-sm); color: var(--accent-text); font-weight: 600; }
@@ -202,23 +202,23 @@ html.stack-page .pcard-open:hover { color: var(--ink); text-decoration: underlin
 html.stack-page .arr { color: var(--accent-text); }
 
 /* Scope statement */
-html.stack-page .scope { border: 1px solid var(--rule); border-left: 3px solid var(--accent); background: var(--paper); padding: var(--s4); max-width: var(--measure); }
+html.stack-page .scope { border: 1px solid var(--rule); border-top: 3px solid var(--accent); background: var(--paper); padding: var(--s4); max-width: var(--measure); margin-left: auto; margin-right: auto; text-align: center; }
 html.stack-page .scope h3 { font-size: var(--t-lg); margin-bottom: var(--s2); }
 html.stack-page .scope p { margin: 0; color: var(--ink); }
 
 /* Proof */
-html.stack-page .proof-item { border-top: 1px solid var(--rule); padding-top: var(--s3); }
+html.stack-page .proof-item { border-top: 1px solid var(--rule); padding-top: var(--s3); text-align: center; }
 html.stack-page .proof-item h4 { margin-bottom: var(--s1); }
-html.stack-page .proof-item p { font-size: var(--t-md); color: var(--ink); margin: 0; max-width: var(--measure); }
-html.stack-page .proof-person { background: var(--well); border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s4); margin-bottom: var(--s4); }
+html.stack-page .proof-item p { font-size: var(--t-md); color: var(--ink); margin: 0; max-width: var(--measure); margin-left: auto; margin-right: auto; }
+html.stack-page .proof-person { background: var(--well); border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s4); margin-bottom: var(--s4); text-align: center; }
 
 /* Terms */
-html.stack-page .terms { border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s4); background: var(--well); }
+html.stack-page .terms { border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s4); background: var(--well); text-align: center; }
 html.stack-page .terms-figure { font-family: var(--f-mono); font-size: var(--t-3xl); font-weight: 700; color: var(--ink); display: block; margin-bottom: var(--s1); }
-html.stack-page .terms p { max-width: var(--measure); margin-bottom: var(--s2); }
+html.stack-page .terms p { max-width: var(--measure); margin-left: auto; margin-right: auto; margin-bottom: var(--s2); }
 
 /* Calls to action */
-html.stack-page .cta-row { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; margin: var(--s4) 0; }
+html.stack-page .cta-row { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; justify-content: center; margin: var(--s4) 0; }
 html.stack-page .btn { display: inline-block; font-size: var(--t-md); font-weight: 600; padding: var(--s2) var(--s4); border-radius: 3px; text-decoration: none; border: 1px solid var(--accent-fill); cursor: pointer; font-family: var(--f-sans); }
 html.stack-page .btn-solid { background: var(--accent-fill); color: var(--paper); }
 html.stack-page .btn-solid:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
@@ -226,11 +226,11 @@ html.stack-page .btn-ghost { background: transparent; color: var(--accent-text);
 html.stack-page .btn-ghost:hover { background: var(--a-accent-24); color: var(--ink); }
 
 /* Direct channel */
-html.stack-page .direct { font-size: var(--t-md); color: var(--ink); }
+html.stack-page .direct { font-size: var(--t-md); color: var(--ink); max-width: var(--measure); margin-left: auto; margin-right: auto; text-align: center; }
 html.stack-page .direct a { font-weight: 600; }
 
 /* Form */
-html.stack-page .signup-form { max-width: 760px; }
+html.stack-page .signup-form { max-width: 760px; margin-left: auto; margin-right: auto; text-align: left; }
 html.stack-page .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--s3); }
 html.stack-page .form-row { display: flex; flex-direction: column; gap: var(--s1); margin-bottom: var(--s3); }
 html.stack-page .form-row label { font-size: var(--t-md); font-weight: 500; color: var(--ink); }
@@ -240,7 +240,7 @@ html.stack-page .signup-form input, html.stack-page .signup-form select, html.st
 }
 html.stack-page .signup-form input::placeholder, html.stack-page .signup-form textarea::placeholder { color: var(--wash); }
 html.stack-page .opt-tag { font-size: var(--t-xs); color: var(--wash); font-weight: 400; text-transform: uppercase; letter-spacing: .06em; }
-html.stack-page .form-privacy { font-size: var(--t-md); color: var(--wash); max-width: var(--measure); }
+html.stack-page .form-privacy { font-size: var(--t-md); color: var(--wash); max-width: var(--measure); margin-left: auto; margin-right: auto; }
 html.stack-page .form-status { font-size: var(--t-md); font-weight: 600; min-height: 1.4em; }
 html.stack-page .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
@@ -250,18 +250,24 @@ html.stack-page .tab.active { background: var(--accent-fill); color: var(--paper
 html.stack-page .site-flip { display: flex; gap: var(--s1); }
 
 /* Footer */
-html.stack-page .footer-panel { background: var(--well); padding: var(--s5) var(--s4); border-top: 1px solid var(--rule); }
+html.stack-page .footer-panel { background: var(--well); padding: var(--s5) var(--s4); border-top: 1px solid var(--rule); text-align: center; }
 html.stack-page .footer-slogan { font-family: var(--f-mono); font-size: var(--t-micro); letter-spacing: .06em; color: var(--plate-wash); }
 html.stack-page .footer-slogan u { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 html.stack-page .footer-switcher-label { font-size: var(--t-xs); text-transform: uppercase; letter-spacing: .08em; color: var(--wash); margin-bottom: var(--s1); }
-html.stack-page .switcher { display: flex; gap: var(--s1); }
+html.stack-page .switcher { display: flex; gap: var(--s1); justify-content: center; }
 html.stack-page .footer-credit { font-size: var(--t-md); color: var(--ink); margin-top: var(--s3); }
 html.stack-page .footer-license { font-size: var(--t-xs); color: var(--wash); }
-html.stack-page .footer-legal-links { font-size: var(--t-xs); margin: var(--s2) 0; display: flex; gap: var(--s1); align-items: center; }
+html.stack-page .footer-legal-links { font-size: var(--t-xs); margin: var(--s2) 0; display: flex; gap: var(--s1); align-items: center; justify-content: center; }
 html.stack-page .footer-legal { font-size: var(--t-xs); color: var(--wash); }
 
 /* Cross-domain departure gate */
 html.stack-page .flip-gate { position: fixed; inset: 0; background: var(--a-ink-45); display: flex; align-items: center; justify-content: center; z-index: 90; }
+/* MUST FOLLOW THE RULE ABOVE. `display:flex` on a class selector is specificity 0,2,1 and
+   beats the user-agent stylesheet's `[hidden] { display:none }` at 0,1,0, so without this the
+   hidden attribute is inert and the departure gate renders permanently: a 45% ink overlay over
+   the whole viewport that tints the page and swallows every click. Shipped that way to preview
+   on 2026-09-04 and caught by the owner looking at it. */
+html.stack-page .flip-gate[hidden] { display: none; }
 html.stack-page .flip-gate-box { background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: var(--s4); max-width: 420px; box-shadow: 0 8px 28px var(--a-ink-16); }
 html.stack-page .flip-gate-actions { display: flex; gap: var(--s2); justify-content: flex-end; }
 html.stack-page .flip-gate-go { pointer-events: none; color: var(--wash); text-decoration: none; font-weight: 600; }
