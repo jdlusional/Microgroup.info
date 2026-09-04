@@ -11,58 +11,38 @@
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MICRO Group, L.L.C. — A Measured Approach to Your Goals</title>
-<meta name="description" content="MICRO Group, L.L.C.: a strategic, research-driven consultancy serving nonprofit, government, and political and legislative organizations across Texas.">
+<title>MICRO Group, L.L.C. &mdash; A Measured Approach to Your Goals</title>
+<meta name="description" content="MICRO Group, L.L.C.: a strategic, research-driven consultancy serving nonprofit, government, and nonpartisan policy organizations across Texas.">
 
-<!-- Link-share preview (Open Graph / Twitter Card). og-preview-c1.png is a purpose-built
-     1200x630 card (the standard OG aspect ratio) carrying the C1 Gold Plate mark, rendered
-     2026-08-30 by calling gen6.py's own plate() so the Round 6 tuning carries by construction
-     rather than being re-derived. It supersedes og-preview.png, which was the 2026-08-06 Canva
-     mark. NEW FILENAME ON PURPOSE: a scraper that has cached the old card keys on the URL, so
-     replacing the bytes in place would leave every cached preview showing the retired mark. The
-     old file stays in the repo, because deleting a file does not un-publish it. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MICRO Group, L.L.C.">
-<meta property="og:title" content="MICRO Group, L.L.C. — A Measured Approach to Your Goals">
-<meta property="og:description" content="A strategic, research-driven consultancy serving nonprofit, government, and political and legislative organizations across Texas.">
+<meta property="og:title" content="MICRO Group, L.L.C. &mdash; A Measured Approach to Your Goals">
+<meta property="og:description" content="A strategic, research-driven consultancy serving nonprofit, government, and nonpartisan policy organizations across Texas.">
 <meta property="og:url" content="https://microgroup.info/">
 <meta property="og:image" content="https://microgroup.info/og-preview-c1.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="MICRO Group, L.L.C.: a measured approach to your goals.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MICRO Group, L.L.C. — A Measured Approach to Your Goals">
-<meta name="twitter:description" content="A strategic, research-driven consultancy serving nonprofit, government, and political and legislative organizations across Texas.">
+<meta name="twitter:title" content="MICRO Group, L.L.C. &mdash; A Measured Approach to Your Goals">
+<meta name="twitter:description" content="A strategic, research-driven consultancy serving nonprofit, government, and nonpartisan policy organizations across Texas.">
 <meta name="twitter:image" content="https://microgroup.info/og-preview-c1.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Parisienne&display=swap" rel="stylesheet">
-<!-- Favicon: Assets/micro-mark-c1.svg, the C1 Gold Plate mark, adopted 2026-08-29 as RO4
-     of the C1 rollout. Generated from gen6.py rather than recoloured from a raster, so
-     the Round 6 tuning carries by construction. Two earlier marks are named here rather
-     than deleted, because a comment that outlived its own subject is exactly how the
-     second one survived until tonight: king-mark.svg, a crown unrelated to this firm's
-     actual mark; then Assets/micro-mark.svg, the chess-piece mark recoloured to the
-     site's --ink and --accent green and bronze. Both superseded. -->
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="Assets/micro-mark-c1.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="Assets/micro-favicon-c1-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="Assets/micro-favicon-c1-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="Assets/micro-touch-c1-180.png">
 <link rel="canonical" href="https://microgroup.info/">
-<link rel="stylesheet" href="style.css">
 
 <style>
-/* ============================================================
-   Page-scoped palette + type tokens, copied structurally from
-   jonathanlindavis.com's own index.html (its current, non-legacy
-   convention). Only --ink/--accent are nudged for MICRO's own
-   identity (a measured green/gold, not JLD's blue); every other
-   token, font, and structural rule is byte-identical. Never edit
-   style.css's shared :root -- other pages on this domain may read
-   it directly.
-   ============================================================ */
+/* ============ 1. TOKENS ============ */
+/* The only place in this document where a literal colour, font stack or type size
+   is written. Everything below section 1 refers to a token. */
 html.stack-page {
+  /* Palette, six values, unchanged. */
   --paper:  #f4efe2;
   --ink:    #1b3a2f;
   --well:   #e4e6de;
@@ -70,242 +50,253 @@ html.stack-page {
   --accent: #8a6b1f;
   --wash:   #4a5c52;
 
-  /* These four exist only so style.css's shared selectors (written against its own
-     dark-navy token names) render correctly on this page's light theme -- pointed at
-     the tokens above via var() rather than restated as literal hex, so a future
-     --paper/--wash recolor can't silently diverge from its alias (2026-07-24). */
-  --navy-deep:    var(--paper);
-  --navy-card:    var(--well);
-  --line-navy:    rgba(200,194,181,.8);
-  --muted:        var(--wash);
-  --muted-light:  var(--wash);
+  /* Accent split by contrast class. --accent is restricted to borders, focus rings,
+     the mark, and display type at 24px or larger, where 4.35 on paper and 3.97 on
+     well clear the 3:1 boundary bar. Normal-scale text and solid fills take the
+     darker value at 6.12 and 5.58, which is already present on this page as a
+     hover background and is therefore not a new colour. */
+  --accent-text: #6f5518;
+  --accent-fill: #6f5518;
 
-  --f-body:    'IBM Plex Sans', Arial, sans-serif;
-  --f-head:    'IBM Plex Sans', Arial, sans-serif;
-  --f-eyebrow: 'JetBrains Mono', ui-monospace, monospace;
-  --f-cards:   'JetBrains Mono', ui-monospace, monospace;
-  --f-label:   'JetBrains Mono', ui-monospace, monospace;
-  --f-script:  'Parisienne', cursive;
-  /* Playfair Display: matches the serif wordmark typeface used in
-     MICRO_logo_site.png (2026-08-06, replacing Archivo Black once the new
-     Canva-generated logo switched from a bold sans wordmark to a serif
-     one) -- Parisienne stays reserved for the italic slogan line,
-     matching the logo's own "your goals" script styling. */
-  --f-script-caps: 'Playfair Display', serif;
+  /* The lockup's own plate palette, declared rather than reconciled. The generator
+     that produced these five values does not exist in any repository, so they are
+     named here to make them searchable and the divergence from the page palette is
+     deliberate and recorded. */
+  --plate-ink:   #16241f;
+  --plate-gold:  #a8801f;
+  --plate-paper: #f2efe7;
+  --plate-rule:  #c9c4b8;
+  --plate-wash:  #55635c;
+
+  /* Form status. */
+  --ok:  #1a6b3d;
+  --err: #a13a33;
+
+  /* Alpha derivatives, each bound to a palette value rather than floating free. */
+  --a-rule-80:   rgba(200,194,181,.80);
+  --a-ink-08:    rgba(27,58,47,.08);
+  --a-ink-16:    rgba(27,58,47,.16);
+  --a-ink-45:    rgba(27,58,47,.45);
+  --a-paper-92:  rgba(244,239,226,.92);
+  --a-accent-24: rgba(138,107,31,.24);
+
+  /* Three families, each with a rendered consumer in this document. */
+  --f-sans:  'IBM Plex Sans', system-ui, -apple-system, Segoe UI, sans-serif;
+  --f-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --f-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+
+  /* Eleven sizes. No font-size on html, so the root stays the reader's own default
+     and every rem below resolves against it. The five sizes the pattern book pins
+     by label resolve exactly: 1.5625rem is 25px, .82rem is 13.12px, .95rem is
+     15.2px, .78rem is 12.48px. */
+  --t-micro: .75rem;
+  --t-xs:    .78rem;
+  --t-sm:    .82rem;
+  --t-md:    .95rem;
+  --t-base:  1.06rem;
+  --t-lg:    1.25rem;
+  --t-2xl:   1.5rem;
+  --t-xl:    1.5625rem;
+  --t-3xl:   2rem;
+  --t-4xl:   2.6rem;
+  --t-hero:  3.125rem;
+
+  /* Six-step space scale. The card gutter is --s4 against a card padding of --s3,
+     a quotient of 1.556, which is the inverted ratio the boundary rebuild needs. */
+  --s1: .375rem;
+  --s2: .75rem;
+  --s3: 1.125rem;
+  --s4: 1.75rem;
+  --s5: 2.75rem;
+  --s6: 4.5rem;
+
+  --measure: 62ch;
+  --maxw:    1180px;
+  --bar-h:   64px;
 }
 
-#home{padding:40px 0 56px}
-@media(min-width:901px){#home{padding:72px 0 96px}}
-.credentials-list{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-direction:column;gap:10px;text-align:center}
-.credentials-list li{font-family:var(--f-eyebrow);font-size:.85rem;color:var(--wash);border-top:1px solid var(--rule);padding-top:10px}
-.credentials-list li:first-child{border-top:none;padding-top:0}
-.credentials-list li.current{color:var(--ink);font-weight:700}
-#offer{padding:72px 0}
-/* Card convention (2026-07-24 owner order, CENTERED BY DEFAULT 2026-07-30 owner order):
-   well-tinted plain-border card, no accent top-border/radius, text link in place of the
-   bordered pill button. Centered was previously a has-switcher-only override; it is now
-   the family default everywhere on this page, so that override (formerly here) is gone as
-   dead weight -- every .pcard, switcher or not, centers the same way. */
-html.stack-page .pcard{background:var(--well);border:1px solid var(--rule);padding:1.3rem 1.4rem;display:flex;flex-direction:column;text-align:center;align-items:center;min-width:0;overflow-wrap:anywhere;transition:transform .16s ease,box-shadow .16s ease}
-html.stack-page .pcard:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(27,58,47,.12)}
-html.stack-page .pcard-title{font-family:var(--f-head);font-size:25px;font-weight:700;color:var(--ink);margin:0 0 .3rem}
-html.stack-page .pcard-price{font-family:var(--f-eyebrow);font-size:.82rem;color:var(--accent);font-weight:700;display:block;margin-bottom:.7rem}
-html.stack-page .pcard-desc{font-size:.95rem;color:var(--ink);line-height:1.55;flex:1;margin:0}
-html.stack-page .pcard-desc ul{margin:.5rem 0 0;padding-left:1.1rem}
-html.stack-page .pcard.pcard-dev{opacity:.72}
-html.stack-page .pcard-status{font-family:var(--f-eyebrow);font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;color:var(--wash);margin-top:.8rem}
-html.stack-page .pcard-status-live{color:var(--accent);font-weight:700}
-/* Touch target, css-pass 2026-08-31 (WCAG 2.5.8). Measured 46x20, 4px under on height. inline-flex
-   plus min-height raises the hit area without moving the glyph or changing the card's rhythm. */
-html.stack-page .pcard-open{align-self:center;font-family:var(--f-eyebrow);font-size:.78rem;letter-spacing:.02em;font-weight:500;color:var(--accent);margin-top:.6rem;text-decoration:none;display:inline-flex;align-items:center;min-height:24px}
-html.stack-page .pcard-open:hover{color:var(--ink);text-decoration:underline}
-/* Meta-link card (2026-07-24, ported from jonathanlindavis.com's index.html):
-   a lighter, dashed treatment for a navigational shortcut to a switcher page
-   (Product Demo Hub), distinct from an actual product in its own right. */
-html.stack-page .pcard.pcard-meta{background:var(--paper);border:1.5px dashed var(--rule)}
-html.stack-page .pcard.pcard-meta .pcard-title{color:var(--wash)}
-/* Featured row (owner order, 2026-07-30): the switcher card plus any other
-   section-level cards (Pricing, Referral Program) sit on one centered row,
-   highlighted with the accent border, directly above the specific-product
-   grid below them. */
-html.stack-page .featured-row{display:flex;flex-wrap:wrap;justify-content:center;gap:1.1rem;margin-bottom:1.4rem}
-html.stack-page .featured-row .pcard{flex:1 1 260px;max-width:340px}
-html.stack-page .pcard.pcard-highlight{border:1.5px solid var(--accent);background:var(--well)}
-html.stack-page .pcard.pcard-highlight .pcard-title{color:var(--accent)}
-#offer .projects-section{max-width:1040px;margin:0 auto 40px}
-.footprint-note{max-width:840px;margin:0 auto;text-align:center;font-size:.9rem;color:var(--wash)}
-#contact{padding:72px 0}
-@media(min-width:901px){
-  .site-header .nav{position:relative}
-  .site-header .nav-right{flex:1;display:flex;align-items:center;justify-content:flex-end}
+/* ============ 2. RESET AND BASE ============ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-sans);
+  font-size: var(--t-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
+h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; margin: 0 0 var(--s2); font-weight: 600; }
+h1 { font-size: var(--t-4xl); letter-spacing: -.015em; }
+h2 { font-size: var(--t-3xl); letter-spacing: -.01em; }
+h3 { font-size: var(--t-2xl); }
+h4 { font-size: var(--t-lg); }
+p  { margin: 0 0 var(--s3); }
+a  { color: var(--accent-text); text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+img, svg { max-width: 100%; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
-/* light-ground override, mirroring jonathanlindavis.com's Stage 1 polarity flip */
-html.stack-page .panel{min-height:0;justify-content:flex-start;scroll-snap-align:none}
-html.stack-page #home{border-top:0}
-html.stack-page .shead .intro{margin:0 auto}
-
-html.stack-page .site-header{background:var(--paper)}
-/* Nav wordmark matches MICRO_logo_site.png's own treatment (2026-08-06): "MICRO" bold in
-   --accent, "Group" regular in --ink, title case -- no text-transform, since the logo
-   doesn't uppercase/lowercase either word. */
-html.stack-page .nav-name{font-family:var(--f-script-caps);color:var(--accent);font-weight:700;font-size:1.5rem;letter-spacing:.01em}
-html.stack-page .nav-name .nav-name-sub{color:var(--ink);font-weight:400}
-html.stack-page .nav-links a{color:var(--ink)}
-html.stack-page .nav-links a:hover,
-html.stack-page .nav-links a[aria-current="page"]{border-bottom-color:var(--accent)}
-/* Touch target, css-pass 2026-08-31 (WCAG 2.5.8, 24x24 CSS px minimum at AA). Measured 22x24 at
-   375px, so 2px under on width only. min-* ONLY, deliberately: the base rule in style.css carries
-   display:none with display:block at the mobile breakpoint, so setting display here would unhide
-   the hamburger on desktop. Page-local rather than in style.css because 5 pages share that file
-   and this pass is scoped to the two homepages. */
-html.stack-page .nav-toggle{color:var(--ink);transition:opacity .15s ease;min-width:24px;min-height:24px}
-html.stack-page .nav-toggle:hover{opacity:.75}
-html.stack-page .chevron{color:var(--wash);transition:color .16s ease}
-html.stack-page .chevron.dark{color:var(--ink)}
-html.stack-page .chevron:hover{color:var(--accent)}
-html.stack-page .eyebrow,
-html.stack-page .coord{color:var(--wash)}
-html.stack-page .panel.navy .shead h2{color:var(--ink)}
-html.stack-page .projects-subhead{color:var(--ink)}
-html.stack-page .switcher .tab{color:var(--wash);border-color:var(--rule)}
-html.stack-page .switcher .tab:hover{border-color:var(--accent);color:var(--accent)}
-html.stack-page .switcher .tab.active{background:var(--accent);border-color:var(--accent);color:var(--paper)}
-
-html.stack-page .btn-gold{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
-html.stack-page .btn-gold:hover{background:var(--accent);color:var(--paper)}
-html.stack-page .btn-solid{background:var(--accent);color:var(--paper);border:1.5px solid var(--accent)}
-html.stack-page .btn-solid:hover{background:#6f5518;border-color:#6f5518;box-shadow:0 10px 26px rgba(138,107,31,.3)}
-/* Collapsed-section header-button (2026-07-24, ported from jonathanlindavis.com's
-   index.html): a projects-subhead that IS the only content of its section. */
-html.stack-page .projects-subhead-btn{background:var(--accent);color:var(--paper);border:1.5px solid var(--accent)}
-html.stack-page .projects-subhead-btn:hover{background:#6f5518;border-color:#6f5518;box-shadow:0 10px 26px rgba(138,107,31,.3)}
-
-html.stack-page .panel.navy{background:var(--paper);color:var(--ink)}
-html.stack-page .home-hero h1{color:var(--ink)}
-html.stack-page .home-hero h1 .em{color:var(--accent)}
-html.stack-page .home-hero .lede{color:var(--wash)}
-html.stack-page .roles span{background:var(--well);color:var(--ink);box-shadow:0 4px 14px rgba(27,58,47,.12)}
-/* Full logo lockup (chess mark + MICRO wordmark + "your goals" tagline): the
-   image already carries its own wordmark and internal padding, so it drops
-   the circular-badge treatment (well fill, border, tight crop) rather than
-   shrinking a full lockup into a 132px circle where the baked-in text would
-   be illegible. Logo colors are recolored to the site's own --ink/--accent
-   (dark green + bronze) so they read cleanly against --paper. */
-html.stack-page .hero-lockup{display:flex;justify-content:center;margin:0 auto 28px}
-/* The lockup is native markup, not an image, so it scales with the page rather than
-   with a raster's pixel dimensions. Its own spacings come from gen6.py's plate(). */
-html.stack-page .hero-lockup > div{max-width:min(420px,86vw)}
-
-html.stack-page :focus-visible{outline-color:var(--accent)}
-
-html.stack-page .bio p{color:var(--wash)}
-html.stack-page .bio p:first-child{color:var(--ink)}
-html.stack-page .bio p strong{color:var(--ink)}
-html.stack-page .bio{margin-top:32px}
-
-html.stack-page .signup-form label{color:var(--wash)}
-html.stack-page .signup-form input,
-html.stack-page .signup-form select{color:var(--ink);background:var(--well);border-color:var(--wash)}
-html.stack-page .signup-form input:focus,
-html.stack-page .signup-form select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(138,107,31,.3)}
-html.stack-page .signup-form select option{color:var(--ink);background:var(--paper)}
-html.stack-page .signup-form input::placeholder{opacity:.75}
-html.stack-page .contact-drop{max-width:560px;margin:0 auto;text-align:left}
-html.stack-page .contact-drop-summary{list-style:none;cursor:pointer;text-align:center;font-family:var(--f-eyebrow);font-size:.86rem;letter-spacing:.02em;color:var(--wash);background:var(--navy-card);border:1.5px solid var(--line-navy);border-radius:999px;padding:10px 28px;transition:all .16s ease}
-html.stack-page .contact-drop-summary::-webkit-details-marker{display:none}
-html.stack-page .contact-drop-summary:hover{border-color:var(--accent);color:var(--accent)}
-html.stack-page .contact-drop[open] .contact-drop-summary{border-color:var(--accent);color:var(--accent);margin-bottom:20px}
-html.stack-page .signup-form textarea{font-family:var(--f-body);font-size:1rem;color:var(--ink);background:var(--well);border:1px solid var(--wash);border-radius:8px;padding:13px 14px;width:100%;resize:vertical;transition:border-color .16s ease,box-shadow .16s ease}
-html.stack-page .signup-form textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(138,107,31,.3)}
-html.stack-page .signup-form textarea::placeholder{opacity:.75}
-html.stack-page .contact-disclosure-compact{font-size:.78rem;padding:.6rem .9rem}
-html.stack-page .contact-disclosure-compact p{font-size:.78rem;line-height:1.45}
-html.stack-page .signup-form .form-status.ok{color:#1a6b3d}
-html.stack-page .signup-form .form-status.err{color:#a13a33}
-html.stack-page .contact-disclosure{background:var(--well);border-color:var(--rule)}
-html.stack-page .contact-disclosure .coi-label{color:var(--wash)}
-html.stack-page .contact-disclosure .frame-line{color:var(--ink)}
-html.stack-page .contact-disclosure p{color:var(--wash)}
-
-/* .site-flip moved into the sticky .site-header (2026-07-23), mirroring the
-   same 2026-07-23 change on jonathanlindavis.com's index.html; the always-
-   visible note is retired in favor of the click-triggered .flip-gate
-   interstitial, which also forces a 3-second pause before an actual
-   cross-domain departure. Divider weight (18px padding, 1px rgba(ink,.25)
-   border) matches jonathanlindavis.com's .nav-social divider exactly, since
-   this is the one and only divider before the flip control on this page
-   (no nav-social block here to already provide it) -- cross-site spacing
-   consistency pass, 2026-07-23. */
-.site-flip{display:flex;gap:.4rem;padding-left:18px;border-left:1px solid rgba(27,58,47,.25)}
-.site-flip .tab{font-family:var(--f-eyebrow);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;padding:.32rem .7rem;border:1px solid var(--rule);color:var(--wash);background:transparent;white-space:nowrap}
-.site-flip .tab:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
-.site-flip .tab.active{background:var(--accent);border-color:var(--accent);color:var(--paper)}
-@media(max-width:900px){.site-flip{padding-left:0;border-left:0;flex-wrap:wrap}}
-
-.flip-gate{position:fixed;inset:0;background:rgba(27,58,47,.55);display:flex;align-items:center;justify-content:center;z-index:200;padding:1.2rem}
-.flip-gate[hidden]{display:none}
-.flip-gate-box{background:var(--paper);border:1.5px solid var(--ink);max-width:420px;width:100%;padding:1.8rem 2rem;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.25)}
-.flip-gate-msg{font-family:var(--f-eyebrow);font-size:.92rem;color:var(--ink);margin:0 0 1.4rem;line-height:1.5}
-.flip-gate-actions{display:flex;gap:.7rem;justify-content:center}
-.flip-gate-cancel,.flip-gate-go{font-family:var(--f-eyebrow);font-size:.8rem;letter-spacing:.03em;text-transform:uppercase;padding:.55rem 1.1rem;border:1.5px solid var(--ink);cursor:pointer;background:transparent;color:var(--ink);text-decoration:none;display:inline-block}
-.flip-gate-cancel:hover{background:var(--well)}
-.flip-gate-go{pointer-events:none;opacity:.5}
-.flip-gate-go.ready{pointer-events:auto;opacity:1;background:var(--accent);border-color:var(--accent);color:var(--paper)}
-
-/* Footer brand lockup (2026-07-23): text, not an image -- the retired
-   MICRO_wordmark_dark.svg was authored light-on-dark and had gone
-   low-contrast since the footer's Stage-1 polarity flip to a light --paper
-   background; this reuses the header's own font/color treatment instead so
-   the two never drift out of sync again. No chess-piece art and no .chess
-   texture here, per owner instruction (footer matches the header's
-   type/color, not its imagery). */
-.footer-brand{margin-bottom:10px}
-/* Footer slogan: the slogan COMPONENT itself, generated by gen6.py's slogan(), not a
-   cropped view of a raster. Replaced 2026-08-29 when the C1 Gold Plate lockup became
-   native markup: there is no longer a single image to crop, and the component carries
-   its own type and colour, so it stays in step with the hero lockup by construction
-   rather than by both pointing at one file. */
-.footer-brand .footer-slogan{margin:8px auto 0;text-align:center}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
-/* Card centering + ragged-last-row centering (2026-07-23, owner request):
-   .proj-list moves from CSS Grid to a centered flex-wrap so a row with
-   fewer cards than the row above it (Research/Operations under the 5-card
-   Consulting Disciplines list, at exactly this page's card widths) centers
-   itself instead of left-packing. Basis/max-width chosen to land ~3 per
-   row at this page's ~1040px container, matching jonathanlindavis.com's
-   own card sizing exactly for cross-site consistency. */
-#offer .proj-list{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
-#offer .proj-list > .pcard{flex:1 1 280px;max-width:340px;min-width:0}
-
-html.stack-page .footer-panel{min-height:0;padding:64px 0;scroll-snap-align:none}
-html.stack-page .footer-panel{background:var(--paper);color:var(--wash)}
-html.stack-page .footer-credit{color:var(--wash)}
-html.stack-page .footer-legal,
-html.stack-page .footer-license,
-html.stack-page .footer-legal-links{color:var(--wash)}
-html.stack-page .footer-legal-links a{color:var(--wash)}
-html.stack-page .footer-switcher{margin:0 0 18px}
-html.stack-page .footer-switcher-label{font-family:var(--f-eyebrow);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--wash)}
-html.stack-page .switcher .tab{transition:border-color .16s ease,color .16s ease}
-
-html.stack-page .chess::before{
-  background-image:
-    linear-gradient(45deg,rgba(27,58,47,.03) 25%,transparent 25%,transparent 75%,rgba(27,58,47,.03) 75%),
-    linear-gradient(45deg,rgba(27,58,47,.03) 25%,transparent 25%,transparent 75%,rgba(27,58,47,.03) 75%);
+/* ============ 3. LAYOUT ============ */
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--s4); }
+main { display: block; }
+.panel { padding: var(--s6) 0; border-bottom: 1px solid var(--rule); }
+.panel:last-of-type { border-bottom: 0; }
+.shead { margin-bottom: var(--s5); }
+.shead .intro { color: var(--wash); max-width: var(--measure); }
+.site-header {
+  position: sticky; top: 0; z-index: 40;
+  background: var(--a-paper-92);
+  backdrop-filter: saturate(1.4) blur(8px);
+  border-bottom: 1px solid var(--rule);
+  min-height: var(--bar-h);
 }
+.nav { display: flex; align-items: center; gap: var(--s4); width: 100%; max-width: var(--maxw); margin: 0 auto; padding: var(--s2) var(--s4); }
+.nav-right { display: flex; align-items: center; gap: var(--s4); margin-left: auto; }
+.nav-links { display: flex; gap: var(--s4); list-style: none; margin: 0; padding: 0; }
+.nav-links a { color: var(--ink); text-decoration: none; font-size: var(--t-md); font-weight: 500; }
+.nav-links a:hover { color: var(--accent-text); text-decoration: underline; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--s4); }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--s4); }
+.grid-3 > *, .grid-2 > *, .nav > *, .cta-row > * { min-width: 0; }
+body { overflow-x: hidden; }
 
-/* Honeypot, hidden. contact.js treats any value in company_website as a bot and
-   silently discards the submission, so this field being VISIBLE meant real visitors
-   could fill it and have their enquiry dropped without notice. Confirmed live on both
-   homepages 2026-08-20; rule copied from demo-survey.html, which was already correct. */
-.hp-field{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
+/* ============ 4. COMPONENTS ============ */
+/* Every rule in this section carries the html.stack-page prefix, and no rule outside
+   it does. The prefix is the pattern book's extraction marker, not a specificity
+   device: it says which rules the book governs and nothing else. */
+
+/* Wordmark */
+html.stack-page .nav-name { font-family: var(--f-sans); font-size: var(--t-2xl); font-weight: 700; color: var(--accent); text-decoration: none; letter-spacing: -.01em; }
+html.stack-page .nav-name-sub { font-weight: 400; }
+
+/* Hero lockup */
+html.stack-page .hero-lockup { margin: 0 0 var(--s4); }
+html.stack-page .lockup-frame { position: relative; border: 1px solid var(--plate-rule); padding: 44px 52px 30px; text-align: center; display: inline-block; }
+html.stack-page .lockup-mark { position: absolute; top: -33px; left: 50%; transform: translateX(-50%); background: var(--paper); padding: 0 16px; }
+html.stack-page .lockup-word { font-family: var(--f-serif); font-size: var(--t-hero); font-weight: 400; letter-spacing: -.01em; line-height: 1; color: var(--plate-ink); white-space: nowrap; }
+html.stack-page .lockup-word em { font-style: italic; }
+html.stack-page .lockup-rule { width: 100%; height: 1px; background: var(--plate-rule); margin: -8px auto 9px; }
+html.stack-page .lockup-tag { font-family: var(--f-mono); font-size: var(--t-micro); letter-spacing: .06em; color: var(--plate-wash); white-space: nowrap; }
+html.stack-page .lockup-tag u { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+
+/* Hero */
+html.stack-page .lede { font-size: var(--t-lg); color: var(--ink); max-width: var(--measure); }
+html.stack-page .roles { display: flex; flex-wrap: wrap; gap: var(--s2); margin: var(--s3) 0 var(--s4); }
+html.stack-page .roles span { font-family: var(--f-mono); font-size: var(--t-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--wash); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); }
+
+/* Reader-subject block */
+html.stack-page .problem { background: var(--well); border-left: 3px solid var(--accent); padding: var(--s4); max-width: var(--measure); }
+html.stack-page .problem p { margin: 0; font-size: var(--t-lg); }
+
+/* Cards. Gutter is --s4 and card horizontal padding is --s3, so the gap is 1.556
+   times the padding and the grouping cue is spatial rather than chromatic. */
+html.stack-page .pcard { background: var(--well); border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s3); }
+html.stack-page .pcard-title { font-size: var(--t-xl); font-weight: 600; margin: 0 0 var(--s1); }
+html.stack-page .pcard-desc { font-size: var(--t-md); color: var(--ink); margin: 0; max-width: var(--measure); }
+html.stack-page .pcard-price { font-size: var(--t-sm); color: var(--accent-text); font-weight: 600; }
+html.stack-page .pcard-status { font-size: var(--t-xs); color: var(--wash); text-transform: uppercase; letter-spacing: .07em; }
+html.stack-page .pcard-open { display: inline-block; margin-top: var(--s2); font-size: var(--t-xs); font-weight: 600; color: var(--accent-text); text-transform: uppercase; letter-spacing: .07em; text-decoration: none; }
+html.stack-page .pcard-open:hover { color: var(--ink); text-decoration: underline; }
+html.stack-page .arr { color: var(--accent-text); }
+
+/* Scope statement */
+html.stack-page .scope { border: 1px solid var(--rule); border-left: 3px solid var(--accent); background: var(--paper); padding: var(--s4); max-width: var(--measure); }
+html.stack-page .scope h3 { font-size: var(--t-lg); margin-bottom: var(--s2); }
+html.stack-page .scope p { margin: 0; color: var(--ink); }
+
+/* Proof */
+html.stack-page .proof-item { border-top: 1px solid var(--rule); padding-top: var(--s3); }
+html.stack-page .proof-item h4 { margin-bottom: var(--s1); }
+html.stack-page .proof-item p { font-size: var(--t-md); color: var(--ink); margin: 0; max-width: var(--measure); }
+html.stack-page .proof-person { background: var(--well); border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s4); margin-bottom: var(--s4); }
+
+/* Terms */
+html.stack-page .terms { border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s4); background: var(--well); }
+html.stack-page .terms-figure { font-family: var(--f-mono); font-size: var(--t-3xl); font-weight: 700; color: var(--ink); display: block; margin-bottom: var(--s1); }
+html.stack-page .terms p { max-width: var(--measure); margin-bottom: var(--s2); }
+
+/* Calls to action */
+html.stack-page .cta-row { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; margin: var(--s4) 0; }
+html.stack-page .btn { display: inline-block; font-size: var(--t-md); font-weight: 600; padding: var(--s2) var(--s4); border-radius: 3px; text-decoration: none; border: 1px solid var(--accent-fill); cursor: pointer; font-family: var(--f-sans); }
+html.stack-page .btn-solid { background: var(--accent-fill); color: var(--paper); }
+html.stack-page .btn-solid:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+html.stack-page .btn-ghost { background: transparent; color: var(--accent-text); }
+html.stack-page .btn-ghost:hover { background: var(--a-accent-24); color: var(--ink); }
+
+/* Direct channel */
+html.stack-page .direct { font-size: var(--t-md); color: var(--ink); }
+html.stack-page .direct a { font-weight: 600; }
+
+/* Form */
+html.stack-page .signup-form { max-width: 760px; }
+html.stack-page .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--s3); }
+html.stack-page .form-row { display: flex; flex-direction: column; gap: var(--s1); margin-bottom: var(--s3); }
+html.stack-page .form-row label { font-size: var(--t-md); font-weight: 500; color: var(--ink); }
+html.stack-page .signup-form input, html.stack-page .signup-form select, html.stack-page .signup-form textarea {
+  font-family: var(--f-sans); font-size: var(--t-md); color: var(--ink);
+  background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; padding: var(--s2);
+}
+html.stack-page .signup-form input::placeholder, html.stack-page .signup-form textarea::placeholder { color: var(--wash); }
+html.stack-page .opt-tag { font-size: var(--t-xs); color: var(--wash); font-weight: 400; text-transform: uppercase; letter-spacing: .06em; }
+html.stack-page .form-privacy { font-size: var(--t-md); color: var(--wash); max-width: var(--measure); }
+html.stack-page .form-status { font-size: var(--t-md); font-weight: 600; min-height: 1.4em; }
+html.stack-page .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Site switchers */
+html.stack-page .tab { font-size: var(--t-xs); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; text-decoration: none; color: var(--accent-text); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); }
+html.stack-page .tab.active { background: var(--accent-fill); color: var(--paper); border-color: var(--accent-fill); }
+html.stack-page .site-flip { display: flex; gap: var(--s1); }
+
+/* Footer */
+html.stack-page .footer-panel { background: var(--well); padding: var(--s5) var(--s4); border-top: 1px solid var(--rule); }
+html.stack-page .footer-slogan { font-family: var(--f-mono); font-size: var(--t-micro); letter-spacing: .06em; color: var(--plate-wash); }
+html.stack-page .footer-slogan u { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+html.stack-page .footer-switcher-label { font-size: var(--t-xs); text-transform: uppercase; letter-spacing: .08em; color: var(--wash); margin-bottom: var(--s1); }
+html.stack-page .switcher { display: flex; gap: var(--s1); }
+html.stack-page .footer-credit { font-size: var(--t-md); color: var(--ink); margin-top: var(--s3); }
+html.stack-page .footer-license { font-size: var(--t-xs); color: var(--wash); }
+html.stack-page .footer-legal-links { font-size: var(--t-xs); margin: var(--s2) 0; display: flex; gap: var(--s1); align-items: center; }
+html.stack-page .footer-legal { font-size: var(--t-xs); color: var(--wash); }
+
+/* Cross-domain departure gate */
+html.stack-page .flip-gate { position: fixed; inset: 0; background: var(--a-ink-45); display: flex; align-items: center; justify-content: center; z-index: 90; }
+html.stack-page .flip-gate-box { background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: var(--s4); max-width: 420px; box-shadow: 0 8px 28px var(--a-ink-16); }
+html.stack-page .flip-gate-actions { display: flex; gap: var(--s2); justify-content: flex-end; }
+html.stack-page .flip-gate-go { pointer-events: none; color: var(--wash); text-decoration: none; font-weight: 600; }
+html.stack-page .flip-gate-go.ready { pointer-events: auto; color: var(--accent-text); }
+html.stack-page .flip-gate-cancel { font-family: var(--f-sans); font-size: var(--t-md); background: transparent; border: 1px solid var(--rule); border-radius: 3px; padding: var(--s1) var(--s3); color: var(--ink); cursor: pointer; }
+
+/* ============ 5. UTILITIES ============ */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.measure { max-width: var(--measure); }
+.stack-gap { margin-top: var(--s5); }
+.quiet { color: var(--wash); }
+
+/* ============ 6. STATE ============ */
+html.stack-page .form-status.ok  { color: var(--ok); }
+html.stack-page .form-status.err { color: var(--err); }
+html.stack-page .signup-form input:focus, html.stack-page .signup-form select:focus, html.stack-page .signup-form textarea:focus { border-color: var(--accent); background: var(--paper); }
+html.stack-page .signup-form .invalid { border-color: var(--err); }
+html.stack-page .pcard:hover { border-color: var(--accent); box-shadow: 0 2px 10px var(--a-ink-08); }
+html.stack-page .nav-toggle { display: none; background: transparent; border: 1px solid var(--rule); border-radius: 3px; color: var(--ink); font-size: var(--t-lg); padding: 0 var(--s2); cursor: pointer; }
+
+/* ============ 7. MEDIA AND MOTION ============ */
+@media (max-width: 860px) {
+  .nav { flex-wrap: wrap; gap: var(--s2); }
+  .nav-links { gap: var(--s3); flex-wrap: wrap; }
+  .panel { padding: var(--s5) 0; }
+  h1 { font-size: var(--t-3xl); }
+  html.stack-page .lockup-frame { padding: 38px 28px 24px; }
+  html.stack-page .lockup-word { font-size: var(--t-4xl); }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}
 </style>
 </head>
 <body>
-<!-- writing-convention: general -->
-
 
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
@@ -313,11 +304,12 @@ html.stack-page .chess::before{
     <button class="nav-toggle" aria-label="Menu">&#9776;</button>
     <div class="nav-right">
       <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="demo.html">Products</a></li>
+        <li><a href="demo-pricing.html">Pricing</a></li>
+        <li><a href="#about">About</a></li>
         <li><a id="nav-connect" href="#contact">Connect</a></li>
       </ul>
-      <!-- .nav-social omitted: no equivalent personal social presence for a
-           business site to link from its own nav (documented substitution,
-           not a structural gap). -->
       <div class="site-flip">
         <a href="https://jonathanlindavis.com" class="tab" data-leave="You are leaving Microgroup.info and travelling to Jonathanlindavis.com.">Open Data</a>
         <a href="index.html" class="tab active">Enterprise</a>
@@ -338,90 +330,135 @@ html.stack-page .chess::before{
 
 <main>
 
-  <!-- 1: HOME HERO -->
-  <section id="home" class="stack-item panel navy chess">
-    <div class="wrap inner home-hero">
-      <div class="hero-lockup"><div style="position:relative;border:1px solid #c9c4b8;padding:44px 52px 30px;text-align:center;display:inline-block;"><div style="position:absolute;top:-33px;left:50%;transform:translateX(-50%);background:var(--paper);padding:0 16px;"><svg width="66" height="66" viewBox="0 0 100 100" role="img" aria-label="MICRO Group mark: a queen, a king and a rook"><g transform="translate(20,76)"><polygon points="0,0 -12,0 -7.7,-6.2 -8.4,-6.2 -8.4,-9.4 -6.8,-9.4 -4.2,-31 -6.2,-31 -7.9,-37 0,-37" fill="#16241f"/><polygon points="0,0 12,0 7.7,-6.2 8.4,-6.2 8.4,-9.4 6.8,-9.4 4.2,-31 6.2,-31 7.9,-37 0,-37" fill="#a8801f"/><polygon points="-8.7,-36.2 -4.1000000000000005,-36.2 -6.4,-40.9" fill="#16241f"/><polygon points="-5.5,-36.2 -0.9000000000000004,-36.2 -3.2,-42.5" fill="#16241f"/><polygon points="-2.3,-36.2 0,-36.2 0,-43.3" fill="#16241f"/><polygon points="0,-36.2 2.3,-36.2 0,-43.3" fill="#a8801f"/><polygon points="0.9000000000000004,-36.2 5.5,-36.2 3.2,-42.5" fill="#a8801f"/><polygon points="4.1000000000000005,-36.2 8.7,-36.2 6.4,-40.9" fill="#a8801f"/><rect x="-8.4" y="-8.3" width="16.8" height="1.0" fill="#f2efe7"/><rect x="-5.7" y="-19.5" width="11.4" height="1.0" fill="#f2efe7"/><rect x="-6.8" y="-33.5" width="13.6" height="1.0" fill="#f2efe7"/></g><g transform="translate(50,76)"><polygon points="0,0 -13,0 -8.4,-6.4 -9,-6.4 -9,-9.6 -7.2,-9.6 -4.6,-32 -6.8,-32 -9,-40 -1.6,-40 -1.6,-45.6 -5,-45.6 -5,-48.6 -1.6,-48.6 -1.6,-52.5 0,-52.5" fill="#16241f"/><polygon points="0,0 13,0 8.4,-6.4 9,-6.4 9,-9.6 7.2,-9.6 4.6,-32 6.8,-32 9,-40 1.6,-40 1.6,-45.6 5,-45.6 5,-48.6 1.6,-48.6 1.6,-52.5 0,-52.5" fill="#a8801f"/><rect x="-9.0" y="-8.5" width="18.0" height="1.0" fill="#f2efe7"/><rect x="-6.1" y="-20.5" width="12.2" height="1.0" fill="#f2efe7"/><rect x="-7.9" y="-36.5" width="15.8" height="1.0" fill="#f2efe7"/></g><g transform="translate(80,76)"><polygon points="0,0 -12.5,0 -8.1,-6.2 -9,-6.2 -9,-9 -7.6,-9 -7.4,-25 -9.4,-25 -9.4,-36.8 -5.6,-36.8 -5.6,-31.2 -2.0,-31.2 -2.0,-36.8 0,-36.8" fill="#16241f"/><polygon points="0,0 12.5,0 8.1,-6.2 9,-6.2 9,-9 7.6,-9 7.4,-25 9.4,-25 9.4,-36.8 5.6,-36.8 5.6,-31.2 2.0,-31.2 2.0,-36.8 0,-36.8" fill="#a8801f"/><rect x="-9.0" y="-8.1" width="18.0" height="1.0" fill="#f2efe7"/><rect x="-7.5" y="-17.5" width="15.0" height="1.0" fill="#f2efe7"/><rect x="-9.4" y="-27.0" width="18.8" height="1.0" fill="#f2efe7"/></g></svg></div><div style="font-family:'Instrument Serif',Georgia,serif;font-size:50px;font-weight:400;letter-spacing:-0.01em;line-height:1.0;color:#16241f;white-space:nowrap;">MICRO<span style="font-style:italic;"> Group</span></div><div style="width:100%;height:1px;background:#c9c4b8;margin:-8px auto 9px;"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.06em;color:#55635c;white-space:nowrap;">A Measured Approach to Your <span style="text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;">Goals</span></div></div></div>
-      <h1 class="sr-only">MICRO Group, L.L.C.: a measured approach to your goals.</h1>
-      <p class="lede">MICRO Group, L.L.C. is a strategic, research-driven consultancy serving nonprofit, government, and political and legislative organizations, through expertise in Management, Integration, Culture, Research, and Operations.</p>
+  <section id="home" class="panel">
+    <div class="wrap">
+      <div class="hero-lockup">
+        <div class="lockup-frame">
+          <div class="lockup-mark">
+            <svg width="66" height="66" viewBox="0 0 100 100" role="img" aria-label="MICRO Group mark: a queen, a king and a rook"><g transform="translate(20,76)"><polygon points="0,0 -12,0 -7.7,-6.2 -8.4,-6.2 -8.4,-9.4 -6.8,-9.4 -4.2,-31 -6.2,-31 -7.9,-37 0,-37" fill="var(--plate-ink)"/><polygon points="0,0 12,0 7.7,-6.2 8.4,-6.2 8.4,-9.4 6.8,-9.4 4.2,-31 6.2,-31 7.9,-37 0,-37" fill="var(--plate-gold)"/><polygon points="-8.7,-36.2 -4.1000000000000005,-36.2 -6.4,-40.9" fill="var(--plate-ink)"/><polygon points="-5.5,-36.2 -0.9000000000000004,-36.2 -3.2,-42.5" fill="var(--plate-ink)"/><polygon points="-2.3,-36.2 0,-36.2 0,-43.3" fill="var(--plate-ink)"/><polygon points="0,-36.2 2.3,-36.2 0,-43.3" fill="var(--plate-gold)"/><polygon points="0.9000000000000004,-36.2 5.5,-36.2 3.2,-42.5" fill="var(--plate-gold)"/><polygon points="4.1000000000000005,-36.2 8.7,-36.2 6.4,-40.9" fill="var(--plate-gold)"/><rect x="-8.4" y="-8.3" width="16.8" height="1.0" fill="var(--plate-paper)"/><rect x="-5.7" y="-19.5" width="11.4" height="1.0" fill="var(--plate-paper)"/><rect x="-6.8" y="-33.5" width="13.6" height="1.0" fill="var(--plate-paper)"/></g><g transform="translate(50,76)"><polygon points="0,0 -13,0 -8.4,-6.4 -9,-6.4 -9,-9.6 -7.2,-9.6 -4.6,-32 -6.8,-32 -9,-40 -1.6,-40 -1.6,-45.6 -5,-45.6 -5,-48.6 -1.6,-48.6 -1.6,-52.5 0,-52.5" fill="var(--plate-ink)"/><polygon points="0,0 13,0 8.4,-6.4 9,-6.4 9,-9.6 7.2,-9.6 4.6,-32 6.8,-32 9,-40 1.6,-40 1.6,-45.6 5,-45.6 5,-48.6 1.6,-48.6 1.6,-52.5 0,-52.5" fill="var(--plate-gold)"/><rect x="-9.0" y="-8.5" width="18.0" height="1.0" fill="var(--plate-paper)"/><rect x="-6.1" y="-20.5" width="12.2" height="1.0" fill="var(--plate-paper)"/><rect x="-7.9" y="-36.5" width="15.8" height="1.0" fill="var(--plate-paper)"/></g><g transform="translate(80,76)"><polygon points="0,0 -12.5,0 -8.1,-6.2 -9,-6.2 -9,-9 -7.6,-9 -7.4,-25 -9.4,-25 -9.4,-36.8 -5.6,-36.8 -5.6,-31.2 -2.0,-31.2 -2.0,-36.8 0,-36.8" fill="var(--plate-ink)"/><polygon points="0,0 12.5,0 8.1,-6.2 9,-6.2 9,-9 7.6,-9 7.4,-25 9.4,-25 9.4,-36.8 5.6,-36.8 5.6,-31.2 2.0,-31.2 2.0,-36.8 0,-36.8" fill="var(--plate-gold)"/><rect x="-9.0" y="-8.1" width="18.0" height="1.0" fill="var(--plate-paper)"/><rect x="-7.5" y="-17.5" width="15.0" height="1.0" fill="var(--plate-paper)"/><rect x="-9.4" y="-27.0" width="18.8" height="1.0" fill="var(--plate-paper)"/></g></svg>
+          </div>
+          <div class="lockup-word">MICRO<em> Group</em></div>
+          <div class="lockup-rule"></div>
+          <div class="lockup-tag">A Measured Approach to Your <u>Goals</u></div>
+        </div>
+      </div>
+
+      <h1>Research, data, and operations capacity for nonprofits and public institutions</h1>
+
+      <p class="lede">MICRO Group, L.L.C. is a strategic, research-driven consultancy serving nonprofit, government, and nonpartisan policy organizations, through expertise in Management, Integration, Culture, Research, and Operations.</p>
+
       <div class="roles">
         <span>Management</span><span>Integration</span><span>Culture</span><span>Research</span><span>Operations</span>
       </div>
-      <div class="bio">
-        <p>Each engagement is shaped around your organization's own goals rather than a fixed template. Beyond consulting, MICRO Group, L.L.C. builds and sells purpose-built software for nonprofit grant-seeking: Almanac, Scribe, Docket, and Confluence are live today, with Concordance, Herald, Atlas, and Dossier built to varying degrees behind them.</p>
+
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#contact">Book a free thirty-minute consultation</a>
+        <a class="btn btn-ghost" href="demo.html">See the product demos</a>
+      </div>
+
+      <div class="problem" data-block="problem">
+        <p>Most small organizations are told they need research and data capacity they cannot afford to staff. The work still has to happen: grants researched, bills tracked, systems integrated, results measured. So it lands on people hired to do something else, and it competes with the mission they were hired for.</p>
       </div>
     </div>
-    <a class="chevron" href="#offer" aria-label="Scroll to What We Offer">EXPLORE
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-    </a>
   </section>
 
-  <!-- 2: WHAT WE OFFER -->
-  <section id="offer" class="stack-item panel navy chess">
-    <div class="wrap inner">
-      <div class="shead" style="text-align:center">
-        <h2>What We Offer</h2>
-        <p class="intro">Five consulting disciplines, a growing line of purpose-built software, and the institutions we serve.</p>
+  <section id="services" class="panel">
+    <div class="wrap">
+      <div class="shead">
+        <h2>Services</h2>
+        <p class="intro">Five consulting disciplines. Each one names what is done and what you receive.</p>
       </div>
 
-      <div class="projects-section">
-        <h3 class="projects-subhead">Consulting Disciplines</h3>
-        <div class="proj-list">
-          <article class="pcard"><h4 class="pcard-title">Management</h4><p class="pcard-desc">Strategic direction and leadership capacity for institutions in transition or growth, including interim or fractional campaign management for candidates and political organizations.</p></article>
-          <article class="pcard"><h4 class="pcard-title">Integration</h4><p class="pcard-desc">Programs, teams, software, and data brought into one working system, including voter file, donor, and constituent database management, with training for the people who use it.</p></article>
-          <article class="pcard"><h4 class="pcard-title">Culture</h4><p class="pcard-desc">Team building and employee engagement aimed at collaboration that outlasts the workshop.</p></article>
-          <article class="pcard"><h4 class="pcard-title">Research</h4><p class="pcard-desc">Applied research grounded in the founder's legislative background: policy and bill analysis, opposition research, and electoral and district-level data analysis.</p></article>
-          <article class="pcard"><h4 class="pcard-title">Operations</h4><p class="pcard-desc">Operational management focused on getting more out of the resources you already have.</p></article>
-        </div>
+      <div class="grid-3">
+        <article class="pcard"><h4 class="pcard-title">Management</h4><p class="pcard-desc">Strategic direction and leadership capacity for institutions in transition or growth, including interim and fractional leadership while a permanent hire is recruited.</p></article>
+        <article class="pcard"><h4 class="pcard-title">Integration</h4><p class="pcard-desc">Programs, teams, software, and data brought into one working system, including donor and constituent database management, with training for the people who use it.</p></article>
+        <article class="pcard"><h4 class="pcard-title">Culture</h4><p class="pcard-desc">Team building, employee engagement, and facilitation for organizations through change, delivered as structured sessions with written follow-through rather than a single workshop.</p></article>
+        <article class="pcard"><h4 class="pcard-title">Research</h4><p class="pcard-desc">Applied research grounded in the founder's legislative background: policy and bill analysis, committee and district-level data, and funding landscape review.</p></article>
+        <article class="pcard"><h4 class="pcard-title">Operations</h4><p class="pcard-desc">Operational management: process documentation, vendor and contract review, and reporting systems, so the work does not depend on one person's memory.</p></article>
       </div>
 
-      <div class="projects-section has-switcher">
-        <h3 class="projects-subhead">Enterprise Products</h3>
-        <div class="featured-row">
-          <article class="pcard pcard-meta pcard-highlight"><h4 class="pcard-title">Product Demo Hub</h4><p class="pcard-desc">Every product demo in one place: browse the full switcher page rather than one product at a time.</p><a class="pcard-open" href="demo.html">Open <span class="arr">&rarr;</span></a></article>
-          <article class="pcard pcard-highlight"><h4 class="pcard-title">Pricing</h4><p class="pcard-desc">The full rate card for every product, plus a request-pricing form.</p><a class="pcard-open" href="demo-pricing.html">Open <span class="arr">&rarr;</span></a></article>
-          <article class="pcard pcard-highlight"><h4 class="pcard-title">Referral Program</h4><p class="pcard-desc">Refer an organization to Almanac or Scribe and earn 5% of their first-year subscription as a one-time bonus.</p><a class="pcard-open" href="demo-referrals.html">Open <span class="arr">&rarr;</span></a></article>
-        </div>
-        <p class="footprint-note">Infrastructure &amp; Updates: a $2,000/year flat plan covering ongoing technical support and system updates for every product an organization has purchased, billed once per organization rather than once per product. Every other engagement, including the consulting disciplines above, is scoped and priced individually.</p>
-      </div>
-
-      <div class="projects-section">
-        <a class="projects-subhead projects-subhead-btn" href="https://jonathanlindavis.com/open-data.html" target="_blank" rel="noopener">Open Data (jonathanlindavis.com) <span class="arr">&rarr;</span></a>
-      </div>
-
-      <div class="projects-section">
-        <h3 class="projects-subhead">Who We Serve</h3>
-        <div class="proj-list">
-          <article class="pcard"><h4 class="pcard-title">Nonprofit</h4><p class="pcard-desc">National and local organizations across a range of missions, including MICRO Group, L.L.C.'s own software products built for nonprofit grant-seeking.</p></article>
+      <div class="stack-gap">
+        <h3>Who we serve</h3>
+        <div class="grid-3">
+          <article class="pcard"><h4 class="pcard-title">Nonprofit</h4><p class="pcard-desc">National and local organizations across a range of missions, including the grant-seeking software this firm builds and sells.</p></article>
           <article class="pcard"><h4 class="pcard-title">Government</h4><p class="pcard-desc">Municipal, state, and federal agencies and public departments.</p></article>
-          <article class="pcard"><h4 class="pcard-title">Political &amp; Legislative</h4><p class="pcard-desc">Campaigns, candidates, committees, and advocacy organizations.</p></article>
+          <article class="pcard"><h4 class="pcard-title">Policy and Legislative</h4><p class="pcard-desc">Nonpartisan policy analysis, bill and committee research, and district-level data for advocacy organizations and public agencies.</p></article>
         </div>
-        <p class="footprint-note">MICRO Group, L.L.C. operates today across four Texas counties: Austin-Travis County, San Antonio-Bexar County, the Dallas-Fort Worth Metro, and Houston-Harris County. Requests and solicitations from beyond that footprint are accepted worldwide.</p>
       </div>
 
+      <div class="stack-gap scope" data-block="scope">
+        <h3>How the policy practice is scoped</h3>
+        <p>The legislative and policy practice is nonpartisan. It covers bill and committee analysis, district-level data, and administrative research for organizations on any side of an issue. It does not include partisan campaign work, and nonprofit and government engagements are never staffed from it.</p>
+      </div>
+
+      <div class="stack-gap">
+        <h3>Products</h3>
+        <div class="grid-3">
+          <article class="pcard"><h4 class="pcard-title">Product demo hub</h4><p class="pcard-desc">Every product demo in one place. Almanac, Scribe, Docket, and Confluence are live and inspectable today.</p><a class="pcard-open" href="demo.html">Open <span class="arr">&rarr;</span></a></article>
+          <article class="pcard"><h4 class="pcard-title">Pricing</h4><p class="pcard-desc">The full rate card for every live product, plus a request-pricing form.</p><a class="pcard-open" href="demo-pricing.html">Open <span class="arr">&rarr;</span></a></article>
+          <article class="pcard"><h4 class="pcard-title">Referral program</h4><p class="pcard-desc">Refer an organization to Almanac or Scribe and earn 5% of their first-year subscription as a one-time bonus.</p><a class="pcard-open" href="demo-referrals.html">Open <span class="arr">&rarr;</span></a></article>
+        </div>
+      </div>
     </div>
-    <a class="chevron" href="#contact" aria-label="Scroll to Get in Touch">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-    </a>
   </section>
 
-  <!-- 3: GET IN TOUCH -->
-  <section id="contact" class="stack-item panel navy chess">
-    <div class="wrap inner">
-      <div class="shead" style="text-align:center">
-        <h2>Get in Touch</h2>
+  <section id="about" class="panel">
+    <div class="wrap">
+      <div class="shead">
+        <h2>What we can show you</h2>
+        <p class="intro">Named methods, a named person, and published terms, rather than claimed outcomes.</p>
       </div>
 
-      <!-- Closed by default (2026-07-30, owner order, reverted the 2026-07-29 open-by-default
-           change to match jonathanlindavis.com's convention): expands only on click of the
-           "Get started." summary pill (native <details> behavior) or the header's "Connect"
-           link, via the click/hash-driven JS below. -->
-      <details id="contact-drop" class="contact-drop">
-        <summary class="contact-drop-summary">Get started.</summary>
-        <div class="contact-drop-body">
+      <div data-block="proof">
+        <div class="proof-person">
+          <h3>Jonathan Lin Davis, founder</h3>
+          <p class="measure">Jonathan Lin Davis founded MICRO Group, L.L.C. and leads every engagement. The applied research practice is grounded in his legislative background, which is the basis for the bill, committee, and district-level work described above.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="proof-item">
+            <h4>Funding landscape review</h4>
+            <p>A written map of the funders active in your subject and geography, with filing-year evidence for each, delivered as a spreadsheet and a short memo you keep.</p>
+          </div>
+          <div class="proof-item">
+            <h4>Bill and committee tracking</h4>
+            <p>Named bills followed through committee with plain-language summaries of what changed and what it means for your organization, on whatever cadence the session requires.</p>
+          </div>
+          <div class="proof-item">
+            <h4>Inspectable software</h4>
+            <p>Almanac, Scribe, Docket, and Confluence are live and can be walked through before any commitment. The demo hub is open and needs no call first.</p>
+          </div>
+          <div class="proof-item">
+            <h4>Registered entity and footprint</h4>
+            <p>MICRO Group, L.L.C. operates across four Texas counties: Austin-Travis, San Antonio-Bexar, the Dallas-Fort Worth Metro, and Houston-Harris. Requests from beyond that footprint are accepted worldwide.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack-gap terms" data-block="terms">
+        <h3>Infrastructure and updates</h3>
+        <span class="terms-figure">$2,000/year</span>
+        <p>A flat plan covering ongoing technical support and system updates for every product an organization has purchased, billed once per organization rather than once per product.</p>
+        <p class="quiet">Every other engagement, including the consulting disciplines above, is scoped and priced individually. The full rate card is published.</p>
+        <a class="pcard-open" href="demo-pricing.html">See the rate card <span class="arr">&rarr;</span></a>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#contact">Book a free thirty-minute consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="panel">
+    <div class="wrap">
+      <div class="shead">
+        <h2>Get in touch</h2>
+        <p class="intro">Every engagement begins with a free thirty-minute consultation.</p>
+      </div>
+
+      <p class="direct">Prefer email, or the form does not work for you? Write to <a href="mailto:jonathan@microgroup.info">jonathan@microgroup.info</a> and it reaches the same place. The form below needs JavaScript; the address does not. The same offer is also on the <a href="contact.html">full contact page</a>.</p>
 
       <form id="contact-form" class="signup-form" novalidate>
-
         <div class="form-grid">
           <div class="form-row">
             <label for="first_name">First name</label>
@@ -439,8 +476,8 @@ html.stack-page .chess::before{
             <input type="email" id="email" name="email" autocomplete="email" required>
           </div>
           <div class="form-row">
-            <label for="phone">Cell number</label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+            <label for="phone">Cell number <span class="opt-tag">optional</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
           </div>
         </div>
 
@@ -449,21 +486,23 @@ html.stack-page .chess::before{
           <input type="text" id="organization" name="organization" autocomplete="organization">
         </div>
 
-        <div class="form-grid">
-          <div class="form-row">
-            <label for="location">Location <span class="opt-tag">optional</span></label>
-            <input type="text" id="location" name="location">
-          </div>
-          <div class="form-row">
-            <label for="purpose">Purpose for contacting <span class="opt-tag">optional</span></label>
-            <select id="purpose" name="purpose">
-              <option value="">Select one&hellip;</option>
-              <option value="Consulting">Consulting (Management, Integration, Culture, Research, Operations)</option>
-              <option value="Almanac">Almanac</option>
-              <option value="Scribe">Scribe</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+        <div class="form-row">
+          <label for="purpose">Purpose for contacting <span class="opt-tag">optional</span></label>
+          <select id="purpose" name="purpose">
+            <option value="">Select one&hellip;</option>
+            <option value="Consulting">Consulting (Management, Integration, Culture, Research, Operations)</option>
+            <option value="Custom build">A custom or individualized build</option>
+            <option value="Almanac">Almanac</option>
+            <option value="Scribe">Scribe</option>
+            <option value="Docket">Docket</option>
+            <option value="Confluence">Confluence</option>
+            <option value="Funder match">Funder match</option>
+            <option value="Reconciliation check">Reconciliation check</option>
+            <option value="Peer benchmark">Peer benchmark</option>
+            <option value="Review">Request a review</option>
+            <option value="General enquiry">General enquiry</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
 
         <div class="form-row">
@@ -476,7 +515,6 @@ html.stack-page .chess::before{
           <textarea id="message" name="message" rows="4" required></textarea>
         </div>
 
-        <!-- honeypot: hidden from people, bots fill it -->
         <div class="hp-field" aria-hidden="true">
           <label for="company_website">Company website</label>
           <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
@@ -485,64 +523,38 @@ html.stack-page .chess::before{
         <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
 
         <div class="form-actions">
-          <button type="submit" class="btn btn-solid" id="contact-submit">Send message</button>
+          <button type="submit" class="btn btn-solid" id="contact-submit">Book a free thirty-minute consultation</button>
         </div>
 
         <p class="form-privacy">We collect only what you enter here. We do not share your information with anyone. We may use it to add you to our newsletter or otherwise keep you updated on our work, but we will not sell your information to third parties.</p>
       </form>
-
-        </div>
-      </details>
     </div>
-    <a class="chevron" href="#footer" aria-label="Scroll to footer">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-    </a>
   </section>
 
-  <!-- 4: FOOTER -->
-  <section id="footer" class="stack-item footer-panel">
-    <div class="footer-brand">
-      <div class="footer-slogan"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.06em;color:#55635c;white-space:nowrap;">A Measured Approach to Your <span style="text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;">Goals</span></div></div>
-    </div>
-    <div class="footer-switcher">
-      <div class="footer-switcher-label">Site index</div>
-      <div class="switcher">
-        <a href="public-index.html" class="tab">Public</a>
-        <a href="private-index" class="tab">Private</a>
+  <section id="footer" class="footer-panel">
+    <div class="wrap">
+      <div class="footer-brand">
+        <div class="footer-slogan">A Measured Approach to Your <u>Goals</u></div>
       </div>
+      <div class="footer-switcher">
+        <div class="footer-switcher-label">Site index</div>
+        <div class="switcher">
+          <a href="public-index.html" class="tab">Public</a>
+          <a href="private-index" class="tab">Private</a>
+        </div>
+      </div>
+      <div class="footer-credit">This website was created and is managed by MICRO Group, L.L.C.<br>1801 E 51st St., STE 365, PMB 354, Austin, Texas</div>
+      <div class="footer-license">CC BY 4.0 data, MIT code.</div>
+      <div class="footer-legal-links"><a href="privacy.html">Privacy</a><span>&middot;</span><a href="security.html">Security</a></div>
+      <div class="footer-legal">© <span id="yr"></span> MICRO Group, L.L.C. All rights reserved. Austin, Texas.</div>
     </div>
-    <div class="footer-credit">This website was created and is managed by MICRO Group, L.L.C.<br>1801 E 51st St., STE 365, PMB 354, Austin, Texas</div>
-    <div class="footer-license">CC BY 4.0 data, MIT code.</div>
-    <div class="footer-legal-links"><a href="privacy.html">Privacy</a><span>&middot;</span><a href="security.html">Security</a></div>
-    <div class="footer-legal">© <span id="yr"></span> MICRO Group, L.L.C. All rights reserved. Austin, Texas.</div>
   </section>
 
 </main>
 
-<aside class="ledger" aria-hidden="true">
-  <ol class="ledger-rail">
-    <li class="ledger-tick" data-id="home"></li>
-    <li class="ledger-tick" data-id="offer"></li>
-    <li class="ledger-tick" data-id="contact"></li>
-    <li class="ledger-tick" data-id="footer"></li>
-  </ol>
-  <span class="ledger-label">
-    <span class="ledger-name">home</span>
-  </span>
-</aside>
-
 <script src="site.js"></script>
-<script src="ledger.js"></script>
 <script>
 (function(){
-  var drop = document.getElementById('contact-drop');
-  if(!drop) return;
-  var navConnect = document.getElementById('nav-connect');
-  if(navConnect) navConnect.addEventListener('click', function(){ drop.open = true; });
-  if(window.location.hash === '#contact') drop.open = true;
-  window.addEventListener('hashchange', function(){
-    if(window.location.hash === '#contact') drop.open = true;
-  });
   var yr = document.getElementById('yr');
   if(yr) yr.textContent = new Date().getFullYear();
 })();
