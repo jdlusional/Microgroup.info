@@ -259,7 +259,11 @@ html.stack-page .nav-toggle { display: none; background: transparent; border: 1p
   .nav { flex-wrap: wrap; gap: var(--s1); justify-content: center; padding: var(--s1) var(--s2); }
   .nav-right { margin-left: 0; flex-wrap: wrap; justify-content: center; gap: var(--s2); width: 100%; }
   .nav-links { gap: var(--s2); flex-wrap: wrap; justify-content: center; }
-  .nav-links a { font-size: var(--t-xs); }
+  /* Eight items wrap to three rows on a phone. Tighter than the desktop rhythm on
+     purpose: the header is chrome, and on a fit-screen page every row it takes is a
+     row the content does not get. */
+  .nav-links a { font-size: var(--t-micro); }
+  .nav-links { gap: var(--s1) var(--s2); row-gap: 2px; }
   .site-header { position: static; min-height: 0; }
   html.stack-page .nav-name { font-size: var(--t-2xl); }
   html.stack-page .tab { padding: 2px var(--s1); }
@@ -272,13 +276,17 @@ html.stack-page .nav-toggle { display: none; background: transparent; border: 1p
      have no nav-adjacent equivalent that carries the same intent. */
   html.stack-page .cta-row .btn-demos { display: none; }
   html.stack-page .hero-lockup { margin-bottom: var(--s2); }
-  html.stack-page .lockup-frame { padding: 24px 18px 16px; }
+  html.stack-page .lockup-frame { padding: 18px 14px 12px; }
+  html.stack-page .lede { margin-bottom: var(--s1); }
   html.stack-page .lockup-mark { top: -24px; }
   html.stack-page .lockup-mark svg { width: 44px; height: 44px; }
   /* MEASURED, not guessed: at 375 the header and the compacted footer together occupy
      261px, so reserving 132 left the screen 129px too tall and shrinking the content
-     changed nothing. The reservation is the binding constraint, not the content. */
-  .screen { min-height: calc(100svh - 264px); padding: var(--s2) 0; }
+     changed nothing. The reservation is the binding constraint, not the content.
+     THIS HAS NOW BITTEN THREE TIMES on this page: at 132, at 264, and again when two
+     nav items grew the header by 20px. Any change to the header or footer must
+     re-measure this number; it is not a constant, it is a measurement. */
+  .screen { min-height: calc(100svh - 288px); padding: var(--s2) 0; }
   html.stack-page .lockup-frame { padding: 30px 22px 20px; }
   html.stack-page .lockup-mark { top: -30px; }
   html.stack-page .lockup-mark svg { width: 56px; height: 56px; }
@@ -301,15 +309,18 @@ html.stack-page .nav-toggle { display: none; background: transparent; border: 1p
     <button class="nav-toggle" aria-label="Menu">&#9776;</button>
     <div class="nav-right">
       <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
         <li><a href="about.html#services">Services</a></li>
         <li><a href="demo.html">Products</a></li>
         <li><a href="demo-pricing.html">Pricing</a></li>
+        <li><a href="demo-referrals.html">Referrals</a></li>
+        <li><a href="demo-survey.html">Intake</a></li>
         <li><a href="about.html">About</a></li>
         <li><a id="nav-connect" href="contact.html">Connect</a></li>
       </ul>
       <div class="site-flip">
         <a href="https://jonathanlindavis.com" class="tab" data-leave="You are leaving Microgroup.info and travelling to Jonathanlindavis.com.">Open Data</a>
-        <a href="index.html" class="tab active">Enterprise</a>
+        <a href="index.html" class="tab active">MICRO</a>
       </div>
     </div>
   </nav>

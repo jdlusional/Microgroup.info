@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="stack-page">
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J4XGXZ4CN"></script>
@@ -9,181 +9,442 @@
   gtag('js', new Date());
   gtag('config', 'G-4J4XGXZ4CN');
 </script>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Contact — MICRO Group, L.L.C.</title>
-<meta name="description" content="Contact MICRO Group, L.L.C. to begin a conversation about your organization's goals." />
-<meta name="referrer" content="no-referrer" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connect &mdash; MICRO Group, L.L.C.</title>
+<meta name="description" content="Get in touch with MICRO Group, L.L.C. Every engagement begins with a free thirty-minute consultation.">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MICRO Group, L.L.C.">
+<meta property="og:title" content="Connect &mdash; MICRO Group, L.L.C.">
+<meta property="og:description" content="Every engagement begins with a free thirty-minute consultation.">
+<meta property="og:url" content="https://microgroup.info/contact.html">
+<meta property="og:image" content="https://microgroup.info/og-preview-c1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Connect &mdash; MICRO Group, L.L.C.">
+<meta name="twitter:description" content="Every engagement begins with a free thirty-minute consultation.">
+<meta name="twitter:image" content="https://microgroup.info/og-preview-c1.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Parisienne&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="Assets/micro-mark-c1.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="Assets/micro-favicon-c1-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="Assets/micro-favicon-c1-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="Assets/micro-touch-c1-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-<link rel="canonical" href="https://microgroup.info/contact">
+<link rel="canonical" href="https://microgroup.info/contact.html">
+
 <style>
-:root{
-  --ink:#1b3a2f; --wash:#4a5c52; --paper:#f4efe2; --well:#e4e6de;
-  --rule:#c8c2b5; --accent:#8a6b1f; --ok:#2f7d4f; --err:#b5342c;
-  --serif:'IBM Plex Sans',Arial,sans-serif;
-  --mono:'JetBrains Mono','Courier New',monospace;
+/* ============ 1. TOKENS ============ */
+/* Identical token layer to index.html, which is the base page for this convention. */
+html.stack-page {
+  --paper:  #f4efe2;
+  --ink:    #1b3a2f;
+  --well:   #e4e6de;
+  --rule:   #c8c2b5;
+  --accent: #8a6b1f;
+  --wash:   #4a5c52;
+
+  --accent-text: #6f5518;
+  --accent-fill: #6f5518;
+
+  --plate-ink:   #16241f;
+  --plate-gold:  #a8801f;
+  --plate-paper: #f2efe7;
+  --plate-rule:  #c9c4b8;
+  --plate-wash:  #55635c;
+
+  --ok:  #1a6b3d;
+  --err: #a13a33;
+
+  --a-rule-80:   rgba(200,194,181,.80);
+  --a-ink-08:    rgba(27,58,47,.08);
+  --a-ink-16:    rgba(27,58,47,.16);
+  --a-ink-45:    rgba(27,58,47,.45);
+  --a-paper-92:  rgba(244,239,226,.92);
+  --a-accent-24: rgba(138,107,31,.24);
+
+  --f-sans:   'IBM Plex Sans', system-ui, -apple-system, Segoe UI, sans-serif;
+  --f-mono:   'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --f-serif:  'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --f-script: 'Parisienne', 'Segoe Script', cursive;
+
+  --t-nano:  .625rem;
+  --t-micro: .75rem;
+  --t-xs:    .78rem;
+  --t-sm:    .82rem;
+  --t-md:    .95rem;
+  --t-base:  1.06rem;
+  --t-lg:    1.25rem;
+  --t-2xl:   1.5rem;
+  --t-xl:    1.5625rem;
+  --t-3xl:   2rem;
+  --t-4xl:   2.6rem;
+  --t-hero:  3.125rem;
+
+  --s1: .375rem;
+  --s2: .75rem;
+  --s3: 1.125rem;
+  --s4: 1.75rem;
+  --s5: 2.75rem;
+  --s6: 4.5rem;
+
+  --measure: 62ch;
+  --maxw:    1180px;
+  --bar-h:   76px;
+  --foot-h:  112px;
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:var(--serif);color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
 
-.bar{background:var(--well);border-bottom:2px solid var(--ink)}
-.bar-in{max-width:820px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-/* Matches MICRO_logo_site.png's own treatment (2026-08-06): "MICRO" bold in --accent,
-   "Group" regular in --ink, title case, Playfair Display -- see index.html's .nav-name. */
-.bar-brand{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;letter-spacing:.01em;color:var(--accent)}
-.bar-brand-sub{font-weight:400;color:var(--ink)}
-.bar-note{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;color:var(--wash)}
+/* ============ 2. RESET AND BASE ============ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-sans);
+  font-size: var(--t-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; margin: 0 0 var(--s2); font-weight: 600; text-align: center; }
+h2 { font-size: var(--t-3xl); letter-spacing: -.01em; }
+h3 { font-size: var(--t-2xl); }
+h4 { font-size: var(--t-lg); }
+p  { margin: 0 0 var(--s3); }
+a  { color: var(--accent-text); text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+img, svg { max-width: 100%; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
-.hero{max-width:820px;margin:0 auto;padding:3rem 1.5rem 0}
-.hero .kicker{font-size:.76rem;letter-spacing:.03em;color:var(--accent);font-weight:600}
-.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2rem,5vw,2.6rem);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
-.hero p{color:var(--wash);font-size:1.02rem;margin:0 0 1rem}
+/* ============ 3. LAYOUT ============ */
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--s4); }
+main { display: block; }
+.site-header {
+  position: sticky; top: 0; z-index: 40;
+  background: var(--a-paper-92);
+  backdrop-filter: saturate(1.4) blur(8px);
+  border-bottom: 1px solid var(--rule);
+  min-height: var(--bar-h);
+  display: flex;
+  align-items: center;
+}
+.nav { display: flex; align-items: center; gap: var(--s4); width: 100%; max-width: var(--maxw); margin: 0 auto; padding: var(--s2) var(--s4); }
+.nav-right { display: flex; align-items: center; gap: var(--s4); margin-left: auto; }
+.nav-links { display: flex; align-items: center; gap: var(--s4); list-style: none; margin: 0; padding: 0; }
+.nav-links a { color: var(--ink); text-decoration: none; font-size: var(--t-md); font-weight: 500; display: flex; align-items: center; }
+.nav-links a:hover { color: var(--accent-text); text-decoration: underline; }
+.nav-links a.here { color: var(--accent-text); text-decoration: underline; }
+.nav > *, .cta-row > * { min-width: 0; }
+body { overflow-x: hidden; }
 
-.notice{max-width:820px;margin:1.4rem auto 0;padding:1rem 1.5rem;background:var(--well);border-left:4px solid var(--accent)}
-.notice p{margin:0 0 .8rem;font-size:.96rem;color:var(--ink)}
-.notice p:last-child{margin-bottom:0}
-.notice .switch-btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.82rem;letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);padding:.55rem 1.1rem;background:#fff;transition:all .15s ease}
-.notice .switch-btn:hover{background:var(--ink);color:#fff;text-decoration:none}
-.notice .leave-note{display:block;margin-top:.5rem;font-family:var(--mono);font-size:.72rem;color:var(--wash)}
+/* ONE SCREEN, the same mechanism the landing page uses: reserve BOTH chrome heights, not
+   just the header, or the footer becomes pure overflow and shrinking content changes the
+   total by nothing. */
+.screen {
+  min-height: calc(100vh - var(--bar-h) - var(--foot-h));
+  min-height: calc(100svh - var(--bar-h) - var(--foot-h));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--s2) 0;
+}
 
-.wrap{max-width:820px;margin:0 auto;padding:2rem 1.5rem 4rem}
+/* ============ 4. COMPONENTS ============ */
+html.stack-page .nav-name { font-family: var(--f-serif); font-size: var(--t-3xl); font-weight: 400; color: var(--plate-ink); text-decoration: none; letter-spacing: -.01em; line-height: 1; display: inline-block; }
+html.stack-page .nav-name-sub { font-style: italic; font-weight: 400; }
 
-.form-field{margin-bottom:1.3rem}
-.form-field label{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
-.form-field label .opt-tag{text-transform:none;letter-spacing:0;font-weight:400;color:var(--wash);opacity:.75;font-size:.78rem;margin-left:.3rem}
-.form-field input[type="text"],.form-field input[type="email"],.form-field input[type="tel"],.form-field select{
-  width:100%;font-family:var(--serif);font-size:.95rem;padding:.6rem .8rem;border:1.5px solid var(--ink);
-  background:#fff;color:var(--ink);outline:none}
-.form-field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231b3a2f' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:38px;cursor:pointer}
-.form-field textarea{width:100%;font-family:var(--serif);font-size:.95rem;padding:.7rem .8rem;border:1.5px solid var(--ink);background:#fff;color:var(--ink);resize:vertical;outline:none}
-.form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:2px solid var(--accent);outline-offset:0}
-.form-field input.invalid,.form-field select.invalid,.form-field textarea.invalid{border-color:var(--err);outline:2px solid var(--err);outline-offset:0}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 1.2rem}
-.hp-field{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
+html.stack-page .page-title { font-family: var(--f-script); font-size: var(--t-3xl); font-weight: 400; line-height: 1.2; color: var(--ink); margin: 0 auto var(--s1); }
+html.stack-page .lede { font-size: var(--t-md); color: var(--wash); max-width: var(--measure); margin: 0 auto var(--s2); text-align: center; }
 
-.form-status{font-family:var(--mono);font-size:.88rem;min-height:1.2em;margin:0 0 1rem}
-.form-status.ok{color:var(--ok)}
-.form-status.err{color:var(--err)}
+/* Form, laid out to fit one screen: labels above inputs and LEFT aligned, because a label
+   centred over its field is a usability regression rather than a style choice. */
+html.stack-page .signup-form { max-width: 820px; margin: 0 auto; text-align: left; width: 100%; }
+html.stack-page .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--s1) var(--s3); }
+html.stack-page .form-row { display: flex; flex-direction: column; gap: 1px; margin-bottom: var(--s1); }
+html.stack-page .form-row label { font-size: var(--t-xs); font-weight: 600; color: var(--ink); text-transform: uppercase; letter-spacing: .05em; }
+html.stack-page .signup-form input, html.stack-page .signup-form select, html.stack-page .signup-form textarea {
+  font-family: var(--f-sans); font-size: var(--t-md); color: var(--ink);
+  background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; padding: var(--s1) var(--s2);
+  width: 100%;
+}
+html.stack-page .signup-form textarea { resize: vertical; }
+html.stack-page .signup-form input::placeholder, html.stack-page .signup-form textarea::placeholder { color: var(--wash); }
+html.stack-page .opt-tag { font-size: var(--t-micro); color: var(--wash); font-weight: 400; text-transform: uppercase; letter-spacing: .05em; }
+html.stack-page .form-privacy { font-size: var(--t-micro); color: var(--wash); max-width: 74ch; margin: var(--s1) auto 0; text-align: center; }
+html.stack-page .form-status { font-size: var(--t-md); font-weight: 600; min-height: 1.2em; text-align: center; margin: 0; }
+html.stack-page .form-actions { margin-top: var(--s1); text-align: center; }
+html.stack-page .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
-.form-actions{margin-top:.4rem}
-.btn{font-family:var(--mono);font-size:.9rem;letter-spacing:.02em;font-weight:500;color:#fff;border:1.5px solid var(--ink);background:var(--ink);padding:.65rem 1.5rem;cursor:pointer;transition:all .15s ease}
-.btn:hover{background:var(--accent);border-color:var(--accent)}
-.btn[disabled]{opacity:.55;cursor:not-allowed}
+html.stack-page .direct { font-size: var(--t-xs); color: var(--wash); max-width: var(--measure); margin: var(--s1) auto 0; text-align: center; }
+html.stack-page .direct a { font-weight: 600; color: var(--accent-text); }
 
-.form-privacy{font-size:.82rem;line-height:1.5;color:var(--wash);max-width:60ch;margin:1.2rem 0 0}
+html.stack-page .cta-row { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; justify-content: center; margin: 0; }
+html.stack-page .btn { display: inline-block; font-size: var(--t-md); font-weight: 600; padding: var(--s2) var(--s4); border-radius: 3px; text-decoration: none; border: 1px solid var(--accent-fill); cursor: pointer; font-family: var(--f-sans); }
+html.stack-page .btn-solid { background: var(--accent-fill); color: var(--paper); }
+html.stack-page .btn-solid:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+html.stack-page .btn-ghost { background: transparent; color: var(--accent-text); }
+html.stack-page .btn-ghost:hover { background: var(--a-accent-24); color: var(--ink); }
 
-.contact-disclosure{max-width:820px;margin:2rem auto 0;padding:1rem 1.5rem;background:var(--well);border-left:4px solid var(--accent)}
-.contact-disclosure p{margin:0;font-size:.9rem;color:var(--wash);line-height:1.55}
+html.stack-page .tab { font-size: var(--t-xs); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; text-decoration: none; color: var(--accent-text); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); display: flex; align-items: center; }
+html.stack-page .tab.active { background: var(--accent-fill); color: var(--paper); border-color: var(--accent-fill); }
+html.stack-page .site-flip { display: flex; align-items: center; gap: var(--s1); }
 
-footer{max-width:820px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:.72rem;letter-spacing:.02em}
-footer a{color:var(--wash)}
+html.stack-page .footer-panel { background: var(--well); padding: var(--s2) var(--s4); border-top: 1px solid var(--rule); text-align: center; }
+html.stack-page .footer-row { display: flex; flex-direction: column; align-items: center; gap: var(--s1); }
+html.stack-page .footer-slogan { font-family: var(--f-mono); font-size: var(--t-micro); letter-spacing: .06em; color: var(--plate-wash); }
+html.stack-page .footer-slogan u { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+html.stack-page .footer-switcher { display: flex; gap: var(--s1); justify-content: center; flex-wrap: wrap; }
+html.stack-page .footer-legal { font-size: var(--t-micro); color: var(--wash); }
 
-@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+html.stack-page .flip-gate { position: fixed; inset: 0; background: var(--a-ink-45); display: flex; align-items: center; justify-content: center; z-index: 90; }
+/* MUST FOLLOW THE RULE ABOVE: display:flex on a class beats the user-agent
+   [hidden]{display:none}, making the hidden attribute inert and painting this overlay
+   permanently over the page. */
+html.stack-page .flip-gate[hidden] { display: none; }
+html.stack-page .flip-gate-box { background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: var(--s4); max-width: 420px; box-shadow: 0 8px 28px var(--a-ink-16); }
+html.stack-page .flip-gate-msg { margin: 0 0 var(--s3); color: var(--ink); font-size: var(--t-md); }
+html.stack-page .flip-gate-actions { display: flex; gap: var(--s2); justify-content: flex-end; }
+html.stack-page .flip-gate-go { pointer-events: none; color: var(--wash); text-decoration: none; font-weight: 600; }
+html.stack-page .flip-gate-go.ready { pointer-events: auto; color: var(--accent-text); }
+html.stack-page .flip-gate-cancel { font-family: var(--f-sans); font-size: var(--t-md); background: transparent; border: 1px solid var(--rule); border-radius: 3px; padding: var(--s1) var(--s3); color: var(--ink); cursor: pointer; }
+
+/* ============ 5. UTILITIES ============ */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.measure { max-width: var(--measure); margin-left: auto; margin-right: auto; }
+.quiet { color: var(--wash); }
+
+/* ============ 6. STATE ============ */
+html.stack-page .form-status.ok  { color: var(--ok); }
+html.stack-page .form-status.err { color: var(--err); }
+html.stack-page .signup-form input:focus, html.stack-page .signup-form select:focus, html.stack-page .signup-form textarea:focus { border-color: var(--accent); background: var(--paper); }
+html.stack-page .signup-form .invalid { border-color: var(--err); }
+html.stack-page .nav-toggle { display: none; background: transparent; border: 1px solid var(--rule); border-radius: 3px; color: var(--ink); font-size: var(--t-lg); padding: 0 var(--s2); cursor: pointer; align-items: center; }
+
+/* ============ 7. MEDIA AND MOTION ============ */
+@media (max-width: 860px) {
+  .nav { flex-wrap: wrap; gap: var(--s1); justify-content: center; padding: var(--s1) var(--s2); }
+  .nav-right { margin-left: 0; flex-wrap: wrap; justify-content: center; gap: var(--s2); width: 100%; }
+  .nav-links { gap: var(--s2); flex-wrap: wrap; justify-content: center; }
+  /* Eight items wrap to three rows on a phone. Tighter than the desktop rhythm on
+     purpose: the header is chrome, and on a fit-screen page every row it takes is a
+     row the content does not get. */
+  .nav-links a { font-size: var(--t-micro); }
+  .nav-links { gap: var(--s1) var(--s2); row-gap: 2px; }
+  .site-header { position: static; min-height: 0; }
+  html.stack-page .nav-name { font-size: var(--t-2xl); }
+  html.stack-page .tab { padding: 2px var(--s1); }
+  html.stack-page .btn { padding: var(--s1) var(--s3); font-size: var(--t-xs); }
+  html.stack-page .footer-panel { padding: var(--s1) var(--s2); }
+  /* The form DOES fit a phone, but only by giving up the two-column grid and every
+     non-essential millimetre. Field controls keep a 34px height, which is above the tap
+     target the fields actually need; the labels shrink, not the inputs. */
+  .screen { min-height: calc(100svh - 264px); padding: var(--s1) 0; }
+  html.stack-page .form-grid { grid-template-columns: 1fr; gap: 0; }
+  html.stack-page .form-row { margin-bottom: 4px; }
+  html.stack-page .form-row label { font-size: var(--t-micro); letter-spacing: .03em; }
+  html.stack-page .signup-form input, html.stack-page .signup-form select, html.stack-page .signup-form textarea { padding: 4px var(--s1); font-size: var(--t-xs); }
+  html.stack-page .page-title { font-size: var(--t-2xl); }
+  html.stack-page .lede { font-size: var(--t-xs); margin-bottom: var(--s1); }
+  html.stack-page .form-privacy { font-size: var(--t-nano); }
+  html.stack-page .direct { font-size: var(--t-nano); }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}
 </style>
 </head>
 <body>
-<!-- writing-convention: general -->
 
-<div class="bar">
-  <div class="bar-in">
-    <span class="bar-brand">MICRO <span class="bar-brand-sub">Group</span></span>
-    <span class="bar-note"><a href="public-index.html">Public index</a></span>
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="nav-name" href="/">MICRO<span class="nav-name-sub"> Group</span></a>
+    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html#services">Services</a></li>
+        <li><a href="demo.html">Products</a></li>
+        <li><a href="demo-pricing.html">Pricing</a></li>
+        <li><a href="demo-referrals.html">Referrals</a></li>
+        <li><a href="demo-survey.html">Intake</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="here" href="contact.html" aria-current="page">Connect</a></li>
+      </ul>
+      <div class="site-flip">
+        <a href="https://jonathanlindavis.com" class="tab" data-leave="You are leaving Microgroup.info and travelling to Jonathanlindavis.com.">Open Data</a>
+        <a href="index.html" class="tab active">MICRO</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="flip-gate" id="flip-gate" hidden>
+  <div class="flip-gate-box" role="alertdialog" aria-modal="true" aria-labelledby="flip-gate-msg">
+    <p id="flip-gate-msg" class="flip-gate-msg"></p>
+    <div class="flip-gate-actions">
+      <button type="button" class="flip-gate-cancel">Cancel</button>
+      <a href="#" class="flip-gate-go" aria-disabled="true">Continue (<span class="flip-gate-count">3</span>)</a>
+    </div>
   </div>
 </div>
 
-<header class="hero">
-  <div class="kicker">Get in touch</div>
-  <h1>Contact</h1>
-  <p>Tell us what your organization is facing. Fill in the form below and every engagement begins with a free thirty-minute consultation.</p>
-</header>
+<main>
+  <section id="contact" class="screen">
+    <div class="wrap">
 
-<div class="notice">
-  <p>This form is for MICRO Group, L.L.C.'s enterprise consulting and Almanac/Scribe products. For open-data tools or another personal project, use Jonathan Lin Davis's own contact page instead.</p>
-  <a class="switch-btn" href="https://jonathanlindavis.com/index.html#contact">Contact Jonathan Lin Davis (Open Data) &#8594;</a>
-  <span class="leave-note">You are leaving microgroup.info.</span>
-</div>
+      <h1 class="page-title">Get in touch</h1>
+      <p class="lede">Every engagement begins with a free thirty-minute consultation.</p>
 
-<div class="wrap">
-  <form id="contact-form" novalidate>
+      <form id="contact-form" class="signup-form" novalidate>
 
-    <div class="form-grid">
-      <div class="form-field">
-        <label for="first_name">First name</label>
-        <input type="text" id="first_name" name="first_name" autocomplete="given-name" required>
-      </div>
-      <div class="form-field">
-        <label for="last_name">Last name</label>
-        <input type="text" id="last_name" name="last_name" autocomplete="family-name" required>
-      </div>
+        <div class="form-grid">
+          <div class="form-row">
+            <label for="first_name">First name</label>
+            <input type="text" id="first_name" name="first_name" autocomplete="given-name" required>
+          </div>
+          <div class="form-row">
+            <label for="last_name">Last name</label>
+            <input type="text" id="last_name" name="last_name" autocomplete="family-name" required>
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-row">
+            <label for="phone">Cell number <span class="opt-tag">optional</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
+          </div>
+          <div class="form-row">
+            <label for="organization">Organization <span class="opt-tag">optional</span></label>
+            <input type="text" id="organization" name="organization" autocomplete="organization">
+          </div>
+          <div class="form-row">
+            <label for="referral">How did you hear about us? <span class="opt-tag">optional</span></label>
+            <input type="text" id="referral" name="referral">
+          </div>
+        </div>
+
+        <div class="form-grid">
+        <div class="form-row">
+          <label for="purpose">Purpose for contacting <span class="opt-tag">optional</span></label>
+          <select id="purpose" name="purpose">
+            <option value="">Select one&hellip;</option>
+            <option value="Consulting">Consulting (Management, Integration, Culture, Research, Operations)</option>
+            <option value="Custom build">A custom or individualized build</option>
+            <option value="Almanac">Almanac</option>
+            <option value="Scribe">Scribe</option>
+            <option value="Docket">Docket</option>
+            <option value="Confluence">Confluence</option>
+            <option value="Funder match">Funder match</option>
+            <option value="Reconciliation check">Reconciliation check</option>
+            <option value="Peer benchmark">Peer benchmark</option>
+            <option value="Review">Request a review</option>
+            <option value="General enquiry">General enquiry</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="2" required></textarea>
+        </div>
+        </div>
+
+        <div class="hp-field" aria-hidden="true">
+          <label for="company_website">Company website</label>
+          <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-solid" id="contact-submit">Book a free thirty-minute consultation</button>
+        </div>
+
+        <p class="form-privacy">We collect only what you enter here, we do not share it, and we never sell it to third parties. We may use it to keep you updated on our work.</p>
+      </form>
+
+      <p class="direct">Or email <a href="mailto:jonathan@microgroup.info">jonathan@microgroup.info</a> directly. The form needs JavaScript; the address does not.</p>
+
     </div>
+  </section>
+</main>
 
-    <div class="form-grid">
-      <div class="form-field">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" autocomplete="email" required>
-      </div>
-      <div class="form-field">
-        <label for="phone">Cell number</label>
-        <input type="tel" id="phone" name="phone" autocomplete="tel" required>
-      </div>
+<footer class="footer-panel">
+  <div class="wrap footer-row">
+    <div class="footer-slogan">A Measured Approach to Your <u>Goals</u></div>
+    <div class="footer-switcher">
+      <a href="public-index.html" class="tab">Public</a>
+      <a href="private-index" class="tab">Private</a>
+      <a href="privacy.html" class="tab">Privacy</a>
+      <a href="security.html" class="tab">Security</a>
     </div>
-
-    <div class="form-field">
-      <label for="organization">Organization <span class="opt-tag">optional</span></label>
-      <input type="text" id="organization" name="organization" autocomplete="organization">
-    </div>
-
-    <div class="form-grid">
-      <div class="form-field">
-        <label for="purpose">Purpose for contacting <span class="opt-tag">optional</span></label>
-        <select id="purpose" name="purpose">
-          <option value="">Select one&hellip;</option>
-          <option value="Consulting">Consulting (Management, Integration, Culture, Research, Operations)</option>
-          <option value="Almanac">Almanac</option>
-          <option value="Scribe">Scribe</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label for="referral">How did you hear about us? <span class="opt-tag">optional</span></label>
-        <input type="text" id="referral" name="referral">
-      </div>
-    </div>
-
-    <div class="form-field">
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
-    </div>
-
-    <!-- honeypot: hidden from people, bots fill it -->
-    <div class="form-field hp-field" aria-hidden="true">
-      <label for="company_website">Company website</label>
-      <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
-    </div>
-
-    <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
-
-    <div class="form-actions">
-      <button type="submit" class="btn" id="contact-submit">Send message</button>
-    </div>
-
-    <p class="form-privacy">We collect only what you enter here. We do not share your information with anyone. We may use it to add you to our newsletter or otherwise keep you updated on our work, but we will not sell your information to third parties.</p>
-  </form>
-
-</div>
-
-<footer>
-  microgroup.info &middot; <a href="public-index.html">Public index</a> &middot; <a href="index.html">Home</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="security.html">Security</a>
+    <div class="footer-legal">&copy; <span id="yr"></span> MICRO Group, L.L.C. All rights reserved. Austin, Texas. 1801 E 51st St., STE 365, PMB 354. CC BY 4.0 data, MIT code.</div>
+  </div>
 </footer>
 
 <script src="site.js"></script>
+<script>
+(function(){
+  var yr = document.getElementById('yr');
+  if(yr) yr.textContent = new Date().getFullYear();
+})();
+
+/* .flip-gate: forced 3-second pause before a cross-domain .site-flip departure. */
+(function(){
+  var gate = document.getElementById('flip-gate');
+  if(!gate) return;
+  var msg = gate.querySelector('.flip-gate-msg');
+  var go = gate.querySelector('.flip-gate-go');
+  var cancel = gate.querySelector('.flip-gate-cancel');
+  var countEl = gate.querySelector('.flip-gate-count');
+  var timer = null, dest = null;
+
+  function openGate(href, text){
+    dest = href;
+    msg.textContent = text;
+    go.classList.remove('ready');
+    go.setAttribute('aria-disabled','true');
+    var n = 3;
+    countEl.textContent = n;
+    gate.hidden = false;
+    if(timer) clearInterval(timer);
+    timer = setInterval(function(){
+      n -= 1;
+      countEl.textContent = n > 0 ? n : 0;
+      if(n <= 0){
+        clearInterval(timer);
+        go.classList.add('ready');
+        go.removeAttribute('aria-disabled');
+      }
+    }, 1000);
+  }
+  function closeGate(){
+    gate.hidden = true;
+    if(timer) clearInterval(timer);
+    dest = null;
+  }
+  document.querySelectorAll('.site-flip a[data-leave]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      openGate(a.getAttribute('href'), a.getAttribute('data-leave'));
+    });
+  });
+  cancel.addEventListener('click', closeGate);
+  gate.addEventListener('click', function(e){ if(e.target === gate) closeGate(); });
+  go.addEventListener('click', function(e){
+    e.preventDefault();
+    if(go.classList.contains('ready') && dest) window.location.href = dest;
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && !gate.hidden) closeGate();
+  });
+})();
+</script>
 </body>
 </html>
