@@ -1,1 +1,5 @@
 .wrangler/
+
+# Word/HTML fold-count backups. Untracked working copies of live pages; committing them
+# would publish duplicate copies at new live URLs no Access rule was written to match.
+*.bak-*
