@@ -244,6 +244,13 @@ html.stack-page .form-privacy { font-size: var(--t-md); color: var(--wash); max-
 html.stack-page .form-status { font-size: var(--t-md); font-weight: 600; min-height: 1.4em; }
 html.stack-page .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
+/* Structural elements that carry markup classes and therefore need rules of their own,
+   caught by I1 at pre-push on 2026-09-04. */
+html.stack-page .flip-gate-msg { margin: 0 0 var(--s3); color: var(--ink); font-size: var(--t-md); }
+html.stack-page .form-actions { margin-top: var(--s4); text-align: center; }
+html.stack-page .footer-brand { margin-bottom: var(--s3); }
+html.stack-page .footer-switcher { margin-bottom: var(--s3); }
+
 /* Site switchers */
 html.stack-page .tab { font-size: var(--t-xs); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; text-decoration: none; color: var(--accent-text); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); }
 html.stack-page .tab.active { background: var(--accent-fill); color: var(--paper); border-color: var(--accent-fill); }
@@ -290,6 +297,10 @@ html.stack-page .nav-toggle { display: none; background: transparent; border: 1p
 
 /* ============ 7. MEDIA AND MOTION ============ */
 @media (max-width: 860px) {
+  /* The grid minimums (320px and 420px) exceed a phone's content width, so auto-fit keeps a
+     track wider than the viewport and the document scrolls sideways. I17 caught this at 375:
+     scrollWidth 448 against clientWidth 375. One column below the breakpoint. */
+  .grid-3, .grid-2 { grid-template-columns: 1fr; }
   .nav { flex-wrap: wrap; gap: var(--s2); }
   .nav-links { gap: var(--s3); flex-wrap: wrap; }
   .panel { padding: var(--s5) 0; }
