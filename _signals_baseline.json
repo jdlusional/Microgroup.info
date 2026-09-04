@@ -1,0 +1,175 @@
+{
+ "address_in_visitor_text": 0,
+ "banned_atrules": 0,
+ "banner_comments": [],
+ "bill_analysis_CONTROL": 1,
+ "built_to_varying_degrees": 1,
+ "campaign_mgmt_candidates": 1,
+ "ch_units": 0,
+ "class_chevron": 3,
+ "class_ledger": 8,
+ "class_stack_item": 4,
+ "client_names_in_visitor_text": {
+  "\\bBlack Mamas\\b": 0,
+  "\\bCustodian\\b": 0,
+  "\\bHuman Rights Initiative\\b": 0,
+  "\\bJ\\.?P\\.? ?Morgan\\b": 0,
+  "\\bMeasure\\b": 0
+ },
+ "contact_html_linkers": [
+  "privacy.html",
+  "public-index.html",
+  "security.html"
+ ],
+ "data_block_problem": 0,
+ "data_block_proof": 0,
+ "data_block_scope": 0,
+ "data_block_terms": 0,
+ "distinct_hex_count": 14,
+ "distinct_hexes": [
+  "#16241f",
+  "#1a6b3d",
+  "#1b3a2f",
+  "#4a5c52",
+  "#55635c",
+  "#6f5518",
+  "#8a6b1f",
+  "#a13a33",
+  "#a8801f",
+  "#c8c2b5",
+  "#c9c4b8",
+  "#e4e6de",
+  "#f2efe7",
+  "#f4efe2"
+ ],
+ "explore": 1,
+ "font_families": [
+  "IBM Plex Sans",
+  "JetBrains Mono",
+  "Playfair Display",
+  "Instrument Serif",
+  "IBM Plex Mono",
+  "Parisienne"
+ ],
+ "font_family_used_outside_href": {
+  "IBM Plex Mono": 2,
+  "IBM Plex Sans": 2,
+  "Instrument Serif": 1,
+  "JetBrains Mono": 3,
+  "Parisienne": 2,
+  "Playfair Display": 2
+ },
+ "font_size_px": 4,
+ "footer_legal_div": 1,
+ "founder_name": 0,
+ "founders_apostrophe": 1,
+ "h1_is_sr_only": true,
+ "h1_visible_words": 0,
+ "hex_lines": {
+  "#16241f": [
+   344,
+   344,
+   344,
+   344,
+   344,
+   344,
+   344
+  ],
+  "#1a6b3d": [
+   224
+  ],
+  "#1b3a2f": [
+   67
+  ],
+  "#4a5c52": [
+   71
+  ],
+  "#55635c": [
+   344,
+   505
+  ],
+  "#6f5518": [
+   178,
+   178,
+   182,
+   182
+  ],
+  "#8a6b1f": [
+   70
+  ],
+  "#a13a33": [
+   225
+  ],
+  "#a8801f": [
+   344,
+   344,
+   344,
+   344,
+   344,
+   344
+  ],
+  "#c8c2b5": [
+   69
+  ],
+  "#c9c4b8": [
+   344,
+   344
+  ],
+  "#e4e6de": [
+   68
+  ],
+  "#f2efe7": [
+   344,
+   344,
+   344,
+   344,
+   344,
+   344,
+   344,
+   344,
+   344
+  ],
+  "#f4efe2": [
+   66
+  ]
+ },
+ "href_demo": 1,
+ "href_demo_pricing": 1,
+ "href_style_css": 1,
+ "html_file_count": 46,
+ "html_stack_page": 91,
+ "id_contact_anchored": 1,
+ "id_contact_naive": 2,
+ "inbound_hash_contact": 40,
+ "inbound_hash_contact_files": 22,
+ "index_bytes": 39844,
+ "instrument_serif": 1,
+ "ledger_js": 1,
+ "mailto": 0,
+ "message_required": true,
+ "nav_li": 1,
+ "og_image": "https://microgroup.info/og-preview-c1.png",
+ "opacity_decls": 6,
+ "opposition_research": 1,
+ "option_values": 5,
+ "outcome_phrases": {
+  "best-in-class": 0,
+  "maximize": 0,
+  "more out of": 1,
+  "proven results": 0,
+  "trusted by": 0
+ },
+ "parisienne": 3,
+ "playfair": 2,
+ "political_and_legislative": 4,
+ "price_2000": 1,
+ "required_attrs": 5,
+ "section_ids": [
+  "home",
+  "offer",
+  "contact",
+  "footer"
+ ],
+ "style_attr": 11,
+ "style_css_repo_wide": 5
+}
