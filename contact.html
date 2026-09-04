@@ -323,6 +323,10 @@ html.stack-page .mg-wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; 
 .nav-links { display: flex; align-items: center; gap: var(--s4); list-style: none; margin: 0; padding: 0; }
 .nav-links a { font-family: var(--f-sans); color: var(--ink); text-decoration: none; font-size: var(--t-md); font-weight: 500; display: flex; align-items: center; letter-spacing: normal; text-transform: none; }
 .nav-links a:hover { color: var(--accent-text); text-decoration: underline; }
+/* The current page's own nav item. Set at load by the chrome's own script rather
+   than written into the markup, because the markup is byte-identical on every page
+   and a per-page marker cannot live in it. */
+.nav-links a[aria-current="page"] { color: var(--accent-text); font-weight: 700; text-decoration: underline; }
 /* Wordmark. THE HEADER AND THE LOCKUP ARE THE SAME FACE BY CONSTRUCTION: both read
    var(--f-serif) and both italicise the second word, so the header cannot drift away
    from the mark it echoes. */
@@ -399,6 +403,23 @@ html.stack-page .nav-toggle { display: none; background: transparent; border: 1p
     </div>
   </nav>
 </header>
+<script>
+/* Marks the current page's nav item. Lives in the chrome so it is stamped onto every
+   convention page unchanged; each page resolves its own answer at load. Matches on the
+   file name, and treats "" and "index.html" as the same page so "/" marks Home. */
+(function(){
+  var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  var links = [].slice.call(document.querySelectorAll('.nav-links a'));
+  var same = links.filter(function(a){
+    return (a.getAttribute('href') || '').split('#')[0].split('/').pop().toLowerCase() === here;
+  });
+  /* Two nav items can point at one page: Services is about.html#services and About is
+     about.html. Prefer the one WITHOUT a fragment, so exactly one item is ever marked. */
+  var exact = same.filter(function(a){ return (a.getAttribute('href') || '').indexOf('#') < 0; });
+  var pick = exact.length ? exact[0] : same[0];
+  if (pick) pick.setAttribute('aria-current', 'page');
+})();
+</script>
 
 <div class="flip-gate" id="flip-gate" hidden>
   <div class="flip-gate-box" role="alertdialog" aria-modal="true" aria-labelledby="flip-gate-msg">
