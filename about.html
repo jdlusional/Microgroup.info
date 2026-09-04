@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" class="stack-page">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J4XGXZ4CN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4J4XGXZ4CN');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About &mdash; MICRO Group, L.L.C.</title>
+<meta name="description" content="What MICRO Group, L.L.C. does: five consulting disciplines, the sectors it serves, how the nonpartisan policy practice is scoped, and published terms.">
+<meta name="robots" content="index,follow">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MICRO Group, L.L.C.">
+<meta property="og:title" content="About &mdash; MICRO Group, L.L.C.">
+<meta property="og:description" content="Five consulting disciplines, the sectors served, how the nonpartisan policy practice is scoped, and published terms.">
+<meta property="og:url" content="https://microgroup.info/about.html">
+<meta property="og:image" content="https://microgroup.info/og-preview-c1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About &mdash; MICRO Group, L.L.C.">
+<meta name="twitter:description" content="Five consulting disciplines, the sectors served, how the nonpartisan policy practice is scoped, and published terms.">
+<meta name="twitter:image" content="https://microgroup.info/og-preview-c1.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="Assets/micro-mark-c1.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="Assets/micro-favicon-c1-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="Assets/micro-favicon-c1-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="Assets/micro-touch-c1-180.png">
+<link rel="canonical" href="https://microgroup.info/about.html">
+
+<style>
+/* ============ 1. TOKENS ============ */
+/* Same token layer as index.html. Kept inline rather than shared, for the reason the
+   homepage rebuild established: build_pattern_book.py's inline_css extractor reads
+   <style> blocks and does not follow <link>, so a linked sheet is invisible to the
+   pattern book and a zero-rule extraction aborts the whole book build. */
+html.stack-page {
+  --paper:  #f4efe2;
+  --ink:    #1b3a2f;
+  --well:   #e4e6de;
+  --rule:   #c8c2b5;
+  --accent: #8a6b1f;
+  --wash:   #4a5c52;
+
+  --accent-text: #6f5518;
+  --accent-fill: #6f5518;
+
+  --plate-ink:   #16241f;
+  --plate-gold:  #a8801f;
+  --plate-paper: #f2efe7;
+  --plate-rule:  #c9c4b8;
+  --plate-wash:  #55635c;
+
+  --ok:  #1a6b3d;
+  --err: #a13a33;
+
+  --a-rule-80:   rgba(200,194,181,.80);
+  --a-ink-08:    rgba(27,58,47,.08);
+  --a-ink-16:    rgba(27,58,47,.16);
+  --a-ink-45:    rgba(27,58,47,.45);
+  --a-paper-92:  rgba(244,239,226,.92);
+  --a-accent-24: rgba(138,107,31,.24);
+
+  --f-sans:   'IBM Plex Sans', system-ui, -apple-system, Segoe UI, sans-serif;
+  --f-mono:   'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --f-serif:  'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --f-script: 'Parisienne', 'Segoe Script', cursive;
+
+  --t-micro: .75rem;
+  --t-xs:    .78rem;
+  --t-sm:    .82rem;
+  --t-md:    .95rem;
+  --t-base:  1.06rem;
+  --t-lg:    1.25rem;
+  --t-2xl:   1.5rem;
+  --t-xl:    1.5625rem;
+  --t-3xl:   2rem;
+  --t-4xl:   2.6rem;
+  --t-hero:  3.125rem;
+
+  --s1: .375rem;
+  --s2: .75rem;
+  --s3: 1.125rem;
+  --s4: 1.75rem;
+  --s5: 2.75rem;
+  --s6: 4.5rem;
+
+  --measure: 62ch;
+  --maxw:    1180px;
+  --bar-h:   76px;
+}
+
+/* ============ 2. RESET AND BASE ============ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-sans);
+  font-size: var(--t-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; margin: 0 0 var(--s2); font-weight: 600; text-align: center; }
+h1 { font-size: var(--t-4xl); letter-spacing: -.015em; }
+h2 { font-size: var(--t-3xl); letter-spacing: -.01em; }
+h3 { font-size: var(--t-2xl); }
+h4 { font-size: var(--t-lg); }
+p  { margin: 0 0 var(--s3); }
+a  { color: var(--accent-text); text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+img, svg { max-width: 100%; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* ============ 3. LAYOUT ============ */
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--s4); }
+main { display: block; }
+.panel { padding: var(--s6) 0; border-bottom: 1px solid var(--rule); }
+.panel:last-of-type { border-bottom: 0; }
+.shead { margin-bottom: var(--s5); text-align: center; }
+.shead .intro { color: var(--wash); max-width: var(--measure); margin-left: auto; margin-right: auto; }
+.site-header {
+  position: sticky; top: 0; z-index: 40;
+  background: var(--a-paper-92);
+  backdrop-filter: saturate(1.4) blur(8px);
+  border-bottom: 1px solid var(--rule);
+  min-height: var(--bar-h);
+  display: flex;
+  align-items: center;
+}
+.nav { display: flex; align-items: center; gap: var(--s4); width: 100%; max-width: var(--maxw); margin: 0 auto; padding: var(--s2) var(--s4); }
+.nav-right { display: flex; align-items: center; gap: var(--s4); margin-left: auto; }
+.nav-links { display: flex; align-items: center; gap: var(--s4); list-style: none; margin: 0; padding: 0; }
+.nav-links a { color: var(--ink); text-decoration: none; font-size: var(--t-md); font-weight: 500; display: flex; align-items: center; }
+.nav-links a:hover { color: var(--accent-text); text-decoration: underline; }
+.nav-links a.here { color: var(--accent-text); text-decoration: underline; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--s4); }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: var(--s4); }
+.grid-3 > *, .grid-2 > *, .nav > *, .cta-row > * { min-width: 0; }
+.stack-gap { margin-top: var(--s5); }
+body { overflow-x: hidden; }
+
+/* ============ 4. COMPONENTS ============ */
+html.stack-page .nav-name { font-family: var(--f-serif); font-size: var(--t-3xl); font-weight: 400; color: var(--plate-ink); text-decoration: none; letter-spacing: -.01em; line-height: 1; display: inline-block; }
+html.stack-page .nav-name-sub { font-style: italic; font-weight: 400; }
+
+html.stack-page .page-title { font-family: var(--f-script); font-size: var(--t-4xl); font-weight: 400; line-height: 1.3; color: var(--ink); max-width: 24ch; margin: 0 auto var(--s3); }
+html.stack-page .lede { font-size: var(--t-lg); color: var(--ink); max-width: var(--measure); margin: 0 auto var(--s4); text-align: center; }
+html.stack-page .roles { display: flex; flex-wrap: wrap; gap: var(--s2); margin: 0 0 var(--s4); justify-content: center; }
+html.stack-page .roles span { font-family: var(--f-mono); font-size: var(--t-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--wash); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); }
+
+html.stack-page .problem { background: var(--well); border-top: 3px solid var(--accent); padding: var(--s4); max-width: var(--measure); margin-left: auto; margin-right: auto; }
+html.stack-page .problem p { margin: 0; font-size: var(--t-lg); text-align: center; }
+
+/* Cards. Gutter is --s4 against a card padding of --s3, a quotient of 1.556, so the
+   grouping cue is spatial rather than chromatic: --rule on --well is only 1.41 and
+   --paper on --well only 1.10, neither of which the eye reads as an edge. */
+html.stack-page .pcard { background: var(--well); border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s3); text-align: center; }
+html.stack-page .pcard-title { font-size: var(--t-xl); font-weight: 600; margin: 0 0 var(--s1); }
+html.stack-page .pcard-desc { font-size: var(--t-md); color: var(--ink); margin: 0; max-width: var(--measure); }
+html.stack-page .pcard-price { font-size: var(--t-sm); color: var(--accent-text); font-weight: 600; }
+html.stack-page .pcard-status { font-size: var(--t-xs); color: var(--wash); text-transform: uppercase; letter-spacing: .07em; }
+html.stack-page .pcard-open { display: inline-block; margin-top: var(--s2); font-size: var(--t-xs); font-weight: 600; color: var(--accent-text); text-transform: uppercase; letter-spacing: .07em; text-decoration: none; }
+html.stack-page .pcard-open:hover { color: var(--ink); text-decoration: underline; }
+html.stack-page .arr { color: var(--accent-text); }
+
+html.stack-page .scope { border: 1px solid var(--rule); border-top: 3px solid var(--accent); background: var(--paper); padding: var(--s4); max-width: var(--measure); margin-left: auto; margin-right: auto; text-align: center; }
+html.stack-page .scope h3 { font-size: var(--t-lg); margin-bottom: var(--s2); }
+html.stack-page .scope p { margin: 0; color: var(--ink); }
+
+html.stack-page .proof-item { border-top: 1px solid var(--rule); padding-top: var(--s3); text-align: center; }
+html.stack-page .proof-item h4 { margin-bottom: var(--s1); }
+html.stack-page .proof-item p { font-size: var(--t-md); color: var(--ink); margin: 0 auto; max-width: var(--measure); }
+html.stack-page .proof-person { background: var(--well); border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s4); margin-bottom: var(--s4); text-align: center; }
+
+html.stack-page .terms { border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s4); background: var(--well); text-align: center; }
+html.stack-page .terms-figure { font-family: var(--f-mono); font-size: var(--t-3xl); font-weight: 700; color: var(--ink); display: block; margin-bottom: var(--s1); }
+html.stack-page .terms p { max-width: var(--measure); margin-left: auto; margin-right: auto; margin-bottom: var(--s2); }
+
+html.stack-page .cta-row { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; justify-content: center; margin: var(--s5) 0 0; }
+html.stack-page .btn { display: inline-block; font-size: var(--t-md); font-weight: 600; padding: var(--s2) var(--s4); border-radius: 3px; text-decoration: none; border: 1px solid var(--accent-fill); cursor: pointer; font-family: var(--f-sans); }
+html.stack-page .btn-solid { background: var(--accent-fill); color: var(--paper); }
+html.stack-page .btn-solid:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+html.stack-page .btn-ghost { background: transparent; color: var(--accent-text); }
+html.stack-page .btn-ghost:hover { background: var(--a-accent-24); color: var(--ink); }
+
+html.stack-page .tab { font-size: var(--t-xs); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; text-decoration: none; color: var(--accent-text); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); display: flex; align-items: center; }
+html.stack-page .tab.active { background: var(--accent-fill); color: var(--paper); border-color: var(--accent-fill); }
+html.stack-page .site-flip { display: flex; align-items: center; gap: var(--s1); }
+
+html.stack-page .footer-panel { background: var(--well); padding: var(--s5) var(--s4); border-top: 1px solid var(--rule); text-align: center; }
+html.stack-page .footer-slogan { font-family: var(--f-mono); font-size: var(--t-micro); letter-spacing: .06em; color: var(--plate-wash); margin-bottom: var(--s1); }
+html.stack-page .footer-slogan u { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+html.stack-page .footer-brand { margin-bottom: var(--s2); }
+html.stack-page .footer-switcher { margin-bottom: var(--s2); }
+html.stack-page .footer-switcher-label { font-size: var(--t-xs); text-transform: uppercase; letter-spacing: .08em; color: var(--wash); margin-bottom: var(--s1); }
+html.stack-page .switcher { display: flex; gap: var(--s1); justify-content: center; }
+html.stack-page .footer-credit { font-size: var(--t-xs); color: var(--ink); }
+html.stack-page .footer-license { font-size: var(--t-xs); color: var(--wash); }
+html.stack-page .footer-legal-links { font-size: var(--t-xs); margin: var(--s1) 0; display: flex; gap: var(--s1); align-items: center; justify-content: center; }
+html.stack-page .footer-legal { font-size: var(--t-xs); color: var(--wash); }
+
+html.stack-page .flip-gate { position: fixed; inset: 0; background: var(--a-ink-45); display: flex; align-items: center; justify-content: center; z-index: 90; }
+/* MUST FOLLOW THE RULE ABOVE: display:flex on a class beats the user-agent
+   [hidden]{display:none}, which makes the hidden attribute inert and paints this
+   overlay permanently over the page. */
+html.stack-page .flip-gate[hidden] { display: none; }
+html.stack-page .flip-gate-box { background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: var(--s4); max-width: 420px; box-shadow: 0 8px 28px var(--a-ink-16); }
+html.stack-page .flip-gate-msg { margin: 0 0 var(--s3); color: var(--ink); font-size: var(--t-md); }
+html.stack-page .flip-gate-actions { display: flex; gap: var(--s2); justify-content: flex-end; }
+html.stack-page .flip-gate-go { pointer-events: none; color: var(--wash); text-decoration: none; font-weight: 600; }
+html.stack-page .flip-gate-go.ready { pointer-events: auto; color: var(--accent-text); }
+html.stack-page .flip-gate-cancel { font-family: var(--f-sans); font-size: var(--t-md); background: transparent; border: 1px solid var(--rule); border-radius: 3px; padding: var(--s1) var(--s3); color: var(--ink); cursor: pointer; }
+
+/* ============ 5. UTILITIES ============ */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.measure { max-width: var(--measure); margin-left: auto; margin-right: auto; }
+.quiet { color: var(--wash); }
+
+/* ============ 6. STATE ============ */
+html.stack-page .pcard:hover { border-color: var(--accent); box-shadow: 0 2px 10px var(--a-ink-08); }
+html.stack-page .nav-toggle { display: none; background: transparent; border: 1px solid var(--rule); border-radius: 3px; color: var(--ink); font-size: var(--t-lg); padding: 0 var(--s2); cursor: pointer; align-items: center; }
+
+/* ============ 7. MEDIA AND MOTION ============ */
+@media (max-width: 860px) {
+  /* The grid minimums exceed a phone's content width, so auto-fit would hold a track
+     wider than the viewport and scroll the document sideways. One column below here. */
+  .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .nav { flex-wrap: wrap; gap: var(--s2); justify-content: center; }
+  .nav-right { margin-left: 0; flex-wrap: wrap; justify-content: center; gap: var(--s2); }
+  .nav-links { gap: var(--s3); flex-wrap: wrap; justify-content: center; }
+  .site-header { position: static; }
+  .panel { padding: var(--s5) 0; }
+  h1 { font-size: var(--t-3xl); }
+  html.stack-page .page-title { font-size: var(--t-3xl); }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="nav-name" href="/">MICRO<span class="nav-name-sub"> Group</span></a>
+    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="demo.html">Products</a></li>
+        <li><a href="demo-pricing.html">Pricing</a></li>
+        <li><a class="here" href="about.html" aria-current="page">About</a></li>
+        <li><a href="contact.html">Connect</a></li>
+      </ul>
+      <div class="site-flip">
+        <a href="https://jonathanlindavis.com" class="tab" data-leave="You are leaving Microgroup.info and travelling to Jonathanlindavis.com.">Open Data</a>
+        <a href="index.html" class="tab active">Enterprise</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="flip-gate" id="flip-gate" hidden>
+  <div class="flip-gate-box" role="alertdialog" aria-modal="true" aria-labelledby="flip-gate-msg">
+    <p id="flip-gate-msg" class="flip-gate-msg"></p>
+    <div class="flip-gate-actions">
+      <button type="button" class="flip-gate-cancel">Cancel</button>
+      <a href="#" class="flip-gate-go" aria-disabled="true">Continue (<span class="flip-gate-count">3</span>)</a>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <section id="about" class="panel">
+    <div class="wrap">
+      <h1 class="page-title">What we do, and how an engagement actually runs</h1>
+      <p class="lede">MICRO Group, L.L.C. is a strategic, research-driven consultancy serving nonprofit, government, and nonpartisan policy organizations, through expertise in Management, Integration, Culture, Research, and Operations.</p>
+      <div class="roles">
+        <span>Management</span><span>Integration</span><span>Culture</span><span>Research</span><span>Operations</span>
+      </div>
+
+      <div class="problem" data-block="problem">
+        <p>Most small organizations are told they need research and data capacity they cannot afford to staff. The work still has to happen: grants researched, bills tracked, systems integrated, results measured. So it lands on people hired to do something else, and it competes with the mission they were hired for.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="panel">
+    <div class="wrap">
+      <div class="shead">
+        <h2>Services</h2>
+        <p class="intro">Five consulting disciplines. Each one names what is done and what you receive, rather than what it is supposed to achieve.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="pcard"><h4 class="pcard-title">Management</h4><p class="pcard-desc">Strategic direction and leadership capacity for institutions in transition or growth, including interim and fractional leadership while a permanent hire is recruited.</p></article>
+        <article class="pcard"><h4 class="pcard-title">Integration</h4><p class="pcard-desc">Programs, teams, software, and data brought into one working system, including donor and constituent database management, with training for the people who use it.</p></article>
+        <article class="pcard"><h4 class="pcard-title">Culture</h4><p class="pcard-desc">Team building, employee engagement, and facilitation for organizations through change, delivered as structured sessions with written follow-through rather than a single workshop.</p></article>
+        <article class="pcard"><h4 class="pcard-title">Research</h4><p class="pcard-desc">Applied research grounded in the founder's legislative background: policy and bill analysis, committee and district-level data, and funding landscape review.</p></article>
+        <article class="pcard"><h4 class="pcard-title">Operations</h4><p class="pcard-desc">Operational management: process documentation, vendor and contract review, and reporting systems, so the work does not depend on one person's memory.</p></article>
+      </div>
+
+      <div class="stack-gap">
+        <h3>How an engagement runs</h3>
+        <p class="intro measure">Every engagement begins with a free thirty-minute consultation, and each one is scoped around your organization's own goals rather than a fixed template. What follows is the shape most engagements take, not a fixed sequence you have to buy whole.</p>
+        <div class="grid-3">
+          <article class="pcard"><h4 class="pcard-title">Scope</h4><p class="pcard-desc">A written statement of the question, the deliverable, the timeline and the price, agreed before any work starts. Nothing is billed against a scope you have not read.</p></article>
+          <article class="pcard"><h4 class="pcard-title">Work</h4><p class="pcard-desc">The research, integration or facilitation itself, with a named point of contact and a stated cadence for updates rather than silence punctuated by invoices.</p></article>
+          <article class="pcard"><h4 class="pcard-title">Handover</h4><p class="pcard-desc">The artifact and the method behind it, in a form your own staff can rerun. A deliverable nobody on your team can repeat is a dependency, not a capability.</p></article>
+        </div>
+      </div>
+
+      <div class="stack-gap">
+        <h3>Who we serve</h3>
+        <div class="grid-3">
+          <article class="pcard"><h4 class="pcard-title">Nonprofit</h4><p class="pcard-desc">National and local organizations across a range of missions, including the grant-seeking software this firm builds and sells.</p></article>
+          <article class="pcard"><h4 class="pcard-title">Government</h4><p class="pcard-desc">Municipal, state, and federal agencies and public departments.</p></article>
+          <article class="pcard"><h4 class="pcard-title">Policy and Legislative</h4><p class="pcard-desc">Nonpartisan policy analysis, bill and committee research, and district-level data for advocacy organizations and public agencies.</p></article>
+        </div>
+      </div>
+
+      <div class="stack-gap scope" data-block="scope">
+        <h3>How the policy practice is scoped</h3>
+        <p>The legislative and policy practice is nonpartisan. It covers bill and committee analysis, district-level data, and administrative research for organizations on any side of an issue. It does not include partisan campaign work, and nonprofit and government engagements are never staffed from it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="panel">
+    <div class="wrap">
+      <div class="shead">
+        <h2>Products</h2>
+        <p class="intro">Purpose-built software for nonprofit grant-seeking. Four are live and inspectable today; the demo hub is open and needs no call first.</p>
+      </div>
+      <div class="grid-3">
+        <article class="pcard"><h4 class="pcard-title">Product demo hub</h4><p class="pcard-desc">Every product demo in one place. Almanac, Scribe, Docket, and Confluence are live and inspectable today.</p><a class="pcard-open" href="demo.html">Open <span class="arr">&rarr;</span></a></article>
+        <article class="pcard"><h4 class="pcard-title">Pricing</h4><p class="pcard-desc">The full rate card for every live product, plus a request-pricing form.</p><a class="pcard-open" href="demo-pricing.html">Open <span class="arr">&rarr;</span></a></article>
+        <article class="pcard"><h4 class="pcard-title">Referral program</h4><p class="pcard-desc">Refer an organization to Almanac or Scribe and earn 5% of their first-year subscription as a one-time bonus.</p><a class="pcard-open" href="demo-referrals.html">Open <span class="arr">&rarr;</span></a></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="proof" class="panel">
+    <div class="wrap">
+      <div class="shead">
+        <h2>What we can show you</h2>
+        <p class="intro">Named methods, a named person, and published terms, rather than claimed outcomes.</p>
+      </div>
+
+      <div data-block="proof">
+        <div class="proof-person">
+          <h3>Jonathan Lin Davis, founder</h3>
+          <p class="measure">Jonathan Lin Davis founded MICRO Group, L.L.C. and leads every engagement. The applied research practice is grounded in his legislative background, which is the basis for the bill, committee, and district-level work described above.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="proof-item">
+            <h4>Funding landscape review</h4>
+            <p>A written map of the funders active in your subject and geography, with filing-year evidence for each, delivered as a spreadsheet and a short memo you keep.</p>
+          </div>
+          <div class="proof-item">
+            <h4>Bill and committee tracking</h4>
+            <p>Named bills followed through committee with plain-language summaries of what changed and what it means for your organization, on whatever cadence the session requires.</p>
+          </div>
+          <div class="proof-item">
+            <h4>Inspectable software</h4>
+            <p>Almanac, Scribe, Docket, and Confluence are live and can be walked through before any commitment. The demo hub is open and needs no call first.</p>
+          </div>
+          <div class="proof-item">
+            <h4>Registered entity and footprint</h4>
+            <p>MICRO Group, L.L.C. operates across four Texas counties: Austin-Travis, San Antonio-Bexar, the Dallas-Fort Worth Metro, and Houston-Harris. Requests from beyond that footprint are accepted worldwide.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="terms" class="panel">
+    <div class="wrap">
+      <div class="shead">
+        <h2>Terms</h2>
+        <p class="intro">A published number is a position. This one is published because a product price is not a client entitlement.</p>
+      </div>
+
+      <div class="terms" data-block="terms">
+        <h3>Infrastructure and updates</h3>
+        <span class="terms-figure">$2,000/year</span>
+        <p>A flat plan covering ongoing technical support and system updates for every product an organization has purchased, billed once per organization rather than once per product.</p>
+        <p class="quiet">Every other engagement, including the consulting disciplines above, is scoped and priced individually. The full rate card is published.</p>
+        <a class="pcard-open" href="demo-pricing.html">See the rate card <span class="arr">&rarr;</span></a>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-solid" href="contact.html">Book a free thirty-minute consultation</a>
+        <a class="btn btn-ghost" href="demo.html">See the product demos</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer-panel">
+  <div class="wrap">
+    <div class="footer-brand">
+      <div class="footer-slogan">A Measured Approach to Your <u>Goals</u></div>
+    </div>
+    <div class="footer-switcher">
+      <div class="footer-switcher-label">Site index</div>
+      <div class="switcher">
+        <a href="public-index.html" class="tab">Public</a>
+        <a href="private-index" class="tab">Private</a>
+      </div>
+    </div>
+    <div class="footer-credit">This website was created and is managed by MICRO Group, L.L.C.<br>1801 E 51st St., STE 365, PMB 354, Austin, Texas</div>
+    <div class="footer-license">CC BY 4.0 data, MIT code.</div>
+    <div class="footer-legal-links"><a href="privacy.html">Privacy</a><span>&middot;</span><a href="security.html">Security</a></div>
+    <div class="footer-legal">&copy; <span id="yr"></span> MICRO Group, L.L.C. All rights reserved. Austin, Texas.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var yr = document.getElementById('yr');
+  if(yr) yr.textContent = new Date().getFullYear();
+})();
+
+/* .flip-gate: forced 3-second pause before a cross-domain .site-flip departure. */
+(function(){
+  var gate = document.getElementById('flip-gate');
+  if(!gate) return;
+  var msg = gate.querySelector('.flip-gate-msg');
+  var go = gate.querySelector('.flip-gate-go');
+  var cancel = gate.querySelector('.flip-gate-cancel');
+  var countEl = gate.querySelector('.flip-gate-count');
+  var timer = null, dest = null;
+
+  function openGate(href, text){
+    dest = href;
+    msg.textContent = text;
+    go.classList.remove('ready');
+    go.setAttribute('aria-disabled','true');
+    var n = 3;
+    countEl.textContent = n;
+    gate.hidden = false;
+    if(timer) clearInterval(timer);
+    timer = setInterval(function(){
+      n -= 1;
+      countEl.textContent = n > 0 ? n : 0;
+      if(n <= 0){
+        clearInterval(timer);
+        go.classList.add('ready');
+        go.removeAttribute('aria-disabled');
+      }
+    }, 1000);
+  }
+  function closeGate(){
+    gate.hidden = true;
+    if(timer) clearInterval(timer);
+    dest = null;
+  }
+  document.querySelectorAll('.site-flip a[data-leave]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      openGate(a.getAttribute('href'), a.getAttribute('data-leave'));
+    });
+  });
+  cancel.addEventListener('click', closeGate);
+  gate.addEventListener('click', function(e){ if(e.target === gate) closeGate(); });
+  go.addEventListener('click', function(e){
+    e.preventDefault();
+    if(go.classList.contains('ready') && dest) window.location.href = dest;
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && !gate.hidden) closeGate();
+  });
+})();
+</script>
+</body>
+</html>

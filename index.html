@@ -30,7 +30,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Parisienne&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="Assets/micro-mark-c1.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="Assets/micro-favicon-c1-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="Assets/micro-favicon-c1-16.png">
@@ -53,22 +53,18 @@ html.stack-page {
   /* Accent split by contrast class. --accent is restricted to borders, focus rings,
      the mark, and display type at 24px or larger, where 4.35 on paper and 3.97 on
      well clear the 3:1 boundary bar. Normal-scale text and solid fills take the
-     darker value at 6.12 and 5.58, which is already present on this page as a
-     hover background and is therefore not a new colour. */
+     darker value at 6.12 and 5.58. */
   --accent-text: #6f5518;
   --accent-fill: #6f5518;
 
-  /* The lockup's own plate palette, declared rather than reconciled. The generator
-     that produced these five values does not exist in any repository, so they are
-     named here to make them searchable and the divergence from the page palette is
-     deliberate and recorded. */
+  /* The lockup's own plate palette, declared rather than reconciled. */
   --plate-ink:   #16241f;
   --plate-gold:  #a8801f;
   --plate-paper: #f2efe7;
   --plate-rule:  #c9c4b8;
   --plate-wash:  #55635c;
 
-  /* Form status. */
+  /* Form status, kept declared because contact.html shares this token layer. */
   --ok:  #1a6b3d;
   --err: #a13a33;
 
@@ -80,15 +76,20 @@ html.stack-page {
   --a-paper-92:  rgba(244,239,226,.92);
   --a-accent-24: rgba(138,107,31,.24);
 
-  /* Three families, each with a rendered consumer in this document. */
-  --f-sans:  'IBM Plex Sans', system-ui, -apple-system, Segoe UI, sans-serif;
-  --f-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-  --f-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  /* FOUR families, each with a rendered consumer in this document. --f-script sets the
+     capability headline and nothing else: a script face is a display instrument. The
+     reason Parisienne was removed earlier in this rebuild was that it rendered NOWHERE,
+     not that it is a script, so returning it with a real consumer satisfies that rule
+     rather than reversing it. --f-serif now sets the wordmark in BOTH the lockup and the
+     header, so the two are the same face by construction rather than by coincidence. */
+  --f-sans:   'IBM Plex Sans', system-ui, -apple-system, Segoe UI, sans-serif;
+  --f-mono:   'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --f-serif:  'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --f-script: 'Parisienne', 'Segoe Script', cursive;
 
-  /* Eleven sizes. No font-size on html, so the root stays the reader's own default
-     and every rem below resolves against it. The five sizes the pattern book pins
-     by label resolve exactly: 1.5625rem is 25px, .82rem is 13.12px, .95rem is
-     15.2px, .78rem is 12.48px. */
+  /* Eleven sizes. No font-size on html, so the root stays the reader's own default.
+     The five sizes the pattern book pins by label resolve exactly: 1.5625rem is 25px,
+     .82rem is 13.12px, .95rem is 15.2px, .78rem is 12.48px. */
   --t-micro: .75rem;
   --t-xs:    .78rem;
   --t-sm:    .82rem;
@@ -101,8 +102,7 @@ html.stack-page {
   --t-4xl:   2.6rem;
   --t-hero:  3.125rem;
 
-  /* Six-step space scale. The card gutter is --s4 against a card padding of --s3,
-     a quotient of 1.556, which is the inverted ratio the boundary rebuild needs. */
+  /* Six-step space scale. */
   --s1: .375rem;
   --s2: .75rem;
   --s3: 1.125rem;
@@ -112,7 +112,8 @@ html.stack-page {
 
   --measure: 62ch;
   --maxw:    1180px;
-  --bar-h:   64px;
+  --bar-h:   76px;
+  --foot-h:  112px;
 }
 
 /* ============ 2. RESET AND BASE ============ */
@@ -128,7 +129,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; margin: 0 0 var(--s2); font-weight: 600; text-align: center; }
-h1 { font-size: var(--t-4xl); letter-spacing: -.015em; text-align: center; }
 h2 { font-size: var(--t-3xl); letter-spacing: -.01em; }
 h3 { font-size: var(--t-2xl); }
 h4 { font-size: var(--t-lg); }
@@ -141,84 +141,71 @@ img, svg { max-width: 100%; }
 /* ============ 3. LAYOUT ============ */
 .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--s4); }
 main { display: block; }
-.panel { padding: var(--s6) 0; border-bottom: 1px solid var(--rule); }
-.panel:last-of-type { border-bottom: 0; }
-.shead { margin-bottom: var(--s5); text-align: center; }
-.shead .intro { color: var(--wash); max-width: var(--measure); margin-left: auto; margin-right: auto; }
+/* The header is a flex row that centres on the cross axis, so the wordmark, the links
+   and the two tabs share one optical centreline instead of sitting on their own
+   baselines. Every child that could set its own baseline centres too. */
 .site-header {
   position: sticky; top: 0; z-index: 40;
   background: var(--a-paper-92);
   backdrop-filter: saturate(1.4) blur(8px);
   border-bottom: 1px solid var(--rule);
   min-height: var(--bar-h);
+  display: flex;
+  align-items: center;
 }
 .nav { display: flex; align-items: center; gap: var(--s4); width: 100%; max-width: var(--maxw); margin: 0 auto; padding: var(--s2) var(--s4); }
 .nav-right { display: flex; align-items: center; gap: var(--s4); margin-left: auto; }
-.nav-links { display: flex; gap: var(--s4); list-style: none; margin: 0; padding: 0; }
-.nav-links a { color: var(--ink); text-decoration: none; font-size: var(--t-md); font-weight: 500; }
+.nav-links { display: flex; align-items: center; gap: var(--s4); list-style: none; margin: 0; padding: 0; }
+.nav-links a { color: var(--ink); text-decoration: none; font-size: var(--t-md); font-weight: 500; display: flex; align-items: center; }
 .nav-links a:hover { color: var(--accent-text); text-decoration: underline; }
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--s4); }
-.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: var(--s4); }  /* 420px so four proof items break 2 and 2 at 1180px rather than 3 and 1 with one orphaned. */
-.grid-3 > *, .grid-2 > *, .nav > *, .cta-row > * { min-width: 0; }
+.nav > *, .cta-row > * { min-width: 0; }
 body { overflow-x: hidden; }
+
+/* ONE SCREEN. The landing page is a single fit view: the hero fills the space between
+   the sticky header and the footer and centres its content, so what is below the fold is
+   a deliberate nothing rather than an accident. `svh` is tried after `vh` because a
+   phone's `vh` includes the retracting address bar and yields a view that is always
+   slightly too tall; a browser that does not know `svh` keeps the `vh` line. */
+.screen {
+  min-height: calc(100vh - var(--bar-h) - var(--foot-h));
+  min-height: calc(100svh - var(--bar-h) - var(--foot-h));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--s2) 0;
+}
 
 /* ============ 4. COMPONENTS ============ */
 /* Every rule in this section carries the html.stack-page prefix, and no rule outside
-   it does. The prefix is the pattern book's extraction marker, not a specificity
-   device: it says which rules the book governs and nothing else. */
+   it does. The prefix is the pattern book's extraction marker. */
 
-/* Wordmark */
-html.stack-page .nav-name { font-family: var(--f-sans); font-size: var(--t-2xl); font-weight: 700; color: var(--accent); text-decoration: none; letter-spacing: -.01em; }
-html.stack-page .nav-name-sub { font-weight: 400; }
+/* Wordmark. THE HEADER AND THE LOCKUP ARE THE SAME FACE BY CONSTRUCTION: both read
+   var(--f-serif) and both italicise the second word, so the header cannot drift away
+   from the mark it echoes. */
+html.stack-page .nav-name { font-family: var(--f-serif); font-size: var(--t-3xl); font-weight: 400; color: var(--plate-ink); text-decoration: none; letter-spacing: -.01em; line-height: 1; display: inline-block; }
+html.stack-page .nav-name-sub { font-style: italic; font-weight: 400; }
 
-/* Hero lockup */
-html.stack-page .hero-lockup { margin: 0 0 var(--s4); text-align: center; }
-html.stack-page .lockup-frame { position: relative; border: 1px solid var(--plate-rule); padding: 44px 52px 30px; text-align: center; display: inline-block; }
-html.stack-page .lockup-mark { position: absolute; top: -33px; left: 50%; transform: translateX(-50%); background: var(--paper); padding: 0 16px; }
+/* Hero lockup, enlarged. */
+html.stack-page .hero-lockup { margin: 0 0 var(--s3); text-align: center; }
+html.stack-page .lockup-frame { position: relative; border: 1px solid var(--plate-rule); padding: 42px 60px 28px; text-align: center; display: inline-block; }
+html.stack-page .lockup-mark { position: absolute; top: -46px; left: 50%; transform: translateX(-50%); background: var(--paper); padding: 0 20px; }
 html.stack-page .lockup-word { font-family: var(--f-serif); font-size: var(--t-hero); font-weight: 400; letter-spacing: -.01em; line-height: 1; color: var(--plate-ink); white-space: nowrap; }
 html.stack-page .lockup-word em { font-style: italic; }
-html.stack-page .lockup-rule { width: 100%; height: 1px; background: var(--plate-rule); margin: -8px auto 9px; }
-html.stack-page .lockup-tag { font-family: var(--f-mono); font-size: var(--t-micro); letter-spacing: .06em; color: var(--plate-wash); white-space: nowrap; }
+html.stack-page .lockup-rule { width: 100%; height: 1px; background: var(--plate-rule); margin: -6px auto 11px; }
+html.stack-page .lockup-tag { font-family: var(--f-mono); font-size: var(--t-sm); letter-spacing: .06em; color: var(--plate-wash); white-space: nowrap; }
 html.stack-page .lockup-tag u { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 
-/* Hero */
-html.stack-page .lede { font-size: var(--t-lg); color: var(--ink); max-width: var(--measure); margin-left: auto; margin-right: auto; text-align: center; }
-html.stack-page .roles { display: flex; flex-wrap: wrap; gap: var(--s2); margin: var(--s3) 0 var(--s4); justify-content: center; }
-html.stack-page .roles span { font-family: var(--f-mono); font-size: var(--t-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--wash); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); }
+/* The capability headline, in the script face. DISPLAY SCALE ONLY, and that is a
+   contrast requirement rather than a preference: it takes --ink at 10.80 on paper, and
+   a script face at body size would fail legibility long before it failed contrast. */
+html.stack-page .headline { font-family: var(--f-script); font-size: var(--t-4xl); font-weight: 400; line-height: 1.2; color: var(--ink); max-width: 26ch; margin: 0 auto var(--s2); letter-spacing: 0; }
 
-/* Reader-subject block */
-html.stack-page .problem { background: var(--well); border-top: 3px solid var(--accent); padding: var(--s4); max-width: var(--measure); margin-left: auto; margin-right: auto; }
-html.stack-page .problem p { margin: 0; font-size: var(--t-lg); text-align: center; }
-
-/* Cards. Gutter is --s4 and card horizontal padding is --s3, so the gap is 1.556
-   times the padding and the grouping cue is spatial rather than chromatic. */
-html.stack-page .pcard { background: var(--well); border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s3); text-align: center; }
-html.stack-page .pcard-title { font-size: var(--t-xl); font-weight: 600; margin: 0 0 var(--s1); }
-html.stack-page .pcard-desc { font-size: var(--t-md); color: var(--ink); margin: 0; max-width: var(--measure); }
-html.stack-page .pcard-price { font-size: var(--t-sm); color: var(--accent-text); font-weight: 600; }
-html.stack-page .pcard-status { font-size: var(--t-xs); color: var(--wash); text-transform: uppercase; letter-spacing: .07em; }
-html.stack-page .pcard-open { display: inline-block; margin-top: var(--s2); font-size: var(--t-xs); font-weight: 600; color: var(--accent-text); text-transform: uppercase; letter-spacing: .07em; text-decoration: none; }
-html.stack-page .pcard-open:hover { color: var(--ink); text-decoration: underline; }
-html.stack-page .arr { color: var(--accent-text); }
-
-/* Scope statement */
-html.stack-page .scope { border: 1px solid var(--rule); border-top: 3px solid var(--accent); background: var(--paper); padding: var(--s4); max-width: var(--measure); margin-left: auto; margin-right: auto; text-align: center; }
-html.stack-page .scope h3 { font-size: var(--t-lg); margin-bottom: var(--s2); }
-html.stack-page .scope p { margin: 0; color: var(--ink); }
-
-/* Proof */
-html.stack-page .proof-item { border-top: 1px solid var(--rule); padding-top: var(--s3); text-align: center; }
-html.stack-page .proof-item h4 { margin-bottom: var(--s1); }
-html.stack-page .proof-item p { font-size: var(--t-md); color: var(--ink); margin: 0; max-width: var(--measure); margin-left: auto; margin-right: auto; }
-html.stack-page .proof-person { background: var(--well); border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s4); margin-bottom: var(--s4); text-align: center; }
-
-/* Terms */
-html.stack-page .terms { border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: 3px; padding: var(--s4); background: var(--well); text-align: center; }
-html.stack-page .terms-figure { font-family: var(--f-mono); font-size: var(--t-3xl); font-weight: 700; color: var(--ink); display: block; margin-bottom: var(--s1); }
-html.stack-page .terms p { max-width: var(--measure); margin-left: auto; margin-right: auto; margin-bottom: var(--s2); }
+html.stack-page .lede { font-size: var(--t-lg); color: var(--ink); max-width: var(--measure); margin: 0 auto var(--s2); text-align: center; }
 
 /* Calls to action */
-html.stack-page .cta-row { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; justify-content: center; margin: var(--s4) 0; }
+html.stack-page .cta-row { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; justify-content: center; margin: 0; }
 html.stack-page .btn { display: inline-block; font-size: var(--t-md); font-weight: 600; padding: var(--s2) var(--s4); border-radius: 3px; text-decoration: none; border: 1px solid var(--accent-fill); cursor: pointer; font-family: var(--f-sans); }
 html.stack-page .btn-solid { background: var(--accent-fill); color: var(--paper); }
 html.stack-page .btn-solid:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
@@ -226,56 +213,32 @@ html.stack-page .btn-ghost { background: transparent; color: var(--accent-text);
 html.stack-page .btn-ghost:hover { background: var(--a-accent-24); color: var(--ink); }
 
 /* Direct channel */
-html.stack-page .direct { font-size: var(--t-md); color: var(--ink); max-width: var(--measure); margin-left: auto; margin-right: auto; text-align: center; }
-html.stack-page .direct a { font-weight: 600; }
-
-/* Form */
-html.stack-page .signup-form { max-width: 760px; margin-left: auto; margin-right: auto; text-align: left; }
-html.stack-page .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--s3); }
-html.stack-page .form-row { display: flex; flex-direction: column; gap: var(--s1); margin-bottom: var(--s3); }
-html.stack-page .form-row label { font-size: var(--t-md); font-weight: 500; color: var(--ink); }
-html.stack-page .signup-form input, html.stack-page .signup-form select, html.stack-page .signup-form textarea {
-  font-family: var(--f-sans); font-size: var(--t-md); color: var(--ink);
-  background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; padding: var(--s2);
-}
-html.stack-page .signup-form input::placeholder, html.stack-page .signup-form textarea::placeholder { color: var(--wash); }
-html.stack-page .opt-tag { font-size: var(--t-xs); color: var(--wash); font-weight: 400; text-transform: uppercase; letter-spacing: .06em; }
-html.stack-page .form-privacy { font-size: var(--t-md); color: var(--wash); max-width: var(--measure); margin-left: auto; margin-right: auto; }
-html.stack-page .form-status { font-size: var(--t-md); font-weight: 600; min-height: 1.4em; }
-html.stack-page .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-
-/* Structural elements that carry markup classes and therefore need rules of their own,
-   caught by I1 at pre-push on 2026-09-04. */
-html.stack-page .flip-gate-msg { margin: 0 0 var(--s3); color: var(--ink); font-size: var(--t-md); }
-html.stack-page .form-actions { margin-top: var(--s4); text-align: center; }
-html.stack-page .footer-brand { margin-bottom: var(--s3); }
-html.stack-page .footer-switcher { margin-bottom: var(--s3); }
+html.stack-page .direct { font-size: var(--t-md); color: var(--wash); max-width: var(--measure); margin: var(--s2) auto 0; text-align: center; }
+html.stack-page .direct a { font-weight: 600; color: var(--accent-text); }
 
 /* Site switchers */
-html.stack-page .tab { font-size: var(--t-xs); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; text-decoration: none; color: var(--accent-text); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); }
+html.stack-page .tab { font-size: var(--t-xs); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; text-decoration: none; color: var(--accent-text); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); display: flex; align-items: center; }
 html.stack-page .tab.active { background: var(--accent-fill); color: var(--paper); border-color: var(--accent-fill); }
-html.stack-page .site-flip { display: flex; gap: var(--s1); }
+html.stack-page .site-flip { display: flex; align-items: center; gap: var(--s1); }
 
-/* Footer */
-html.stack-page .footer-panel { background: var(--well); padding: var(--s5) var(--s4); border-top: 1px solid var(--rule); text-align: center; }
+/* Footer, one compact band. It is deliberately the smallest thing on the page: on the
+   first measurement of this layout the footer was 234px of a 290px overflow, which is
+   what stopped the landing view being one screen. */
+html.stack-page .footer-panel { background: var(--well); padding: var(--s2) var(--s4); border-top: 1px solid var(--rule); text-align: center; }
+html.stack-page .footer-row { display: flex; flex-direction: column; align-items: center; gap: var(--s1); }
 html.stack-page .footer-slogan { font-family: var(--f-mono); font-size: var(--t-micro); letter-spacing: .06em; color: var(--plate-wash); }
 html.stack-page .footer-slogan u { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-html.stack-page .footer-switcher-label { font-size: var(--t-xs); text-transform: uppercase; letter-spacing: .08em; color: var(--wash); margin-bottom: var(--s1); }
-html.stack-page .switcher { display: flex; gap: var(--s1); justify-content: center; }
-html.stack-page .footer-credit { font-size: var(--t-md); color: var(--ink); margin-top: var(--s3); }
-html.stack-page .footer-license { font-size: var(--t-xs); color: var(--wash); }
-html.stack-page .footer-legal-links { font-size: var(--t-xs); margin: var(--s2) 0; display: flex; gap: var(--s1); align-items: center; justify-content: center; }
-html.stack-page .footer-legal { font-size: var(--t-xs); color: var(--wash); }
+html.stack-page .footer-switcher { display: flex; gap: var(--s1); justify-content: center; flex-wrap: wrap; }
+html.stack-page .footer-legal { font-size: var(--t-micro); color: var(--wash); }
 
 /* Cross-domain departure gate */
 html.stack-page .flip-gate { position: fixed; inset: 0; background: var(--a-ink-45); display: flex; align-items: center; justify-content: center; z-index: 90; }
-/* MUST FOLLOW THE RULE ABOVE. `display:flex` on a class selector is specificity 0,2,1 and
-   beats the user-agent stylesheet's `[hidden] { display:none }` at 0,1,0, so without this the
-   hidden attribute is inert and the departure gate renders permanently: a 45% ink overlay over
-   the whole viewport that tints the page and swallows every click. Shipped that way to preview
-   on 2026-09-04 and caught by the owner looking at it. */
+/* MUST FOLLOW THE RULE ABOVE. `display:flex` on a class selector is specificity 0,2,1
+   and beats the user-agent stylesheet's `[hidden] { display:none }` at 0,1,0, so without
+   this the hidden attribute is inert and the gate renders permanently over the page. */
 html.stack-page .flip-gate[hidden] { display: none; }
 html.stack-page .flip-gate-box { background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: var(--s4); max-width: 420px; box-shadow: 0 8px 28px var(--a-ink-16); }
+html.stack-page .flip-gate-msg { margin: 0 0 var(--s3); color: var(--ink); font-size: var(--t-md); }
 html.stack-page .flip-gate-actions { display: flex; gap: var(--s2); justify-content: flex-end; }
 html.stack-page .flip-gate-go { pointer-events: none; color: var(--wash); text-decoration: none; font-weight: 600; }
 html.stack-page .flip-gate-go.ready { pointer-events: auto; color: var(--accent-text); }
@@ -284,29 +247,46 @@ html.stack-page .flip-gate-cancel { font-family: var(--f-sans); font-size: var(-
 /* ============ 5. UTILITIES ============ */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .measure { max-width: var(--measure); }
-.stack-gap { margin-top: var(--s5); }
 .quiet { color: var(--wash); }
 
 /* ============ 6. STATE ============ */
-html.stack-page .form-status.ok  { color: var(--ok); }
-html.stack-page .form-status.err { color: var(--err); }
-html.stack-page .signup-form input:focus, html.stack-page .signup-form select:focus, html.stack-page .signup-form textarea:focus { border-color: var(--accent); background: var(--paper); }
-html.stack-page .signup-form .invalid { border-color: var(--err); }
-html.stack-page .pcard:hover { border-color: var(--accent); box-shadow: 0 2px 10px var(--a-ink-08); }
-html.stack-page .nav-toggle { display: none; background: transparent; border: 1px solid var(--rule); border-radius: 3px; color: var(--ink); font-size: var(--t-lg); padding: 0 var(--s2); cursor: pointer; }
+html.stack-page .nav-toggle { display: none; background: transparent; border: 1px solid var(--rule); border-radius: 3px; color: var(--ink); font-size: var(--t-lg); padding: 0 var(--s2); cursor: pointer; align-items: center; }
 
 /* ============ 7. MEDIA AND MOTION ============ */
 @media (max-width: 860px) {
-  /* The grid minimums (320px and 420px) exceed a phone's content width, so auto-fit keeps a
-     track wider than the viewport and the document scrolls sideways. I17 caught this at 375:
-     scrollWidth 448 against clientWidth 375. One column below the breakpoint. */
-  .grid-3, .grid-2 { grid-template-columns: 1fr; }
-  .nav { flex-wrap: wrap; gap: var(--s2); }
-  .nav-links { gap: var(--s3); flex-wrap: wrap; }
-  .panel { padding: var(--s5) 0; }
-  h1 { font-size: var(--t-3xl); }
-  html.stack-page .lockup-frame { padding: 38px 28px 24px; }
-  html.stack-page .lockup-word { font-size: var(--t-4xl); }
+  /* The header wrapped to three rows at 375 and cost 180px, a quarter of the viewport.
+     One tight row of links, the two site tabs beside them, smaller type. */
+  .nav { flex-wrap: wrap; gap: var(--s1); justify-content: center; padding: var(--s1) var(--s2); }
+  .nav-right { margin-left: 0; flex-wrap: wrap; justify-content: center; gap: var(--s2); width: 100%; }
+  .nav-links { gap: var(--s2); flex-wrap: wrap; justify-content: center; }
+  .nav-links a { font-size: var(--t-xs); }
+  .site-header { position: static; min-height: 0; }
+  html.stack-page .nav-name { font-size: var(--t-2xl); }
+  html.stack-page .tab { padding: 2px var(--s1); }
+  /* Buttons stack on a phone, so three of them at desktop padding is 255px of the screen. */
+  html.stack-page .btn { padding: var(--s1) var(--s3); font-size: var(--t-xs); }
+  html.stack-page .footer-panel { padding: var(--s1) var(--s2); }
+  html.stack-page .direct { font-size: var(--t-xs); }
+  /* The demos button is the one CTA whose destination is already one tap away in the nav
+     as "Products", so on a phone it is the one to drop. The other two, Connect and About,
+     have no nav-adjacent equivalent that carries the same intent. */
+  html.stack-page .cta-row .btn-demos { display: none; }
+  html.stack-page .hero-lockup { margin-bottom: var(--s2); }
+  html.stack-page .lockup-frame { padding: 24px 18px 16px; }
+  html.stack-page .lockup-mark { top: -24px; }
+  html.stack-page .lockup-mark svg { width: 44px; height: 44px; }
+  /* MEASURED, not guessed: at 375 the header and the compacted footer together occupy
+     261px, so reserving 132 left the screen 129px too tall and shrinking the content
+     changed nothing. The reservation is the binding constraint, not the content. */
+  .screen { min-height: calc(100svh - 264px); padding: var(--s2) 0; }
+  html.stack-page .lockup-frame { padding: 30px 22px 20px; }
+  html.stack-page .lockup-mark { top: -30px; }
+  html.stack-page .lockup-mark svg { width: 56px; height: 56px; }
+  html.stack-page .lockup-word { font-size: var(--t-3xl); }
+  html.stack-page .lockup-tag { font-size: var(--t-micro); }
+  html.stack-page .headline { font-size: var(--t-2xl); }
+  html.stack-page .lede { font-size: var(--t-md); }
+  html.stack-page .cta-row { flex-direction: column; align-items: stretch; }
 }
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
@@ -317,15 +297,15 @@ html.stack-page .nav-toggle { display: none; background: transparent; border: 1p
 
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
-    <a class="nav-name" href="#home">MICRO <span class="nav-name-sub">Group</span></a>
+    <a class="nav-name" href="/">MICRO<span class="nav-name-sub"> Group</span></a>
     <button class="nav-toggle" aria-label="Menu">&#9776;</button>
     <div class="nav-right">
       <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
+        <li><a href="about.html#services">Services</a></li>
         <li><a href="demo.html">Products</a></li>
         <li><a href="demo-pricing.html">Pricing</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a id="nav-connect" href="#contact">Connect</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a id="nav-connect" href="contact.html">Connect</a></li>
       </ul>
       <div class="site-flip">
         <a href="https://jonathanlindavis.com" class="tab" data-leave="You are leaving Microgroup.info and travelling to Jonathanlindavis.com.">Open Data</a>
@@ -346,13 +326,21 @@ html.stack-page .nav-toggle { display: none; background: transparent; border: 1p
 </div>
 
 <main>
-
-  <section id="home" class="panel">
+  <!-- THE CONTACT ANCHOR BELOW IS A SITE-WIDE CONTRACT: 40 links across 22 files point at
+       /#contact. This comment deliberately does NOT spell the attribute out, because R2's
+       signal counts occurrences over the whole file and a comment mentioning it reads as a
+       second one.
+       The form now lives on contact.html, so this region carries the anchor AND a working
+       ask that reaches the form in one click. Dropping the id here would silently break
+       all forty, and a visitor arriving on the hash would land at the top of the page
+       with no idea they had been sent anywhere. -->
+  <section id="home" class="screen">
     <div class="wrap">
+
       <div class="hero-lockup">
         <div class="lockup-frame">
           <div class="lockup-mark">
-            <svg width="66" height="66" viewBox="0 0 100 100" role="img" aria-label="MICRO Group mark: a queen, a king and a rook"><g transform="translate(20,76)"><polygon points="0,0 -12,0 -7.7,-6.2 -8.4,-6.2 -8.4,-9.4 -6.8,-9.4 -4.2,-31 -6.2,-31 -7.9,-37 0,-37" fill="var(--plate-ink)"/><polygon points="0,0 12,0 7.7,-6.2 8.4,-6.2 8.4,-9.4 6.8,-9.4 4.2,-31 6.2,-31 7.9,-37 0,-37" fill="var(--plate-gold)"/><polygon points="-8.7,-36.2 -4.1000000000000005,-36.2 -6.4,-40.9" fill="var(--plate-ink)"/><polygon points="-5.5,-36.2 -0.9000000000000004,-36.2 -3.2,-42.5" fill="var(--plate-ink)"/><polygon points="-2.3,-36.2 0,-36.2 0,-43.3" fill="var(--plate-ink)"/><polygon points="0,-36.2 2.3,-36.2 0,-43.3" fill="var(--plate-gold)"/><polygon points="0.9000000000000004,-36.2 5.5,-36.2 3.2,-42.5" fill="var(--plate-gold)"/><polygon points="4.1000000000000005,-36.2 8.7,-36.2 6.4,-40.9" fill="var(--plate-gold)"/><rect x="-8.4" y="-8.3" width="16.8" height="1.0" fill="var(--plate-paper)"/><rect x="-5.7" y="-19.5" width="11.4" height="1.0" fill="var(--plate-paper)"/><rect x="-6.8" y="-33.5" width="13.6" height="1.0" fill="var(--plate-paper)"/></g><g transform="translate(50,76)"><polygon points="0,0 -13,0 -8.4,-6.4 -9,-6.4 -9,-9.6 -7.2,-9.6 -4.6,-32 -6.8,-32 -9,-40 -1.6,-40 -1.6,-45.6 -5,-45.6 -5,-48.6 -1.6,-48.6 -1.6,-52.5 0,-52.5" fill="var(--plate-ink)"/><polygon points="0,0 13,0 8.4,-6.4 9,-6.4 9,-9.6 7.2,-9.6 4.6,-32 6.8,-32 9,-40 1.6,-40 1.6,-45.6 5,-45.6 5,-48.6 1.6,-48.6 1.6,-52.5 0,-52.5" fill="var(--plate-gold)"/><rect x="-9.0" y="-8.5" width="18.0" height="1.0" fill="var(--plate-paper)"/><rect x="-6.1" y="-20.5" width="12.2" height="1.0" fill="var(--plate-paper)"/><rect x="-7.9" y="-36.5" width="15.8" height="1.0" fill="var(--plate-paper)"/></g><g transform="translate(80,76)"><polygon points="0,0 -12.5,0 -8.1,-6.2 -9,-6.2 -9,-9 -7.6,-9 -7.4,-25 -9.4,-25 -9.4,-36.8 -5.6,-36.8 -5.6,-31.2 -2.0,-31.2 -2.0,-36.8 0,-36.8" fill="var(--plate-ink)"/><polygon points="0,0 12.5,0 8.1,-6.2 9,-6.2 9,-9 7.6,-9 7.4,-25 9.4,-25 9.4,-36.8 5.6,-36.8 5.6,-31.2 2.0,-31.2 2.0,-36.8 0,-36.8" fill="var(--plate-gold)"/><rect x="-9.0" y="-8.1" width="18.0" height="1.0" fill="var(--plate-paper)"/><rect x="-7.5" y="-17.5" width="15.0" height="1.0" fill="var(--plate-paper)"/><rect x="-9.4" y="-27.0" width="18.8" height="1.0" fill="var(--plate-paper)"/></g></svg>
+            <svg width="86" height="86" viewBox="0 0 100 100" role="img" aria-label="MICRO Group mark: a queen, a king and a rook"><g transform="translate(20,76)"><polygon points="0,0 -12,0 -7.7,-6.2 -8.4,-6.2 -8.4,-9.4 -6.8,-9.4 -4.2,-31 -6.2,-31 -7.9,-37 0,-37" fill="var(--plate-ink)"/><polygon points="0,0 12,0 7.7,-6.2 8.4,-6.2 8.4,-9.4 6.8,-9.4 4.2,-31 6.2,-31 7.9,-37 0,-37" fill="var(--plate-gold)"/><polygon points="-8.7,-36.2 -4.1000000000000005,-36.2 -6.4,-40.9" fill="var(--plate-ink)"/><polygon points="-5.5,-36.2 -0.9000000000000004,-36.2 -3.2,-42.5" fill="var(--plate-ink)"/><polygon points="-2.3,-36.2 0,-36.2 0,-43.3" fill="var(--plate-ink)"/><polygon points="0,-36.2 2.3,-36.2 0,-43.3" fill="var(--plate-gold)"/><polygon points="0.9000000000000004,-36.2 5.5,-36.2 3.2,-42.5" fill="var(--plate-gold)"/><polygon points="4.1000000000000005,-36.2 8.7,-36.2 6.4,-40.9" fill="var(--plate-gold)"/><rect x="-8.4" y="-8.3" width="16.8" height="1.0" fill="var(--plate-paper)"/><rect x="-5.7" y="-19.5" width="11.4" height="1.0" fill="var(--plate-paper)"/><rect x="-6.8" y="-33.5" width="13.6" height="1.0" fill="var(--plate-paper)"/></g><g transform="translate(50,76)"><polygon points="0,0 -13,0 -8.4,-6.4 -9,-6.4 -9,-9.6 -7.2,-9.6 -4.6,-32 -6.8,-32 -9,-40 -1.6,-40 -1.6,-45.6 -5,-45.6 -5,-48.6 -1.6,-48.6 -1.6,-52.5 0,-52.5" fill="var(--plate-ink)"/><polygon points="0,0 13,0 8.4,-6.4 9,-6.4 9,-9.6 7.2,-9.6 4.6,-32 6.8,-32 9,-40 1.6,-40 1.6,-45.6 5,-45.6 5,-48.6 1.6,-48.6 1.6,-52.5 0,-52.5" fill="var(--plate-gold)"/><rect x="-9.0" y="-8.5" width="18.0" height="1.0" fill="var(--plate-paper)"/><rect x="-6.1" y="-20.5" width="12.2" height="1.0" fill="var(--plate-paper)"/><rect x="-7.9" y="-36.5" width="15.8" height="1.0" fill="var(--plate-paper)"/></g><g transform="translate(80,76)"><polygon points="0,0 -12.5,0 -8.1,-6.2 -9,-6.2 -9,-9 -7.6,-9 -7.4,-25 -9.4,-25 -9.4,-36.8 -5.6,-36.8 -5.6,-31.2 -2.0,-31.2 -2.0,-36.8 0,-36.8" fill="var(--plate-ink)"/><polygon points="0,0 12.5,0 8.1,-6.2 9,-6.2 9,-9 7.6,-9 7.4,-25 9.4,-25 9.4,-36.8 5.6,-36.8 5.6,-31.2 2.0,-31.2 2.0,-36.8 0,-36.8" fill="var(--plate-gold)"/><rect x="-9.0" y="-8.1" width="18.0" height="1.0" fill="var(--plate-paper)"/><rect x="-7.5" y="-17.5" width="15.0" height="1.0" fill="var(--plate-paper)"/><rect x="-9.4" y="-27.0" width="18.8" height="1.0" fill="var(--plate-paper)"/></g></svg>
           </div>
           <div class="lockup-word">MICRO<em> Group</em></div>
           <div class="lockup-rule"></div>
@@ -360,225 +348,36 @@ html.stack-page .nav-toggle { display: none; background: transparent; border: 1p
         </div>
       </div>
 
-      <h1>Research, data, and operations capacity for nonprofits and public institutions</h1>
+      <h1 class="headline">Research, data, and operations capacity for nonprofits and public institutions</h1>
 
-      <p class="lede">MICRO Group, L.L.C. is a strategic, research-driven consultancy serving nonprofit, government, and nonpartisan policy organizations, through expertise in Management, Integration, Culture, Research, and Operations.</p>
+      <p class="lede">A strategic, research-driven consultancy serving nonprofit, government, and nonpartisan policy organizations across Texas.</p>
 
-      <div class="roles">
-        <span>Management</span><span>Integration</span><span>Culture</span><span>Research</span><span>Operations</span>
+
+      <div id="contact" class="cta-row">
+        <a class="btn btn-solid" href="contact.html">Book a free thirty-minute consultation</a>
+        <a class="btn btn-ghost" href="about.html">What we do</a>
+        <a class="btn btn-ghost btn-demos" href="demo.html">See the product demos</a>
       </div>
 
-      <div class="cta-row">
-        <a class="btn btn-solid" href="#contact">Book a free thirty-minute consultation</a>
-        <a class="btn btn-ghost" href="demo.html">See the product demos</a>
-      </div>
+      <p class="direct">Or email <a href="mailto:jonathan@microgroup.info">jonathan@microgroup.info</a> directly.</p>
 
-      <div class="problem" data-block="problem">
-        <p>Most small organizations are told they need research and data capacity they cannot afford to staff. The work still has to happen: grants researched, bills tracked, systems integrated, results measured. So it lands on people hired to do something else, and it competes with the mission they were hired for.</p>
-      </div>
     </div>
   </section>
-
-  <section id="services" class="panel">
-    <div class="wrap">
-      <div class="shead">
-        <h2>Services</h2>
-        <p class="intro">Five consulting disciplines. Each one names what is done and what you receive.</p>
-      </div>
-
-      <div class="grid-3">
-        <article class="pcard"><h4 class="pcard-title">Management</h4><p class="pcard-desc">Strategic direction and leadership capacity for institutions in transition or growth, including interim and fractional leadership while a permanent hire is recruited.</p></article>
-        <article class="pcard"><h4 class="pcard-title">Integration</h4><p class="pcard-desc">Programs, teams, software, and data brought into one working system, including donor and constituent database management, with training for the people who use it.</p></article>
-        <article class="pcard"><h4 class="pcard-title">Culture</h4><p class="pcard-desc">Team building, employee engagement, and facilitation for organizations through change, delivered as structured sessions with written follow-through rather than a single workshop.</p></article>
-        <article class="pcard"><h4 class="pcard-title">Research</h4><p class="pcard-desc">Applied research grounded in the founder's legislative background: policy and bill analysis, committee and district-level data, and funding landscape review.</p></article>
-        <article class="pcard"><h4 class="pcard-title">Operations</h4><p class="pcard-desc">Operational management: process documentation, vendor and contract review, and reporting systems, so the work does not depend on one person's memory.</p></article>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn btn-solid" href="#contact">Book a free thirty-minute consultation</a>
-      </div>
-
-      <div class="stack-gap">
-        <h3>Who we serve</h3>
-        <div class="grid-3">
-          <article class="pcard"><h4 class="pcard-title">Nonprofit</h4><p class="pcard-desc">National and local organizations across a range of missions, including the grant-seeking software this firm builds and sells.</p></article>
-          <article class="pcard"><h4 class="pcard-title">Government</h4><p class="pcard-desc">Municipal, state, and federal agencies and public departments.</p></article>
-          <article class="pcard"><h4 class="pcard-title">Policy and Legislative</h4><p class="pcard-desc">Nonpartisan policy analysis, bill and committee research, and district-level data for advocacy organizations and public agencies.</p></article>
-        </div>
-      </div>
-
-      <div class="stack-gap scope" data-block="scope">
-        <h3>How the policy practice is scoped</h3>
-        <p>The legislative and policy practice is nonpartisan. It covers bill and committee analysis, district-level data, and administrative research for organizations on any side of an issue. It does not include partisan campaign work, and nonprofit and government engagements are never staffed from it.</p>
-      </div>
-
-      <div class="stack-gap">
-        <h3>Products</h3>
-        <div class="grid-3">
-          <article class="pcard"><h4 class="pcard-title">Product demo hub</h4><p class="pcard-desc">Every product demo in one place. Almanac, Scribe, Docket, and Confluence are live and inspectable today.</p><a class="pcard-open" href="demo.html">Open <span class="arr">&rarr;</span></a></article>
-          <article class="pcard"><h4 class="pcard-title">Pricing</h4><p class="pcard-desc">The full rate card for every live product, plus a request-pricing form.</p><a class="pcard-open" href="demo-pricing.html">Open <span class="arr">&rarr;</span></a></article>
-          <article class="pcard"><h4 class="pcard-title">Referral program</h4><p class="pcard-desc">Refer an organization to Almanac or Scribe and earn 5% of their first-year subscription as a one-time bonus.</p><a class="pcard-open" href="demo-referrals.html">Open <span class="arr">&rarr;</span></a></article>
-        </div>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn btn-solid" href="#contact">Book a free thirty-minute consultation</a>
-        <span class="quiet">Or email <a href="mailto:jonathan@microgroup.info">jonathan@microgroup.info</a> directly.</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="panel">
-    <div class="wrap">
-      <div class="shead">
-        <h2>What we can show you</h2>
-        <p class="intro">Named methods, a named person, and published terms, rather than claimed outcomes.</p>
-      </div>
-
-      <div data-block="proof">
-        <div class="proof-person">
-          <h3>Jonathan Lin Davis, founder</h3>
-          <p class="measure">Jonathan Lin Davis founded MICRO Group, L.L.C. and leads every engagement. The applied research practice is grounded in his legislative background, which is the basis for the bill, committee, and district-level work described above.</p>
-        </div>
-
-        <div class="grid-2">
-          <div class="proof-item">
-            <h4>Funding landscape review</h4>
-            <p>A written map of the funders active in your subject and geography, with filing-year evidence for each, delivered as a spreadsheet and a short memo you keep.</p>
-          </div>
-          <div class="proof-item">
-            <h4>Bill and committee tracking</h4>
-            <p>Named bills followed through committee with plain-language summaries of what changed and what it means for your organization, on whatever cadence the session requires.</p>
-          </div>
-          <div class="proof-item">
-            <h4>Inspectable software</h4>
-            <p>Almanac, Scribe, Docket, and Confluence are live and can be walked through before any commitment. The demo hub is open and needs no call first.</p>
-          </div>
-          <div class="proof-item">
-            <h4>Registered entity and footprint</h4>
-            <p>MICRO Group, L.L.C. operates across four Texas counties: Austin-Travis, San Antonio-Bexar, the Dallas-Fort Worth Metro, and Houston-Harris. Requests from beyond that footprint are accepted worldwide.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="stack-gap terms" data-block="terms">
-        <h3>Infrastructure and updates</h3>
-        <span class="terms-figure">$2,000/year</span>
-        <p>A flat plan covering ongoing technical support and system updates for every product an organization has purchased, billed once per organization rather than once per product.</p>
-        <p class="quiet">Every other engagement, including the consulting disciplines above, is scoped and priced individually. The full rate card is published.</p>
-        <a class="pcard-open" href="demo-pricing.html">See the rate card <span class="arr">&rarr;</span></a>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn btn-solid" href="#contact">Book a free thirty-minute consultation</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="panel">
-    <div class="wrap">
-      <div class="shead">
-        <h2>Get in touch</h2>
-        <p class="intro">Every engagement begins with a free thirty-minute consultation.</p>
-      </div>
-
-      <p class="direct">Prefer email, or the form does not work for you? Write to <a href="mailto:jonathan@microgroup.info">jonathan@microgroup.info</a> and it reaches the same place. The form below needs JavaScript; the address does not. The same offer is also on the <a href="contact.html">full contact page</a>.</p>
-
-      <form id="contact-form" class="signup-form" novalidate>
-        <div class="form-grid">
-          <div class="form-row">
-            <label for="first_name">First name</label>
-            <input type="text" id="first_name" name="first_name" autocomplete="given-name" required>
-          </div>
-          <div class="form-row">
-            <label for="last_name">Last name</label>
-            <input type="text" id="last_name" name="last_name" autocomplete="family-name" required>
-          </div>
-        </div>
-
-        <div class="form-grid">
-          <div class="form-row">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email" required>
-          </div>
-          <div class="form-row">
-            <label for="phone">Cell number <span class="opt-tag">optional</span></label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <label for="organization">Organization <span class="opt-tag">optional</span></label>
-          <input type="text" id="organization" name="organization" autocomplete="organization">
-        </div>
-
-        <div class="form-row">
-          <label for="purpose">Purpose for contacting <span class="opt-tag">optional</span></label>
-          <select id="purpose" name="purpose">
-            <option value="">Select one&hellip;</option>
-            <option value="Consulting">Consulting (Management, Integration, Culture, Research, Operations)</option>
-            <option value="Custom build">A custom or individualized build</option>
-            <option value="Almanac">Almanac</option>
-            <option value="Scribe">Scribe</option>
-            <option value="Docket">Docket</option>
-            <option value="Confluence">Confluence</option>
-            <option value="Funder match">Funder match</option>
-            <option value="Reconciliation check">Reconciliation check</option>
-            <option value="Peer benchmark">Peer benchmark</option>
-            <option value="Review">Request a review</option>
-            <option value="General enquiry">General enquiry</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-
-        <div class="form-row">
-          <label for="referral">How did you hear about us? <span class="opt-tag">optional</span></label>
-          <input type="text" id="referral" name="referral">
-        </div>
-
-        <div class="form-row">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-        </div>
-
-        <div class="hp-field" aria-hidden="true">
-          <label for="company_website">Company website</label>
-          <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
-        </div>
-
-        <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
-
-        <div class="form-actions">
-          <button type="submit" class="btn btn-solid" id="contact-submit">Book a free thirty-minute consultation</button>
-        </div>
-
-        <p class="form-privacy">We collect only what you enter here. We do not share your information with anyone. We may use it to add you to our newsletter or otherwise keep you updated on our work, but we will not sell your information to third parties.</p>
-      </form>
-    </div>
-  </section>
-
-  <section id="footer" class="footer-panel">
-    <div class="wrap">
-      <div class="footer-brand">
-        <div class="footer-slogan">A Measured Approach to Your <u>Goals</u></div>
-      </div>
-      <div class="footer-switcher">
-        <div class="footer-switcher-label">Site index</div>
-        <div class="switcher">
-          <a href="public-index.html" class="tab">Public</a>
-          <a href="private-index" class="tab">Private</a>
-        </div>
-      </div>
-      <div class="footer-credit">This website was created and is managed by MICRO Group, L.L.C.<br>1801 E 51st St., STE 365, PMB 354, Austin, Texas</div>
-      <div class="footer-license">CC BY 4.0 data, MIT code.</div>
-      <div class="footer-legal-links"><a href="privacy.html">Privacy</a><span>&middot;</span><a href="security.html">Security</a></div>
-      <div class="footer-legal">© <span id="yr"></span> MICRO Group, L.L.C. All rights reserved. Austin, Texas.</div>
-    </div>
-  </section>
-
 </main>
 
-<script src="site.js"></script>
+<footer class="footer-panel">
+  <div class="wrap footer-row">
+    <div class="footer-slogan">A Measured Approach to Your <u>Goals</u></div>
+    <div class="footer-switcher">
+      <a href="public-index.html" class="tab">Public</a>
+      <a href="private-index" class="tab">Private</a>
+      <a href="privacy.html" class="tab">Privacy</a>
+      <a href="security.html" class="tab">Security</a>
+    </div>
+    <div class="footer-legal">&copy; <span id="yr"></span> MICRO Group, L.L.C. All rights reserved. Austin, Texas. 1801 E 51st St., STE 365, PMB 354. CC BY 4.0 data, MIT code.</div>
+  </div>
+</footer>
+
 <script>
 (function(){
   var yr = document.getElementById('yr');
