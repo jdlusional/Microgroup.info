@@ -207,6 +207,11 @@ html.stack-page .flip-gate[hidden] { display: none; }
 html.stack-page .flip-gate-box { background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: var(--s4); max-width: 420px; box-shadow: 0 8px 28px var(--a-ink-16); }
 html.stack-page .flip-gate-msg { margin: 0 0 var(--s3); color: var(--ink); font-size: var(--t-md); }
 html.stack-page .flip-gate-actions { display: flex; gap: var(--s2); justify-content: flex-end; }
+/* The countdown number. Given a REAL RULE rather than a per-page I1 waiver: this
+   component now travels with the header convention, so every page that adopts the
+   convention would otherwise need its own waiver for the same class. A rule scales
+   where a waiver list does not. */
+html.stack-page .flip-gate-count { font-variant-numeric: tabular-nums; font-weight: 700; }
 html.stack-page .flip-gate-go { pointer-events: none; color: var(--wash); text-decoration: none; font-weight: 600; }
 html.stack-page .flip-gate-go.ready { pointer-events: auto; color: var(--accent-text); }
 html.stack-page .flip-gate-cancel { font-family: var(--f-sans); font-size: var(--t-md); background: transparent; border: 1px solid var(--rule); border-radius: 3px; padding: var(--s1) var(--s3); color: var(--ink); cursor: pointer; }
