@@ -62,13 +62,18 @@ def measure():
     inbound_files = 0
     contact_linkers = []
     for p in html_files:
-        if os.path.abspath(p) == os.path.abspath(INDEX):
-            continue
         s = io.open(p, encoding="utf-8", errors="replace").read()
-        c = n(r'href="/#contact"', s)
-        if c:
-            inbound += c
-            inbound_files += 1
+        is_index = os.path.abspath(p) == os.path.abspath(INDEX)
+        # The inbound-anchor count is deliberately EXCLUSIVE of index.html: it measures what
+        # would break if the anchor were dropped, and a self-link cannot break.
+        if not is_index:
+            c = n(r'href="/#contact"', s)
+            if c:
+                inbound += c
+                inbound_files += 1
+        # The contact.html linker list is deliberately INCLUSIVE of index.html, because R24's
+        # signal is "moves from 3 to 4 WITH index.html in the list". Two different questions
+        # over the same walk, and conflating them read 3 when the answer was 4.
         if n(r'href="contact\.html"', s):
             contact_linkers.append(os.path.basename(p))
 
