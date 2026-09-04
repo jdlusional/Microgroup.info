@@ -149,6 +149,12 @@ html.stack-page .mg-wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; 
    and the two tabs share one optical centreline instead of sitting on their own
    baselines. Every child that could set its own baseline centres too. */
 .site-header {
+  /* SELF-CONTAINED ON PURPOSE. Identical chrome CSS still rendered three
+     different fonts across ten pages, because these elements INHERITED font-family from
+     each host page's own body and tool-shared.css. Every inherited text property is reset
+     here so the chrome looks the same wherever it is stamped. */
+  font-family: var(--f-sans); font-size: var(--t-base); font-weight: 400; font-style: normal;
+  line-height: 1.6; letter-spacing: normal; text-transform: none; color: var(--ink);
   position: sticky; top: 0; z-index: 40;
   background: var(--a-paper-92);
   backdrop-filter: saturate(1.4) blur(8px);
@@ -160,7 +166,7 @@ html.stack-page .mg-wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; 
 .nav { display: flex; align-items: center; gap: var(--s4); width: 100%; max-width: var(--maxw); margin: 0 auto; padding: var(--s2) var(--s4); }
 .nav-right { display: flex; align-items: center; gap: var(--s4); margin-left: auto; }
 .nav-links { display: flex; align-items: center; gap: var(--s4); list-style: none; margin: 0; padding: 0; }
-.nav-links a { color: var(--ink); text-decoration: none; font-size: var(--t-md); font-weight: 500; display: flex; align-items: center; }
+.nav-links a { font-family: var(--f-sans); color: var(--ink); text-decoration: none; font-size: var(--t-md); font-weight: 500; display: flex; align-items: center; letter-spacing: normal; text-transform: none; }
 .nav-links a:hover { color: var(--accent-text); text-decoration: underline; }
 /* Wordmark. THE HEADER AND THE LOCKUP ARE THE SAME FACE BY CONSTRUCTION: both read
    var(--f-serif) and both italicise the second word, so the header cannot drift away
@@ -168,19 +174,21 @@ html.stack-page .mg-wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; 
 html.stack-page .nav-name { font-family: var(--f-serif); font-size: var(--t-3xl); font-weight: 400; color: var(--plate-ink); text-decoration: none; letter-spacing: -.01em; line-height: 1; display: inline-block; }
 html.stack-page .nav-name-sub { font-style: italic; font-weight: 400; }
 /* Site switchers */
-html.stack-page .mg-tab { font-size: var(--t-xs); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; text-decoration: none; color: var(--accent-text); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); display: flex; align-items: center; }
+html.stack-page .mg-tab { font-family: var(--f-sans); font-size: var(--t-xs); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; text-decoration: none; color: var(--accent-text); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); display: flex; align-items: center; }
 html.stack-page .mg-tab.active { background: var(--accent-fill); color: var(--paper); border-color: var(--accent-fill); }
 html.stack-page .site-flip { display: flex; align-items: center; gap: var(--s1); }
 /* Footer, one compact band. It is deliberately the smallest thing on the page: on the
    first measurement of this layout the footer was 234px of a 290px overflow, which is
    what stopped the landing view being one screen. */
-html.stack-page .footer-panel { background: var(--well); padding: var(--s2) var(--s4); border-top: 1px solid var(--rule); text-align: center; }
+html.stack-page .footer-panel { background: var(--well); padding: var(--s2) var(--s4); border-top: 1px solid var(--rule); text-align: center;
+  font-family: var(--f-sans); font-size: var(--t-base); font-weight: 400; font-style: normal;
+  line-height: 1.6; letter-spacing: normal; text-transform: none; color: var(--ink); }
 html.stack-page .mg-wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--s4); }
 html.stack-page .footer-row { display: flex; flex-direction: column; align-items: center; gap: var(--s1); }
-html.stack-page .footer-slogan { font-family: var(--f-mono); font-size: var(--t-micro); letter-spacing: .06em; color: var(--plate-wash); }
+html.stack-page .footer-slogan { font-family: var(--f-mono); font-size: var(--t-micro); font-weight: 400; letter-spacing: .06em; color: var(--plate-wash); line-height: 1.6; }
 html.stack-page .footer-slogan u { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 html.stack-page .footer-switcher { display: flex; gap: var(--s1); justify-content: center; flex-wrap: wrap; }
-html.stack-page .footer-legal { font-size: var(--t-micro); color: var(--wash); }
+html.stack-page .footer-legal { font-family: var(--f-sans); font-size: var(--t-micro); color: var(--wash); line-height: 1.6; letter-spacing: normal; }
 /* Cross-domain departure gate */
 html.stack-page .flip-gate { position: fixed; inset: 0; background: var(--a-ink-45); display: flex; align-items: center; justify-content: center; z-index: 90; }
 /* MUST FOLLOW THE RULE ABOVE. `display:flex` on a class selector is specificity 0,2,1
