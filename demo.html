@@ -57,8 +57,22 @@ a{color:inherit;text-decoration:none}
 .sc-go{display:inline-block;font-family:var(--mono);font-size:.8rem;letter-spacing:.02em;font-weight:500;color:#fff;background:var(--urgent);padding:.55rem 1.1rem}
 .sc-go:hover{background:var(--ink)}
 /* Foot-note convention (owner order, 2026-07-30): standing pattern for the
-   link-row + custom-build note under a product family's card grid -- centered,
-   not left-aligned like ordinary body copy. */
+   content block under a product family's card grid -- centered, not left-aligned
+   like ordinary body copy.
+   AMENDED 2026-09-05 by a later owner order, and the amendment is recorded here
+   because a superseded standing order that nobody marks as superseded is how a
+   later pass reinstates it. The 2026-07-30 order named this the pattern for the
+   "link-row + custom-build note"; the 2026-09-05 order removed that link row and
+   that note from this page outright, and the newer order wins.
+   WHAT STILL STANDS, checked rather than assumed: the CONTAINER convention is
+   live on two pages, this one and enterprise.html, and neither now carries the
+   link-row-plus-custom-build-note shape the original order named. Here the block
+   holds the .why-grid cards; on enterprise.html it holds a disclosure paragraph.
+   So the geometry rule below is current and the CONTENT half of the 2026-07-30
+   order is retired.
+   DO NOT RENAME OR REMOVE THIS DIV. build_demo_catalog.py anchors the end of its
+   generated card region on the literal string <div class="foot-note"> and aborts
+   the build if it cannot find it. */
 .foot-note{max-width:1000px;margin:0 auto;padding:0 1.5rem 3rem;color:var(--wash);font-size:.93rem;text-align:center}
 .picker-subhead{max-width:1120px;margin:2.4rem auto .9rem;padding:0 1.5rem;text-align:center;font-family:var(--serif);font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;color:var(--wash)}
 .picker-subhead:first-of-type{margin-top:0}

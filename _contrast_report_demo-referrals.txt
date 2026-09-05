@@ -7,16 +7,18 @@ PASS    5.01  need 4.5  --plate-wash  on --well         12.00px/400 normal  html
 PASS    5.50  need 4.5  --plate-wash  on --paper        12.00px/400 normal  html.stack-page .footer-slogan
 PASS    5.58  need 4.5  --accent-text on --well         12.48px/600 normal  /* Site switchers */
 html.stack-page .mg-tab
+PASS    5.58  need 4.5  --accent-text on --well         12.48px/700 normal  .term-card::before
 PASS    5.58  need 4.5  --accent-text on --well         16.00px/400 normal  .nav-links a:hover
 PASS    5.58  need 4.5  --accent-text on --well         16.00px/400 normal  html.stack-page .flip-gate-go.ready
 PASS    5.58  need 4.5  --accent-text on --well         16.00px/700 normal  .rate-card .pc-amount
 PASS    5.58  need 4.5  --accent-text on --well         16.00px/700 normal  /* The current page's own nav item. Set at load by the chr
 PASS    5.66  need 4.5  --wash        on --well         12.00px/400 normal  /* A colophon is the page's own end-note, distinct from th
 PASS    5.66  need 4.5  --wash        on --well         12.00px/400 normal  html.stack-page .footer-legal
-PASS    5.66  need 4.5  --wash        on --well         16.00px/400 normal  .section-head p
+PASS    5.66  need 4.5  --wash        on --well         15.20px/400 normal  .section-head p
 PASS    5.66  need 4.5  --wash        on --well         16.00px/600 normal  html.stack-page .flip-gate-go
 PASS    6.12  need 4.5  --accent-text on --paper        12.48px/600 normal  /* Site switchers */
 html.stack-page .mg-tab
+PASS    6.12  need 4.5  --accent-text on --paper        12.48px/700 normal  .term-card::before
 PASS    6.12  need 4.5  --accent-text on --paper        16.00px/400 normal  .nav-links a:hover
 PASS    6.12  need 4.5  --accent-text on --paper        16.00px/400 normal  html.stack-page .flip-gate-go.ready
 PASS    6.12  need 4.5  --accent-text on --paper        16.00px/700 normal  .rate-card .pc-amount
@@ -24,27 +26,25 @@ PASS    6.12  need 4.5  --accent-text on --paper        16.00px/700 normal  /* T
 PASS    6.12  need 4.5  --paper       on --accent-fill  16.00px/400 normal  html.stack-page .mg-tab.active
 PASS    6.21  need 4.5  --wash        on --paper        12.00px/400 normal  /* A colophon is the page's own end-note, distinct from th
 PASS    6.21  need 4.5  --wash        on --paper        12.00px/400 normal  html.stack-page .footer-legal
-PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  .section-head p
+PASS    6.21  need 4.5  --wash        on --paper        15.20px/400 normal  .section-head p
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/600 normal  html.stack-page .flip-gate-go
-PASS    9.85  need 4.5  --ink         on --well         15.20px/400 normal  .steps p
+PASS    9.85  need 3.0  --ink         on --well         20.00px/700 LARGE   .term-card h3, .steps h3
+PASS    9.85  need 4.5  --ink         on --well         15.20px/400 normal  .term-card p, .steps p
 PASS    9.85  need 4.5  --ink         on --well         15.20px/400 normal  html.stack-page .flip-gate-cancel
 PASS    9.85  need 4.5  --ink         on --well         15.20px/400 normal  html.stack-page .flip-gate-msg
 PASS    9.85  need 4.5  --ink         on --well         15.20px/500 normal  .nav-links a
-PASS    9.85  need 4.5  --ink         on --well         16.00px/400 normal  .terms-list b
-PASS    9.85  need 4.5  --ink         on --well         16.00px/400 normal  .terms-list li
+PASS    9.85  need 4.5  --ink         on --well         15.20px/700 normal  .steps li::before
 PASS    9.85  need 4.5  --ink         on --well         16.00px/400 normal  a
-PASS    9.85  need 4.5  --ink         on --well         16.00px/700 normal  .steps li::before
 PASS    9.85  need 4.5  --ink         on --well         16.96px/400 normal  /* Footer, one compact band. It is deliberately the smalle
 PASS    9.85  need 4.5  --ink         on --well         16.96px/400 normal  /* The header is a flex row that centres on the cross axis
 PASS    9.85  need 4.5  --ink         on --well         20.00px/400 normal  html.stack-page .nav-toggle
-PASS   10.80  need 4.5  --ink         on --paper        15.20px/400 normal  .steps p
+PASS   10.80  need 3.0  --ink         on --paper        20.00px/700 LARGE   .term-card h3, .steps h3
+PASS   10.80  need 4.5  --ink         on --paper        15.20px/400 normal  .term-card p, .steps p
 PASS   10.80  need 4.5  --ink         on --paper        15.20px/400 normal  html.stack-page .flip-gate-cancel
 PASS   10.80  need 4.5  --ink         on --paper        15.20px/400 normal  html.stack-page .flip-gate-msg
 PASS   10.80  need 4.5  --ink         on --paper        15.20px/500 normal  .nav-links a
-PASS   10.80  need 4.5  --ink         on --paper        16.00px/400 normal  .terms-list b
-PASS   10.80  need 4.5  --ink         on --paper        16.00px/400 normal  .terms-list li
+PASS   10.80  need 4.5  --ink         on --paper        15.20px/700 normal  .steps li::before
 PASS   10.80  need 4.5  --ink         on --paper        16.00px/400 normal  a
-PASS   10.80  need 4.5  --ink         on --paper        16.00px/700 normal  .steps li::before
 PASS   10.80  need 4.5  --ink         on --paper        16.96px/400 normal  /* The header is a flex row that centres on the cross axis
 PASS   10.80  need 4.5  --ink         on --paper        20.00px/400 normal  html.stack-page .nav-toggle
 PASS   12.76  need 3.0  --plate-ink   on --well         32.00px/400 LARGE   /* Wordmark. THE HEADER AND THE LOCKUP ARE THE SAME FACE B
