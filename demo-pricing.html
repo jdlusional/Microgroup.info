@@ -298,6 +298,15 @@ html.stack-page .nav-toggle { display: none; background: transparent; border: 1p
   .site-header { position: static; min-height: 0; }
   html.stack-page .nav-name { font-size: var(--t-2xl); }
   html.stack-page .mg-tab { padding: 2px var(--s1); }
+  /* nav-collapse, R16 2026-09-05. The toggle has been stamped on all ten pages since the
+     convention landed and was display:none unconditionally with no wiring anywhere, so the
+     chrome promised a menu button and never delivered one. Below the breakpoint the links
+     collapse behind it. Specificity, not order, decides these: html.stack-page .nav-right is
+     0,2,0 against the plain .nav-right above it at 0,1,0, and the [data-open] form outranks
+     both, so the open state cannot be lost to a later edit reordering the block. */
+  html.stack-page .nav-toggle { display: inline-flex; }
+  html.stack-page .nav-right { display: none; }
+  html.stack-page .nav-right[data-open="true"] { display: flex; }
   html.stack-page .footer-panel { padding: var(--s1) var(--s2); }
 }
 html.stack-page .nav > * { min-width: 0; }
@@ -338,7 +347,7 @@ html.stack-page :focus-visible { outline: 3px solid var(--accent); outline-offse
   <nav class="nav" aria-label="Primary">
     <a class="nav-name" href="/">MICRO<span class="nav-name-sub"> Group</span></a>
     <button class="nav-toggle" aria-label="Menu">&#9776;</button>
-    <div class="nav-right">
+    <div class="nav-right" id="nav-right">
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html#services">Services</a></li>
@@ -383,6 +392,23 @@ html.stack-page :focus-visible { outline: 3px solid var(--accent); outline-offse
     </div>
   </div>
 </div>
+  <!-- nav-collapse wiring. INSIDE the marked block on purpose, the same reason R7's year setter
+       is: it travels with the elements it wires, so a page cannot receive the button without the
+       behaviour. Sets aria-expanded and aria-controls from script rather than markup, so a page
+       with JavaScript off shows the links instead of an inert button, which is why the collapse
+       is applied by CSS keyed on an attribute this script owns. -->
+  <script>(function(){
+    var b=document.querySelector('.nav-toggle'), n=document.getElementById('nav-right');
+    if(!b||!n) return;
+    n.setAttribute('data-open','false');
+    b.setAttribute('aria-controls','nav-right');
+    b.setAttribute('aria-expanded','false');
+    b.addEventListener('click',function(){
+      var open = n.getAttribute('data-open')==='true';
+      n.setAttribute('data-open', open?'false':'true');
+      b.setAttribute('aria-expanded', open?'false':'true');
+    });
+  })();</script>
 <!-- END SITE CHROME -->
 <main>
 <!-- writing-convention: general -->
