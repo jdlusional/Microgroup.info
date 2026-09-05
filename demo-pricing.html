@@ -56,12 +56,12 @@ a{color:var(--ink)}
 .price-card.unavailable{opacity:.72}
 .price-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 .3rem}
 .price-card .pc-tag{font-size:.76rem;letter-spacing:.02em;color:var(--wash);font-weight:600;margin-bottom:.7rem}
-.price-card .pc-amount{font-family:var(--serif);font-weight:700;font-size:2rem;color:var(--accent);line-height:1;margin-bottom:.2rem}
+.price-card .pc-amount{font-family:var(--serif);font-weight:700;font-size:2rem;color:var(--accent-text);line-height:1;margin-bottom:.2rem}
 .price-card .pc-amount .per{font-size:.72rem;font-weight:600;color:var(--wash);letter-spacing:.02em;margin-left:.35rem}
 .price-card .pc-cadence{font-family:var(--mono);font-size:.82rem;color:var(--wash);margin-bottom:.8rem}
 .price-card p.pc-desc{font-size:.95rem;color:var(--ink);margin:0;flex:1}
 .price-card .pc-status{font-size:.78rem;letter-spacing:.02em;color:var(--urgent);font-weight:600;border:1px solid var(--urgent);padding:.3rem .6rem;display:inline-block;margin-top:1rem;align-self:center}
-.price-card .pc-requires{font-family:var(--mono);font-size:.76rem;letter-spacing:.02em;color:var(--accent);margin-top:.7rem}
+.price-card .pc-requires{font-family:var(--mono);font-size:.76rem;letter-spacing:.02em;color:var(--accent-text);margin-top:.7rem}
 
 /* ---- Product blocks: one product per rectangle, Standard/Pro joined as a
    two-column split inside it rather than two separate repeated cards. ---- */
@@ -76,10 +76,10 @@ a{color:var(--ink)}
 .product-block-tiers{display:grid;grid-template-columns:1fr 1fr;min-width:0}
 .product-tier{padding:1.2rem 1.4rem;text-align:center;min-width:0;overflow-wrap:anywhere;display:flex;flex-direction:column;justify-content:center;align-items:center}
 .product-tier+.product-tier{border-left:1px solid var(--rule)}
-.pt-label{font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:.5rem}
-.product-block-requires{padding:.65rem 1.4rem;text-align:center;border-top:1px solid var(--rule);font-family:var(--mono);font-size:.78rem;color:var(--accent)}
+.pt-label{font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;color:var(--accent-text);font-weight:600;margin-bottom:.5rem}
+.product-block-requires{padding:.65rem 1.4rem;text-align:center;border-top:1px solid var(--rule);font-family:var(--mono);font-size:.78rem;color:var(--accent-text)}
 .product-block-note{padding:.7rem 1.4rem;text-align:center;border-top:1px solid var(--rule);font-size:.86rem;color:var(--wash);max-width:70ch;margin-left:auto;margin-right:auto}
-.product-block-note b{color:var(--accent)}
+.product-block-note b{color:var(--accent-text)}
 .in-dev-subhead{max-width:1120px;margin:2rem auto .9rem;padding:0;text-align:center;font-family:var(--serif);font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;color:var(--wash)}
 @media(max-width:640px){
   .product-block-tiers{grid-template-columns:1fr}
@@ -87,17 +87,17 @@ a{color:var(--ink)}
 }
 
 .addon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;margin-top:.5rem}
-.addon-card{border:1.5px solid var(--ink);border-left-width:5px;border-left-color:var(--accent);background:var(--well);padding:1.3rem 1.6rem;min-width:0;overflow-wrap:anywhere;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.addon-card{border:1.5px solid var(--ink);border-left-width:5px;border-left-color:var(--accent-text);background:var(--well);padding:1.3rem 1.6rem;min-width:0;overflow-wrap:anywhere;display:flex;flex-direction:column;justify-content:center;text-align:center}
 .addon-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 .5rem}
 .addon-card .addon-rates{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;margin:.6rem 0}
 .addon-card .addon-rate{font-family:var(--mono);font-size:.86rem;color:var(--ink)}
-.addon-card .addon-rate b{font-family:var(--serif);font-size:1.15rem;color:var(--accent)}
+.addon-card .addon-rate b{font-family:var(--serif);font-size:1.15rem;color:var(--accent-text)}
 .addon-card p{font-size:.95rem;line-height:1.55;margin:.6rem 0 0}
 .addon-card .addon-note{font-family:var(--mono);font-size:.8rem;color:var(--wash);border-top:1px dashed var(--rule);margin-top:.9rem;padding-top:.7rem}
 
 .infra-card{border:1.5px solid var(--ink);border-left-width:5px;background:var(--well);padding:1.3rem 1.6rem;margin-top:.5rem}
 .infra-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 .5rem}
-.infra-card .pc-amount{font-family:var(--serif);font-weight:700;font-size:2rem;color:var(--accent);line-height:1;display:inline-block;margin-right:.6rem}
+.infra-card .pc-amount{font-family:var(--serif);font-weight:700;font-size:2rem;color:var(--accent-text);line-height:1;display:inline-block;margin-right:.6rem}
 .infra-card p{font-size:.96rem;line-height:1.55;margin:.6rem 0 0}
 
 .example-line{font-family:var(--mono);font-size:.86rem;color:var(--wash);border:1px dashed var(--rule);padding:.7rem .9rem;margin-top:1.2rem}
@@ -122,17 +122,17 @@ a{color:var(--ink)}
 .btn{font-family:var(--mono);font-size:.86rem;letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);background:var(--paper);padding:.55rem 1.2rem;cursor:pointer;transition:all .15s ease}
 .btn:hover{background:var(--ink);color:var(--paper)}
 .btn.solid{background:var(--ink);color:var(--paper)}
-.btn.solid:hover{background:var(--accent);border-color:var(--accent)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent-text)}
 
 .referral-block{border-top:1px solid var(--rule-soft);margin-top:1.6rem;padding-top:1.4rem}
-.referral-block .rb-kicker{font-size:.78rem;letter-spacing:.02em;color:var(--accent);font-weight:600;margin-bottom:.5rem}
+.referral-block .rb-kicker{font-size:.78rem;letter-spacing:.02em;color:var(--accent-text);font-weight:600;margin-bottom:.5rem}
 .referral-block p{font-size:.92rem;color:var(--wash);margin:.2rem 0 1rem}
 .referral-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem 1.3rem}
 .referral-grid .form-field{min-width:0}
 
 /* ---- Request Products accordion. Only this section folds; every other
    section on this page keeps the standing no-tab-drops rule. ---- */
-.mc-toggle{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;cursor:pointer}
+.mc-toggle{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-text);background:none;border:1px solid var(--rule);padding:.32rem .65rem;cursor:pointer}
 .mc-toggle:hover{background:var(--well)}
 #request.mc-closed .fold-body{display:none}
 .mc-toggle-cta{display:block;margin:1.2rem auto 0;font-family:var(--mono);font-size:1.02rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:var(--accent);border:2px solid var(--accent);padding:.9rem 2.4rem;box-shadow:0 4px 14px rgba(47,127,209,.35)}

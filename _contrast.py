@@ -27,8 +27,14 @@ import os
 import re
 import sys
 
-F = os.path.join(os.path.dirname(os.path.abspath(__file__)), "index.html")
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_contrast_report.txt")
+# WIDENED 2026-09-05 (page-convention plan R16). This hard-coded index.html and therefore
+# measured 1 of the 10 convention pages, which the plan named as a prerequisite: an achieved-
+# signal computed over one page cannot speak for ten. The analysis below is unchanged; only
+# WHICH page it reads is now an argument, so the instrument can be pointed at each in turn.
+HERE = os.path.dirname(os.path.abspath(__file__))
+PAGE = sys.argv[1] if len(sys.argv) > 1 else "index.html"
+F = os.path.join(HERE, PAGE)
+OUT = os.path.join(HERE, "_contrast_report_%s.txt" % PAGE.replace(".html", ""))
 
 
 def lin(c):
@@ -94,7 +100,7 @@ for sel, fg, bg, px, wt, large in pairs:
                  % ("PASS" if ok else "FAIL", r, bar, fg, bg, px, wt,
                     "LARGE" if large else "normal", sel))
 
-hdr = ["R7 contrast report for index.html",
+hdr = ["R7 contrast report for %s" % PAGE,
        "Exact pairs where a rule declares both; inherited pairs against --paper and --well.",
        "pairs evaluated: %d   failures: %d" % (len(pairs), fails),
        "surfaces: %s" % ", ".join(sorted(surfaces)),
