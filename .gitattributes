@@ -19,3 +19,11 @@
 # Do not write "preserve whatever ending the file already had": what a generator finds depends
 # on whether git or another generator wrote last, which is the instability itself.
 *-index.html text eol=lf
+
+# The exemplar pin is a sha256 of index.html's WORKING-TREE BYTES, so those bytes must be
+# reproducible from a fresh clone or the pin breaks for everyone but the machine that set it.
+# Measured 2026-09-05: no rule matched plain index.html, core.autocrlf is true, and the file is
+# LF in this tree, so a clone elsewhere would check it out as CRLF and every pattern-book build
+# would abort at Sweep Rule 15a on a file nobody had edited. The pattern above uses a hyphen and
+# matches public-index.html and private-index.html but NOT index.html.
+/index.html text eol=lf
