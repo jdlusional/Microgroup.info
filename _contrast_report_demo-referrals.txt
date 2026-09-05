@@ -24,10 +24,10 @@ PASS    6.12  need 4.5  --paper       on --accent-fill  16.00px/400 normal  html
 PASS    6.21  need 4.5  --wash        on --paper        12.00px/400 normal  html.stack-page .footer-legal
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  .section-head p
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/600 normal  html.stack-page .flip-gate-go
+PASS    9.85  need 4.5  --ink         on --well         15.20px/400 normal  .steps p
 PASS    9.85  need 4.5  --ink         on --well         15.20px/400 normal  html.stack-page .flip-gate-cancel
 PASS    9.85  need 4.5  --ink         on --well         15.20px/400 normal  html.stack-page .flip-gate-msg
 PASS    9.85  need 4.5  --ink         on --well         15.20px/500 normal  .nav-links a
-PASS    9.85  need 4.5  --ink         on --well         16.00px/400 normal  .steps p
 PASS    9.85  need 4.5  --ink         on --well         16.00px/400 normal  .terms-list b
 PASS    9.85  need 4.5  --ink         on --well         16.00px/400 normal  .terms-list li
 PASS    9.85  need 4.5  --ink         on --well         16.00px/400 normal  a
@@ -35,10 +35,10 @@ PASS    9.85  need 4.5  --ink         on --well         16.00px/700 normal  .ste
 PASS    9.85  need 4.5  --ink         on --well         16.96px/400 normal  /* Footer, one compact band. It is deliberately the smalle
 PASS    9.85  need 4.5  --ink         on --well         16.96px/400 normal  /* The header is a flex row that centres on the cross axis
 PASS    9.85  need 4.5  --ink         on --well         20.00px/400 normal  html.stack-page .nav-toggle
+PASS   10.80  need 4.5  --ink         on --paper        15.20px/400 normal  .steps p
 PASS   10.80  need 4.5  --ink         on --paper        15.20px/400 normal  html.stack-page .flip-gate-cancel
 PASS   10.80  need 4.5  --ink         on --paper        15.20px/400 normal  html.stack-page .flip-gate-msg
 PASS   10.80  need 4.5  --ink         on --paper        15.20px/500 normal  .nav-links a
-PASS   10.80  need 4.5  --ink         on --paper        16.00px/400 normal  .steps p
 PASS   10.80  need 4.5  --ink         on --paper        16.00px/400 normal  .terms-list b
 PASS   10.80  need 4.5  --ink         on --paper        16.00px/400 normal  .terms-list li
 PASS   10.80  need 4.5  --ink         on --paper        16.00px/400 normal  a
