@@ -55,13 +55,22 @@
 /kct                             https://katelyncthompson.com/                                    301
 /kct.html                        https://katelyncthompson.com/                                    301
 
-# SUPERSEDED 2026-08-30: the 2026-08-06 order below said no private-index.html exists on this
-# domain. One DOES exist, 597 lines, six commits, most recently 2026-08-30, so by this file's
-# own repeated rule that Pages serves a static asset in preference to a redirect rule, the two
-# rules beneath cannot fire. They are kept only so the paths still resolve if the file is ever
-# removed. The page is Access-gated, not redirected, and IS reachable when signed in.
-/private-index         https://jonathanlindavis.com/private-index.html  301
-/private-index.html    https://jonathanlindavis.com/private-index.html  301
+# RULES DELETED 2026-09-04 by owner authorisation, and the comment that stood here was REFUTED
+# BY MEASUREMENT rather than merely superseded. It claimed that "by this file's own repeated rule
+# that Pages serves a static asset in preference to a redirect rule, the two rules beneath cannot
+# fire" and that the page "is Access-gated, not redirected". Measured the same day, both
+# /private-index and /private-index.html returned 301 to jonathanlindavis.com. The rules were
+# firing, and had been intercepting this domain's own private index the whole time.
+#
+# The cost was not only a wrong redirect. MICRO's index-coverage figure of "42 of 45 covered" was
+# being computed against a page readers were redirected away from, so an instrument was reporting
+# on a surface nobody could reach.
+#
+# Removed after the Access binding was proven on this host, at sibling paths because the redirect
+# made the private path itself unobservable: /measure-enterprise, /measure-orientation and /hri all
+# return 302 to cloudflareaccess.com/cdn-cgi/access/login/microgroup.info, with a same-run
+# nonsense-path control returning 200 and the homepage title. private-index.html exists on
+# origin/main at 41,052 bytes, so these paths now reach a real page that Access gates.
 
 # MEASURE product pages consolidated onto /measure-enterprise (owner direction 2026-08-03).
 # Almanac and Scribe now sit in one primary accordion each on a single page; the /measure switcher
