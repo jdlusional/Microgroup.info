@@ -1,10 +1,11 @@
 R7 contrast report for demo.html
 Exact pairs where a rule declares both; inherited pairs against --paper and --well.
-pairs evaluated: 53   failures: 0
+pairs evaluated: 67   failures: 0
 surfaces: --paper, --well
 
 PASS    5.01  need 4.5  --plate-wash  on --well         12.00px/400 normal  html.stack-page .footer-slogan
 PASS    5.50  need 4.5  --plate-wash  on --paper        12.00px/400 normal  html.stack-page .footer-slogan
+PASS    5.58  need 3.0  --accent-text on --well         24.00px/700 LARGE   .fig-n
 PASS    5.58  need 4.5  --accent-text on --well         12.48px/600 normal  /* Site switchers */
 html.stack-page .mg-tab
 PASS    5.58  need 4.5  --accent-text on --well         16.00px/400 normal  .nav-links a:hover
@@ -12,13 +13,16 @@ PASS    5.58  need 4.5  --accent-text on --well         16.00px/400 normal  .pc-
 PASS    5.58  need 4.5  --accent-text on --well         16.00px/400 normal  html.stack-page .flip-gate-go.ready
 PASS    5.58  need 4.5  --accent-text on --well         16.00px/600 normal  .hero .kicker
 PASS    5.58  need 4.5  --accent-text on --well         16.00px/700 normal  /* The current page's own nav item. Set at load by the chr
-PASS    5.66  need 4.5  --wash        on --well         12.00px/400 normal  footer
+PASS    5.58  need 4.5  --accent-text on --well         16.00px/700 normal  /* Two of the six figures cannot be lifted out of their ph
+PASS    5.66  need 4.5  --wash        on --well         12.00px/400 normal  /* A colophon is the page's own end-note, distinct from th
 PASS    5.66  need 4.5  --wash        on --well         12.00px/400 normal  html.stack-page .footer-legal
+PASS    5.66  need 4.5  --wash        on --well         13.12px/400 normal  /* The measurement date. Small, monospace, --wash: the reg
 PASS    5.66  need 4.5  --wash        on --well         16.00px/400 normal  .bar-note
 PASS    5.66  need 4.5  --wash        on --well         16.00px/400 normal  .hero p
 PASS    5.66  need 4.5  --wash        on --well         16.00px/400 normal  /* Foot-note convention (owner order, 2026-07-30): standin
 PASS    5.66  need 4.5  --wash        on --well         16.00px/600 normal  html.stack-page .flip-gate-go
 PASS    5.66  need 4.5  --wash        on --well         16.00px/700 normal  .picker-subhead
+PASS    6.12  need 3.0  --accent-text on --paper        24.00px/700 LARGE   .fig-n
 PASS    6.12  need 4.5  --accent-text on --paper        12.48px/600 normal  /* Site switchers */
 html.stack-page .mg-tab
 PASS    6.12  need 4.5  --accent-text on --paper        16.00px/400 normal  .nav-links a:hover
@@ -26,9 +30,11 @@ PASS    6.12  need 4.5  --accent-text on --paper        16.00px/400 normal  .pc-
 PASS    6.12  need 4.5  --accent-text on --paper        16.00px/400 normal  html.stack-page .flip-gate-go.ready
 PASS    6.12  need 4.5  --accent-text on --paper        16.00px/600 normal  .hero .kicker
 PASS    6.12  need 4.5  --accent-text on --paper        16.00px/700 normal  /* The current page's own nav item. Set at load by the chr
+PASS    6.12  need 4.5  --accent-text on --paper        16.00px/700 normal  /* Two of the six figures cannot be lifted out of their ph
 PASS    6.12  need 4.5  --paper       on --accent-fill  16.00px/400 normal  html.stack-page .mg-tab.active
-PASS    6.21  need 4.5  --wash        on --paper        12.00px/400 normal  footer
+PASS    6.21  need 4.5  --wash        on --paper        12.00px/400 normal  /* A colophon is the page's own end-note, distinct from th
 PASS    6.21  need 4.5  --wash        on --paper        12.00px/400 normal  html.stack-page .footer-legal
+PASS    6.21  need 4.5  --wash        on --paper        13.12px/400 normal  /* The measurement date. Small, monospace, --wash: the reg
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  .bar-note
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  .hero p
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  /* Foot-note convention (owner order, 2026-07-30): standin
@@ -38,7 +44,11 @@ PASS    6.90  need 4.5  --urgent      on --well         16.00px/600 normal  .fic
 PASS    6.90  need 4.5  --urgent      on --well         16.00px/600 normal  .sc-kicker
 PASS    7.57  need 4.5  --urgent      on --paper        16.00px/600 normal  .fict
 PASS    7.57  need 4.5  --urgent      on --paper        16.00px/600 normal  .sc-kicker
+PASS    9.85  need 3.0  --ink         on --well         20.00px/700 LARGE   /* SENTENCE headings, not names. --t-lg is the convention'
+PASS    9.85  need 4.5  --ink         on --well         13.12px/400 normal  .fig-l
 PASS    9.85  need 4.5  --ink         on --well         15.20px/400 normal  .survey-callout p
+PASS    9.85  need 4.5  --ink         on --well         15.20px/400 normal  .why-note p
+PASS    9.85  need 4.5  --ink         on --well         15.20px/400 normal  /* THE MEASURE IS THE WHOLE READABILITY ARGUMENT FOR CENTR
 PASS    9.85  need 4.5  --ink         on --well         15.20px/400 normal  html.stack-page .flip-gate-cancel
 PASS    9.85  need 4.5  --ink         on --well         15.20px/400 normal  html.stack-page .flip-gate-msg
 PASS    9.85  need 4.5  --ink         on --well         15.20px/500 normal  .nav-links a
@@ -47,7 +57,11 @@ PASS    9.85  need 4.5  --ink         on --well         16.00px/700 normal  .her
 PASS    9.85  need 4.5  --ink         on --well         16.96px/400 normal  /* Footer, one compact band. It is deliberately the smalle
 PASS    9.85  need 4.5  --ink         on --well         16.96px/400 normal  /* The header is a flex row that centres on the cross axis
 PASS    9.85  need 4.5  --ink         on --well         20.00px/400 normal  html.stack-page .nav-toggle
+PASS   10.80  need 3.0  --ink         on --paper        20.00px/700 LARGE   /* SENTENCE headings, not names. --t-lg is the convention'
+PASS   10.80  need 4.5  --ink         on --paper        13.12px/400 normal  .fig-l
 PASS   10.80  need 4.5  --ink         on --paper        15.20px/400 normal  .survey-callout p
+PASS   10.80  need 4.5  --ink         on --paper        15.20px/400 normal  .why-note p
+PASS   10.80  need 4.5  --ink         on --paper        15.20px/400 normal  /* THE MEASURE IS THE WHOLE READABILITY ARGUMENT FOR CENTR
 PASS   10.80  need 4.5  --ink         on --paper        15.20px/400 normal  html.stack-page .flip-gate-cancel
 PASS   10.80  need 4.5  --ink         on --paper        15.20px/400 normal  html.stack-page .flip-gate-msg
 PASS   10.80  need 4.5  --ink         on --paper        15.20px/500 normal  .nav-links a

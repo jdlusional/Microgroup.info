@@ -125,8 +125,22 @@ img, svg { max-width: 100%; }
 /* ============ 3. LAYOUT ============ */
 .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--s4); }
 main { display: block; }
-.panel { padding: var(--s6) 0; border-bottom: 1px solid var(--rule); }
-.panel:last-of-type { border-bottom: 0; }
+/* ============ SECTION CONVENTION, 2026-09-05 ============ */
+/* A page's content is a vertical stack of <section class="panel"> bands. A panel owns VERTICAL
+   rhythm and nothing else: it is full-bleed and sets no width and no side padding, so the content
+   column stays the page's own .wrap. That division is deliberate, because the last pass that
+   shipped a 63px overflow did it by moving markup out from under the CSS that had been sizing it.
+   REPLACES the previous form, which put padding on every panel plus a border-bottom and then had
+   to except the last one. One gap rule between two panels cannot drift the way a padding-bottom
+   on A plus a padding-top on B can. */
+.panel { margin: 0; padding: 0; }
+.panel + .panel {
+  margin-top: var(--s6);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--s6);
+}
+main > .panel:first-child { padding-top: var(--s5); }
+main > .manifest { margin-top: 0; }
 .shead { margin-bottom: var(--s5); text-align: center; }
 .shead .intro { color: var(--wash); max-width: var(--measure); margin-left: auto; margin-right: auto; }
 .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--s4); }
@@ -203,7 +217,8 @@ html.stack-page .pcard:hover { border-color: var(--accent); box-shadow: 0 2px 10
   /* The grid minimums exceed a phone's content width, so auto-fit would hold a track
      wider than the viewport and scroll the document sideways. One column below here. */
   .grid-3, .grid-2 { grid-template-columns: 1fr; }
-  .panel { padding: var(--s5) 0; }
+  .panel + .panel { margin-top: var(--s5); padding-top: var(--s5); }
+  main > .panel:first-child { padding-top: var(--s4); }
   h1 { font-size: var(--t-3xl); }
   html.stack-page .page-title { font-size: var(--t-3xl); }
 }
@@ -430,8 +445,6 @@ main option, main .field, main .form-grid { text-align: left; }
         <li><a href="demo.html">Products</a></li>
         <li><a href="demo-pricing.html">Pricing</a></li>
         <li><a href="demo-referrals.html">Referrals</a></li>
-        <li><a href="demo-survey.html">Intake</a></li>
-        <li><a href="index.html#about">About</a></li>
         <li><a id="nav-connect" href="contact.html">Connect</a></li>
       </ul>
       <div class="site-flip">

@@ -13,12 +13,12 @@ PASS    5.58  need 4.5  --accent-text on --well         16.00px/400 normal  html
 PASS    5.58  need 4.5  --accent-text on --well         16.00px/500 normal  .hero .kicker
 PASS    5.58  need 4.5  --accent-text on --well         16.00px/700 normal  .bar-brand
 PASS    5.58  need 4.5  --accent-text on --well         16.00px/700 normal  /* The current page's own nav item. Set at load by the chr
+PASS    5.66  need 4.5  --wash        on --well         12.00px/400 normal  /* A colophon is the page's own end-note, distinct from th
 PASS    5.66  need 4.5  --wash        on --well         12.00px/400 normal  html.stack-page .footer-legal
 PASS    5.66  need 4.5  --wash        on --well         12.48px/400 normal  .hero .dated
 PASS    5.66  need 4.5  --wash        on --well         13.12px/400 normal  .wrap h3
 PASS    5.66  need 4.5  --wash        on --well         16.00px/400 normal  .bar-note
 PASS    5.66  need 4.5  --wash        on --well         16.00px/400 normal  .hero p
-PASS    5.66  need 4.5  --wash        on --well         16.00px/400 normal  footer
 PASS    5.66  need 4.5  --wash        on --well         16.00px/400 normal  footer a
 PASS    5.66  need 4.5  --wash        on --well         16.00px/600 normal  html.stack-page .flip-gate-go
 PASS    6.12  need 4.5  --accent-text on --paper        12.48px/600 normal  /* Site switchers */
@@ -30,12 +30,12 @@ PASS    6.12  need 4.5  --accent-text on --paper        16.00px/500 normal  .her
 PASS    6.12  need 4.5  --accent-text on --paper        16.00px/700 normal  .bar-brand
 PASS    6.12  need 4.5  --accent-text on --paper        16.00px/700 normal  /* The current page's own nav item. Set at load by the chr
 PASS    6.12  need 4.5  --paper       on --accent-fill  16.00px/400 normal  html.stack-page .mg-tab.active
+PASS    6.21  need 4.5  --wash        on --paper        12.00px/400 normal  /* A colophon is the page's own end-note, distinct from th
 PASS    6.21  need 4.5  --wash        on --paper        12.00px/400 normal  html.stack-page .footer-legal
 PASS    6.21  need 4.5  --wash        on --paper        12.48px/400 normal  .hero .dated
 PASS    6.21  need 4.5  --wash        on --paper        13.12px/400 normal  .wrap h3
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  .bar-note
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  .hero p
-PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  footer
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  footer a
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/600 normal  html.stack-page .flip-gate-go
 PASS    9.85  need 4.5  --ink         on --well         15.20px/400 normal  html.stack-page .flip-gate-cancel
