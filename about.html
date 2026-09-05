@@ -376,6 +376,12 @@ html.stack-page .nav-toggle { display: none; background: transparent; border: 1p
   html.stack-page .nav-right[data-open="true"] { display: flex; }
   html.stack-page .footer-panel { padding: var(--s1) var(--s2); }
 }
+/* Defect 9, 2026-09-05. MEASURED: .nav sat at left 50 on the two fit-screen pages and
+   42.44 on the six that scroll, because a classic Windows scrollbar takes 15px from a
+   scrolling page and none from one that fits, shifting content 7.56px. R1 measured that
+   shift and recorded it unfixed. Reserving the gutter on every page makes all ten lay out
+   identically, so the wordmark stops moving between pages. */
+html.stack-page { scrollbar-gutter: stable; }
 html.stack-page .nav > * { min-width: 0; }
 /* R6, 2026-09-05. Four rules added in one authoring pass, all scoped under html.stack-page so
    stamping them onto a page with its own typography cannot restyle that page's body. */
@@ -400,6 +406,15 @@ html.stack-page :focus-visible { outline: 3px solid var(--accent); outline-offse
   html.stack-page section[id] { scroll-margin-top: var(--bar-h); }
 }
 /* ===== END SITE CHROME ===== */
+
+/* owner-centre-pass, 2026-09-05, owner direction: every piece of page CONTENT is centred.
+   Header and footer are excluded because they are generated chrome and this rule is
+   page-local, so it cannot reach inside the stamped blocks. FORM DATA is excluded
+   explicitly below: a label or an input reads left-aligned, and centring a form field's
+   text makes it harder to scan and to correct. */
+main { text-align: center; }
+main label, main input, main select, main textarea, main fieldset, main legend,
+main option, main .field, main .form-grid { text-align: left; }
 </style>
 </head>
 <body>
@@ -416,7 +431,7 @@ html.stack-page :focus-visible { outline: 3px solid var(--accent); outline-offse
         <li><a href="demo-pricing.html">Pricing</a></li>
         <li><a href="demo-referrals.html">Referrals</a></li>
         <li><a href="demo-survey.html">Intake</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#about">About</a></li>
         <li><a id="nav-connect" href="contact.html">Connect</a></li>
       </ul>
       <div class="site-flip">
@@ -473,20 +488,6 @@ html.stack-page :focus-visible { outline: 3px solid var(--accent); outline-offse
 <!-- END SITE CHROME -->
 
 <main>
-
-  <section id="about" class="panel">
-    <div class="wrap">
-      <h1 class="page-title">What we do, and how an engagement actually runs</h1>
-      <p class="lede">MICRO Group, L.L.C. is a strategic, research-driven consultancy serving nonprofit, government, and nonpartisan policy organizations, through expertise in Management, Integration, Culture, Research, and Operations.</p>
-      <div class="roles">
-        <span>Management</span><span>Integration</span><span>Culture</span><span>Research</span><span>Operations</span>
-      </div>
-
-      <div class="problem" data-block="problem">
-        <p>Most small organizations are told they need research and data capacity they cannot afford to staff. The work still has to happen: grants researched, bills tracked, systems integrated, results measured. So it lands on people hired to do something else, and it competes with the mission they were hired for.</p>
-      </div>
-    </div>
-  </section>
 
   <section id="services" class="panel">
     <div class="wrap">
@@ -580,18 +581,6 @@ html.stack-page :focus-visible { outline: 3px solid var(--accent); outline-offse
 
   <section id="terms" class="panel">
     <div class="wrap">
-      <div class="shead">
-        <h2>Terms</h2>
-        <p class="intro">A published number is a position. This one is published because a product price is not a client entitlement.</p>
-      </div>
-
-      <div class="terms" data-block="terms">
-        <h3>Infrastructure and updates</h3>
-        <span class="terms-figure">$2,000/year</span>
-        <p>A flat plan covering ongoing technical support and system updates for every product an organization has purchased, billed once per organization rather than once per product.</p>
-        <p class="quiet">Every other engagement, including the consulting disciplines above, is scoped and priced individually. The full rate card is published.</p>
-        <a class="pcard-open" href="demo-pricing.html">See the rate card <span class="arr">&rarr;</span></a>
-      </div>
 
       <div class="cta-row">
         <a class="btn btn-solid" href="contact.html">Book a free thirty-minute consultation</a>

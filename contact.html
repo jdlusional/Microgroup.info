@@ -130,10 +130,13 @@ body { overflow-x: hidden; }
    value depends on whether a webfont happened to load is not a constant. The body is now a flex
    column that measures its own chrome, so the stripe of page background that appeared below the
    footer on the two fit-screen pages cannot exist: nothing is being reserved. */
+/* Defect 8, 2026-09-05: the content sat against the top rather than centred. main was
+   display:block, so .screen sized itself to its content and its own justify-content:center had
+   nothing to distribute. MEASURED before: 0px above the content, 50px below. */
 body { min-height: 100svh; display: flex; flex-direction: column; }
-main { flex: 1 0 auto; }
+main { flex: 1 0 auto; display: flex; flex-direction: column; }
 .screen {
-  min-height: 0;
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -209,7 +212,7 @@ html.stack-page .signup-form .invalid { border-color: var(--err); }
   /* The form DOES fit a phone, but only by giving up the two-column grid and every
      non-essential millimetre. Field controls keep a 34px height, which is above the tap
      target the fields actually need; the labels shrink, not the inputs. */
-  .screen { min-height: calc(100svh - 264px); padding: var(--s1) 0; }
+  .screen { min-height: auto; padding: var(--s1) 0; }  /* R9 MISS, fixed 2026-09-05: carried a hardcoded 264px reservation inside this media query, the same class R9 deleted from the base rule. The header collapses to 41px on a phone, so no constant describes it. */
   html.stack-page .form-grid { grid-template-columns: 1fr; gap: 0; }
   html.stack-page .form-row { margin-bottom: 4px; }
   html.stack-page .form-row label { font-size: var(--t-micro); letter-spacing: .03em; }
@@ -388,6 +391,12 @@ html.stack-page .nav-toggle { display: none; background: transparent; border: 1p
   html.stack-page .nav-right[data-open="true"] { display: flex; }
   html.stack-page .footer-panel { padding: var(--s1) var(--s2); }
 }
+/* Defect 9, 2026-09-05. MEASURED: .nav sat at left 50 on the two fit-screen pages and
+   42.44 on the six that scroll, because a classic Windows scrollbar takes 15px from a
+   scrolling page and none from one that fits, shifting content 7.56px. R1 measured that
+   shift and recorded it unfixed. Reserving the gutter on every page makes all ten lay out
+   identically, so the wordmark stops moving between pages. */
+html.stack-page { scrollbar-gutter: stable; }
 html.stack-page .nav > * { min-width: 0; }
 /* R6, 2026-09-05. Four rules added in one authoring pass, all scoped under html.stack-page so
    stamping them onto a page with its own typography cannot restyle that page's body. */
@@ -412,6 +421,15 @@ html.stack-page :focus-visible { outline: 3px solid var(--accent); outline-offse
   html.stack-page section[id] { scroll-margin-top: var(--bar-h); }
 }
 /* ===== END SITE CHROME ===== */
+
+/* owner-centre-pass, 2026-09-05, owner direction: every piece of page CONTENT is centred.
+   Header and footer are excluded because they are generated chrome and this rule is
+   page-local, so it cannot reach inside the stamped blocks. FORM DATA is excluded
+   explicitly below: a label or an input reads left-aligned, and centring a form field's
+   text makes it harder to scan and to correct. */
+main { text-align: center; }
+main label, main input, main select, main textarea, main fieldset, main legend,
+main option, main .field, main .form-grid { text-align: left; }
 </style>
 </head>
 <body>
@@ -428,7 +446,7 @@ html.stack-page :focus-visible { outline: 3px solid var(--accent); outline-offse
         <li><a href="demo-pricing.html">Pricing</a></li>
         <li><a href="demo-referrals.html">Referrals</a></li>
         <li><a href="demo-survey.html">Intake</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#about">About</a></li>
         <li><a id="nav-connect" href="contact.html">Connect</a></li>
       </ul>
       <div class="site-flip">

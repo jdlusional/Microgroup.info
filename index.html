@@ -205,6 +205,12 @@ html.stack-page .nav-toggle { display: none; background: transparent; border: 1p
   html.stack-page .nav-right[data-open="true"] { display: flex; }
   html.stack-page .footer-panel { padding: var(--s1) var(--s2); }
 }
+/* Defect 9, 2026-09-05. MEASURED: .nav sat at left 50 on the two fit-screen pages and
+   42.44 on the six that scroll, because a classic Windows scrollbar takes 15px from a
+   scrolling page and none from one that fits, shifting content 7.56px. R1 measured that
+   shift and recorded it unfixed. Reserving the gutter on every page makes all ten lay out
+   identically, so the wordmark stops moving between pages. */
+html.stack-page { scrollbar-gutter: stable; }
 html.stack-page .nav > * { min-width: 0; }
 /* R6, 2026-09-05. Four rules added in one authoring pass, all scoped under html.stack-page so
    stamping them onto a page with its own typography cannot restyle that page's body. */
@@ -272,10 +278,19 @@ body { overflow-x: hidden; }
    That overflow was real and measured: R6's 24px minimum hit area, added for SC 2.5.8, grew the
    wrapped mobile header from 121.34 to 130.63 and took the total to 813.78 against a 812 viewport.
    The accessibility fix stays; the fit is reclaimed here rather than by undoing it. */
-body { height: 100svh; min-height: 100svh; display: flex; flex-direction: column; }
-main { flex: 1 1 auto; min-height: 0; }
+/* TWO DROPS, 2026-09-05. The page is no longer a single fixed viewport: it carries the landing
+   drop and the about drop, so body takes a MINIMUM height and grows. main becomes a flex column
+   so each .screen can fill its own drop; while main was display:block a .screen sized itself to
+   its content and sat at the top, which is the 'cut off at the top' defect, measured at 0px of
+   space above the content and 70px below. */
+body { min-height: 100svh; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; display: flex; flex-direction: column; }
 .screen {
-  min-height: 0;
+  /* Each drop is one viewport less the header. --bar-h SETS the header height, which is why it
+     measures exactly 76.00 on 10 of 10, so subtracting it is arithmetic rather than the kind of
+     reservation R9 deleted. */
+  min-height: calc(100vh - var(--bar-h));
+  min-height: calc(100svh - var(--bar-h));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -357,7 +372,7 @@ html.stack-page .direct a { font-weight: 600; color: var(--accent-text); }
      THIS HAS NOW BITTEN THREE TIMES on this page: at 132, at 264, and again when two
      nav items grew the header by 20px. Any change to the header or footer must
      re-measure this number; it is not a constant, it is a measurement. */
-  .screen { min-height: calc(100svh - 288px); padding: var(--s2) 0; }
+  .screen { min-height: auto; padding: var(--s2) 0; }  /* R9 MISS, fixed 2026-09-05: this carried calc(100svh - 288px), the same hardcoded reservation R9 deleted from the base rule and missed inside this media query. 812 - 288 = 524 was exactly the measured drop height. On a phone the header collapses to 41px, so no constant describes it; the drops take their content's height instead. */
   html.stack-page .lockup-frame { padding: 30px 22px 20px; }
   html.stack-page .lockup-mark { top: -30px; }
   html.stack-page .lockup-word { font-size: var(--t-3xl); }
@@ -369,6 +384,31 @@ html.stack-page .direct a { font-weight: 600; color: var(--accent-text); }
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
 }
+
+/* narrow-lockup-wrap, 2026-09-05. .lockup-tag is white-space:nowrap by design so the tagline
+   reads as one line, which is right down to 375. At 320 the viewport is 305px after the
+   scrollbar gutter and the trailing <u>Goals</u> overflowed by 7px, the only element on the page
+   that did. Below 361px it may wrap; above it, nothing changes. */
+@media (max-width: 360px) {
+  html.stack-page .lockup-tag { white-space: normal; }
+}
+
+/* Styles for the second drop, moved here with its markup 2026-09-05. They were defined only in
+   about.html, so moving the markup alone left the block unstyled: .roles had no flex-wrap and
+   its fifth tag overflowed the viewport by 63px at 375. Copied verbatim from about.html. */
+html.stack-page .roles { display: flex; flex-wrap: wrap; gap: var(--s2); margin: 0 0 var(--s4); justify-content: center; }
+html.stack-page .roles span { font-family: var(--f-mono); font-size: var(--t-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--wash); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); }
+html.stack-page .problem { background: var(--well); border-top: 3px solid var(--accent); padding: var(--s4); max-width: var(--measure); margin-left: auto; margin-right: auto; }
+html.stack-page .problem p { margin: 0; font-size: var(--t-lg); text-align: center; }
+
+/* owner-centre-pass, 2026-09-05, owner direction: every piece of page CONTENT is centred.
+   Header and footer are excluded because they are generated chrome and this rule is
+   page-local, so it cannot reach inside the stamped blocks. FORM DATA is excluded
+   explicitly below: a label or an input reads left-aligned, and centring a form field's
+   text makes it harder to scan and to correct. */
+main { text-align: center; }
+main label, main input, main select, main textarea, main fieldset, main legend,
+main option, main .field, main .form-grid { text-align: left; }
 </style>
 </head>
 <body>
@@ -386,7 +426,7 @@ html.stack-page .direct a { font-weight: 600; color: var(--accent-text); }
         <li><a href="demo-pricing.html">Pricing</a></li>
         <li><a href="demo-referrals.html">Referrals</a></li>
         <li><a href="demo-survey.html">Intake</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#about">About</a></li>
         <li><a id="nav-connect" href="contact.html">Connect</a></li>
       </ul>
       <div class="site-flip">
@@ -478,6 +518,25 @@ html.stack-page .direct a { font-weight: 600; color: var(--accent-text); }
 
       <p class="direct">Or email <a href="mailto:jonathan@microgroup.info">jonathan@microgroup.info</a> directly.</p>
 
+    </div>
+  </section>
+
+  <section id="about" class="screen">
+    <div class="wrap">
+      <h2 class="headline">What we do, and how an engagement actually runs</h2>
+      <p class="lede">MICRO Group, L.L.C. is a strategic, research-driven consultancy serving nonprofit, government, and nonpartisan policy organizations, through expertise in Management, Integration, Culture, Research, and Operations.</p>
+      <div class="roles">
+        <span>Management</span><span>Integration</span><span>Culture</span><span>Research</span><span>Operations</span>
+      </div>
+
+      <div class="problem" data-block="problem">
+        <p>Most small organizations are told they need research and data capacity they cannot afford to staff. The work still has to happen: grants researched, bills tracked, systems integrated, results measured. So it lands on people hired to do something else, and it competes with the mission they were hired for.</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-solid" href="about.html#services">See the five disciplines</a>
+        <a class="btn btn-ghost" href="contact.html">Book a free thirty-minute consultation</a>
+      </div>
     </div>
   </section>
 </main>
