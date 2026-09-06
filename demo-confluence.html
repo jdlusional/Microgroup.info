@@ -28,6 +28,18 @@ a{color:var(--ink)}
 .section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
 .section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0 auto}
 .section-head h2{text-transform:uppercase;letter-spacing:.05em}
+/* TWO CAUSES, ONE OVERFLOW, both measured at 320. First, .section-head is a flex item under
+   align-items:center, so it sized to its own content and was centred, overhanging BOTH sides:
+   358px inside a 278px parent, starting at left -19. Capping it keeps the centring.
+   That alone moved the overflow rather than removing it, because the real driver is the
+   heading: "RECOMMENDATIONS" at 30px uppercase with 1.5px letter-spacing is a single
+   unbreakable 358px word. The page's other three headings wrap because they are multi-word.
+   So the heading is made to FIT on narrow screens rather than broken mid-word, and
+   overflow-wrap is kept only as a backstop for a future word longer still: a broken heading
+   is ugly, but a page that scrolls sideways is a defect. */
+.section-head{max-width:100%}
+@media (max-width:480px){.section-head h2{font-size:22px}}
+.section-head h2{overflow-wrap:anywhere}
 .manifest-in{justify-content:center}
 .manifest .grow{display:none}
 .section-head-tags{margin-top:.6rem}
