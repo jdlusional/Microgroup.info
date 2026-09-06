@@ -363,6 +363,14 @@ html.stack-page :focus-visible { outline: 3px solid var(--accent); outline-offse
      2026-09-04 against the day a snap declaration would first appear. This is that day. */
   html.stack-page { scroll-snap-type: y mandatory; scroll-padding-top: var(--bar-h); }
   html.stack-page .screen { scroll-snap-align: start; scroll-snap-stop: always; }
+  /* THE FOOTER MUST BE A SNAP POINT OR MANDATORY SNAP STRANDS IT. This is the 2026-09-04
+     refutation's own failure class, reproduced and then fixed rather than argued away. MEASURED on
+     demo-referrals.html at 1280: without this rule the End key rests at scrollY 681 against a true
+     maximum of 791 and the stamped footer never becomes fully visible, because the last snap point
+     is the final .screen and the 110px of footer beyond it has nothing to snap to. With it, End
+     rests at 791 and the footer is fully visible. Align END rather than START because the footer is
+     shorter than the scrollport and should come to rest against the bottom. */
+  html.stack-page footer.footer-panel { scroll-snap-align: end; }
 }
 /* ===== END SITE CHROME ===== */
 
