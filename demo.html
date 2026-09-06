@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="stack-page">
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J4XGXZ4CN"></script>
@@ -12,7 +12,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Demo — Jonathan Lin Davis</title>
-<meta name="description" content="The nonprofit fundraising product suite — Almanac, Scribe and Concordance — demonstrated against a fictional sample organization." />
+<meta name="description" content="The nonprofit fundraising product suite, Almanac, Scribe, Docket and Confluence, demonstrated against a fictional sample organization." />
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
 <meta name="referrer" content="no-referrer" />
 <link rel="icon" type="image/svg+xml" href="Assets/micro-mark-c1.svg">
@@ -21,7 +21,6 @@
 <link rel="apple-touch-icon" sizes="180x180" href="Assets/micro-touch-c1-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="tool-shared.css?v=9a8055aac9">
 <link rel="stylesheet" href="switcher-shared.css?v=a0acc30d75">
 <style>
@@ -38,55 +37,606 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:var(--serif);color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-.bar{background:var(--well);border-bottom:2px solid var(--ink)}
-.bar-in{max-width:900px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.bar-brand{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink)}
-.bar-note{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;color:var(--wash)}
-.hero{max-width:900px;margin:0 auto;padding:3.2rem 1.5rem 1rem;text-align:center}
-.hero .kicker{font-size:.76rem;letter-spacing:.03em;color:var(--accent);font-weight:600}
-.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,5vw,3rem);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
+
+.hero{max-width:900px;margin:0 auto;padding:var(--s5) var(--s4) var(--s3);text-align:center}
+.hero .kicker{font-size:var(--t-micro);letter-spacing:.03em;color:var(--accent-text);font-weight:600}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,5vw,3rem);color:var(--ink);margin:var(--s2) 0 var(--s3);line-height:1.1}
 .hero p{color:var(--wash);font-size:1.04rem}
-.fict{display:inline-block;margin-top:1.2rem;font-size:.7rem;letter-spacing:.02em;color:var(--urgent);font-weight:600;border:1px solid var(--urgent);padding:.32rem .65rem}
+
 /* This family's own kicker/status keep the body serif rather than
    switcher-shared.css's default mono -- predates the shared stylesheet. */
 .pc-kicker,.pc-status{font-family:var(--serif)}
-.pc-go{color:var(--accent)}
-.survey-callout{max-width:640px;margin:0 auto;padding:1.5rem 1.7rem;text-align:center;background:var(--paper);border:2px solid var(--urgent)}
-.sc-kicker{font-size:.76rem;letter-spacing:.02em;color:var(--urgent);font-weight:600;margin-bottom:.5rem}
-.survey-callout p{color:var(--ink);font-size:.95rem;margin:0 0 .9rem}
-.sc-go{display:inline-block;font-family:var(--mono);font-size:.8rem;letter-spacing:.02em;font-weight:500;color:#fff;background:var(--urgent);padding:.55rem 1.1rem}
+.pc-go{color:var(--accent-text)}
+
+.survey-callout p{color:var(--ink);font-size:var(--t-md);margin:0 0 .9rem}
+
 .sc-go:hover{background:var(--ink)}
 /* Foot-note convention (owner order, 2026-07-30): standing pattern for the
-   link-row + custom-build note under a product family's card grid -- centered,
-   not left-aligned like ordinary body copy. */
-.foot-note{max-width:1000px;margin:0 auto;padding:0 1.5rem 3rem;color:var(--wash);font-size:.93rem;text-align:center}
-.picker-subhead{max-width:1120px;margin:2.4rem auto .9rem;padding:0 1.5rem;text-align:center;font-family:var(--serif);font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;color:var(--wash)}
+   content block under a product family's card grid -- centered, not left-aligned
+   like ordinary body copy.
+   AMENDED 2026-09-05 by a later owner order, and the amendment is recorded here
+   because a superseded standing order that nobody marks as superseded is how a
+   later pass reinstates it. The 2026-07-30 order named this the pattern for the
+   "link-row + custom-build note"; the 2026-09-05 order removed that link row and
+   that note from this page outright, and the newer order wins.
+   WHAT STILL STANDS, checked rather than assumed: the CONTAINER convention is
+   live on two pages, this one and enterprise.html, and neither now carries the
+   link-row-plus-custom-build-note shape the original order named. Here the block
+   holds the .why-grid cards; on enterprise.html it holds a disclosure paragraph.
+   So the geometry rule below is current and the CONTENT half of the 2026-07-30
+   order is retired.
+   DO NOT RENAME OR REMOVE THIS DIV. build_demo_catalog.py anchors the end of its
+   generated card region on the literal string <div class="foot-note"> and aborts
+   the build if it cannot find it. */
+.foot-note{max-width:1000px;margin:0 auto;padding:0 var(--s4) var(--s5);color:var(--wash);font-size:var(--t-md);text-align:center}
+.picker-subhead{max-width:1120px;margin:var(--s5) auto var(--s2);padding:0 var(--s4);text-align:center;font-family:var(--serif);font-weight:700;font-size:var(--t-base);text-transform:uppercase;letter-spacing:.05em;color:var(--wash)}
 .picker-subhead:first-of-type{margin-top:0}
-footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--rule);color:var(--wash);font-family:var(--mono);font-size:12px;letter-spacing:.02em;text-align:center}
 @media(max-width:600px){.survey-callout{padding:1.2rem 1.1rem}}
-</style>
+
+/* ===== BEGIN SITE CHROME, generated by stamp_site_chrome.py, do not edit here ===== */
+/* The site chrome: token layer, header, departure gate and footer. TWO base pages:
+   the CSS and header come from index.html, the footer from about.html, per the owner
+   ruling of 2026-09-04. Every other convention page receives this block byte-identical
+   from stamp_site_chrome.py. Contains NO unscoped selector, so stamping it onto a page with
+   its own typography cannot restyle that page's body. */
+html.stack-page {
+  /* Palette, six values, unchanged. */
+  --paper:  #f4efe2;
+  --ink:    #1b3a2f;
+  --well:   #e4e6de;
+  --rule:   #c8c2b5;
+  --accent: #8a6b1f;
+  --wash:   #4a5c52;
+
+  /* Accent split by contrast class. --accent is restricted to borders, focus rings,
+     the mark, and display type at 24px or larger, where 4.35 on paper and 3.97 on
+     well clear the 3:1 boundary bar. Normal-scale text and solid fills take the
+     darker value at 6.12 and 5.58. */
+  --accent-text: #6f5518;
+  --accent-fill: #6f5518;
+
+  /* The lockup's own plate palette, declared rather than reconciled. */
+  --plate-ink:   #16241f;
+  --plate-gold:  #a8801f;
+  --plate-paper: #f2efe7;
+  --plate-rule:  #c9c4b8;
+  --plate-wash:  #55635c;
+
+  /* Form status, kept declared because contact.html shares this token layer. */
+  --ok:  #1a6b3d;
+  --err: #a13a33;
+
+  /* Alpha derivatives, each bound to a palette value rather than floating free. */
+  --a-rule-80:   rgba(200,194,181,.80);
+  --a-ink-08:    rgba(27,58,47,.08);
+  --a-ink-16:    rgba(27,58,47,.16);
+  --a-ink-45:    rgba(27,58,47,.45);
+  --a-paper-92:  rgba(244,239,226,.92);
+  --a-accent-24: rgba(138,107,31,.24);
+
+  /* FOUR families, each with a rendered consumer in this document. --f-script sets the
+     capability headline and nothing else: a script face is a display instrument. The
+     reason Parisienne was removed earlier in this rebuild was that it rendered NOWHERE,
+     not that it is a script, so returning it with a real consumer satisfies that rule
+     rather than reversing it. --f-serif now sets the wordmark in BOTH the lockup and the
+     header, so the two are the same face by construction rather than by coincidence. */
+  --f-sans:   'IBM Plex Sans', system-ui, -apple-system, Segoe UI, sans-serif;
+  --f-mono:   'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --f-serif:  'Instrument Serif', Georgia, 'Times New Roman', serif;
+  /* ONE SERIF, 2026-09-05 owner ruling. tool-shared.css sets --serif to Spectral and is owner gate
+     G2, so it is not edited; this wins on source order because every page links that sheet before
+     opening its own <style>. MEASURED BEFORE: two serif families downloaded and rendered on the
+     same page, Spectral carrying page content and Instrument Serif carrying the wordmark and
+     chrome, which is why h1 rendered in six different size-and-family combinations across 12
+     pages. Aliasing rather than redefining keeps ONE declaration to change next time. */
+  /* AMENDED 2026-09-05, owner ruling, hours after the alias below it was first set. --serif now
+     points at the SANS. The owner asked for the face used by index.html's .lede to replace the one
+     in demo-pricing's hero notes "and everywhere else that font is used". MEASURED: Instrument
+     Serif was on 591 elements across the 12 pages, of which about 26 are the brand, the
+     "MICRO Group" wordmark in every header plus the homepage lockup. He ruled the content changes
+     and the wordmark does not, so the split is exactly the two tokens: --serif carries page
+     content and becomes sans here, --f-serif carries the wordmark and stays Instrument Serif.
+     That is also why the Instrument Serif font request is KEPT: the wordmark still needs it. */
+  --serif:    var(--f-sans);
+  --f-script: 'Parisienne', 'Segoe Script', cursive;
+
+  /* Eleven sizes. No font-size on html, so the root stays the reader's own default.
+     The five sizes the pattern book pins by label resolve exactly: 1.5625rem is 25px,
+     .82rem is 13.12px, .95rem is 15.2px, .78rem is 12.48px. */
+  --t-micro: .75rem;
+  --t-xs:    .78rem;
+  --t-sm:    .82rem;
+  --t-md:    .95rem;
+  --t-base:  1.06rem;
+  --t-lg:    1.25rem;
+  --t-2xl:   1.5rem;
+  --t-xl:    1.5625rem;
+  --t-3xl:   2rem;
+  --t-4xl:   2.6rem;
+  --t-hero:  3.125rem;
+
+  /* Six-step space scale. */
+  --s1: .375rem;
+  --s2: .75rem;
+  --s3: 1.125rem;
+  --s4: 1.75rem;
+  --s5: 2.75rem;
+  --s6: 4.5rem;
+
+  --measure: 62ch;
+  --maxw:    1180px;
+  --bar-h:   76px;
+}
+html.stack-page .mg-wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--s4); }
+/* The header is a flex row that centres on the cross axis, so the wordmark, the links
+   and the two tabs share one optical centreline instead of sitting on their own
+   baselines. Every child that could set its own baseline centres too. */
+.site-header {
+  /* SELF-CONTAINED ON PURPOSE. Identical chrome CSS still rendered three
+     different fonts across ten pages, because these elements INHERITED font-family from
+     each host page's own body and tool-shared.css. Every inherited text property is reset
+     here so the chrome looks the same wherever it is stamped. */
+  font-family: var(--f-sans); font-size: var(--t-base); font-weight: 400; font-style: normal;
+  line-height: 1.6; letter-spacing: normal; text-transform: none; color: var(--ink);
+  position: sticky; top: 0; z-index: 40;
+  background: var(--a-paper-92);
+  backdrop-filter: saturate(1.4) blur(8px);
+  border-bottom: 1px solid var(--rule);
+  min-height: var(--bar-h);
+  display: flex;
+  align-items: center;
+}
+.nav { display: flex; align-items: center; gap: var(--s4); width: 100%; max-width: var(--maxw); margin: 0 auto; padding: var(--s2) var(--s4); }
+.nav-right { display: flex; align-items: center; gap: var(--s4); margin-left: auto; }
+.nav-links { display: flex; align-items: center; gap: var(--s4); list-style: none; margin: 0; padding: 0; }
+.nav-links a { font-family: var(--f-sans); color: var(--ink); text-decoration: none; font-size: var(--t-md); font-weight: 500; display: flex; align-items: center; min-height: 24px; letter-spacing: normal; text-transform: none; }
+.nav-links a:hover { color: var(--accent-text); text-decoration: underline; }
+/* The current page's own nav item. Set at load by the chrome's own script rather
+   than written into the markup, because the markup is byte-identical on every page
+   and a per-page marker cannot live in it. */
+.nav-links a[aria-current="page"] { color: var(--accent-text); font-weight: 700; text-decoration: underline; }
+/* Wordmark. THE HEADER AND THE LOCKUP ARE THE SAME FACE BY CONSTRUCTION: both read
+   var(--f-serif) and both italicise the second word, so the header cannot drift away
+   from the mark it echoes. */
+html.stack-page .nav-name { font-family: var(--f-serif); font-size: var(--t-3xl); font-weight: 400; color: var(--plate-ink); text-decoration: none; letter-spacing: -.01em; line-height: 1; display: inline-block; }
+html.stack-page .nav-name-sub { font-style: italic; font-weight: 400; }
+/* Site switchers */
+html.stack-page .mg-tab { font-family: var(--f-sans); font-size: var(--t-xs); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; text-decoration: none; color: var(--accent-text); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); display: flex; align-items: center; }
+html.stack-page .mg-tab.active { background: var(--accent-fill); color: var(--paper); border-color: var(--accent-fill); }
+html.stack-page .site-flip { display: flex; align-items: center; gap: var(--s1); }
+/* Footer, one compact band. It is deliberately the smallest thing on the page: on the
+   first measurement of this layout the footer was 234px of a 290px overflow, which is
+   what stopped the landing view being one screen. */
+html.stack-page .footer-panel { background: var(--well); padding: var(--s2) var(--s4); border-top: 1px solid var(--rule); text-align: center;
+  font-family: var(--f-sans); font-size: var(--t-base); font-weight: 400; font-style: normal;
+  line-height: 1.6; letter-spacing: normal; text-transform: none; color: var(--ink); }
+html.stack-page .mg-wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--s4); }
+html.stack-page .footer-row { display: flex; flex-direction: column; align-items: center; gap: var(--s1); }
+html.stack-page .footer-slogan { font-family: var(--f-mono); font-size: var(--t-micro); font-weight: 400; letter-spacing: .06em; color: var(--plate-wash); line-height: 1.6; }
+html.stack-page .footer-slogan u { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+html.stack-page .footer-switcher { display: flex; gap: var(--s1); justify-content: center; flex-wrap: wrap; }
+html.stack-page .footer-legal { font-family: var(--f-sans); font-size: var(--t-micro); color: var(--wash); line-height: 1.6; letter-spacing: normal; }
+/* Cross-domain departure gate */
+html.stack-page .flip-gate { position: fixed; inset: 0; background: var(--a-ink-45); display: flex; align-items: center; justify-content: center; z-index: 90; }
+/* MUST FOLLOW THE RULE ABOVE. `display:flex` on a class selector is specificity 0,2,1
+   and beats the user-agent stylesheet's `[hidden] { display:none }` at 0,1,0, so without
+   this the hidden attribute is inert and the gate renders permanently over the page. */
+html.stack-page .flip-gate[hidden] { display: none; }
+html.stack-page .flip-gate-box { background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: var(--s4); max-width: 420px; box-shadow: 0 8px 28px var(--a-ink-16); }
+html.stack-page .flip-gate-msg { margin: 0 0 var(--s3); color: var(--ink); font-size: var(--t-md); }
+html.stack-page .flip-gate-actions { display: flex; gap: var(--s2); justify-content: flex-end; }
+/* The countdown number. Given a REAL RULE rather than a per-page I1 waiver: this
+   component now travels with the header convention, so every page that adopts the
+   convention would otherwise need its own waiver for the same class. A rule scales
+   where a waiver list does not. */
+html.stack-page .flip-gate-count { font-variant-numeric: tabular-nums; font-weight: 700; }
+html.stack-page .flip-gate-go { pointer-events: none; color: var(--wash); text-decoration: none; font-weight: 600; }
+html.stack-page .flip-gate-go.ready { pointer-events: auto; color: var(--accent-text); }
+html.stack-page .flip-gate-cancel { font-family: var(--f-sans); font-size: var(--t-md); background: transparent; border: 1px solid var(--rule); border-radius: 3px; padding: var(--s1) var(--s3); color: var(--ink); cursor: pointer; }
+html.stack-page .nav-toggle { display: none; background: transparent; border: 1px solid var(--rule); border-radius: 3px; color: var(--ink); font-size: var(--t-lg); padding: 0 var(--s2); cursor: pointer; align-items: center; }
+@media (max-width: 860px) {
+  .nav { flex-wrap: wrap; gap: var(--s1); justify-content: center; padding: var(--s1) var(--s2); }
+  .nav-right { margin-left: 0; flex-wrap: wrap; justify-content: center; gap: var(--s2); width: 100%; }
+  .nav-links { gap: var(--s1) var(--s2); row-gap: 2px; flex-wrap: wrap; justify-content: center; }
+  .nav-links a { font-size: var(--t-micro); }
+  .site-header { position: static; min-height: 0; }
+  html.stack-page .nav-name { font-size: var(--t-2xl); }
+  html.stack-page .mg-tab { padding: 2px var(--s1); }
+  /* nav-collapse, R16 2026-09-05. The toggle has been stamped on all ten pages since the
+     convention landed and was display:none unconditionally with no wiring anywhere, so the
+     chrome promised a menu button and never delivered one. Below the breakpoint the links
+     collapse behind it. Specificity, not order, decides these: html.stack-page .nav-right is
+     0,2,0 against the plain .nav-right above it at 0,1,0, and the [data-open] form outranks
+     both, so the open state cannot be lost to a later edit reordering the block. */
+  html.stack-page .nav-toggle { display: inline-flex; }
+  html.stack-page .nav-right { display: none; }
+  html.stack-page .nav-right[data-open="true"] { display: flex; }
+  html.stack-page .footer-panel { padding: var(--s1) var(--s2); }
+}
+/* Defect 9, 2026-09-05. MEASURED: .nav sat at left 50 on the two fit-screen pages and
+   42.44 on the six that scroll, because a classic Windows scrollbar takes 15px from a
+   scrolling page and none from one that fits, shifting content 7.56px. R1 measured that
+   shift and recorded it unfixed. Reserving the gutter on every page makes all ten lay out
+   identically, so the wordmark stops moving between pages. */
+html.stack-page { scrollbar-gutter: stable; }
+html.stack-page .nav > * { min-width: 0; }
+/* R6, 2026-09-05. Four rules added in one authoring pass, all scoped under html.stack-page so
+   stamping them onto a page with its own typography cannot restyle that page's body. */
+html.stack-page :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  html.stack-page *, html.stack-page *::before, html.stack-page *::after {
+    animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important; scroll-behavior: auto !important;
+  }
+  /* Inert today at 0 snap declarations across 12 files, and correct on the day one appears.
+     The retired style.css forced scroll-behavior: auto at its line 381, which removes the
+     animation and leaves the unrequested jump, the worse of the two failures. */
+  html.stack-page { scroll-snap-type: none !important; }
+}
+@media (min-width: 861px) {
+  /* The header occludes the tool manifest band because tool-shared.css line 81 sets
+     .manifest sticky at z-index 50 against a site header at 40. Fixed by specificity here
+     rather than by editing tool-shared.css, which is owner gate G2. BOTH rules are guarded
+     at 861px because the header is STATIC below that: unguarded, the band moves from 0.00
+     to 76.00 at 375, which is a new defect rather than a fix. */
+  html.stack-page .manifest { top: var(--bar-h); }
+  html.stack-page section[id] { scroll-margin-top: var(--bar-h); }
+
+  /* HARD SECTION SNAP, 2026-09-05 owner ruling, which REVERSES IN PART the 2026-09-04 ruling of
+     "no snapping on any page". That ruling accepted a refutation from W3C, MDN, web.dev and NN/g
+     that a snap area taller than the scrollport can strand content, and that precondition is
+     accepted here rather than overridden: it is satisfied by making every snap area fit.
+
+     GUARDED AT 861px ON PURPOSE. Below it the phone keeps ordinary scrolling, because the same
+     measurement that cleared desktop shows phone sections at two to four times the viewport, which
+     is exactly the stranding case the refutation named.
+
+     INERT WITHOUT SNAP POINTS. Only .screen carries scroll-snap-align, so a page opts in by having
+     sections rather than by carrying different chrome, and D4's rule that the chrome is identical
+     everywhere survives. The six long-form pages ruled out of scope simply never gain a .screen.
+
+     scroll-padding-top is what keeps a snapped section from resting under the 76px sticky header.
+     Pages that also carry the sticky .manifest need more and set it page-locally.
+     scroll-snap-stop:always is what makes it hard rather than loose: a fast scroll cannot skip a
+     section. The prefers-reduced-motion block above disarms all of this, and was authored on
+     2026-09-04 against the day a snap declaration would first appear. This is that day. */
+  /* SCOPED WITH :has(.screen), 2026-09-05, AFTER THIS SHIPPED BROKEN. The rule below used to be
+     unscoped, on the stated reasoning that scroll-snap-type is inert without snap points. That was
+     true when written and I invalidated it myself by adding the footer snap point further down:
+     the footer then became the ONLY snap point on the nine pages carrying no .screen, and mandatory
+     snap must come to rest on one, so those pages LOADED SCROLLED TO THE BOTTOM. Measured before
+     the fix: about.html opened at scrollY 2294, demo-pricing at 2593, demo-survey at 3044.
+     :has(.screen) makes the opt-in real rather than asserted. If a browser does not support :has(),
+     the whole rule is invalid and no snap applies, which is the safe direction to fail.
+     scroll-padding-top is scoped with it deliberately: it would otherwise stack with the
+     scroll-margin-top on section[id] below and land every anchor 152px down instead of 76. */
+  html.stack-page:has(.screen) { scroll-snap-type: y mandatory; scroll-padding-top: var(--bar-h); }
+  html.stack-page .screen { scroll-snap-align: start; scroll-snap-stop: always; }
+  /* THE FOOTER MUST BE A SNAP POINT OR MANDATORY SNAP STRANDS IT. This is the 2026-09-04
+     refutation's own failure class, reproduced and then fixed rather than argued away. MEASURED on
+     demo-referrals.html at 1280: without this rule the End key rests at scrollY 681 against a true
+     maximum of 791 and the stamped footer never becomes fully visible, because the last snap point
+     is the final .screen and the 110px of footer beyond it has nothing to snap to. With it, End
+     rests at 791 and the footer is fully visible. Align END rather than START because the footer is
+     shorter than the scrollport and should come to rest against the bottom. */
+  html.stack-page:has(.screen) footer.footer-panel { scroll-snap-align: end; }
+  /* A page that stacks the sticky .manifest under the sticky header needs more scroll padding, or
+     a snapped section rests underneath the band. Measured: header 76px, manifest 37.2px, 113.2px
+     together. Declared here rather than page-locally because the chrome's own :has(.screen)
+     selector out-specifies a bare html.stack-page rule, so the page-local version silently lost
+     and demo-referrals loaded at scrollY 64 with 76px of padding instead of 114. Conditioning on
+     the manifest's presence keeps this correct for any page, without a per-page exception. */
+  html.stack-page:has(.screen):has(.manifest) { scroll-padding-top: calc(var(--bar-h) + 38px); }
+  /* AND THE TWO OFFSETS MUST NOT STACK. section[id] above carries scroll-margin-top: var(--bar-h)
+     so an anchor clears the sticky header. On a snap page the container's scroll-padding-top does
+     that job already, and a .screen that is also a section[id] got BOTH: measured on index.html,
+     whose screens are <section id="home"> and <section id="about">, the second rested at 568
+     instead of its 644 snap point, 76px short, and an anchor jump to #about landed the same 76px
+     low. Zeroed here for snap screens only, so ordinary anchor targets keep their margin. */
+  html.stack-page:has(.screen) .screen[id] { scroll-margin-top: 0; }
+}
+/* ===== END SITE CHROME ===== */
+
+/* owner-centre-pass, 2026-09-05, owner direction: every piece of page CONTENT is centred.
+   Header and footer are excluded because they are generated chrome and this rule is
+   page-local, so it cannot reach inside the stamped blocks. FORM DATA is excluded
+   explicitly below: a label or an input reads left-aligned, and centring a form field's
+   text makes it harder to scan and to correct. */
+main { text-align: center; }
+main label, main input, main select, main textarea, main fieldset, main legend,
+main option, main .field, main .form-grid { text-align: left; }
+
+/* ============ WHY-CARDS, 2026-09-05 ============ */
+/* The page's three closing paragraphs as cards. Card geometry is COPIED from the ratified
+   .pcard on about.html rather than re-invented: --well ground, 1px --rule box, 2px --accent
+   top rule, 3px radius. The gutter is --s4 against a card padding of --s3, a quotient of
+   1.556, and that ratio is the grouping cue on purpose: --rule on --well is 1.41 and --paper
+   on --well is 1.10, so neither edge reads as a boundary and the spacing has to do the work.
+   --accent appears on BORDERS only. Every text colour here is --ink, --wash or --accent-text. */
+.why-grid {
+  display: grid;
+  /* START, NOT STRETCH. A grid item stretches to its row height by default, so opening one card
+     grew the closed one to match and it read as though both had opened. Owner-reported. */
+  align-items: start;
+  /* min() rather than a bare 320px. At 320 the content box is 272px, so a bare track minimum
+     holds a track wider than the viewport and scrolls the document sideways, which is the exact
+     shape of the 63px overflow a prior pass shipped. MEASURED: with both guards removed this
+     page overflows by 24px at 320 and by nothing at any other width, so the guard is doing real
+     work at exactly one width and the 600px query below is its backstop. */
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: var(--s4);
+  text-align: center;
+}
+.why-grid > * { min-width: 0; }
+
+.why-card {
+  background: var(--well);
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--accent);
+  border-radius: 3px;
+  padding: var(--s3);
+  text-align: center;
+}
+/* SENTENCE headings, not names. --t-lg is the convention's h4 size and sits deliberately below
+   the --t-xl the product card titles take, so a 45-character sentence does not outweigh a
+   one-word product name a few hundred pixels above it. The bolded lead-in that used to open
+   each paragraph is GONE as an element: the <b> is not swapped for <strong>, it is replaced by
+   a heading, which is what it was doing all along. */
+.why-title {
+  font-size: var(--t-lg);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 auto var(--s2);
+  max-width: var(--measure);
+}
+/* THE MEASURE IS THE WHOLE READABILITY ARGUMENT FOR CENTRED PROSE. Two columns hold each card's
+   text at 424px at 1280, which renders 61 to 65 characters to the line. Below 731 the grid is
+   one column, the card can be 537px wide, and this cap is the only thing between that and a
+   90-character centred line. */
+.why-card p {
+  font-size: var(--t-md);
+  color: var(--ink);
+  margin: 0 auto;
+  max-width: var(--measure);
+}
+.why-card p + p { margin-top: var(--s3); }
+
+/* The figure row. Flex rather than an auto-fit grid, because an orphan third cell in a grid sits
+   in column one while the card around it is centred; flex-wrap plus justify-content centres what
+   wraps, which is what the 375 render does. The 120px basis is the one literal in this block and
+   it is arithmetic, not taste: the widest numeral, 407,293, is 7 monospace characters at --t-2xl,
+   COMPUTED at 101px on a .6em advance, so 120 clears it; three cells plus two --s4 gutters is
+   416px against a 424px text column at 1280, so the row holds three across on the desktop and
+   drops to two, then one, with no cell ever exceeding its card. MEASURED, as against computed:
+   3 cells across at 1280, 2 then 1 at 375, 1 per row at 320, and no numeral's scrollWidth exceeds
+   its clientWidth at any width, including the 123px cell the 375 layout gives it. */
+.fig-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s3) var(--s4);
+  margin-top: var(--s3);
+}
+.fig-cell { flex: 1 1 120px; min-width: 0; }
+.fig-n {
+  display: block;
+  font-family: var(--f-mono);
+  font-weight: 700;
+  font-size: var(--t-2xl);
+  line-height: 1.15;
+  color: var(--accent-text);
+  /* Insurance against the webfont failing to load: a proportional fallback would otherwise set
+     the three numerals at three different widths. */
+  font-variant-numeric: tabular-nums;
+}
+.fig-l { display: block; font-size: var(--t-sm); color: var(--ink); margin-top: var(--s1); }
+/* Two of the six figures cannot be lifted out of their phrase without reordering words: the 59
+   sits inside "across 59 states and territories" and the range inside "tax years 2015 through
+   2025 of full IRS Form 990 schedule detail". Both keep their original word order and take the
+   numeral face inline instead, so they read as figures without being restated. */
+.fig-em { font-family: var(--f-mono); font-weight: 700; color: var(--accent-text); }
+.why-card .fig-span { margin-top: var(--s2); }
+/* The measurement date. Small, monospace, --wash: the register of a table footnote, which is
+   what it is. It is the only thing on the page making the four counts checkable, so it is quiet
+   but it is never absent. */
+.why-card .fig-note {
+  margin-top: var(--s1);
+  font-family: var(--f-mono);
+  font-size: var(--t-sm);
+  color: var(--wash);
+}
+
+/* The disclosure is NOT a third argument, so it is not a third card in the row. It is the prose
+   third of a claim the hero badge already makes in --urgent at line 356 and the survey callout
+   repeats in --urgent at 361, so it takes the --urgent top rule those two carry, on the page's
+   own --paper rather than the argument cards' --well. Three registers, one claim, visibly one
+   family. It is also the one block on the page that would otherwise run the full 1000px, so it
+   takes --measure as a BAND rather than only on its paragraph, the same shape about.html's
+   .scope and .problem already ship. */
+.why-note p { margin: 0 auto; font-size: var(--t-md); color: var(--ink); }
+
+@media (max-width: 600px) {
+  /* A SECOND, INDEPENDENT overflow guard, on the page's own existing 600px breakpoint. MEASURED
+     to be inert in a current browser: at 601, where this query does not apply, auto-fit already
+     resolves to one column, so this changes no layout at any width it reaches. It exists for the
+     browser that does not support min() inside minmax(), where it is the only thing standing
+     between the phone and a 24px sideways scroll. Deliberately NOT set at 860 like about.html's
+     grids: an 860px breakpoint would force one 797px column across the whole 601 to 860 band,
+     where two 320 to 384px columns fit and read better. */
+  .why-grid { grid-template-columns: 1fr; }
+}
+
+/* ============ SECTION CONVENTION, 2026-09-05 ============ */
+/* A page's content is a vertical stack of bands. A panel owns VERTICAL rhythm and nothing else: it
+   is full-bleed and sets no width and no side padding, so the content column stays the page's own
+   wrapper and adopting this convention cannot change horizontal geometry. */
+
+.panel + .panel {
+  margin-top: var(--s6);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--s6);
+}
+main > .panel:first-child { padding-top: var(--s5); }
+/* The sticky sub-navigation band is NOT a panel and must never take the gap: a top margin on a
+   sticky element moves where it comes to rest. Named so a later pass cannot sweep it in. */
+main > .manifest { margin-top: 0; }
+
+/* A colophon is the page's own end-note, distinct from the stamped site footer below it. It carries
+   content the site footer does not, so it is kept and classed rather than deleted. */
+
+@media (max-width: 860px) {
+  .panel + .panel { margin-top: var(--s5); padding-top: var(--s5); }
+  main > .panel:first-child { padding-top: var(--s4); }
+}
+
+/* THE TWO "WHY THESE" CARDS ARE DROPDOWNS, owner order 2026-09-05. They are the longest prose on
+   the page and they answer a question a reader either has or does not. Native <details>: no
+   JavaScript, keyboard accessible, and not sticky, so I27 is untouched. */
+.why-card > summary.why-title {
+  cursor: pointer;
+  /* CENTRED 2026-09-05, owner order. A summary is display:list-item by default, which puts the
+     marker in a gutter and makes text-align look like it does nothing. Switching the box to
+     inline-flex lets the marker and the text centre together as one unit. */
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--s1);
+  text-align: center;
+  width: 100%;
+  justify-content: center;
+}
+.why-card > summary.why-title::marker { content: none; }
+.why-card > summary.why-title::before {
+  content: "▸";
+  color: var(--accent-text);
+  font-size: .8em;
+  transition: none;
+}
+.why-card[open] > summary.why-title::before { content: "▾"; }
+.why-card[open] > summary.why-title { margin-bottom: var(--s2); }
+/* ONE WINDOW FOR THE CARDS, 2026-09-06 owner order. This page was excluded from snap on 2026-09-05
+   on a measurement that no longer holds: its cards rendered 676px each against a 644px window and
+   no column count fixed it. Halving the four descriptions in catalog.json, ordered the same day,
+   brought a card to 463 and the picker to 572, so the page became snappable. The first screen is
+   what the owner asked for: the hero, the subhead and all four cards in a single window.
+   Only the VERTICAL padding comes out of the cards. The horizontal stays: they are 246px wide and
+   the text needs the side room. */
+@media (min-width: 861px) {
+  .screen {
+    min-height: calc(100vh - var(--bar-h));
+    min-height: calc(100svh - var(--bar-h));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  /* AN AUTO CROSS-AXIS MARGIN OVERRIDES align-items: stretch, so a flex child carrying
+     `margin: 0 auto` sizes to its own CONTENT instead of to its parent. Making .screen a flex
+     column for snap turned every section child into such an item, and .picker is
+     `repeat(auto-fit, minmax(240px, 1fr))`, whose min-content width is all four tracks at their
+     240px floor plus gaps and padding: 4x240 + 3x28.8 + 48 = 1094.4, and 1094 is exactly what it
+     measured. So between 861 and about 1140 the picker held 1094px inside an 885 to 1085px parent
+     and scrolled the document sideways: 194px of overflow at 900, 70px at 1024. Below 861 the
+     screen is not flex and the same grid correctly falls to three columns, which is why the low
+     widths always passed and why a sweep that stopped at 860 and jumped to 1280 saw nothing.
+     Introduced by the snap work in 860487a, found 2026-09-06. The same trap was already hit once
+     on demo-referrals (#how, same fix), which is why width: 100% and not a margin reset: the
+     shorthand would drop the centring the auto margins are there to provide. */
+  .screen > * { width: 100%; min-width: 0; }
+  .pick-card { padding: var(--s2) var(--s4); }
+  .hero { padding: var(--s2) var(--s3) var(--s1); }
+  .picker-subhead { margin: var(--s2) auto var(--s2); }
+  /* SEPARATION FROM THE CARD ROW ABOVE. With the two "Why these" cards moved up onto this one
+     page, the block's own top padding of 0 put them flush against the product cards: measured gap
+     exactly 0, the same pressed-together reading the owner has reported elsewhere. */
+  .foot-note { padding: var(--s5) var(--s3) var(--s3); }
+  /* The picker carried 109px of its own vertical padding around a 417px card row, which is what
+     pushed the first screen to 735 against a 644 window. The row keeps its side padding. */
+  .picker { padding-top: 0; padding-bottom: 0; }
+  .pick-card .pc-go { padding: var(--s1) var(--s3); }
+}</style>
+
+<!-- BEGIN SITE FONTS, generated by stamp_site_chrome.py, do not edit here -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Parisienne&display=swap" rel="stylesheet">
+<!-- END SITE FONTS -->
 </head>
 <body>
-<!-- writing-convention: general -->
-<div class="bar">
-  <div class="bar-in">
-    <span class="bar-brand">Demo</span>
-    <a class="bar-note" href="public-index.html">All projects &#8594;</a>
+<!-- BEGIN SITE CHROME, generated by stamp_site_chrome.py, do not edit here -->
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="nav-name" href="/">MICRO<span class="nav-name-sub"> Group</span></a>
+    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+    <div class="nav-right" id="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html#services">Services</a></li>
+        <li><a href="demo.html">Products</a></li>
+        <li><a href="demo-pricing.html">Pricing</a></li>
+        <li><a href="demo-referrals.html">Referrals</a></li>
+        <li><a id="nav-connect" href="contact.html">Connect</a></li>
+      </ul>
+      <div class="site-flip">
+        <a href="https://jonathanlindavis.com" class="mg-tab" data-leave="You are leaving Microgroup.info and travelling to Jonathanlindavis.com.">Open Data</a>
+        <a href="index.html" class="mg-tab active">MICRO</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+/* Marks the current page's nav item. Lives in the chrome so it is stamped onto every
+   convention page unchanged; each page resolves its own answer at load. Matches on the
+   file name, and treats "" and "index.html" as the same page so "/" marks Home. */
+(function(){
+  var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  var links = [].slice.call(document.querySelectorAll('.nav-links a'));
+  var same = links.filter(function(a){
+    return (a.getAttribute('href') || '').split('#')[0].split('/').pop().toLowerCase() === here;
+  });
+  /* Two nav items can point at one page: Services is about.html#services and About is
+     about.html. Prefer the one WITHOUT a fragment, so exactly one item is ever marked. */
+  var exact = same.filter(function(a){ return (a.getAttribute('href') || '').indexOf('#') < 0; });
+  var pick = exact.length ? exact[0] : same[0];
+  if (pick) pick.setAttribute('aria-current', 'page');
+})();
+</script>
+
+<div class="flip-gate" id="flip-gate" hidden>
+  <div class="flip-gate-box" role="alertdialog" aria-modal="true" aria-labelledby="flip-gate-msg">
+    <p id="flip-gate-msg" class="flip-gate-msg"></p>
+    <div class="flip-gate-actions">
+      <button type="button" class="flip-gate-cancel">Cancel</button>
+      <a href="#" class="flip-gate-go" aria-disabled="true">Continue (<span class="flip-gate-count">3</span>)</a>
+    </div>
   </div>
 </div>
+  <!-- nav-collapse wiring. INSIDE the marked block on purpose, the same reason R7's year setter
+       is: it travels with the elements it wires, so a page cannot receive the button without the
+       behaviour. Sets aria-expanded and aria-controls from script rather than markup, so a page
+       with JavaScript off shows the links instead of an inert button, which is why the collapse
+       is applied by CSS keyed on an attribute this script owns. -->
+  <script>(function(){
+    var b=document.querySelector('.nav-toggle'), n=document.getElementById('nav-right');
+    if(!b||!n) return;
+    n.setAttribute('data-open','false');
+    b.setAttribute('aria-controls','nav-right');
+    b.setAttribute('aria-expanded','false');
+    b.addEventListener('click',function(){
+      var open = n.getAttribute('data-open')==='true';
+      n.setAttribute('data-open', open?'false':'true');
+      b.setAttribute('aria-expanded', open?'false':'true');
+    });
+  })();</script>
+<!-- END SITE CHROME -->
+<main>
+<!-- writing-convention: general -->
 
+<section class="screen">
 <header class="hero">
   <div class="kicker">Fundraising tools for nonprofits</div>
   <h1>Demo</h1>
-  <p>Three tools that work from a nonprofit's own public record. Almanac finds the institutions that fund its work, Scribe drafts the application, and Concordance finds the people who govern those institutions.</p>
-  <span class="fict">Every demo runs against a fictional organization</span>
+  <p>Four tools that work from a nonprofit's own public record. Almanac finds the funders, Scribe drafts the application, Docket covers letters of inquiry and requests for proposals, and Confluence finds partner funding.</p>
 </header>
-
-<div class="survey-callout">
-  <div class="sc-kicker">Start here</div>
-  <p>Every demo below runs against a fictional sample organization. A full demo built around your own organization's real numbers starts with the Organization Intake Survey. Complete it first.</p>
-  <a class="sc-go" href="demo-survey.html">Complete the Organization Intake Survey &#8594;</a>
-</div>
 
 <!-- ES-GENERATED:BEGIN [catalog-cards]
      Generated from enterprise/catalog.json by enterprise/build_demo_catalog.py.
@@ -98,76 +648,76 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
   <a class="pick-card" href="demo-almanac.html">
     <div class="pc-kicker">Funder &amp; grant match</div>
     <h2>Almanac</h2>
-    <p>Finds the funders and open grants that fit an organization, ranks them, and shows the public source behind every one.</p>
+    <p>Finds the funders and open grants that fit an organization and ranks them, showing the public source behind every one. Built from the organization's own record, not a keyword match on its mission.</p>
     <div class="pc-status">Live</div>
     <span class="pc-go">Open demo &#8594;</span>
   </a>
   <a class="pick-card" href="demo-scribe.html">
     <div class="pc-kicker">Grant drafter</div>
     <h2>Scribe</h2>
-    <p>Works from an Almanac match to produce a near-submission draft, fact-checked against the organization's own public information, with an explicit list of what only the applicant can supply. Requires an active Almanac subscription.</p>
+    <p>Turns an Almanac match into a near-submission draft, fact-checked against the organization's own public record. Whatever it cannot verify comes back as an explicit list. Requires Almanac.</p>
     <div class="pc-status">Live</div>
     <span class="pc-go">Open demo &#8594;</span>
   </a>
   <a class="pick-card" href="demo-docket.html">
     <div class="pc-kicker">Organization Project Requests</div>
     <h2>Docket</h2>
-    <p>Almanac's sibling for Letters of Inquiry and Requests for Proposals, tracked separately from traditional grants. Same sourcing standard: every request traces to the funder's or agency's own current page. Requires an active Almanac subscription.</p>
+    <p>Almanac's sibling for Letters of Inquiry and Requests for Proposals, tracked apart from traditional grants. Every request traces to the funder's or agency's own current page. Requires Almanac.</p>
     <div class="pc-status">Live</div>
     <span class="pc-go">Open demo &#8594;</span>
   </a>
   <a class="pick-card" href="demo-confluence.html">
-    <div class="pc-kicker">Joint funding, two or more organizations</div>
+    <div class="pc-kicker">Joint organizational funding</div>
     <h2>Confluence</h2>
-    <p>Finds funding that connects your organization's mission to one or more named partner organizations' work, including consortiums, associations, and collaboratives, where you remain the eligible applicant. An angle Almanac's single-org matching doesn't surface on its own. Every organization in the group needs its own Almanac subscription; only one needs Scribe, and only one needs Docket.</p>
+    <p>Finds funding that spans your organization and one or more named partners, where you remain the eligible applicant. An angle single-organization matching does not surface. Requires Almanac.</p>
     <div class="pc-status">Live</div>
     <span class="pc-go">Open demo &#8594;</span>
   </a>
 </div>
-
-<h2 class="picker-subhead">In Development</h2>
-<div class="picker">
-  <div class="pick-card disabled">
-    <div class="pc-kicker">Trustees &amp; introductions</div>
-    <h2>Concordance</h2>
-    <p>Names the people who govern the foundations that already fund this kind of work, shows the grants that prove it, and maps who on a board could make the introduction. It does not estimate anyone's wealth.</p>
-    <div class="pc-status">In Development</div>
-  </div>
-  <div class="pick-card disabled">
-    <div class="pc-kicker">Grant-cycle monitor</div>
-    <h2>Herald</h2>
-    <p>Watches the funder pages behind an Almanac watch-list and reports when a cycle opens, a deadline posts, or guidelines change, showing the actual diff, never an interpretation.</p>
-    <div class="pc-status">In Development</div>
-  </div>
-  <div class="pick-card disabled">
-    <div class="pc-kicker">Corporate foundation benchmark</div>
-    <h2>Atlas</h2>
-    <p>Benchmarks a corporate foundation's giving against real aggregate statistics computed from Texas-registered 990-PF filings, not any single named peer.</p>
-    <div class="pc-status">In Development</div>
-  </div>
-  <div class="pick-card disabled">
-    <div class="pc-kicker">990 reconciliation</div>
-    <h2>Dossier</h2>
-    <p>Checks that a foundation's claimed giving matches its own filed 990-PF numbers, and cross-references a voluntary donation list against public filings.</p>
-    <div class="pc-status">In Development</div>
-  </div>
-</div>
 <!-- ES-GENERATED:END [catalog-cards] -->
-
 <div class="foot-note">
-  <p><b>Why these rather than a grant database.</b> A subscription database is curated before the vendor knows a specific organization exists. Someone decides which opportunities belong on the shelf, and every subscriber sees the same shelf. These products reverse that order: a person who has worked in the nonprofit sector reads the organization first, and its shelf is built afterward, against its actual goals and programs rather than a keyword match on its mission statement. That is a claim an organization can test before it pays anything, because every demo above is shown before price is discussed.</p>
-  <p><b>Why these rather than a general research tool.</b> The funder records behind these products sit on one EIN spine alongside sources a grants database does not carry: 56,756 federal contract awards, 407,293 federal subawards, 177,378 Federal Audit Clearinghouse single audits across 59 states and territories, and tax years 2015 through 2025 of full IRS Form 990 schedule detail, each count measured 2026-08-31. Joining those to the grant record is what makes a single question answerable in one pass: which funders support this work, are growing their giving, and carry no adverse audit findings.</p>
-  <p>Each demo is built around a clearly-labelled invented organization, so it can be shown to anyone without exposing a client's research. The funders, foundations, trustees, grants and dollar figures inside them are real, and come from public IRS filings.</p>
-  <p><a href="demo-pricing">Full pricing &#8594;</a> &middot; <a href="demo-referrals">Refer an organization, earn 5% &#8594;</a> &middot; <a href="demo-survey">Tell us about your organization &#8594;</a></p>
-  <p><a href="/#contact">Need something custom? Individualized builds outside this catalog are available on request &#8594;</a></p>
-  <p class="footer-about-micro">MICRO Group, L.L.C. is a strategic, research-driven consultancy serving nonprofit, government, and political and legislative organizations. Each engagement is shaped around the client's own goals rather than a fixed template: a measured approach to your goals. Beyond consulting, MICRO Group, L.L.C. builds and sells purpose-built software for nonprofit grant-seeking, including Almanac, Scribe, Docket, and Confluence today, with Concordance, Herald, Atlas, and Dossier in development. The name stands for the firm's core disciplines: Management, Integration, Culture, Research, and Operations.</p>
-</div>
+  <div class="why-grid">
 
-<footer>
-  Demonstration builds  <!-- FOOTER-COPYRIGHT:START (synced from index.html .footer-legal by pattern-book/sync_footer_copyright.py; do not hand-edit) -->
-    <div class="footer-legal">© <span id="yr"></span> MICRO Group, L.L.C. All rights reserved. Austin, Texas.</div>
-    <script>(function(){var y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear();})();</script>
-    <!-- FOOTER-COPYRIGHT:END -->
+    <details class="why-card">
+      <summary class="why-title">Why these rather than a grant database</summary>
+      <p>A subscription database is curated before the vendor knows a specific organization exists. Someone decides which opportunities belong on the shelf, and every subscriber sees the same shelf.</p>
+      <p>These products reverse that order: a person who has worked in the nonprofit sector reads the organization first, and its shelf is built afterward, against its actual goals and programs rather than a keyword match on its mission statement. That is a claim an organization can test before it pays anything, because every demo above is shown before price is discussed.</p>
+    </details>
+
+    <details class="why-card">
+      <summary class="why-title">Why these rather than a general research tool</summary>
+      <p>One EIN spine, carrying sources a grant database does not:</p>
+      <div class="fig-row">
+        <div class="fig-cell"><span class="fig-n">56,756</span><span class="fig-l">federal contract awards</span></div>
+        <div class="fig-cell"><span class="fig-n">407,293</span><span class="fig-l">federal subawards</span></div>
+        <div class="fig-cell"><span class="fig-n">177,378</span><span class="fig-l">Federal Audit Clearinghouse single audits, <span class="fig-em">59</span> states and territories</span></div>
+      </div>
+      <p class="fig-span"><span class="fig-em">tax years 2015 through 2025</span> of full IRS Form 990 schedule detail, counted 2026-08-31</p>
+      <p>Joined to the grant record, one pass answers which funders support this work, are growing, and carry no adverse audit findings.</p>
+    </details>
+
+  </div>
+
+</div>
+</section>
+</main>
+<!-- BEGIN SITE FOOTER, generated by stamp_site_chrome.py, do not edit here -->
+<footer class="footer-panel">
+  <div class="mg-wrap footer-row">
+    <div class="footer-slogan">A Measured Approach to Your <u>Goals</u></div>
+    <div class="footer-switcher">
+      <a href="public-index.html" class="mg-tab">Public</a>
+      <a href="private-index" class="mg-tab">Private</a>
+      <a href="privacy.html" class="mg-tab">Privacy</a>
+      <a href="security.html" class="mg-tab">Security</a>
+    </div>
+    <div class="footer-legal">&copy; <span id="yr"></span> MICRO Group, L.L.C. All rights reserved. Austin, Texas. 1801 E 51st St., STE 365, PMB 354. CC BY 4.0 data, MIT code.</div>
+  </div>
 </footer>
+<!-- yr-setter: R7, 2026-09-05. INSIDE the stamped block on purpose, so it travels with the element
+     it sets. about.html's page-level setter ran at line 561 while the footer was not inserted until
+     617, so getElementById('yr') returned null and the year rendered blank. Ordering, not arithmetic. -->
+<script>(function(){var y=document.getElementById('yr');if(y&&!y.textContent)y.textContent=new Date().getFullYear();})();</script>
+<!-- END SITE FOOTER -->
 </body>
 </html>

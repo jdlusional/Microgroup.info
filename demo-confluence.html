@@ -28,6 +28,18 @@ a{color:var(--ink)}
 .section{max-width:1180px;margin:0 auto;padding:2.4rem 1.25rem}
 .section-head p{color:var(--wash);font-size:.94rem;max-width:70ch;margin:0 auto}
 .section-head h2{text-transform:uppercase;letter-spacing:.05em}
+/* TWO CAUSES, ONE OVERFLOW, both measured at 320. First, .section-head is a flex item under
+   align-items:center, so it sized to its own content and was centred, overhanging BOTH sides:
+   358px inside a 278px parent, starting at left -19. Capping it keeps the centring.
+   That alone moved the overflow rather than removing it, because the real driver is the
+   heading: "RECOMMENDATIONS" at 30px uppercase with 1.5px letter-spacing is a single
+   unbreakable 358px word. The page's other three headings wrap because they are multi-word.
+   So the heading is made to FIT on narrow screens rather than broken mid-word, and
+   overflow-wrap is kept only as a backstop for a future word longer still: a broken heading
+   is ugly, but a page that scrolls sideways is a defect. */
+.section-head{max-width:100%}
+@media (max-width:480px){.section-head h2{font-size:22px}}
+.section-head h2{overflow-wrap:anywhere}
 .manifest-in{justify-content:center}
 .manifest .grow{display:none}
 .section-head-tags{margin-top:.6rem}
@@ -117,6 +129,7 @@ body{text-align:center}
     <span class="stat"><strong id="m-live">…</strong> live recommendations</span>
     <span class="grow"></span>
     <nav>
+      <a href="/">&#8592; MICRO Group</a>
       <a href="#how-to-read">Read This First</a>
       <a href="#profile">Applicant &amp; Partners</a>
       <a href="#candidates">Recommendations</a>
@@ -285,7 +298,6 @@ body{text-align:center}
   <p id="footer-links"><a href="demo-almanac.html">See Almanac, the single-org grant match &#8594;</a> &middot; <a href="/#contact">Request a review &#8594;</a></p>
   <p class="footer-improvements-wrap"><a class="footer-improvements" href="https://jonathanlindavis.com/system-change-log" target="_blank" rel="noopener">System change log</a></p>
   <p class="footer-custom-note"><a href="/#contact">Need something custom? Individualized builds outside this catalog are available on request &#8594;</a></p>
-  <p class="footer-about-micro">MICRO Group, L.L.C. is a strategic, research-driven consultancy serving nonprofit, government, and political and legislative organizations. Each engagement is shaped around the client's own goals rather than a fixed template: a measured approach to your goals. Beyond consulting, MICRO Group, L.L.C. builds and sells purpose-built software for nonprofit grant-seeking, including Almanac, Scribe, Docket, and Confluence today, with Concordance, Herald, Atlas, and Dossier in development. The name stands for the firm's core disciplines: Management, Integration, Culture, Research, and Operations.</p>
 </div></footer>
 
 <script>

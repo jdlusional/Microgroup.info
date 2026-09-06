@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="stack-page">
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J4XGXZ4CN"></script>
@@ -21,18 +21,16 @@
 <link rel="apple-touch-icon" sizes="180x180" href="Assets/micro-touch-c1-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="tool-shared.css?v=9a8055aac9">
 <style>
 a{color:var(--ink)}
 
-.hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1rem;text-align:center}
+.hero{max-width:1180px;margin:0 auto;padding:var(--s4) var(--s3) var(--s3);text-align:center}
 
 /* ---- Center/middle align everything on this page, not just the cards:
    section heads, ledes, callouts, the method box, and the form. ---- */
-.section{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem;text-align:center}
-.section-head p{color:var(--wash);font-size:.94rem;margin:0 auto}
-.method-wrap{text-align:center}
+.section{max-width:1180px;margin:0 auto;padding:var(--s4) var(--s3);text-align:center}
+.section-head p{color:var(--wash);font-size:var(--t-md);margin:0 auto}
 
 /* ---- Boxes: text inside is middle-aligned vertically as well as
    horizontally, not just top-aligned within whatever height the box has.
@@ -51,91 +49,89 @@ a{color:var(--ink)}
 /* ---- Pricing cards. Centered, not left-aligned, per owner order 2026-08-09
    superseding the 2026-07-24 left-align choice, applied to every card family
    site-wide (this is the .pick-card convention's own source precedent). ---- */
-.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;margin-top:.5rem}
-.price-card{border:1px solid var(--rule);background:var(--well);padding:1.3rem 1.4rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-width:0;overflow-wrap:anywhere}
+
 .price-card.unavailable{opacity:.72}
-.price-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 .3rem}
-.price-card .pc-tag{font-size:.76rem;letter-spacing:.02em;color:var(--wash);font-weight:600;margin-bottom:.7rem}
-.price-card .pc-amount{font-family:var(--serif);font-weight:700;font-size:2rem;color:var(--accent);line-height:1;margin-bottom:.2rem}
-.price-card .pc-amount .per{font-size:.72rem;font-weight:600;color:var(--wash);letter-spacing:.02em;margin-left:.35rem}
-.price-card .pc-cadence{font-family:var(--mono);font-size:.82rem;color:var(--wash);margin-bottom:.8rem}
-.price-card p.pc-desc{font-size:.95rem;color:var(--ink);margin:0;flex:1}
-.price-card .pc-status{font-size:.78rem;letter-spacing:.02em;color:var(--urgent);font-weight:600;border:1px solid var(--urgent);padding:.3rem .6rem;display:inline-block;margin-top:1rem;align-self:center}
-.price-card .pc-requires{font-family:var(--mono);font-size:.76rem;letter-spacing:.02em;color:var(--accent);margin-top:.7rem}
+.price-card h3{font-family:var(--serif);font-weight:700;font-size:var(--t-xl);margin:0 0 .3rem}
+.price-card .pc-tag{font-size:var(--t-micro);letter-spacing:.02em;color:var(--wash);font-weight:600;margin-bottom:.7rem}
+.price-card .pc-amount{font-family:var(--serif);font-weight:700;font-size:var(--t-3xl);color:var(--accent-text);line-height:1;margin-bottom:.2rem}
+.price-card .pc-amount .per{font-size:var(--t-micro);font-weight:600;color:var(--wash);letter-spacing:.02em;margin-left:.35rem}
+.price-card .pc-cadence{font-family:var(--mono);font-size:var(--t-sm);color:var(--wash);margin-bottom:.8rem}
+.price-card p.pc-desc{font-size:var(--t-md);color:var(--ink);margin:0;flex:1}
+.price-card .pc-status{font-size:var(--t-xs);letter-spacing:.02em;color:var(--urgent);font-weight:600;border:1px solid var(--urgent);padding:var(--s1) var(--s2);display:inline-block;margin-top:var(--s3);align-self:center}
+.price-card .pc-requires{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.02em;color:var(--accent-text);margin-top:.7rem}
 
 /* ---- Product blocks: one product per rectangle, Standard/Pro joined as a
    two-column split inside it rather than two separate repeated cards. ---- */
-.product-blocks{display:flex;flex-direction:column;gap:1.1rem;margin-top:.5rem}
+.product-blocks{display:flex;flex-direction:column;gap:var(--s3);margin-top:.5rem}
 .product-block{border:1.5px solid var(--ink);background:var(--well)}
-.product-block-head{padding:1.2rem 1.4rem .9rem;text-align:center;border-bottom:1px solid var(--rule)}
-.product-block-head .pc-tag{font-size:.76rem;letter-spacing:.02em;color:var(--wash);font-weight:600;margin-bottom:.4rem}
-.product-block-head h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 .5rem}
-.product-block-head .pc-desc{font-size:.95rem;color:var(--ink);margin:0 auto}
-.product-block-guarantee{font-size:.88rem;color:var(--ink);background:var(--paper);border:1px solid var(--ok);padding:.6rem .9rem;margin-top:.8rem;max-width:70ch;margin-left:auto;margin-right:auto}
+.product-block-head{padding:var(--s3) var(--s3) var(--s2);text-align:center;border-bottom:1px solid var(--rule)}
+.product-block-head .pc-tag{font-size:var(--t-micro);letter-spacing:.02em;color:var(--wash);font-weight:600;margin-bottom:.4rem}
+.product-block-head h3{font-family:var(--serif);font-weight:700;font-size:var(--t-xl);margin:0 0 .5rem}
+.product-block-head .pc-desc{font-size:var(--t-md);color:var(--ink);margin:0 auto}
+.product-block-guarantee{font-size:var(--t-sm);color:var(--ink);background:var(--paper);border:1px solid var(--ok);padding:var(--s2) var(--s2);margin-top:var(--s2);max-width:70ch;margin-left:auto;margin-right:auto}
 .product-block-guarantee b{color:var(--ok)}
 .product-block-tiers{display:grid;grid-template-columns:1fr 1fr;min-width:0}
-.product-tier{padding:1.2rem 1.4rem;text-align:center;min-width:0;overflow-wrap:anywhere;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.product-tier{padding:var(--s3) var(--s3);text-align:center;min-width:0;overflow-wrap:anywhere;display:flex;flex-direction:column;justify-content:center;align-items:center}
 .product-tier+.product-tier{border-left:1px solid var(--rule)}
-.pt-label{font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:.5rem}
-.product-block-requires{padding:.65rem 1.4rem;text-align:center;border-top:1px solid var(--rule);font-family:var(--mono);font-size:.78rem;color:var(--accent)}
-.product-block-note{padding:.7rem 1.4rem;text-align:center;border-top:1px solid var(--rule);font-size:.86rem;color:var(--wash);max-width:70ch;margin-left:auto;margin-right:auto}
-.product-block-note b{color:var(--accent)}
-.in-dev-subhead{max-width:1120px;margin:2rem auto .9rem;padding:0;text-align:center;font-family:var(--serif);font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;color:var(--wash)}
+.pt-label{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.03em;text-transform:uppercase;color:var(--accent-text);font-weight:600;margin-bottom:.5rem}
+.product-block-requires{padding:var(--s2) var(--s3);text-align:center;border-top:1px solid var(--rule);font-family:var(--mono);font-size:var(--t-xs);color:var(--accent-text)}
+/* The 70ch cap made this render 482px wide inside a 1138px card, so its border-top read as a
+   short inset rule while .product-block-requires spanned the full card. Removed 2026-09-05 by
+   owner order so both notes under a product sit the same way. */
+.product-block-note{padding:var(--s2) var(--s3);text-align:center;border-top:1px solid var(--rule);font-size:var(--t-sm);color:var(--wash)}
+.product-block-note b{color:var(--accent-text)}
+
 @media(max-width:640px){
   .product-block-tiers{grid-template-columns:1fr}
   .product-tier+.product-tier{border-left:none;border-top:1px solid var(--rule)}
 }
 
-.addon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;margin-top:.5rem}
-.addon-card{border:1.5px solid var(--ink);border-left-width:5px;border-left-color:var(--accent);background:var(--well);padding:1.3rem 1.6rem;min-width:0;overflow-wrap:anywhere;display:flex;flex-direction:column;justify-content:center;text-align:center}
-.addon-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 .5rem}
-.addon-card .addon-rates{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;margin:.6rem 0}
-.addon-card .addon-rate{font-family:var(--mono);font-size:.86rem;color:var(--ink)}
-.addon-card .addon-rate b{font-family:var(--serif);font-size:1.15rem;color:var(--accent)}
-.addon-card p{font-size:.95rem;line-height:1.55;margin:.6rem 0 0}
-.addon-card .addon-note{font-family:var(--mono);font-size:.8rem;color:var(--wash);border-top:1px dashed var(--rule);margin-top:.9rem;padding-top:.7rem}
+.addon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--s3);margin-top:.5rem}
+.addon-card{border:1.5px solid var(--ink);border-left-width:5px;border-left-color:var(--accent-text);background:var(--well);padding:var(--s3) var(--s4);min-width:0;overflow-wrap:anywhere;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.addon-card h3{font-family:var(--serif);font-weight:700;font-size:var(--t-xl);margin:0 0 .5rem}
+.addon-card .addon-rates{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--s3);margin:.6rem 0}
+.addon-card .addon-rate{font-family:var(--mono);font-size:var(--t-sm);color:var(--ink)}
+.addon-card .addon-rate b{font-family:var(--serif);font-size:var(--t-base);color:var(--accent-text)}
+.addon-card p{font-size:var(--t-md);line-height:1.55;margin:.6rem 0 0}
+.addon-card .addon-note{font-family:var(--mono);font-size:var(--t-sm);color:var(--wash);border-top:1px dashed var(--rule);margin-top:var(--s2);padding-top:.7rem}
 
-.infra-card{border:1.5px solid var(--ink);border-left-width:5px;background:var(--well);padding:1.3rem 1.6rem;margin-top:.5rem}
-.infra-card h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 .5rem}
-.infra-card .pc-amount{font-family:var(--serif);font-weight:700;font-size:2rem;color:var(--accent);line-height:1;display:inline-block;margin-right:.6rem}
-.infra-card p{font-size:.96rem;line-height:1.55;margin:.6rem 0 0}
+.infra-card{border:1.5px solid var(--ink);border-left-width:5px;background:var(--well);padding:var(--s3) var(--s4);margin-top:.5rem}
+.infra-card h3{font-family:var(--serif);font-weight:700;font-size:var(--t-xl);margin:0 0 .5rem}
+.infra-card .pc-amount{font-family:var(--serif);font-weight:700;font-size:var(--t-3xl);color:var(--accent-text);line-height:1;display:inline-block;margin-right:.6rem}
+.infra-card p{font-size:var(--t-md);line-height:1.55;margin:.6rem 0 0}
 
-.example-line{font-family:var(--mono);font-size:.86rem;color:var(--wash);border:1px dashed var(--rule);padding:.7rem .9rem;margin-top:1.2rem}
+.example-line{font-family:var(--mono);font-size:var(--t-sm);color:var(--wash);border:1px dashed var(--rule);padding:var(--s2) var(--s2);margin-top:1.2rem}
 .example-line b{color:var(--ink)}
 
 /* ---- Form (mirrors the request-a-draft convention: form-field / hp-field / form-actions) ---- */
-.form-field{margin-bottom:1.3rem;text-align:center}
-.form-field label{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
+
+.form-field label{display:block;font-family:var(--mono);font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
 .form-field input[type="text"],.form-field input[type="email"],.form-field input[type="tel"],.form-field input[type="date"]{
-  display:block;width:100%;font-family:var(--serif);font-size:.95rem;padding:.6rem .8rem;border:1.5px solid var(--ink);
+  display:block;width:100%;font-family:var(--serif);font-size:var(--t-md);padding:var(--s2) var(--s2);border:1.5px solid var(--ink);
   background:var(--well);color:var(--ink);outline:none;max-width:420px;text-align:left;margin:0 auto}
 .form-field input:focus{outline:2px solid var(--ink);outline-offset:0}
-.form-field textarea{display:block;width:100%;font-family:var(--serif);font-size:.95rem;padding:.7rem .8rem;border:1.5px solid var(--ink);background:var(--well);color:var(--ink);resize:vertical;outline:none;text-align:left;margin:0 auto}
-.field-hint{font-family:var(--mono);font-size:.84rem;color:var(--wash);margin-top:.35rem}
-.checks{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 1.4rem}
-.checks label{display:flex;align-items:center;gap:.45rem;font-family:var(--serif);font-size:.95rem;text-transform:none;letter-spacing:0;color:var(--ink)}
+.form-field textarea{display:block;width:100%;font-family:var(--serif);font-size:var(--t-md);padding:var(--s2) var(--s2);border:1.5px solid var(--ink);background:var(--well);color:var(--ink);resize:vertical;outline:none;text-align:left;margin:0 auto}
+
+.checks label{display:flex;align-items:center;gap:var(--s1);font-family:var(--serif);font-size:var(--t-md);text-transform:none;letter-spacing:0;color:var(--ink)}
 .checks input{width:auto}
-.hp-field{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
-.form-actions{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
-.form-status{font-family:var(--mono);font-size:.88rem;color:var(--ok)}
+
 .form-status.error{color:var(--urgent)}
-.btn{font-family:var(--mono);font-size:.86rem;letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);background:var(--paper);padding:.55rem 1.2rem;cursor:pointer;transition:all .15s ease}
+
 .btn:hover{background:var(--ink);color:var(--paper)}
 .btn.solid{background:var(--ink);color:var(--paper)}
-.btn.solid:hover{background:var(--accent);border-color:var(--accent)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent-text)}
 
-.referral-block{border-top:1px solid var(--rule-soft);margin-top:1.6rem;padding-top:1.4rem}
-.referral-block .rb-kicker{font-size:.78rem;letter-spacing:.02em;color:var(--accent);font-weight:600;margin-bottom:.5rem}
-.referral-block p{font-size:.92rem;color:var(--wash);margin:.2rem 0 1rem}
-.referral-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem 1.3rem}
+.referral-block .rb-kicker{font-size:var(--t-xs);letter-spacing:.02em;color:var(--accent-text);font-weight:600;margin-bottom:.5rem}
+.referral-block p{font-size:var(--t-md);color:var(--wash);margin:.2rem 0 1rem}
+
 .referral-grid .form-field{min-width:0}
 
 /* ---- Request Products accordion. Only this section folds; every other
    section on this page keeps the standing no-tab-drops rule. ---- */
-.mc-toggle{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);padding:.32rem .65rem;cursor:pointer}
+
 .mc-toggle:hover{background:var(--well)}
 #request.mc-closed .fold-body{display:none}
-.mc-toggle-cta{display:block;margin:1.2rem auto 0;font-family:var(--mono);font-size:1.02rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:var(--accent);border:2px solid var(--accent);padding:.9rem 2.4rem;box-shadow:0 4px 14px rgba(47,127,209,.35)}
+
 .mc-toggle-cta:hover{background:var(--ink);border-color:var(--ink);box-shadow:0 4px 14px rgba(27,58,107,.35)}
 
 @media(max-width:640px){
@@ -143,9 +139,448 @@ a{color:var(--ink)}
   .addon-card{padding:1rem 1.1rem}
   .form-field input[type="text"],.form-field input[type="email"],.form-field input[type="tel"],.form-field input[type="date"]{max-width:none}
 }
-</style>
+
+/* ===== BEGIN SITE CHROME, generated by stamp_site_chrome.py, do not edit here ===== */
+/* The site chrome: token layer, header, departure gate and footer. TWO base pages:
+   the CSS and header come from index.html, the footer from about.html, per the owner
+   ruling of 2026-09-04. Every other convention page receives this block byte-identical
+   from stamp_site_chrome.py. Contains NO unscoped selector, so stamping it onto a page with
+   its own typography cannot restyle that page's body. */
+html.stack-page {
+  /* Palette, six values, unchanged. */
+  --paper:  #f4efe2;
+  --ink:    #1b3a2f;
+  --well:   #e4e6de;
+  --rule:   #c8c2b5;
+  --accent: #8a6b1f;
+  --wash:   #4a5c52;
+
+  /* Accent split by contrast class. --accent is restricted to borders, focus rings,
+     the mark, and display type at 24px or larger, where 4.35 on paper and 3.97 on
+     well clear the 3:1 boundary bar. Normal-scale text and solid fills take the
+     darker value at 6.12 and 5.58. */
+  --accent-text: #6f5518;
+  --accent-fill: #6f5518;
+
+  /* The lockup's own plate palette, declared rather than reconciled. */
+  --plate-ink:   #16241f;
+  --plate-gold:  #a8801f;
+  --plate-paper: #f2efe7;
+  --plate-rule:  #c9c4b8;
+  --plate-wash:  #55635c;
+
+  /* Form status, kept declared because contact.html shares this token layer. */
+  --ok:  #1a6b3d;
+  --err: #a13a33;
+
+  /* Alpha derivatives, each bound to a palette value rather than floating free. */
+  --a-rule-80:   rgba(200,194,181,.80);
+  --a-ink-08:    rgba(27,58,47,.08);
+  --a-ink-16:    rgba(27,58,47,.16);
+  --a-ink-45:    rgba(27,58,47,.45);
+  --a-paper-92:  rgba(244,239,226,.92);
+  --a-accent-24: rgba(138,107,31,.24);
+
+  /* FOUR families, each with a rendered consumer in this document. --f-script sets the
+     capability headline and nothing else: a script face is a display instrument. The
+     reason Parisienne was removed earlier in this rebuild was that it rendered NOWHERE,
+     not that it is a script, so returning it with a real consumer satisfies that rule
+     rather than reversing it. --f-serif now sets the wordmark in BOTH the lockup and the
+     header, so the two are the same face by construction rather than by coincidence. */
+  --f-sans:   'IBM Plex Sans', system-ui, -apple-system, Segoe UI, sans-serif;
+  --f-mono:   'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --f-serif:  'Instrument Serif', Georgia, 'Times New Roman', serif;
+  /* ONE SERIF, 2026-09-05 owner ruling. tool-shared.css sets --serif to Spectral and is owner gate
+     G2, so it is not edited; this wins on source order because every page links that sheet before
+     opening its own <style>. MEASURED BEFORE: two serif families downloaded and rendered on the
+     same page, Spectral carrying page content and Instrument Serif carrying the wordmark and
+     chrome, which is why h1 rendered in six different size-and-family combinations across 12
+     pages. Aliasing rather than redefining keeps ONE declaration to change next time. */
+  /* AMENDED 2026-09-05, owner ruling, hours after the alias below it was first set. --serif now
+     points at the SANS. The owner asked for the face used by index.html's .lede to replace the one
+     in demo-pricing's hero notes "and everywhere else that font is used". MEASURED: Instrument
+     Serif was on 591 elements across the 12 pages, of which about 26 are the brand, the
+     "MICRO Group" wordmark in every header plus the homepage lockup. He ruled the content changes
+     and the wordmark does not, so the split is exactly the two tokens: --serif carries page
+     content and becomes sans here, --f-serif carries the wordmark and stays Instrument Serif.
+     That is also why the Instrument Serif font request is KEPT: the wordmark still needs it. */
+  --serif:    var(--f-sans);
+  --f-script: 'Parisienne', 'Segoe Script', cursive;
+
+  /* Eleven sizes. No font-size on html, so the root stays the reader's own default.
+     The five sizes the pattern book pins by label resolve exactly: 1.5625rem is 25px,
+     .82rem is 13.12px, .95rem is 15.2px, .78rem is 12.48px. */
+  --t-micro: .75rem;
+  --t-xs:    .78rem;
+  --t-sm:    .82rem;
+  --t-md:    .95rem;
+  --t-base:  1.06rem;
+  --t-lg:    1.25rem;
+  --t-2xl:   1.5rem;
+  --t-xl:    1.5625rem;
+  --t-3xl:   2rem;
+  --t-4xl:   2.6rem;
+  --t-hero:  3.125rem;
+
+  /* Six-step space scale. */
+  --s1: .375rem;
+  --s2: .75rem;
+  --s3: 1.125rem;
+  --s4: 1.75rem;
+  --s5: 2.75rem;
+  --s6: 4.5rem;
+
+  --measure: 62ch;
+  --maxw:    1180px;
+  --bar-h:   76px;
+}
+html.stack-page .mg-wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--s4); }
+/* The header is a flex row that centres on the cross axis, so the wordmark, the links
+   and the two tabs share one optical centreline instead of sitting on their own
+   baselines. Every child that could set its own baseline centres too. */
+.site-header {
+  /* SELF-CONTAINED ON PURPOSE. Identical chrome CSS still rendered three
+     different fonts across ten pages, because these elements INHERITED font-family from
+     each host page's own body and tool-shared.css. Every inherited text property is reset
+     here so the chrome looks the same wherever it is stamped. */
+  font-family: var(--f-sans); font-size: var(--t-base); font-weight: 400; font-style: normal;
+  line-height: 1.6; letter-spacing: normal; text-transform: none; color: var(--ink);
+  position: sticky; top: 0; z-index: 40;
+  background: var(--a-paper-92);
+  backdrop-filter: saturate(1.4) blur(8px);
+  border-bottom: 1px solid var(--rule);
+  min-height: var(--bar-h);
+  display: flex;
+  align-items: center;
+}
+.nav { display: flex; align-items: center; gap: var(--s4); width: 100%; max-width: var(--maxw); margin: 0 auto; padding: var(--s2) var(--s4); }
+.nav-right { display: flex; align-items: center; gap: var(--s4); margin-left: auto; }
+.nav-links { display: flex; align-items: center; gap: var(--s4); list-style: none; margin: 0; padding: 0; }
+.nav-links a { font-family: var(--f-sans); color: var(--ink); text-decoration: none; font-size: var(--t-md); font-weight: 500; display: flex; align-items: center; min-height: 24px; letter-spacing: normal; text-transform: none; }
+.nav-links a:hover { color: var(--accent-text); text-decoration: underline; }
+/* The current page's own nav item. Set at load by the chrome's own script rather
+   than written into the markup, because the markup is byte-identical on every page
+   and a per-page marker cannot live in it. */
+.nav-links a[aria-current="page"] { color: var(--accent-text); font-weight: 700; text-decoration: underline; }
+/* Wordmark. THE HEADER AND THE LOCKUP ARE THE SAME FACE BY CONSTRUCTION: both read
+   var(--f-serif) and both italicise the second word, so the header cannot drift away
+   from the mark it echoes. */
+html.stack-page .nav-name { font-family: var(--f-serif); font-size: var(--t-3xl); font-weight: 400; color: var(--plate-ink); text-decoration: none; letter-spacing: -.01em; line-height: 1; display: inline-block; }
+html.stack-page .nav-name-sub { font-style: italic; font-weight: 400; }
+/* Site switchers */
+html.stack-page .mg-tab { font-family: var(--f-sans); font-size: var(--t-xs); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; text-decoration: none; color: var(--accent-text); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); display: flex; align-items: center; }
+html.stack-page .mg-tab.active { background: var(--accent-fill); color: var(--paper); border-color: var(--accent-fill); }
+html.stack-page .site-flip { display: flex; align-items: center; gap: var(--s1); }
+/* Footer, one compact band. It is deliberately the smallest thing on the page: on the
+   first measurement of this layout the footer was 234px of a 290px overflow, which is
+   what stopped the landing view being one screen. */
+html.stack-page .footer-panel { background: var(--well); padding: var(--s2) var(--s4); border-top: 1px solid var(--rule); text-align: center;
+  font-family: var(--f-sans); font-size: var(--t-base); font-weight: 400; font-style: normal;
+  line-height: 1.6; letter-spacing: normal; text-transform: none; color: var(--ink); }
+html.stack-page .mg-wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--s4); }
+html.stack-page .footer-row { display: flex; flex-direction: column; align-items: center; gap: var(--s1); }
+html.stack-page .footer-slogan { font-family: var(--f-mono); font-size: var(--t-micro); font-weight: 400; letter-spacing: .06em; color: var(--plate-wash); line-height: 1.6; }
+html.stack-page .footer-slogan u { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+html.stack-page .footer-switcher { display: flex; gap: var(--s1); justify-content: center; flex-wrap: wrap; }
+html.stack-page .footer-legal { font-family: var(--f-sans); font-size: var(--t-micro); color: var(--wash); line-height: 1.6; letter-spacing: normal; }
+/* Cross-domain departure gate */
+html.stack-page .flip-gate { position: fixed; inset: 0; background: var(--a-ink-45); display: flex; align-items: center; justify-content: center; z-index: 90; }
+/* MUST FOLLOW THE RULE ABOVE. `display:flex` on a class selector is specificity 0,2,1
+   and beats the user-agent stylesheet's `[hidden] { display:none }` at 0,1,0, so without
+   this the hidden attribute is inert and the gate renders permanently over the page. */
+html.stack-page .flip-gate[hidden] { display: none; }
+html.stack-page .flip-gate-box { background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: var(--s4); max-width: 420px; box-shadow: 0 8px 28px var(--a-ink-16); }
+html.stack-page .flip-gate-msg { margin: 0 0 var(--s3); color: var(--ink); font-size: var(--t-md); }
+html.stack-page .flip-gate-actions { display: flex; gap: var(--s2); justify-content: flex-end; }
+/* The countdown number. Given a REAL RULE rather than a per-page I1 waiver: this
+   component now travels with the header convention, so every page that adopts the
+   convention would otherwise need its own waiver for the same class. A rule scales
+   where a waiver list does not. */
+html.stack-page .flip-gate-count { font-variant-numeric: tabular-nums; font-weight: 700; }
+html.stack-page .flip-gate-go { pointer-events: none; color: var(--wash); text-decoration: none; font-weight: 600; }
+html.stack-page .flip-gate-go.ready { pointer-events: auto; color: var(--accent-text); }
+html.stack-page .flip-gate-cancel { font-family: var(--f-sans); font-size: var(--t-md); background: transparent; border: 1px solid var(--rule); border-radius: 3px; padding: var(--s1) var(--s3); color: var(--ink); cursor: pointer; }
+html.stack-page .nav-toggle { display: none; background: transparent; border: 1px solid var(--rule); border-radius: 3px; color: var(--ink); font-size: var(--t-lg); padding: 0 var(--s2); cursor: pointer; align-items: center; }
+@media (max-width: 860px) {
+  .nav { flex-wrap: wrap; gap: var(--s1); justify-content: center; padding: var(--s1) var(--s2); }
+  .nav-right { margin-left: 0; flex-wrap: wrap; justify-content: center; gap: var(--s2); width: 100%; }
+  .nav-links { gap: var(--s1) var(--s2); row-gap: 2px; flex-wrap: wrap; justify-content: center; }
+  .nav-links a { font-size: var(--t-micro); }
+  .site-header { position: static; min-height: 0; }
+  html.stack-page .nav-name { font-size: var(--t-2xl); }
+  html.stack-page .mg-tab { padding: 2px var(--s1); }
+  /* nav-collapse, R16 2026-09-05. The toggle has been stamped on all ten pages since the
+     convention landed and was display:none unconditionally with no wiring anywhere, so the
+     chrome promised a menu button and never delivered one. Below the breakpoint the links
+     collapse behind it. Specificity, not order, decides these: html.stack-page .nav-right is
+     0,2,0 against the plain .nav-right above it at 0,1,0, and the [data-open] form outranks
+     both, so the open state cannot be lost to a later edit reordering the block. */
+  html.stack-page .nav-toggle { display: inline-flex; }
+  html.stack-page .nav-right { display: none; }
+  html.stack-page .nav-right[data-open="true"] { display: flex; }
+  html.stack-page .footer-panel { padding: var(--s1) var(--s2); }
+}
+/* Defect 9, 2026-09-05. MEASURED: .nav sat at left 50 on the two fit-screen pages and
+   42.44 on the six that scroll, because a classic Windows scrollbar takes 15px from a
+   scrolling page and none from one that fits, shifting content 7.56px. R1 measured that
+   shift and recorded it unfixed. Reserving the gutter on every page makes all ten lay out
+   identically, so the wordmark stops moving between pages. */
+html.stack-page { scrollbar-gutter: stable; }
+html.stack-page .nav > * { min-width: 0; }
+/* R6, 2026-09-05. Four rules added in one authoring pass, all scoped under html.stack-page so
+   stamping them onto a page with its own typography cannot restyle that page's body. */
+html.stack-page :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  html.stack-page *, html.stack-page *::before, html.stack-page *::after {
+    animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important; scroll-behavior: auto !important;
+  }
+  /* Inert today at 0 snap declarations across 12 files, and correct on the day one appears.
+     The retired style.css forced scroll-behavior: auto at its line 381, which removes the
+     animation and leaves the unrequested jump, the worse of the two failures. */
+  html.stack-page { scroll-snap-type: none !important; }
+}
+@media (min-width: 861px) {
+  /* The header occludes the tool manifest band because tool-shared.css line 81 sets
+     .manifest sticky at z-index 50 against a site header at 40. Fixed by specificity here
+     rather than by editing tool-shared.css, which is owner gate G2. BOTH rules are guarded
+     at 861px because the header is STATIC below that: unguarded, the band moves from 0.00
+     to 76.00 at 375, which is a new defect rather than a fix. */
+  html.stack-page .manifest { top: var(--bar-h); }
+  html.stack-page section[id] { scroll-margin-top: var(--bar-h); }
+
+  /* HARD SECTION SNAP, 2026-09-05 owner ruling, which REVERSES IN PART the 2026-09-04 ruling of
+     "no snapping on any page". That ruling accepted a refutation from W3C, MDN, web.dev and NN/g
+     that a snap area taller than the scrollport can strand content, and that precondition is
+     accepted here rather than overridden: it is satisfied by making every snap area fit.
+
+     GUARDED AT 861px ON PURPOSE. Below it the phone keeps ordinary scrolling, because the same
+     measurement that cleared desktop shows phone sections at two to four times the viewport, which
+     is exactly the stranding case the refutation named.
+
+     INERT WITHOUT SNAP POINTS. Only .screen carries scroll-snap-align, so a page opts in by having
+     sections rather than by carrying different chrome, and D4's rule that the chrome is identical
+     everywhere survives. The six long-form pages ruled out of scope simply never gain a .screen.
+
+     scroll-padding-top is what keeps a snapped section from resting under the 76px sticky header.
+     Pages that also carry the sticky .manifest need more and set it page-locally.
+     scroll-snap-stop:always is what makes it hard rather than loose: a fast scroll cannot skip a
+     section. The prefers-reduced-motion block above disarms all of this, and was authored on
+     2026-09-04 against the day a snap declaration would first appear. This is that day. */
+  /* SCOPED WITH :has(.screen), 2026-09-05, AFTER THIS SHIPPED BROKEN. The rule below used to be
+     unscoped, on the stated reasoning that scroll-snap-type is inert without snap points. That was
+     true when written and I invalidated it myself by adding the footer snap point further down:
+     the footer then became the ONLY snap point on the nine pages carrying no .screen, and mandatory
+     snap must come to rest on one, so those pages LOADED SCROLLED TO THE BOTTOM. Measured before
+     the fix: about.html opened at scrollY 2294, demo-pricing at 2593, demo-survey at 3044.
+     :has(.screen) makes the opt-in real rather than asserted. If a browser does not support :has(),
+     the whole rule is invalid and no snap applies, which is the safe direction to fail.
+     scroll-padding-top is scoped with it deliberately: it would otherwise stack with the
+     scroll-margin-top on section[id] below and land every anchor 152px down instead of 76. */
+  html.stack-page:has(.screen) { scroll-snap-type: y mandatory; scroll-padding-top: var(--bar-h); }
+  html.stack-page .screen { scroll-snap-align: start; scroll-snap-stop: always; }
+  /* THE FOOTER MUST BE A SNAP POINT OR MANDATORY SNAP STRANDS IT. This is the 2026-09-04
+     refutation's own failure class, reproduced and then fixed rather than argued away. MEASURED on
+     demo-referrals.html at 1280: without this rule the End key rests at scrollY 681 against a true
+     maximum of 791 and the stamped footer never becomes fully visible, because the last snap point
+     is the final .screen and the 110px of footer beyond it has nothing to snap to. With it, End
+     rests at 791 and the footer is fully visible. Align END rather than START because the footer is
+     shorter than the scrollport and should come to rest against the bottom. */
+  html.stack-page:has(.screen) footer.footer-panel { scroll-snap-align: end; }
+  /* A page that stacks the sticky .manifest under the sticky header needs more scroll padding, or
+     a snapped section rests underneath the band. Measured: header 76px, manifest 37.2px, 113.2px
+     together. Declared here rather than page-locally because the chrome's own :has(.screen)
+     selector out-specifies a bare html.stack-page rule, so the page-local version silently lost
+     and demo-referrals loaded at scrollY 64 with 76px of padding instead of 114. Conditioning on
+     the manifest's presence keeps this correct for any page, without a per-page exception. */
+  html.stack-page:has(.screen):has(.manifest) { scroll-padding-top: calc(var(--bar-h) + 38px); }
+  /* AND THE TWO OFFSETS MUST NOT STACK. section[id] above carries scroll-margin-top: var(--bar-h)
+     so an anchor clears the sticky header. On a snap page the container's scroll-padding-top does
+     that job already, and a .screen that is also a section[id] got BOTH: measured on index.html,
+     whose screens are <section id="home"> and <section id="about">, the second rested at 568
+     instead of its 644 snap point, 76px short, and an anchor jump to #about landed the same 76px
+     low. Zeroed here for snap screens only, so ordinary anchor targets keep their margin. */
+  html.stack-page:has(.screen) .screen[id] { scroll-margin-top: 0; }
+}
+/* ===== END SITE CHROME ===== */
+
+/* owner-centre-pass, 2026-09-05, owner direction: every piece of page CONTENT is centred.
+   Header and footer are excluded because they are generated chrome and this rule is
+   page-local, so it cannot reach inside the stamped blocks. FORM DATA is excluded
+   explicitly below: a label or an input reads left-aligned, and centring a form field's
+   text makes it harder to scan and to correct. */
+main { text-align: center; }
+main label, main input, main select, main textarea, main fieldset, main legend,
+main option, main .field, main .form-grid { text-align: left; }
+
+/* ============ SECTION CONVENTION, 2026-09-05 ============ */
+/* A page's content is a vertical stack of bands. A panel owns VERTICAL rhythm and nothing else: it
+   is full-bleed and sets no width and no side padding, so the content column stays the page's own
+   wrapper and adopting this convention cannot change horizontal geometry. */
+
+.panel + .panel {
+  margin-top: var(--s6);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--s6);
+}
+main > .panel:first-child { padding-top: var(--s5); }
+/* The sticky sub-navigation band is NOT a panel and must never take the gap: a top margin on a
+   sticky element moves where it comes to rest. Named so a later pass cannot sweep it in. */
+main > .manifest { margin-top: 0; }
+
+/* A colophon is the page's own end-note, distinct from the stamped site footer below it. It carries
+   content the site footer does not, so it is kept and classed rather than deleted. */
+
+@media (max-width: 860px) {
+  .panel + .panel { margin-top: var(--s5); padding-top: var(--s5); }
+  main > .panel:first-child { padding-top: var(--s4); }
+}
+
+/* ACCORDION CARDS UNDER EACH PRODUCT, owner order 2026-09-05. The Additional capacity band was a
+   separate section a reader had to hold in their head while scrolling back to the price it modified.
+   Folded under the product it belongs to, it is available where the question is actually asked and
+   costs nothing when it is not. <details> is native: no JavaScript, keyboard accessible, and NOT
+   sticky, which matters because I27 refuses a second element stuck to the same edge and this page
+   already spends its one sticky slot on the sub-navigation. */
+.addon-fold {
+  margin-top: var(--s3);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--s2);
+  /* CENTRED, per the standing order that all content outside header, footer and form data is
+     centre-aligned. The fold spans a 1130px card, so the cure for the long line is a constrained
+     measure and not a left align: same resolution already applied to the referral terms. */
+  text-align: center;
+}
+.addon-fold > summary {
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  letter-spacing: .02em;
+  color: var(--accent-text);
+  list-style: revert;
+}
+.addon-fold > summary:hover { color: var(--ink); }
+.addon-fold p {
+  font-size: var(--t-md);
+  line-height: 1.6;
+  color: var(--ink);
+  /* WIDENED 2026-09-05, owner order: the fold text spreads across the whole card rather than
+     sitting in a 471px column inside it. */
+  margin: var(--s2) auto 0;
+}
+/* CENTRED 2026-09-05, owner order. tool-shared.css line 69 sets text-align:left on .hero .note for
+   the whole family and is owner-gated, so this overrides it here rather than editing the shared
+   layer. Measured before: computed align left, 1140px wide. */
+.hero .note{text-align:center}
+/* The request form moved to its own page on 2026-09-05, owner order, and this is what replaced it.
+   Tokens only, and the grid floor rule does not apply because there is no grid. */
+.request-cta { text-align: center; padding: var(--s4) 0; }
+.request-cta p { font-size: var(--t-md); color: var(--wash); max-width: var(--measure); margin: 0 auto var(--s3); }
+.request-cta-go {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: var(--t-sm);
+  letter-spacing: .02em;
+  color: var(--paper);
+  background: var(--ink);
+  padding: var(--s2) var(--s4);
+  text-decoration: none;
+}
+.request-cta-go:hover { background: var(--accent-text); }
+/* SNAP SCREENS, 2026-09-05 owner ruling. One screen per product, which is what the measured heights
+   allow: Almanac 388, Scribe 406, Docket 378 against a 644px window, where the single #products
+   section measured 1549. Guarded at 861px; at phone this page still measures 2610px of products
+   against an 812 viewport, which is the stranding case that still binds. Section padding is removed
+   inside a screen for the same reason as on about.html: a screen separates its neighbours by being
+   a whole viewport, so the padding would push each screen past the window it has to fit. */
+@media (min-width: 861px) {
+  .screen {
+    min-height: calc(100vh - var(--bar-h));
+    min-height: calc(100svh - var(--bar-h));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  html.stack-page main > .section.screen { padding-top: 0; padding-bottom: 0; }
+}
+/* THE REQUEST CALL SITS WITH THE PRICE NOTES, 2026-09-06 owner order: it shared a window with
+   nothing and cost a scroll of its own. Its old section is gone rather than emptied. */
+html.stack-page .hero .request-cta { margin-top: var(--s4); padding: 0; }</style>
+
+<!-- BEGIN SITE FONTS, generated by stamp_site_chrome.py, do not edit here -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Parisienne&display=swap" rel="stylesheet">
+<!-- END SITE FONTS -->
 </head>
 <body>
+<!-- BEGIN SITE CHROME, generated by stamp_site_chrome.py, do not edit here -->
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="nav-name" href="/">MICRO<span class="nav-name-sub"> Group</span></a>
+    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+    <div class="nav-right" id="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html#services">Services</a></li>
+        <li><a href="demo.html">Products</a></li>
+        <li><a href="demo-pricing.html">Pricing</a></li>
+        <li><a href="demo-referrals.html">Referrals</a></li>
+        <li><a id="nav-connect" href="contact.html">Connect</a></li>
+      </ul>
+      <div class="site-flip">
+        <a href="https://jonathanlindavis.com" class="mg-tab" data-leave="You are leaving Microgroup.info and travelling to Jonathanlindavis.com.">Open Data</a>
+        <a href="index.html" class="mg-tab active">MICRO</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+/* Marks the current page's nav item. Lives in the chrome so it is stamped onto every
+   convention page unchanged; each page resolves its own answer at load. Matches on the
+   file name, and treats "" and "index.html" as the same page so "/" marks Home. */
+(function(){
+  var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  var links = [].slice.call(document.querySelectorAll('.nav-links a'));
+  var same = links.filter(function(a){
+    return (a.getAttribute('href') || '').split('#')[0].split('/').pop().toLowerCase() === here;
+  });
+  /* Two nav items can point at one page: Services is about.html#services and About is
+     about.html. Prefer the one WITHOUT a fragment, so exactly one item is ever marked. */
+  var exact = same.filter(function(a){ return (a.getAttribute('href') || '').indexOf('#') < 0; });
+  var pick = exact.length ? exact[0] : same[0];
+  if (pick) pick.setAttribute('aria-current', 'page');
+})();
+</script>
+
+<div class="flip-gate" id="flip-gate" hidden>
+  <div class="flip-gate-box" role="alertdialog" aria-modal="true" aria-labelledby="flip-gate-msg">
+    <p id="flip-gate-msg" class="flip-gate-msg"></p>
+    <div class="flip-gate-actions">
+      <button type="button" class="flip-gate-cancel">Cancel</button>
+      <a href="#" class="flip-gate-go" aria-disabled="true">Continue (<span class="flip-gate-count">3</span>)</a>
+    </div>
+  </div>
+</div>
+  <!-- nav-collapse wiring. INSIDE the marked block on purpose, the same reason R7's year setter
+       is: it travels with the elements it wires, so a page cannot receive the button without the
+       behaviour. Sets aria-expanded and aria-controls from script rather than markup, so a page
+       with JavaScript off shows the links instead of an inert button, which is why the collapse
+       is applied by CSS keyed on an attribute this script owns. -->
+  <script>(function(){
+    var b=document.querySelector('.nav-toggle'), n=document.getElementById('nav-right');
+    if(!b||!n) return;
+    n.setAttribute('data-open','false');
+    b.setAttribute('aria-controls','nav-right');
+    b.setAttribute('aria-expanded','false');
+    b.addEventListener('click',function(){
+      var open = n.getAttribute('data-open')==='true';
+      n.setAttribute('data-open', open?'false':'true');
+      b.setAttribute('aria-expanded', open?'false':'true');
+    });
+  })();</script>
+<!-- END SITE CHROME -->
+<main>
 <!-- writing-convention: general -->
 
 <div class="manifest">
@@ -154,39 +589,28 @@ a{color:var(--ink)}
     <span class="grow"></span>
     <nav>
       <a href="#products">Products</a>
-      <a href="#addons">Add-ons</a>
       <a href="#confluence">Confluence</a>
       <a href="#infrastructure">Infrastructure</a>
-      <a href="#request">Request products</a>
+      <a href="demo-pricing-request">Request products &#8594;</a>
       <a href="demo-referrals">Referral program &#8594;</a>
       <a href="demo">All demos &#8594;</a>
     </nav>
   </div>
 </div>
 
-<header class="hero">
-  <div class="badges">
-    <span class="badge badge-real">Real pricing &middot; effective 2026-08-12</span>
-    <span class="badge badge-real">Guaranteed through <span class="guarantee-date">September 30, 2026</span></span>
-  </div>
+<header class="hero screen">
   <h1>Pricing</h1>
-  <p>Standing annual rates for Almanac, the required base product; Scribe and Docket, each an add-on that assumes an active Almanac subscription; purchasable additional research depth and application capacity; Confluence, an annual joint-funding rate for two or more organizations; and an optional plan that keeps every product an organization has purchased on current infrastructure. This is the same rate card every organization sees; nothing here is negotiated in the abstract before a request comes in.</p>
   <p class="note">Current prices are guaranteed through <span class="guarantee-date">September 30, 2026</span>: any request submitted and confirmed by that date locks in the rates shown here, regardless of any later change to this page. The guarantee date is mechanically extended to the end of the current calendar month each time a work session starts; it is never extended silently mid-month.</p>
   <p class="note">Unlike the product demo pages, this page describes Jonathan Lin Davis's actual current pricing, not a simulation against a fictional organization. Submitting the form below does not create a contract; it opens a conversation, and final terms are confirmed in writing.</p>
 </header>
 
-<div class="section" id="products">
+<div class="section screen" id="products">
   <div class="fold">
     <div class="section-head">
       <span class="kicker">1-year org subscriptions</span>
       <h2>Products &amp; pricing</h2>
     </div>
     <div class="fold-body">
-      <div class="section-lede">
-        <p>Each product is priced and purchased on its own. There is no bundle discount: buying more than one product is the sum of what's listed below.</p>
-        <p><b>Almanac is the required base product.</b> Scribe and every other product on this page, in development or already for sale, is an add-on that assumes an active Almanac subscription. None of them are sold on their own.</p>
-        <p>Almanac is required because everything else on this card depends on the one thing that is actually being sold here, which is an individually built shelf. A grant database is curated before its vendor knows a particular organization exists, and every subscriber is fitted to the same catalog afterward. Almanac reverses that order: a person who has worked in the nonprofit sector assesses the organization first, and the shelf is assembled against its goals and programs. Scribe drafts against that shelf, Docket extends it to Letters of Inquiry and Requests for Proposals, and Confluence bridges two of them. None of them has anything to work from without it.</p>
-      </div>
       <div class="product-blocks">
         <div class="product-block">
           <div class="product-block-head">
@@ -207,8 +631,22 @@ a{color:var(--ink)}
               <div class="pc-cadence">Matches refreshed monthly (12 / year)</div>
             </div>
           </div>
-          <div class="product-block-note">Each organization's shelf is built individually at onboarding, so Pro's monthly refresh checks status changes against a shelf already vetted for that organization, not a generic feed.</div>
+          <details class="addon-fold">
+            <summary>Need deeper research? Add depth</summary>
+            <p>Double the research costs double your rate. Almanac Standard at $1,500/year paying for 2&times; depth adds $1,500, so $3,000/year in total; 3&times; adds $3,000, so $4,500/year. The same ratio applies from Pro's $3,000 base.</p>
+            <p>Each step buys a genuinely wider search: more funders checked, more geography, a broader NTEE net. It is not the same shelf run again.</p>
+            <p><b>If we find less than you paid for</b>, because funders at that depth do not exist yet rather than because the work was not done, you get the shortfall back as a refund or a credit forward, your choice. There is no cap on the multiple; deeper passes are scheduled after review, since delivery scales with a person's research time.</p>
+          </details>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section screen" id="products-scribe">
+  <div class="fold">
+    <div class="fold-body">
+      <div class="product-blocks">
         <div class="product-block">
           <div class="product-block-head">
             <div class="pc-tag">Grant drafter</div>
@@ -228,7 +666,22 @@ a{color:var(--ink)}
             </div>
           </div>
           <div class="product-block-requires">Requires an active Almanac subscription</div>
+          <details class="addon-fold">
+            <summary>Need more applications than your tier includes?</summary>
+            <p>Buy them one at a time. <b>Standard: $562.50</b> per extra application. <b>Pro: $375.00</b> per extra application.</p>
+            <p>Those come from each tier's own included rate plus 50%: Standard is $1,500 &divide; 4 = $375.00 an application, Pro is $3,000 &divide; 12 = $250.00. There is no cap and no increment to buy into.</p>
+            <p><b>No length or complexity pricing.</b> A 50-page federal application costs the same as a 10-page one. And if a period has no genuine open call worth writing toward, that application credits forward instead of forcing a draft against a poor match.</p>
+          </details>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section screen" id="products-docket">
+  <div class="fold">
+    <div class="fold-body">
+      <div class="product-blocks">
         <div class="product-block">
           <div class="product-block-head">
             <div class="pc-tag">Organization Project Requests</div>
@@ -247,130 +700,49 @@ a{color:var(--ink)}
               <div class="pc-cadence">Shelf refreshed monthly (12 / year)</div>
             </div>
           </div>
-          <div class="product-block-note"><b>Requires an active Almanac subscription.</b> LOI and RFP calls are a genuinely thinner slice of the funding landscape than traditional grants; Pro refreshes what exists more often, it does not promise there is more of it.</div>
+          <div class="product-block-requires">Requires an active Almanac subscription</div>
+          <details class="addon-fold">
+            <summary>Need deeper research? Add depth</summary>
+            <p>The same proportional pricing as Almanac's, against Docket's LOI and RFP shelf: <b>N&times; the depth costs N&times; your current annual rate</b>.</p>
+            <p>LOI and RFP calls are rarer than traditional grants, so a deeper pass here often confirms there is not more to find. <b>If it falls short, you get the difference back or credited forward</b>, rather than paying for research the world did not have. No cap on the multiple; same review before scheduling.</p>
+          </details>
         </div>
       </div>
-      <div class="example-line">Example: Almanac Standard (required base) + Scribe Pro (add-on) + Infrastructure &amp; Updates = <b>$1,500 + $3,000 + $2,000 = $6,500 / year</b>. This is a straight sum shown for illustration, not a discounted bundle rate.</div>
+      <div class="example-line">Example: Almanac Standard (required base) + Scribe Pro (add-on) + Infrastructure &amp; Updates = <b>$1,500 + $3,000 + $2,000 = $6,500 / year</b>.<br>This is a straight sum shown for illustration, not a discounted bundle rate.</div>
       <div class="example-line">Docket follows the same required-base rule as Scribe: <b>Almanac Standard + Docket Standard = $1,500 + $1,500 = $3,000 / year</b>, one organization, no bundle discount.</div>
 
-      <h3 class="in-dev-subhead">In Development</h3>
-      <div class="price-grid">
-        <div class="price-card unavailable" data-product="Concordance" data-available="false">
-          <div class="pc-tag">Trustees &amp; introductions</div>
-          <h3>Concordance</h3>
-          <p class="pc-desc">Maps the people who govern the foundations already funding this kind of work, and who on a board could make an introduction. Does not estimate anyone's wealth.</p>
-          <div class="pc-requires">Will require an active Almanac subscription</div>
-          <span class="pc-status">In development &middot; not yet for sale</span>
-        </div>
-        <div class="price-card unavailable" data-product="Herald" data-available="false">
-          <div class="pc-tag">Grant-cycle monitor</div>
-          <h3>Herald</h3>
-          <p class="pc-desc">Watches the funder pages behind an Almanac watch-list and reports when a cycle opens, a deadline posts, or guidelines change.</p>
-          <div class="pc-requires">Will require an active Almanac subscription</div>
-          <span class="pc-status">In development &middot; not yet for sale</span>
-        </div>
-        <div class="price-card unavailable" data-product="Atlas" data-available="false">
-          <div class="pc-tag">Corporate foundation benchmark</div>
-          <h3>Atlas</h3>
-          <p class="pc-desc">Benchmarks a corporate foundation's giving against real aggregate statistics computed from Texas-registered 990-PF filings, not any single named peer.</p>
-          <div class="pc-requires">Will require an active Almanac subscription</div>
-          <span class="pc-status">In development &middot; not yet for sale</span>
-        </div>
-        <div class="price-card unavailable" data-product="Dossier" data-available="false">
-          <div class="pc-tag">990 reconciliation</div>
-          <h3>Dossier</h3>
-          <p class="pc-desc">Checks that a foundation's claimed giving matches its own filed 990-PF numbers, and cross-references a voluntary donation list against public filings.</p>
-          <div class="pc-requires">Will require an active Almanac subscription</div>
-          <span class="pc-status">In development &middot; not yet for sale</span>
-        </div>
-      </div>
     </div>
   </div>
 </div>
 
-<div class="section" id="addons">
-  <div class="fold">
-    <div class="section-head">
-      <span class="kicker">Purchasable increments</span>
-      <h2>Additional capacity</h2>
-    </div>
-    <div class="fold-body">
-      <div class="section-lede">
-        <p>Almanac and Docket's add-on is priced proportionally to what an organization already pays: the increase in cost matches the increase in research depth requested, and any portion that turns out undeliverable is prorated back. Scribe's add-on is priced per application, with no cap and no complexity tiering. The two work differently because the two products are different: Almanac and Docket depend on what funders happen to have open in the world; Scribe produces a document MICRO Group, L.L.C. fully controls producing.</p>
-      </div>
-      <div class="addon-grid">
-        <div class="addon-card" data-product="Almanac Additional Research Depth" data-available="true">
-          <div class="pc-tag">Almanac add-on &middot; proportional</div>
-          <h3>Almanac Additional Research Depth</h3>
-          <div class="addon-rates">
-            <span class="addon-rate">Priced proportionally: <b>N&times; the depth costs N&times; your current annual rate</b></span>
-          </div>
-          <p>Example: Almanac Standard at $1,500/yr requesting double depth (2&times;) pays an additional $1,500/yr, $3,000/yr total. Triple depth (3&times;) pays an additional $3,000/yr, $4,500/yr total. The same ratio applies from Pro's $3,000/yr base. Each multiple buys a proportionally deeper research pass: more candidate funders checked, broader geography and NTEE net, not the same shelf re-rendered.</p>
-          <div class="addon-note">If the shelf's actual growth falls short of the multiple purchased, because the funders genuinely available at that depth don't exist yet, not because the research wasn't done, the shortfall is prorated and refunded or credited forward at the organization's choice. No fixed cap on the multiple; scheduled only after founder review, since delivery here scales with a person's research time.</div>
-        </div>
-        <div class="addon-card" data-product="Docket Additional Research Depth" data-available="true">
-          <div class="pc-tag">Docket add-on &middot; proportional</div>
-          <h3>Docket Additional Research Depth</h3>
-          <div class="addon-rates">
-            <span class="addon-rate">Priced proportionally: <b>N&times; the depth costs N&times; your current annual rate</b></span>
-          </div>
-          <p>The same proportional pricing as Almanac's, against Docket's LOI/RFP shelf instead: broader geography and funder-type net checked, not the same shelf re-rendered. LOI and RFP calls are structurally rarer than traditional grants, so a Depth Pass here is more likely to confirm there isn't more to find than to surface a large new batch, and the proration below is where that reality gets accounted for rather than absorbed silently.</p>
-          <div class="addon-note">Same proration/refund/credit rule as Almanac's: any shortfall between the multiple purchased and what genuinely exists to find is prorated back. No fixed cap on the multiple; same founder-review scheduling gate.</div>
-        </div>
-        <div class="addon-card" data-product="Scribe Additional Application" data-available="true">
-          <div class="pc-tag">Scribe add-on &middot; per application</div>
-          <h3>Scribe Additional Application</h3>
-          <div class="addon-rates">
-            <span class="addon-rate">Standard base: $375.00/app &middot; additional: <b>$562.50</b>/app</span>
-            <span class="addon-rate">Pro base: $250.00/app &middot; additional: <b>$375.00</b>/app</span>
-          </div>
-          <p>Each base tier's per-application rate is its annual price divided by its included application count (Standard: $1,500 &divide; 4 = $375.00/app; Pro: $3,000 &divide; 12 = $250.00/app). Every additional application beyond the included count is priced at that same per-app rate plus 50%. No quarterly or monthly increment to buy into: purchase individual additional applications as needed, and there is no cap on how many an organization can buy.</p>
-          <div class="addon-note">No length or complexity tiering. A 50-page federal application costs the same as a 10-page one; the price is per completed application, not per page or per hour. If a billing period has no funder with a genuine, enterable open call to draft toward, that application credits forward rather than forcing a draft against a poor match.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="section" id="confluence">
+<div class="section screen" id="confluence">
   <div class="fold">
     <div class="section-head">
       <span class="kicker">Joint funding &middot; two or more organizations</span>
       <h2>Confluence</h2>
     </div>
     <div class="fold-body">
-      <div class="section-lede">
-        <p>Confluence finds funding whose own stated priorities genuinely span every organization in a group, whether that's a single named partner, a small consortium, or a larger association or collaborative.</p>
-        <p>Each organization's own Almanac cost depends on the product it chooses independently of the others: Standard at $1,500/yr or Pro at $3,000/yr, exactly the rates on the Products &amp; pricing table above. One organization can hold Standard while another holds Pro; nothing about Confluence requires them to match. Once every organization in the group has its own active Almanac subscription, Confluence itself is priced flat, on top of whatever each member already pays for Almanac.</p>
-      </div>
       <div class="addon-grid">
         <div class="addon-card" data-product="Confluence" data-available="true">
-          <div class="pc-tag">Annual &middot; first pair of organizations</div>
+          <div class="pc-tag">Annual &middot; on top of each member's Almanac</div>
           <h3>Confluence</h3>
           <div class="addon-rates">
             <span class="addon-rate">First pair (2 orgs): <b>$1,500</b> / year</span>
             <span class="addon-rate">Each additional org: <b>+$500</b> / year</span>
           </div>
-          <p>A dedicated cross-organization research pass, sorted Pursue, Consider, and Checked &amp; Ruled Out, the same structure already live for a real client. Priced below a fresh Almanac build because it reuses each member organization's already-verified Almanac research rather than researching from nothing.</p>
-          <div class="addon-note">Requires every named organization in the group to hold its own active Almanac subscription before scheduling, not the lead organization only. This is not a formality: Confluence's cost basis depends on each member's Almanac research already being done and already paid for.</div>
-        </div>
-        <div class="addon-card" data-product="Confluence Refresh" data-available="true">
-          <div class="pc-tag">Optional &middot; recurring</div>
-          <h3>Confluence Refresh</h3>
-          <div class="addon-rates">
-            <span class="addon-rate" data-cadence="Quarterly">Quarterly: <b>+$1,000</b> / year</span>
-            <span class="addon-rate" data-cadence="Monthly">Monthly: <b>+$3,000</b> / year</span>
-          </div>
-          <p>Re-runs the cross-organization check on a standing cadence instead of leaving the group's initial shortlist to go stale. Priced below Almanac's own Standard/Pro rates, since a refresh re-checks an existing bridge between organizations rather than rebuilding a shelf from nothing.</p>
-          <div class="addon-note">Requires an active Confluence subscription already on file for the group.</div>
+          <p>A cross-organization research pass sorted Pursue, Consider, and Checked &amp; Ruled Out. Priced below a fresh Almanac build because it reuses each member's verified research rather than starting from nothing.</p>
+          <details class="addon-fold">
+            <summary>Optional: keep it current</summary>
+            <p><b>Confluence Refresh</b> re-runs the check on a standing cadence instead of letting the group's shortlist go stale. Quarterly: <b>+$1,000</b> / year. Monthly: <b>+$3,000</b> / year. Requires an active Confluence subscription for the group.</p>
+          </details>
         </div>
       </div>
-      <div class="example-line">Two organizations, independent Almanac tiers, one drafting seat, one LOI/RFP seat: Org A holds Almanac Pro ($3,000/yr) + Scribe + Docket; Org B holds only Almanac Standard ($1,500/yr). Org A's Scribe seat drafts the joint application; Org A's Docket seat sources any joint LOI/RFP opportunity. Org B needs nothing beyond its own Almanac subscription. Confluence itself adds <b>$1,500/yr</b> on top, regardless of which tier either organization chose.</div>
+      <div class="example-line">Example: Org A holds Almanac Pro ($3,000/yr) plus Scribe; Org B holds Almanac Standard ($1,500/yr). Org A's Scribe seat drafts the joint application.<br>Confluence adds <b>$1,500/yr</b> on top, whichever tiers they chose.</div>
     </div>
   </div>
 </div>
 
-<div class="section" id="infrastructure">
+<div class="section screen" id="infrastructure">
   <div class="fold">
     <div class="section-head">
       <span class="kicker">Add-on &middot; optional</span>
@@ -389,234 +761,24 @@ a{color:var(--ink)}
   </div>
 </div>
 
-<div class="section" id="request">
-  <div class="fold">
-    <div class="section-head">
-      <span class="kicker">Start here</span>
-      <h2>Request products</h2>
+</main>
+<!-- BEGIN SITE FOOTER, generated by stamp_site_chrome.py, do not edit here -->
+<footer class="footer-panel">
+  <div class="mg-wrap footer-row">
+    <div class="footer-slogan">A Measured Approach to Your <u>Goals</u></div>
+    <div class="footer-switcher">
+      <a href="public-index.html" class="mg-tab">Public</a>
+      <a href="private-index" class="mg-tab">Private</a>
+      <a href="privacy.html" class="mg-tab">Privacy</a>
+      <a href="security.html" class="mg-tab">Security</a>
     </div>
-    <button class="mc-toggle mc-toggle-cta" type="button" aria-controls="request-fold-body"></button>
-    <div class="fold-body" id="request-fold-body">
-      <div class="section-lede">
-        <p>Pricing is already shown above. Tell us who you are and which products you're interested in, and this opens a conversation; it is not a contract or a payment.</p>
-      </div>
-
-      <form id="pricing-form" novalidate>
-        <div class="form-field">
-          <label for="p-name">Your name</label>
-          <input type="text" id="p-name" name="name" required>
-        </div>
-        <div class="form-field">
-          <label for="p-org">Organization</label>
-          <input type="text" id="p-org" name="org" required>
-        </div>
-        <div class="form-field">
-          <label for="p-email">Email</label>
-          <input type="email" id="p-email" name="email" required>
-        </div>
-        <div class="form-field">
-          <label for="p-phone">Phone (optional)</label>
-          <input type="tel" id="p-phone" name="phone">
-        </div>
-        <div class="form-field">
-          <label>Interested in <span style="text-transform:none;font-weight:400">(generated from the currently available products above; Almanac is required for every add-on)</span></label>
-          <div class="checks" id="product-checks"></div>
-        </div>
-        <div class="form-field">
-          <label for="p-message">Anything else we should know (optional)</label>
-          <textarea id="p-message" name="message" rows="4" placeholder="Organization size, budget cycle, timeline, or anything specific to your request."></textarea>
-        </div>
-
-        <div class="referral-block">
-          <div class="rb-kicker">Optional &middot; referred by</div>
-          <p>If someone referred you to this offer, credit them here. Referrers earn a one-time bonus under the <a href="demo-referrals">referral program &#8594;</a>, and this is how a referral gets recorded.</p>
-          <div class="referral-grid">
-            <div class="form-field">
-              <label for="r-name">Referrer's full name</label>
-              <input type="text" id="r-name" name="referrer_name">
-            </div>
-            <div class="form-field">
-              <label for="r-email">Referrer's email</label>
-              <input type="email" id="r-email" name="referrer_email">
-            </div>
-            <div class="form-field">
-              <label for="r-phone">Referrer's phone</label>
-              <input type="tel" id="r-phone" name="referrer_phone">
-            </div>
-            <div class="form-field">
-              <label for="r-date">Date of referral <span style="text-transform:none;font-weight:400">(not today's date: the date the referral was actually made)</span></label>
-              <input type="date" id="r-date" name="referral_date">
-            </div>
-          </div>
-        </div>
-
-        <!-- honeypot: hidden from people, bots fill it -->
-        <div class="hp-field" aria-hidden="true">
-          <label for="website">Website</label>
-          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-        </div>
-
-        <div class="form-actions" style="margin-top:1rem">
-          <button class="btn solid" type="submit" id="submit-btn">Send request</button>
-          <span class="form-status" id="submit-status"></span>
-        </div>
-      </form>
-    </div>
+    <div class="footer-legal">&copy; <span id="yr"></span> MICRO Group, L.L.C. All rights reserved. Austin, Texas. 1801 E 51st St., STE 365, PMB 354. CC BY 4.0 data, MIT code.</div>
   </div>
-</div>
-
-<section class="method-wrap" id="method">
-  <div class="method-box">
-    <div class="method-kicker">Method</div>
-    <h2>How this page works, and what it cannot tell you</h2>
-    <p><b>Where these numbers come from.</b><br>This is the standing rate card Jonathan Lin Davis quotes to every organization: the same Almanac, Scribe, Docket, Confluence, and infrastructure prices shown here, not a number produced for a specific negotiation.</p>
-    <p><b>Why the card is shaped this way.</b><br>Research subscriptions in this market are commonly sold per seat and commonly quoted on request rather than published. Three choices here run the other way, and each one is visible in the table above rather than asserted. Every price is published, and it is the same card every organization sees. Almanac is priced per organization, so what an organization pays does not change with how many of its staff open the work. And Scribe is priced per completed application with no length or complexity tiering, which is why a 50-page federal application costs what a 10-page one costs. The proration rules follow from the same principle: research depth that turns out not to exist in the world is refunded or credited forward rather than absorbed silently.</p>
-    <p><b>What this page will not do.</b><br>It does not process payment and it does not create a signed agreement. Submitting the request form starts a conversation; it commits nothing on either side.</p>
-    <p><b>What it cannot tell you.</b><br>Final terms, start dates, and any organization-specific detail are confirmed in writing after a request is reviewed. If a referral is involved, its terms are governed by the <a href="demo-referrals">referral program</a>, not by anything stated here.</p>
-  </div>
-</section>
-
-<footer><div class="wrap">
-  <p>Pricing by Jonathan Lin Davis &middot; effective 2026-08-12, guaranteed through <span class="guarantee-date">September 30, 2026</span>. Rates apply until revised here.</p>
-  <p><a href="demo-referrals">Refer an organization, earn 5% &#8594;</a> &middot; <a href="demo">All demos &#8594;</a></p>
-  <p class="footer-improvements-wrap"><a class="footer-improvements" href="https://jonathanlindavis.com/system-change-log" target="_blank" rel="noopener">System change log</a></p>
-  <p class="footer-custom-note"><a href="/#contact">Need something custom? Individualized builds outside this catalog are available on request &#8594;</a></p>
-  <p class="footer-about-micro">MICRO Group, L.L.C. is a strategic, research-driven consultancy serving nonprofit, government, and political and legislative organizations. Each engagement is shaped around the client's own goals rather than a fixed template: a measured approach to your goals. Beyond consulting, MICRO Group, L.L.C. builds and sells purpose-built software for nonprofit grant-seeking, including Almanac, Scribe, Docket, and Confluence today, with Concordance, Herald, Atlas, and Dossier in development. The name stands for the firm's core disciplines: Management, Integration, Culture, Research, and Operations.</p>
-</div></footer>
-
-<script>
-/* ---- Mechanized product checklist: generated from the pricing cards above, not
-   hand-duplicated. A card only appears here if data-available="true"; a card marked
-   unavailable (Concordance, Herald, until they're for sale) is skipped automatically.
-   Re-run nothing to keep this in sync -- it reads the DOM at load time, every time. ---- */
-(function(){
-  const host=document.getElementById('product-checks');
-  if(!host)return;
-  const options=[];
-
-  document.querySelectorAll('.product-blocks .product-tier[data-available="true"]').forEach(function(tier){
-    options.push(tier.getAttribute('data-product'));
-  });
-  document.querySelectorAll('.price-grid .price-card[data-available="true"]').forEach(function(card){
-    options.push(card.getAttribute('data-product'));
-  });
-  document.querySelectorAll('.addon-grid .addon-card[data-available="true"]').forEach(function(card){
-    const base=card.getAttribute('data-product');
-    const cadenced=card.querySelectorAll('.addon-rate[data-cadence]');
-    if(cadenced.length){
-      cadenced.forEach(function(rate){
-        options.push(base+' ('+rate.getAttribute('data-cadence')+')');
-      });
-    }else{
-      // No cadence variants (e.g. a one-time engagement) -- one checkbox for the whole card.
-      options.push(base);
-    }
-  });
-  document.querySelectorAll('.infra-card[data-available="true"]').forEach(function(card){
-    options.push(card.getAttribute('data-product'));
-  });
-
-  host.innerHTML=options.map(function(name){
-    const esc=name.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    return '<label><input type="checkbox" name="products" value="'+esc+'"> '+esc+'</label>';
-  }).join('');
-})();
-
-/* ---- Request Products accordion. Starts closed; only this section folds. ---- */
-(function(){
-  const section=document.getElementById('request');
-  const btn=section?section.querySelector('.mc-toggle'):null;
-  if(!section||!btn)return;
-  const setOpen=function(open){
-    section.classList.toggle('mc-closed',!open);
-    btn.setAttribute('aria-expanded',String(open));
-    btn.textContent=open?'Hide form':'Show form';
-  };
-  setOpen(false);
-  btn.addEventListener('click',function(){
-    setOpen(section.classList.contains('mc-closed'));
-  });
-})();
-</script>
-
-<script>
-(function(){
-  const form=document.getElementById('pricing-form');
-  if(!form)return;
-  form.addEventListener('submit',async function(e){
-    e.preventDefault();
-    const statusEl=document.getElementById('submit-status');
-    const btn=document.getElementById('submit-btn');
-    const setStatus=function(msg,isErr){
-      if(statusEl){statusEl.textContent=msg;statusEl.classList.toggle('error',!!isErr);}
-    };
-
-    const name=(document.getElementById('p-name')||{}).value||'';
-    const org=(document.getElementById('p-org')||{}).value||'';
-    const email=(document.getElementById('p-email')||{}).value||'';
-    const emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if(!name.trim()||!org.trim()){
-      setStatus('Please enter your name and organization.',true);
-      return;
-    }
-    if(!emailRe.test(email)){
-      setStatus('Please enter a valid email.',true);
-      return;
-    }
-    const referrerName=(document.getElementById('r-name')||{}).value||'';
-    const referralDate=(document.getElementById('r-date')||{}).value||'';
-    const referrerEmail=(document.getElementById('r-email')||{}).value||'';
-    const referrerPhone=(document.getElementById('r-phone')||{}).value||'';
-    const anyReferralField=referrerName.trim()||referralDate.trim()||referrerEmail.trim()||referrerPhone.trim();
-    if(anyReferralField&&(!referrerName.trim()||!referralDate.trim())){
-      setStatus("If you are crediting a referrer, please include their full name and the date of referral.",true);
-      return;
-    }
-
-    const products=Array.prototype.slice.call(form.querySelectorAll('input[name="products"]:checked')).map(function(el){return el.value;});
-
-    const payload={
-      name:name,
-      org:org,
-      email:email,
-      phone:(document.getElementById('p-phone')||{}).value||'',
-      products:products,
-      message:(document.getElementById('p-message')||{}).value||'',
-      referrer_name:referrerName,
-      referrer_email:referrerEmail,
-      referrer_phone:referrerPhone,
-      referral_date:referralDate,
-      website:(document.getElementById('website')||{}).value||'',
-      page_url:window.location.href
-    };
-
-    const origLabel=btn?btn.textContent:'Send request';
-    let success=false;
-    if(btn){btn.disabled=true;btn.textContent='Sending…';}
-    setStatus('',false);
-    try{
-      const res=await fetch('/api/pricing-request',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(payload)
-      });
-      if(res.ok){
-        success=true;
-        if(btn)btn.textContent='Request sent ✓';
-        setStatus("Request sent. MICRO Group, L.L.C. will follow up at the email you provided.",false);
-        form.reset();
-      }else{
-        const t=await res.json().catch(function(){return{};});
-        setStatus((t&&t.error)?t.error:'Could not send your request. Please try again.',true);
-      }
-    }catch(err){
-      setStatus('Network error. Please try again.',true);
-    }finally{
-      if(!success&&btn){btn.disabled=false;btn.textContent=origLabel;}
-    }
-  });
-})();
-</script>
-
+</footer>
+<!-- yr-setter: R7, 2026-09-05. INSIDE the stamped block on purpose, so it travels with the element
+     it sets. about.html's page-level setter ran at line 561 while the footer was not inserted until
+     617, so getElementById('yr') returned null and the year rendered blank. Ordering, not arithmetic. -->
+<script>(function(){var y=document.getElementById('yr');if(y&&!y.textContent)y.textContent=new Date().getFullYear();})();</script>
+<!-- END SITE FOOTER -->
 </body>
 </html>
