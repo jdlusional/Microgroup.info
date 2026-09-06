@@ -20,7 +20,7 @@ PASS    5.66  need 4.5  --wash        on --well         12.00px/400 normal  html
 PASS    5.66  need 4.5  --wash        on --well         12.48px/400 normal  html.stack-page .pcard-status
 PASS    5.66  need 4.5  --wash        on --well         12.48px/400 normal  html.stack-page .roles span
 PASS    5.66  need 4.5  --wash        on --well         16.00px/400 normal  .quiet
-PASS    5.66  need 4.5  --wash        on --well         16.00px/400 normal  .shead .intro
+PASS    5.66  need 4.5  --wash        on --well         16.00px/400 normal  /* WIDENED 2026-09-05, owner order: these intros are to sp
 PASS    5.66  need 4.5  --wash        on --well         16.00px/600 normal  html.stack-page .flip-gate-go
 PASS    6.12  need 4.5  --accent-text on --paper        12.48px/600 normal  /* Site switchers */
 html.stack-page .mg-tab
@@ -40,7 +40,7 @@ PASS    6.21  need 4.5  --wash        on --paper        12.00px/400 normal  html
 PASS    6.21  need 4.5  --wash        on --paper        12.48px/400 normal  html.stack-page .pcard-status
 PASS    6.21  need 4.5  --wash        on --paper        12.48px/400 normal  html.stack-page .roles span
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  .quiet
-PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  .shead .intro
+PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  /* WIDENED 2026-09-05, owner order: these intros are to sp
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/600 normal  html.stack-page .flip-gate-go
 PASS    9.85  need 3.0  --ink         on --well         32.00px/700 LARGE   html.stack-page .terms-figure
 PASS    9.85  need 3.0  --ink         on --well         41.60px/400 LARGE   /* ============ 4. COMPONENTS ============ */

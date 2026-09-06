@@ -142,7 +142,10 @@ main { display: block; }
 main > .panel:first-child { padding-top: var(--s5); }
 main > .manifest { margin-top: 0; }
 .shead { margin-bottom: var(--s5); text-align: center; }
-.shead .intro { color: var(--wash); max-width: var(--measure); margin-left: auto; margin-right: auto; }
+/* WIDENED 2026-09-05, owner order: these intros are to spread across the page rather than sit in
+   a 62ch column. They are one to three sentences each, so the wider measure costs a couple of
+   lines of length and buys the full page width the owner asked for. */
+.shead .intro { color: var(--wash); margin-left: auto; margin-right: auto; }
 .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--s4); }
 .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: var(--s4); }
 .grid-3 > *, .grid-2 > *, .cta-row > * { min-width: 0; }
@@ -171,7 +174,10 @@ html.stack-page .pcard-open { display: inline-block; margin-top: var(--s2); font
 html.stack-page .pcard-open:hover { color: var(--ink); text-decoration: underline; }
 html.stack-page .arr { color: var(--accent-text); }
 
-html.stack-page .scope { border: 1px solid var(--rule); border-top: 3px solid var(--accent); background: var(--paper); padding: var(--s4); max-width: var(--measure); margin-left: auto; margin-right: auto; text-align: center; }
+/* WIDENED 2026-09-05, owner order: the nonpartisan policy box spreads across the page. A bordered
+   card capped at 62ch inside an 1180px wrapper read as a narrow slab; the border is the thing
+   that wants the width. */
+html.stack-page .scope { border: 1px solid var(--rule); border-top: 3px solid var(--accent); background: var(--paper); padding: var(--s4); margin-left: auto; margin-right: auto; text-align: center; }
 html.stack-page .scope h3 { font-size: var(--t-lg); margin-bottom: var(--s2); }
 html.stack-page .scope p { margin: 0; color: var(--ink); }
 

@@ -11,8 +11,8 @@
 </script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Demo — Jonathan Lin Davis</title>
-<meta name="description" content="The nonprofit fundraising product suite — Almanac, Scribe and Concordance — demonstrated against a fictional sample organization." />
+<title>Request Products — Almanac, Scribe, Docket &amp; Confluence</title>
+<meta name="description" content="Real subscription pricing for Almanac, the required base product, plus Scribe, Docket, and every other add-on product, purchasable additional research depth and application capacity, Confluence joint-funding engagements for two or more organizations, an optional infrastructure and updates plan, and a request-products form. Concordance, Herald, Atlas, and Dossier are in development and not yet for sale." />
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
 <meta name="referrer" content="no-referrer" />
 <link rel="icon" type="image/svg+xml" href="Assets/micro-mark-c1.svg">
@@ -23,56 +23,117 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="tool-shared.css?v=9a8055aac9">
-<link rel="stylesheet" href="switcher-shared.css?v=a0acc30d75">
 <style>
-:root{
-  --ink:#1b3a6b; --wash:#5a6b82; --paper:#f4efe2; --well:#e8e2d4;
-  --rule:#c8c2b5; --accent:#2f7fd1; --urgent:#8a2828;
-  --serif:'Spectral',Georgia,'Times New Roman',serif;
-  --mono:'JetBrains Mono','Courier New',monospace;
-  /* Override into switcher-shared.css's --sw-* tokens: this family keeps a
-     well-tinted card (not white), intentional, predating and surviving the
-     2026-08-09 owner order, which changed alignment/icon policy, not this. */
-  --sw-card-bg:var(--well);
+a{color:var(--ink)}
+
+.hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1rem;text-align:center}
+
+/* ---- Center/middle align everything on this page, not just the cards:
+   section heads, ledes, callouts, the method box, and the form. ---- */
+.section{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem;text-align:center}
+.section-head p{color:var(--wash);font-size:.94rem;margin:0 auto}
+
+/* ---- Boxes: text inside is middle-aligned vertically as well as
+   horizontally, not just top-aligned within whatever height the box has.
+   .infra-card only: its direct children (h3, p, p) are real block elements,
+   safe to arrange with flex. The other four are single runs of text with an
+   inline <b> or <a> mixed directly in, NOT separate block children --
+   flex-direction:column on a container like that wraps each text/inline run
+   as its own anonymous flex item and breaks the sentence across lines at the
+   inline tag, which is the bug this comment replaces. Plain text-align is
+   enough for these: none of them sit in a taller grid/flex row that would
+   ever give them extra height to center within, so there is nothing for
+   vertical centering to do. ---- */
+
+/* ---- Pricing cards. Centered, not left-aligned, per owner order 2026-08-09
+   superseding the 2026-07-24 left-align choice, applied to every card family
+   site-wide (this is the .pick-card convention's own source precedent). ---- */
+
+.price-card.unavailable{opacity:.72}
+.price-card h3{font-family:var(--serif);font-weight:700;font-size:var(--t-xl);margin:0 0 .3rem}
+.price-card .pc-tag{font-size:.76rem;letter-spacing:.02em;color:var(--wash);font-weight:600;margin-bottom:.7rem}
+.price-card .pc-amount{font-family:var(--serif);font-weight:700;font-size:var(--t-3xl);color:var(--accent-text);line-height:1;margin-bottom:.2rem}
+.price-card .pc-amount .per{font-size:.72rem;font-weight:600;color:var(--wash);letter-spacing:.02em;margin-left:.35rem}
+.price-card .pc-cadence{font-family:var(--mono);font-size:var(--t-sm);color:var(--wash);margin-bottom:.8rem}
+.price-card p.pc-desc{font-size:var(--t-md);color:var(--ink);margin:0;flex:1}
+.price-card .pc-status{font-size:var(--t-xs);letter-spacing:.02em;color:var(--urgent);font-weight:600;border:1px solid var(--urgent);padding:.3rem .6rem;display:inline-block;margin-top:1rem;align-self:center}
+.price-card .pc-requires{font-family:var(--mono);font-size:.76rem;letter-spacing:.02em;color:var(--accent-text);margin-top:.7rem}
+
+/* ---- Product blocks: one product per rectangle, Standard/Pro joined as a
+   two-column split inside it rather than two separate repeated cards. ---- */
+
+.product-block-head .pc-tag{font-size:.76rem;letter-spacing:.02em;color:var(--wash);font-weight:600;margin-bottom:.4rem}
+.product-block-head h3{font-family:var(--serif);font-weight:700;font-size:var(--t-xl);margin:0 0 .5rem}
+.product-block-head .pc-desc{font-size:var(--t-md);color:var(--ink);margin:0 auto}
+
+.product-block-guarantee b{color:var(--ok)}
+
+.product-tier+.product-tier{border-left:1px solid var(--rule)}
+
+/* The 70ch cap made this render 482px wide inside a 1138px card, so its border-top read as a
+   short inset rule while .product-block-requires spanned the full card. Removed 2026-09-05 by
+   owner order so both notes under a product sit the same way. */
+
+.product-block-note b{color:var(--accent-text)}
+
+@media(max-width:640px){
+  .product-block-tiers{grid-template-columns:1fr}
+  .product-tier+.product-tier{border-left:none;border-top:1px solid var(--rule)}
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:var(--serif);color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
 
-.hero{max-width:900px;margin:0 auto;padding:3.2rem 1.5rem 1rem;text-align:center}
-.hero .kicker{font-size:.76rem;letter-spacing:.03em;color:var(--accent-text);font-weight:600}
-.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,5vw,3rem);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
-.hero p{color:var(--wash);font-size:1.04rem}
+.addon-card h3{font-family:var(--serif);font-weight:700;font-size:var(--t-xl);margin:0 0 .5rem}
+.addon-card .addon-rates{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;margin:.6rem 0}
+.addon-card .addon-rate{font-family:var(--mono);font-size:.86rem;color:var(--ink)}
+.addon-card .addon-rate b{font-family:var(--serif);font-size:1.15rem;color:var(--accent-text)}
+.addon-card p{font-size:var(--t-md);line-height:1.55;margin:.6rem 0 0}
+.addon-card .addon-note{font-family:var(--mono);font-size:.8rem;color:var(--wash);border-top:1px dashed var(--rule);margin-top:.9rem;padding-top:.7rem}
 
-/* This family's own kicker/status keep the body serif rather than
-   switcher-shared.css's default mono -- predates the shared stylesheet. */
-.pc-kicker,.pc-status{font-family:var(--serif)}
-.pc-go{color:var(--accent-text)}
+.infra-card h3{font-family:var(--serif);font-weight:700;font-size:var(--t-xl);margin:0 0 .5rem}
+.infra-card .pc-amount{font-family:var(--serif);font-weight:700;font-size:var(--t-3xl);color:var(--accent-text);line-height:1;display:inline-block;margin-right:.6rem}
+.infra-card p{font-size:.96rem;line-height:1.55;margin:.6rem 0 0}
 
-.survey-callout p{color:var(--ink);font-size:var(--t-md);margin:0 0 .9rem}
+.example-line b{color:var(--ink)}
 
-.sc-go:hover{background:var(--ink)}
-/* Foot-note convention (owner order, 2026-07-30): standing pattern for the
-   content block under a product family's card grid -- centered, not left-aligned
-   like ordinary body copy.
-   AMENDED 2026-09-05 by a later owner order, and the amendment is recorded here
-   because a superseded standing order that nobody marks as superseded is how a
-   later pass reinstates it. The 2026-07-30 order named this the pattern for the
-   "link-row + custom-build note"; the 2026-09-05 order removed that link row and
-   that note from this page outright, and the newer order wins.
-   WHAT STILL STANDS, checked rather than assumed: the CONTAINER convention is
-   live on two pages, this one and enterprise.html, and neither now carries the
-   link-row-plus-custom-build-note shape the original order named. Here the block
-   holds the .why-grid cards; on enterprise.html it holds a disclosure paragraph.
-   So the geometry rule below is current and the CONTENT half of the 2026-07-30
-   order is retired.
-   DO NOT RENAME OR REMOVE THIS DIV. build_demo_catalog.py anchors the end of its
-   generated card region on the literal string <div class="foot-note"> and aborts
-   the build if it cannot find it. */
-.foot-note{max-width:1000px;margin:0 auto;padding:0 1.5rem 3rem;color:var(--wash);font-size:.93rem;text-align:center}
-.picker-subhead{max-width:1120px;margin:2.4rem auto .9rem;padding:0 1.5rem;text-align:center;font-family:var(--serif);font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;color:var(--wash)}
-.picker-subhead:first-of-type{margin-top:0}
-@media(max-width:600px){.survey-callout{padding:1.2rem 1.1rem}}
+/* ---- Form (mirrors the request-a-draft convention: form-field / hp-field / form-actions) ---- */
+.form-field{margin-bottom:1.3rem;text-align:center}
+.form-field label{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
+.form-field input[type="text"],.form-field input[type="email"],.form-field input[type="tel"],.form-field input[type="date"]{
+  display:block;width:100%;font-family:var(--serif);font-size:var(--t-md);padding:.6rem .8rem;border:1.5px solid var(--ink);
+  background:var(--well);color:var(--ink);outline:none;max-width:420px;text-align:left;margin:0 auto}
+.form-field input:focus{outline:2px solid var(--ink);outline-offset:0}
+.form-field textarea{display:block;width:100%;font-family:var(--serif);font-size:var(--t-md);padding:.7rem .8rem;border:1.5px solid var(--ink);background:var(--well);color:var(--ink);resize:vertical;outline:none;text-align:left;margin:0 auto}
+
+.checks{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 1.4rem}
+.checks label{display:flex;align-items:center;gap:.45rem;font-family:var(--serif);font-size:var(--t-md);text-transform:none;letter-spacing:0;color:var(--ink)}
+.checks input{width:auto}
+.hp-field{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
+.form-actions{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
+.form-status{font-family:var(--mono);font-size:.88rem;color:var(--ok)}
+.form-status.error{color:var(--urgent)}
+.btn{font-family:var(--mono);font-size:.86rem;letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);background:var(--paper);padding:.55rem 1.2rem;cursor:pointer;transition:all .15s ease}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent-text)}
+
+.referral-block{border-top:1px solid var(--rule-soft);margin-top:1.6rem;padding-top:1.4rem}
+.referral-block .rb-kicker{font-size:var(--t-xs);letter-spacing:.02em;color:var(--accent-text);font-weight:600;margin-bottom:.5rem}
+.referral-block p{font-size:.92rem;color:var(--wash);margin:.2rem 0 1rem}
+.referral-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem 1.3rem}
+.referral-grid .form-field{min-width:0}
+
+/* ---- Request Products accordion. Only this section folds; every other
+   section on this page keeps the standing no-tab-drops rule. ---- */
+
+.mc-toggle:hover{background:var(--well)}
+#request.mc-closed .fold-body{display:none}
+
+.mc-toggle-cta:hover{background:var(--ink);border-color:var(--ink);box-shadow:0 4px 14px rgba(27,58,107,.35)}
+
+@media(max-width:640px){
+  .price-card{padding:1rem 1.1rem}
+  .addon-card{padding:1rem 1.1rem}
+  .form-field input[type="text"],.form-field input[type="email"],.form-field input[type="tel"],.form-field input[type="date"]{max-width:none}
+}
 
 /* ===== BEGIN SITE CHROME, generated by stamp_site_chrome.py, do not edit here ===== */
 /* The site chrome: token layer, header, departure gate and footer. TWO base pages:
@@ -279,124 +340,6 @@ main { text-align: center; }
 main label, main input, main select, main textarea, main fieldset, main legend,
 main option, main .field, main .form-grid { text-align: left; }
 
-/* ============ WHY-CARDS, 2026-09-05 ============ */
-/* The page's three closing paragraphs as cards. Card geometry is COPIED from the ratified
-   .pcard on about.html rather than re-invented: --well ground, 1px --rule box, 2px --accent
-   top rule, 3px radius. The gutter is --s4 against a card padding of --s3, a quotient of
-   1.556, and that ratio is the grouping cue on purpose: --rule on --well is 1.41 and --paper
-   on --well is 1.10, so neither edge reads as a boundary and the spacing has to do the work.
-   --accent appears on BORDERS only. Every text colour here is --ink, --wash or --accent-text. */
-.why-grid {
-  display: grid;
-  /* min() rather than a bare 320px. At 320 the content box is 272px, so a bare track minimum
-     holds a track wider than the viewport and scrolls the document sideways, which is the exact
-     shape of the 63px overflow a prior pass shipped. MEASURED: with both guards removed this
-     page overflows by 24px at 320 and by nothing at any other width, so the guard is doing real
-     work at exactly one width and the 600px query below is its backstop. */
-  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
-  gap: var(--s4);
-  text-align: center;
-}
-.why-grid > * { min-width: 0; }
-
-.why-card {
-  background: var(--well);
-  border: 1px solid var(--rule);
-  border-top: 2px solid var(--accent);
-  border-radius: 3px;
-  padding: var(--s3);
-  text-align: center;
-}
-/* SENTENCE headings, not names. --t-lg is the convention's h4 size and sits deliberately below
-   the --t-xl the product card titles take, so a 45-character sentence does not outweigh a
-   one-word product name a few hundred pixels above it. The bolded lead-in that used to open
-   each paragraph is GONE as an element: the <b> is not swapped for <strong>, it is replaced by
-   a heading, which is what it was doing all along. */
-.why-title {
-  font-size: var(--t-lg);
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--ink);
-  margin: 0 auto var(--s2);
-  max-width: var(--measure);
-}
-/* THE MEASURE IS THE WHOLE READABILITY ARGUMENT FOR CENTRED PROSE. Two columns hold each card's
-   text at 424px at 1280, which renders 61 to 65 characters to the line. Below 731 the grid is
-   one column, the card can be 537px wide, and this cap is the only thing between that and a
-   90-character centred line. */
-.why-card p {
-  font-size: var(--t-md);
-  color: var(--ink);
-  margin: 0 auto;
-  max-width: var(--measure);
-}
-.why-card p + p { margin-top: var(--s3); }
-
-/* The figure row. Flex rather than an auto-fit grid, because an orphan third cell in a grid sits
-   in column one while the card around it is centred; flex-wrap plus justify-content centres what
-   wraps, which is what the 375 render does. The 120px basis is the one literal in this block and
-   it is arithmetic, not taste: the widest numeral, 407,293, is 7 monospace characters at --t-2xl,
-   COMPUTED at 101px on a .6em advance, so 120 clears it; three cells plus two --s4 gutters is
-   416px against a 424px text column at 1280, so the row holds three across on the desktop and
-   drops to two, then one, with no cell ever exceeding its card. MEASURED, as against computed:
-   3 cells across at 1280, 2 then 1 at 375, 1 per row at 320, and no numeral's scrollWidth exceeds
-   its clientWidth at any width, including the 123px cell the 375 layout gives it. */
-.fig-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--s3) var(--s4);
-  margin-top: var(--s3);
-}
-.fig-cell { flex: 1 1 120px; min-width: 0; }
-.fig-n {
-  display: block;
-  font-family: var(--f-mono);
-  font-weight: 700;
-  font-size: var(--t-2xl);
-  line-height: 1.15;
-  color: var(--accent-text);
-  /* Insurance against the webfont failing to load: a proportional fallback would otherwise set
-     the three numerals at three different widths. */
-  font-variant-numeric: tabular-nums;
-}
-.fig-l { display: block; font-size: var(--t-sm); color: var(--ink); margin-top: var(--s1); }
-/* Two of the six figures cannot be lifted out of their phrase without reordering words: the 59
-   sits inside "across 59 states and territories" and the range inside "tax years 2015 through
-   2025 of full IRS Form 990 schedule detail". Both keep their original word order and take the
-   numeral face inline instead, so they read as figures without being restated. */
-.fig-em { font-family: var(--f-mono); font-weight: 700; color: var(--accent-text); }
-.why-card .fig-span { margin-top: var(--s2); }
-/* The measurement date. Small, monospace, --wash: the register of a table footnote, which is
-   what it is. It is the only thing on the page making the four counts checkable, so it is quiet
-   but it is never absent. */
-.why-card .fig-note {
-  margin-top: var(--s1);
-  font-family: var(--f-mono);
-  font-size: var(--t-sm);
-  color: var(--wash);
-}
-
-/* The disclosure is NOT a third argument, so it is not a third card in the row. It is the prose
-   third of a claim the hero badge already makes in --urgent at line 356 and the survey callout
-   repeats in --urgent at 361, so it takes the --urgent top rule those two carry, on the page's
-   own --paper rather than the argument cards' --well. Three registers, one claim, visibly one
-   family. It is also the one block on the page that would otherwise run the full 1000px, so it
-   takes --measure as a BAND rather than only on its paragraph, the same shape about.html's
-   .scope and .problem already ship. */
-.why-note p { margin: 0 auto; font-size: var(--t-md); color: var(--ink); }
-
-@media (max-width: 600px) {
-  /* A SECOND, INDEPENDENT overflow guard, on the page's own existing 600px breakpoint. MEASURED
-     to be inert in a current browser: at 601, where this query does not apply, auto-fit already
-     resolves to one column, so this changes no layout at any width it reaches. It exists for the
-     browser that does not support min() inside minmax(), where it is the only thing standing
-     between the phone and a 24px sideways scroll. Deliberately NOT set at 860 like about.html's
-     grids: an 860px breakpoint would force one 797px column across the whole 601 to 860 band,
-     where two 320 to 384px columns fit and read better. */
-  .why-grid { grid-template-columns: 1fr; }
-}
-
 /* ============ SECTION CONVENTION, 2026-09-05 ============ */
 /* A page's content is a vertical stack of bands. A panel owns VERTICAL rhythm and nothing else: it
    is full-bleed and sets no width and no side padding, so the content column stays the page's own
@@ -420,15 +363,34 @@ main > .manifest { margin-top: 0; }
   main > .panel:first-child { padding-top: var(--s4); }
 }
 
-/* THE TWO "WHY THESE" CARDS ARE DROPDOWNS, owner order 2026-09-05. They are the longest prose on
-   the page and they answer a question a reader either has or does not. Native <details>: no
-   JavaScript, keyboard accessible, and not sticky, so I27 is untouched. */
-.why-card > summary.why-title {
+/* ACCORDION CARDS UNDER EACH PRODUCT, owner order 2026-09-05. The Additional capacity band was a
+   separate section a reader had to hold in their head while scrolling back to the price it modified.
+   Folded under the product it belongs to, it is available where the question is actually asked and
+   costs nothing when it is not. <details> is native: no JavaScript, keyboard accessible, and NOT
+   sticky, which matters because I27 refuses a second element stuck to the same edge and this page
+   already spends its one sticky slot on the sub-navigation. */
+
+.addon-fold > summary {
   cursor: pointer;
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  letter-spacing: .02em;
+  color: var(--accent-text);
   list-style: revert;
-  text-align: left;
 }
-.why-card[open] > summary.why-title { margin-bottom: var(--s2); }</style>
+.addon-fold > summary:hover { color: var(--ink); }
+.addon-fold p {
+  font-size: var(--t-md);
+  line-height: 1.6;
+  color: var(--ink);
+  /* WIDENED 2026-09-05, owner order: the fold text spreads across the whole card rather than
+     sitting in a 471px column inside it. */
+  margin: var(--s2) auto 0;
+}
+/* CENTRED 2026-09-05, owner order. tool-shared.css line 69 sets text-align:left on .hero .note for
+   the whole family and is owner-gated, so this overrides it here rather than editing the shared
+   layer. Measured before: computed align left, 1140px wide. */
+.hero .note{text-align:center}</style>
 
 <!-- BEGIN SITE FONTS, generated by stamp_site_chrome.py, do not edit here -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -506,75 +468,125 @@ main > .manifest { margin-top: 0; }
 <main>
 <!-- writing-convention: general -->
 
+<div class="manifest">
+  <div class="manifest-in">
+    <span class="brand"><b>Request products</b> &middot; Almanac, Scribe, Docket &amp; Confluence</span>
+    <span class="grow"></span>
+    <nav>
+      <a href="demo-pricing">&#8592; Pricing</a>
+      <a href="demo-referrals">Referral program &#8594;</a>
+      <a href="demo">All demos &#8594;</a>
+    </nav>
+  </div>
+</div>
+
 <header class="hero">
-  <div class="kicker">Fundraising tools for nonprofits</div>
-  <h1>Demo</h1>
-  <p>Three tools that work from a nonprofit's own public record. Almanac finds the institutions that fund its work, Scribe drafts the application, and Concordance finds the people who govern those institutions.</p>
+  <div class="badges">
+    <span class="badge badge-real">Real pricing &middot; effective 2026-08-12</span>
+  </div>
+  <h1>Request products</h1>
+  <p>Pricing is already published. Tell us who you are and which products interest you. This opens a conversation; it is not a contract and it is not a payment.</p>
 </header>
 
-<!-- ES-GENERATED:BEGIN [catalog-cards]
-     Generated from enterprise/catalog.json by enterprise/build_demo_catalog.py.
-     DO NOT HAND-EDIT between these markers: catalog.json is the single source of
-     truth for the product catalogue (owner Decision 11, 2026-08-18) and any edit
-     here is overwritten on the next run. Change catalog.json instead. -->
-<h2 class="picker-subhead">Live Products</h2>
-<div class="picker">
-  <a class="pick-card" href="demo-almanac.html">
-    <div class="pc-kicker">Funder &amp; grant match</div>
-    <h2>Almanac</h2>
-    <p>Finds the funders and open grants that fit an organization, ranks them, and shows the public source behind every one. It works from that organization's own public record and builds the list against its actual goals and programs rather than a keyword match on its mission statement. Scribe, Docket, and Confluence are add-ons built on it, and each requires an active Almanac subscription.</p>
-    <div class="pc-status">Live</div>
-    <span class="pc-go">Open demo &#8594;</span>
-  </a>
-  <a class="pick-card" href="demo-scribe.html">
-    <div class="pc-kicker">Grant drafter</div>
-    <h2>Scribe</h2>
-    <p>Works from an Almanac match to produce a near-submission draft of the grant application, fact-checked against the organization's own public information. It returns the draft with an explicit list of the facts it could not verify, which only the applicant can supply. Facts about the funder are quoted from its own page or marked unconfirmed. Requires an active Almanac subscription.</p>
-    <div class="pc-status">Live</div>
-    <span class="pc-go">Open demo &#8594;</span>
-  </a>
-  <a class="pick-card" href="demo-docket.html">
-    <div class="pc-kicker">Organization Project Requests</div>
-    <h2>Docket</h2>
-    <p>Almanac's sibling for Organization Project Requests, meaning Letters of Inquiry and Requests for Proposals, tracked separately from traditional grants. Same sourcing standard: every request traces to the funder's or agency's own current page, and the amounts, windows, and eligibility rules are quoted from it or marked unconfirmed. Requires an active Almanac subscription.</p>
-    <div class="pc-status">Live</div>
-    <span class="pc-go">Open demo &#8594;</span>
-  </a>
-  <a class="pick-card" href="demo-confluence.html">
-    <div class="pc-kicker">Joint funding, two or more organizations</div>
-    <h2>Confluence</h2>
-    <p>Finds funding that connects your organization's mission to one or more named partner organizations' work, including consortiums, associations, and collaboratives, where you remain the eligible applicant. An angle Almanac's single-org matching doesn't surface on its own. Every organization in the group needs its own Almanac subscription; only one needs Scribe, and only one Docket.</p>
-    <div class="pc-status">Live</div>
-    <span class="pc-go">Open demo &#8594;</span>
-  </a>
-</div>
-<!-- ES-GENERATED:END [catalog-cards] -->
-
-<div class="foot-note">
-  <div class="why-grid">
-
-    <details class="why-card">
-      <summary class="why-title">Why these rather than a grant database</summary>
-      <p>A subscription database is curated before the vendor knows a specific organization exists. Someone decides which opportunities belong on the shelf, and every subscriber sees the same shelf.</p>
-      <p>These products reverse that order: a person who has worked in the nonprofit sector reads the organization first, and its shelf is built afterward, against its actual goals and programs rather than a keyword match on its mission statement. That is a claim an organization can test before it pays anything, because every demo above is shown before price is discussed.</p>
-    </details>
-
-    <details class="why-card">
-      <summary class="why-title">Why these rather than a general research tool</summary>
-      <p>The funder records behind these products sit on one EIN spine alongside sources a grants database does not carry:</p>
-      <div class="fig-row">
-        <div class="fig-cell"><span class="fig-n">56,756</span><span class="fig-l">federal contract awards</span></div>
-        <div class="fig-cell"><span class="fig-n">407,293</span><span class="fig-l">federal subawards</span></div>
-        <div class="fig-cell"><span class="fig-n">177,378</span><span class="fig-l">Federal Audit Clearinghouse single audits across <span class="fig-em">59</span> states and territories</span></div>
+<div class="section" id="request">
+  <div class="fold">
+    <div class="fold-body" id="request-fold-body">
+      <div class="section-lede">
+        <p>Pricing is already shown above. Tell us who you are and which products you're interested in, and this opens a conversation; it is not a contract or a payment.</p>
       </div>
-      <p class="fig-span"><span class="fig-em">tax years 2015 through 2025</span> of full IRS Form 990 schedule detail</p>
-      <p class="fig-note">each count measured 2026-08-31</p>
-      <p>Joining those to the grant record is what makes a single question answerable in one pass: which funders support this work, are growing their giving, and carry no adverse audit findings.</p>
-    </details>
 
+      <form id="pricing-form" novalidate>
+        <div class="form-field">
+          <label for="p-name">Your name</label>
+          <input type="text" id="p-name" name="name" required>
+        </div>
+        <div class="form-field">
+          <label for="p-org">Organization</label>
+          <input type="text" id="p-org" name="org" required>
+        </div>
+        <div class="form-field">
+          <label for="p-email">Email</label>
+          <input type="email" id="p-email" name="email" required>
+        </div>
+        <div class="form-field">
+          <label for="p-phone">Phone (optional)</label>
+          <input type="tel" id="p-phone" name="phone">
+        </div>
+        <div class="form-field">
+          <label>Interested in <span style="text-transform:none;font-weight:400">(generated from the currently available products above; Almanac is required for every add-on)</span></label>
+          <div class="checks" id="product-checks"></div>
+        </div>
+        <div class="form-field">
+          <label for="p-message">Anything else we should know (optional)</label>
+          <textarea id="p-message" name="message" rows="4" placeholder="Organization size, budget cycle, timeline, or anything specific to your request."></textarea>
+        </div>
+
+        <div class="referral-block">
+          <div class="rb-kicker">Optional &middot; referred by</div>
+          <p>If someone referred you to this offer, credit them here. Referrers earn a one-time bonus under the <a href="demo-referrals">referral program &#8594;</a>, and this is how a referral gets recorded.</p>
+          <div class="referral-grid">
+            <div class="form-field">
+              <label for="r-name">Referrer's full name</label>
+              <input type="text" id="r-name" name="referrer_name">
+            </div>
+            <div class="form-field">
+              <label for="r-email">Referrer's email</label>
+              <input type="email" id="r-email" name="referrer_email">
+            </div>
+            <div class="form-field">
+              <label for="r-phone">Referrer's phone</label>
+              <input type="tel" id="r-phone" name="referrer_phone">
+            </div>
+            <div class="form-field">
+              <label for="r-date">Date of referral <span style="text-transform:none;font-weight:400">(not today's date: the date the referral was actually made)</span></label>
+              <input type="date" id="r-date" name="referral_date">
+            </div>
+          </div>
+        </div>
+
+        <!-- honeypot: hidden from people, bots fill it -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-actions" style="margin-top:1rem">
+          <button class="btn solid" type="submit" id="submit-btn">Send request</button>
+          <span class="form-status" id="submit-status"></span>
+        </div>
+      </form>
+    </div>
   </div>
-
 </div>
+
+<script type="application/json" id="product-manifest">["Almanac Standard", "Almanac Pro", "Scribe Standard", "Scribe Pro", "Docket Standard", "Docket Pro", "Confluence", "Infrastructure & Updates"]</script>
+<script>
+/* ---- Product checklist, read from the manifest above rather than from pricing cards, because
+   this page deliberately does not carry them. check_request_form_products.py compares that
+   manifest against demo-pricing.html's own data-product attributes and fails on drift, so the
+   list cannot go stale silently, which was the whole virtue of the DOM-scraping original. ---- */
+(function(){
+  const host=document.getElementById('product-checks');
+  const src=document.getElementById('product-manifest');
+  if(!host||!src)return;
+  let options=[];
+  try{options=JSON.parse(src.textContent);}catch(e){return;}
+  host.innerHTML='';
+  options.forEach(function(name,i){
+    const id='pc-'+i;
+    const wrap=document.createElement('label');
+    /* no class: .checks label already styles these rows, and inventing one would be a class
+       with no rule, which invariant I1 correctly refuses. */
+    wrap.setAttribute('for',id);
+    const box=document.createElement('input');
+    box.type='checkbox'; box.id=id; box.name='products'; box.value=name;
+    const span=document.createElement('span');
+    span.textContent=name;
+    wrap.appendChild(box); wrap.appendChild(span);
+    host.appendChild(wrap);
+  });
+})();
+</script>
 </main>
 <!-- BEGIN SITE FOOTER, generated by stamp_site_chrome.py, do not edit here -->
 <footer class="footer-panel">
