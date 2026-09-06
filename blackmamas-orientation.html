@@ -58,6 +58,13 @@ footer{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 3rem;border-top:1px s
 .or-method p{color:var(--wash);font-size:15px;max-width:74ch;margin:0 0 .6rem}
 .or-method p:last-child{margin-bottom:0}
 .or-lede{color:var(--wash);font-size:16px;max-width:74ch;margin:0 auto 1.8rem;text-align:center}
+
+/* The migrated needs table sits inside .or-placeholder, which centres its text, so the cells
+   inherited text-align:center and I9 flagged all four th/td groups. Tabular data reads left
+   aligned; on its old page the table sat in a left-aligned context and never needed this.
+   Page-local because tool-shared.css owns the table's other styling and is an owner gate. */
+.or-placeholder .funder-mini-table th,
+.or-placeholder .funder-mini-table td { text-align: left; }
 </style>
 </head>
 <body>
