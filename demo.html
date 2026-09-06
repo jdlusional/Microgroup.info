@@ -12,7 +12,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Demo — Jonathan Lin Davis</title>
-<meta name="description" content="The nonprofit fundraising product suite — Almanac, Scribe and Concordance — demonstrated against a fictional sample organization." />
+<meta name="description" content="The nonprofit fundraising product suite, Almanac, Scribe, Docket and Confluence, demonstrated against a fictional sample organization." />
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
 <meta name="referrer" content="no-referrer" />
 <link rel="icon" type="image/svg+xml" href="Assets/micro-mark-c1.svg">
@@ -539,6 +539,19 @@ main > .manifest { margin-top: 0; }
   html.stack-page main > .screen:last-child {
     min-height: calc(100svh - var(--bar-h) - 118px);
   }
+  /* AN AUTO CROSS-AXIS MARGIN OVERRIDES align-items: stretch, so a flex child carrying
+     `margin: 0 auto` sizes to its own CONTENT instead of to its parent. Making .screen a flex
+     column for snap turned every section child into such an item, and .picker is
+     `repeat(auto-fit, minmax(240px, 1fr))`, whose min-content width is all four tracks at their
+     240px floor plus gaps and padding: 4x240 + 3x28.8 + 48 = 1094.4, and 1094 is exactly what it
+     measured. So between 861 and about 1140 the picker held 1094px inside an 885 to 1085px parent
+     and scrolled the document sideways: 194px of overflow at 900, 70px at 1024. Below 861 the
+     screen is not flex and the same grid correctly falls to three columns, which is why the low
+     widths always passed and why a sweep that stopped at 860 and jumped to 1280 saw nothing.
+     Introduced by the snap work in 860487a, found 2026-09-06. The same trap was already hit once
+     on demo-referrals (#how, same fix), which is why width: 100% and not a margin reset: the
+     shorthand would drop the centring the auto margins are there to provide. */
+  .screen > * { width: 100%; min-width: 0; }
   .pick-card { padding: var(--s2) var(--s4); }
   .hero { padding: var(--s2) var(--s3) var(--s1); }
   .picker-subhead { margin: var(--s2) auto var(--s2); }
@@ -629,7 +642,7 @@ main > .manifest { margin-top: 0; }
 <header class="hero">
   <div class="kicker">Fundraising tools for nonprofits</div>
   <h1>Demo</h1>
-  <p>Three tools that work from a nonprofit's own public record. Almanac finds the institutions that fund its work, Scribe drafts the application, and Concordance finds the people who govern those institutions.</p>
+  <p>Four tools that work from a nonprofit's own public record. Almanac finds the funders, Scribe drafts the application, Docket covers letters of inquiry and requests for proposals, and Confluence finds partner funding.</p>
 </header>
 
 <!-- ES-GENERATED:BEGIN [catalog-cards]
@@ -683,15 +696,14 @@ main > .manifest { margin-top: 0; }
 
     <details class="why-card">
       <summary class="why-title">Why these rather than a general research tool</summary>
-      <p>The funder records behind these products sit on one EIN spine alongside sources a grants database does not carry:</p>
+      <p>One EIN spine, carrying sources a grant database does not:</p>
       <div class="fig-row">
         <div class="fig-cell"><span class="fig-n">56,756</span><span class="fig-l">federal contract awards</span></div>
         <div class="fig-cell"><span class="fig-n">407,293</span><span class="fig-l">federal subawards</span></div>
-        <div class="fig-cell"><span class="fig-n">177,378</span><span class="fig-l">Federal Audit Clearinghouse single audits across <span class="fig-em">59</span> states and territories</span></div>
+        <div class="fig-cell"><span class="fig-n">177,378</span><span class="fig-l">Federal Audit Clearinghouse single audits, <span class="fig-em">59</span> states and territories</span></div>
       </div>
-      <p class="fig-span"><span class="fig-em">tax years 2015 through 2025</span> of full IRS Form 990 schedule detail</p>
-      <p class="fig-note">each count measured 2026-08-31</p>
-      <p>Joining those to the grant record is what makes a single question answerable in one pass: which funders support this work, are growing their giving, and carry no adverse audit findings.</p>
+      <p class="fig-span"><span class="fig-em">tax years 2015 through 2025</span> of full IRS Form 990 schedule detail, counted 2026-08-31</p>
+      <p>Joined to the grant record, one pass answers which funders support this work, are growing, and carry no adverse audit findings.</p>
     </details>
 
   </div>
