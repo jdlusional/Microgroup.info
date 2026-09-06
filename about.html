@@ -532,6 +532,62 @@ main option, main .field, main .form-grid { text-align: left; }
   html.stack-page main > .panel.screen + .panel.screen { margin-top: 0; padding-top: 0; }
   html.stack-page main > .panel.screen:first-child { padding-top: 0; }
   html.stack-page main > .panel.screen:last-child { padding-bottom: 0; }
+}
+/* OWNER ORDER 2026-09-06, four adjustments on this page's own components. */
+
+/* The four proof items become cards, matching .pcard's treatment rather than inventing a second
+   card look. Their measure cap goes with the change: inside a card the text should flow the card. */
+html.stack-page .proof-item {
+  background: var(--well);
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--accent);
+  border-radius: 3px;
+  padding: var(--s3);
+  text-align: center;
+}
+html.stack-page .proof-item p { max-width: none; }
+
+/* The founder note and the engagement intro flow the full width of the block that holds them.
+   Both carried .measure, a 62ch cap that made a short paragraph sit in a narrow column inside a
+   wide card. Scoped to these two, so .measure keeps working everywhere else. */
+html.stack-page .proof-person p.measure { max-width: none; }
+html.stack-page #engagement .intro.measure { max-width: none; }
+
+/* The five disciplines are three across, so the last row holds two and a grid would leave them
+   hard left under the first column. Flex centres the remainder; the basis reproduces the same
+   three-column track width so nothing else moves. */
+html.stack-page #services .grid-3 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s4);
+}
+html.stack-page #services .grid-3 > * {
+  flex: 0 1 calc((100% - 2 * var(--s4)) / 3);
+  min-width: 320px;
+}
+
+/* COMPRESSION INSIDE A SCREEN, so the combined blocks fit the window rather than the window
+   growing to fit them. Two screens overflowed after the combine, services by 67px and proof by
+   102px against a 644px window. Every value here is a step down the existing scale, not a new
+   number, and none of it applies below 861px where there is no snap and no window to fit. */
+@media (min-width: 861px) {
+  html.stack-page .screen .stack-gap { margin-top: var(--s3); }
+  html.stack-page .screen .shead { margin-bottom: var(--s3); }
+  html.stack-page .screen .grid-3,
+  html.stack-page .screen .grid-2 { gap: var(--s3); }
+  html.stack-page #services .grid-3 { gap: var(--s3); }
+  html.stack-page #services .grid-3 > * { flex-basis: calc((100% - 2 * var(--s3)) / 3); }
+  html.stack-page .screen .pcard { padding: var(--s2) var(--s3); }
+  html.stack-page .screen .proof-item { padding: var(--s2) var(--s3); }
+  html.stack-page .screen .proof-person { padding: var(--s3); margin-bottom: var(--s3); }
+  html.stack-page .screen .cta-row { margin-top: var(--s3); gap: var(--s1); }
+  /* The proof screen carries the most in one window: a heading, the founder card, four product
+     cards and the two calls to action. 30px short after the shared compression above, taken from
+     the button padding and the founder card's trailing space rather than from any text. */
+  html.stack-page #proof .proof-person { margin-bottom: var(--s2); }
+  html.stack-page #proof .grid-2 { gap: var(--s2); }
+  html.stack-page #proof .btn { padding: var(--s1) var(--s4); }
 }</style>
 </head>
 <body>
@@ -618,6 +674,15 @@ main option, main .field, main .form-grid { text-align: left; }
         <article class="pcard"><h4 class="pcard-title">Research</h4><p class="pcard-desc">Applied research grounded in the founder's legislative background: policy and bill analysis, committee and district-level data, and funding landscape review.</p></article>
         <article class="pcard"><h4 class="pcard-title">Operations</h4><p class="pcard-desc">Operational management: process documentation, vendor and contract review, and reporting systems, so the work does not depend on one person's memory.</p></article>
       </div>
+
+      <div class="stack-gap">
+        <h3>Who we serve</h3>
+        <div class="grid-3">
+          <article class="pcard"><h4 class="pcard-title">Nonprofit</h4><p class="pcard-desc">National and local organizations across a range of missions, including the grant-seeking software this firm builds and sells.</p></article>
+          <article class="pcard"><h4 class="pcard-title">Government</h4><p class="pcard-desc">Municipal, state, and federal agencies and public departments.</p></article>
+          <article class="pcard"><h4 class="pcard-title">Policy and Legislative</h4><p class="pcard-desc">Nonpartisan policy analysis, bill and committee research, and district-level data for advocacy organizations and public agencies.</p></article>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -632,29 +697,7 @@ main option, main .field, main .form-grid { text-align: left; }
           <article class="pcard"><h4 class="pcard-title">Handover</h4><p class="pcard-desc">The artifact and the method behind it, in a form your own staff can rerun. A deliverable nobody on your team can repeat is a dependency, not a capability.</p></article>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section id="audience" class="panel screen">
-    <div class="wrap">
-      <div class="stack-gap">
-        <h3>Who we serve</h3>
-        <div class="grid-3">
-          <article class="pcard"><h4 class="pcard-title">Nonprofit</h4><p class="pcard-desc">National and local organizations across a range of missions, including the grant-seeking software this firm builds and sells.</p></article>
-          <article class="pcard"><h4 class="pcard-title">Government</h4><p class="pcard-desc">Municipal, state, and federal agencies and public departments.</p></article>
-          <article class="pcard"><h4 class="pcard-title">Policy and Legislative</h4><p class="pcard-desc">Nonpartisan policy analysis, bill and committee research, and district-level data for advocacy organizations and public agencies.</p></article>
-        </div>
-      </div>
-
-      <div class="stack-gap scope" data-block="scope">
-        <h3>How the policy practice is scoped</h3>
-        <p>The legislative and policy practice is nonpartisan. It covers bill and committee analysis, district-level data, and administrative research for organizations on any side of an issue. It does not include partisan campaign work, and nonprofit and government engagements are never staffed from it.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="products" class="panel screen">
-    <div class="wrap">
       <div class="shead">
         <h2>Products</h2>
         <p class="intro">Purpose-built software for nonprofit grant-seeking. Four are live and inspectable today; the demo hub is open and needs no call first.</p>
@@ -663,6 +706,15 @@ main option, main .field, main .form-grid { text-align: left; }
         <article class="pcard"><h4 class="pcard-title">Product demo hub</h4><p class="pcard-desc">Every product demo in one place. Almanac, Scribe, Docket, and Confluence are live and inspectable today.</p><a class="pcard-open" href="demo.html">Open <span class="arr">&rarr;</span></a></article>
         <article class="pcard"><h4 class="pcard-title">Pricing</h4><p class="pcard-desc">The full rate card for every live product, plus a request-pricing form.</p><a class="pcard-open" href="demo-pricing.html">Open <span class="arr">&rarr;</span></a></article>
         <article class="pcard"><h4 class="pcard-title">Referral program</h4><p class="pcard-desc">Refer an organization to Almanac or Scribe and earn 5% of their first-year subscription as a one-time bonus.</p><a class="pcard-open" href="demo-referrals.html">Open <span class="arr">&rarr;</span></a></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="audience" class="panel screen">
+    <div class="wrap">
+      <div class="stack-gap scope" data-block="scope">
+        <h3>How the policy practice is scoped</h3>
+        <p>The legislative and policy practice is nonpartisan. It covers bill and committee analysis, district-level data, and administrative research for organizations on any side of an issue. It does not include partisan campaign work, and nonprofit and government engagements are never staffed from it.</p>
       </div>
     </div>
   </section>
@@ -699,11 +751,6 @@ main option, main .field, main .form-grid { text-align: left; }
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="terms" class="panel screen">
-    <div class="wrap">
 
       <div class="cta-row">
         <a class="btn btn-solid" href="contact.html">Book a free thirty-minute consultation</a>

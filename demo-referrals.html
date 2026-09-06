@@ -432,6 +432,29 @@ main > .manifest { margin-top: 0; }
    viewport, which is the stranding case the 2026-09-04 refutation named and which still binds.
    The chrome supplies scroll-snap-align to .screen; this supplies the window it aligns to. */
 @media (min-width: 861px) {
+  /* THE LAST SCREEN SHARES ITS WINDOW WITH THE FOOTER, owner order 2026-09-06: How it works should
+     not cost a second scroll to reach the footer. Its content measures about 520px and the stamped
+     footer 109px, so a short last screen puts both in one 644px window.
+     The subtraction is bar-h + 38 + 118: the sticky header, the sticky manifest under it, and
+     the footer plus slack. The first two are what scroll-padding already reserves on this page,
+     so a snapped screen rests at y=114 and the window below it is 606px, not 644.
+     THIS IS A RESERVED CONSTANT, the pattern that produced a wrong --foot-h four times in this
+     estate, so it is stated rather than buried: 118px is the measured 109px footer plus 9px of
+     slack, it is a MINIMUM on a snap screen rather than a subtraction from the page, and the
+     page-opens-at-top gate checks the consequence that matters, which is that End still reaches the
+     true maximum with the footer fully visible. If the footer grows past 118px this screen simply
+     gets taller and the two stop sharing a window; nothing breaks silently. */
+  /* COMPRESSED TO SHARE THE WINDOW. The screen measured 614px against the 535px it needs to sit
+     beside the 109px footer, so 79px comes out: the explanatory lede under How it works, which
+     restated what the four steps then say, plus a step down the scale on the card padding, the
+     number badge's gap and the grid's top margin. No step's own words are touched. */
+  html.stack-page #how .steps li { padding: var(--s1) var(--s2); }
+  html.stack-page #how .steps li::before { margin-bottom: var(--s1); }
+  html.stack-page #how .steps { margin-top: var(--s1); }
+  html.stack-page #how .steps h3 { margin-bottom: var(--s1); }
+  html.stack-page main > .screen:last-child {
+    min-height: calc(100svh - var(--bar-h) - 38px - 118px);
+  }
   .screen {
     min-height: calc(100vh - var(--bar-h));
     min-height: calc(100svh - var(--bar-h));
@@ -532,9 +555,6 @@ main > .manifest { margin-top: 0; }
 
 <section class="screen">
 <header class="hero">
-  <div class="badges">
-    <span class="badge badge-real">Real program &middot; effective 2026-07-17</span>
-  </div>
   <h1>Referral program</h1>
   <p>Refer an organization to Almanac or Scribe. If they sign a first paid subscription, you earn 5% of their first-year product price as a one-time bonus.</p>
   <p class="note">The 5% applies to Almanac and Scribe list price only. It excludes the Infrastructure &amp; Updates add-on, and it is paid once, on the first year of a new contract, not on renewals. <a href="demo-referral-terms">Read the full terms &#8594;</a></p>
@@ -553,9 +573,6 @@ main > .manifest { margin-top: 0; }
       <h2>How it works</h2>
     </div>
     <div class="fold-body">
-      <div class="section-lede">
-        <p>The referral is recorded on the same form the referred organization uses to request pricing, so there's one record, not two separate systems to reconcile.</p>
-      </div>
       <ol class="steps">
         <li>
           <h3>Tell an organization about Almanac or Scribe</h3>

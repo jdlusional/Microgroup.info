@@ -374,7 +374,13 @@ main { flex: 1 0 auto; display: flex; flex-direction: column; }
 /* Hero lockup, enlarged. */
 html.stack-page .hero-lockup { margin: 0 0 var(--s3); text-align: center; }
 html.stack-page .lockup-frame { position: relative; border: 1px solid var(--plate-rule); padding: var(--s5) var(--s6) var(--s4); text-align: center; display: inline-block; max-width: 100%; box-sizing: border-box; }
-html.stack-page .lockup-mark { position: absolute; top: -46px; left: 50%; transform: translateX(-50%); background: var(--paper); padding: 0 var(--s3); }
+/* THE MARK STANDS ON THE RULE, it does not sink through it. Owner-reported 2026-09-05 as a
+   visual impairment, and measured: the art's bottom sat 41px BELOW the frame's top border, so the
+   two border stubs terminated at the chess pieces' waists and the pieces hung into the box. The
+   box was also 94px tall for 86px of art, an 8px inline-SVG baseline gap that made the paper mask
+   asymmetric, covering 8px more of the rule below the art than above it. line-height:0 removes the
+   gap; the offset then puts the art's bottom edge on the rule. */
+html.stack-page .lockup-mark { position: absolute; top: -66px; left: 50%; transform: translateX(-50%); background: var(--paper); padding: 0 var(--s3); line-height: 0; }
 html.stack-page .lockup-word { font-family: var(--f-serif); font-size: var(--t-hero); font-weight: 400; letter-spacing: -.01em; line-height: 1; color: var(--plate-ink); white-space: nowrap; }
 html.stack-page .lockup-word em { font-style: italic; }
 html.stack-page .lockup-rule { width: 100%; height: 1px; background: var(--plate-rule); margin: -6px auto var(--s2); }
@@ -386,6 +392,12 @@ html.stack-page .lockup-tag u { text-decoration: underline; text-underline-offse
    a script face at body size would fail legibility long before it failed contrast. */
 html.stack-page .headline { font-family: var(--f-script); font-size: var(--t-4xl); font-weight: 400; line-height: 1.2; color: var(--ink); max-width: 26ch; margin: 0 auto var(--s2); letter-spacing: 0; }
 
+/* THE SECOND DROP'S HEADLINE RUNS ACROSS THE PAGE, owner order 2026-09-06. .headline carries a
+   26ch cap that suits the hero's long sentence and wrapped this one onto two lines at 745px. Freed
+   here only, and it fixes a second defect at the same time: the two-line headline made the about
+   drop 551px of content, which overflows the window on a short laptop viewport, measured at 27px
+   over at 1280x600. One line returns 50px and the drop fits again. */
+html.stack-page #about .headline { max-width: none; }
 html.stack-page .lede { font-size: var(--t-lg); color: var(--ink); max-width: var(--measure); margin: 0 auto var(--s2); text-align: center; }
 
 /* Calls to action */
