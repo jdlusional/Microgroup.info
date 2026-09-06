@@ -187,7 +187,15 @@ html.stack-page {
      same page, Spectral carrying page content and Instrument Serif carrying the wordmark and
      chrome, which is why h1 rendered in six different size-and-family combinations across 12
      pages. Aliasing rather than redefining keeps ONE declaration to change next time. */
-  --serif:    var(--f-serif);
+  /* AMENDED 2026-09-05, owner ruling, hours after the alias below it was first set. --serif now
+     points at the SANS. The owner asked for the face used by index.html's .lede to replace the one
+     in demo-pricing's hero notes "and everywhere else that font is used". MEASURED: Instrument
+     Serif was on 591 elements across the 12 pages, of which about 26 are the brand, the
+     "MICRO Group" wordmark in every header plus the homepage lockup. He ruled the content changes
+     and the wordmark does not, so the split is exactly the two tokens: --serif carries page
+     content and becomes sans here, --f-serif carries the wordmark and stays Instrument Serif.
+     That is also why the Instrument Serif font request is KEPT: the wordmark still needs it. */
+  --serif:    var(--f-sans);
   --f-script: 'Parisienne', 'Segoe Script', cursive;
 
   /* Eleven sizes. No font-size on html, so the root stays the reader's own default.

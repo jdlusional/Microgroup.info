@@ -190,7 +190,15 @@ html.stack-page .terms { border: 1px solid var(--rule); border-top: 2px solid va
 html.stack-page .terms-figure { font-family: var(--f-mono); font-size: var(--t-3xl); font-weight: 700; color: var(--ink); display: block; margin-bottom: var(--s1); }
 html.stack-page .terms p { max-width: var(--measure); margin-left: auto; margin-right: auto; margin-bottom: var(--s2); }
 
-html.stack-page .cta-row { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; justify-content: center; margin: var(--s5) 0 0; }
+/* STACKED AND CENTRED IN ITS SECTION, 2026-09-05 owner order. Two defects, both measured. The row
+   was a horizontal pair, and the owner wants the two stacked with the consultation first, which is
+   already the DOM order so only the direction changes. And the section carried padding 72px 0 0,
+   so the row's bottom edge sat 0px from the section bottom and 0px from the stamped footer, which
+   is the "pressed against the footer" report. The section's vertical padding is made symmetric and
+   the row's own top margin is dropped, so 72px sits above and below and the row is centred rather
+   than pushed down. Page-local: index.html carries its own .cta-row and stays a horizontal pair. */
+html.stack-page .cta-row { display: flex; flex-direction: column; gap: var(--s2); align-items: center; justify-content: center; margin: 0; }
+html.stack-page main > .panel:last-child { padding-bottom: var(--s6); }
 html.stack-page .btn { display: inline-block; font-size: var(--t-md); font-weight: 600; padding: var(--s2) var(--s4); border-radius: 3px; text-decoration: none; border: 1px solid var(--accent-fill); cursor: pointer; font-family: var(--f-sans); }
 html.stack-page .btn-solid { background: var(--accent-fill); color: var(--paper); }
 html.stack-page .btn-solid:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
@@ -225,6 +233,9 @@ html.stack-page .pcard:hover { border-color: var(--accent); box-shadow: 0 2px 10
   .grid-3, .grid-2 { grid-template-columns: 1fr; }
   .panel + .panel { margin-top: var(--s5); padding-top: var(--s5); }
   main > .panel:first-child { padding-top: var(--s4); }
+  /* match the mobile rhythm, so the last panel is centred at phone too rather than 45 above and
+     72 below, which is what the unguarded desktop value produced. */
+  html.stack-page main > .panel:last-child { padding-bottom: var(--s5); }
   h1 { font-size: var(--t-3xl); }
   html.stack-page .page-title { font-size: var(--t-3xl); }
 }
@@ -288,7 +299,15 @@ html.stack-page {
      same page, Spectral carrying page content and Instrument Serif carrying the wordmark and
      chrome, which is why h1 rendered in six different size-and-family combinations across 12
      pages. Aliasing rather than redefining keeps ONE declaration to change next time. */
-  --serif:    var(--f-serif);
+  /* AMENDED 2026-09-05, owner ruling, hours after the alias below it was first set. --serif now
+     points at the SANS. The owner asked for the face used by index.html's .lede to replace the one
+     in demo-pricing's hero notes "and everywhere else that font is used". MEASURED: Instrument
+     Serif was on 591 elements across the 12 pages, of which about 26 are the brand, the
+     "MICRO Group" wordmark in every header plus the homepage lockup. He ruled the content changes
+     and the wordmark does not, so the split is exactly the two tokens: --serif carries page
+     content and becomes sans here, --f-serif carries the wordmark and stays Instrument Serif.
+     That is also why the Instrument Serif font request is KEPT: the wordmark still needs it. */
+  --serif:    var(--f-sans);
   --f-script: 'Parisienne', 'Segoe Script', cursive;
 
   /* Eleven sizes. No font-size on html, so the root stays the reader's own default.
