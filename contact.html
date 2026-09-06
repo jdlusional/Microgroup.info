@@ -154,7 +154,7 @@ html.stack-page .lede { font-size: var(--t-md); color: var(--wash); max-width: v
    centred over its field is a usability regression rather than a style choice. */
 html.stack-page .signup-form { max-width: 820px; margin: 0 auto; text-align: left; width: 100%; }
 html.stack-page .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--s1) var(--s3); }
-html.stack-page .form-row { display: flex; flex-direction: column; gap: 1px; margin-bottom: var(--s1); }
+html.stack-page .form-row { display: flex; flex-direction: column; gap: var(--s1); margin-bottom: var(--s1); }
 html.stack-page .form-row label { font-size: var(--t-xs); font-weight: 600; color: var(--ink); text-transform: uppercase; letter-spacing: .05em; }
 html.stack-page .signup-form input, html.stack-page .signup-form select, html.stack-page .signup-form textarea {
   font-family: var(--f-sans); font-size: var(--t-md); color: var(--ink);
@@ -210,7 +210,7 @@ html.stack-page .signup-form .invalid { border-color: var(--err); }
      target the fields actually need; the labels shrink, not the inputs. */
   .screen { min-height: auto; padding: var(--s1) 0; }  /* R9 MISS, fixed 2026-09-05: carried a hardcoded 264px reservation inside this media query, the same class R9 deleted from the base rule. The header collapses to 41px on a phone, so no constant describes it. */
   html.stack-page .form-grid { grid-template-columns: 1fr; gap: 0; }
-  html.stack-page .form-row { margin-bottom: 4px; }
+  html.stack-page .form-row { margin-bottom: var(--s1); }
   html.stack-page .form-row label { font-size: var(--t-micro); letter-spacing: .03em; }
   html.stack-page .signup-form input, html.stack-page .signup-form select, html.stack-page .signup-form textarea { padding: 4px var(--s1); font-size: var(--t-xs); }
   html.stack-page .page-title { font-size: var(--t-2xl); }

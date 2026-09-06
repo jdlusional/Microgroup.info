@@ -38,9 +38,9 @@
 body{margin:0;font-family:var(--serif);color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 
-.hero{max-width:900px;margin:0 auto;padding:3.2rem 1.5rem 1rem;text-align:center}
-.hero .kicker{font-size:.76rem;letter-spacing:.03em;color:var(--accent-text);font-weight:600}
-.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,5vw,3rem);color:var(--ink);margin:.6rem 0 1rem;line-height:1.1}
+.hero{max-width:900px;margin:0 auto;padding:var(--s5) var(--s4) var(--s3);text-align:center}
+.hero .kicker{font-size:var(--t-micro);letter-spacing:.03em;color:var(--accent-text);font-weight:600}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,5vw,3rem);color:var(--ink);margin:var(--s2) 0 var(--s3);line-height:1.1}
 .hero p{color:var(--wash);font-size:1.04rem}
 
 /* This family's own kicker/status keep the body serif rather than
@@ -68,8 +68,8 @@ a{color:inherit;text-decoration:none}
    DO NOT RENAME OR REMOVE THIS DIV. build_demo_catalog.py anchors the end of its
    generated card region on the literal string <div class="foot-note"> and aborts
    the build if it cannot find it. */
-.foot-note{max-width:1000px;margin:0 auto;padding:0 1.5rem 3rem;color:var(--wash);font-size:.93rem;text-align:center}
-.picker-subhead{max-width:1120px;margin:2.4rem auto .9rem;padding:0 1.5rem;text-align:center;font-family:var(--serif);font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;color:var(--wash)}
+.foot-note{max-width:1000px;margin:0 auto;padding:0 var(--s4) var(--s5);color:var(--wash);font-size:var(--t-md);text-align:center}
+.picker-subhead{max-width:1120px;margin:var(--s5) auto var(--s2);padding:0 var(--s4);text-align:center;font-family:var(--serif);font-weight:700;font-size:var(--t-base);text-transform:uppercase;letter-spacing:.05em;color:var(--wash)}
 .picker-subhead:first-of-type{margin-top:0}
 @media(max-width:600px){.survey-callout{padding:1.2rem 1.1rem}}
 

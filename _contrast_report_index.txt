@@ -1,6 +1,6 @@
 R7 contrast report for index.html
 Exact pairs where a rule declares both; inherited pairs against --paper and --well.
-pairs evaluated: 57   failures: 0
+pairs evaluated: 55   failures: 0
 surfaces: --paper, --well
 
 PASS    5.01  need 4.5  --plate-wash  on --well         12.00px/400 normal  html.stack-page .footer-slogan
@@ -19,7 +19,6 @@ PASS    5.66  need 4.5  --wash        on --well         12.00px/400 normal  html
 PASS    5.66  need 4.5  --wash        on --well         12.48px/400 normal  html.stack-page .roles span
 PASS    5.66  need 4.5  --wash        on --well         15.20px/400 normal  /* Direct channel */
 html.stack-page .direct
-PASS    5.66  need 4.5  --wash        on --well         16.00px/400 normal  .quiet
 PASS    5.66  need 4.5  --wash        on --well         16.00px/600 normal  html.stack-page .flip-gate-go
 PASS    6.12  need 4.5  --accent-text on --paper        12.48px/600 normal  /* Site switchers */
 html.stack-page .mg-tab
@@ -35,7 +34,6 @@ PASS    6.21  need 4.5  --wash        on --paper        12.00px/400 normal  html
 PASS    6.21  need 4.5  --wash        on --paper        12.48px/400 normal  html.stack-page .roles span
 PASS    6.21  need 4.5  --wash        on --paper        15.20px/400 normal  /* Direct channel */
 html.stack-page .direct
-PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  .quiet
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/600 normal  html.stack-page .flip-gate-go
 PASS    9.85  need 3.0  --ink         on --well         41.60px/400 LARGE   /* The capability headline, in the script face. DISPLAY SC
 PASS    9.85  need 4.5  --ink         on --well         15.20px/400 normal  html.stack-page .flip-gate-cancel

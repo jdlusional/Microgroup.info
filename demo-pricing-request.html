@@ -25,12 +25,12 @@
 <style>
 a{color:var(--ink)}
 
-.hero{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem 1rem;text-align:center}
+.hero{max-width:1180px;margin:0 auto;padding:var(--s4) var(--s3) var(--s3);text-align:center}
 
 /* ---- Center/middle align everything on this page, not just the cards:
    section heads, ledes, callouts, the method box, and the form. ---- */
-.section{max-width:1180px;margin:0 auto;padding:2.2rem 1.25rem;text-align:center}
-.section-head p{color:var(--wash);font-size:.94rem;margin:0 auto}
+.section{max-width:1180px;margin:0 auto;padding:var(--s4) var(--s3);text-align:center}
+.section-head p{color:var(--wash);font-size:var(--t-md);margin:0 auto}
 
 /* ---- Boxes: text inside is middle-aligned vertically as well as
    horizontally, not just top-aligned within whatever height the box has.
@@ -50,18 +50,18 @@ a{color:var(--ink)}
 
 .price-card.unavailable{opacity:.72}
 .price-card h3{font-family:var(--serif);font-weight:700;font-size:var(--t-xl);margin:0 0 .3rem}
-.price-card .pc-tag{font-size:.76rem;letter-spacing:.02em;color:var(--wash);font-weight:600;margin-bottom:.7rem}
+.price-card .pc-tag{font-size:var(--t-micro);letter-spacing:.02em;color:var(--wash);font-weight:600;margin-bottom:.7rem}
 .price-card .pc-amount{font-family:var(--serif);font-weight:700;font-size:var(--t-3xl);color:var(--accent-text);line-height:1;margin-bottom:.2rem}
-.price-card .pc-amount .per{font-size:.72rem;font-weight:600;color:var(--wash);letter-spacing:.02em;margin-left:.35rem}
+.price-card .pc-amount .per{font-size:var(--t-micro);font-weight:600;color:var(--wash);letter-spacing:.02em;margin-left:.35rem}
 .price-card .pc-cadence{font-family:var(--mono);font-size:var(--t-sm);color:var(--wash);margin-bottom:.8rem}
 .price-card p.pc-desc{font-size:var(--t-md);color:var(--ink);margin:0;flex:1}
-.price-card .pc-status{font-size:var(--t-xs);letter-spacing:.02em;color:var(--urgent);font-weight:600;border:1px solid var(--urgent);padding:.3rem .6rem;display:inline-block;margin-top:1rem;align-self:center}
-.price-card .pc-requires{font-family:var(--mono);font-size:.76rem;letter-spacing:.02em;color:var(--accent-text);margin-top:.7rem}
+.price-card .pc-status{font-size:var(--t-xs);letter-spacing:.02em;color:var(--urgent);font-weight:600;border:1px solid var(--urgent);padding:var(--s1) var(--s2);display:inline-block;margin-top:var(--s3);align-self:center}
+.price-card .pc-requires{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.02em;color:var(--accent-text);margin-top:.7rem}
 
 /* ---- Product blocks: one product per rectangle, Standard/Pro joined as a
    two-column split inside it rather than two separate repeated cards. ---- */
 
-.product-block-head .pc-tag{font-size:.76rem;letter-spacing:.02em;color:var(--wash);font-weight:600;margin-bottom:.4rem}
+.product-block-head .pc-tag{font-size:var(--t-micro);letter-spacing:.02em;color:var(--wash);font-weight:600;margin-bottom:.4rem}
 .product-block-head h3{font-family:var(--serif);font-weight:700;font-size:var(--t-xl);margin:0 0 .5rem}
 .product-block-head .pc-desc{font-size:var(--t-md);color:var(--ink);margin:0 auto}
 
@@ -81,42 +81,42 @@ a{color:var(--ink)}
 }
 
 .addon-card h3{font-family:var(--serif);font-weight:700;font-size:var(--t-xl);margin:0 0 .5rem}
-.addon-card .addon-rates{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;margin:.6rem 0}
-.addon-card .addon-rate{font-family:var(--mono);font-size:.86rem;color:var(--ink)}
-.addon-card .addon-rate b{font-family:var(--serif);font-size:1.15rem;color:var(--accent-text)}
+.addon-card .addon-rates{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--s3);margin:.6rem 0}
+.addon-card .addon-rate{font-family:var(--mono);font-size:var(--t-sm);color:var(--ink)}
+.addon-card .addon-rate b{font-family:var(--serif);font-size:var(--t-base);color:var(--accent-text)}
 .addon-card p{font-size:var(--t-md);line-height:1.55;margin:.6rem 0 0}
-.addon-card .addon-note{font-family:var(--mono);font-size:.8rem;color:var(--wash);border-top:1px dashed var(--rule);margin-top:.9rem;padding-top:.7rem}
+.addon-card .addon-note{font-family:var(--mono);font-size:var(--t-sm);color:var(--wash);border-top:1px dashed var(--rule);margin-top:var(--s2);padding-top:.7rem}
 
 .infra-card h3{font-family:var(--serif);font-weight:700;font-size:var(--t-xl);margin:0 0 .5rem}
 .infra-card .pc-amount{font-family:var(--serif);font-weight:700;font-size:var(--t-3xl);color:var(--accent-text);line-height:1;display:inline-block;margin-right:.6rem}
-.infra-card p{font-size:.96rem;line-height:1.55;margin:.6rem 0 0}
+.infra-card p{font-size:var(--t-md);line-height:1.55;margin:.6rem 0 0}
 
 .example-line b{color:var(--ink)}
 
 /* ---- Form (mirrors the request-a-draft convention: form-field / hp-field / form-actions) ---- */
-.form-field{margin-bottom:1.3rem;text-align:center}
-.form-field label{display:block;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
+.form-field{margin-bottom:var(--s3);text-align:center}
+.form-field label{display:block;font-family:var(--mono);font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.03em;color:var(--wash);margin-bottom:.4rem}
 .form-field input[type="text"],.form-field input[type="email"],.form-field input[type="tel"],.form-field input[type="date"]{
-  display:block;width:100%;font-family:var(--serif);font-size:var(--t-md);padding:.6rem .8rem;border:1.5px solid var(--ink);
+  display:block;width:100%;font-family:var(--serif);font-size:var(--t-md);padding:var(--s2) var(--s2);border:1.5px solid var(--ink);
   background:var(--well);color:var(--ink);outline:none;max-width:420px;text-align:left;margin:0 auto}
 .form-field input:focus{outline:2px solid var(--ink);outline-offset:0}
-.form-field textarea{display:block;width:100%;font-family:var(--serif);font-size:var(--t-md);padding:.7rem .8rem;border:1.5px solid var(--ink);background:var(--well);color:var(--ink);resize:vertical;outline:none;text-align:left;margin:0 auto}
+.form-field textarea{display:block;width:100%;font-family:var(--serif);font-size:var(--t-md);padding:var(--s2) var(--s2);border:1.5px solid var(--ink);background:var(--well);color:var(--ink);resize:vertical;outline:none;text-align:left;margin:0 auto}
 
 .checks{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 1.4rem}
-.checks label{display:flex;align-items:center;gap:.45rem;font-family:var(--serif);font-size:var(--t-md);text-transform:none;letter-spacing:0;color:var(--ink)}
+.checks label{display:flex;align-items:center;gap:var(--s1);font-family:var(--serif);font-size:var(--t-md);text-transform:none;letter-spacing:0;color:var(--ink)}
 .checks input{width:auto}
 .hp-field{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
-.form-actions{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
-.form-status{font-family:var(--mono);font-size:.88rem;color:var(--ok)}
+.form-actions{display:flex;align-items:center;justify-content:center;gap:var(--s3);flex-wrap:wrap;margin-top:.5rem}
+.form-status{font-family:var(--mono);font-size:var(--t-sm);color:var(--ok)}
 .form-status.error{color:var(--urgent)}
-.btn{font-family:var(--mono);font-size:.86rem;letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);background:var(--paper);padding:.55rem 1.2rem;cursor:pointer;transition:all .15s ease}
+.btn{font-family:var(--mono);font-size:var(--t-sm);letter-spacing:.02em;font-weight:500;color:var(--ink);border:1.5px solid var(--ink);background:var(--paper);padding:var(--s1) var(--s3);cursor:pointer;transition:all .15s ease}
 .btn:hover{background:var(--ink);color:var(--paper)}
 .btn.solid{background:var(--ink);color:var(--paper)}
 .btn.solid:hover{background:var(--accent);border-color:var(--accent-text)}
 
-.referral-block{border-top:1px solid var(--rule-soft);margin-top:1.6rem;padding-top:1.4rem}
+.referral-block{border-top:1px solid var(--rule-soft);margin-top:var(--s4);padding-top:1.4rem}
 .referral-block .rb-kicker{font-size:var(--t-xs);letter-spacing:.02em;color:var(--accent-text);font-weight:600;margin-bottom:.5rem}
-.referral-block p{font-size:.92rem;color:var(--wash);margin:.2rem 0 1rem}
+.referral-block p{font-size:var(--t-md);color:var(--wash);margin:.2rem 0 1rem}
 .referral-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem 1.3rem}
 .referral-grid .form-field{min-width:0}
 

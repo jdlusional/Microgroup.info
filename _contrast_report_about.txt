@@ -1,6 +1,6 @@
 R7 contrast report for about.html
 Exact pairs where a rule declares both; inherited pairs against --paper and --well.
-pairs evaluated: 72   failures: 0
+pairs evaluated: 70   failures: 0
 surfaces: --paper, --well
 
 PASS    5.01  need 4.5  --plate-wash  on --well         12.00px/400 normal  html.stack-page .footer-slogan
@@ -19,7 +19,6 @@ PASS    5.58  need 4.5  --accent-text on --well         16.00px/700 normal  /* T
 PASS    5.66  need 4.5  --wash        on --well         12.00px/400 normal  html.stack-page .footer-legal
 PASS    5.66  need 4.5  --wash        on --well         12.48px/400 normal  html.stack-page .pcard-status
 PASS    5.66  need 4.5  --wash        on --well         12.48px/400 normal  html.stack-page .roles span
-PASS    5.66  need 4.5  --wash        on --well         16.00px/400 normal  .quiet
 PASS    5.66  need 4.5  --wash        on --well         16.00px/400 normal  /* WIDENED 2026-09-05, owner order: these intros are to sp
 PASS    5.66  need 4.5  --wash        on --well         16.00px/600 normal  html.stack-page .flip-gate-go
 PASS    6.12  need 4.5  --accent-text on --paper        12.48px/600 normal  /* Site switchers */
@@ -39,7 +38,6 @@ PASS    6.12  need 4.5  --paper       on --accent-fill  16.00px/400 normal  html
 PASS    6.21  need 4.5  --wash        on --paper        12.00px/400 normal  html.stack-page .footer-legal
 PASS    6.21  need 4.5  --wash        on --paper        12.48px/400 normal  html.stack-page .pcard-status
 PASS    6.21  need 4.5  --wash        on --paper        12.48px/400 normal  html.stack-page .roles span
-PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  .quiet
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/400 normal  /* WIDENED 2026-09-05, owner order: these intros are to sp
 PASS    6.21  need 4.5  --wash        on --paper        16.00px/600 normal  html.stack-page .flip-gate-go
 PASS    9.85  need 3.0  --ink         on --well         32.00px/700 LARGE   html.stack-page .terms-figure
