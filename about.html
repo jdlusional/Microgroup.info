@@ -572,7 +572,21 @@ html.stack-page #services .grid-3 > * {
    102px against a 644px window. Every value here is a step down the existing scale, not a new
    number, and none of it applies below 861px where there is no snap and no window to fit. */
 @media (min-width: 861px) {
-  html.stack-page .screen .stack-gap { margin-top: var(--s3); }
+  /* ROOM BETWEEN BLOCKS INSIDE A SCREEN, 2026-09-06 owner order: Who we serve was pressed against
+     the disciplines and Products against Work. That was the 2026-09-05 compression, which cut this
+     to var(--s3) so three blocks would fit one window. With the scope box moved to sit under Who we
+     serve there are fewer blocks per screen, so the room is available again and a hairline marks
+     the join as well. */
+  html.stack-page .screen .stack-gap {
+    margin-top: var(--s5);
+    padding-top: var(--s4);
+    border-top: 1px solid var(--rule);
+  }
+  html.stack-page .screen .stack-gap:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
   html.stack-page .screen .shead { margin-bottom: var(--s3); }
   html.stack-page .screen .grid-3,
   html.stack-page .screen .grid-2 { gap: var(--s3); }
@@ -675,14 +689,6 @@ html.stack-page #services .grid-3 > * {
         <article class="pcard"><h4 class="pcard-title">Operations</h4><p class="pcard-desc">Operational management: process documentation, vendor and contract review, and reporting systems, so the work does not depend on one person's memory.</p></article>
       </div>
 
-      <div class="stack-gap">
-        <h3>Who we serve</h3>
-        <div class="grid-3">
-          <article class="pcard"><h4 class="pcard-title">Nonprofit</h4><p class="pcard-desc">National and local organizations across a range of missions, including the grant-seeking software this firm builds and sells.</p></article>
-          <article class="pcard"><h4 class="pcard-title">Government</h4><p class="pcard-desc">Municipal, state, and federal agencies and public departments.</p></article>
-          <article class="pcard"><h4 class="pcard-title">Policy and Legislative</h4><p class="pcard-desc">Nonpartisan policy analysis, bill and committee research, and district-level data for advocacy organizations and public agencies.</p></article>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -712,6 +718,15 @@ html.stack-page #services .grid-3 > * {
 
   <section id="audience" class="panel screen">
     <div class="wrap">
+      <div class="stack-gap">
+        <h3>Who we serve</h3>
+        <div class="grid-3">
+          <article class="pcard"><h4 class="pcard-title">Nonprofit</h4><p class="pcard-desc">National and local organizations across a range of missions, including the grant-seeking software this firm builds and sells.</p></article>
+          <article class="pcard"><h4 class="pcard-title">Government</h4><p class="pcard-desc">Municipal, state, and federal agencies and public departments.</p></article>
+          <article class="pcard"><h4 class="pcard-title">Policy and Legislative</h4><p class="pcard-desc">Nonpartisan policy analysis, bill and committee research, and district-level data for advocacy organizations and public agencies.</p></article>
+        </div>
+      </div>
+
       <div class="stack-gap scope" data-block="scope">
         <h3>How the policy practice is scoped</h3>
         <p>The legislative and policy practice is nonpartisan. It covers bill and committee analysis, district-level data, and administrative research for organizations on any side of an issue. It does not include partisan campaign work, and nonprofit and government engagements are never staffed from it.</p>

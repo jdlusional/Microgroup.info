@@ -401,7 +401,12 @@ html.stack-page #about .headline { max-width: none; }
 html.stack-page .lede { font-size: var(--t-lg); color: var(--ink); max-width: var(--measure); margin: 0 auto var(--s2); text-align: center; }
 
 /* Calls to action */
-html.stack-page .cta-row { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; justify-content: center; margin: 0; }
+/* THE CALLS TO ACTION NEED AIR ABOVE THEM, 2026-09-06 owner order: "See the five disciplines" sat
+   flush against the paragraph above it. MEASURED: the gaps down this drop ran 12, 12, 28 and then
+   ZERO into the button row. var(--s4) is the same 28px the largest existing gap already uses, and
+   the paragraph above gives 10px back so the drop still fits the shortest window measured: at
+   1280x600 the content is 519 against a 524 window, where var(--s5) would have put it 21 over. */
+html.stack-page .cta-row { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; justify-content: center; margin: var(--s4) 0 0; }
 html.stack-page .btn { display: inline-block; font-size: var(--t-md); font-weight: 600; padding: var(--s2) var(--s4); border-radius: 3px; text-decoration: none; border: 1px solid var(--accent-fill); cursor: pointer; font-family: var(--f-sans); }
 html.stack-page .btn-solid { background: var(--accent-fill); color: var(--paper); }
 html.stack-page .btn-solid:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
@@ -471,7 +476,7 @@ html.stack-page .direct a { font-weight: 600; color: var(--accent-text); }
    its fifth tag overflowed the viewport by 63px at 375. Copied verbatim from about.html. */
 html.stack-page .roles { display: flex; flex-wrap: wrap; gap: var(--s2); margin: 0 0 var(--s4); justify-content: center; }
 html.stack-page .roles span { font-family: var(--f-mono); font-size: var(--t-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--wash); border: 1px solid var(--rule); border-radius: 2px; padding: var(--s1) var(--s2); }
-html.stack-page .problem { background: var(--well); border-top: 3px solid var(--accent); padding: var(--s4); max-width: var(--measure); margin-left: auto; margin-right: auto; }
+html.stack-page .problem { margin-top: var(--s3); background: var(--well); border-top: 3px solid var(--accent); padding: var(--s4); max-width: var(--measure); margin-left: auto; margin-right: auto; }
 html.stack-page .problem p { margin: 0; font-size: var(--t-lg); text-align: center; }
 
 /* owner-centre-pass, 2026-09-05, owner direction: every piece of page CONTENT is centred.
