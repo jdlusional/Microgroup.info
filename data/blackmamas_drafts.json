@@ -1,0 +1,334 @@
+{
+ "disclaimer": "This is an AI-generated starting draft, not a final application. It was produced with a combination of Claude Code, Python, CSS, and other programming tools: a drafting pass grounded in Black Mamas Village's own public mission and program information plus general grant-writing best practices, then a separate fact-checking pass against blackmamasvillage-atx.org, ProPublica Nonprofit Explorer, and the funder's own published materials. An inline [SUGGESTED: value] marks an AI-drafted plausible value to confirm or replace; an inline [CONFIRM: item] marks a fact only Black Mamas Village can supply that cannot be responsibly estimated; an inline [MISSING: item] marks information not currently possessed that must be produced or sourced. Source footnotes [^N] map each fact to a traceable source in that draft's footnotes list (rendered on the web page; stripped from the Word export). Confirm the funder's current cycle, deadline, and eligibility directly on its own website before applying. Note: AFP's live application is a Google Form behind a sign-in and could not be read directly in this research. The sample draft's seven sections are structured against AFP's own published scoring rubric, which is the funder's real scoring instrument, but they are not the form's actual questions. Re-map them onto the live form before filing.",
+ "method": "Payoff assessed manually (not by an automated scoring pipeline) across Black Mamas Village's Almanac funder matches and the deadline calendar researched directly on each funder's own current site, weighing relevance, award size, urgency, and realistic fit given the organization's current stage. The funder calendar was researched 2026-07-12; the AFP sample draft and its funder facts were re-verified against AFP's own site and its published scoring rubric on 2026-07-14, which is when AFP replaced the Black Fund as the sample (the Black Fund has no open cycle to file against). Deadlines and open/closed statuses were re-checked against each funder's own page on 2026-08-26, at which point AFP's 2026 cycle was found to have closed on 2026-07-31 with no next cycle posted; AFP's urgency component was re-scored to near zero and the Black Fund moved to the top of the shortlist. Only the time-sensitive fields were re-checked in that pass. The underlying relevance, award and fit assessments, and the draft text itself, still date from July 2026 and were not silently re-dated. Draft sections are adapted per grant; Black Mamas Village-specific facts are sourced from blackmamasvillage-atx.org and ProPublica Nonprofit Explorer and are flagged [CONFIRM]/[MISSING] wherever they are not independently confirmed.",
+ "generated_date": "2026-07-14",
+ "calendar": [
+  {
+   "funder": "AFP Greater Austin (Association of Fundraising Professionals)",
+   "opportunity": "BIPOC Opportunity Fund (Scribe sample target)",
+   "deadline": "Closed for 2026; the deadline was July 31, 2026 and next cycle timing is not posted",
+   "status": "closed",
+   "note": "Status changed from urgent to closed on August 26, 2026: the July 31, 2026 deadline has passed. Re-checked that day, AFP's own page still shows \"Applications close: July 31, 2026\" and posts no 2027 cycle, so the next window is genuinely unknown rather than merely unpublished here. The fit is unchanged and remains good: $10,000 cash plus about $1,900 in AFP membership and conference value, low lift to apply, funding a fundraising capacity-building project completable in 9 months rather than program or operating costs. Budget note, from the 2026-07-14 read of AFP's own scoring rubric and still accurate: the under-$500,000 preference is a scored criterion, not an eligibility gate, and an organization above it that shows limited fundraising infrastructure still scores 3 of 4, so the FY2025 revenue figure ($560,326) costs at most one point of twenty-four. Ask AFP Greater Austin directly when the next cycle opens.",
+   "url": "https://www.afpaustin.org/bipoc-opportunity-fund"
+  },
+  {
+   "funder": "The Black Fund of Central Texas",
+   "opportunity": "Annual community grant cycle",
+   "deadline": "September 10, 2026",
+   "status": "urgent",
+   "note": "OPEN NOW AND THE NEAREST DEADLINE IN THIS SUITE. Applications opened August 3, 2026 and close September 10, 2026, which is one week into the trial period. Status raised from monitor to urgent on August 26, 2026, when the fund's application page was found showing this cycle with a live Apply Now portal; the July research pass had found no published next cycle. Confirmed funder and the strongest overall fit, with a Black-led-organization focus and no budget or years-of-operation floor. Eligibility as published: 501(c)(3) or 170(b)(1)(A)(vi) organizations, fiscally sponsored projects, or government units, operating in Travis, Bastrop, Burnet, Caldwell, Hays or Williamson county, with programs aligned to the fund's own strategies. Note the published exclusion barring 2025-cycle grantees other than Committee Choice Award winners from the immediately following cycle; Black Mamas Village's award came from the 2023 inaugural cycle rather than 2025, so on the published wording it appears unaffected, but confirm that with the fund. Apply through the fund's own portal.",
+   "url": "https://theblackfundcentraltx.org/apply-for-grant/"
+  },
+  {
+   "funder": "Austin Community Foundation, Forever Austin Fund",
+   "opportunity": "Annual grant cycle",
+   "deadline": "This cycle's LOI closed January 27, 2026; next cycle representative estimate January 2027",
+   "status": "closed",
+   "note": "Requires 2 full years of operation and a $50,000-plus budget; Black Mamas Village will clear both well before the next cycle.",
+   "url": "https://www.austincf.org/grant/forever-austin-fund/"
+  },
+  {
+   "funder": "Impact Austin",
+   "opportunity": "Primary Community Grant (reapply)",
+   "deadline": "Not applicable near-term; representative estimate around the 2028 cycle",
+   "status": "monitor",
+   "note": "Already a confirmed funder ($80,000, 2025). A roughly two-year reapplication cooldown is reported but not independently confirmed at a single primary source; verify directly.",
+   "url": "https://www.impactaustin.org/grantmaking"
+  },
+  {
+   "funder": "Episcopal Health Foundation",
+   "opportunity": "Grant Opportunities, Cycle 2 2026",
+   "deadline": "LOI closed July 10, 2026; next LOI window not published",
+   "status": "closed",
+   "note": "Names Maternal Health as an explicit priority. Average grant size (about $250,000) is large relative to current budget; a smaller, targeted ask would likely be needed.",
+   "url": "https://www.episcopalhealth.org/grantmaking/"
+  },
+  {
+   "funder": "St. David's Foundation",
+   "opportunity": "Healthy Births, Healthy Communities",
+   "deadline": "Not currently open; listed under past funding opportunities",
+   "status": "closed",
+   "note": "The single most maternal-health-specific funder researched, but not accepting new applications right now. Sign up for the newsletter to catch the next round.",
+   "url": "https://stdavidsfoundation.org/how-we-work/grantmaking/funding-opportunities/"
+  },
+  {
+   "funder": "Groundswell Fund",
+   "opportunity": "Birth Justice Fund",
+   "deadline": "Not applicable; folded into an invitation-only fund as of 2026",
+   "status": "closed",
+   "note": "Real caveat: Black Mamas Village is not primarily a doula/birth-work provider. No open application path currently exists regardless of fit.",
+   "url": "https://groundswellfund.org/funds/birth-justice-fund/"
+  },
+  {
+   "funder": "W.K. Kellogg Foundation",
+   "opportunity": "Maternal and Child Health / Racial Equity priority areas",
+   "deadline": "Rolling, no fixed deadline",
+   "status": "open",
+   "note": "Always-open, no-deadline-pressure background option. Texas is not one of WKKF's four priority places, so Texas applicants compete without a geographic advantage.",
+   "url": "https://www.wkkf.org/grantseekers/"
+  }
+ ],
+ "drafts": [
+  {
+   "grant_id": "afp-bipoc-july-2026",
+   "grant_name": "BIPOC Opportunity Fund",
+   "funder": "AFP Greater Austin (Association of Fundraising Professionals)",
+   "is_sample": true,
+   "payoff_score": 52,
+   "payoff_components": {
+    "relevance": 0.75,
+    "award": 0.4,
+    "urgency": 0.05,
+    "fit": 0.8
+   },
+   "priority_rationale": "RE-SCORED ON AUGUST 26, 2026, down from 82. Nothing about the fit changed; the cycle closed. This was the one opportunity with an open deadline when the drafts were written, closing July 31, 2026, and urgency alone carried it to the top of the list. That date has passed. Re-checked August 26, 2026: AFP's own page still displays \"Applications close: July 31, 2026\" and has not posted a 2027 cycle, so the next window is unknown rather than simply unannounced here. Urgency is therefore scored at effectively zero, which drops the payoff score from 82 to 52 and moves this opportunity below the Black Fund and the Episcopal Health window on the shortlist. Everything else stands. Relevance, award value, and fit are unchanged, and the full draft below remains the worked sample: the analysis of AFP's own published 24-point rubric is cycle-independent, and the budget-threshold finding from the July pass still holds, that budget is one scored criterion rather than an eligibility gate, and an organization over $500,000 still earns 3 of 4 points on it when it shows limited fundraising infrastructure and genuine need, leaving a ceiling of 23 out of 24 inside AFP's own Highly Competitive band. Treat this draft as ready to re-aim at the next AFP cycle, not as a filing that was missed by inaction: it was researched three weeks before the deadline and the decision not to file was never put to Black Mamas Village.",
+   "grant_amount": "$10,000 cash plus 2 AFP annual memberships and 2 tickets to the AFP Greater Austin One Day Conference on October 9, 2026 (about $11,900 total value). Two organizations are selected.",
+   "grant_deadline": "Closed for the 2026 cycle. The deadline was July 31, 2026, 11:59pm; next cycle not yet posted",
+   "grant_url": "https://www.afpaustin.org/bipoc-opportunity-fund",
+   "grant_eligibility": "Three pass/fail gates: a registered 501(c)(3), serving the Greater Austin area, and BIPOC-led (meeting at least 2 of 3 tests: 50% or more of the board identifies as BIPOC; the executive director or 50% or more of senior leadership identifies as BIPOC; the mission and/or programs primarily serve BIPOC communities). The proposed project must be completable within 9 months. Preference, scored rather than required, goes to organizations with annual operating budgets of $500,000 or less.",
+   "grant_focus_area": "Fundraising capacity building, NOT program or general operating support. AFP's own named eligible project types: annual fund planning, staff training, grant writing, feasibility studies, development audits, and fundraising technology.",
+   "generated_date": "2026-07-14",
+   "model_note": "AI-generated starting draft, produced with a combination of Claude Code, Python, CSS, and other programming tools (a drafting pass plus a separate fact-check QA pass), grounded in blackmamasvillage-atx.org, ProPublica Nonprofit Explorer (EIN 88-1025060), AFP Greater Austin's own BIPOC Opportunity Fund page, and AFP's published 2026 Opportunity Fund Application Scoring Rubric, funder pages fetched 2026-07-14. Review before submission. IMPORTANT: the application itself is a Google Form that requires a sign-in and could not be read in this research, so its real questions, word limits, and required attachments are NOT known. The seven sections below are structured against AFP's own published scoring rubric, which is the funder's actual scoring instrument, rather than against the form's question list. Open the live form and re-map these sections onto its real questions before filing.",
+   "qa": {
+    "verdict": "revised",
+    "hallucinated_facts_removed": [
+     "An initial pass carried forward the 2026-07-12 assessment that the $500,000 budget preference was a serious risk to this application. AFP's own published rubric contradicts that framing. The pass/fail eligibility gates are only 501(c)(3) status, Greater Austin service area, and BIPOC-led status; budget is scored criterion 6 of 6, and an over-threshold organization that shows limited fundraising infrastructure still scores 3 of 4 on it. Corrected throughout, and the payoff score was raised rather than left at its pre-rubric value.",
+     "An initial pass drafted this as a general operating or program support request, mirroring the previous sample. It is neither. The fund supports only a fundraising capacity-building project completable within 9 months, so the draft was rebuilt around a capacity project. A program-support ask would have scored at or near 1 on two separate criteria.",
+     "An initial pass asserted that the organization has no donor database and no development staff, in order to make the capacity-need case cleanly. Neither fact is public and neither was verifiable. Both were removed and replaced with an explicit MISSING item: inventing an absence is as much a fabrication as inventing a presence, and here it would have been a fabrication in the funder's favor.",
+     "An initial pass used an 'over 3,600 mothers served' figure that appears only in a search-engine-generated summary. The organization's own pages say 'over 3,000'; the draft uses that figure and flags it as self-reported with no defined counting method.",
+     "An initial pass named current leadership and titles as settled fact. Form 990 officer roles differ year to year, and the organization's own current team page did not render for automated fetch, so leadership is marked CONFIRM rather than asserted."
+    ],
+    "alignment_notes": "Funder facts (award composition, the three pass/fail gates, the 2-of-3 BIPOC-led test, the 9-month project requirement, the July 31 2026 deadline, the August 31 2026 decision date, the October 9 2026 conference date, and the named eligible project types) are sourced directly to AFP Greater Austin's own BIPOC Opportunity Fund page. The six scored criteria, the 4-point scale, the 24-point total, the funding-recommendation bands, and the specific scoring language for organizations over $500,000 are sourced to AFP's own published scoring rubric. Applicant facts (legal name, EIN, IRS recognition date, three-year revenue and expense figures) come from ProPublica Nonprofit Explorer; mission, pillars, leadership model, and self-reported reach from blackmamasvillage-atx.org. The proposed project, its timeline, and its budget line items are SUGGESTED by this draft, not chosen by the organization, and are flagged as such throughout. The organization's actual current fundraising infrastructure, which scored criteria 1, 2, and 6 all turn on, is not public and is the single largest gap in this application."
+   },
+   "sections": [
+    {
+     "label": "Organization Overview and Eligibility",
+     "text": "Black Mamas Village (EIN 88-1025060; blackmamasvillage-atx.org)[^1] is a Black-led peer-support and mutual-aid organization serving Black mothers across greater Austin, under the tagline \"Where Every Black Mother Belongs\"[^2]. It began as a Facebook group in June 2019, was recognized by the IRS as a 501(c)(3) in September 2023[^1], and now operates The Village Place, a 6,500-square-foot community hub at 8401 North IH-35 in Austin with childcare space, co-working space, a library, and a dedicated nap room for mothers[^3]. Its work runs on three pillars: Connection and Belonging, Economic Empowerment, and Health and Wellness[^2].\n\nAgainst the fund's three pass/fail eligibility gates[^4][^5], this application clears all three. Registered 501(c)(3): met, recognized September 2023[^1]. Serves the Greater Austin area: met, with a physical hub in Travis County and a service area across greater Austin[^2][^3]. BIPOC-led, which requires meeting at least two of three tests: the mission-and-programs test is met on the organization's face, since it exists specifically to serve Black mothers[^2], and the senior-leadership test is met by its Black-led, co-directive leadership[^2].\n\n[CONFIRM: the current share of the board of directors who identify as BIPOC. The organization very likely satisfies all three tests rather than the two required, but the board figure was not found in public sourcing, and a claim this easy to state precisely should be stated precisely rather than implied.]"
+    },
+    {
+     "label": "Organizational Need and Readiness",
+     "text": "This is scored criterion 1: how clearly the organization demonstrates a fundraising challenge, and its readiness to implement the project[^5].\n\nThe challenge is visible in the organization's own filings. Revenue grew from $84,481 in FY2023, its first filed year, to $301,071 in FY2024, to $560,326 in FY2025, roughly a 6.6x increase in two years, and is reported as nearly 100% contributions in each of those years[^1]. That growth is real, and it is also the problem: it arrived through a small number of large institutional awards rather than through a broad base of donors. A single grant, the $80,000 unrestricted Impact Austin award in 2025[^6], accounts for roughly 14% of FY2025 revenue by itself. An organization whose income is almost entirely contributed, and whose largest contributions are concentrated in a handful of grantmakers with their own cycles and cooldowns, is one denied application away from a hard year. That fragility is precisely what this fund exists to address.\n\n[MISSING: an inventory of the organization's current fundraising infrastructure. Specifically: whether it uses a donor database or CRM and which one; whether any staff member or co-lead holds development as a named responsibility; whether a recurring-giving program exists; whether a written annual fund plan exists; and how many individual donors gave in FY2025, at what average gift. This is the most load-bearing missing item in the entire application. Scored criteria 1, 2, and 6 all depend on it, none of it is public, and only the organization can supply it. A reviewer scoring a 4 here needs to see the gap named concretely, with numbers, not gestured at.]\n\n[CONFIRM: which two people will own this project, and roughly how many hours a week each can give it. The rubric looks explicitly for leadership commitment and implementation capacity, not need alone[^5]. The organization's horizontal, co-directive model, \"each one, reach one, and teach one\"[^2], is an asset here and should be named as one: this project would be carried by a pair of co-leads rather than resting on a single executive's calendar.]"
+    },
+    {
+     "label": "Fundraising Capacity-Building Impact",
+     "text": "This is scored criterion 2, the extent to which the project strengthens long-term fundraising effectiveness[^5]. It is the heart of the application.\n\n[SUGGESTED project: build Black Mamas Village's first individual-giving program, consisting of a donor CRM, a written annual fund plan, and AFP training for two co-leads.] The reasoning comes from the organization's own numbers rather than from a template. Revenue is almost entirely contributed and concentrated in institutional awards[^1][^6], which means the missing leg is a broad, repeatable base of individual donors. And the organization already holds the ingredient that is hardest to manufacture: a community of more than 3,000 Black mothers who already know it and already trust it[^2] (a self-reported figure; see the gaps list). What it does not yet demonstrably have is the machinery to turn that community into recurring revenue.\n\nThis proposal maps onto three of the six project types AFP itself names as eligible: annual fund planning, staff training, and fundraising technology[^4]. It also puts the non-cash half of the award to work rather than treating it as a bonus. The two AFP memberships and two One Day Conference tickets fit the organization's co-lead structure exactly: two people trained together, which is how this organization actually operates, rather than one executive sent to learn alone.\n\nThe long-term effect, and the thing to say plainly to a reviewer, is that the project converts one-time community goodwill into revenue that renews on its own and belongs to no single funder's cycle. That is a permanent change in fundraising capacity, not a one-year bump.\n\n[MISSING: the organization's own decision about what to build. The project above is this draft's proposal, not the organization's choice, and a reviewer is scoring the organization's conviction, not a consultant's. If the real priority is a development audit, a feasibility study for a capital campaign at The Village Place, or grant-writing capacity instead, the case is just as makeable, but the application has to be rebuilt around it. Decide this first: everything downstream depends on it.]"
+    },
+    {
+     "label": "Project Feasibility (9-Month Plan)",
+     "text": "Criterion 3 asks whether the project is realistic, well planned, and achievable inside the 9-month grant period[^5]. Awards are announced August 31, 2026[^4], so the working window runs from roughly September 2026 through May 2027.\n\nOne piece of timing is worth naming for the reviewer, because it shows the plan was built against the real calendar: the AFP Greater Austin One Day Conference falls on October 9, 2026[^4], which lands inside month 2 of the grant period. The two conference tickets are usable while the project is live, feeding directly into the work, rather than arriving as a perk after it ends.\n\n[SUGGESTED 9-month timeline:]\n\nMonths 1 to 2 (September to October 2026): development audit and contact-data cleanup. Select and configure the CRM, and migrate existing contact lists into it.\n\nMonths 2 to 3 (October to November 2026): the two co-leads activate their AFP memberships and attend the One Day Conference on October 9, 2026.\n\nMonths 3 to 5 (November 2026 to January 2027): write the annual fund plan. Segment the list, and design the donor journey from first touch to recurring gift.\n\nMonths 5 to 7 (January to March 2027): run the first live test, a year-end and new-year giving campaign, against the new list and the new plan.\n\nMonths 7 to 9 (March to May 2027): measure results, set a recurring-giving baseline, document what worked, and report to AFP.\n\n[CONFIRM: that this sequence is achievable alongside the organization's existing program commitments, and who is accountable for each phase. A timeline a reviewer believes is one whose owner the organization can name.]"
+    },
+    {
+     "label": "Use of Funds (Budget Narrative)",
+     "text": "Criterion 4 scores whether the requested funds are clearly and strategically tied to project activities and to fundraising capacity building[^5]. The award is a fixed $10,000 in cash plus the two memberships and two conference tickets[^4], so there is no amount to negotiate. What is being scored is whether the $10,000 is aimed at capacity, or quietly at program delivery, which this fund does not support[^4].\n\n[SUGGESTED: $3,000, donor CRM. Selection, configuration, migration of existing contacts, and the first-year subscription.] [MISSING: actual vendor quotes. Get two.]\n\n[SUGGESTED: $4,500, fundraising consultant. A development audit and a written annual fund plan the organization keeps and reuses. AFP Greater Austin publishes a consultant referral list for exactly this purpose[^4], and drawing the consultant from AFP's own list is a small, free signal of fit.]\n\n[SUGGESTED: $1,500, campaign production. Design, print, postage, and digital costs for the first year-end giving campaign, which is the project's live test rather than a marketing expense.]\n\n[SUGGESTED: $1,000, staff time. A stipend recognizing the two co-leads who carry this project on top of existing duties. Naming this is more honest than pretending the labor is free, and it answers the rubric's implementation-capacity question directly.]\n\n[SUGGESTED: total, $10,000, matching the award exactly.]"
+    },
+    {
+     "label": "Inclusion, Diversity, Equity, and Access (IDEA)",
+     "text": "This is scored criterion 5, and it is where applications with a genuinely strong case still lose points. The rubric awards a 4 only where there are \"specific examples and evidence of implementation\"; a statement of commitment without examples scores a 2[^5]. Read the criterion closely: it asks how IDEA is incorporated into the organization's fundraising practices as well as its overall work[^5]. The fundraising half is the half applicants skip.\n\nThe structural case is strong on its face and should be made first, briefly. Black Mamas Village is a Black-led organization serving Black mothers in a city where Black residents are roughly 6% of a fast-growing population[^2], and it is governed horizontally, with each program pillar run by a pair of co-leads rather than a single director[^2]. Its leadership composition is not an aspiration it is working toward. It is the organization.\n\n[MISSING: two or three specific, dated examples of IDEA inside fundraising practice itself, which is what separates a 3 from a 4 here. Candidates the organization may already be doing without counting them as fundraising: community input into how unrestricted dollars get spent; free or sliding-scale access to events that also function as donor events; fundraising materials written in the community's own voice rather than in a deficit frame; childcare, transportation, and accessibility accommodations at events; donor recognition that does not rank people by gift size. Use the ones that are true, with dates and specifics. Do not claim the ones that are not.]"
+    },
+    {
+     "label": "Organizational Budget",
+     "text": "This is scored criterion 6, and it is the one place this application gives up points. It is worth being precise about that rather than anxious about it.\n\nAFP gives preference to organizations with annual operating budgets of $500,000 or less[^4]. Two things become clear on reading the rubric itself. First, this is a scored criterion, one of six worth 4 points each on a 24-point scale, and it is not an eligibility gate: the only pass/fail gates are 501(c)(3) status, Greater Austin service area, and BIPOC-led status[^5]. Being over the line disqualifies no one. Second, the rubric explicitly contemplates organizations above the threshold and tells reviewers how to score them: an organization over $500,000 that \"demonstrates limited fundraising infrastructure and significant need for capacity-building support\" scores 3 of 4, while one with \"substantial fundraising infrastructure and access to fundraising resources\" scores 1[^5].\n\nBlack Mamas Village's FY2025 figures are a total revenue of $560,326 and total expenses of $346,762[^1].\n\n[CONFIRM: which figure the organization's board-approved annual operating budget actually uses, and report here the same number the organization reports elsewhere. Funders commonly read \"operating budget\" as the expense budget, which would place Black Mamas Village under the $500,000 line and score a 4. But this must be the organization's real, consistently reported figure. Do not pick the more favorable number after the fact: a budget that contradicts the organization's own Form 990 or its other applications costs far more credibility than the single point it would save.]\n\nEven on the least favorable reading, the arithmetic is reassuring rather than alarming. Sections 2 and 3 of this application make exactly the case the rubric rewards with a 3: limited fundraising infrastructure, significant need for capacity-building support. The worst case therefore forfeits one point out of twenty-four, leaving a ceiling of 23, which sits inside AFP's own Highly Competitive band of 22 to 24[^5]. This is a fundable application, not a compromised one."
+    }
+   ],
+   "gaps_to_fill": [
+    {
+     "label": "Fundraising Infrastructure Inventory",
+     "detail": "Whether the organization currently uses a donor database or CRM, whether any staff member or co-lead owns development as a named responsibility, whether a recurring-giving program or a written annual fund plan exists, and how many individual donors gave in FY2025 at what average gift. None of this is public. Scored criteria 1, 2, and 6 all depend on it, which makes it the most important gap in the application.",
+     "kind": "missing"
+    },
+    {
+     "label": "Project Choice",
+     "detail": "The individual-giving program proposed here (a CRM, an annual fund plan, and AFP training for two co-leads) is this draft's suggestion, not the organization's decision. Confirm it or replace it before anything else; the whole application is built on top of this choice.",
+     "kind": "missing"
+    },
+    {
+     "label": "Application Form",
+     "detail": "The application is a Google Form requiring a sign-in and could not be read in this research. The seven sections here are mapped to AFP's published scoring rubric, which is the funder's real scoring instrument, but they are NOT the form's actual questions. Open the form and re-map before filing.",
+     "kind": "missing"
+    },
+    {
+     "label": "Annual Operating Budget",
+     "detail": "Which figure the board-approved operating budget uses. FY2025 revenue was $560,326, above AFP's $500,000 preference line; FY2025 expenses were $346,762, below it. Report the organization's real, consistently used figure, not the more favorable one.",
+     "kind": "confirm"
+    },
+    {
+     "label": "Project Owners",
+     "detail": "Which two people will own the project, and how many hours a week each can commit. The rubric scores leadership commitment and implementation capacity directly, and these are also the two people who would receive the AFP memberships and the conference tickets.",
+     "kind": "confirm"
+    },
+    {
+     "label": "IDEA Evidence in Fundraising",
+     "detail": "Two or three specific, dated examples of inclusion, diversity, equity, and access inside fundraising practice specifically, not just programs. The rubric awards a 4 only for evidence of implementation; a values statement without examples scores a 2.",
+     "kind": "missing"
+    },
+    {
+     "label": "Board Racial Composition",
+     "detail": "The current share of board members who identify as BIPOC, so the application can state the fund's 2-of-3 BIPOC-led test precisely. The organization very likely satisfies all three tests, but the board figure was not found in public sourcing.",
+     "kind": "confirm"
+    },
+    {
+     "label": "Vendor Quotes",
+     "detail": "Real quotes for the CRM and the fundraising consultant. The four budget line items are proposed allocations of the fixed $10,000, not priced ones.",
+     "kind": "missing"
+    },
+    {
+     "label": "Mothers-Served Figure",
+     "detail": "The 'over 3,000 mothers served' figure is self-reported, with no defined counting method or date. Confirm it, and replace it with a dated figure if one exists.",
+     "kind": "confirm"
+    },
+    {
+     "label": "Current Leadership Roster",
+     "detail": "A current, named leadership roster with titles. Form 990 officer roles differ year to year, and the organization's own team page could not be read by automated fetch in this research.",
+     "kind": "confirm"
+    }
+   ],
+   "sources_used": [
+    "FUNDER GUIDELINES: afpaustin.org, BIPOC Opportunity Fund page (eligibility gates, the 2-of-3 BIPOC-led test, award composition, the July 31 2026 deadline, the August 31 2026 decision date, the October 9 2026 conference date, the 9-month project requirement, named eligible project types, and the consultant referral list)",
+    "FUNDER GUIDELINES: afpaustin.org, 2026 Opportunity Fund Application Scoring Rubric (six scored criteria, 4-point scale, 24-point total, funding-recommendation bands, and the scoring language for organizations over the $500,000 budget preference)",
+    "APPLICANT FACTS: ProPublica Nonprofit Explorer, EIN 88-1025060 (legal name, IRS recognition date, three-year revenue and expense figures, officer roles by year)",
+    "APPLICANT FACTS: blackmamasvillage-atx.org (mission tagline, three pillars, horizontal leadership model, self-reported reach, Austin Black-population share)",
+    "APPLICANT FACTS: KXAN Austin coverage of The Village Place community hub",
+    "APPLICANT FACTS: Impact Austin 2025 Primary Community Grant outcomes page ($80,000 unrestricted award, used here as the revenue-concentration data point)",
+    "FUNDER RECORD: the Almanac ranked funder matches and open grant opportunities on this page",
+    "NOT A SOURCE, AND NAMED AS SUCH: the live application form. It is a Google Form behind a sign-in and was not readable in this research, so the section structure here is mapped to AFP's rubric instead."
+   ],
+   "strength_analysis": {
+    "overall": "Strong",
+    "factors": [
+     {
+      "factor": "Eligibility",
+      "assessment": "Strong. Clears all three pass/fail gates cleanly: a 501(c)(3) since September 2023, a Greater Austin service area with a physical hub in Travis County, and BIPOC-led on at least two of the fund's three tests, and probably all three."
+     },
+     {
+      "factor": "Timing",
+      "assessment": "Was decisive when this draft was written, and is now the weakest part of it. This was the only researched opportunity with a confirmed open deadline at the time, which is why it became the sample; that deadline of July 31, 2026 has since passed and AFP has posted no next cycle. Re-aim this draft at the next AFP cycle. Separately, and unrelated to AFP, The Black Fund is open and closes September 10, 2026, which is where the near-term drafting effort belongs."
+     },
+     {
+      "factor": "Rubric fit",
+      "assessment": "Strong. Five of the six scored criteria are squarely winnable, and the organization's revenue concentration is a textbook fit for a fund built to address exactly that fragility."
+     },
+     {
+      "factor": "Budget preference",
+      "assessment": "A known, bounded cost. FY2025 revenue exceeds the $500,000 preference line, but this is a scored criterion rather than a gate, and the rubric awards 3 of 4 to over-threshold organizations with limited fundraising infrastructure. Worst case is 23 of 24, still Highly Competitive."
+     },
+     {
+      "factor": "Evidence base",
+      "assessment": "The real weakness. The organization's actual fundraising infrastructure, which criteria 1, 2, and 6 all turn on, is entirely non-public. This draft names that gap rather than inventing an answer, but the organization has to fill it before this is submission-ready."
+     },
+     {
+      "factor": "Competition",
+      "assessment": "Unknown, and worth saying so. Two organizations are selected, the application is low-lift, and the applicant pool is not published. A strong application is well worth writing; no application here is safe."
+     }
+    ],
+    "summary": "Written when this was the strongest realistic move on the board and the only one that could be filed at the time. That is no longer true of the timing: the 2026 cycle closed on July 31, 2026. Everything the draft says about fit still holds, so read this as a draft ready to re-aim at AFP's next cycle. Eligibility is clean, the fund's purpose matches the organization's actual structural weakness (a 6.6x revenue climb built almost entirely on a handful of institutional grants), and the budget concern that dominated the first research pass turns out to cost at most one point of twenty-four. What stands between this draft and a submission is not funder risk. It is roughly an hour of the organization's own information, most of it about fundraising infrastructure that only the organization can describe."
+   },
+   "footnotes": [
+    {
+     "id": 1,
+     "source": "ProPublica Nonprofit Explorer, EIN 88-1025060 (legal name, IRS recognition date, three-year revenue and expense figures, officer roles by year)",
+     "type": "online",
+     "url": "https://projects.propublica.org/nonprofits/organizations/881025060"
+    },
+    {
+     "id": 2,
+     "source": "blackmamasvillage-atx.org, Overview and About Us pages (mission tagline, three pillars, horizontal leadership model, self-reported reach, Austin Black-population share)",
+     "type": "online",
+     "url": "https://www.blackmamasvillage-atx.org/about-us"
+    },
+    {
+     "id": 3,
+     "source": "KXAN Austin, coverage of The Village Place community hub grand opening",
+     "type": "online",
+     "url": "https://www.kxan.com/news/local/austin/austin-based-black-mamas-village-debuts-new-community-hub/"
+    },
+    {
+     "id": 4,
+     "source": "AFP Greater Austin, BIPOC Opportunity Fund (eligibility gates, the 2-of-3 BIPOC-led test, award composition, deadline and decision dates, One Day Conference date, 9-month project requirement, eligible project types, consultant referral list)",
+     "type": "online",
+     "url": "https://www.afpaustin.org/bipoc-opportunity-fund"
+    },
+    {
+     "id": 5,
+     "source": "AFP Greater Austin, 2026 Opportunity Fund Application Scoring Rubric (six scored criteria, 4-point scale, 24-point total, funding-recommendation bands, and the over-$500,000 budget scoring language)",
+     "type": "online",
+     "url": "https://www.afpaustin.org/assets/Opportunity%20Fund%20Application%20Scoring%20Rubric.pdf"
+    },
+    {
+     "id": 6,
+     "source": "Impact Austin, 2025 Primary Community Grant outcomes page ($80,000 unrestricted award)",
+     "type": "online",
+     "url": "https://www.impactaustin.org/seeourimpact/black-mamas-village-atx-2025-primary-community-grant"
+    }
+   ]
+  },
+  {
+   "grant_id": "black-fund-central-tx-2026",
+   "grant_name": "Black Fund of Central Texas: Community Grant",
+   "funder": "The Black Fund of Central Texas (fiscally sponsored by Austin Community Foundation)",
+   "is_sample": false,
+   "payoff_score": 92,
+   "payoff_components": {
+    "relevance": 0.9,
+    "award": 0.45,
+    "urgency": 1,
+    "fit": 0.95
+   },
+   "priority_rationale": "Now the top of the list, as of August 26, 2026, because the AFP cycle above it closed rather than because anything here improved. The best fit on paper and the strongest relationship: explicitly focused on Black-led organizations rather than narrowly on health, Central-Texas place-based, publishing no minimum-budget or years-of-operation floor, and Black Mamas Village is already a confirmed grantee ($5,000, 2023 inaugural cycle). OPEN NOW AND CLOSING SEPTEMBER 10, 2026. Found on August 26, 2026: the fund's application page shows a timeline reading \"Applications open August 3 and close September 10\" with a live Apply Now portal, where the July research pass found no published next cycle. That deadline falls one week into the trial period and is the nearest real deadline anywhere in this suite. This is the thing to file, and the drafting time available is short enough that it should start before anything else on this page. Note that the fund publishes no rule against repeat grantees: the prior award reads as renewal-style history, not a bar.",
+   "grant_amount": "2025 to 2026 cycle distributed $275,000 across 24 organizations, about $11,458 average",
+   "grant_deadline": "September 10, 2026, 11:59pm. Applications opened August 3, 2026 and the portal is live. Checked August 26, 2026",
+   "grant_eligibility": "From the fund's own application page, checked August 26, 2026: organizations tax-exempt under Section 501(c)(3) or 170(b)(1)(A)(vi), fiscally sponsored projects, and government units may apply. The organization must operate in the six-county Central Texas region of Travis, Bastrop, Burnet, Caldwell, Hays, or Williamson. No minimum budget and no minimum years of operation are stated. Programs are expected to align with the fund's own strategies. One exclusion to check: organizations that received a grant in the 2025 cycle, other than Committee Choice Award winners, may not apply in the immediately following cycle. Black Mamas Village's confirmed award from this fund was in the 2023 inaugural cycle rather than 2025, so on the published wording that exclusion appears not to apply, but confirm it with the fund rather than relying on this reading.",
+   "grant_url": "https://theblackfundcentraltx.org/apply-for-grant/"
+  },
+  {
+   "grant_id": "ehf-next-loi-2027",
+   "grant_name": "Grant Opportunities (next LOI window)",
+   "funder": "Episcopal Health Foundation",
+   "is_sample": false,
+   "payoff_score": 55,
+   "payoff_components": {
+    "relevance": 0.85,
+    "award": 0.6,
+    "urgency": 0.2,
+    "fit": 0.55
+   },
+   "priority_rationale": "Names Maternal Health as an explicit priority and has funded comparably-sized Austin maternal-health nonprofits, but this cycle's LOI window closed July 10, 2026, just before this research date, and the foundation's average grant size (about $250,000) is large relative to Black Mamas Village's current budget, so a smaller, targeted ask would likely be needed.",
+   "grant_amount": "$10,000 to $1,000,000-plus; average around $250,000",
+   "grant_deadline": "Cycle 2 2026 LOI closed July 10, 2026; next LOI window not yet published",
+   "grant_url": "https://www.episcopalhealth.org/grantmaking/"
+  },
+  {
+   "grant_id": "stdavids-healthy-births-monitor",
+   "grant_name": "Healthy Births, Healthy Communities",
+   "funder": "St. David's Foundation",
+   "is_sample": false,
+   "payoff_score": 50,
+   "payoff_components": {
+    "relevance": 0.9,
+    "award": 0.5,
+    "urgency": 0.15,
+    "fit": 0.6
+   },
+   "priority_rationale": "The single most maternal-health-specific funder found in this research, explicitly names strengthening the Central Texas maternal health ecosystem and cites the Black-white maternal mortality disparity, but not currently accepting new applications as of this research pass; listed under the foundation's past funding opportunities. Worth a newsletter sign-up to catch the next round rather than drafting against it now.",
+   "grant_amount": "Not published for this specific program; other St. David's open calls have ranged from mid five figures to low six figures",
+   "grant_deadline": "Not currently open; monitor stdavidsfoundation.org",
+   "grant_url": "https://stdavidsfoundation.org/how-we-work/grantmaking/funding-opportunities/"
+  },
+  {
+   "grant_id": "impact-austin-reapply-2028",
+   "grant_name": "Primary Community Grant (reapply, org already won this in 2025)",
+   "funder": "Impact Austin",
+   "is_sample": false,
+   "payoff_score": 45,
+   "payoff_components": {
+    "relevance": 0.95,
+    "award": 0.7,
+    "urgency": 0.1,
+    "fit": 0.9
+   },
+   "priority_rationale": "Black Mamas Village's strongest existing relationship: a real $80,000 unrestricted 2025 award. Reported policy language, not independently confirmed at a single primary source, so treat as representative, suggests a roughly two-cycle reapplication cooldown, implying the earliest realistic reapplication is around the 2028 cycle. Long-range relationship to cultivate now, not a near-term draft target.",
+   "grant_amount": "2025 award was $80,000, unrestricted; typical program grant size varies by cycle",
+   "grant_deadline": "Not applicable near-term; verify reapplication timing directly with Impact Austin",
+   "grant_url": "https://www.impactaustin.org/grantmaking"
+  }
+ ]
+}
