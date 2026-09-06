@@ -283,7 +283,17 @@ html.stack-page :focus-visible { outline: 3px solid var(--accent); outline-offse
      scroll-snap-stop:always is what makes it hard rather than loose: a fast scroll cannot skip a
      section. The prefers-reduced-motion block above disarms all of this, and was authored on
      2026-09-04 against the day a snap declaration would first appear. This is that day. */
-  html.stack-page { scroll-snap-type: y mandatory; scroll-padding-top: var(--bar-h); }
+  /* SCOPED WITH :has(.screen), 2026-09-05, AFTER THIS SHIPPED BROKEN. The rule below used to be
+     unscoped, on the stated reasoning that scroll-snap-type is inert without snap points. That was
+     true when written and I invalidated it myself by adding the footer snap point further down:
+     the footer then became the ONLY snap point on the nine pages carrying no .screen, and mandatory
+     snap must come to rest on one, so those pages LOADED SCROLLED TO THE BOTTOM. Measured before
+     the fix: about.html opened at scrollY 2294, demo-pricing at 2593, demo-survey at 3044.
+     :has(.screen) makes the opt-in real rather than asserted. If a browser does not support :has(),
+     the whole rule is invalid and no snap applies, which is the safe direction to fail.
+     scroll-padding-top is scoped with it deliberately: it would otherwise stack with the
+     scroll-margin-top on section[id] below and land every anchor 152px down instead of 76. */
+  html.stack-page:has(.screen) { scroll-snap-type: y mandatory; scroll-padding-top: var(--bar-h); }
   html.stack-page .screen { scroll-snap-align: start; scroll-snap-stop: always; }
   /* THE FOOTER MUST BE A SNAP POINT OR MANDATORY SNAP STRANDS IT. This is the 2026-09-04
      refutation's own failure class, reproduced and then fixed rather than argued away. MEASURED on
@@ -292,7 +302,21 @@ html.stack-page :focus-visible { outline: 3px solid var(--accent); outline-offse
      is the final .screen and the 110px of footer beyond it has nothing to snap to. With it, End
      rests at 791 and the footer is fully visible. Align END rather than START because the footer is
      shorter than the scrollport and should come to rest against the bottom. */
-  html.stack-page footer.footer-panel { scroll-snap-align: end; }
+  html.stack-page:has(.screen) footer.footer-panel { scroll-snap-align: end; }
+  /* A page that stacks the sticky .manifest under the sticky header needs more scroll padding, or
+     a snapped section rests underneath the band. Measured: header 76px, manifest 37.2px, 113.2px
+     together. Declared here rather than page-locally because the chrome's own :has(.screen)
+     selector out-specifies a bare html.stack-page rule, so the page-local version silently lost
+     and demo-referrals loaded at scrollY 64 with 76px of padding instead of 114. Conditioning on
+     the manifest's presence keeps this correct for any page, without a per-page exception. */
+  html.stack-page:has(.screen):has(.manifest) { scroll-padding-top: calc(var(--bar-h) + 38px); }
+  /* AND THE TWO OFFSETS MUST NOT STACK. section[id] above carries scroll-margin-top: var(--bar-h)
+     so an anchor clears the sticky header. On a snap page the container's scroll-padding-top does
+     that job already, and a .screen that is also a section[id] got BOTH: measured on index.html,
+     whose screens are <section id="home"> and <section id="about">, the second rested at 568
+     instead of its 644 snap point, 76px short, and an anchor jump to #about landed the same 76px
+     low. Zeroed here for snap screens only, so ordinary anchor targets keep their margin. */
+  html.stack-page:has(.screen) .screen[id] { scroll-margin-top: 0; }
 }
 /* ===== END SITE CHROME ===== */
 
