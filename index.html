@@ -90,6 +90,13 @@ html.stack-page {
   --f-sans:   'IBM Plex Sans', system-ui, -apple-system, Segoe UI, sans-serif;
   --f-mono:   'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   --f-serif:  'Instrument Serif', Georgia, 'Times New Roman', serif;
+  /* ONE SERIF, 2026-09-05 owner ruling. tool-shared.css sets --serif to Spectral and is owner gate
+     G2, so it is not edited; this wins on source order because every page links that sheet before
+     opening its own <style>. MEASURED BEFORE: two serif families downloaded and rendered on the
+     same page, Spectral carrying page content and Instrument Serif carrying the wordmark and
+     chrome, which is why h1 rendered in six different size-and-family combinations across 12
+     pages. Aliasing rather than redefining keeps ONE declaration to change next time. */
+  --serif:    var(--f-serif);
   --f-script: 'Parisienne', 'Segoe Script', cursive;
 
   /* Eleven sizes. No font-size on html, so the root stays the reader's own default.
@@ -233,6 +240,27 @@ html.stack-page :focus-visible { outline: 3px solid var(--accent); outline-offse
      to 76.00 at 375, which is a new defect rather than a fix. */
   html.stack-page .manifest { top: var(--bar-h); }
   html.stack-page section[id] { scroll-margin-top: var(--bar-h); }
+
+  /* HARD SECTION SNAP, 2026-09-05 owner ruling, which REVERSES IN PART the 2026-09-04 ruling of
+     "no snapping on any page". That ruling accepted a refutation from W3C, MDN, web.dev and NN/g
+     that a snap area taller than the scrollport can strand content, and that precondition is
+     accepted here rather than overridden: it is satisfied by making every snap area fit.
+
+     GUARDED AT 861px ON PURPOSE. Below it the phone keeps ordinary scrolling, because the same
+     measurement that cleared desktop shows phone sections at two to four times the viewport, which
+     is exactly the stranding case the refutation named.
+
+     INERT WITHOUT SNAP POINTS. Only .screen carries scroll-snap-align, so a page opts in by having
+     sections rather than by carrying different chrome, and D4's rule that the chrome is identical
+     everywhere survives. The six long-form pages ruled out of scope simply never gain a .screen.
+
+     scroll-padding-top is what keeps a snapped section from resting under the 76px sticky header.
+     Pages that also carry the sticky .manifest need more and set it page-locally.
+     scroll-snap-stop:always is what makes it hard rather than loose: a fast scroll cannot skip a
+     section. The prefers-reduced-motion block above disarms all of this, and was authored on
+     2026-09-04 against the day a snap declaration would first appear. This is that day. */
+  html.stack-page { scroll-snap-type: y mandatory; scroll-padding-top: var(--bar-h); }
+  html.stack-page .screen { scroll-snap-align: start; scroll-snap-stop: always; }
 }
 /* ===== END SITE CHROME ===== */
 /* ============ 1. TOKENS ============ */
