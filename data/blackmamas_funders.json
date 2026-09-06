@@ -1,0 +1,101 @@
+{
+ "method": "Confirmed funders are two institutional grants independently verified against Black Mamas Village's exact legal name and EIN on the funder's own page, not just a name-pattern match; this matters because at least two other Austin nonprofits use very similar \"Black Mamas\" names. The Likely, verify tier is reserved for a funding relationship a research pass surfaces as specific but not independently confirmed, for example a grants database record under the org's exact legal name that the org itself hasn't confirmed. None of the funders researched here fit that description, so this tier is currently empty rather than padded with a guess; it stays in the model for a future research pass. The twelve funders below are Candidate prospects: real, live funders with a documented interest in at least one of Black Mamas Village's three pillars, researched directly on each funder's own current site, with no funding relationship yet. Funders found to be a poor match, invitation-only, geographically excluded, or budget-gated well above Black Mamas Village's size, were dropped rather than included to pad the list.",
+ "ranked_funders": [
+  {
+   "funder_name": "Impact Austin",
+   "is_confirmed_prior_funder": true,
+   "geography": "Austin, TX (Central Texas)",
+   "rationale": "Confirmed funder. Awarded the $80,000 2025 Primary Community Grant, unrestricted and trust-based, funding emergency housing assistance, expanded free mental health therapy access, expanded childcare access through a \"RISE\" partnership, and community cultural programming, directly matching the Health & Wellness and Connection & Belonging pillars. Impact Austin runs this as an annual member-funded cycle with a 28-member review committee; treat this as a cultivate-and-renew relationship, not a one-time gift. A past-grantee reapplication cooldown likely applies (see Scribe's deadline calendar); confirm timing directly with Impact Austin before assuming near-term reapplication."
+  },
+  {
+   "funder_name": "The Black Fund at Austin Community Foundation",
+   "is_confirmed_prior_funder": true,
+   "geography": "Austin / Central Texas (6-county Austin Community Foundation service area)",
+   "rationale": "Confirmed funder. Awarded $5,000 in the Black Fund's inaugural 2023 cycle, runner-up tier, under the Wealth Building impact area, matching the Economic Empowerment pillar. The Black Fund is explicitly Black-led-organization-focused rather than health-focused specifically, and publishes no minimum-years-of-operation or minimum-budget floor, making it the strongest fit of any funder researched here for an organization at this stage. Its current cycle is OPEN and closes September 10, 2026, which is one week into the trial period and the nearest real deadline on this page. See Scribe for the ranked entry and the drafting plan for it."
+  },
+  {
+   "funder_name": "St. David's Foundation",
+   "is_confirmed_prior_funder": false,
+   "tier": "tier_1_strong",
+   "geography": "Central Texas (Bastrop, Caldwell, Hays, Travis, Williamson counties)",
+   "rationale": "New candidate. Explicit 2024 to 2025 funding priorities include Maternal and Child Health, Community Mobilization (grassroots/community-led initiatives), Mental Health, and Economic Security, covering all three pillars. Moved from invitation-only to a broader open-call model \"to ensure a more equitable application process.\" Has funded Mama Sana Vibrant Woman, a comparably-sized Austin maternal-health nonprofit, a useful accessibility comp. Typical open-call grants run mid five figures to low six figures; contact a program officer before applying to confirm current fit and cycle status."
+  },
+  {
+   "funder_name": "Austin Community Foundation, Women's Fund / Forever Austin Fund",
+   "is_confirmed_prior_funder": false,
+   "tier": "tier_1_strong",
+   "geography": "Travis, Williamson, Hays, Bastrop, Burnet, and Caldwell counties",
+   "rationale": "New candidate, distinct from the confirmed Black Fund relationship above. ACF's other funds run parallel annual open-call cycles for unrestricted general operating support; the Forever Austin Fund alone expects to award 75 to 100 grants of $5,000 to $50,000 in its 2026 cycle. Accepts unsolicited funding requests year-round through its online application. The Forever Austin Fund specifically requires 2 full years of active nonprofit operation and a total budget of $50,000 or more; Black Mamas Village clears the budget floor easily and will clear the 2-year-operating floor by late 2025. The most recent cycle's LOI window closed January 27, 2026; next cycle timing not yet published."
+  },
+  {
+   "funder_name": "Central Health, Community Healthcare Initiative Fund (CHIF)",
+   "is_confirmed_prior_funder": false,
+   "tier": "tier_1_strong",
+   "geography": "Travis County only",
+   "rationale": "New candidate. CHIF is a newly launched program from Travis County's healthcare district specifically to fund community groups and nonprofits addressing health inequities and social-determinant service gaps (housing, food, jobs) among low-income residents, a strong match for the Health & Wellness and Economic Empowerment pillars and Black Mamas Village's Travis-County-based constituency. Framed as inviting community groups broadly; the program is new enough to have no long incumbency of large established grantees yet. Grant size and application deadline are not yet published; apply via Central Health's vendor/purchasing portal (RFI-based process) and verify current status directly."
+  },
+  {
+   "funder_name": "Hogg Foundation for Mental Health",
+   "is_confirmed_prior_funder": false,
+   "tier": "tier_1_strong",
+   "geography": "Statewide Texas (UT Austin-based)",
+   "rationale": "New candidate. The Health & Wellness pillar explicitly includes expanded mental health therapy access, a direct match to Hogg's core mission. Hogg is unusually explicit about welcoming very small organizations, naming operating budgets as low as under $15,000 as eligible for some programs. Typical grants run $25,000 to $250,000, sometimes distributed over five years. RFP-based only; does not accept unsolicited proposals, so watch for an open call rather than applying cold."
+  },
+  {
+   "funder_name": "Episcopal Health Foundation",
+   "is_confirmed_prior_funder": false,
+   "tier": "tier_2_promising",
+   "geography": "81-county Episcopal Diocese of Texas region, including Travis County",
+   "rationale": "New candidate. Names Maternal Health as one of three explicit \"Priorities for Change.\" Has funded Mama Sana Vibrant Woman and PUSH Birth Partners, showing it funds grassroots maternal-health-adjacent organizations, not just large health systems. Average grant size runs around $250,000 (range $10,000 to $1,000,000-plus), large relative to Black Mamas Village's current budget, so a smaller, targeted ask is more realistic than a general operating request. Cycle 2 2026's LOI window closed July 10, 2026; watch for the next LOI window."
+  },
+  {
+   "funder_name": "W.K. Kellogg Foundation",
+   "is_confirmed_prior_funder": false,
+   "tier": "tier_2_promising",
+   "geography": "National, with generational-commitment emphasis on Michigan, Mississippi, New Mexico, and greater New Orleans (Texas not a priority place)",
+   "rationale": "New candidate. Explicitly prioritizes racial equity, early childhood, and maternal and infant health for communities of color, with a strong stated preference for community-led, culturally relevant organizations, a close philosophical match to the mutual-aid model. Accepts applications on a rolling basis with no fixed deadline. Texas is not one of WKKF's four priority places, so Texas-based applicants compete without a geographic advantage; a good no-deadline-pressure option to keep in the pipeline rather than a near-term priority."
+  },
+  {
+   "funder_name": "Meadows Foundation",
+   "is_confirmed_prior_funder": false,
+   "tier": "tier_2_promising",
+   "geography": "Statewide Texas, though up to 50% of giving concentrates in Dallas-Fort Worth",
+   "rationale": "New candidate. Statewide human-services funder with stated interest in community-led, well-planned programs. Meadows looks for organizations \"with the capacity to execute\" that have already secured support from other sources, favoring applicants with some funding track record, which Black Mamas Village is now starting to build (Impact Austin, the Black Fund) but is not yet deep. The Dallas-Fort Worth concentration of giving is a real headwind for an Austin-based applicant. Informational meetings with grants staff are available before applying."
+  },
+  {
+   "funder_name": "Perigee Fund",
+   "is_confirmed_prior_funder": false,
+   "tier": "tier_3_weak",
+   "geography": "National (originated in Washington state)",
+   "rationale": "New candidate. Focused specifically on infant and maternal mental health and family well-being for Black, Indigenous, and other communities of color, a close thematic match to the Health & Wellness pillar and the emergency-fund/cash-support model. As of this research pass there were no open RFPs, so near-term accessibility is low regardless of fit; monitor perigeefund.org for future calls."
+  },
+  {
+   "funder_name": "Michael & Susan Dell Foundation",
+   "is_confirmed_prior_funder": false,
+   "tier": "tier_3_weak",
+   "geography": "Greater Austin, plus broader Texas and national programs",
+   "rationale": "New candidate. Austin-headquartered with an explicit family-economic-stability program area overlapping the Economic Empowerment pillar. Describes its Austin-area work as \"long-term collaborations\" with over 400 \"trusted\" community organizations, many for decades, suggesting a preference for established, long-tenured partners over brand-new grassroots organizations. Does accept unsolicited applications for some education/health/economic-development subprograms, so it is not fully closed, but the \"trusted partner\" framing is a real accessibility barrier for a roughly 3-year-old organization."
+  },
+  {
+   "funder_name": "Marguerite Casey Foundation",
+   "is_confirmed_prior_funder": false,
+   "tier": "tier_3_weak",
+   "geography": "National",
+   "rationale": "New candidate. Strong philosophical match: shifts power toward low-income families and communities excluded from economic opportunity, with general-operating-support grants to grassroots and community-organizing leaders, closely aligned with the mutual-aid, horizontal-leadership model. Fit is strong, but the foundation is invitation-only and does not accept unsolicited proposals, so there is no current application path for an organization not already on its radar."
+  },
+  {
+   "funder_name": "Groundswell Fund, Birth Justice Fund",
+   "is_confirmed_prior_funder": false,
+   "tier": "tier_3_weak",
+   "geography": "National, with strategic outreach emphasis on the South, Midwest, and Southwest (Texas included)",
+   "rationale": "New candidate, included with a real caveat: Groundswell's Birth Justice Fund is the most prominent national \"birth justice\" funder, supporting midwives, doulas, and birth workers of color. Black Mamas Village is, per its own site, not primarily a doula or birth-work service provider (that is the separate Black Mamas ATX), so the fit is real but not as tight as it would be for a doula-focused applicant; framing would need to lean on the Health & Wellness pillar's birth and postpartum-adjacent work. Moot in the near term regardless: starting in 2026, all Groundswell grants moved to a single invitation-only fund with no open application."
+  },
+  {
+   "funder_name": "Robert Wood Johnson Foundation",
+   "is_confirmed_prior_funder": false,
+   "tier": "tier_3_weak",
+   "geography": "National",
+   "rationale": "New candidate, included to round out the national health-equity funder category. RWJF's current calls for proposals in this space favor applicants with research capacity or partnerships with research institutions, for example \"From Insight to Action: Health Equity Research,\" a real mismatch with Black Mamas Village's direct-service, mutual-aid model unless it partners with a research-capable co-applicant. A smaller, data-focused track (up to 30 grants of $50,000 each) is possible but competitive and not tailored to grassroots direct-service groups."
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+ "organization": "Black Mamas Village",
+ "legal_name": "Black Mamas Village",
+ "ein": "88-1025060",
+ "website": "https://www.blackmamasvillage-atx.org/",
+ "founded": "Started June 2019 as a Facebook group; IRS 501(c)(3) recognition September 2023",
+ "mission": "\"Where Every Black Mother Belongs.\" Black Mamas Village exists to foster a culture of connection that strengthens support systems and cultivates thriving communities for all Black mothers in greater Austin. It is a peer-support and mutual-aid \"village\" organized around three pillars: Connection & Belonging, Economic Empowerment, and Health & Wellness. It is not primarily a doula or clinical birth-work organization.",
+ "tagline": "Where Every Black Mother Belongs",
+ "programs": [
+  "Connection & Belonging: sisterhood and social activities, family camping trips, identity- and life-stage-based sub-groups, community events",
+  "Economic Empowerment: financial education, entrepreneurship and small-business support, resource navigation, an emergency fund for housing/food bridge assistance",
+  "Health & Wellness: mental health support and expanded free therapy access, culturally informed health education, partnerships on pregnancy and chronic-condition disparities",
+  "The Village Place: a 6,500-square-foot community hub at 8401 North IH-35, Austin, with childcare space, co-working space, a library, and a nap room for moms",
+  "Emergency housing assistance and rental navigation",
+  "Drop-in childcare (RISE partnership)",
+  "Seasonal support (Adopt a Family holiday sponsorships) and community meal trains"
+ ],
+ "focus_areas": [
+  "Peer support and mutual aid for Black mothers (not primarily clinical or doula services)",
+  "Community connection and belonging",
+  "Economic empowerment and financial resilience",
+  "Mental health and wellness",
+  "Black-led, horizontal co-leadership model"
+ ],
+ "geography": {
+  "primary": "Greater Austin / Central Texas",
+  "secondary": [
+   "LinkedIn lists headquarters as Pflugerville, TX, with service area also covering Austin, Cedar Park, Leander, and Round Rock (medium confidence, self-reported field)."
+  ]
+ },
+ "leadership": "Executive Director: Be Ayers, M.Ed. (she/her). Founder: Nakeenya Wilson. Black Mamas Village also describes a co-director, horizontal leadership structure on its own site, with two people working together across each of its pillars.",
+ "leadership_note": "Sourcing note, and a discrepancy worth resolving before this goes to any funder. The Executive Director title is confirmed directly by Black Mamas Village. The founder name and the co-director structure come from the organization's own public team page, which lists eight people across the pillars and does not itself name an Executive Director. The two descriptions are both recorded here rather than merged, because a funder reading the public page and a funder reading a signed application should not be given different answers about who leads the organization. Confirming which description should appear on applications is a five-minute conversation and is worth having before the first one is filed.",
+ "identity_note": "Note for accuracy: Black Mamas Village (EIN 88-1025060) is a distinct 501(c)(3) from two similarly-named Austin organizations, Black Mamas Community Collective (dba Black Mamas ATX, EIN 83-1457295, a doula-services and Sister Circle program) and Healing Hands Community Doula Project. The three share overlapping cause area and, per Form 990 filings, some overlapping board members, but are separate legal entities with separate missions. This page covers Black Mamas Village only.",
+ "financials": {
+  "trend": [
+   {
+    "year": "FY2023",
+    "form": "990-EZ",
+    "revenue": 84481,
+    "expenses": 41468
+   },
+   {
+    "year": "FY2024",
+    "form": "990",
+    "revenue": 301071,
+    "expenses": 233622
+   },
+   {
+    "year": "FY2025",
+    "form": "990",
+    "revenue": 560326,
+    "expenses": 346762
+   }
+  ],
+  "net_assets_note": "The organization reports $0 net assets in every filed year, consistent with a cash-flow-through operation rather than one building a reserve.",
+  "growth_note": "Revenue has grown roughly 6.6x in two years, from $84,481 (FY2023, the organization's first filed year, a 990-EZ) to $560,326 (FY2025). This is a fast-growing young organization, not a micro or static one. Several funders screen on budget size using the 990, so this trajectory should be represented accurately rather than undersold. Revenue is reported as nearly 100% contributions each year (no material earned revenue).",
+  "note": "Source: IRS Form 990/990-EZ via ProPublica Nonprofit Explorer, EIN 88-1025060."
+ },
+ "confirmed_prior_funders": [
+  {
+   "funder": "Impact Austin",
+   "purpose": "2025 Primary Community Grant, unrestricted and trust-based. Funded emergency housing assistance, expanded free mental health therapy access, expanded childcare access through a \"RISE\" partnership, and community cultural programming.",
+   "amount": "$80,000 (2025)"
+  },
+  {
+   "funder": "The Black Fund at Austin Community Foundation",
+   "purpose": "Inaugural 2023 cycle, runner-up tier, Wealth Building impact area (matches the Economic Empowerment pillar).",
+   "amount": "$5,000 (2023)"
+  }
+ ],
+ "confirmed_prior_funders_count": 2,
+ "profile_built": "2026-07-12",
+ "profile_sources": [
+  "ProPublica Nonprofit Explorer, EIN 88-1025060 (legal name, IRS recognition date, three-year financial trend)",
+  "GuideStar profile (guidestar.org/profile/88-1025060)",
+  "blackmamasvillage-atx.org: Homepage, Overview, About Us (mission, tagline, three pillars, leadership philosophy)",
+  "LinkedIn company page (linkedin.com/company/blackmamasvillageatx) (headquarters, service area, staff-count band, self-reported reach figure)",
+  "KXAN Austin coverage of The Village Place community hub grand opening",
+  "Thinkery (Austin children's museum) partnership writeup, Back to School Bash joint event",
+  "Impact Austin, 2025 Primary Community Grant outcomes page",
+  "Austin Community Foundation, \"The Black Fund Awards $355,000 to 21 Nonprofits\" (2023 award article)"
+ ]
+}
