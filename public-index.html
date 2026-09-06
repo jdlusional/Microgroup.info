@@ -58,7 +58,6 @@ h1{font-size:1.9rem;font-weight:600;margin:0 0 .9rem;letter-spacing:-.01em}
 .proj-open:hover{border-color:var(--accent-text);background:var(--accent);color:#fff;text-decoration:none}
 .proj-desc{padding:0 0 .95rem 1.45em;color:var(--muted);font-size:.92rem;line-height:1.65;max-width:none}
 
-
 @media(max-width:600px){
   .proj>summary{flex-wrap:wrap;padding:.75rem 0 .5rem}
   .proj-open{position:static;display:inline-block;margin:.3rem 0 .5rem 1.45em}
@@ -341,7 +340,7 @@ main option, main .field, main .form-grid { text-align: left; }
 /* A page's content is a vertical stack of bands. A panel owns VERTICAL rhythm and nothing else: it
    is full-bleed and sets no width and no side padding, so the content column stays the page's own
    wrapper and adopting this convention cannot change horizontal geometry. */
-.panel { margin: 0; padding: 0; }
+
 .panel + .panel {
   margin-top: var(--s6);
   border-top: 1px solid var(--rule);
@@ -354,7 +353,6 @@ main > .manifest { margin-top: 0; }
 
 /* A colophon is the page's own end-note, distinct from the stamped site footer below it. It carries
    content the site footer does not, so it is kept and classed rather than deleted. */
-.colophon { color: var(--wash); font-size: var(--t-micro); }
 
 @media (max-width: 860px) {
   .panel + .panel { margin-top: var(--s5); padding-top: var(--s5); }
@@ -451,12 +449,10 @@ main > .manifest { margin-top: 0; }
   <h1>Public Index</h1>
   <p class="intro">A directory of MICRO Group, L.L.C.'s site: home, every product's own demo, and how to get in touch. Click a row to expand a short description, or open it directly.</p>
 
-
   <div class="section-label">Home</div>
   <div class="proj-list">
     <details class="proj"><summary>Home</summary><a class="proj-open" href="index.html">Open &#8599;</a><div class="proj-desc">MICRO Group, L.L.C.'s homepage: the five consulting disciplines, the founder's background, and what the firm builds.</div></details>
   </div>
-
 
   <div class="section-label">Products</div>
   <div class="proj-list">
@@ -472,13 +468,11 @@ main > .manifest { margin-top: 0; }
     <details class="proj"><summary>Referral Program</summary><a class="proj-open" href="demo-referrals.html">Open &#8599;</a><div class="proj-desc">Refer an organization to Almanac or Scribe and earn 5% of their first-year subscription as a one-time bonus. Full terms are on the page.</div></details>
   </div>
 
-
   <div class="section-label">Websites</div>
   <div class="proj-list">
     <details class="proj"><summary>Katelyn C. Thompson</summary><a class="proj-open" href="https://katelyncthompson.com/">Open &#8599;</a><div class="proj-desc">Website for Katelyn C. Thompson, a Tennessee public policy and strategic communications leader offering advisory support for campaigns, public agencies, and mission-driven organizations.</div></details>
     <details class="proj"><summary>Clown Dog Bikes</summary><a class="proj-open" href="https://www.clowndogbikes.com/" target="_blank" rel="noopener">Open &#8599;</a><div class="proj-desc">Live site for an Austin bike shop and repair service at clowndogbikes.com: home, repair &amp; service, shop, our story, contact, and policies. Real shop content; online checkout still in planning.</div></details>
   </div>
-
 
   <div class="section-label">Contact</div>
   <div class="proj-list">
