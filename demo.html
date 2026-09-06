@@ -529,16 +529,6 @@ main > .manifest { margin-top: 0; }
     flex-direction: column;
     justify-content: center;
   }
-  /* THE LAST SCREEN SHARES ITS WINDOW WITH THE FOOTER, owner order: the two "Why these" dropdowns
-     and the footer belong on one page rather than costing a scroll each. This page carries no
-     sticky manifest, so the window below the 76px header is the full 644px and the stamped footer
-     needs 109 of it. 118 is that plus slack. A RESERVED CONSTANT, named as such: it is a MINIMUM on
-     a snap screen rather than a subtraction from the page, so if the footer ever outgrows it the
-     screen simply gets taller and the two stop sharing, which the page-opens-at-top gate reports
-     rather than hiding. */
-  html.stack-page main > .screen:last-child {
-    min-height: calc(100svh - var(--bar-h) - 118px);
-  }
   /* AN AUTO CROSS-AXIS MARGIN OVERRIDES align-items: stretch, so a flex child carrying
      `margin: 0 auto` sizes to its own CONTENT instead of to its parent. Making .screen a flex
      column for snap turned every section child into such an item, and .picker is
@@ -555,7 +545,10 @@ main > .manifest { margin-top: 0; }
   .pick-card { padding: var(--s2) var(--s4); }
   .hero { padding: var(--s2) var(--s3) var(--s1); }
   .picker-subhead { margin: var(--s2) auto var(--s2); }
-  .foot-note { padding: 0 var(--s3) var(--s3); }
+  /* SEPARATION FROM THE CARD ROW ABOVE. With the two "Why these" cards moved up onto this one
+     page, the block's own top padding of 0 put them flush against the product cards: measured gap
+     exactly 0, the same pressed-together reading the owner has reported elsewhere. */
+  .foot-note { padding: var(--s5) var(--s3) var(--s3); }
   /* The picker carried 109px of its own vertical padding around a 417px card row, which is what
      pushed the first screen to 735 against a 644 window. The row keeps its side padding. */
   .picker { padding-top: 0; padding-bottom: 0; }
@@ -682,9 +675,6 @@ main > .manifest { margin-top: 0; }
   </a>
 </div>
 <!-- ES-GENERATED:END [catalog-cards] -->
-</section>
-
-<section class="screen">
 <div class="foot-note">
   <div class="why-grid">
 
