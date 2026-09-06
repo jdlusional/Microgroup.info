@@ -582,6 +582,14 @@ html.stack-page #services .grid-3 > * {
     padding-top: var(--s4);
     border-top: 1px solid var(--rule);
   }
+  /* A .shead THAT FOLLOWS SOMETHING GETS THE SAME TREATMENT. The rule above names .stack-gap, and
+     the Products block is a .shead plus a grid rather than a stack-gap, so it inherited nothing and
+     sat flush: measured gap 0 against the engagement cards above it. Owner-reported twice. */
+  html.stack-page .screen .wrap > * + .shead {
+    margin-top: var(--s5);
+    padding-top: var(--s4);
+    border-top: 1px solid var(--rule);
+  }
   html.stack-page .screen .stack-gap:first-child {
     margin-top: 0;
     padding-top: 0;
