@@ -38,6 +38,22 @@ a{color:var(--ink)}
    265px, and a bare floor above that lays a track wider than its own container. The sibling
    demo-pricing.html already ships a card 15px wider than its own grid for exactly that reason. */
 
+/* RESTORED 2026-09-05. A dead-CSS sweep earlier the same day removed the rule
+   `.term-grid, .steps { ... }` from this page because its FIRST class, .term-grid, is no longer
+   used here after the terms moved to their own page. The sweep judged a comma-separated selector
+   by its first class alone and took .steps down with it, which collapsed the four How-it-works
+   cards from a four-column grid to a block stack. No gate caught it: I1 checks that a class has a
+   rule, not that a grid is still a grid, and contrast and overflow both still passed.
+   Re-declared for .steps alone, which is the only one of the two this page uses. */
+.steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: var(--s3);
+  margin: var(--s3) 0 0;
+  padding: 0;
+}
+
 /* SHARED CARD SHAPE. Both grids centre explicitly rather than inheriting main's text-align, and
    both carry min-width:0 plus overflow-wrap, which is what keeps a long unbroken token from
    pushing a track wider than its container. */
